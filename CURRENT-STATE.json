@@ -1,0 +1,72 @@
+{
+  "format": "marker-public-review-state/v1",
+  "snapshot_date": "2026-10-24",
+  "source": {
+    "project": "marKER",
+    "visibility": "private",
+    "branch": "main",
+    "commit": "1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9",
+    "tree": "a46b98ed36320a420b7b1181bebeb70949d2a858",
+    "committed_at": "2026-10-23T22:18:41-04:00",
+    "worktree_at_intake": "clean",
+    "tracked_paths": 203
+  },
+  "publication": {
+    "repository": "edlopezpm-ops/checkmarkerandgivefeedback",
+    "requested_visibility": "public",
+    "scope": "explanatory dossier and structural metadata, without full application source or runtime data",
+    "authority": "direct owner request for this separate public repository",
+    "product_changes": false,
+    "deployment_or_provider_activation": false
+  },
+  "source_verified": [
+    "React/Vite bilingual sole-owner editorial console and distinct media Studio",
+    "Default hosted native email-code access, D1 editorial CAS and Studio metadata",
+    "Private R2 streams, resumable uploads and bounded managed-container native media processing",
+    "Rule-based planner, literal text, source/rights/provenance checks, revision approval and export",
+    "Settings saved limits and separate per-browser Environment preferences",
+    "Local simulation only; no live AI or connected social publication",
+    "Hosted technical analysis pin is null; admission disabled"
+  ],
+  "document_reported_not_reexecuted": [
+    "Prior owner acceptance of manual editorial/UI/demo scope",
+    "Prior hosted Studio/planner/Settings delivery and readback"
+  ],
+  "fresh_documentary_checks": [
+    "Tracked source path/blob/raw-byte inventory",
+    "TypeScript parser structural metadata and static test/API occurrences",
+    "Five D1 migrations applied to empty local in-memory SQLite",
+    "Local Studio structural schema separately reconstructed",
+    "Package links/source locations/known-private-values/credential-pattern/hash checks"
+  ],
+  "not_executed_here": [
+    "product tests or build",
+    "cloud deployment or migrations",
+    "authenticated runtime login/media/planner/settings operations",
+    "physical phone or creative-quality pilot",
+    "live AI/social/provider eligibility or invoice verification",
+    "backup restoration"
+  ],
+  "catalog_counts": {
+    "d1_tables": 15,
+    "d1_columns": 82,
+    "d1_explicit_indexes": 8,
+    "d1_triggers": 0,
+    "local_studio_tables": 10,
+    "local_studio_columns": 33,
+    "parsed_modules": 62,
+    "declarations_and_fields": 10530,
+    "import_and_reexport_records": 278,
+    "syntactic_call_and_new_sites": 9427,
+    "declared_tests": 144,
+    "lock_packages": 136
+  },
+  "limits": [
+    "Static catalogs do not resolve runtime reachability, dynamic dispatch or test outcomes",
+    "Generated Worker declaration contracts dominate raw symbol counts",
+    "Empty SQLite structure is not a live D1 object/data/configuration inventory",
+    "Known-value and pattern checks are not exhaustive secret detection",
+    "Dossier review is not a private code audit or security certification",
+    "No fresh product acceptance or external effect authority follows from publication"
+  ]
+}

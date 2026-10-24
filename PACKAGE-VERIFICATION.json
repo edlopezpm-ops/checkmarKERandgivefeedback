@@ -1,0 +1,25 @@
+{
+  "format": "marker-review-verification/v1",
+  "checked_at_utc": "2026-10-24T04:49:06.528667+00:00",
+  "source_revision": "1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9",
+  "checks": {
+    "source_snapshot": "HEAD, clean worktree, exact 203 tracked paths and checkout hashes",
+    "tracked_source_paths": 203,
+    "source_references_checked": 3721,
+    "local_links_checked": 335,
+    "payload_files": 54,
+    "utf8_links_source_locations_privacy": "PASS",
+    "combined_copies_identical": "PASS"
+  },
+  "package_manifest_sha256": "bf2207a220140a37e1ddac6566bdd2f7cecc44028ddd1902d22f23ef9994f930",
+  "sha256sums_sha256": "573d5a55750fd823206f96343f933663ce8ef03b74ac3d21fee155a3853e9a4c",
+  "seal_scope": "all payload files; three self-referential manifest/receipt/checksum files excluded from payload root",
+  "product_tests_build_deploy_runtime_device_provider_restore": "NOT RUN; documentary publication only",
+  "limitations": [
+    "Static metadata is not a resolved runtime call graph",
+    "Empty SQLite reconstruction is not a deployed D1 catalog",
+    "Known-value/pattern checks and human review are not exhaustive secret detection",
+    "Review shares host/model family; no OS isolation or certification"
+  ],
+  "errors": []
+}

@@ -1,0 +1,460 @@
+{
+  "format": "marker-curated-routes/v1",
+  "count": 30,
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/auth/request",
+      "summary": "Owner-only generic code request; challenge cookie and email.",
+      "adapter": "native hosted auth",
+      "sources": [
+        {
+          "path": "server/native-auth.js",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/verify",
+      "summary": "Single-use code and same-browser challenge; creates opaque session.",
+      "adapter": "native hosted auth",
+      "sources": [
+        {
+          "path": "server/native-auth.js",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout",
+      "summary": "Revokes owner session and clears cookies.",
+      "adapter": "native hosted auth",
+      "sources": [
+        {
+          "path": "server/native-auth.js",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/help",
+      "summary": "Rate-limited bilingual access instructions with generic response.",
+      "adapter": "native hosted auth",
+      "sources": [
+        {
+          "path": "server/native-auth.js",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/session",
+      "summary": "Session status; native owner state or loopback local status.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/worker.ts",
+          "line": 119
+        },
+        {
+          "path": "vite.config.ts",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/workspace",
+      "summary": "Read legacy editorial aggregate.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/api.ts",
+          "line": 62
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/commands",
+      "summary": "Revision-bound legacy editorial command.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/api.ts",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/settings",
+      "summary": "Settings, actual usage, configured limits and AI disconnected flag.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 546
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 477
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/settings",
+      "summary": "Strict settings CAS; active work blocks policy mutation.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 547
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 478
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio",
+      "summary": "Library/campaign/variant state, jobs, uploads, usage and capabilities.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 548
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 479
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/plan",
+      "summary": "Deterministic proposal preview without enqueuing a render.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 553
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 483
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/commands",
+      "summary": "Studio revision-bound command; trusted proposal recomputation on save.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 573
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 503
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/analyses",
+      "summary": "Explicit technical analysis admission; hosted unavailable until native version pinned.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 558
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 489
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/analyses?assetId={id}",
+      "summary": "Up to 20 summaries for an asset.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 559
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 490
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/analyses/{id}",
+      "summary": "One analysis record.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 564
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 494
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/analyses/{id}/thumb-{0..5}.jpg",
+      "summary": "Completed declared analysis thumbnail.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 564
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 494
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/uploads",
+      "summary": "Reserve one resumable upload session.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 596
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 528
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/uploads/{id}",
+      "summary": "Read committed upload offset and state.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 597
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 540
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/studio/uploads/{id}",
+      "summary": "Append bounded chunk at exact offset.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 597
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 540
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/studio/uploads/{id}",
+      "summary": "Cancel upload; preserve failed-release reservations until reconciled.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 597
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 540
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/uploads/{id}/complete",
+      "summary": "Probe/hash original, deduplicate and commit metadata.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 597
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 540
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/assets/{id}",
+      "summary": "Original bytes; download=1 requests attachment disposition.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 626
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 553
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/{id}",
+      "summary": "Job state and immutable receipt when present.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 632
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 559
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/{id}/video",
+      "summary": "Completed MP4 preview bytes.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 632
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 559
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/{id}/cover",
+      "summary": "Completed cover PNG.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 632
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 559
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/variants/{id}/render",
+      "summary": "Exact recipe render admission with explicit regeneration semantics.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 639
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 568
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/variants/{id}/approve",
+      "summary": "Explicit confirmed exact recipe/job approval.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 639
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 568
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/variants/{id}/export",
+      "summary": "Permission-bound approved TXT or MP4 export.",
+      "adapter": "native hosted + local",
+      "sources": [
+        {
+          "path": "server/studio-hosted.ts",
+          "line": 639
+        },
+        {
+          "path": "server/studio-local.ts",
+          "line": 568
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/login",
+      "summary": "Prepared Supabase compatibility helper; not selected by exported native Worker.",
+      "adapter": "inactive Supabase helper",
+      "sources": [
+        {
+          "path": "server/worker.ts",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/logout",
+      "summary": "Prepared Supabase compatibility helper; not selected by exported native Worker.",
+      "adapter": "inactive Supabase helper",
+      "sources": [
+        {
+          "path": "server/worker.ts",
+          "line": 34
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Exact methods are curated from guards; raw API-literal occurrences include client/test/prefix/rejection mentions.",
+    "Brace placeholders represent regex capture groups; they are not source route literals.",
+    "Entry reachability, auth, origin, method, ID, revision and capability guards determine actual response.",
+    "Compatibility helper routes are not selected by the current Worker entry."
+  ]
+}

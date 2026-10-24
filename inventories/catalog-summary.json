@@ -1,0 +1,13 @@
+{
+  "tracked_paths": 203,
+  "git_blob_bytes": 8869800,
+  "source_text_paths": 102,
+  "text_lines": 31504,
+  "lock_packages": 136,
+  "d1_tables": 15,
+  "d1_columns": 82,
+  "d1_explicit_indexes": 8,
+  "d1_triggers": 0,
+  "local_studio_tables": 10,
+  "local_studio_columns": 33
+}

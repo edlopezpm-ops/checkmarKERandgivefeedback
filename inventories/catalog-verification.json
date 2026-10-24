@@ -1,0 +1,154 @@
+{
+  "format": "marker-documentary-leaf-verification/v1",
+  "scope": "catalogs",
+  "source_revision": "1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9",
+  "checks": {
+    "json_parse": "PASS",
+    "python_syntax": "PASS",
+    "source_ref_ranges": "PASS",
+    "email_uuid_absolute_path_scan": "PASS",
+    "source_clean": "PASS",
+    "d1_schema_only_replay_integrity_foreign_keys": "PASS",
+    "local_schema_only_replay_integrity_foreign_keys": "PASS",
+    "all_25_database_table_anchors": "PASS",
+    "unchanged_sibling_bytes": "PASS",
+    "configured_origin_owner_sender_literal_scan": "PASS",
+    "configuration_field_names_and_redaction_placeholders": "PASS"
+  },
+  "limitations": [
+    "Static structural analysis only; no product tests/build/browser/deploy/database/provider or new human UAT.",
+    "Same inherited context/shared OS; not an independent security audit."
+  ],
+  "outputs": [
+    {
+      "path": "10-source-map-tests-and-dependencies.md",
+      "bytes": 5891,
+      "sha256": "d167fce288e52b8c9599f263243cf91b27ee758dd32e9d741b3ec3943d754a59"
+    },
+    {
+      "path": "11-database-and-catalog-reference.md",
+      "bytes": 6840,
+      "sha256": "6896341297b705eae01d800c2c24c8346ae27a97dfb23829a491f2dbef35c612"
+    },
+    {
+      "path": "code-flow/05-module-symbol-index.md",
+      "bytes": 88934,
+      "sha256": "c18afee9d1c3226a24da618b274a0fb748d2931bc6719ebf38344236f478455b"
+    },
+    {
+      "path": "database/d1-catalog.json",
+      "bytes": 42557,
+      "sha256": "7cc2f86f28455a2bc6c6f571f4056ba10233087016853f739eba871a46bacafa"
+    },
+    {
+      "path": "database/d1-reference.md",
+      "bytes": 17904,
+      "sha256": "b9150b97f6e72e3957944e77892d9d5be8a01b82780a7b1f8b7c643b2ea62f5b"
+    },
+    {
+      "path": "database/d1-schema.sql",
+      "bytes": 6041,
+      "sha256": "b2446f17aecc8a9c176844bb9aa6b7a307c624d1eb9996087a9ff0f2a623d69c"
+    },
+    {
+      "path": "database/local-studio-catalog.json",
+      "bytes": 18962,
+      "sha256": "dd0cb01fbe7df660a734db46e5bcaf1fe58480252244be3219a7845ee4c6fdb3"
+    },
+    {
+      "path": "database/local-studio-reference.md",
+      "bytes": 8751,
+      "sha256": "5dad3333c2aefcc0b467a8b312c948dc0ec2abe246e5012ad0bcf4f8131e1ec7"
+    },
+    {
+      "path": "database/local-studio-schema.sql",
+      "bytes": 1654,
+      "sha256": "6922610fd446b8fc273e4af9bbb36ff00b4f3ac0fc8c9e6b749aae6849d53929"
+    },
+    {
+      "path": "database/README.md",
+      "bytes": 1635,
+      "sha256": "d4b4c2bcd3da01e31b9ad96be329ab5b916b3b2e950ec3a2483378f439479f5b"
+    },
+    {
+      "path": "database/supabase-reference.md",
+      "bytes": 2617,
+      "sha256": "d0d5055602c83a1c04220f73a3bb6aa8c81f426e8a6b13899ea8ac5ea4d86b24"
+    },
+    {
+      "path": "inventories/ast-index.json",
+      "bytes": 4842637,
+      "sha256": "28ad3a6feaad9c0409621da0291ec66c5e1c46e909c512bf049d539a40eb7f0c"
+    },
+    {
+      "path": "inventories/catalog-summary.json",
+      "bytes": 290,
+      "sha256": "a47a3d5821dd8cea999e9439958f61e1c90ef4611a2b41da387da4bb5f2fef7d"
+    },
+    {
+      "path": "inventories/dependencies.json",
+      "bytes": 46227,
+      "sha256": "76f52c9e5d25deadebf4e3c50fcedf82682708b105ed41130750cf1f37b15cf3"
+    },
+    {
+      "path": "inventories/dependencies.md",
+      "bytes": 11694,
+      "sha256": "740ff84314d12d34b8b6201169f4928efea471b63f65ac5828c3bdecb69b350f"
+    },
+    {
+      "path": "inventories/route-occurrences.json",
+      "bytes": 18796,
+      "sha256": "4a9104c5e467516fd993984bc3e60b6ee2d92f89b8dd659fe509ac035a3adbd7"
+    },
+    {
+      "path": "inventories/routes.json",
+      "bytes": 11960,
+      "sha256": "085d76e7ade379ae2ea719a01b1f3506897d8c6082d77eb1f0097b2ae1840f2a"
+    },
+    {
+      "path": "inventories/routes.md",
+      "bytes": 7137,
+      "sha256": "c5a774575580515520113840a4629c69cc95a44741d2b044b41bb3d67e0f8d41"
+    },
+    {
+      "path": "inventories/source-paths.md",
+      "bytes": 24192,
+      "sha256": "5357b516295875f09d551af5465ad9a85255673982ec5bb643176b49289f84e5"
+    },
+    {
+      "path": "inventories/test-declarations.json",
+      "bytes": 33190,
+      "sha256": "7516ddf89020fa7b133e5e582b90b370ab12cc7d1c264c2bdc8f6850c2ab75a1"
+    },
+    {
+      "path": "inventories/test-index.md",
+      "bytes": 21756,
+      "sha256": "32ea585d783f83b67e80a04a49cbe2ca526fdac6a51a8e5301c7f21d213200be"
+    },
+    {
+      "path": "source-snapshot-manifest.json",
+      "bytes": 91954,
+      "sha256": "d66df12fef55324a04a50b620b7ad280401d69453781b582a4bf4a9b21a914e6"
+    },
+    {
+      "path": "tools/extract-catalogs.py",
+      "bytes": 8525,
+      "sha256": "34125d2967557773471463bdfbf9dd248c13c08301bde5bc6e2b22a525d8a8da"
+    },
+    {
+      "path": "tools/extract-structure.mjs",
+      "bytes": 9498,
+      "sha256": "3c5056e3a90f51cd331d06fcfab912a35ad1925452ce9d1b42f5038d95840224"
+    },
+    {
+      "path": "tools/README.md",
+      "bytes": 2648,
+      "sha256": "1e4a37818b237a54f85bc4948d3603e37b89acbbde7ec50d49715278fcd8ad93"
+    },
+    {
+      "path": "tools/render-catalog-references.py",
+      "bytes": 16696,
+      "sha256": "ddd8c3c50d5fbd596012a639ccb780717a3ef837d2d17e91b1a7906f2d8e89e6"
+    }
+  ]
+}

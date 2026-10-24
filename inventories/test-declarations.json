@@ -1,0 +1,1036 @@
+{
+  "format": "marker-static-tests/v1",
+  "coverage": "Syntactic node:test/test/it/describe and t.test declarations; no tests executed.",
+  "count": 144,
+  "files": [
+    "tests/access-help.test.ts",
+    "tests/assets.test.ts",
+    "tests/d1-hosted.test.ts",
+    "tests/editorial.test.ts",
+    "tests/generation.test.ts",
+    "tests/hosted.test.ts",
+    "tests/motion.test.ts",
+    "tests/native-auth.test.ts",
+    "tests/scheduler.test.ts",
+    "tests/studio-analysis.test.ts",
+    "tests/studio-api.test.ts",
+    "tests/studio-hosted.test.ts",
+    "tests/studio-planner.test.ts",
+    "tests/studio-processor.test.ts",
+    "tests/studio-render.test.ts",
+    "tests/studio-vite.test.ts",
+    "tests/studio-watch.test.ts",
+    "tests/studio.test.ts",
+    "tests/ui-help.test.ts"
+  ],
+  "declarations": [
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 55,
+      "end_line": 70,
+      "kind": "test",
+      "name": "help sends the English guide only to the configured owner and returns generic responses without cookies"
+    },
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 72,
+      "end_line": 86,
+      "kind": "test",
+      "name": "help sends Spanish instructions without changing existing challenges, sessions or login limits"
+    },
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 88,
+      "end_line": 104,
+      "kind": "test",
+      "name": "help enforces origin, method, schema, JSON and bounded body before mail or counter writes"
+    },
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 106,
+      "end_line": 115,
+      "kind": "test",
+      "name": "help cooldown and concurrent requests admit one mail, and IP admission is bounded"
+    },
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 117,
+      "end_line": 122,
+      "kind": "test",
+      "name": "help global hourly admission limits rotating IP addresses without sending to unknown identities"
+    },
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 124,
+      "end_line": 135,
+      "kind": "test",
+      "name": "help owner hourly and daily limits bound actual mail independently of IP and code requests"
+    },
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 137,
+      "end_line": 146,
+      "kind": "test",
+      "name": "help provider failure is visible without leaking details or mutating auth state; SQL failure rolls back quotas"
+    },
+    {
+      "path": "tests/assets.test.ts",
+      "line": 14,
+      "end_line": 17,
+      "kind": "test",
+      "name": "default/rejected consent loads once in memory with no persistent writes"
+    },
+    {
+      "path": "tests/assets.test.ts",
+      "line": 18,
+      "end_line": 22,
+      "kind": "test",
+      "name": "acceptance caches resource, cleans old versions and revocation preserves other caches"
+    },
+    {
+      "path": "tests/assets.test.ts",
+      "line": 23,
+      "end_line": 27,
+      "kind": "test",
+      "name": "unavailable storage and quota failure fall back to host"
+    },
+    {
+      "path": "tests/assets.test.ts",
+      "line": 28,
+      "end_line": 32,
+      "kind": "test",
+      "name": "revocation during network load never leaves an optional copy"
+    },
+    {
+      "path": "tests/assets.test.ts",
+      "line": 33,
+      "end_line": 36,
+      "kind": "test",
+      "name": "oversized declared and streaming bodies are rejected"
+    },
+    {
+      "path": "tests/assets.test.ts",
+      "line": 37,
+      "end_line": 40,
+      "kind": "test",
+      "name": "network failure clears failed memoization for recovery"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 29,
+      "end_line": 36,
+      "kind": "test",
+      "name": "actual SQLite schema and hosted repository keep CAS conflict and payload limit without lost records"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 38,
+      "end_line": 55,
+      "kind": "test",
+      "name": "hosted product deletion cannot orphan Studio material or campaign in either committed order"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 56,
+      "end_line": 81,
+      "kind": "test",
+      "name": "native auth plus data API completes owner login/write/logout and denies non-owner requests using actual SQL"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 63,
+      "end_line": 113,
+      "kind": "test",
+      "name": "manual editorial cycle preserves original whitespace, source references and explicit result evidence"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 114,
+      "end_line": 155,
+      "kind": "test",
+      "name": "shared account prevents equal absolute schedules across products and sources outlive one campaign"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 156,
+      "end_line": 192,
+      "kind": "test",
+      "name": "relationships reject foreign sources, incompatible accounts and destructive dependency changes"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 193,
+      "end_line": 214,
+      "kind": "test",
+      "name": "paid plans always start paused, require explicit budget/currency and cannot activate spending"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 215,
+      "end_line": 250,
+      "kind": "test",
+      "name": "readiness cannot be forged for empty/unreviewed or multimedia-only destinations"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 251,
+      "end_line": 284,
+      "kind": "test",
+      "name": "invalid input never mutates the prior state or invents records"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 285,
+      "end_line": 313,
+      "kind": "test",
+      "name": "bounded API rejects non-JSON, oversized streaming payloads and cross-origin writes"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "line": 314,
+      "end_line": 352,
+      "kind": "test",
+      "name": "concurrent local writes reject stale revisions, persist across instances and never overwrite corrupt state"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "line": 33,
+      "end_line": 58,
+      "kind": "test",
+      "name": "all three fictional examples generate editable simulated drafts with exact source IDs and paused paid state"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "line": 60,
+      "end_line": 72,
+      "kind": "test",
+      "name": "concurrent duplicates share one result; changed input or snapshot cannot reuse the request ID"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "line": 74,
+      "end_line": 88,
+      "kind": "test",
+      "name": "missing, cross-product and non-campaign sources, incompatible destination and stale revision are rejected"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "line": 90,
+      "end_line": 101,
+      "kind": "test",
+      "name": "simulated errors, timeout, cancellation and malformed results never change the workspace"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "line": 103,
+      "end_line": 117,
+      "kind": "test",
+      "name": "saving after external edits and generation-time mutations is rejected; original schedule is preserved"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "line": 119,
+      "end_line": 139,
+      "kind": "test",
+      "name": "bounded session expiry, capacity, output size and clear reject retained or pending work"
+    },
+    {
+      "path": "tests/hosted.test.ts",
+      "line": 10,
+      "end_line": 64,
+      "kind": "test",
+      "name": "unconfigured hosted backend fails closed, anonymous and other identities cannot read or write"
+    },
+    {
+      "path": "tests/hosted.test.ts",
+      "line": 65,
+      "end_line": 109,
+      "kind": "test",
+      "name": "configured owner reads through Supabase and successful login returns HttpOnly cookie without browser tokens"
+    },
+    {
+      "path": "tests/motion.test.ts",
+      "line": 10,
+      "end_line": 23,
+      "kind": "test",
+      "name": "kung fu travels across the stage, jumps and exchanges sides in every variant"
+    },
+    {
+      "path": "tests/motion.test.ts",
+      "line": 25,
+      "end_line": 36,
+      "kind": "test",
+      "name": "genuine side and rear torsos have their own silhouettes and surface pixels"
+    },
+    {
+      "path": "tests/motion.test.ts",
+      "line": 38,
+      "end_line": 55,
+      "kind": "test",
+      "name": "all scenes retain finite bounded motion and a clean return to the same idle pose"
+    },
+    {
+      "path": "tests/motion.test.ts",
+      "line": 57,
+      "end_line": 66,
+      "kind": "test",
+      "name": "episodes vary in two dimensions while cooperative and winning reactions remain coherent"
+    },
+    {
+      "path": "tests/motion.test.ts",
+      "line": 68,
+      "end_line": 101,
+      "kind": "test",
+      "name": "cueca partners circle in depth, escobillan, alternate zapateo and salute without a winner"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 68,
+      "end_line": 89,
+      "kind": "test",
+      "name": "native SQLite keeps owner auth separate, sends only allowlisted aliases and stores no raw identities, PINs or cookies"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 91,
+      "end_line": 109,
+      "kind": "test",
+      "name": "PIN requires its browser cookie, allows the fifth attempt, consumes once and logout revokes the opaque server session"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 111,
+      "end_line": 126,
+      "kind": "test",
+      "name": "locked, expired, cross-browser and duplicate-cookie challenges never create a session"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 128,
+      "end_line": 136,
+      "kind": "test",
+      "name": "two concurrent correct verifications consume one challenge and create exactly one session"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 138,
+      "end_line": 146,
+      "kind": "test",
+      "name": "an immediate resend preserves the existing browser challenge and the original PIN remains usable"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 148,
+      "end_line": 162,
+      "kind": "test",
+      "name": "creation and verification failures roll back challenge, budget and session writes atomically"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 164,
+      "end_line": 179,
+      "kind": "test",
+      "name": "session checks enforce canonical origin, allowlist, duplicated cookies, thirty-minute idle and six-hour absolute expiry"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 181,
+      "end_line": 190,
+      "kind": "test",
+      "name": "the global hourly request quota is atomic and bounds attacker-created limiter rows"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 192,
+      "end_line": 208,
+      "kind": "test",
+      "name": "mail failure has the generic response, invalidates the challenge and does not block HTTP on provider latency"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 210,
+      "end_line": 227,
+      "kind": "test",
+      "name": "missing configuration, unavailable database/mail and CSRF or oversized input fail closed"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 229,
+      "end_line": 239,
+      "kind": "test",
+      "name": "a stalled JSON stream is cancelled at the three-second deadline before any auth state is written"
+    },
+    {
+      "path": "tests/scheduler.test.ts",
+      "line": 13,
+      "end_line": 18,
+      "kind": "test",
+      "name": "first episode waits 30–60 seconds, next wait starts after finish"
+    },
+    {
+      "path": "tests/scheduler.test.ts",
+      "line": 19,
+      "end_line": 23,
+      "kind": "test",
+      "name": "hidden wait resumes remaining time without catch-up"
+    },
+    {
+      "path": "tests/scheduler.test.ts",
+      "line": 24,
+      "end_line": 27,
+      "kind": "test",
+      "name": "hidden episode pauses completion; dispose cancels all timers"
+    },
+    {
+      "path": "tests/scheduler.test.ts",
+      "line": 28,
+      "end_line": 32,
+      "kind": "test",
+      "name": "no immediate repetition, weighted selection and paused startup"
+    },
+    {
+      "path": "tests/scheduler.test.ts",
+      "line": 33,
+      "end_line": 36,
+      "kind": "test",
+      "name": "development interruption finishes previous episode and owns one timer"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "line": 27,
+      "end_line": 39,
+      "kind": "test",
+      "name": "analysis contract rejects unbounded work and untrusted derivative paths"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "line": 41,
+      "end_line": 48,
+      "kind": "test",
+      "name": "technical marker times are bounded to declared coverage, including trailing low-volume intervals"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "line": 50,
+      "end_line": 92,
+      "kind": "test",
+      "name": "real FFmpeg analysis preserves originals and reports technical aids without semantic labels"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "line": 57,
+      "end_line": 70,
+      "kind": "t.test",
+      "name": "actual black, scene and low-volume measurements plus bounded JPEG thumbnails"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "line": 71,
+      "end_line": 75,
+      "kind": "t.test",
+      "name": "unreviewed toolchain returns unavailable without pretending that analysis succeeded"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "line": 76,
+      "end_line": 78,
+      "kind": "t.test",
+      "name": "range outside original is rejected before publishing any derivative"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "line": 79,
+      "end_line": 86,
+      "kind": "t.test",
+      "name": "audio-only measurement generates no invented video or voice classification"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 29,
+      "end_line": 68,
+      "kind": "test",
+      "name": "uploads resume after restart, reject conflicting chunks, preserve unsupported originals, and reuse exact duplicates"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 70,
+      "end_line": 91,
+      "kind": "test",
+      "name": "upload bounds, cancellation and origin guards do not mutate library state"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 93,
+      "end_line": 124,
+      "kind": "test",
+      "name": "CAS commands, explicit text approval, editable recipes and rights revocation govern export"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 126,
+      "end_line": 150,
+      "kind": "test",
+      "name": "restart marks incomplete local jobs failed and the prepared D1 migration stays independent of workspace JSON"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 152,
+      "end_line": 224,
+      "kind": "test",
+      "name": "real local jobs are idempotent, preserve stale previews, require exact-recipe approval and export playable MP4"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 226,
+      "end_line": 276,
+      "kind": "test",
+      "name": "text approval atomically records immutable usage and older-than-list history remains counted"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 278,
+      "end_line": 295,
+      "kind": "test",
+      "name": "local explicit audio analysis caches actual bounded signals without changing human classifications"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "line": 297,
+      "end_line": 314,
+      "kind": "test",
+      "name": "local owner settings persist defaults and revisions while storage caps preserve saved originals"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 87,
+      "end_line": 105,
+      "kind": "test",
+      "name": "hosted normalized D1 stores text campaign, version receipts and permission-bound export without media compute"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 107,
+      "end_line": 117,
+      "kind": "test",
+      "name": "private R2 resumable uploads deduplicate actual streamed processor hash and retain technical audio semantics"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 119,
+      "end_line": 130,
+      "kind": "test",
+      "name": "D1 upload claim prevents duplicate chunks, rejects short nonfinal parts and resumes committed offsets"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 132,
+      "end_line": 147,
+      "kind": "test",
+      "name": "render admission, durable execution, revision-specific approval and historical export use immutable receipts"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 149,
+      "end_line": 160,
+      "kind": "test",
+      "name": "compute failures keep originals, return safe errors, charge once and require an explicit new operation"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 162,
+      "end_line": 173,
+      "kind": "test",
+      "name": "failed and expired render leases never repeat paid work and release reservations exactly once"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 175,
+      "end_line": 188,
+      "kind": "test",
+      "name": "successful probe is reused after a failed state commit and lost enqueue acknowledgement reuses one reservation"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 190,
+      "end_line": 200,
+      "kind": "test",
+      "name": "state CAS, cross-store workspace revision and atomic rollback preserve the last committed library"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 202,
+      "end_line": 212,
+      "kind": "test",
+      "name": "upload admission is atomic with a recoverable session before any R2 call, including interruption and unavailable multipart creation"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 214,
+      "end_line": 223,
+      "kind": "test",
+      "name": "cancellation retries known already-aborted multipart after database rollback while retaining reservations on service failure"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 225,
+      "end_line": 234,
+      "kind": "test",
+      "name": "render admission commits budget, storage reservation and recoverable job atomically before enqueue"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 236,
+      "end_line": 246,
+      "kind": "test",
+      "name": "method/origin/storage gates reject before consuming media or budget"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 248,
+      "end_line": 261,
+      "kind": "test",
+      "name": "actual owner auth denies a distinct non-owner actor and forged session before hosted Studio access"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 263,
+      "end_line": 278,
+      "kind": "test",
+      "name": "planner previews are free, server-recomputed saves reject stale fingerprints and preserve trusted provenance"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 280,
+      "end_line": 285,
+      "kind": "test",
+      "name": "hosted analysis remains disabled until a reviewed native toolchain is pinned"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 297,
+      "end_line": 328,
+      "kind": "test",
+      "name": "prepared analysis admission is atomic, cache hits are free and reservations reconcile once"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 330,
+      "end_line": 338,
+      "kind": "test",
+      "name": "historical planner ceiling never blocks manual render, approval or export"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 340,
+      "end_line": 356,
+      "kind": "test",
+      "name": "analysis admission rejects an active upload atomically while its completion probe retains ownership"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 358,
+      "end_line": 378,
+      "kind": "test",
+      "name": "owner settings validate exact fields, preserve usage and apply budget/storage caps without deleting originals"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 380,
+      "end_line": 396,
+      "kind": "test",
+      "name": "settings CAS and upload admission serialize against current limits; active work prevents policy changes"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 27,
+      "end_line": 37,
+      "kind": "test",
+      "name": "planner is deterministic and proposes one human-marked cooking background without mutating inputs"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 39,
+      "end_line": 48,
+      "kind": "test",
+      "name": "bounded alternatives and integer allocation reserve two seconds for each later segment"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 50,
+      "end_line": 59,
+      "kind": "test",
+      "name": "human speech locks preserve exact ranges/order and overfull locks abstain"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 61,
+      "end_line": 67,
+      "kind": "test",
+      "name": "unconfirmed speech and unclassified raw video are never auto-cut while keeping audio"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 69,
+      "end_line": 72,
+      "kind": "test",
+      "name": "muted background requires explicit consent even when speech was not detected"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 74,
+      "end_line": 86,
+      "kind": "test",
+      "name": "ready status, product scope, rights and explicit license review are server-side eligibility"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 88,
+      "end_line": 98,
+      "kind": "test",
+      "name": "reuse uses original SHA and interval across duplicate entries and historical deleted variants"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 100,
+      "end_line": 105,
+      "kind": "test",
+      "name": "overlapping copies cannot silently loop within a single recipe"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 107,
+      "end_line": 119,
+      "kind": "test",
+      "name": "planner does not develop vague ideas and preserves ready text literally"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 121,
+      "end_line": 126,
+      "kind": "test",
+      "name": "readability rejects valid-length copy that cannot be read in its time slot"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 128,
+      "end_line": 135,
+      "kind": "test",
+      "name": "client provenance is ignored; only trusted current-revision plan may be persisted"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 137,
+      "end_line": 146,
+      "kind": "test",
+      "name": "human classification changes invalidate planned rendering even without contentVersion changes"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 148,
+      "end_line": 155,
+      "kind": "test",
+      "name": "manual edits retain trusted provenance and fresh historical reuse still blocks effects"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 157,
+      "end_line": 162,
+      "kind": "test",
+      "name": "invalid pools and incompatible locks fail with bounded domain errors"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 164,
+      "end_line": 179,
+      "kind": "test",
+      "name": "replanning an existing variant refreshes replaced originals and invalidates its old approval"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 181,
+      "end_line": 190,
+      "kind": "test",
+      "name": "explicit narration replaces unknown source audio but must cover the full recipe"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 192,
+      "end_line": 202,
+      "kind": "test",
+      "name": "used intervals leave deterministic unused windows without copying unrelated history into provenance"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "line": 204,
+      "end_line": 214,
+      "kind": "test",
+      "name": "optional analysis references are bounded provenance and do not silently change cuts or human speech"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 27,
+      "end_line": 78,
+      "kind": "test",
+      "name": "hosted runner probes originals, renders and streams the actual reusable FFmpeg output"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 128,
+      "end_line": 136,
+      "kind": "test",
+      "name": "DO durably deduplicates jobs, retains queue during work and does not repeat failed work"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 137,
+      "end_line": 147,
+      "kind": "test",
+      "name": "DO preserves infrastructure failures through one watchdog and parks until an explicit same-ID request"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 148,
+      "end_line": 157,
+      "kind": "test",
+      "name": "DO serializes native operations, destroys scratch after each and rejects arbitrary object keys"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 158,
+      "end_line": 166,
+      "kind": "test",
+      "name": "DO stops failed container work and leaves the next explicit operation usable"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 167,
+      "end_line": 192,
+      "kind": "test",
+      "name": "DO streams exact bounded MP4 and cover bytes into private R2 without a media buffer"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 193,
+      "end_line": 202,
+      "kind": "test",
+      "name": "DO aggregate deadline includes startup and destroys the entire container"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 203,
+      "end_line": 219,
+      "kind": "test",
+      "name": "DO diagnostic logs identify fixed failing stage and exit code without exposing process output"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "line": 220,
+      "end_line": 238,
+      "kind": "test",
+      "name": "DO accepts font bytes without Content-Length and preserves them while rejecting oversized or HTML assets"
+    },
+    {
+      "path": "tests/studio-render.test.ts",
+      "line": 35,
+      "end_line": 123,
+      "kind": "test",
+      "name": "native FFprobe and FFmpeg process bounded synthetic sources and deterministic editable recipes"
+    },
+    {
+      "path": "tests/studio-render.test.ts",
+      "line": 44,
+      "end_line": 68,
+      "kind": "t.test",
+      "name": "metadata describes actual tracks, dimensions and duration without a semantic classification"
+    },
+    {
+      "path": "tests/studio-render.test.ts",
+      "line": 70,
+      "end_line": 84,
+      "kind": "t.test",
+      "name": "mixed video/image montage has exact duration, real cover, original custody and source audio control"
+    },
+    {
+      "path": "tests/studio-render.test.ts",
+      "line": 86,
+      "end_line": 106,
+      "kind": "t.test",
+      "name": "all five template types produce decodable output; mute and selected narration remain distinct"
+    },
+    {
+      "path": "tests/studio-render.test.ts",
+      "line": 108,
+      "end_line": 121,
+      "kind": "t.test",
+      "name": "reject invalid ranges, unreadable text, remote input, unsupported content and missing tools before success"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 24,
+      "end_line": 166,
+      "kind": "test",
+      "name": "isolated real Vite HTTP boundary assembles three fictional campaigns, exports, and serializes product protection"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 62,
+      "end_line": 121,
+      "kind": "t.test",
+      "name": "real multipart route bridge uploads a photo and prepares all three account-free examples"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 123,
+      "end_line": 137,
+      "kind": "t.test",
+      "name": "serialized legacy deletion and studio creation cannot leave an orphan product"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 139,
+      "end_line": 157,
+      "kind": "t.test",
+      "name": "HTTP parsing, origin and private-file denials keep prior state intact"
+    },
+    {
+      "path": "tests/studio-watch.test.ts",
+      "line": 8,
+      "end_line": 48,
+      "kind": "test",
+      "name": "actual Vite watcher observes source changes but excludes transient private media"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 27,
+      "end_line": 36,
+      "kind": "test",
+      "name": "capture accepts an unassigned incomplete idea and separates audio from speech"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 38,
+      "end_line": 45,
+      "kind": "test",
+      "name": "campaign preparation needs a real product but no social account, sources or complete objective"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 47,
+      "end_line": 58,
+      "kind": "test",
+      "name": "recipes preserve exact source versions and labels remain editable after reuse"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 60,
+      "end_line": 72,
+      "kind": "test",
+      "name": "changing source content versions does not rewrite an existing recipe"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 74,
+      "end_line": 91,
+      "kind": "test",
+      "name": "video approval requires a trusted exact-revision render and invalidates on editing"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 93,
+      "end_line": 102,
+      "kind": "test",
+      "name": "unknown rights, undeveloped ideas and absent manual copy cannot be approved"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 104,
+      "end_line": 113,
+      "kind": "test",
+      "name": "render specs preserve explicit ranges and do not treat silence as semantic classification"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 115,
+      "end_line": 128,
+      "kind": "test",
+      "name": "invalid ranges, excessive clips, unsupported originals and injected enums fail closed"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 130,
+      "end_line": 141,
+      "kind": "test",
+      "name": "old recipes retain their original file even if the material is replaced by a different type"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 143,
+      "end_line": 151,
+      "kind": "test",
+      "name": "rights revocation removes approval and export access without changing saved source bytes"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 153,
+      "end_line": 164,
+      "kind": "test",
+      "name": "narrated demo requires confirmed voice or a sufficiently long uploaded narration"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 166,
+      "end_line": 174,
+      "kind": "test",
+      "name": "asset registration is immutable, malformed requests do not mutate previous state"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 176,
+      "end_line": 195,
+      "kind": "test",
+      "name": "legacy import captures trusted immutable source provenance, including original spacing"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 197,
+      "end_line": 210,
+      "kind": "test",
+      "name": "replacement rights cannot authorize a restricted historical original"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "line": 212,
+      "end_line": 221,
+      "kind": "test",
+      "name": "an owned historical original remains intentional while current revocation still prevents export"
+    },
+    {
+      "path": "tests/ui-help.test.ts",
+      "line": 17,
+      "end_line": 31,
+      "kind": "test",
+      "name": "every guide has bilingual instructions and only existing declared screenshots"
+    },
+    {
+      "path": "tests/ui-help.test.ts",
+      "line": 33,
+      "end_line": 43,
+      "kind": "test",
+      "name": "settings explains shared saving, budget allocations and the inactive AI boundary in both languages"
+    },
+    {
+      "path": "tests/ui-help.test.ts",
+      "line": 45,
+      "end_line": 59,
+      "kind": "test",
+      "name": "assembly help distinguishes proposal, technical aids, exact review and manual publication"
+    },
+    {
+      "path": "tests/ui-help.test.ts",
+      "line": 61,
+      "end_line": 76,
+      "kind": "test",
+      "name": "text-only guide steps render without broken images and illustrated legacy editors remain usable"
+    }
+  ]
+}

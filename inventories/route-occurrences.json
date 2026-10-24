@@ -1,0 +1,738 @@
+{
+  "format": "marker-static-route-occurrences/v1",
+  "coverage": "API literals and API regular-expression literals across every indexed module; client calls, tests and server dispatch are intentionally distinguished by path and AST parent kind. Prefixes and rejection guards are not separate supported endpoints.",
+  "limitations": [
+    "This is not an automatic list of reachable routes or accepted methods.",
+    "Dynamic suffixes, route constants and regex branch method guards require the curated route reference."
+  ],
+  "occurrences": [
+    {
+      "path": "server/api.ts",
+      "line": 62,
+      "end_line": 62,
+      "kind": "literal",
+      "pattern": "/api/workspace",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/api.ts",
+      "line": 64,
+      "end_line": 64,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/native-auth.js",
+      "line": 4,
+      "end_line": 4,
+      "kind": "literal",
+      "pattern": "/api/auth/request",
+      "parent_kind": "VariableDeclaration"
+    },
+    {
+      "path": "server/native-auth.js",
+      "line": 5,
+      "end_line": 5,
+      "kind": "literal",
+      "pattern": "/api/auth/verify",
+      "parent_kind": "VariableDeclaration"
+    },
+    {
+      "path": "server/native-auth.js",
+      "line": 6,
+      "end_line": 6,
+      "kind": "literal",
+      "pattern": "/api/auth/logout",
+      "parent_kind": "VariableDeclaration"
+    },
+    {
+      "path": "server/native-auth.js",
+      "line": 7,
+      "end_line": 7,
+      "kind": "literal",
+      "pattern": "/api/auth/help",
+      "parent_kind": "VariableDeclaration"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 542,
+      "end_line": 542,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 542,
+      "end_line": 542,
+      "kind": "literal",
+      "pattern": "/api/studio/",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 546,
+      "end_line": 546,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 547,
+      "end_line": 547,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 548,
+      "end_line": 548,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 553,
+      "end_line": 553,
+      "kind": "literal",
+      "pattern": "/api/studio/plan",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 558,
+      "end_line": 558,
+      "kind": "literal",
+      "pattern": "/api/studio/analyses",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 559,
+      "end_line": 559,
+      "kind": "literal",
+      "pattern": "/api/studio/analyses",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 564,
+      "end_line": 564,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/analyses\\/([^/]+)(\\/(thumb-[0-5]\\.jpg))?$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 573,
+      "end_line": 573,
+      "kind": "literal",
+      "pattern": "/api/studio/commands",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 596,
+      "end_line": 596,
+      "kind": "literal",
+      "pattern": "/api/studio/uploads",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 597,
+      "end_line": 597,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/uploads\\/([^/]+)(\\/complete)?$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 626,
+      "end_line": 626,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/assets\\/([^/]+)$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 632,
+      "end_line": 632,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/jobs\\/([^/]+)(\\/(video|cover))?$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-hosted.ts",
+      "line": 639,
+      "end_line": 639,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/variants\\/([^/]+)\\/(render|approve|export)$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 474,
+      "end_line": 474,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 477,
+      "end_line": 477,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 478,
+      "end_line": 478,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 479,
+      "end_line": 479,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 483,
+      "end_line": 483,
+      "kind": "literal",
+      "pattern": "/api/studio/plan",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 489,
+      "end_line": 489,
+      "kind": "literal",
+      "pattern": "/api/studio/analyses",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 490,
+      "end_line": 490,
+      "kind": "literal",
+      "pattern": "/api/studio/analyses",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 494,
+      "end_line": 494,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/analyses\\/([^/]+)(\\/(thumb-[0-5]\\.jpg))?$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 503,
+      "end_line": 503,
+      "kind": "literal",
+      "pattern": "/api/studio/commands",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 528,
+      "end_line": 528,
+      "kind": "literal",
+      "pattern": "/api/studio/uploads",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 540,
+      "end_line": 540,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/uploads\\/([^/]+)(\\/complete)?$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 553,
+      "end_line": 553,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/assets\\/([^/]+)$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 559,
+      "end_line": 559,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/jobs\\/([^/]+)(\\/(video|cover))?$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 568,
+      "end_line": 568,
+      "kind": "regular_expression",
+      "pattern": "/^\\/api\\/studio\\/variants\\/([^/]+)\\/(render|approve|export)$/",
+      "parent_kind": "PropertyAccessExpression"
+    },
+    {
+      "path": "server/studio-local.ts",
+      "line": 628,
+      "end_line": 628,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 27,
+      "end_line": 27,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 34,
+      "end_line": 34,
+      "kind": "literal",
+      "pattern": "/api/logout",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 39,
+      "end_line": 39,
+      "kind": "literal",
+      "pattern": "/api/login",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 88,
+      "end_line": 88,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 109,
+      "end_line": 109,
+      "kind": "literal",
+      "pattern": "/api/",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 117,
+      "end_line": 117,
+      "kind": "literal",
+      "pattern": "/api/auth/",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 119,
+      "end_line": 119,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 123,
+      "end_line": 123,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "server/worker.ts",
+      "line": 123,
+      "end_line": 123,
+      "kind": "literal",
+      "pattern": "/api/studio/",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "line": 148,
+      "end_line": 148,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "line": 164,
+      "end_line": 164,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "line": 196,
+      "end_line": 196,
+      "kind": "literal",
+      "pattern": "/api/auth/request",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "line": 199,
+      "end_line": 199,
+      "kind": "literal",
+      "pattern": "/api/auth/verify",
+      "parent_kind": "ConditionalExpression"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "line": 199,
+      "end_line": 199,
+      "kind": "literal",
+      "pattern": "/api/login",
+      "parent_kind": "ConditionalExpression"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "line": 218,
+      "end_line": 218,
+      "kind": "literal",
+      "pattern": "/api/auth/help",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "line": 261,
+      "end_line": 261,
+      "kind": "literal",
+      "pattern": "/api/auth/logout",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Settings.tsx",
+      "line": 28,
+      "end_line": 28,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Settings.tsx",
+      "line": 41,
+      "end_line": 41,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/console/Settings.tsx",
+      "line": 60,
+      "end_line": 60,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/core/client.ts",
+      "line": 21,
+      "end_line": 21,
+      "kind": "literal",
+      "pattern": "/api/workspace",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "src/core/client.ts",
+      "line": 23,
+      "end_line": 23,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/access-help.test.ts",
+      "line": 41,
+      "end_line": 41,
+      "kind": "literal",
+      "pattern": "/api/auth/help",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 62,
+      "end_line": 62,
+      "kind": "literal",
+      "pattern": "/api/workspace",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 63,
+      "end_line": 63,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 65,
+      "end_line": 65,
+      "kind": "literal",
+      "pattern": "/api/auth/request",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 66,
+      "end_line": 66,
+      "kind": "literal",
+      "pattern": "/api/auth/request",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 69,
+      "end_line": 69,
+      "kind": "literal",
+      "pattern": "/api/auth/verify",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 71,
+      "end_line": 71,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 73,
+      "end_line": 73,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 75,
+      "end_line": 75,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 76,
+      "end_line": 76,
+      "kind": "literal",
+      "pattern": "/api/workspace",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 77,
+      "end_line": 77,
+      "kind": "literal",
+      "pattern": "/api/auth/logout",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 78,
+      "end_line": 78,
+      "kind": "literal",
+      "pattern": "/api/workspace",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "line": 79,
+      "end_line": 79,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "line": 3,
+      "end_line": 3,
+      "kind": "literal",
+      "pattern": "/api/auth/",
+      "parent_kind": "VariableDeclaration"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 65,
+      "end_line": 65,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 250,
+      "end_line": 250,
+      "kind": "literal",
+      "pattern": "/api/auth/",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 256,
+      "end_line": 256,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 309,
+      "end_line": 309,
+      "kind": "literal",
+      "pattern": "/api/studio/analyses/",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "line": 395,
+      "end_line": 395,
+      "kind": "literal",
+      "pattern": "/api/studio/settings",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 43,
+      "end_line": 43,
+      "kind": "literal",
+      "pattern": "/api/workspace",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 44,
+      "end_line": 44,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 46,
+      "end_line": 46,
+      "kind": "literal",
+      "pattern": "/api/studio/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 55,
+      "end_line": 55,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 67,
+      "end_line": 67,
+      "kind": "literal",
+      "pattern": "/api/studio/uploads",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 118,
+      "end_line": 118,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 125,
+      "end_line": 125,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 131,
+      "end_line": 131,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 132,
+      "end_line": 132,
+      "kind": "literal",
+      "pattern": "/api/studio/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 144,
+      "end_line": 144,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 147,
+      "end_line": 147,
+      "kind": "literal",
+      "pattern": "/api/studio",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "line": 149,
+      "end_line": 149,
+      "kind": "literal",
+      "pattern": "/api/workspace",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "vite.config.ts",
+      "line": 50,
+      "end_line": 50,
+      "kind": "literal",
+      "pattern": "/api/",
+      "parent_kind": "CallExpression"
+    },
+    {
+      "path": "vite.config.ts",
+      "line": 88,
+      "end_line": 88,
+      "kind": "literal",
+      "pattern": "/api/commands",
+      "parent_kind": "BinaryExpression"
+    },
+    {
+      "path": "vite.config.ts",
+      "line": 102,
+      "end_line": 102,
+      "kind": "literal",
+      "pattern": "/api/session",
+      "parent_kind": "BinaryExpression"
+    }
+  ]
+}

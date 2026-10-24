@@ -1,0 +1,1582 @@
+{
+  "format": "marker-sqlite-schema/v1",
+  "kind": "d1",
+  "sqlite_version": "3.49.1",
+  "reconstruction": "Empty in-memory database only. Schema replay and integrity/foreign-key checks passed. No hosted or runtime database was read.",
+  "migrations": [
+    {
+      "path": "migrations-d1/0001_private.sql",
+      "sha256": "d7836325da283d9f561e8b142bf8205a64c07e29cc4257b79bfdd82883decb48",
+      "text_lines": 26
+    },
+    {
+      "path": "migrations-d1/0002_studio.sql",
+      "sha256": "9d60433c5bd046ffb5b4c19ec2fd584507ea0469761d822d21f7de6f7ea43ed3",
+      "text_lines": 49
+    },
+    {
+      "path": "migrations-d1/0003_studio_hosted.sql",
+      "sha256": "474ad650967e899ce1e491cd075f1b20528ddc2d3ab2aacd6116083fac8d5866",
+      "text_lines": 23
+    },
+    {
+      "path": "migrations-d1/0004_studio_analysis.sql",
+      "sha256": "7e39a0aa2ab5bd2809cc0eea6db1934513958c30cba0430907f033c0c6ff7b9d",
+      "text_lines": 20
+    },
+    {
+      "path": "migrations-d1/0005_studio_settings.sql",
+      "sha256": "e1afc97c1a451b4710b03c4fd466319d3fd488b645f824d3799c992258ccb663",
+      "text_lines": 13
+    }
+  ],
+  "table_count": 15,
+  "column_count": 82,
+  "explicit_index_count": 8,
+  "trigger_count": 0,
+  "tables": [
+    {
+      "name": "marker_auth_challenges",
+      "ddl": "CREATE TABLE marker_auth_challenges (\n  challenge_hash TEXT PRIMARY KEY CHECK (length(challenge_hash) = 64),\n  owner_hash TEXT NOT NULL CHECK (length(owner_hash) = 64),\n  code_hash TEXT NOT NULL CHECK (length(code_hash) = 64),\n  created_at INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL CHECK (expires_at = created_at + 300),\n  attempts INTEGER NOT NULL DEFAULT 0 CHECK (attempts BETWEEN 0 AND 5),\n  consumed_at INTEGER\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "challenge_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "owner_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "code_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "attempts",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "consumed_at",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_challenges_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "challenge_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "owner_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "code_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "created_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "attempts",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 6,
+              "cid": 6,
+              "name": "consumed_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_auth_limits",
+      "ddl": "CREATE TABLE marker_auth_limits (\n  key TEXT PRIMARY KEY CHECK (length(key) = 64),\n  window_start INTEGER NOT NULL,\n  count INTEGER NOT NULL CHECK (count > 0 AND count <= 100),\n  last_at INTEGER NOT NULL,\n  ticket TEXT NOT NULL CHECK (length(ticket) = 64)\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "window_start",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "count",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "last_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "ticket",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_limits_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "key",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "window_start",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "count",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "last_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "ticket",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_auth_sessions",
+      "ddl": "CREATE TABLE marker_auth_sessions (\n  session_hash TEXT PRIMARY KEY CHECK (length(session_hash) = 64),\n  owner_hash TEXT NOT NULL CHECK (length(owner_hash) = 64),\n  created_at INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL CHECK (expires_at = created_at + 21600),\n  last_seen INTEGER NOT NULL\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "session_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "owner_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "last_seen",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_sessions_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "session_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "owner_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "created_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "last_seen",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_analysis",
+      "ddl": "CREATE TABLE marker_studio_analysis (\n  id TEXT PRIMARY KEY,\n  asset_id TEXT NOT NULL REFERENCES marker_studio_assets(id) ON DELETE RESTRICT,\n  sha256 TEXT NOT NULL CHECK(length(sha256)=64),\n  start_ms INTEGER NOT NULL CHECK(start_ms>=0),\n  end_ms INTEGER NOT NULL CHECK(end_ms>start_ms AND end_ms-start_ms<=120000),\n  profile TEXT NOT NULL,\n  tool_version TEXT NOT NULL,\n  status TEXT NOT NULL CHECK(status IN ('queued','running','completed','failed')),\n  document TEXT NOT NULL CHECK(json_valid(document)),\n  lock_token TEXT,\n  lock_until INTEGER NOT NULL DEFAULT 0,\n  reserved_bytes INTEGER NOT NULL DEFAULT 0 CHECK(reserved_bytes>=0),\n  metadata_reserved INTEGER NOT NULL DEFAULT 0 CHECK(metadata_reserved>=0)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "asset_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "sha256",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "start_ms",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "end_ms",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "profile",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "tool_version",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 7,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 8,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 9,
+          "name": "lock_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 10,
+          "name": "lock_until",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 11,
+          "name": "reserved_bytes",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 12,
+          "name": "metadata_reserved",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_studio_assets",
+          "from": "asset_id",
+          "to": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "RESTRICT",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "marker_studio_analysis_status",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 7,
+              "name": "status",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_studio_analysis_status ON marker_studio_analysis(status)"
+        },
+        {
+          "name": "marker_studio_analysis_asset",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 1,
+              "name": "asset_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_studio_analysis_asset ON marker_studio_analysis(asset_id)"
+        },
+        {
+          "name": "marker_studio_analysis_cache",
+          "unique": true,
+          "origin": "c",
+          "partial": true,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 2,
+              "name": "sha256",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 3,
+              "name": "start_ms",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": 4,
+              "name": "end_ms",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 3,
+              "cid": 5,
+              "name": "profile",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 4,
+              "cid": 6,
+              "name": "tool_version",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 5,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE UNIQUE INDEX marker_studio_analysis_cache ON marker_studio_analysis(sha256,start_ms,end_ms,profile,tool_version) WHERE status!='failed'"
+        },
+        {
+          "name": "sqlite_autoindex_marker_studio_analysis_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_assets",
+      "ddl": "CREATE TABLE marker_studio_assets (\n  id TEXT PRIMARY KEY,\n  sha256 TEXT NOT NULL CHECK(length(sha256)=64),\n  kind TEXT NOT NULL CHECK(kind IN ('video','image','audio')),\n  size_bytes INTEGER NOT NULL CHECK(size_bytes BETWEEN 1 AND 262144000),\n  storage_key TEXT NOT NULL UNIQUE,\n  document TEXT NOT NULL CHECK(json_valid(document))\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "sha256",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "kind",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "size_bytes",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "storage_key",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "marker_studio_assets_hash",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 1,
+              "name": "sha256",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_studio_assets_hash ON marker_studio_assets(sha256)"
+        },
+        {
+          "name": "sqlite_autoindex_marker_studio_assets_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 4,
+              "name": "storage_key",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        },
+        {
+          "name": "sqlite_autoindex_marker_studio_assets_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_campaigns",
+      "ddl": "CREATE TABLE marker_studio_campaigns (\n  id TEXT PRIMARY KEY,\n  product_id TEXT NOT NULL,\n  document TEXT NOT NULL CHECK(json_valid(document))\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "product_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_studio_campaigns_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_compute",
+      "ddl": "CREATE TABLE marker_studio_compute (\n  month TEXT PRIMARY KEY CHECK(length(month)=7),\n  used_cents INTEGER NOT NULL DEFAULT 0 CHECK(used_cents>=0),\n  last_token TEXT\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "month",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "used_cents",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "last_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_studio_compute_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "month",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_jobs",
+      "ddl": "CREATE TABLE marker_studio_jobs (\n  id TEXT PRIMARY KEY,\n  variant_id TEXT NOT NULL REFERENCES marker_studio_variants(id) ON DELETE RESTRICT,\n  recipe_revision INTEGER NOT NULL CHECK(recipe_revision>0),\n  status TEXT NOT NULL CHECK(status IN ('queued','running','completed','failed')),\n  document TEXT NOT NULL CHECK(json_valid(document))\n, lock_token TEXT, lock_until INTEGER NOT NULL DEFAULT 0, reserved_bytes INTEGER NOT NULL DEFAULT 0 CHECK(reserved_bytes>=0))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "variant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "recipe_revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "lock_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "lock_until",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 7,
+          "name": "reserved_bytes",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_studio_variants",
+          "from": "variant_id",
+          "to": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "RESTRICT",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "marker_studio_one_render",
+          "unique": true,
+          "origin": "c",
+          "partial": true,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": -2,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE UNIQUE INDEX marker_studio_one_render ON marker_studio_jobs((1)) WHERE status IN ('queued','running')"
+        },
+        {
+          "name": "marker_studio_jobs_recipe",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 1,
+              "name": "variant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 2,
+              "name": "recipe_revision",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_studio_jobs_recipe ON marker_studio_jobs(variant_id,recipe_revision)"
+        },
+        {
+          "name": "sqlite_autoindex_marker_studio_jobs_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_limits",
+      "ddl": "CREATE TABLE marker_studio_limits (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  stored_bytes INTEGER NOT NULL DEFAULT 0 CHECK(stored_bytes>=0),\n  reserved_bytes INTEGER NOT NULL DEFAULT 0 CHECK(reserved_bytes>=0),\n  upload_token TEXT,\n  compute_token TEXT,\n  compute_until INTEGER NOT NULL DEFAULT 0\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "stored_bytes",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "reserved_bytes",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "upload_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "compute_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "compute_until",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    {
+      "name": "marker_studio_materials",
+      "ddl": "CREATE TABLE marker_studio_materials (\n  id TEXT PRIMARY KEY,\n  asset_id TEXT REFERENCES marker_studio_assets(id) ON DELETE RESTRICT,\n  content_version INTEGER NOT NULL CHECK(content_version>0),\n  document TEXT NOT NULL CHECK(json_valid(document))\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "asset_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "content_version",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_studio_assets",
+          "from": "asset_id",
+          "to": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "RESTRICT",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_studio_materials_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_meta",
+      "ddl": "CREATE TABLE marker_studio_meta (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  revision INTEGER NOT NULL CHECK(revision>=0)\n, write_token TEXT)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "write_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    {
+      "name": "marker_studio_settings",
+      "ddl": "CREATE TABLE marker_studio_settings (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  revision INTEGER NOT NULL DEFAULT 0 CHECK(revision>=0),\n  monthly_budget_cents INTEGER NOT NULL DEFAULT 2000 CHECK(monthly_budget_cents BETWEEN 0 AND 2000),\n  processing_budget_cents INTEGER NOT NULL DEFAULT 1000 CHECK(processing_budget_cents BETWEEN 0 AND 2000),\n  ai_budget_cents INTEGER NOT NULL DEFAULT 0 CHECK(ai_budget_cents BETWEEN 0 AND 2000),\n  storage_limit_bytes INTEGER NOT NULL DEFAULT 2147483648 CHECK(storage_limit_bytes BETWEEN 0 AND 2147483648),\n  default_duration_seconds INTEGER NOT NULL DEFAULT 20 CHECK(default_duration_seconds BETWEEN 5 AND 60),\n  CHECK(processing_budget_cents+ai_budget_cents<=monthly_budget_cents)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "monthly_budget_cents",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "2000",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "processing_budget_cents",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "1000",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "ai_budget_cents",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "storage_limit_bytes",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "2147483648",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "default_duration_seconds",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "20",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    {
+      "name": "marker_studio_uploads",
+      "ddl": "CREATE TABLE marker_studio_uploads (\n  id TEXT PRIMARY KEY,\n  status TEXT NOT NULL CHECK(status IN ('uploading','completed','cancelled')),\n  document TEXT NOT NULL CHECK(json_valid(document))\n, lock_token TEXT, lock_until INTEGER NOT NULL DEFAULT 0)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "lock_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "lock_until",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "marker_studio_one_upload",
+          "unique": true,
+          "origin": "c",
+          "partial": true,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 1,
+              "name": "status",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE UNIQUE INDEX marker_studio_one_upload ON marker_studio_uploads(status) WHERE status='uploading'"
+        },
+        {
+          "name": "sqlite_autoindex_marker_studio_uploads_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_studio_variants",
+      "ddl": "CREATE TABLE marker_studio_variants (\n  id TEXT PRIMARY KEY,\n  campaign_id TEXT NOT NULL REFERENCES marker_studio_campaigns(id) ON DELETE RESTRICT,\n  recipe_revision INTEGER NOT NULL CHECK(recipe_revision>0),\n  document TEXT NOT NULL CHECK(json_valid(document))\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "campaign_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "recipe_revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_studio_campaigns",
+          "from": "campaign_id",
+          "to": "id",
+          "on_update": "NO ACTION",
+          "on_delete": "RESTRICT",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "marker_studio_variants_campaign",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 1,
+              "name": "campaign_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_studio_variants_campaign ON marker_studio_variants(campaign_id)"
+        },
+        {
+          "name": "sqlite_autoindex_marker_studio_variants_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_workspace",
+      "ddl": "CREATE TABLE marker_workspace (id INTEGER PRIMARY KEY CHECK(id = 1), revision INTEGER NOT NULL CHECK(revision > 0), document TEXT NOT NULL CHECK(length(CAST(document AS BLOB)) <= 1048576 AND json_valid(document)))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    }
+  ],
+  "triggers": [],
+  "views": []
+}
