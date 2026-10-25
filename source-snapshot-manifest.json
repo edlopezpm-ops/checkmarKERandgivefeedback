@@ -1,8 +1,8 @@
 {
   "format": "marker-source-snapshot/v2",
-  "captured_at_utc": "2026-10-25T02:02:08.866195+00:00",
-  "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-  "source_tree_sha1": "afe452fa2eb870a6d061f269d9eb5ab22db77992",
+  "captured_at_utc": "2026-10-25T02:32:59.500753+00:00",
+  "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+  "source_tree_sha1": "9f5386b9eb64fd8e81ee715bff4685d0a8fea4bd",
   "source_branch": "main",
   "source_dirty": [
     " M docs/console.md",
@@ -18,9 +18,9 @@
     "?? server/demo-media.ts",
     "?? tests/demo-media.test.ts"
   ],
-  "tracked_path_count": 338,
-  "projected_path_count": 345,
-  "projected_bytes": 35789619,
+  "tracked_path_count": 339,
+  "projected_path_count": 346,
+  "projected_bytes": 35798911,
   "hash_semantics": "SHA-256 describes exact source checkout bytes copied to source/. Source HEAD is the base; source_dirty explicitly qualifies any uncommitted bytes. No private payload was inventoried or hashed. Git may normalize text line endings; verification accepts only exact bytes or the documented LF text equivalent. Binary bytes must match exactly.",
   "paths": [
     {
@@ -2317,11 +2317,11 @@
       "path": "server/mcp-auth.ts",
       "projection": "source/server/mcp-auth.ts",
       "tracked": true,
-      "git_index_blob_sha1": "119676ea7b1db533cfe8b8467335637a8c4df392",
-      "bytes": 29198,
-      "sha256": "885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3",
-      "checkout_sha256": "885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3",
-      "text_lines": 295
+      "git_index_blob_sha1": "0526c757dd4cf3cbc8795f7483d094d34cf79f2c",
+      "bytes": 30823,
+      "sha256": "e036c813a1fa883d2beb15ab38173084b138fb6029bc06c42a52905292dd3bbf",
+      "checkout_sha256": "e036c813a1fa883d2beb15ab38173084b138fb6029bc06c42a52905292dd3bbf",
+      "text_lines": 311
     },
     {
       "path": "server/mcp-local.ts",
@@ -3147,11 +3147,21 @@
       "path": "tests/mcp-auth.test.ts",
       "projection": "source/tests/mcp-auth.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "b8afd7fb384ee4366fc7b4eddaf7e7f4b2eacbfa",
-      "bytes": 24022,
-      "sha256": "40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9",
-      "checkout_sha256": "40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9",
-      "text_lines": 244
+      "git_index_blob_sha1": "ace183e682832b2e96c752a226271e14c5653918",
+      "bytes": 25864,
+      "sha256": "0b23465fa62aa14c66d144c0b9c69b19b3abe4e7137debd025d758c7cac9503d",
+      "checkout_sha256": "0b23465fa62aa14c66d144c0b9c69b19b3abe4e7137debd025d758c7cac9503d",
+      "text_lines": 268
+    },
+    {
+      "path": "tests/mcp-consent-policy.test.ts",
+      "projection": "source/tests/mcp-consent-policy.test.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "d5545c9c5c0821170e8903c4dba600aafa01cf2c",
+      "bytes": 5825,
+      "sha256": "3857a60b7b60659d411d59bfe9ac286e36227af798ef53b2bf1783a2e6a291e2",
+      "checkout_sha256": "3857a60b7b60659d411d59bfe9ac286e36227af798ef53b2bf1783a2e6a291e2",
+      "text_lines": 91
     },
     {
       "path": "tests/mcp-integration.test.ts",
@@ -3486,50 +3496,19 @@
   ],
   "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template. The user-facing registered-plugin installation URL/identifier is explicitly authorized public configuration already served in the browser bundle; it grants no account access. Private App bindings are excluded. The historical raw-plugin identifier in the design document is also explicitly authorized public noncredential configuration; this does not widen either private audience.",
   "previous_publication": {
-    "review_commit": "17fffc123149d62b87df4da430628cea6f453b06",
-    "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
-    "source_manifest_sha256": "cb8ce6b918b1f226e7a39bcb1533f4dd87a70b89d9d58493984b619f411cfa52",
+    "review_commit": "e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b",
+    "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+    "source_manifest_sha256": "5f9e2331e7f6c4d741c7bdf15c2999689175eaad082484a64eba919427f69906",
+    "intermediate_source_revision": "cd5e3fb57544a2699bab6fd2a5fbf77591ccc1a7",
     "changed_paths": [
-      "PROJECT_MAP.md",
-      "README.md",
-      "docs/AGENT_BRIDGE.md",
-      "docs/agents.md",
-      "docs/assistant-integration-design-2026-10-24.md",
-      "docs/mcp-connector.md",
-      "migrations-d1/0011_mcp_connections.sql",
-      "public/help/en/agents-connect.png",
-      "public/help/en/agents-context.png",
-      "public/help/es/agents-connect.png",
-      "public/help/es/agents-context.png",
-      "server/mcp-auth-store.ts",
       "server/mcp-auth.ts",
-      "server/mcp-local.ts",
-      "server/mcp-tools.ts",
-      "server/mcp.ts",
-      "src/console/Agents.tsx",
-      "src/console/Console.tsx",
-      "src/console/McpConnections.tsx",
-      "src/console/Settings.tsx",
-      "src/console/help-guides.ts",
-      "src/console/mcp-resume.ts",
       "tests/mcp-auth.test.ts",
-      "tests/mcp-integration.test.ts",
-      "tests/mcp-local-migration.test.ts",
-      "tests/mcp-resume.test.ts",
-      "tests/profile.test.ts"
+      "tests/mcp-consent-policy.test.ts"
     ],
     "new_paths": [
-      "docs/assistant-integration-design-2026-10-24.md",
-      "migrations-d1/0011_mcp_connections.sql",
-      "public/help/en/agents-connect.png",
-      "public/help/en/agents-context.png",
-      "public/help/es/agents-connect.png",
-      "public/help/es/agents-context.png",
-      "src/console/mcp-resume.ts",
-      "tests/mcp-local-migration.test.ts",
-      "tests/mcp-resume.test.ts"
+      "tests/mcp-consent-policy.test.ts"
     ],
     "dirty_demo_paths_byte_identical": 12,
-    "method": "Fresh complete eligible source capture and exact-byte verification. Prior 12 demo paths remain uncommitted and byte-identical to the preceding review snapshot. Runtime source, AST/routes/tests and empty-schema catalogs refreshed; product tests are coordinator-reported, not rerun by this worker."
+    "method": "Combined three-path delta since the last public snapshot, across two consent/callback correction commits. Exact copied hashes, unchanged tracked blob identities, complete eligible path set and all twelve dirty demo hashes checked. AST/routes/test navigation refreshed; unchanged schema/dependencies retained without reexecution. Product/browser/host evidence coordinator-reported."
   }
 }

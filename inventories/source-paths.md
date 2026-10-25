@@ -1,6 +1,6 @@
 # Complete source projection
 
-Base `00398e155dcbd0a05942bf3466cfe8a29a63c604`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
+Base `f9478e66f4c5798b417f7b25b462d8dd0d673295`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
 
 | Source path | Bytes | Text lines | Tracked | SHA-256 |
 | --- | --- | --- | --- | --- |
@@ -233,7 +233,7 @@ Base `00398e155dcbd0a05942bf3466cfe8a29a63c604`; working-tree qualifications are
 | [server/google-auth.js](../source/server/google-auth.js) | 17384 | 131 | True | 5108148270a83117ee353db89b544fc351275d9f9c93a4e27a740e50e64a04e9 |
 | [server/local.ts](../source/server/local.ts) | 1815 | 54 | True | 68daf1ad3dea0cadb08f093617117f7b6561040e2d7c9a55be3d21ad32fcee47 |
 | [server/mcp-auth-store.ts](../source/server/mcp-auth-store.ts) | 1914 | 27 | True | d9a4f87a57da9dc53ab0c375a6e73b82fcc28625d92a9693893e6edee6de5620 |
-| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 29198 | 295 | True | 885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3 |
+| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 30823 | 311 | True | e036c813a1fa883d2beb15ab38173084b138fb6029bc06c42a52905292dd3bbf |
 | [server/mcp-local.ts](../source/server/mcp-local.ts) | 3950 | 62 | True | fa9dcb130939399f9f5a1a1c9494c3acdf67e359d3e8b22926e8a7af01b46317 |
 | [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 24467 | 213 | True | c4342ae3bc339abfa0cb66810e1d9d9278ae2b21367cd49b69d0252aa51b1e00 |
 | [server/mcp.ts](../source/server/mcp.ts) | 11681 | 152 | True | c2346e0128fea0d41c1b06a9d293770726169391a343f57d3ffb2ae70984b7c0 |
@@ -316,7 +316,8 @@ Base `00398e155dcbd0a05942bf3466cfe8a29a63c604`; working-tree qualifications are
 | [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 15656 | 109 | True | be529405b0ed4dcbd2c6a8dadd23d717bc09ab44634353975fab8c423a9644c2 |
 | [tests/google-auth.test.ts](../source/tests/google-auth.test.ts) | 23176 | 201 | True | 094020b327c7b6901aa4c72307334c9c6667a526864e89aba3635a8a846cfa5b |
 | [tests/hosted.test.ts](../source/tests/hosted.test.ts) | 3537 | 109 | True | de34e203f1918b9f8f52657d665f07eaafc7d0473319cad4c219675a61d36ed0 |
-| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 24022 | 244 | True | 40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9 |
+| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 25864 | 268 | True | 0b23465fa62aa14c66d144c0b9c69b19b3abe4e7137debd025d758c7cac9503d |
+| [tests/mcp-consent-policy.test.ts](../source/tests/mcp-consent-policy.test.ts) | 5825 | 91 | True | 3857a60b7b60659d411d59bfe9ac286e36227af798ef53b2bf1783a2e6a291e2 |
 | [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 14348 | 159 | True | 9d56bdac7069a873a7c9f0e5cbc336448a5f616e7d430718f95d05d1dffc098b |
 | [tests/mcp-local-migration.test.ts](../source/tests/mcp-local-migration.test.ts) | 2553 | 32 | True | c8b7e6957556ab373a865f1bcb96cd7c6fc8880eb5572f9ae9e9be61cfcaeb07 |
 | [tests/mcp-resume.test.ts](../source/tests/mcp-resume.test.ts) | 6767 | 112 | True | 4647e920a893fc39cc4dce58041c614baa63f401a45362f4c4c14df4ebf7cc70 |

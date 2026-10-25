@@ -1,7 +1,7 @@
 {
   "format": "marker-static-tests/v1",
   "coverage": "Syntactic node:test/test/it/describe and t.test declarations; no tests executed.",
-  "count": 306,
+  "count": 308,
   "files": [
     "tests/access-help.test.ts",
     "tests/agent-bridge.test.ts",
@@ -20,6 +20,7 @@
     "tests/google-auth.test.ts",
     "tests/hosted.test.ts",
     "tests/mcp-auth.test.ts",
+    "tests/mcp-consent-policy.test.ts",
     "tests/mcp-integration.test.ts",
     "tests/mcp-local-migration.test.ts",
     "tests/mcp-resume.test.ts",
@@ -777,128 +778,142 @@
     {
       "path": "tests/mcp-auth.test.ts",
       "line": 67,
-      "end_line": 75,
+      "end_line": 89,
+      "kind": "test",
+      "name": "IPv6 Allow and Deny return exact escaped callbacks without invalid CSP sources or script"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "line": 91,
+      "end_line": 99,
       "kind": "test",
       "name": "DCR bounds metadata and rejects plaintext remote or noncanonical redirects"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 77,
-      "end_line": 88,
+      "line": 101,
+      "end_line": 112,
       "kind": "test",
       "name": "anonymous authorization creates only a bounded login handle; signed-in consent preserves the original logo"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 90,
-      "end_line": 105,
+      "line": 114,
+      "end_line": 129,
       "kind": "test",
       "name": "normal login resumes the exact validated OAuth transaction once, then requires explicit consent"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 107,
-      "end_line": 122,
+      "line": 131,
+      "end_line": 146,
       "kind": "test",
       "name": "expired or malformed login handles never redirect externally, and interrupted resume can retry safely"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 124,
-      "end_line": 133,
+      "line": 148,
+      "end_line": 157,
       "kind": "test",
       "name": "authorized DCR identities survive expiry and revoke while unused registrations expire"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 135,
-      "end_line": 147,
+      "line": 159,
+      "end_line": 171,
       "kind": "test",
       "name": "only committed Allow promotes a DCR identity; denied or failed grants preserve retry safety"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 149,
-      "end_line": 154,
+      "line": 173,
+      "end_line": 178,
       "kind": "test",
       "name": "authorize rejects redirect substitution, duplicate parameters, unbound resources, PKCE downgrade and unknown scopes"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 156,
-      "end_line": 164,
+      "line": 180,
+      "end_line": 188,
       "kind": "test",
       "name": "consent requires same-origin authenticated owner and single-use explicit Allow or Deny"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 166,
-      "end_line": 176,
+      "line": 190,
+      "end_line": 200,
       "kind": "test",
       "name": "real SQLite code exchange binds PKCE, client, redirect, resource and opaque hashed credentials"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 178,
-      "end_line": 182,
+      "line": 202,
+      "end_line": 206,
       "kind": "test",
       "name": "concurrent code exchanges admit exactly one token pair"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 184,
-      "end_line": 188,
+      "line": 208,
+      "end_line": 212,
       "kind": "test",
       "name": "failed token transaction rolls back code consumption and permits a correct retry"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 190,
-      "end_line": 195,
+      "line": 214,
+      "end_line": 219,
       "kind": "test",
       "name": "refresh rotates once; replay revokes whole grant family including latest access token"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 197,
-      "end_line": 200,
+      "line": 221,
+      "end_line": 224,
       "kind": "test",
       "name": "concurrent refresh races revoke the family rather than leaving replayable credentials"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 202,
-      "end_line": 208,
+      "line": 226,
+      "end_line": 232,
       "kind": "test",
       "name": "cross-client refresh/revoke and scope escalation fail without revoking valid owner grant"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 210,
-      "end_line": 219,
+      "line": 234,
+      "end_line": 243,
       "kind": "test",
       "name": "owner can list and revoke delegated connections; another owner and cross-origin requests cannot"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 221,
-      "end_line": 226,
+      "line": 245,
+      "end_line": 250,
       "kind": "test",
       "name": "RFC revocation accepts access or refresh credentials and makes authentication fail"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 228,
-      "end_line": 234,
+      "line": 252,
+      "end_line": 258,
       "kind": "test",
       "name": "expiry and durable account freeze deny access; migration blocks already-admitted writes"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 236,
-      "end_line": 244,
+      "line": 260,
+      "end_line": 268,
       "kind": "test",
       "name": "endpoints bound methods, bodies, registration rate and do not accept client-secret auth"
+    },
+    {
+      "path": "tests/mcp-consent-policy.test.ts",
+      "line": 9,
+      "end_line": 91,
+      "kind": "test",
+      "name": "native consent forms retain same-origin validation without leaking cross-origin referrers"
     },
     {
       "path": "tests/mcp-integration.test.ts",

@@ -1,6 +1,6 @@
 # marKER quick context
 
-Snapshot base `00398e155dcbd0a05942bf3466cfe8a29a63c604` plus 12 explicitly inventoried working-tree paths; 345 complete source/assets/config/test files in [source/](source/).
+Snapshot base `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus 12 explicitly inventoried working-tree paths; 346 complete source/assets/config/test files in [source/](source/).
 
 marKER is a private single-operator content-preparation app. React/Vite + TypeScript; native Worker auth/D1 + private R2 + Durable Object managed FFmpeg; separate local file/SQLite adapters. Supabase is inactive preparation.
 
@@ -12,4 +12,4 @@ One retained tenant/user, native email recovery, optional immutable Google/GitHu
 
 Hosted analysis stays disabled; physical-phone/creative pilot, actual host integration, provider invoice and restore evidence remain qualified. Read [evidence](08-operations-quality-and-limits.md), [current state](CURRENT-STATE.json), [review questions](09-review-guide-and-open-decisions.md) and [review prompt](AI_ANALYSIS_PROMPT.md).
 
-Current release: [migrations 0010/0011 and Worker d48f31ec are deployed](DEPLOYMENT-STATUS.md), with five fresh public checks and 185 exact assets. The coordinator reports 47 focused tests plus synthetic desktop/mobile UI checks. Login resumes a validated server transaction, approved clients persist, and fourteen normal tool descriptors support permission challenges; delete is opt-in. Registered private plugin 1.0.1 differs from the retained portable developer package. The owner reported “Connected”, but the observed host session lacks product tools and the server has no approved grant or tokens. Connection remains incomplete and under diagnosis; Dot conversation and physical-phone use are unverified.
+Current release: [Worker d5f43234 is deployed](DEPLOYMENT-STATUS.md); migrations 0010/0011 and prior assets are retained. The coordinator reports 28 focused OAuth/SDK/policy checks plus real synthetic Edge IPv4/IPv6 callback/token exchange. Native form referrer and callback CSP handling are corrected. Real owner OAuth now returns to ChatGPT, Connect disappears and its catalog shows fourteen tools (six Read/eight Write), with delete absent. Registered private plugin 1.0.1 differs from the portable package. Actual connected profile and bounded product-search reads pass. No business writes or complete campaign have run; Dot/voice/phone behavior remains unverified. Five anonymous checks and all 185 assets were freshly verified on the final Worker, separately from owner OAuth/read evidence.

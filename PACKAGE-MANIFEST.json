@@ -1,6 +1,6 @@
 {
   "format": "marker-review-package/v2",
-  "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+  "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
   "exclusions": [
     "PACKAGE-MANIFEST.json",
     "PACKAGE-VERIFICATION.json",
@@ -21,9 +21,9 @@
     },
     {
       "path": "00-START-HERE.md",
-      "bytes": 2721,
-      "sha256": "d77eddf9564cac87bae69d8c5550fb26f133bbf0951a5861e3a27273d09c4405",
-      "lf_text_sha256": "d77eddf9564cac87bae69d8c5550fb26f133bbf0951a5861e3a27273d09c4405"
+      "bytes": 2905,
+      "sha256": "7613ebec136e1abf320b8047009bd708d07f91cef82bfa8293f77e6d62742759",
+      "lf_text_sha256": "7613ebec136e1abf320b8047009bd708d07f91cef82bfa8293f77e6d62742759"
     },
     {
       "path": "01-architecture-and-stack.md",
@@ -51,9 +51,9 @@
     },
     {
       "path": "05-backend-api-and-access.md",
-      "bytes": 4343,
-      "sha256": "0b8444b803c8e5b534274c121338567ccf1db2d543612bdaf16165f2db50a4b7",
-      "lf_text_sha256": "0b8444b803c8e5b534274c121338567ccf1db2d543612bdaf16165f2db50a4b7"
+      "bytes": 5696,
+      "sha256": "f5a7631e2d8a694fe7b302d856c6cd146b960bd4bf8655608ffa74375d7c6fc3",
+      "lf_text_sha256": "f5a7631e2d8a694fe7b302d856c6cd146b960bd4bf8655608ffa74375d7c6fc3"
     },
     {
       "path": "06-studio-processing-and-jobs.md",
@@ -63,27 +63,27 @@
     },
     {
       "path": "07-integrations-and-capability-status.md",
-      "bytes": 10061,
-      "sha256": "0d8f222ba4ed93bf245cd5a2297a46ec8fc2aa43e4c4055796de708a40f99b92",
-      "lf_text_sha256": "0d8f222ba4ed93bf245cd5a2297a46ec8fc2aa43e4c4055796de708a40f99b92"
+      "bytes": 11119,
+      "sha256": "fd3cc9f1261080d55ac19b83745d8f82766ef596f9c9af4f288b4d9da033c571",
+      "lf_text_sha256": "fd3cc9f1261080d55ac19b83745d8f82766ef596f9c9af4f288b4d9da033c571"
     },
     {
       "path": "08-operations-quality-and-limits.md",
-      "bytes": 5533,
-      "sha256": "58b57c968034d69905b747ba5f9431722ce1538e1b34f943e6114352e68d5146",
-      "lf_text_sha256": "58b57c968034d69905b747ba5f9431722ce1538e1b34f943e6114352e68d5146"
+      "bytes": 6415,
+      "sha256": "d43b1e615fd9ebd99752488c236fc1a4f7ab89fa33fa9a91444d55df061f3354",
+      "lf_text_sha256": "d43b1e615fd9ebd99752488c236fc1a4f7ab89fa33fa9a91444d55df061f3354"
     },
     {
       "path": "09-review-guide-and-open-decisions.md",
-      "bytes": 3869,
-      "sha256": "d7099dd8a2b49b6b1a874b2ebca6599d797f4e45391c64ea6920fe2d8ec97c27",
-      "lf_text_sha256": "d7099dd8a2b49b6b1a874b2ebca6599d797f4e45391c64ea6920fe2d8ec97c27"
+      "bytes": 4084,
+      "sha256": "0511c90efa3ad02a2888a28febaae74bbc62815076f41e2934ef8ba56fcf208a",
+      "lf_text_sha256": "0511c90efa3ad02a2888a28febaae74bbc62815076f41e2934ef8ba56fcf208a"
     },
     {
       "path": "10-source-map-tests-and-dependencies.md",
       "bytes": 2573,
-      "sha256": "46d2ecc93d5aff90e3c83edfc150f01ad952d76429a27cf3bcece2054ba7ce42",
-      "lf_text_sha256": "46d2ecc93d5aff90e3c83edfc150f01ad952d76429a27cf3bcece2054ba7ce42"
+      "sha256": "0ebd31e4b7738436c76fec5b98dda9d3a739acfacb01440129e5c1a12c9cf0fb",
+      "lf_text_sha256": "0ebd31e4b7738436c76fec5b98dda9d3a739acfacb01440129e5c1a12c9cf0fb"
     },
     {
       "path": "11-database-and-catalog-reference.md",
@@ -93,15 +93,15 @@
     },
     {
       "path": "AI-QUICK-CONTEXT.md",
-      "bytes": 2639,
-      "sha256": "c1e66db420ee14bc4d1fac04749f0fa578baf7a48370afeccde8f168a5683cde",
-      "lf_text_sha256": "c1e66db420ee14bc4d1fac04749f0fa578baf7a48370afeccde8f168a5683cde"
+      "bytes": 2721,
+      "sha256": "59fe5a65e7838459b7b4135f17de1155371ccf213b2864e4ea83247feff0f2a3",
+      "lf_text_sha256": "59fe5a65e7838459b7b4135f17de1155371ccf213b2864e4ea83247feff0f2a3"
     },
     {
       "path": "AI_ANALYSIS_PROMPT.md",
-      "bytes": 2976,
-      "sha256": "25b37f8716e217c64399bc819240ececb23258e5a9930aa90188bb82af9c680a",
-      "lf_text_sha256": "25b37f8716e217c64399bc819240ececb23258e5a9930aa90188bb82af9c680a"
+      "bytes": 3049,
+      "sha256": "51a5d986d7975df5c2800d57548f8222c43515e113cc886e683dcb09eb769285",
+      "lf_text_sha256": "51a5d986d7975df5c2800d57548f8222c43515e113cc886e683dcb09eb769285"
     },
     {
       "path": "code-flow/01-request-auth-and-storage.md",
@@ -129,15 +129,15 @@
     },
     {
       "path": "code-flow/05-module-symbol-index.md",
-      "bytes": 182940,
-      "sha256": "0150cfe7df1f0c4e6a058989e21d5ebaa593f82eb6ae524110cb447f9a19bda0",
-      "lf_text_sha256": "0150cfe7df1f0c4e6a058989e21d5ebaa593f82eb6ae524110cb447f9a19bda0"
+      "bytes": 183064,
+      "sha256": "32c0de0d2afab1859d2701993fa047c1ce85ac59997430d1a61fe4b2d7e8240b",
+      "lf_text_sha256": "32c0de0d2afab1859d2701993fa047c1ce85ac59997430d1a61fe4b2d7e8240b"
     },
     {
       "path": "code-flow/06-agents-and-mcp.md",
-      "bytes": 2583,
-      "sha256": "8abbdb8a7557c0c7da0274e0181bc2028eab1ae35a0cdf56c6f1cecdcbeda0ab",
-      "lf_text_sha256": "8abbdb8a7557c0c7da0274e0181bc2028eab1ae35a0cdf56c6f1cecdcbeda0ab"
+      "bytes": 3049,
+      "sha256": "b346a7812943281dc284b53fc4f900097ff03ffe4e2b8f098700b411ba7e04af",
+      "lf_text_sha256": "b346a7812943281dc284b53fc4f900097ff03ffe4e2b8f098700b411ba7e04af"
     },
     {
       "path": "code-flow/README.md",
@@ -147,9 +147,9 @@
     },
     {
       "path": "CURRENT-STATE.json",
-      "bytes": 13757,
-      "sha256": "68440fddad9f4a9a53ace7275632200057ae8a25b3a1f6036aeec5c25d57a2ef",
-      "lf_text_sha256": "68440fddad9f4a9a53ace7275632200057ae8a25b3a1f6036aeec5c25d57a2ef"
+      "bytes": 18083,
+      "sha256": "d78bf5341fe3248fbdbb32ee5de5f8d05666c3d473c251b3316fc53b4d6f891b",
+      "lf_text_sha256": "d78bf5341fe3248fbdbb32ee5de5f8d05666c3d473c251b3316fc53b4d6f891b"
     },
     {
       "path": "database/d1-catalog.json",
@@ -201,27 +201,27 @@
     },
     {
       "path": "DEPLOYMENT-STATUS.md",
-      "bytes": 3844,
-      "sha256": "bc3945049d4a537b4aca40e86b2993f259627eabc786e9d80368f66cbb11e319",
-      "lf_text_sha256": "bc3945049d4a537b4aca40e86b2993f259627eabc786e9d80368f66cbb11e319"
+      "bytes": 4035,
+      "sha256": "fa3befb32a430f893c2fce252a27b80c9a5001741fc394429ce19796acfce5cb",
+      "lf_text_sha256": "fa3befb32a430f893c2fce252a27b80c9a5001741fc394429ce19796acfce5cb"
     },
     {
       "path": "inventories/ast-index.json",
-      "bytes": 7354065,
-      "sha256": "e0465b9dd0ca6f7cba9093cdc2409a8a07cefa1101daf0a7b48e185b8f43eead",
-      "lf_text_sha256": "e0465b9dd0ca6f7cba9093cdc2409a8a07cefa1101daf0a7b48e185b8f43eead"
+      "bytes": 7392421,
+      "sha256": "6894779ecc73641acf7dca4f0cbb8375a56b34fc5a0ac73dbdb45268f68977ee",
+      "lf_text_sha256": "6894779ecc73641acf7dca4f0cbb8375a56b34fc5a0ac73dbdb45268f68977ee"
     },
     {
       "path": "inventories/catalog-summary.json",
       "bytes": 314,
-      "sha256": "ac87c8e3b198d7383d46ac1212796cad62b643ce6be1a9a544cb27fa66064470",
-      "lf_text_sha256": "ac87c8e3b198d7383d46ac1212796cad62b643ce6be1a9a544cb27fa66064470"
+      "sha256": "35c7fed203e18545a5386426a0948c378fc22d6e48272a3a15c2fcc0d960565d",
+      "lf_text_sha256": "35c7fed203e18545a5386426a0948c378fc22d6e48272a3a15c2fcc0d960565d"
     },
     {
       "path": "inventories/catalog-verification.json",
-      "bytes": 4478,
-      "sha256": "a12c7050f9240050b169a665bbcb568f95814bf5a22ca61294fe06786d230a61",
-      "lf_text_sha256": "a12c7050f9240050b169a665bbcb568f95814bf5a22ca61294fe06786d230a61"
+      "bytes": 5033,
+      "sha256": "5b25eebd7711e108b53b690f85b6fa563105a01181a11f7bf19a470e37575974",
+      "lf_text_sha256": "5b25eebd7711e108b53b690f85b6fa563105a01181a11f7bf19a470e37575974"
     },
     {
       "path": "inventories/dependencies.json",
@@ -243,39 +243,39 @@
     },
     {
       "path": "inventories/route-occurrences.json",
-      "bytes": 66565,
-      "sha256": "e3af0b1dd3af4a204e32a0de48ad3c2d3791213e63aa73ddb41009f1269e7ad9",
-      "lf_text_sha256": "e3af0b1dd3af4a204e32a0de48ad3c2d3791213e63aa73ddb41009f1269e7ad9"
+      "bytes": 69337,
+      "sha256": "2b62012095d1c34fa702c2c40bb096d087cfd94d4a799f72d72cd82a77e4c385",
+      "lf_text_sha256": "2b62012095d1c34fa702c2c40bb096d087cfd94d4a799f72d72cd82a77e4c385"
     },
     {
       "path": "inventories/routes.json",
       "bytes": 21330,
-      "sha256": "505f4d867ad118c6c5a757b66b667bff5acef1547bc8f8116509ce463cd6bd8b",
-      "lf_text_sha256": "505f4d867ad118c6c5a757b66b667bff5acef1547bc8f8116509ce463cd6bd8b"
+      "sha256": "2bbac46a8bb2770a6bfd3b66cf6b27d580227ec9eb78f88df417f6ab15b0348f",
+      "lf_text_sha256": "2bbac46a8bb2770a6bfd3b66cf6b27d580227ec9eb78f88df417f6ab15b0348f"
     },
     {
       "path": "inventories/routes.md",
       "bytes": 13229,
-      "sha256": "11cd5d7b49b6cab303970e76d40864654055ebb8d116ab7ab2847b4d565d24a6",
-      "lf_text_sha256": "11cd5d7b49b6cab303970e76d40864654055ebb8d116ab7ab2847b4d565d24a6"
+      "sha256": "bb61a49f574eb74a5031336cd4f6d3b06e26afc9ca4967d2114b91b76f3f16a9",
+      "lf_text_sha256": "bb61a49f574eb74a5031336cd4f6d3b06e26afc9ca4967d2114b91b76f3f16a9"
     },
     {
       "path": "inventories/source-paths.md",
-      "bytes": 57278,
-      "sha256": "dfde1fe1d270397657971d7ef9207f5e5b9646bbeb43b3823a4aef269c2f5486",
-      "lf_text_sha256": "dfde1fe1d270397657971d7ef9207f5e5b9646bbeb43b3823a4aef269c2f5486"
+      "bytes": 57447,
+      "sha256": "ecb1e6cc5101a646f46fc252909040d75dbcf08f3c0c91361eef3f861890afb4",
+      "lf_text_sha256": "ecb1e6cc5101a646f46fc252909040d75dbcf08f3c0c91361eef3f861890afb4"
     },
     {
       "path": "inventories/test-declarations.json",
-      "bytes": 70384,
-      "sha256": "e9ab9dbf5e9d764170f02acf50e1993783059fdebb03805b4bfd6cab70f71789",
-      "lf_text_sha256": "e9ab9dbf5e9d764170f02acf50e1993783059fdebb03805b4bfd6cab70f71789"
+      "bytes": 70877,
+      "sha256": "fc68303f76505c97cd7372ed66d252df23fe78fbec7168f236ca8fd0020f8823",
+      "lf_text_sha256": "fc68303f76505c97cd7372ed66d252df23fe78fbec7168f236ca8fd0020f8823"
     },
     {
       "path": "inventories/test-index.md",
-      "bytes": 56982,
-      "sha256": "be404550de4bc91e39c1f0cd96a1c8219fd48b251cf372d35b1889e207ebde39",
-      "lf_text_sha256": "be404550de4bc91e39c1f0cd96a1c8219fd48b251cf372d35b1889e207ebde39"
+      "bytes": 57428,
+      "sha256": "0b4bab782405d0049a1a3ad0ab13e1bd476e67dd997e59ab70c4c4bf03a21f49",
+      "lf_text_sha256": "0b4bab782405d0049a1a3ad0ab13e1bd476e67dd997e59ab70c4c4bf03a21f49"
     },
     {
       "path": "llms.txt",
@@ -285,15 +285,15 @@
     },
     {
       "path": "marKER-FULL-DOSSIER-2026-10-24.md",
-      "bytes": 242198,
-      "sha256": "ab104a5cb42fd928bf3448bd7d8620f9cdbbf1acdf5838373fbf99c15a8a82b2",
-      "lf_text_sha256": "ab104a5cb42fd928bf3448bd7d8620f9cdbbf1acdf5838373fbf99c15a8a82b2"
+      "bytes": 246547,
+      "sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df",
+      "lf_text_sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df"
     },
     {
       "path": "marKER-FULL-DOSSIER.md",
-      "bytes": 242198,
-      "sha256": "ab104a5cb42fd928bf3448bd7d8620f9cdbbf1acdf5838373fbf99c15a8a82b2",
-      "lf_text_sha256": "ab104a5cb42fd928bf3448bd7d8620f9cdbbf1acdf5838373fbf99c15a8a82b2"
+      "bytes": 246547,
+      "sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df",
+      "lf_text_sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df"
     },
     {
       "path": "NOTICE.md",
@@ -303,9 +303,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 3796,
-      "sha256": "2a8677b677122fcc1d68f266421007fa5455558f6d598df116726762e96019f4",
-      "lf_text_sha256": "2a8677b677122fcc1d68f266421007fa5455558f6d598df116726762e96019f4"
+      "bytes": 3772,
+      "sha256": "c100430d0402aeb55f35741419a5c0e7a73973bff699c7e9b5d5cc34f9843002",
+      "lf_text_sha256": "c100430d0402aeb55f35741419a5c0e7a73973bff699c7e9b5d5cc34f9843002"
     },
     {
       "path": "review-assets/mcp-connections-es-dark.png",
@@ -1695,9 +1695,9 @@
     },
     {
       "path": "source/server/mcp-auth.ts",
-      "bytes": 29198,
-      "sha256": "885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3",
-      "lf_text_sha256": "885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3"
+      "bytes": 30823,
+      "sha256": "e036c813a1fa883d2beb15ab38173084b138fb6029bc06c42a52905292dd3bbf",
+      "lf_text_sha256": "e036c813a1fa883d2beb15ab38173084b138fb6029bc06c42a52905292dd3bbf"
     },
     {
       "path": "source/server/mcp-local.ts",
@@ -2193,9 +2193,15 @@
     },
     {
       "path": "source/tests/mcp-auth.test.ts",
-      "bytes": 24022,
-      "sha256": "40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9",
-      "lf_text_sha256": "40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9"
+      "bytes": 25864,
+      "sha256": "0b23465fa62aa14c66d144c0b9c69b19b3abe4e7137debd025d758c7cac9503d",
+      "lf_text_sha256": "0b23465fa62aa14c66d144c0b9c69b19b3abe4e7137debd025d758c7cac9503d"
+    },
+    {
+      "path": "source/tests/mcp-consent-policy.test.ts",
+      "bytes": 5825,
+      "sha256": "3857a60b7b60659d411d59bfe9ac286e36227af798ef53b2bf1783a2e6a291e2",
+      "lf_text_sha256": "3857a60b7b60659d411d59bfe9ac286e36227af798ef53b2bf1783a2e6a291e2"
     },
     {
       "path": "source/tests/mcp-integration.test.ts",
@@ -2391,9 +2397,9 @@
     },
     {
       "path": "source-snapshot-manifest.json",
-      "bytes": 155566,
-      "sha256": "5f9e2331e7f6c4d741c7bdf15c2999689175eaad082484a64eba919427f69906",
-      "lf_text_sha256": "5f9e2331e7f6c4d741c7bdf15c2999689175eaad082484a64eba919427f69906"
+      "bytes": 154992,
+      "sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025",
+      "lf_text_sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025"
     },
     {
       "path": "tools/assemble.py",
@@ -2415,9 +2421,9 @@
     },
     {
       "path": "tools/README.md",
-      "bytes": 3230,
-      "sha256": "ec5646e1f72874cc6305be8e11ceabe21b90a06b691c0d863b95466220c68a84",
-      "lf_text_sha256": "ec5646e1f72874cc6305be8e11ceabe21b90a06b691c0d863b95466220c68a84"
+      "bytes": 3582,
+      "sha256": "0f02fe1442733396bc2ec4465504a41d0407a57de8c871e2b322f5a7b89a8c00",
+      "lf_text_sha256": "0f02fe1442733396bc2ec4465504a41d0407a57de8c871e2b322f5a7b89a8c00"
     },
     {
       "path": "tools/render-catalog-references.py",

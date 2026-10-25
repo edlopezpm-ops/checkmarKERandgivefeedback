@@ -1,6 +1,6 @@
 # marKER — complete technical dossier
 
-Snapshot 2026-10-24; source base `00398e155dcbd0a05942bf3466cfe8a29a63c604` plus the explicitly inventoried working-tree delta.
+Snapshot 2026-10-24; source base `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus the explicitly inventoried working-tree delta.
 
 This reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.
 
@@ -11,18 +11,18 @@ Canonical chapter: [00-START-HERE.md](00-START-HERE.md)
 
 # Start here
 
-This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source base is `00398e155dcbd0a05942bf3466cfe8a29a63c604` on `main`; 12 working-tree paths are qualified in the [snapshot manifest](source-snapshot-manifest.json). Read the exact projected files when narrative and code differ.
+This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source base is `f9478e66f4c5798b417f7b25b462d8dd0d673295` on `main`; 12 working-tree paths are qualified in the [snapshot manifest](source-snapshot-manifest.json). Read the exact projected files when narrative and code differ.
 
 Read [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review prompt](AI_ANALYSIS_PROMPT.md). Use the [complete source inventory](inventories/source-paths.md), [symbol index](code-flow/05-module-symbol-index.md), [test index](inventories/test-index.md) and [route occurrences](inventories/routes.md) to close coverage gaps. A complete review requires inspecting implementation, tests and negative paths; a chapter summary alone does not establish that coverage.
 
 | Evidence label | Exact meaning |
 | --- | --- |
 | Snapshot source | Included implementation/configuration at the manifest's byte identity. |
-| Package verification | This 345-file refresh verifies complete source bytes and regenerates structural AST/routes/tests and empty-schema catalogs after the 27-path product increment. Prior publications remain in Git; product-test execution is separately reported. |
+| Package verification | The current 346-file snapshot includes the combined three-path consent/callback correction. Source identities and AST/routes/test navigation were refreshed; unchanged empty-schema/dependency evidence retains the preceding 27-path increment's verification. Prior publications remain in Git; product-test execution is separately reported. |
 | Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
 | Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
-| Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records migrations 0010/0011, current production Worker identity, five bounded public checks and 185 exact assets supplied by the implementation coordinator. |
-| Not established | Owner OAuth, desktop host use and Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
+| Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records current Worker identity, real OAuth/token exchange, fourteen-tool discovery and two connected reads, separately from five fresh anonymous checks and 185 exact assets supplied by the implementation coordinator. |
+| Not established | Business writes/complete campaign flow, remaining tool paths, Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
 
 The review contains no private governance, owner workspace, sessions, provider accounts or runtime database rows. Schema catalogs are empty reconstructions. Test fixtures and Help/demo assets are synthetic/public product material. Package integrity is not security certification or product acceptance.
 
@@ -187,6 +187,10 @@ OAuth login continuation is server-bound: a ten-minute hashed handle references 
 
 Review bearer scope/resource/client/tenant binding, stale sessions, replay, concurrent token rotation, deletion races, private artifact authorization, rate/capacity limits and error disclosure together. A synthetic SQLite suite does not by itself establish a fresh live owner login or external-provider activation.
 
+The first native-form consent correction changes HTML pages to `Referrer-Policy: same-origin`. In the observed Edge fixture, the earlier `no-referrer` HTML policy produced `Origin: null` even with the owner cookie present, so the strict same-origin check rejected Allow before any grant write. The corrected HTML policy preserves the same-origin form header while suppressing cross-origin referrers. JSON and return responses retain `no-referrer`; strict Origin validation, cookies and single-use consent remain intact. A second correction permits the validated DNS/IPv4 callback origin in the consent page's `form-action` so its 303 return can complete. Callback hostname punctuation is constrained before constructing CSP; registration/resource/PKCE matching still applies.
+
+Bracketed IPv6 cannot be represented as a CSP host source here. Its return uses a 200 HTML document with an escaped exact-callback meta refresh and a `rel=noreferrer` fallback anchor, no JavaScript, `no-store`, `no-referrer` and a self-only form policy. The consent form itself remains same-origin. See [the policy regression](source/tests/mcp-consent-policy.test.ts) and [OAuth callback tests](source/tests/mcp-auth.test.ts). The real synthetic Edge callback/exchange cases and actual host evidence have distinct scopes in [operations](08-operations-quality-and-limits.md).
+
 
 ---
 
@@ -234,7 +238,7 @@ Runs have explicit request identity, deadlines, one concurrent turn, lease/cance
 
 Read the complete [connector contract](source/docs/mcp-connector.md), [transport](source/server/mcp.ts), [authorization](source/server/mcp-auth.ts), [store](source/server/mcp-auth-store.ts), [tools](source/server/mcp-tools.ts), [local adapter](source/server/mcp-local.ts) and [migration](source/migrations-d1/0010_mcp.sql). The endpoint is `/api/mcp`; OAuth metadata paths must run before SPA fallback. The official SDK serves stateless Streamable HTTP/JSON with the Workers-compatible schema validator.
 
-Public clients use dynamic registration (`none` token authentication), Authorization Code and PKCE S256. Existing marKER owner login precedes an explicit consent page naming client/callback/scopes. A server-validated, single-use ten-minute correlation handle carries the transaction through ordinary email/Google/GitHub login; the same-origin UI resumes it after authenticated session discovery while retaining the Strict owner cookie. Native literal-loopback HTTP callbacks may vary only their port, and token exchange binds the concrete callback. Tokens are opaque; stored access/refresh/code/consent values are hashes. Proofs bind resource, client, redirect, tenant and user. Refresh rotation reuse revokes its family; Environment can revoke a grant. A client cannot select a tenant.
+Public clients use dynamic registration (`none` token authentication), Authorization Code and PKCE S256. Existing marKER owner login precedes an explicit consent page naming client/callback/scopes. A server-validated, single-use ten-minute correlation handle carries the transaction through ordinary email/Google/GitHub login; the same-origin UI resumes it after authenticated session discovery while retaining the Strict owner cookie. Native literal-loopback HTTP callbacks may vary only their port, and token exchange binds the concrete callback. Consent HTML uses `Referrer-Policy: same-origin` so its native form retains canonical Origin for strict validation. DNS/IPv4 callback origins are validated and included exactly in the consent CSP for a 303 return; bracketed IPv6 uses an escaped 200 meta/anchor handoff with self-only CSP and no JavaScript. JSON and return responses retain `no-referrer`. Cookies, strict Origin and single-use consent remain enforced. Focused corrections and browser evidence are qualified in [operations](08-operations-quality-and-limits.md). Tokens are opaque; stored access/refresh/code/consent values are hashes. Proofs bind resource, client, redirect, tenant and user. Refresh rotation reuse revokes its family; Environment can revoke a grant. A client cannot select a tenant.
 
 | Scope | Finite tools |
 | --- | --- |
@@ -260,14 +264,14 @@ Expired grants cascade credentials and request receipts; applied product entitie
 | Native manual/editorial/Studio/planner | Implemented; prior hosted delivery and current local native checks have separate evidence. |
 | Deterministic missing-label classification/library preparation | Implemented and verified locally; no semantic inference. |
 | Local managed-ChatGPT Agents bridge | Implemented; one prior actual fictional-copy request reported in product docs; no new provider call in this refresh. |
-| Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; actual authorized Dot/other-host tools and conversation remain unestablished. |
-| Hosted MCP migration/deployment | Migrations 0010/0011 applied; Worker `d48f31ec-1641-4097-bb5f-c0ccd7fd26ae` at 100%, with five fresh public checks and 185 exact assets. See [deployment evidence](DEPLOYMENT-STATUS.md). |
+| Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; real ChatGPT owner OAuth and fourteen-tool discovery now verified. Two actual connected reads pass; business writes, complete campaign flow and Dot/phone conversation remain untested. |
+| Hosted MCP migration/deployment | Migrations 0010/0011 remain applied; Worker `d5f43234-74b2-4c45-a850-4f1dab75620c` at 100%. Five anonymous checks and 185 exact assets were freshly reverified on the final Worker, separately from actual owner OAuth and two connected reads. See [deployment evidence](DEPLOYMENT-STATUS.md). |
 | Hosted SIWC inference | Admission/client/effective plan grant unresolved. |
 | Hosted technical analysis | Disabled until native toolchain verification. |
 | Connected social APIs, advertising activation, live metrics, Android automation | Deferred/unimplemented. |
 | Transcription/subtitles/semantic media selection/PWA background capture | Separate future capabilities. |
 
-The canonical connection is now an **App-backed private plugin, version 1.0.1**, registered through the host's custom-MCP flow and retaining its real App binding when the campaign skill was added. Read is the base permission, read/write/produce are selected defaults, and delete remains unchecked. The earlier raw package is retained as a developer artifact. The ordinary CTA points to the registered connection. The served installation URL/identifier is explicitly authorized public configuration; the plugin audience remains private and its account binding files are excluded. The owner subsequently reported “Connected”, but the observed host test session exposed no product read/create/delete tools and plugin management still offered Connect. Sanitized server aggregates show one registered client and zero approved clients, active grants, resumed logins or token rows. Server connection is therefore incomplete and under diagnosis. No successful delegated tool execution, Dot conversation or phone behavior is established. Earlier installed-page and zero-grant observations belong to the prior package checkpoint and are not fresh grant counts for this release.
+The canonical connection is now an **App-backed private plugin, version 1.0.1**, registered through the host's custom-MCP flow and retaining its real App binding when the campaign skill was added. Read is the base permission, read/write/produce are selected defaults, and delete remains unchecked. The earlier raw package is retained as a developer artifact. The ordinary CTA points to the registered connection. The served installation URL/identifier is explicitly authorized public configuration; the plugin audience remains private and its account binding files are excluded. Following the consent/callback corrections, real owner OAuth returned to ChatGPT and the Connect action disappeared. Sanitized server evidence confirms one approved client, one exchanged code, one token row and two grant rows, including one orphan from the earlier failed return. The actual ChatGPT App catalog lists six Read and eight Write tools; native prepare/classify are visible and delete is absent. The coordinator then invoked `marker_get_profile` and `marker_search` for products with limit 1 through the actual OpenAI connected-tool route; both returned non-error results with valid identity/search structure. No returned owner payload is published. These two reads verify that route, not every tool, business writes, a complete campaign or Dot/phone conversation. Earlier installed-page and zero-grant observations belong to the prior package checkpoint and are not fresh grant counts for this release.
 
 The reproducible package lives in [plugin.json](source/integrations/chatgpt/marker/plugin.json), [mcp.json](source/integrations/chatgpt/marker/mcp.json) and [prepare-campaign/SKILL.md](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). This portable version 0.1.0 contains no account-specific installation ID or credential and does not by itself create the registered App connection. The skill requires current revisions, stable request IDs, explicit facts/rights and first-party approval. The prior packaging increment verified three-file ZIP parity and the intended portable manifest contract; that is not validation of the current private App binding. OpenAI authentication extensions can diverge from the generic portable base-schema validation; this is not an all-host compatibility claim. The [integration design](source/docs/assistant-integration-design-2026-10-24.md) records the a675f8d baseline and implementation plan; its future-tense gaps are historical. Use current code and this capability ledger for delivered behavior. CIMD/SDK/public-submission work remains separately qualified. The pinned SDK currently negotiates MCP2025-11-25; the actual host version must be observed. No universal-host, newer-protocol or voice compatibility claim follows.
 
@@ -278,34 +282,34 @@ Canonical chapter: [08-operations-quality-and-limits.md](08-operations-quality-a
 
 # 08 — Operations, quality and limits
 
-This refresh captures all eligible source bytes at the current manifest revision, regenerates static AST/routes/test navigation and all eleven D1 migrations in empty SQLite, replays schema-only DDL, and checks hashes, public boundaries, links and the package seal. It does not rerun product tests, open owner stores or deploy. [CURRENT-STATE.json](CURRENT-STATE.json) separates fresh package checks from coordinator-reported runtime evidence.
+The current 346-file snapshot captures the combined three-path consent/callback correction since public publication `e4553fa`. Source identities, static AST/routes/test navigation, public boundaries, links and package hashes are checked afresh. Unchanged dependency and empty-schema catalogs retain their preceding verification; product tests and browser/host evidence are coordinator-reported and were not rerun by this review worker. [CURRENT-STATE.json](CURRENT-STATE.json) records each scope.
 
-For the current seamless connection increment, the coordinator reports **47 focused tests PASS**, build and original-logo checks PASS, and an independent review with no actionable finding. Production UI code was exercised with synthetic desktop/mobile viewport fixtures: ordinary Agents/Environment connection screens made **zero `/api/agents` calls** and showed no bridge commands. Four new bilingual Help images accompany the connection/context instructions. These observations do not establish real owner OAuth, phone behavior or an actual Dot conversation.
+The coordinator reports **28 focused OAuth/SDK/policy tests**, server TypeScript and Worker dry run PASS, plus an independent final review PASS. The five protected native classifier/planner/analysis/domain modules remain unchanged. All twelve preexisting uncommitted demo paths remain byte-identical to the preceding public snapshot and explicitly separate from the source commit.
 
-The five protected native classifier/planner/analysis/domain modules remain unchanged. The complete source includes the same twelve uncommitted demo paths, each byte-identical to the preceding public snapshot. The source commit alone therefore does not identify the full captured checkout; read its dirty-path manifest.
+Two real-browser failures required focused corrections. First, the consent HTML's `no-referrer` policy produced `Origin: null` in a native form despite a present owner cookie; strict Origin validation correctly rejected it before any grant write. HTML now uses `same-origin`. Second, the consent page's self-only form policy blocked the external callback after a grant had committed. Validated DNS/IPv4 callback origins now appear exactly in the consent CSP for the 303 return. Bracketed IPv6 returns through an escaped 200 meta/anchor document with no JavaScript, no referrer/store and a self-only form policy. Strict Origin, owner cookies, PKCE, client/resource/callback matching and single-use consent remain enforced; unsafe hostname punctuation is rejected before CSP construction.
 
-The coordinator applied migration **0011** after a private backup and isolated restoration/migration rehearsal that preserved all 36 existing tables in that backup. This is a bounded D1 migration/recovery check, not proof of full D1/R2/job/provider recovery. This review worker did not read or copy that backup or its data.
+Actual synthetic Edge fixtures completed both IPv4 and IPv6 callbacks: one callback, one grant, HTTP 200 code exchange and one token per isolated case, with no CSP errors or external referrer. This browser result is distinct from the unit/SDK checks and from the owner's actual connection.
 
-Current hosted release: Worker `d48f31ec-1641-4097-bb5f-c0ccd7fd26ae` at **100%**, deployment timestamp `2026-10-25T02:01:10.735Z`. A sanitized readback at `2026-10-25T02:01:28.630Z` reports **five checks PASS** and **185 static assets matching SHA-256**. It used no owner session. The checks cover minimal-read resource discovery, PKCE/DCR/refresh metadata, anonymous OAuth challenge, branded malformed-resume recovery and connection-list privacy. [Deployment status](DEPLOYMENT-STATUS.md) records these bounds.
+**Real host connection is now verified.** OAuth returned to ChatGPT, its Connect action disappeared, and the actual App catalog lists **fourteen tools: six Read and eight Write**. Native preparation/classification are visible; `marker_delete` is absent. Sanitized server aggregates show **one approved client, one exchanged code, one token row and two grant rows**, including one orphan from the earlier failed return. No private account UI, token, code, chat payload or binding is exported. The coordinator subsequently invoked `marker_get_profile` and `marker_search` (products, limit 1) through the actual OpenAI connected-tool namespace. Both returned `isError=false`; profile identity was present and the search revision/items structure was valid. These are two actual read operations, not merely catalog visibility. No business writes were performed. Remaining tool paths, campaign execution, a Dot conversation, voice support and phone behavior remain unverified.
 
-Prior publications retain earlier evidence separately: the original connector had 75 focused local checks, a later 12-test SDK/tool subset, and an actual local SDK→native plan/save→FFmpeg 10-second 1080×1920 MP4→separate first-party approval→46,703-byte delegated export with zero provider/model calls. Worker `99baf771` had 18 hosted checks and 182 exact assets. Those counts are historical; they are not added to the current 47-test or five-check runs and do not become a hosted authenticated campaign test.
+Current Worker: `d5f43234-74b2-4c45-a850-4f1dab75620c`, **100%**. No new migration or asset change accompanies this correction; migrations 0010/0011 remain applied. At `2026-10-25T02:34:09Z`, the coordinator freshly reran five anonymous checks and SHA-verified all 185 static assets on the final Worker. Generic error HTML returned same-origin referrer policy and self-only CSP. These anonymous checks do not assess owner authentication; real OAuth and the two connected reads are separate evidence. [Deployment status](DEPLOYMENT-STATUS.md) gives the current and inherited boundaries.
 
-The registered App-backed private plugin 1.0.1 and product CTA are present. The owner subsequently reported “Connected”, but follow-up host observation exposed no product read/create/delete tools and still offered Connect. Sanitized server aggregates show one registered client and zero approved clients, active grants, resumed logins and token rows. The actual server connection is incomplete and under diagnosis. Dot conversation, voice support and physical-phone use remain unverified. The portable package is a separate developer artifact. No public plugin listing, widened audience, human UAT or creative-quality acceptance is asserted.
+Historical evidence remains in prior publications: the seamless-UI increment had 47 focused tests, build/logo checks, and synthetic desktop/mobile production-UI fixtures with zero `/api/agents` calls and no bridge commands. The original connector had 75 focused local checks, a later 12-test subset, and a local SDK→native plan/save→FFmpeg 10-second 1080×1920 MP4→separate first-party approval→46,703-byte export with zero provider/model calls. These counts are not added to the current 28-test run or represented as a real-host business workflow.
+
+The canonical private App-backed plugin remains version 1.0.1; the portable 0.1.0 package is a separate developer artifact. Public identifiers/CTA are authorized configuration, not private App bindings or expanded audience. No public plugin listing, human UAT or creative-quality acceptance is asserted.
 
 | Operational control | Bound and limitation |
 | --- | --- |
 | Settings | US$20 internal planning maximum, initially US$10 processing, US$0 future AI, 2 GiB storage, 20-second default duration. |
 | Compute admission | Probe 5 internal cents; render 10; enabled analysis 5. Credits are not measured Cloudflare billing or an invoice hard cap. |
-| Local bridge defaults | 30 runs/day, one concurrent, 300 seconds, 30-day selective cleanup; retained provenance survives cleanup and ceilings remain. These developer controls do not set external-host quotas. |
-| Connector | Client/grant/token/login/request bounds in the connector chapter; approved client identity persists while grants/tokens remain independently expiring and revocable. |
-| Recovery | Preserve D1/R2/job IDs and receipts together; the bounded D1 rehearsal does not establish complete system restoration. |
-| Retention | Ordinary material deletion retains originals/history; confirmed account deletion freezes and purges all eight MCP tables within its resumable workflow. |
+| Local bridge defaults | 30 runs/day, one concurrent, 300 seconds, 30-day selective cleanup; retained provenance survives cleanup. These developer controls do not set external-host quotas. |
+| Connector | Client/grant/token/login/request bounds remain in the connector chapter. One retained orphan grant records a failed callback return; no cleanup or second token is claimed. |
+| Recovery | Prior isolated D1 backup/0011 rehearsal preserved 36 existing backup tables; this is not complete D1/R2/job/provider restoration. This worker did not read the backup. |
+| Retention | Ordinary material deletion retains originals/history; confirmed account deletion freezes and purges all eight MCP tables in its resumable workflow. |
 
 Known orphan multipart uploads without a recoverable reference depend on the bucket lifecycle rule. Product docs report a seven-day all-prefix abort rule readback on 2026-10-24; this refresh did not recheck it. Downloads, independent local copies, provider account data/logs/backups and operator recovery copies are outside immediate active-account erasure. Do not restore deleted identity/content from recovery copies.
 
-Review exact Node/FFmpeg/managed-container compatibility before deployment, apply additive migrations through the existing release process, and verify Worker routing, assets and authenticated flows separately. Do not run bridge smoke inference, deployment, remote migrations or owner deletion merely to read this dossier.
-
-Remaining evidence gaps: actual host owner consent/tool conversation; physical iPhone/Safari and Android/Chrome capture/codec/interruption checks; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; complete recovery rehearsal; broader security/accessibility evaluation. No product-wide acceptance or independent OS containment is claimed.
+Remaining evidence gaps: actual host business writes, other unexecuted tool paths and complete campaign workflow; Dot/voice and physical iPhone/Safari or Android/Chrome behavior; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; complete recovery rehearsal; broader security/accessibility evaluation. Source reading does not authorize inference, deployment, remote migrations or owner deletion. No product-wide acceptance or independent OS containment is claimed.
 
 
 ---
@@ -331,9 +335,9 @@ Review the full source projection, not only this narrative. Preserve the indepen
 | Complexity | Which abstraction or duplicated boundary can be removed while preserving the mandatory behavior? |
 | Value | Which minimal workflow improvement would measurably reduce active preparation time? |
 
-The latest observed host integration is incomplete: a registered client exists, but approved grants/tokens are absent and the tested host session exposes no product tools. Treat this as a known integration gap under diagnosis, separate from the passing public-server and synthetic-SDK checks.
+Real owner OAuth and fourteen-tool discovery are now verified after native-form referrer and callback-CSP corrections. Review browser policy, exact callback-origin construction, IPv6 return handling and retry/replay cases together; a successful SDK fixture alone did not cover the original browser failures. Two actual connected reads (profile and bounded product search) now pass. Business writes, remaining tool paths and a full assistant-driven campaign remain untested.
 
-Open decisions include actual hosted SIWC admission; actual registered-App owner OAuth, tool conversation and host/voice/phone capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
+Open decisions include actual hosted SIWC admission; actual registered-App business writes, unexecuted tool paths and complete campaign flow and Dot/voice/phone capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
 
 For every finding provide priority, exact source path/line, observed behavior, trigger or counterexample, confidence/evidence class, user impact, smallest coherent change, affected frontend/backend/schema/effect boundaries, preserved invariants, focused success/failure/concurrency tests, migration/recovery needs and any unresolved owner decision. Separate demonstrated defects, plausible risks, usability improvements and optional roadmap work. Do not claim runtime performance, provider eligibility, actual invoices, UAT or deployed behavior from static source.
 
@@ -346,7 +350,7 @@ Canonical chapter: [10-source-map-tests-and-dependencies.md](10-source-map-tests
 
 # 10 — Source map, tests and dependencies
 
-The source projection contains **345 files** totaling **35,789,619 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The source projection contains **346 files** totaling **35,798,911 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
 
 - [Every source path and hash](inventories/source-paths.md).
 - [Machine snapshot, source commit and dirty qualifications](source-snapshot-manifest.json).
@@ -357,7 +361,7 @@ The source projection contains **345 files** totaling **35,789,619 bytes**, incl
 - [Locked dependencies and commands](inventories/dependencies.md).
 - [Public demo hashes/URLs](inventories/public-media.json).
 
-The TypeScript parser indexed **115 modules**. The static test index contains **306 declarations across 41 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
+The TypeScript parser indexed **116 modules**. The static test index contains **308 declarations across 42 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
 
 Source files were copied byte-for-byte from the frozen checkout. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
 
@@ -461,7 +465,7 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 # Module and symbol index
 
-115 parsed modules; 13951 declarations/fields, 549 imports/re-exports, 17676 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
+116 parsed modules; 13990 declarations/fields, 556 imports/re-exports, 17822 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
 
 | Module | Symbols | Imports | Calls |
 | --- | --- | --- | --- |
@@ -479,7 +483,7 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/google-auth.js](source/server/google-auth.js) | 96 | 2 | 240 |
 | [server/local.ts](source/server/local.ts) | 11 | 4 | 18 |
 | [server/mcp-auth-store.ts](source/server/mcp-auth-store.ts) | 12 | 0 | 18 |
-| [server/mcp-auth.ts](source/server/mcp-auth.ts) | 197 | 1 | 345 |
+| [server/mcp-auth.ts](source/server/mcp-auth.ts) | 202 | 1 | 354 |
 | [server/mcp-local.ts](source/server/mcp-local.ts) | 38 | 5 | 57 |
 | [server/mcp-tools.ts](source/server/mcp-tools.ts) | 128 | 3 | 252 |
 | [server/mcp.ts](source/server/mcp.ts) | 59 | 7 | 124 |
@@ -550,7 +554,8 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [tests/github-auth.test.ts](source/tests/github-auth.test.ts) | 81 | 5 | 299 |
 | [tests/google-auth.test.ts](source/tests/google-auth.test.ts) | 128 | 5 | 416 |
 | [tests/hosted.test.ts](source/tests/hosted.test.ts) | 8 | 3 | 46 |
-| [tests/mcp-auth.test.ts](source/tests/mcp-auth.test.ts) | 147 | 6 | 482 |
+| [tests/mcp-auth.test.ts](source/tests/mcp-auth.test.ts) | 156 | 6 | 522 |
+| [tests/mcp-consent-policy.test.ts](source/tests/mcp-consent-policy.test.ts) | 25 | 7 | 97 |
 | [tests/mcp-integration.test.ts](source/tests/mcp-integration.test.ts) | 89 | 13 | 217 |
 | [tests/mcp-local-migration.test.ts](source/tests/mcp-local-migration.test.ts) | 8 | 7 | 42 |
 | [tests/mcp-resume.test.ts](source/tests/mcp-resume.test.ts) | 30 | 3 | 112 |
@@ -799,25 +804,25 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/mcp-auth.ts:59](source/server/mcp-auth.ts#L59) |  | FunctionDeclaration | `loopback(url: URL): inferred` |
 | [server/mcp-auth.ts:60](source/server/mcp-auth.ts#L60) |  | FunctionDeclaration | `nativeCallback(url: URL): inferred` |
 | [server/mcp-auth.ts:61](source/server/mcp-auth.ts#L61) |  | FunctionDeclaration | `allowedRedirect(value: unknown, origin: URL): inferred` |
-| [server/mcp-auth.ts:67](source/server/mcp-auth.ts#L67) |  | FunctionDeclaration | `matchesRedirect(registered: string, candidate: string): inferred` |
-| [server/mcp-auth.ts:74](source/server/mcp-auth.ts#L74) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string, status?: inferred): inferred` |
-| [server/mcp-auth.ts:82](source/server/mcp-auth.ts#L82) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
-| [server/mcp-auth.ts:86](source/server/mcp-auth.ts#L86) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
-| [server/mcp-auth.ts:87](source/server/mcp-auth.ts#L87) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
-| [server/mcp-auth.ts:91](source/server/mcp-auth.ts#L91) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
-| [server/mcp-auth.ts:92](source/server/mcp-auth.ts#L92) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
-| [server/mcp-auth.ts:93](source/server/mcp-auth.ts#L93) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
-| [server/mcp-auth.ts:98](source/server/mcp-auth.ts#L98) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
-| [server/mcp-auth.ts:103](source/server/mcp-auth.ts#L103) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
-| [server/mcp-auth.ts:122](source/server/mcp-auth.ts#L122) | createMcpAuthorization | FunctionDeclaration | `openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string): inferred` |
-| [server/mcp-auth.ts:141](source/server/mcp-auth.ts#L141) | createMcpAuthorization | FunctionDeclaration | `startLogin(request: Request, consent: Consent): inferred` |
-| [server/mcp-auth.ts:151](source/server/mcp-auth.ts#L151) | createMcpAuthorization | FunctionDeclaration | `resume(request: Request, url: URL): inferred` |
-| [server/mcp-auth.ts:163](source/server/mcp-auth.ts#L163) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
-| [server/mcp-auth.ts:198](source/server/mcp-auth.ts#L198) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
-| [server/mcp-auth.ts:233](source/server/mcp-auth.ts#L233) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
-| [server/mcp-auth.ts:242](source/server/mcp-auth.ts#L242) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
-| [server/mcp-auth.ts:254](source/server/mcp-auth.ts#L254) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp-auth.ts:285](source/server/mcp-auth.ts#L285) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
+| [server/mcp-auth.ts:69](source/server/mcp-auth.ts#L69) |  | FunctionDeclaration | `matchesRedirect(registered: string, candidate: string): inferred` |
+| [server/mcp-auth.ts:76](source/server/mcp-auth.ts#L76) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string, status?: inferred, callbackOrigin?: string): inferred` |
+| [server/mcp-auth.ts:86](source/server/mcp-auth.ts#L86) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
+| [server/mcp-auth.ts:90](source/server/mcp-auth.ts#L90) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
+| [server/mcp-auth.ts:91](source/server/mcp-auth.ts#L91) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
+| [server/mcp-auth.ts:95](source/server/mcp-auth.ts#L95) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
+| [server/mcp-auth.ts:96](source/server/mcp-auth.ts#L96) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
+| [server/mcp-auth.ts:97](source/server/mcp-auth.ts#L97) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
+| [server/mcp-auth.ts:102](source/server/mcp-auth.ts#L102) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
+| [server/mcp-auth.ts:117](source/server/mcp-auth.ts#L117) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
+| [server/mcp-auth.ts:136](source/server/mcp-auth.ts#L136) | createMcpAuthorization | FunctionDeclaration | `openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string): inferred` |
+| [server/mcp-auth.ts:157](source/server/mcp-auth.ts#L157) | createMcpAuthorization | FunctionDeclaration | `startLogin(request: Request, consent: Consent): inferred` |
+| [server/mcp-auth.ts:167](source/server/mcp-auth.ts#L167) | createMcpAuthorization | FunctionDeclaration | `resume(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:179](source/server/mcp-auth.ts#L179) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:214](source/server/mcp-auth.ts#L214) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
+| [server/mcp-auth.ts:249](source/server/mcp-auth.ts#L249) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
+| [server/mcp-auth.ts:258](source/server/mcp-auth.ts#L258) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
+| [server/mcp-auth.ts:270](source/server/mcp-auth.ts#L270) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp-auth.ts:301](source/server/mcp-auth.ts#L301) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
 
 ## server/mcp-local.ts
 
@@ -1868,7 +1873,7 @@ Canonical chapter: [code-flow/06-agents-and-mcp.md](code-flow/06-agents-and-mcp.
 
 # Optional Agents and external MCP
 
-Hosted [Agents](source/src/console/Agents.tsx) and Environment → [shared connection view](source/src/console/McpConnections.tsx) → registered private App-backed plugin → host starts OAuth → [registration/PKCE validation](source/server/mcp-auth.ts) → bounded pending-login transaction if needed → [browser capture/session resume](source/src/console/mcp-resume.ts) → authenticated consent → opaque scoped grant/token.
+Hosted [Agents](source/src/console/Agents.tsx) and Environment → [shared connection view](source/src/console/McpConnections.tsx) → registered private App-backed plugin → host starts OAuth → [registration/PKCE validation](source/server/mcp-auth.ts) → bounded pending-login transaction if needed → [browser capture/session resume](source/src/console/mcp-resume.ts) → authenticated consent → validated DNS/IPv4 303 callback or escaped IPv6 meta/anchor handoff → PKCE code exchange → opaque scoped token. Consent HTML keeps same-origin referrer policy for the strict form Origin check; return responses send no referrer.
 
 Authorized external host → [SDK transport](source/server/mcp.ts) → fourteen normal descriptors (plus delete only with its explicit grant) → permission challenge or [finite native tool](source/server/mcp-tools.ts) → existing editorial/Studio backend. Permission failures occur before effects/request receipts. Stable request identity and domain CAS remain independent safeguards. Human review/approval stays in marKER before private revision-bound export.
 
@@ -1876,7 +1881,7 @@ Authorized external host → [SDK transport](source/server/mcp.ts) → fourteen 
 
 Local developer path only: explicit loopback development panel → [context/run ledger](source/server/agents.ts) → [bridge](source/tools/agent-bridge.mjs) → official app-server → validated proposal → explicit Studio save → native planner. Ordinary hosted UI does not poll this path or require bridge commands.
 
-Read [OAuth tests](source/tests/mcp-auth.test.ts), [resume tests](source/tests/mcp-resume.test.ts), [local migration tests](source/tests/mcp-local-migration.test.ts), [tool tests](source/tests/mcp-tools.test.ts), [SDK tests](source/tests/mcp-integration.test.ts) and [Profile deletion tests](source/tests/profile.test.ts). A synthetic fixture or mobile viewport is not real host OAuth, a Dot conversation or physical-phone validation.
+Read [native consent-policy regression](source/tests/mcp-consent-policy.test.ts), [OAuth tests](source/tests/mcp-auth.test.ts), [resume tests](source/tests/mcp-resume.test.ts), [local migration tests](source/tests/mcp-local-migration.test.ts), [tool tests](source/tests/mcp-tools.test.ts), [SDK tests](source/tests/mcp-integration.test.ts) and [Profile deletion tests](source/tests/profile.test.ts). Synthetic fixtures and mobile viewports are separate from actual ChatGPT OAuth/catalog verification and two real connected reads (profile and bounded product search). Business writes, remaining tool paths, a complete campaign, Dot conversation and physical-phone validation remain unverified.
 
 The [portable metadata](source/integrations/chatgpt/marker/plugin.json), [MCP configuration](source/integrations/chatgpt/marker/mcp.json) and [campaign skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) remain developer source. They do not recreate the registered private App binding by themselves. [The connector document](source/docs/mcp-connector.md) describes that distinction and the authorized public installation CTA.
 
@@ -1891,7 +1896,7 @@ Review this repository as the current full-source snapshot of marKER. Begin with
 
 Assess end-to-end product/workflow usefulness, frontend state/recovery/accessibility, backend/domain correctness, schema/CAS/concurrency, original-media custody and processing, native classification/planning, optional local Agents, authenticated external MCP, owner identity/Profile/deletion, security/privacy/retention/limits, operational recovery, dependencies and justified complexity. Preserve the independent native no-agent path and original brand assets. Do not propose replacing deterministic rules with prompts.
 
-Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The hosted migration/deployment and its bounded readback are recorded in DEPLOYMENT-STATUS.md. Do not extend that evidence into actual desktop host connection/OAuth/tool conversation, authenticated hosted campaign execution, external identity activation, physical-device UAT, creative quality, invoice limits or restoration. Review the current login/resume, native callback matching, approved-client lifetime, scope challenges and developer-only bridge boundaries. Distinguish the registered private App-backed plugin from the portable host-package source; do not assume every host, protocol version or voice/phone surface works. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
+Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The current deployment, real owner OAuth return/token exchange, fourteen-tool catalog and two connected reads are recorded in DEPLOYMENT-STATUS.md. Those observations do not establish business writes, remaining unexecuted tool paths, a complete hosted campaign, Dot/voice/phone behavior, physical-device UAT, creative quality, invoice limits or restoration. Review the current login/resume, native-form referrer policy, validated callback CSP/IPv6 handoff, approved-client lifetime, scope challenges and developer-only bridge boundaries. Distinguish the registered private App-backed plugin from the portable host-package source; do not assume every host, protocol version or voice/phone surface works. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
 
 For each finding give priority, exact source path and line, concrete trigger/counterexample, impact, confidence and evidence, minimal coherent correction, affected boundaries, invariants to preserve, focused failure/concurrency checks and migration/recovery implications. Separate confirmed defects, plausible risks, usability opportunities and optional roadmap. Avoid generic best practices, invented facts/endpoints, duplicate systems and unsupported security certification.
 

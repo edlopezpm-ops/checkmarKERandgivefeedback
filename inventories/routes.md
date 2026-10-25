@@ -35,9 +35,9 @@ Each row is a route-related source occurrence, including rejection guards and pr
 | [server/google-auth.js:4](../source/server/google-auth.js#L4) | literal | `/api/auth/google/start` | VariableDeclaration |
 | [server/google-auth.js:4](../source/server/google-auth.js#L4) | literal | `/api/auth/google/callback` | VariableDeclaration |
 | [server/mcp-auth.ts:14](../source/server/mcp-auth.ts#L14) | literal | `/api/mcp/oauth/` | VariableDeclaration |
-| [server/mcp-auth.ts:85](../source/server/mcp-auth.ts#L85) | literal | `/api/mcp` | BinaryExpression |
-| [server/mcp-auth.ts:256](../source/server/mcp-auth.ts#L256) | literal | `/api/mcp/connections` | ArrayLiteralExpression |
-| [server/mcp-auth.ts:269](../source/server/mcp-auth.ts#L269) | literal | `/api/mcp/connections` | BinaryExpression |
+| [server/mcp-auth.ts:89](../source/server/mcp-auth.ts#L89) | literal | `/api/mcp` | BinaryExpression |
+| [server/mcp-auth.ts:272](../source/server/mcp-auth.ts#L272) | literal | `/api/mcp/connections` | ArrayLiteralExpression |
+| [server/mcp-auth.ts:285](../source/server/mcp-auth.ts#L285) | literal | `/api/mcp/connections` | BinaryExpression |
 | [server/mcp-tools.ts:114](../source/server/mcp-tools.ts#L114) | literal | `/api/workspace` | CallExpression |
 | [server/mcp-tools.ts:115](../source/server/mcp-tools.ts#L115) | literal | `/api/studio` | CallExpression |
 | [server/mcp-tools.ts:119](../source/server/mcp-tools.ts#L119) | literal | `/api/commands` | ConditionalExpression |

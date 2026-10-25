@@ -1,6 +1,6 @@
 # Test declaration index
 
-306 static declarations across 41 files. Includes subtests; this is neither execution count nor code coverage.
+308 static declarations across 42 files. Includes subtests; this is neither execution count nor code coverage.
 
 | File | Declarations |
 | --- | --- |
@@ -20,7 +20,8 @@
 | [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 6 |
 | [tests/google-auth.test.ts](../source/tests/google-auth.test.ts) | 11 |
 | [tests/hosted.test.ts](../source/tests/hosted.test.ts) | 2 |
-| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 21 |
+| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 22 |
+| [tests/mcp-consent-policy.test.ts](../source/tests/mcp-consent-policy.test.ts) | 1 |
 | [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 5 |
 | [tests/mcp-local-migration.test.ts](../source/tests/mcp-local-migration.test.ts) | 1 |
 | [tests/mcp-resume.test.ts](../source/tests/mcp-resume.test.ts) | 6 |
@@ -154,24 +155,26 @@
 | [tests/mcp-auth.test.ts:31](../source/tests/mcp-auth.test.ts#L31) | test | MCP discovery names exact resource and PKCE public-client endpoints without owner cookies |
 | [tests/mcp-auth.test.ts:41](../source/tests/mcp-auth.test.ts#L41) | test | native OAuth callbacks accept literal loopback and a changed port while the code binds the concrete URI |
 | [tests/mcp-auth.test.ts:57](../source/tests/mcp-auth.test.ts#L57) | test | native OAuth port exception never permits changing callback host, path, query or scheme |
-| [tests/mcp-auth.test.ts:67](../source/tests/mcp-auth.test.ts#L67) | test | DCR bounds metadata and rejects plaintext remote or noncanonical redirects |
-| [tests/mcp-auth.test.ts:77](../source/tests/mcp-auth.test.ts#L77) | test | anonymous authorization creates only a bounded login handle; signed-in consent preserves the original logo |
-| [tests/mcp-auth.test.ts:90](../source/tests/mcp-auth.test.ts#L90) | test | normal login resumes the exact validated OAuth transaction once, then requires explicit consent |
-| [tests/mcp-auth.test.ts:107](../source/tests/mcp-auth.test.ts#L107) | test | expired or malformed login handles never redirect externally, and interrupted resume can retry safely |
-| [tests/mcp-auth.test.ts:124](../source/tests/mcp-auth.test.ts#L124) | test | authorized DCR identities survive expiry and revoke while unused registrations expire |
-| [tests/mcp-auth.test.ts:135](../source/tests/mcp-auth.test.ts#L135) | test | only committed Allow promotes a DCR identity; denied or failed grants preserve retry safety |
-| [tests/mcp-auth.test.ts:149](../source/tests/mcp-auth.test.ts#L149) | test | authorize rejects redirect substitution, duplicate parameters, unbound resources, PKCE downgrade and unknown scopes |
-| [tests/mcp-auth.test.ts:156](../source/tests/mcp-auth.test.ts#L156) | test | consent requires same-origin authenticated owner and single-use explicit Allow or Deny |
-| [tests/mcp-auth.test.ts:166](../source/tests/mcp-auth.test.ts#L166) | test | real SQLite code exchange binds PKCE, client, redirect, resource and opaque hashed credentials |
-| [tests/mcp-auth.test.ts:178](../source/tests/mcp-auth.test.ts#L178) | test | concurrent code exchanges admit exactly one token pair |
-| [tests/mcp-auth.test.ts:184](../source/tests/mcp-auth.test.ts#L184) | test | failed token transaction rolls back code consumption and permits a correct retry |
-| [tests/mcp-auth.test.ts:190](../source/tests/mcp-auth.test.ts#L190) | test | refresh rotates once; replay revokes whole grant family including latest access token |
-| [tests/mcp-auth.test.ts:197](../source/tests/mcp-auth.test.ts#L197) | test | concurrent refresh races revoke the family rather than leaving replayable credentials |
-| [tests/mcp-auth.test.ts:202](../source/tests/mcp-auth.test.ts#L202) | test | cross-client refresh/revoke and scope escalation fail without revoking valid owner grant |
-| [tests/mcp-auth.test.ts:210](../source/tests/mcp-auth.test.ts#L210) | test | owner can list and revoke delegated connections; another owner and cross-origin requests cannot |
-| [tests/mcp-auth.test.ts:221](../source/tests/mcp-auth.test.ts#L221) | test | RFC revocation accepts access or refresh credentials and makes authentication fail |
-| [tests/mcp-auth.test.ts:228](../source/tests/mcp-auth.test.ts#L228) | test | expiry and durable account freeze deny access; migration blocks already-admitted writes |
-| [tests/mcp-auth.test.ts:236](../source/tests/mcp-auth.test.ts#L236) | test | endpoints bound methods, bodies, registration rate and do not accept client-secret auth |
+| [tests/mcp-auth.test.ts:67](../source/tests/mcp-auth.test.ts#L67) | test | IPv6 Allow and Deny return exact escaped callbacks without invalid CSP sources or script |
+| [tests/mcp-auth.test.ts:91](../source/tests/mcp-auth.test.ts#L91) | test | DCR bounds metadata and rejects plaintext remote or noncanonical redirects |
+| [tests/mcp-auth.test.ts:101](../source/tests/mcp-auth.test.ts#L101) | test | anonymous authorization creates only a bounded login handle; signed-in consent preserves the original logo |
+| [tests/mcp-auth.test.ts:114](../source/tests/mcp-auth.test.ts#L114) | test | normal login resumes the exact validated OAuth transaction once, then requires explicit consent |
+| [tests/mcp-auth.test.ts:131](../source/tests/mcp-auth.test.ts#L131) | test | expired or malformed login handles never redirect externally, and interrupted resume can retry safely |
+| [tests/mcp-auth.test.ts:148](../source/tests/mcp-auth.test.ts#L148) | test | authorized DCR identities survive expiry and revoke while unused registrations expire |
+| [tests/mcp-auth.test.ts:159](../source/tests/mcp-auth.test.ts#L159) | test | only committed Allow promotes a DCR identity; denied or failed grants preserve retry safety |
+| [tests/mcp-auth.test.ts:173](../source/tests/mcp-auth.test.ts#L173) | test | authorize rejects redirect substitution, duplicate parameters, unbound resources, PKCE downgrade and unknown scopes |
+| [tests/mcp-auth.test.ts:180](../source/tests/mcp-auth.test.ts#L180) | test | consent requires same-origin authenticated owner and single-use explicit Allow or Deny |
+| [tests/mcp-auth.test.ts:190](../source/tests/mcp-auth.test.ts#L190) | test | real SQLite code exchange binds PKCE, client, redirect, resource and opaque hashed credentials |
+| [tests/mcp-auth.test.ts:202](../source/tests/mcp-auth.test.ts#L202) | test | concurrent code exchanges admit exactly one token pair |
+| [tests/mcp-auth.test.ts:208](../source/tests/mcp-auth.test.ts#L208) | test | failed token transaction rolls back code consumption and permits a correct retry |
+| [tests/mcp-auth.test.ts:214](../source/tests/mcp-auth.test.ts#L214) | test | refresh rotates once; replay revokes whole grant family including latest access token |
+| [tests/mcp-auth.test.ts:221](../source/tests/mcp-auth.test.ts#L221) | test | concurrent refresh races revoke the family rather than leaving replayable credentials |
+| [tests/mcp-auth.test.ts:226](../source/tests/mcp-auth.test.ts#L226) | test | cross-client refresh/revoke and scope escalation fail without revoking valid owner grant |
+| [tests/mcp-auth.test.ts:234](../source/tests/mcp-auth.test.ts#L234) | test | owner can list and revoke delegated connections; another owner and cross-origin requests cannot |
+| [tests/mcp-auth.test.ts:245](../source/tests/mcp-auth.test.ts#L245) | test | RFC revocation accepts access or refresh credentials and makes authentication fail |
+| [tests/mcp-auth.test.ts:252](../source/tests/mcp-auth.test.ts#L252) | test | expiry and durable account freeze deny access; migration blocks already-admitted writes |
+| [tests/mcp-auth.test.ts:260](../source/tests/mcp-auth.test.ts#L260) | test | endpoints bound methods, bodies, registration rate and do not accept client-secret auth |
+| [tests/mcp-consent-policy.test.ts:9](../source/tests/mcp-consent-policy.test.ts#L9) | test | native consent forms retain same-origin validation without leaking cross-origin referrers |
 | [tests/mcp-integration.test.ts:67](../source/tests/mcp-integration.test.ts#L67) | test | official SDK negotiates Streamable HTTP and persists real tools; duplicate requests never duplicate products |
 | [tests/mcp-integration.test.ts:90](../source/tests/mcp-integration.test.ts#L90) | test | transport rejects missing/invalid identity, cross-origin and caller-selected tenant before product effects |
 | [tests/mcp-integration.test.ts:122](../source/tests/mcp-integration.test.ts#L122) | test | scope challenges precede any effect receipt or business backend access |

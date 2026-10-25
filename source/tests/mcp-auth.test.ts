@@ -20,7 +20,7 @@ function fixture(t) {
   async function register(name='Synthetic assistant',redirect=CALLBACK) { const result=await call('/api/mcp/oauth/register',{client_name:name,redirect_uris:[redirect],token_endpoint_auth_method:'none'},{json:true});assert.equal(result.status,201,await result.clone().text());return result.json(); }
   function authorization(app,extras={}) { return '/api/mcp/oauth/authorize?'+new URLSearchParams({client_id:app.client_id,redirect_uri:CALLBACK,response_type:'code',code_challenge_method:'S256',code_challenge:challenge,resource:RESOURCE,scope:'marker:read marker:write',state:'opaque-state',...extras}); }
   async function consent(app,extras={}) { const result=await call(authorization(app,extras),undefined,{owner:'owner'});assert.equal(result.status,200,await result.clone().text());const html=await result.text();const nonce=/name="request" value="([A-Za-z0-9_-]+)"/.exec(html)?.[1];assert.ok(nonce);return nonce; }
-  async function approve(app,extras={}) { const nonce=await consent(app,extras);const result=await call('/api/mcp/oauth/authorize',{request:nonce,decision:'allow'},{owner:'owner',headers:{Origin:ORIGIN}});assert.equal(result.status,303,await result.clone().text());const callback=new URL(result.headers.get('Location'));assert.equal(callback.searchParams.get('state'),'opaque-state');assert.equal(callback.searchParams.get('iss'),ORIGIN);return callback.searchParams.get('code'); }
+  async function approve(app,extras={}) { const nonce=await consent(app,extras);const result=await call('/api/mcp/oauth/authorize',{request:nonce,decision:'allow'},{owner:'owner',headers:{Origin:ORIGIN}});const ipv6=new URL(extras.redirect_uri||CALLBACK).hostname.startsWith('[');assert.equal(result.status,ipv6?200:303,await result.clone().text());const callback=new URL(ipv6?/href="([^"]+)"/.exec(await result.text())[1].replaceAll('&amp;','&'):result.headers.get('Location'));assert.equal(callback.searchParams.get('state'),'opaque-state');assert.equal(callback.searchParams.get('iss'),ORIGIN);return callback.searchParams.get('code'); }
   async function exchange(app,code,extras={}) { return call('/api/mcp/oauth/token',{grant_type:'authorization_code',client_id:app.client_id,code,redirect_uri:CALLBACK,code_verifier:verifier,resource:RESOURCE,...extras}); }
   async function connect(scope='marker:read marker:write') { const app=await register();const code=await approve(app,{scope});const result=await exchange(app,code);assert.equal(result.status,200,await result.clone().text());return {app,code,...await result.json()}; }
   async function refresh(connection,extras={}) { return call('/api/mcp/oauth/token',{grant_type:'refresh_token',client_id:connection.app.client_id,refresh_token:connection.refresh_token,resource:RESOURCE,...extras}); }
@@ -62,6 +62,30 @@ test('native OAuth port exception never permits changing callback host, path, qu
     'https://127.0.0.1:54322/callback/native?route=marker','http://127.0.0.1.evil.invalid:54322/callback/native?route=marker',
   ]) assert.equal((await f.call(f.authorization(app,{redirect_uri:redirect}),undefined,{owner:'owner'})).status,400,redirect);
   assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_requests').get().n,0);
+});
+
+test('IPv6 Allow and Deny return exact escaped callbacks without invalid CSP sources or script',async t=>{
+  const f=fixture(t);
+  for(const [registered,redirect] of [
+    ['http://[::1]:54321/callback','http://[::1]:54322/callback'],
+    ['https://[2001:db8::1]/callback','https://[2001:db8::1]/callback'],
+  ]){
+   const app=await f.register('IPv6 assistant',registered);
+   for(const decision of ['allow','deny']){
+    const nonce=await f.consent(app,{redirect_uri:redirect});
+    const result=await f.call('/api/mcp/oauth/authorize',{request:nonce,decision},{owner:'owner',headers:{Origin:ORIGIN}});
+    assert.equal(result.status,200);assert.equal(result.headers.get('Referrer-Policy'),'no-referrer');assert.equal(result.headers.get('Cache-Control'),'no-store');
+    assert.equal(result.headers.get('X-Frame-Options'),'DENY');
+    assert.equal(result.headers.get('Content-Security-Policy'),"default-src 'none'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'");
+    const html=await result.text();assert.match(html,/<meta http-equiv="refresh" content="0;url=/);assert.ok(!/<script|<form/i.test(html));
+    const target=new URL(/href="([^"]+)"/.exec(html)[1].replaceAll('&amp;','&'));
+    assert.equal(target.origin,new URL(redirect).origin);assert.equal(target.pathname,'/callback');
+    assert.equal(target.searchParams.get('state'),'opaque-state');assert.equal(target.searchParams.get('iss'),ORIGIN);
+    assert.equal(target.searchParams.get('error'),decision==='deny'?'access_denied':null);
+    assert.equal(target.searchParams.has('code'),decision==='allow');
+   }
+  }
+  assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_grants').get().n,2);
 });
 
 test('DCR bounds metadata and rejects plaintext remote or noncanonical redirects',async t=>{

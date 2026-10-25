@@ -1,6 +1,6 @@
 # 10 — Source map, tests and dependencies
 
-The source projection contains **345 files** totaling **35,789,619 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The source projection contains **346 files** totaling **35,798,911 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
 
 - [Every source path and hash](inventories/source-paths.md).
 - [Machine snapshot, source commit and dirty qualifications](source-snapshot-manifest.json).
@@ -11,7 +11,7 @@ The source projection contains **345 files** totaling **35,789,619 bytes**, incl
 - [Locked dependencies and commands](inventories/dependencies.md).
 - [Public demo hashes/URLs](inventories/public-media.json).
 
-The TypeScript parser indexed **115 modules**. The static test index contains **306 declarations across 41 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
+The TypeScript parser indexed **116 modules**. The static test index contains **308 declarations across 42 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
 
 Source files were copied byte-for-byte from the frozen checkout. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
 

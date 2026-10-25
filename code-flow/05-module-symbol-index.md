@@ -1,6 +1,6 @@
 # Module and symbol index
 
-115 parsed modules; 13951 declarations/fields, 549 imports/re-exports, 17676 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
+116 parsed modules; 13990 declarations/fields, 556 imports/re-exports, 17822 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
 
 | Module | Symbols | Imports | Calls |
 | --- | --- | --- | --- |
@@ -18,7 +18,7 @@
 | [server/google-auth.js](../source/server/google-auth.js) | 96 | 2 | 240 |
 | [server/local.ts](../source/server/local.ts) | 11 | 4 | 18 |
 | [server/mcp-auth-store.ts](../source/server/mcp-auth-store.ts) | 12 | 0 | 18 |
-| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 197 | 1 | 345 |
+| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 202 | 1 | 354 |
 | [server/mcp-local.ts](../source/server/mcp-local.ts) | 38 | 5 | 57 |
 | [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 128 | 3 | 252 |
 | [server/mcp.ts](../source/server/mcp.ts) | 59 | 7 | 124 |
@@ -89,7 +89,8 @@
 | [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 81 | 5 | 299 |
 | [tests/google-auth.test.ts](../source/tests/google-auth.test.ts) | 128 | 5 | 416 |
 | [tests/hosted.test.ts](../source/tests/hosted.test.ts) | 8 | 3 | 46 |
-| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 147 | 6 | 482 |
+| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 156 | 6 | 522 |
+| [tests/mcp-consent-policy.test.ts](../source/tests/mcp-consent-policy.test.ts) | 25 | 7 | 97 |
 | [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 89 | 13 | 217 |
 | [tests/mcp-local-migration.test.ts](../source/tests/mcp-local-migration.test.ts) | 8 | 7 | 42 |
 | [tests/mcp-resume.test.ts](../source/tests/mcp-resume.test.ts) | 30 | 3 | 112 |
@@ -338,25 +339,25 @@
 | [server/mcp-auth.ts:59](../source/server/mcp-auth.ts#L59) |  | FunctionDeclaration | `loopback(url: URL): inferred` |
 | [server/mcp-auth.ts:60](../source/server/mcp-auth.ts#L60) |  | FunctionDeclaration | `nativeCallback(url: URL): inferred` |
 | [server/mcp-auth.ts:61](../source/server/mcp-auth.ts#L61) |  | FunctionDeclaration | `allowedRedirect(value: unknown, origin: URL): inferred` |
-| [server/mcp-auth.ts:67](../source/server/mcp-auth.ts#L67) |  | FunctionDeclaration | `matchesRedirect(registered: string, candidate: string): inferred` |
-| [server/mcp-auth.ts:74](../source/server/mcp-auth.ts#L74) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string, status?: inferred): inferred` |
-| [server/mcp-auth.ts:82](../source/server/mcp-auth.ts#L82) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
-| [server/mcp-auth.ts:86](../source/server/mcp-auth.ts#L86) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
-| [server/mcp-auth.ts:87](../source/server/mcp-auth.ts#L87) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
-| [server/mcp-auth.ts:91](../source/server/mcp-auth.ts#L91) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
-| [server/mcp-auth.ts:92](../source/server/mcp-auth.ts#L92) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
-| [server/mcp-auth.ts:93](../source/server/mcp-auth.ts#L93) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
-| [server/mcp-auth.ts:98](../source/server/mcp-auth.ts#L98) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
-| [server/mcp-auth.ts:103](../source/server/mcp-auth.ts#L103) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
-| [server/mcp-auth.ts:122](../source/server/mcp-auth.ts#L122) | createMcpAuthorization | FunctionDeclaration | `openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string): inferred` |
-| [server/mcp-auth.ts:141](../source/server/mcp-auth.ts#L141) | createMcpAuthorization | FunctionDeclaration | `startLogin(request: Request, consent: Consent): inferred` |
-| [server/mcp-auth.ts:151](../source/server/mcp-auth.ts#L151) | createMcpAuthorization | FunctionDeclaration | `resume(request: Request, url: URL): inferred` |
-| [server/mcp-auth.ts:163](../source/server/mcp-auth.ts#L163) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
-| [server/mcp-auth.ts:198](../source/server/mcp-auth.ts#L198) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
-| [server/mcp-auth.ts:233](../source/server/mcp-auth.ts#L233) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
-| [server/mcp-auth.ts:242](../source/server/mcp-auth.ts#L242) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
-| [server/mcp-auth.ts:254](../source/server/mcp-auth.ts#L254) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp-auth.ts:285](../source/server/mcp-auth.ts#L285) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
+| [server/mcp-auth.ts:69](../source/server/mcp-auth.ts#L69) |  | FunctionDeclaration | `matchesRedirect(registered: string, candidate: string): inferred` |
+| [server/mcp-auth.ts:76](../source/server/mcp-auth.ts#L76) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string, status?: inferred, callbackOrigin?: string): inferred` |
+| [server/mcp-auth.ts:86](../source/server/mcp-auth.ts#L86) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
+| [server/mcp-auth.ts:90](../source/server/mcp-auth.ts#L90) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
+| [server/mcp-auth.ts:91](../source/server/mcp-auth.ts#L91) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
+| [server/mcp-auth.ts:95](../source/server/mcp-auth.ts#L95) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
+| [server/mcp-auth.ts:96](../source/server/mcp-auth.ts#L96) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
+| [server/mcp-auth.ts:97](../source/server/mcp-auth.ts#L97) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
+| [server/mcp-auth.ts:102](../source/server/mcp-auth.ts#L102) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
+| [server/mcp-auth.ts:117](../source/server/mcp-auth.ts#L117) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
+| [server/mcp-auth.ts:136](../source/server/mcp-auth.ts#L136) | createMcpAuthorization | FunctionDeclaration | `openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string): inferred` |
+| [server/mcp-auth.ts:157](../source/server/mcp-auth.ts#L157) | createMcpAuthorization | FunctionDeclaration | `startLogin(request: Request, consent: Consent): inferred` |
+| [server/mcp-auth.ts:167](../source/server/mcp-auth.ts#L167) | createMcpAuthorization | FunctionDeclaration | `resume(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:179](../source/server/mcp-auth.ts#L179) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:214](../source/server/mcp-auth.ts#L214) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
+| [server/mcp-auth.ts:249](../source/server/mcp-auth.ts#L249) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
+| [server/mcp-auth.ts:258](../source/server/mcp-auth.ts#L258) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
+| [server/mcp-auth.ts:270](../source/server/mcp-auth.ts#L270) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp-auth.ts:301](../source/server/mcp-auth.ts#L301) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
 
 ## server/mcp-local.ts
 

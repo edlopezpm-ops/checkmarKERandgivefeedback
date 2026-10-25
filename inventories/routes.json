@@ -253,24 +253,24 @@
     },
     {
       "path": "server/mcp-auth.ts",
-      "line": 85,
-      "end_line": 85,
+      "line": 89,
+      "end_line": 89,
       "kind": "literal",
       "pattern": "/api/mcp",
       "parent_kind": "BinaryExpression"
     },
     {
       "path": "server/mcp-auth.ts",
-      "line": 256,
-      "end_line": 256,
+      "line": 272,
+      "end_line": 272,
       "kind": "literal",
       "pattern": "/api/mcp/connections",
       "parent_kind": "ArrayLiteralExpression"
     },
     {
       "path": "server/mcp-auth.ts",
-      "line": 269,
-      "end_line": 269,
+      "line": 285,
+      "end_line": 285,
       "kind": "literal",
       "pattern": "/api/mcp/connections",
       "parent_kind": "BinaryExpression"

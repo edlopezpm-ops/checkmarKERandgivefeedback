@@ -4,8 +4,8 @@
   "source": {
     "project": "marKER",
     "branch": "main",
-    "commit": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-    "tree": "afe452fa2eb870a6d061f269d9eb5ab22db77992",
+    "commit": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+    "tree": "9f5386b9eb64fd8e81ee715bff4685d0a8fea4bd",
     "dirty_paths": [
       " M docs/console.md",
       " M server/entry.ts",
@@ -20,55 +20,24 @@
       "?? server/demo-media.ts",
       "?? tests/demo-media.test.ts"
     ],
-    "projection_files": 345,
-    "projection_bytes": 35789619,
+    "projection_files": 346,
+    "projection_bytes": 35798911,
     "scope": "complete explicitly selected product source plus public assets; no private runtime data",
     "previous_publication": {
-      "review_commit": "17fffc123149d62b87df4da430628cea6f453b06",
-      "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
-      "source_manifest_sha256": "cb8ce6b918b1f226e7a39bcb1533f4dd87a70b89d9d58493984b619f411cfa52",
+      "review_commit": "e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b",
+      "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+      "source_manifest_sha256": "5f9e2331e7f6c4d741c7bdf15c2999689175eaad082484a64eba919427f69906",
+      "intermediate_source_revision": "cd5e3fb57544a2699bab6fd2a5fbf77591ccc1a7",
       "changed_paths": [
-        "PROJECT_MAP.md",
-        "README.md",
-        "docs/AGENT_BRIDGE.md",
-        "docs/agents.md",
-        "docs/assistant-integration-design-2026-10-24.md",
-        "docs/mcp-connector.md",
-        "migrations-d1/0011_mcp_connections.sql",
-        "public/help/en/agents-connect.png",
-        "public/help/en/agents-context.png",
-        "public/help/es/agents-connect.png",
-        "public/help/es/agents-context.png",
-        "server/mcp-auth-store.ts",
         "server/mcp-auth.ts",
-        "server/mcp-local.ts",
-        "server/mcp-tools.ts",
-        "server/mcp.ts",
-        "src/console/Agents.tsx",
-        "src/console/Console.tsx",
-        "src/console/McpConnections.tsx",
-        "src/console/Settings.tsx",
-        "src/console/help-guides.ts",
-        "src/console/mcp-resume.ts",
         "tests/mcp-auth.test.ts",
-        "tests/mcp-integration.test.ts",
-        "tests/mcp-local-migration.test.ts",
-        "tests/mcp-resume.test.ts",
-        "tests/profile.test.ts"
+        "tests/mcp-consent-policy.test.ts"
       ],
       "new_paths": [
-        "docs/assistant-integration-design-2026-10-24.md",
-        "migrations-d1/0011_mcp_connections.sql",
-        "public/help/en/agents-connect.png",
-        "public/help/en/agents-context.png",
-        "public/help/es/agents-connect.png",
-        "public/help/es/agents-context.png",
-        "src/console/mcp-resume.ts",
-        "tests/mcp-local-migration.test.ts",
-        "tests/mcp-resume.test.ts"
+        "tests/mcp-consent-policy.test.ts"
       ],
       "dirty_demo_paths_byte_identical": 12,
-      "method": "Fresh complete eligible source capture and exact-byte verification. Prior 12 demo paths remain uncommitted and byte-identical to the preceding review snapshot. Runtime source, AST/routes/tests and empty-schema catalogs refreshed; product tests are coordinator-reported, not rerun by this worker."
+      "method": "Combined three-path delta since the last public snapshot, across two consent/callback correction commits. Exact copied hashes, unchanged tracked blob identities, complete eligible path set and all twelve dirty demo hashes checked. AST/routes/test navigation refreshed; unchanged schema/dependencies retained without reexecution. Product/browser/host evidence coordinator-reported."
     }
   },
   "publication": {
@@ -78,30 +47,38 @@
     "source_product_modified_by_refresh": false
   },
   "root_reported_mcp_checks": {
-    "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-    "focused_tests_total": 47,
+    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+    "focused_tests_total": 28,
+    "focused_scope": "OAuth, official SDK and consent/callback policy",
     "focused_tests": "PASS",
-    "build_original_logo": "PASS",
-    "independent_review": "No actionable finding",
-    "production_ui_synthetic_viewports": "Desktop/mobile fixtures; zero /api/agents calls; no bridge commands",
-    "new_bilingual_help_images": 4,
+    "server_typescript": "PASS",
+    "worker_dry_run": "PASS",
+    "independent_final_review": "PASS",
+    "synthetic_edge_ipv4_ipv6": {
+      "per_case_callback": 1,
+      "per_case_grant": 1,
+      "code_exchange_status": 200,
+      "per_case_token": 1,
+      "csp_errors": 0,
+      "external_referrer": false
+    },
     "protected_native_modules_unchanged": 5,
-    "qualification": "Coordinator-reported, not rerun by dossier worker. Synthetic viewport evidence is not actual owner OAuth, physical-phone or Dot conversation."
+    "qualification": "Coordinator-reported; not rerun by this documentary worker. Browser fixtures are synthetic; real owner OAuth/catalog has separate evidence below."
   },
   "not_established_by_refresh": [
-    "completed owner OAuth/server grant and successful real-host tool execution/conversation",
-    "hosted authenticated end-to-end campaign through the actual external host",
-    "physical-phone/voice capability and human creative/time-saved UAT",
+    "actual business writes, remaining unexecuted tool paths and complete assistant-driven campaign",
+    "Dot/voice conversation and physical-phone behavior",
+    "human creative/time-saved UAT",
     "hosted analysis toolchain",
     "provider invoice hard cap or complete D1/R2/job/provider recovery",
-    "security certification or independent OS containment"
+    "security certification, universal host compatibility or independent OS containment"
   ],
   "catalog_counts": {
-    "tracked_paths": 338,
-    "projected_paths": 345,
-    "source_checkout_bytes": 35789619,
-    "source_text_paths": 179,
-    "text_lines": 41207,
+    "tracked_paths": 339,
+    "projected_paths": 346,
+    "source_checkout_bytes": 35798911,
+    "source_text_paths": 180,
+    "text_lines": 41338,
     "lock_packages": 232,
     "d1_tables": 36,
     "d1_columns": 201,
@@ -109,8 +86,8 @@
     "d1_triggers": 71,
     "local_studio_tables": 10,
     "local_studio_columns": 33,
-    "parsed_modules": 115,
-    "static_test_declarations": 306
+    "parsed_modules": 116,
+    "static_test_declarations": 308
   },
   "exclusions": [
     "private governance/evidence/archive payloads (.aekr)",
@@ -127,39 +104,33 @@
     "Actual external-host model identity is not fabricated as trusted generation provenance.",
     "Applied Agent provenance survives selective history cleanup; connector grant cleanup has different retention.",
     "Original asset hashes do not prove browser/temporal quality.",
-    "Latest real-host session has no product tools and server authorization is incomplete despite the owner-reported Connected state; diagnosis ongoing."
+    "One grant row from the failed callback return remains; current evidence establishes one exchanged code/token, not two successful connections."
   ],
   "hosted_deployment": {
     "status": "DEPLOYED_VERIFIED_BOUNDED",
-    "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
     "working_tree_demo_paths": 12,
-    "worker_version": "d48f31ec-1641-4097-bb5f-c0ccd7fd26ae",
+    "worker_version": "d5f43234-74b2-4c45-a850-4f1dab75620c",
     "allocation_percent": 100,
-    "deployment_timestamp_utc": "2026-10-25T02:01:10.735Z",
-    "readback_at_utc": "2026-10-25T02:01:28.630Z",
-    "migration_0010": "APPLIED",
-    "migration_0011": "APPLIED",
+    "migration_0010": "APPLIED_PREVIOUS_RELEASE",
+    "migration_0011": "APPLIED_PREVIOUS_RELEASE",
     "mcp_table_count": 8,
+    "static_demo_assets": "Preserved; no new asset change",
+    "asset_readback_qualification": "Fresh final-Worker SHA comparison; all185 assets exact. Anonymous checks do not assess owner OAuth; actual connected reads are separate evidence.",
+    "evidence_source": "Implementation coordinator final deployment and real-host handoff",
+    "private_account_artifacts_read_or_published_by_review_worker": false,
+    "product_tests_repeated_by_review_worker": false,
+    "readback_at_utc": "2026-10-25T02:34:09Z",
     "public_checks_passed": 5,
     "public_checks_total": 5,
     "exact_static_assets": 185,
-    "checks": [
-      "canonical resource with minimal read scope",
-      "OAuth discovery retains PKCE DCR and refresh",
-      "anonymous MCP requires OAuth with minimal challenge",
-      "malformed resume returns local branded reconnect page",
-      "connections do not leak without owner session"
-    ],
-    "owner_session_used": false,
-    "evidence_source": "Coordinator release/migration handoff and named sanitized hosted readback receipt",
-    "private_backup_read_or_published_by_review_worker": false,
-    "product_tests_repeated_by_review_worker": false,
-    "isolated_backup_restore_rehearsal": "Coordinator PASS; 36 existing backup tables preserved; bounded D1 migration proof only"
+    "anonymous_checks_owner_session_used": false,
+    "generic_error_html_policy": "same-origin referrer policy; self-only CSP"
   },
   "host_plugin_package": {
     "canonical_connection": "Registered App-backed private plugin",
     "version": "1.0.1",
-    "state": "NOT_CONNECTED_ON_SERVER; tested host session product tools unavailable; diagnosis in progress",
+    "state": "CONNECTED; actual OAuth, token exchange, fourteen-tool discovery and two connected reads verified",
     "audience": "PRIVATE; unchanged",
     "default_scopes": [
       "marker:read",
@@ -173,21 +144,42 @@
     "portable_qualification": "Developer artifact does not create registered App binding by import alone",
     "public_cta_identifier": "Canonical served CTA and historical raw-plugin identifier explicitly authorized public noncredential configuration; no account access conferred",
     "private_app_binding_published": false,
-    "actual_owner_oauth": "NOT_COMPLETED_ON_SERVER; approved grant and token rows absent",
+    "actual_owner_oauth": "VERIFIED; returned to ChatGPT; Connect action removed",
     "actual_dot_conversation": "NOT_ESTABLISHED",
     "physical_phone_validation": "NOT_ESTABLISHED",
     "compatibility_qualification": "Actual host/protocol/voice support requires evidence; no all-host claim",
-    "owner_report": "Connected; owner report subsequently contradicted by missing server grants and host tool availability",
-    "observed_host_tools": "No product read/create/delete tools exposed in the tested session",
-    "plugin_management": "Connect still displayed",
-    "server_aggregate": {
-      "registered_clients": 1,
-      "approved_clients": 0,
-      "active_grants": 0,
-      "resumed_logins": 0,
-      "token_rows": 0
+    "actual_host_catalog": {
+      "read_tools": 6,
+      "write_tools": 8,
+      "total_tools": 14,
+      "native_prepare_classify_visible": true,
+      "marker_delete_visible": false
     },
-    "latest_evidence": "Coordinator-relayed host observation and sanitized production aggregate counts; no private chat payload/configuration exported"
+    "server_aggregate": {
+      "approved_clients": 1,
+      "exchanged_codes": 1,
+      "token_rows": 1,
+      "grant_rows": 2,
+      "orphan_grant_from_failed_return": 1
+    },
+    "actual_business_reads_writes": "Two connected reads PASS; business writes NOT_INVOKED",
+    "evidence_source": "Coordinator observed actual host OAuth/UI/catalog and supplied sanitized aggregates; no private screenshots/payloads exported",
+    "actual_connected_reads": [
+      {
+        "tool": "marker_get_profile",
+        "isError": false,
+        "qualification": "Identity present; value not published"
+      },
+      {
+        "tool": "marker_search",
+        "kind": "products",
+        "limit": 1,
+        "isError": false,
+        "qualification": "Workspace revision integer and items structure valid; payload not published"
+      }
+    ],
+    "business_writes": "NOT_INVOKED",
+    "remaining_tool_paths": "NOT_INDIVIDUALLY_EXECUTED"
   },
   "prior_evidence": {
     "review_commit": "17fffc123149d62b87df4da430628cea6f453b06",
@@ -258,14 +250,103 @@
       "aggregate_inspection_rows_written": 0,
       "evidence_source": "Coordinator-reported visible account page and readonly aggregate D1 inspection; no private identifiers published"
     },
-    "qualification": "Historical evidence, not rerun or current owner-grant counts. Prior source manifests and full receipts remain in Git."
+    "qualification": "Historical evidence, not rerun or current owner-grant counts. Prior source manifests and full receipts remain in Git.",
+    "seamless_release": {
+      "review_commit": "e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b",
+      "root_checks": {
+        "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+        "focused_tests_total": 47,
+        "focused_tests": "PASS",
+        "build_original_logo": "PASS",
+        "independent_review": "No actionable finding",
+        "production_ui_synthetic_viewports": "Desktop/mobile fixtures; zero /api/agents calls; no bridge commands",
+        "new_bilingual_help_images": 4,
+        "protected_native_modules_unchanged": 5,
+        "qualification": "Coordinator-reported, not rerun by dossier worker. Synthetic viewport evidence is not actual owner OAuth, physical-phone or Dot conversation."
+      },
+      "hosted_release": {
+        "status": "DEPLOYED_VERIFIED_BOUNDED",
+        "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+        "working_tree_demo_paths": 12,
+        "worker_version": "d48f31ec-1641-4097-bb5f-c0ccd7fd26ae",
+        "allocation_percent": 100,
+        "deployment_timestamp_utc": "2026-10-25T02:01:10.735Z",
+        "readback_at_utc": "2026-10-25T02:01:28.630Z",
+        "migration_0010": "APPLIED",
+        "migration_0011": "APPLIED",
+        "mcp_table_count": 8,
+        "public_checks_passed": 5,
+        "public_checks_total": 5,
+        "exact_static_assets": 185,
+        "checks": [
+          "canonical resource with minimal read scope",
+          "OAuth discovery retains PKCE DCR and refresh",
+          "anonymous MCP requires OAuth with minimal challenge",
+          "malformed resume returns local branded reconnect page",
+          "connections do not leak without owner session"
+        ],
+        "owner_session_used": false,
+        "evidence_source": "Coordinator release/migration handoff and named sanitized hosted readback receipt",
+        "private_backup_read_or_published_by_review_worker": false,
+        "product_tests_repeated_by_review_worker": false,
+        "isolated_backup_restore_rehearsal": "Coordinator PASS; 36 existing backup tables preserved; bounded D1 migration proof only"
+      },
+      "connection_failure_checkpoint": {
+        "canonical_connection": "Registered App-backed private plugin",
+        "version": "1.0.1",
+        "state": "NOT_CONNECTED_ON_SERVER; tested host session product tools unavailable; diagnosis in progress",
+        "audience": "PRIVATE; unchanged",
+        "default_scopes": [
+          "marker:read",
+          "marker:write",
+          "marker:produce"
+        ],
+        "delete_default": false,
+        "portable_source_directory": "source/integrations/chatgpt/marker",
+        "portable_version": "0.1.0",
+        "portable_files": 3,
+        "portable_qualification": "Developer artifact does not create registered App binding by import alone",
+        "public_cta_identifier": "Canonical served CTA and historical raw-plugin identifier explicitly authorized public noncredential configuration; no account access conferred",
+        "private_app_binding_published": false,
+        "actual_owner_oauth": "NOT_COMPLETED_ON_SERVER; approved grant and token rows absent",
+        "actual_dot_conversation": "NOT_ESTABLISHED",
+        "physical_phone_validation": "NOT_ESTABLISHED",
+        "compatibility_qualification": "Actual host/protocol/voice support requires evidence; no all-host claim",
+        "owner_report": "Connected; owner report subsequently contradicted by missing server grants and host tool availability",
+        "observed_host_tools": "No product read/create/delete tools exposed in the tested session",
+        "plugin_management": "Connect still displayed",
+        "server_aggregate": {
+          "registered_clients": 1,
+          "approved_clients": 0,
+          "active_grants": 0,
+          "resumed_logins": 0,
+          "token_rows": 0
+        },
+        "latest_evidence": "Coordinator-relayed host observation and sanitized production aggregate counts; no private chat payload/configuration exported"
+      },
+      "qualification": "Historical failed-connection checkpoint superseded by current real OAuth/token/catalog evidence; inherited asset/migration checks retain original scope."
+    }
   },
   "fresh_package_checks": [
-    "complete 345-file source path/byte capture at explicit frozen HEAD",
-    "12 prior uncommitted demo paths byte-identical to preceding snapshot",
-    "AST syntax/routes/test-declaration indexes refreshed; 115 modules and zero parse diagnostics",
-    "all 11 D1 migrations reconstructed/replayed in empty SQLite with integrity/FK checks",
-    "private App bindings and runtime inputs excluded; authorized served CTA retained",
-    "source navigation, credential-pattern scan and refreshed package seal"
-  ]
+    "combined three-path source delta and complete 346-file eligible path set",
+    "unchanged tracked Git identities and twelve prior demo hashes verified",
+    "AST/routes/test navigation refreshed:116 modules,308 static declarations,zero parse diagnostics",
+    "unchanged schema/dependency catalog identities retained without execution",
+    "public exclusions, links, exact source/index bytes and refreshed package seal"
+  ],
+  "consent_callback_increment": {
+    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+    "intermediate_source_revision": "cd5e3fb57544a2699bab6fd2a5fbf77591ccc1a7",
+    "changed_paths": [
+      "server/mcp-auth.ts",
+      "tests/mcp-auth.test.ts",
+      "tests/mcp-consent-policy.test.ts"
+    ],
+    "consent_html_referrer_policy": "same-origin",
+    "dns_ipv4_return": "303; only validated exact callback origin added to consent form-action",
+    "bracketed_ipv6_return": "200 escaped meta-refresh and noreferrer fallback anchor; no JavaScript; no-store/no-referrer/self-only CSP",
+    "unsafe_callback_host_punctuation": "REJECTED before CSP construction",
+    "json_return_referrer_policy": "no-referrer",
+    "strict_origin_cookies_pkce_single_use": "RETAINED"
+  }
 }

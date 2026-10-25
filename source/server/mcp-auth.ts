@@ -60,8 +60,10 @@ function loopback(url: URL) { return ['127.0.0.1', '[::1]', 'localhost'].include
 function nativeCallback(url: URL) { return url.protocol === 'http:' && ['127.0.0.1', '[::1]'].includes(url.hostname); }
 function allowedRedirect(value: unknown, origin: URL) {
   const uri = text(value); let url: URL; try { url = new URL(uri); } catch { throw new OAuthError('invalid_redirect_uri'); }
+  // URL parsing alone permits host punctuation that is unsafe in a CSP source.
+  const safeHost = /^[a-z0-9.-]+$/i.test(url.hostname) || /^\[[0-9a-f:.]+\]$/i.test(url.hostname);
   const allowed = nativeCallback(url) || (url.protocol === 'https:' && !loopback(url)) || (loopback(origin) && loopback(url) && ['http:', 'https:'].includes(url.protocol));
-  if (url.href !== uri || url.username || url.password || url.hash || !allowed) throw new OAuthError('invalid_redirect_uri');
+  if (url.href !== uri || url.username || url.password || url.hash || !safeHost || (url.port && !/^\d+$/.test(url.port)) || !allowed) throw new OAuthError('invalid_redirect_uri');
   return uri;
 }
 function matchesRedirect(registered: string, candidate: string) {
@@ -71,10 +73,12 @@ function matchesRedirect(registered: string, candidate: string) {
   left.port = ''; right.port = '';
   return left.href === right.href;
 }
-function page(language: 'es' | 'en', content: string, status = 200) {
+function page(language: 'es' | 'en', content: string, status = 200, callbackOrigin?: string) {
   return new Response(`<!doctype html><html lang="${language}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>marKER</title><style>@font-face{font-family:Montserrat;src:url(/fonts/Montserrat-Variable.woff2) format('woff2');font-weight:100 900;font-display:swap}body{margin:0;background:#f7f6f0;color:#292927;font:16px Montserrat,Arial,sans-serif}main{max-width:480px;margin:5vh auto;padding:24px}img{display:block;width:280px;max-width:100%;height:auto;margin-bottom:24px}h1{font-size:24px}p,li{line-height:1.6}small{overflow-wrap:anywhere}button,a{font:inherit}button{padding:12px 18px;border:1px solid #ccc;background:#fff;border-radius:8px;cursor:pointer;margin:8px 8px 8px 0}button[value=allow]{background:#ffad67;border-color:#ffad67;color:#292927}a{color:#292927}</style><main><img src="/brand/marker-logo-v1.png" alt="marKER">${content}</main></html>`, { headers: {
-    'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY',
-    'Content-Security-Policy': "default-src 'none'; img-src 'self'; font-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",
+    // Native form POSTs need their same-origin Origin header for CSRF checks.
+    // Cross-origin navigation still sends no referrer under this policy.
+    'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Referrer-Policy': 'same-origin', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY',
+    'Content-Security-Policy': `default-src 'none'; img-src 'self'; font-src 'self'; style-src 'unsafe-inline'; form-action 'self'${callbackOrigin ? ' ' + callbackOrigin : ''}; frame-ancestors 'none'; base-uri 'none'`,
   }, status });
 }
 
@@ -96,8 +100,18 @@ export function createMcpAuthorization(options: { db: D1Database; origin: string
     if (!value) throw new OAuthError('invalid_client'); return value;
   }
   function redirect(consent: Consent, values: Record<string, string>) {
-    const url = new URL(consent.redirectUri); for (const [key, value] of Object.entries(values)) url.searchParams.set(key, value);
+    const url = new URL(allowedRedirect(consent.redirectUri, origin)); for (const [key, value] of Object.entries(values)) url.searchParams.set(key, value);
     if (consent.state) url.searchParams.set('state', consent.state); url.searchParams.set('iss', origin.origin);
+    if (url.hostname.startsWith('[')) {
+      // CSP host sources cannot represent bracketed IPv6. A completed same-origin
+      // document can navigate to the exact validated callback without a form.
+      const href = esc(url.href), es = consent.language === 'es';
+      return new Response(`<!doctype html><html lang="${consent.language}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=${href}"><title>marKER</title></head><body><p><a href="${href}" rel="noreferrer">${es ? 'Volver al asistente' : 'Return to assistant'}</a></p></body></html>`, { headers: {
+        'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer',
+        'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY',
+        'Content-Security-Policy': "default-src 'none'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",
+      } });
+    }
     return new Response(null, { status: 303, headers: { Location: url.href, 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' } });
   }
   async function register(request: Request) {
@@ -120,6 +134,8 @@ export function createMcpAuthorization(options: { db: D1Database; origin: string
     return response({ client_id: id, client_id_issued_at: issued, client_name: name, redirect_uris: redirects, token_endpoint_auth_method: 'none', grant_types: ['authorization_code', 'refresh_token'], response_types: ['code'], scope: MCP_SCOPES.join(' ') }, 201);
   }
   async function openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string) {
+    const callback = new URL(allowedRedirect(consent.redirectUri, origin));
+    const callbackOrigin = callback.hostname.startsWith('[') ? undefined : callback.origin;
     await store.cleanup(now());
     if (!await store.rate(await hash('consent:' + principal.userId), now(), 30, 600)) throw new OAuthError('slow_down', 429);
     const nonce = opaque(), nonceHash = await hash(nonce), expires = now()+600;
@@ -136,7 +152,7 @@ export function createMcpAuthorization(options: { db: D1Database; origin: string
     }
     const es = consent.language === 'es';
     const labels: Record<string, string> = es ? { 'marker:read': 'Consultar productos, biblioteca y campañas', 'marker:write': 'Crear y editar materiales, campañas y propuestas', 'marker:produce': 'Preparar renders y exportar versiones aprobadas', 'marker:delete': 'Eliminar elementos que marKER permita borrar' } : { 'marker:read': 'Read products, library and campaigns', 'marker:write': 'Create and edit materials, campaigns and proposals', 'marker:produce': 'Prepare renders and export approved versions', 'marker:delete': 'Delete items that marKER allows to be deleted' };
-    return page(consent.language, `<h1>${es ? 'Conectar' : 'Connect'} ${esc(app.name)}</h1><p>${esc(principal.email)}</p><ul>${scopes(consent.scope).map(scope => `<li>${labels[scope]}</li>`).join('')}</ul><small>${es ? 'Volverás a' : 'Return address'}: ${esc(new URL(consent.redirectUri).origin)}</small><form method="post" action="${ROUTE}authorize"><input type="hidden" name="request" value="${nonce}"><button name="decision" value="allow">${es ? 'Permitir' : 'Allow'}</button><button name="decision" value="deny">${es ? 'Cancelar' : 'Cancel'}</button></form>`);
+    return page(consent.language, `<h1>${es ? 'Conectar' : 'Connect'} ${esc(app.name)}</h1><p>${esc(principal.email)}</p><ul>${scopes(consent.scope).map(scope => `<li>${labels[scope]}</li>`).join('')}</ul><small>${es ? 'Volverás a' : 'Return address'}: ${esc(callback.origin)}</small><form method="post" action="${ROUTE}authorize"><input type="hidden" name="request" value="${nonce}"><button name="decision" value="allow">${es ? 'Permitir' : 'Allow'}</button><button name="decision" value="deny">${es ? 'Cancelar' : 'Cancel'}</button></form>`, 200, callbackOrigin);
   }
   async function startLogin(request: Request, consent: Consent) {
     await store.cleanup(now());

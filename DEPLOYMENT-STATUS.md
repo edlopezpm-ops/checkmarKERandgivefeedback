@@ -1,25 +1,26 @@
-# Hosted assistant integration deployment status
+# Hosted assistant connection status
 
-Current source: `00398e155dcbd0a05942bf3466cfe8a29a63c604` plus the twelve explicitly inventoried uncommitted demo paths. All 345 eligible source files are included. The preceding 336-file publication remains in Git at `17fffc123149d62b87df4da430628cea6f453b06`; its source/deployment facts are historical.
+Current source: `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus twelve explicitly inventoried, byte-preserved uncommitted demo paths. The public projection includes 346 source files. Since public snapshot `e4553fa`, only the authorization source and two test files changed across the consent-referrer and callback-return corrections.
 
 | Item | Current evidence boundary |
 | --- | --- |
-| Active Worker | `d48f31ec-1641-4097-bb5f-c0ccd7fd26ae`, 100% allocation; timestamp `2026-10-25T02:01:10.735Z`. |
-| D1 | Migration 0011 applied after fresh private backup and isolated restore/migration rehearsal; 0010 remains applied. Eight MCP application tables. |
-| Fresh hosted readback | Five checks PASS at `2026-10-25T02:01:28.630Z`; no owner session used. |
-| Static assets | 185 files matched SHA-256. No new total-byte measurement is supplied by this receipt. |
-| Protected-resource metadata | Canonical resource with minimal read scope. |
-| OAuth discovery | PKCE, dynamic client registration and refresh retained. |
-| Anonymous MCP | OAuth required with minimal authentication challenge. |
-| Bad login continuation | Malformed resume returns the local branded reconnect page. |
-| Owner connection privacy | Connection list remains unavailable without an owner session. |
+| Active Worker | `d5f43234-74b2-4c45-a850-4f1dab75620c`, 100% allocation. |
+| Release validation | Coordinator reports 28 focused OAuth/SDK/policy tests, server TypeScript, Worker dry run and independent final review PASS. |
+| Actual browser fixtures | Synthetic Edge IPv4 and IPv6 cases each reach one callback, one grant, HTTP 200 code exchange and one token; no CSP errors or external referrer. |
+| Actual owner OAuth | Returned to ChatGPT; its Connect action disappeared. |
+| Actual host discovery | Fourteen tools: six Read and eight Write. Native prepare/classify visible; `marker_delete` absent. |
+| Sanitized server aggregates | One approved client, one exchanged code, one token row, two grant rows; one grant is retained from the earlier failed return. |
+| Actual connected reads | `marker_get_profile` and `marker_search` (products, limit 1), both `isError=false`; identity present and revision/items structure valid. No owner payload published. |
+| Business writes | Not invoked. Remaining tool paths and a complete campaign remain untested. |
+| Fresh public readback | Five anonymous checks and 185 exact asset SHA matches at `2026-10-25T02:34:09Z`; generic error HTML same-origin policy and self-only CSP. This anonymous receipt does not assess owner authentication. |
+| Broader experience | Complete assistant-driven campaign, Dot/voice conversation, phone behavior and human UAT remain unverified. |
 
-The implementation coordinator supplied the release/migration/test facts. This review worker read only the named sanitized public-check receipt; it did not read backups, App bindings, credentials, tokens or owner records, query production, deploy, invoke a provider or repeat product tests. The coordinator reports 47 focused tests, build/logo checks and an independent review with no actionable finding. Synthetic desktop/mobile production-UI fixtures made zero `/api/agents` calls and exposed no bridge commands.
+The first correction made consent HTML use `Referrer-Policy: same-origin`, preserving native form Origin checks. The second permits only the validated DNS/IPv4 callback origin in consent CSP for its 303 return. Bracketed IPv6 uses an escaped meta-refresh/fallback-anchor document, with no JavaScript, `no-store`, `no-referrer` and self-only CSP. Unsafe hostname punctuation is rejected. Strict Origin validation, owner cookies, client/resource/PKCE matching and single-use consent remain enforced. JSON and return responses retain `no-referrer`.
 
-The narrow backup rehearsal preserved 36 existing tables from that backup before applying 0011 in isolation. It is distinct from the fresh empty application-schema reconstruction and does not prove complete R2/job/provider recovery. No backup contents or fingerprints are published here.
+The implementation coordinator supplied these final deployment/browser/host facts. This documentary worker did not open private account UI screenshots, chat payloads, tokens, codes, App bindings, backups or owner records; it did not invoke product tools, query production, deploy or rerun product tests. The source and review-package identities are independently checked here.
 
-The canonical connection is an **App-backed private plugin version 1.0.1** with read/write/produce defaults and delete unchecked. Its ordinary installation CTA and the historical raw-plugin identifier retained in the design document are authorized public noncredential configuration, previously served by the product. This does not widen the plugin audience or publish its private binding. The portable 0.1.0 package remains a developer artifact; the earlier raw plugin checkpoint is not the canonical connection.
+Migrations 0010/0011 remain applied from the preceding release. No new migration or asset change accompanies this correction. The coordinator freshly reran five anonymous checks and the 185-asset SHA readback on the final Worker at the timestamp above. Those public checks are separate from actual owner OAuth and the two connected read operations. Prior D1 restoration/0011 rehearsal and earlier local native-media evidence retain their stated scopes.
 
-**The actual server connection is incomplete and under diagnosis.** The owner reported “Connected”, but the subsequent host test session exposed no product read/create/delete tools and plugin management still offered Connect. Sanitized production aggregates show **one registered client, zero approved clients, zero active grants, zero resumed logins and zero token rows**. These aggregate facts are supplied by the coordinator; no chat payload, account identifier or private configuration is published. No successful delegated tool execution, Dot conversation or physical-phone validation is established. Registered plugin/configuration, local SDK runs, public metadata checks and mobile viewport fixtures do not prove them. No 100% host compatibility, voice support, human UAT or creative acceptance is asserted.
+The App-backed private plugin remains version 1.0.1, with read/write/produce defaults and delete unchecked. Its served CTA and historical raw-plugin identifier are authorized public noncredential configuration; private binding files remain excluded and the audience remains private. The portable 0.1.0 package is a separate developer artifact.
 
-Earlier publication [17fffc1](https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/17fffc123149d62b87df4da430628cea6f453b06/DEPLOYMENT-STATUS.md) preserves Worker `99baf771`, 18 hosted checks, 182 exact assets and the previous installed-page/zero-grant checkpoint. Those observations are not relabeled as fresh checks of this release. Public endpoint: [marKER MCP](https://marker.aekr.io/api/mcp).
+The unsuccessful connection state is preserved in [the preceding public status](https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b/DEPLOYMENT-STATUS.md). Current OAuth/token/catalog and two actual read operations supersede that failure checkpoint. They do not establish universal host compatibility, successful business writes or a complete campaign. Public endpoint: [marKER MCP](https://marker.aekr.io/api/mcp).
