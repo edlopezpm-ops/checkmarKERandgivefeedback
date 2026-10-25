@@ -57,7 +57,7 @@
     "types_build_logo_worker_dry_run": "PASS",
     "real_local_sdk_media_flow": "OAuth PKCE, native plan/save, FFmpeg 10s 1080x1920, separate first-party approval, private delegated export 46703 bytes",
     "provider_model_calls_in_mcp_fixture": 0,
-    "qualification": "Reported by implementation coordinator; not independently rerun by dossier worker. Local SDK tests do not establish installed Dot/host or a hosted authenticated campaign; hosted activation has separate evidence below.",
+    "qualification": "Reported by implementation coordinator; not independently rerun by dossier worker. Local SDK tests do not establish authorized Dot/host tools or a hosted authenticated campaign; hosted activation has separate evidence below.",
     "focused_tests_total": 75,
     "later_sdk_tool_contract_subset": 12,
     "profile_tool_contract": "standard {id}; stable across reconnect",
@@ -65,7 +65,7 @@
     "parent_review": "PASS_WITH_OBSERVATIONS; bounded scope, no product-wide certification"
   },
   "not_established_by_refresh": [
-    "actual Dot/ChatGPT/other-host installation and conversation",
+    "actual desktop/other-host connection and tool conversation",
     "actual host owner OAuth and hosted authenticated end-to-end campaign",
     "human UAT/creative time-saved pilot/physical-device acceptance",
     "hosted analysis toolchain",
@@ -159,7 +159,7 @@
     "product_tests_repeated_by_review_worker": false
   },
   "host_plugin_package": {
-    "state": "Private user-level package created and manifest read back; host installation and owner OAuth pending",
+    "state": "Account plugin page visibly lists Installed with one MCP server and one skill; server OAuth and actual Dot tools/conversation remain unverified",
     "canonical_source_directory": "source/integrations/chatgpt/marker",
     "source_files": 3,
     "coordinator_zip_byte_parity_and_manifest_contract": "PASS",
@@ -171,7 +171,11 @@
     "delete_default": false,
     "private_account_identifiers_published": false,
     "actual_dot_conversation": "NOT_ESTABLISHED",
-    "host_handoff": "CAPTCHA requires owner action",
-    "compatibility_qualification": "OpenAI authentication extensions may diverge from generic portable base-schema validation; no all-host claim"
+    "host_handoff": "Owner completed CAPTCHA; browser security blocked desktop Open ChatGPT. Owner must finish desktop opening manually; no workaround used.",
+    "compatibility_qualification": "OpenAI authentication extensions may diverge from generic portable base-schema validation; no all-host claim",
+    "registered_clients_aggregate": 0,
+    "active_grants_aggregate": 0,
+    "aggregate_inspection_rows_written": 0,
+    "evidence_source": "Coordinator-reported visible account page and readonly aggregate D1 inspection; no private identifiers published"
   }
 }

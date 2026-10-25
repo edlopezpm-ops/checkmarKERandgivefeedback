@@ -11,7 +11,7 @@ Read [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review pr
 | Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
 | Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
 | Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records migration 0010, production Worker identity, public metadata/denial checks and asset parity supplied by the implementation coordinator. |
-| Not established | Actual host installation/OAuth and Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
+| Not established | Owner OAuth, desktop host use and Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
 
 The review contains no private governance, owner workspace, sessions, provider accounts or runtime database rows. Schema catalogs are empty reconstructions. Test fixtures and Help/demo assets are synthetic/public product material. Package integrity is not security certification or product acceptance.
 

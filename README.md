@@ -14,7 +14,7 @@ This public repository contains the complete reviewable marKER product snapshot:
 | [Data catalog](11-database-and-catalog-reference.md) | All included D1 migrations replayed into an empty SQLite schema; local Studio schema separately reconstructed. |
 | [Evidence and limits](08-operations-quality-and-limits.md) | Fresh package checks versus root-reported product checks, deployment and actual host/device gaps. |
 
-marKER's native Space → classify → prepare editable campaign → render → review/approve → export flow works without an AI connection. Optional local Agents and the external MCP adapter reuse that foundation. An export is not social publication. The [hosted MCP release is now technically verified](DEPLOYMENT-STATUS.md): migration 0010 is applied and Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` serves production at 100%. Actual host installation/OAuth and a Dot conversation remain unverified.
+marKER's native Space → classify → prepare editable campaign → render → review/approve → export flow works without an AI connection. Optional local Agents and the external MCP adapter reuse that foundation. An export is not social publication. The [hosted MCP release is now technically verified](DEPLOYMENT-STATUS.md): migration 0010 is applied and Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` serves production at 100%. The account plugin is visibly listed as Installed; owner OAuth, desktop host use and a Dot conversation remain unverified.
 
 Public demo: [watch](https://marker.aekr.io/demo/); both original public MP4s, poster, captions and player are included in [source/public/demo/](source/public/demo/), with [metadata/URLs/hashes](inventories/public-media.json). Original branding and font license files are preserved.
 

@@ -39,9 +39,15 @@ uses the hosted endpoint and public-client dynamic registration, with read,
 write and produce permissions requested by default. Delete is not a default
 permission. Private account IDs and installation links are not published here.
 
-**Actual host installation, owner OAuth consent and Dot conversation remain
-pending.** The host page required CAPTCHA and owner handoff. Creating the plugin
-package and deploying the server do not establish a connected or conversational
-experience. Human UAT, physical-device/creative pilot and backup restoration
+After the owner completed CAPTCHA, the account plugin page visibly listed
+**Installed**, with **one MCP server and one skill**. A fresh readonly aggregate
+D1 inspection still showed **zero registered clients and zero active grants**,
+with zero rows written. The start action navigated to a desktop open-app page;
+browser security blocked Open ChatGPT and the owner was asked to complete desktop
+opening manually. No workaround was used.
+
+**Owner OAuth, actual Dot tools and a conversation remain unverified.** Account
+installation visibility and server deployment do not establish an authorized
+tool connection or conversational experience. Human UAT, physical-device/creative pilot and backup restoration
 remain separate. A successful backup or retained previous Worker reference is
 not proof of a completed restoration.

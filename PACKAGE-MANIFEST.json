@@ -21,9 +21,9 @@
     },
     {
       "path": "00-START-HERE.md",
-      "bytes": 2735,
-      "sha256": "b791167a64656097fca9b297d1baca267a9c63d1fa1e7c8fbb03577f858e1128",
-      "lf_text_sha256": "b791167a64656097fca9b297d1baca267a9c63d1fa1e7c8fbb03577f858e1128"
+      "bytes": 2734,
+      "sha256": "1bdac5859f7b3311298a71f793b1820074ee8879f17564bd5876f3822212be5a",
+      "lf_text_sha256": "1bdac5859f7b3311298a71f793b1820074ee8879f17564bd5876f3822212be5a"
     },
     {
       "path": "01-architecture-and-stack.md",
@@ -63,15 +63,15 @@
     },
     {
       "path": "07-integrations-and-capability-status.md",
-      "bytes": 7281,
-      "sha256": "a39ba033040fb2282ef47ad29629190aed0006e67c5c65e718c1836a2edb455c",
-      "lf_text_sha256": "a39ba033040fb2282ef47ad29629190aed0006e67c5c65e718c1836a2edb455c"
+      "bytes": 7574,
+      "sha256": "8b429b196e08d4bdcba6773d114bc1a851dbdf9abd520f1e68a2b0915ea792d8",
+      "lf_text_sha256": "8b429b196e08d4bdcba6773d114bc1a851dbdf9abd520f1e68a2b0915ea792d8"
     },
     {
       "path": "08-operations-quality-and-limits.md",
-      "bytes": 6613,
-      "sha256": "1d56b08ba2b3c625703ad6079440b020898b286e4eefdec53b90143e1c71203e",
-      "lf_text_sha256": "1d56b08ba2b3c625703ad6079440b020898b286e4eefdec53b90143e1c71203e"
+      "bytes": 6807,
+      "sha256": "bad40bdb964652a770179dcfeb2182d0525aea2e5887207e1ed4ff1a150a3681",
+      "lf_text_sha256": "bad40bdb964652a770179dcfeb2182d0525aea2e5887207e1ed4ff1a150a3681"
     },
     {
       "path": "09-review-guide-and-open-decisions.md",
@@ -93,15 +93,15 @@
     },
     {
       "path": "AI-QUICK-CONTEXT.md",
-      "bytes": 2347,
-      "sha256": "4cf6d49b424d8349dbe9a4d8bec91b58e2c5efc9ed84e8daa3ba3f09d457e9ad",
-      "lf_text_sha256": "4cf6d49b424d8349dbe9a4d8bec91b58e2c5efc9ed84e8daa3ba3f09d457e9ad"
+      "bytes": 2448,
+      "sha256": "7656424ae960e92f2fc5a3f28e03fb616ce4a1f907ca582a2eecce1103b23412",
+      "lf_text_sha256": "7656424ae960e92f2fc5a3f28e03fb616ce4a1f907ca582a2eecce1103b23412"
     },
     {
       "path": "AI_ANALYSIS_PROMPT.md",
-      "bytes": 2794,
-      "sha256": "82fb7e89bd4618c113cd4255c00538a60243a887736e13fd6766c6ce26e7c7f6",
-      "lf_text_sha256": "82fb7e89bd4618c113cd4255c00538a60243a887736e13fd6766c6ce26e7c7f6"
+      "bytes": 2801,
+      "sha256": "71a00206c2279b9655cd704c4aa5aadf61c6f8ff68eecf22879d8fba5b97a04d",
+      "lf_text_sha256": "71a00206c2279b9655cd704c4aa5aadf61c6f8ff68eecf22879d8fba5b97a04d"
     },
     {
       "path": "code-flow/01-request-auth-and-storage.md",
@@ -147,9 +147,9 @@
     },
     {
       "path": "CURRENT-STATE.json",
-      "bytes": 8840,
-      "sha256": "7f6d2767b092ded6026ad650d07ebf09d51ff0855e7d9202c6194ca7cf84188f",
-      "lf_text_sha256": "7f6d2767b092ded6026ad650d07ebf09d51ff0855e7d9202c6194ca7cf84188f"
+      "bytes": 9251,
+      "sha256": "927bd047f83373e06dee5e2c43b1c4674befe176d273f317d29d9d425b272181",
+      "lf_text_sha256": "927bd047f83373e06dee5e2c43b1c4674befe176d273f317d29d9d425b272181"
     },
     {
       "path": "database/d1-catalog.json",
@@ -201,9 +201,9 @@
     },
     {
       "path": "DEPLOYMENT-STATUS.md",
-      "bytes": 3373,
-      "sha256": "a0717bc2e9834e36b549f9bff4051e016b1d23ae793539df197ec3108843000b",
-      "lf_text_sha256": "a0717bc2e9834e36b549f9bff4051e016b1d23ae793539df197ec3108843000b"
+      "bytes": 3765,
+      "sha256": "35036625c6baa961039db12bab73a64e94ebac78305d72ff248d1c3a5e69a41c",
+      "lf_text_sha256": "35036625c6baa961039db12bab73a64e94ebac78305d72ff248d1c3a5e69a41c"
     },
     {
       "path": "inventories/ast-index.json",
@@ -285,15 +285,15 @@
     },
     {
       "path": "marKER-FULL-DOSSIER-2026-10-24.md",
-      "bytes": 233376,
-      "sha256": "a88e283f92981d43ff74a812047fbfc7e51642a763c1499f826607c0de560f9c",
-      "lf_text_sha256": "a88e283f92981d43ff74a812047fbfc7e51642a763c1499f826607c0de560f9c"
+      "bytes": 233869,
+      "sha256": "5be759822f24737ca0d08167fff6352d821db5b2c272fb7efba878db2384c2b6",
+      "lf_text_sha256": "5be759822f24737ca0d08167fff6352d821db5b2c272fb7efba878db2384c2b6"
     },
     {
       "path": "marKER-FULL-DOSSIER.md",
-      "bytes": 233376,
-      "sha256": "a88e283f92981d43ff74a812047fbfc7e51642a763c1499f826607c0de560f9c",
-      "lf_text_sha256": "a88e283f92981d43ff74a812047fbfc7e51642a763c1499f826607c0de560f9c"
+      "bytes": 233869,
+      "sha256": "5be759822f24737ca0d08167fff6352d821db5b2c272fb7efba878db2384c2b6",
+      "lf_text_sha256": "5be759822f24737ca0d08167fff6352d821db5b2c272fb7efba878db2384c2b6"
     },
     {
       "path": "NOTICE.md",
@@ -303,9 +303,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 3350,
-      "sha256": "5b0c81e26aad6764ab1f414e8f66e4931d8088ba91983387cab3d372de61201a",
-      "lf_text_sha256": "5b0c81e26aad6764ab1f414e8f66e4931d8088ba91983387cab3d372de61201a"
+      "bytes": 3400,
+      "sha256": "ac6a18523f1bcb7cd8a351ae7b723356a2deb8b7c007fbfc532fc04b50017f0e",
+      "lf_text_sha256": "ac6a18523f1bcb7cd8a351ae7b723356a2deb8b7c007fbfc532fc04b50017f0e"
     },
     {
       "path": "review-assets/mcp-connections-es-dark.png",

@@ -14,7 +14,7 @@ The initial review publication `80fc3db` captured source before the newly author
 
 The owner then authorized the private D1 backup, additive migration 0010 and deployment. The coordinator reports Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, independent hosted readback **18/18 PASS**, all **182 dist assets** byte/SHA-identical (**32,761,835 bytes**), the exact approved logo and both public demo range/HEAD checks passing. Readonly D1 inspection confirms migration 0010 and its seven tables, with zero rows written by the inspection. [DEPLOYMENT-STATUS.md](DEPLOYMENT-STATUS.md) records the bounded public evidence. This review worker reads no backup and makes no change to the canonical product repository or runtime.
 
-This establishes the verified hosted server/assets and negative authorization behavior. Actual private-plugin installation, owner OAuth consent and Dot conversation remain incomplete; the host page requires owner handling of CAPTCHA. No new human UAT, creative-quality result, real hosted authenticated end-to-end campaign or restoration proof is inferred.
+This establishes the verified hosted server/assets and negative authorization behavior. After owner-completed CAPTCHA, the account plugin page visibly lists Installed, one MCP server and one skill. Owner OAuth and Dot tools/conversation remain unverified: readonly aggregate D1 inspection reported zero registered clients and active grants. Browser security blocked the desktop-open action; manual owner handoff remains. No new human UAT, creative-quality result, real hosted authenticated end-to-end campaign or restoration proof is inferred.
 
 | Operational control | Bound and limitation |
 | --- | --- |
@@ -29,4 +29,4 @@ Known orphan multipart uploads without a recoverable reference depend on the buc
 
 Review exact Node/FFmpeg/managed-container compatibility before deployment, apply additive migrations through the existing release process, and verify Worker routing, source assets and authenticated flows separately. Do not run bridge `--smoke`, deployment, remote migrations or owner deletion merely to read this dossier. The provided source enables review and local synthetic verification without those effects.
 
-Remaining evidence gaps: actual external-host install/consent/conversation; iPhone/Safari and Android/Chrome physical capture/codec/interruption checks; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; restore rehearsal; broader security/accessibility evaluation. No product-wide acceptance or independent containment is claimed.
+Remaining evidence gaps: actual desktop host connection/consent/tool conversation; iPhone/Safari and Android/Chrome physical capture/codec/interruption checks; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; restore rehearsal; broader security/accessibility evaluation. No product-wide acceptance or independent containment is claimed.

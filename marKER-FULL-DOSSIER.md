@@ -22,7 +22,7 @@ Read [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review pr
 | Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
 | Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
 | Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records migration 0010, production Worker identity, public metadata/denial checks and asset parity supplied by the implementation coordinator. |
-| Not established | Actual host installation/OAuth and Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
+| Not established | Owner OAuth, desktop host use and Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
 
 The review contains no private governance, owner workspace, sessions, provider accounts or runtime database rows. Schema catalogs are empty reconstructions. Test fixtures and Help/demo assets are synthetic/public product material. Package integrity is not security certification or product acceptance.
 
@@ -252,14 +252,14 @@ Expired grants cascade credentials and request receipts; applied product entitie
 | Native manual/editorial/Studio/planner | Implemented; prior hosted delivery and current local native checks have separate evidence. |
 | Deterministic missing-label classification/library preparation | Implemented and verified locally; no semantic inference. |
 | Local managed-ChatGPT Agents bridge | Implemented; one prior actual fictional-copy request reported in product docs; no new provider call in this refresh. |
-| Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; actual Dot/other-host installation/conversation remains unestablished. |
+| Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; actual authorized Dot/other-host tools and conversation remain unestablished. |
 | Hosted MCP migration/deployment | Migration 0010 and all seven tables verified; Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, with hosted metadata/denial and asset readback. See [deployment evidence](DEPLOYMENT-STATUS.md). |
 | Hosted SIWC inference | Admission/client/effective plan grant unresolved. |
 | Hosted technical analysis | Disabled until native toolchain verification. |
 | Connected social APIs, advertising activation, live metrics, Android automation | Deferred/unimplemented. |
 | Transcription/subtitles/semantic media selection/PWA background capture | Separate future capabilities. |
 
-A private user-level plugin package was created and its manifest read back. Its default requested permissions are read, write and produce; delete is not a default permission. Package creation does not install it in the host or complete owner OAuth. The actual host page encountered CAPTCHA and needs the owner's action; no successful Dot connection or conversation is asserted. Private account identifiers and the private installation URL are intentionally outside this public dossier.
+A private user-level plugin package was created and its manifest read back. Its default requested permissions are read, write and produce; delete is not a default permission. After the owner completed CAPTCHA, the account plugin page visibly listed marKER as Installed with one MCP server and one skill. This does not complete server OAuth: readonly aggregate D1 inspection still reported zero registered clients and zero active grants, with zero rows written. The start action reached a desktop open-app page; browser security blocked Open ChatGPT, so the owner must finish desktop opening manually. No successful Dot tool connection or conversation is asserted. Private account identifiers and the private installation URL are intentionally outside this public dossier.
 
 The reproducible package lives in [plugin.json](source/integrations/chatgpt/marker/plugin.json), [mcp.json](source/integrations/chatgpt/marker/mcp.json) and [prepare-campaign/SKILL.md](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). It contains no account-specific installation ID or credential. The skill requires current revisions, stable request IDs, explicit facts/rights and first-party approval. The coordinator verified three-file ZIP parity and the intended manifest contract. OpenAI authentication extensions can diverge from the generic portable base-schema validation; this is not an all-host compatibility claim. The package commit changes no application runtime.
 
@@ -284,7 +284,7 @@ The initial review publication `80fc3db` captured source before the newly author
 
 The owner then authorized the private D1 backup, additive migration 0010 and deployment. The coordinator reports Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, independent hosted readback **18/18 PASS**, all **182 dist assets** byte/SHA-identical (**32,761,835 bytes**), the exact approved logo and both public demo range/HEAD checks passing. Readonly D1 inspection confirms migration 0010 and its seven tables, with zero rows written by the inspection. [DEPLOYMENT-STATUS.md](DEPLOYMENT-STATUS.md) records the bounded public evidence. This review worker reads no backup and makes no change to the canonical product repository or runtime.
 
-This establishes the verified hosted server/assets and negative authorization behavior. Actual private-plugin installation, owner OAuth consent and Dot conversation remain incomplete; the host page requires owner handling of CAPTCHA. No new human UAT, creative-quality result, real hosted authenticated end-to-end campaign or restoration proof is inferred.
+This establishes the verified hosted server/assets and negative authorization behavior. After owner-completed CAPTCHA, the account plugin page visibly lists Installed, one MCP server and one skill. Owner OAuth and Dot tools/conversation remain unverified: readonly aggregate D1 inspection reported zero registered clients and active grants. Browser security blocked the desktop-open action; manual owner handoff remains. No new human UAT, creative-quality result, real hosted authenticated end-to-end campaign or restoration proof is inferred.
 
 | Operational control | Bound and limitation |
 | --- | --- |
@@ -299,7 +299,7 @@ Known orphan multipart uploads without a recoverable reference depend on the buc
 
 Review exact Node/FFmpeg/managed-container compatibility before deployment, apply additive migrations through the existing release process, and verify Worker routing, source assets and authenticated flows separately. Do not run bridge `--smoke`, deployment, remote migrations or owner deletion merely to read this dossier. The provided source enables review and local synthetic verification without those effects.
 
-Remaining evidence gaps: actual external-host install/consent/conversation; iPhone/Safari and Android/Chrome physical capture/codec/interruption checks; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; restore rehearsal; broader security/accessibility evaluation. No product-wide acceptance or independent containment is claimed.
+Remaining evidence gaps: actual desktop host connection/consent/tool conversation; iPhone/Safari and Android/Chrome physical capture/codec/interruption checks; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; restore rehearsal; broader security/accessibility evaluation. No product-wide acceptance or independent containment is claimed.
 
 
 ---
@@ -1854,7 +1854,7 @@ Review this repository as the current full-source snapshot of marKER. Begin with
 
 Assess end-to-end product/workflow usefulness, frontend state/recovery/accessibility, backend/domain correctness, schema/CAS/concurrency, original-media custody and processing, native classification/planning, optional local Agents, authenticated external MCP, owner identity/Profile/deletion, security/privacy/retention/limits, operational recovery, dependencies and justified complexity. Preserve the independent native no-agent path and original brand assets. Do not propose replacing deterministic rules with prompts.
 
-Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The hosted migration/deployment and its bounded readback are recorded in DEPLOYMENT-STATUS.md. Do not extend that evidence into actual Dot/host installation/OAuth/conversation, authenticated hosted campaign execution, external identity activation, physical-device UAT, creative quality, invoice limits or restoration. Review the canonical host-package source and its OpenAI authentication extensions without assuming compatibility with every host. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
+Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The hosted migration/deployment and its bounded readback are recorded in DEPLOYMENT-STATUS.md. Do not extend that evidence into actual desktop host connection/OAuth/tool conversation, authenticated hosted campaign execution, external identity activation, physical-device UAT, creative quality, invoice limits or restoration. Review the canonical host-package source and its OpenAI authentication extensions without assuming compatibility with every host. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
 
 For each finding give priority, exact source path and line, concrete trigger/counterexample, impact, confidence and evidence, minimal coherent correction, affected boundaries, invariants to preserve, focused failure/concurrency checks and migration/recovery implications. Separate confirmed defects, plausible risks, usability opportunities and optional roadmap. Avoid generic best practices, invented facts/endpoints, duplicate systems and unsupported security certification.
 
