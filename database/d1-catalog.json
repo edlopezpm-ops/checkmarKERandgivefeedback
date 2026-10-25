@@ -28,13 +28,664 @@
       "path": "migrations-d1/0005_studio_settings.sql",
       "sha256": "e1afc97c1a451b4710b03c4fd466319d3fd488b645f824d3799c992258ccb663",
       "text_lines": 13
+    },
+    {
+      "path": "migrations-d1/0006_agents.sql",
+      "sha256": "7cfce64aa41bf68880b366170652922de42c5e496425dfa903e63fa3923c632b",
+      "text_lines": 13
+    },
+    {
+      "path": "migrations-d1/0007_single_tenant_auth.sql",
+      "sha256": "9b699cc815e2c0748e0ff10cee1f866f3f19e25df0eeffa146e797afa6333926",
+      "text_lines": 39
+    },
+    {
+      "path": "migrations-d1/0008_github_auth.sql",
+      "sha256": "7bf1c097f5fa726cb7c0687cf745808df603cb8af76b2a149bae371d3f060131",
+      "text_lines": 24
+    },
+    {
+      "path": "migrations-d1/0009_profile_account.sql",
+      "sha256": "ad0d7a0bbf4474b86ce935afb37114e1eeb2b623c86e71333db26b54d8c2904b",
+      "text_lines": 187
+    },
+    {
+      "path": "migrations-d1/0010_mcp.sql",
+      "sha256": "29a254501f66ef75b814cc0faa4b784bcaf8dd5b9a3c99480479f95cf28100fa",
+      "text_lines": 59
     }
   ],
-  "table_count": 15,
-  "column_count": 82,
-  "explicit_index_count": 8,
-  "trigger_count": 0,
+  "table_count": 35,
+  "column_count": 195,
+  "explicit_index_count": 14,
+  "trigger_count": 69,
   "tables": [
+    {
+      "name": "marker_account_lifecycle",
+      "ddl": "CREATE TABLE marker_account_lifecycle (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  status TEXT NOT NULL CHECK(status IN ('active','deleting','deleted')),\n  phase TEXT NOT NULL CHECK(phase IN ('active','processor','waiting','uploads','media','database','done')),\n  capability_hash TEXT CHECK(capability_hash IS NULL OR length(capability_hash)=64),\n  lease_token TEXT,\n  lease_until INTEGER NOT NULL DEFAULT 0,\n  deleted_objects INTEGER NOT NULL DEFAULT 0 CHECK(deleted_objects>=0),\n  needs_retry INTEGER NOT NULL DEFAULT 0 CHECK(needs_retry IN (0,1))\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "phase",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "capability_hash",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "lease_token",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "lease_until",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "deleted_objects",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 7,
+          "name": "needs_retry",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    {
+      "name": "marker_agent_connections",
+      "ddl": "CREATE TABLE marker_agent_connections(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL, updated_at TEXT NOT NULL, document TEXT NOT NULL CHECK(json_valid(document)))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "updated_at",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_agent_connections_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_agent_events",
+      "ddl": "CREATE TABLE marker_agent_events(id TEXT PRIMARY KEY,run_id TEXT NOT NULL,session_id TEXT NOT NULL,created_at TEXT NOT NULL,document TEXT NOT NULL CHECK(json_valid(document)))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "run_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "session_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "created_at",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "marker_agent_events_session",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 2,
+              "name": "session_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 3,
+              "name": "created_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_agent_events_session ON marker_agent_events(session_id,created_at)"
+        },
+        {
+          "name": "sqlite_autoindex_marker_agent_events_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_agent_meta",
+      "ddl": "CREATE TABLE marker_agent_meta(id INTEGER PRIMARY KEY CHECK(id=1),revision INTEGER NOT NULL DEFAULT 0,document TEXT NOT NULL CHECK(json_valid(document)))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    {
+      "name": "marker_agent_proposals",
+      "ddl": "CREATE TABLE marker_agent_proposals(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL, updated_at TEXT NOT NULL, document TEXT NOT NULL CHECK(json_valid(document)))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "updated_at",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "marker_agent_proposals_session",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": -2,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_agent_proposals_session ON marker_agent_proposals(json_extract(document,'$.sessionId'))"
+        },
+        {
+          "name": "sqlite_autoindex_marker_agent_proposals_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_agent_runs",
+      "ddl": "CREATE TABLE marker_agent_runs(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL, updated_at TEXT NOT NULL, document TEXT NOT NULL CHECK(json_valid(document)))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "updated_at",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "marker_agent_runs_session",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": -2,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_agent_runs_session ON marker_agent_runs(json_extract(document,'$.sessionId'))"
+        },
+        {
+          "name": "marker_agent_runs_status",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 2,
+              "name": "status",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 3,
+              "name": "updated_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_agent_runs_status ON marker_agent_runs(status,updated_at)"
+        },
+        {
+          "name": "sqlite_autoindex_marker_agent_runs_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_agent_sessions",
+      "ddl": "CREATE TABLE marker_agent_sessions(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'open', updated_at TEXT NOT NULL, document TEXT NOT NULL CHECK(json_valid(document)))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": "'open'",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "updated_at",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_agent_sessions_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
     {
       "name": "marker_auth_challenges",
       "ddl": "CREATE TABLE marker_auth_challenges (\n  challenge_hash TEXT PRIMARY KEY CHECK (length(challenge_hash) = 64),\n  owner_hash TEXT NOT NULL CHECK (length(owner_hash) = 64),\n  code_hash TEXT NOT NULL CHECK (length(code_hash) = 64),\n  created_at INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL CHECK (expires_at = created_at + 300),\n  attempts INTEGER NOT NULL DEFAULT 0 CHECK (attempts BETWEEN 0 AND 5),\n  consumed_at INTEGER\n) WITHOUT ROWID",
@@ -173,6 +824,171 @@
       ]
     },
     {
+      "name": "marker_auth_identities",
+      "ddl": "CREATE TABLE \"marker_auth_identities\" (\n  issuer TEXT NOT NULL CHECK(issuer IN ('https://accounts.google.com','https://github.com')),\n  subject_hash TEXT NOT NULL CHECK(length(subject_hash)=64),\n  tenant_id TEXT NOT NULL REFERENCES marker_auth_operator(tenant_id),\n  user_id TEXT NOT NULL REFERENCES marker_auth_operator(user_id),\n  linked_at INTEGER NOT NULL,\n  PRIMARY KEY(issuer,subject_hash), UNIQUE(tenant_id,user_id,issuer)\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "issuer",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "subject_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 2,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "tenant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "user_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "linked_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "user_id",
+          "to": "user_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "tenant_id",
+          "to": "tenant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_identities_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 2,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 3,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": 0,
+              "name": "issuer",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 3,
+              "cid": 1,
+              "name": "subject_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        },
+        {
+          "name": "sqlite_autoindex_marker_auth_identities_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "issuer",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "subject_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "linked_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
       "name": "marker_auth_limits",
       "ddl": "CREATE TABLE marker_auth_limits (\n  key TEXT PRIMARY KEY CHECK (length(key) = 64),\n  window_start INTEGER NOT NULL,\n  count INTEGER NOT NULL CHECK (count > 0 AND count <= 100),\n  last_at INTEGER NOT NULL,\n  ticket TEXT NOT NULL CHECK (length(ticket) = 64)\n) WITHOUT ROWID",
       "columns": [
@@ -266,6 +1082,545 @@
               "seqno": 4,
               "cid": 4,
               "name": "ticket",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_auth_oauth_flows",
+      "ddl": "CREATE TABLE marker_auth_oauth_flows (\n  state_hash TEXT PRIMARY KEY CHECK(length(state_hash)=64),\n  browser_hash TEXT NOT NULL CHECK(length(browser_hash)=64),\n  nonce_hash TEXT NOT NULL CHECK(length(nonce_hash)=64),\n  sealed_verifier TEXT NOT NULL,\n  intent TEXT NOT NULL CHECK(intent IN ('login','link')),\n  session_hash TEXT REFERENCES marker_auth_sessions(session_hash) ON DELETE CASCADE,\n  owner_hash TEXT NOT NULL CHECK(length(owner_hash)=64),\n  client_id_hash TEXT NOT NULL CHECK(length(client_id_hash)=64),\n  created_at INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL CHECK(expires_at=created_at+600)\n, provider TEXT NOT NULL DEFAULT 'google' CHECK(provider IN ('google','github'))) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "state_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "browser_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "nonce_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "sealed_verifier",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "intent",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "session_hash",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "owner_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 7,
+          "name": "client_id_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 8,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 9,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 10,
+          "name": "provider",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": "'google'",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_auth_sessions",
+          "from": "session_hash",
+          "to": "session_hash",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_oauth_flows_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "state_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "browser_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "nonce_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "sealed_verifier",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "intent",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "session_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 6,
+              "cid": 6,
+              "name": "owner_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 7,
+              "cid": 7,
+              "name": "client_id_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 8,
+              "cid": 8,
+              "name": "created_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 9,
+              "cid": 9,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 10,
+              "cid": 10,
+              "name": "provider",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_auth_oauth_limits",
+      "ddl": "CREATE TABLE marker_auth_oauth_limits (\n  ip_hash TEXT PRIMARY KEY CHECK(length(ip_hash)=64),\n  window_start INTEGER NOT NULL, count INTEGER NOT NULL CHECK(count BETWEEN 1 AND 10)\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "ip_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "window_start",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "count",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_oauth_limits_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "ip_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "window_start",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "count",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_auth_operator",
+      "ddl": "CREATE TABLE marker_auth_operator (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  tenant_id TEXT NOT NULL UNIQUE CHECK(length(tenant_id)=32),\n  user_id TEXT NOT NULL UNIQUE CHECK(length(user_id)=32),\n  owner_hash TEXT UNIQUE CHECK(owner_hash IS NULL OR length(owner_hash)=64)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "tenant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "user_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "owner_hash",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_operator_3",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 3,
+              "name": "owner_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        },
+        {
+          "name": "sqlite_autoindex_marker_auth_operator_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 2,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        },
+        {
+          "name": "sqlite_autoindex_marker_auth_operator_1",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 1,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": -1,
+              "name": null,
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_auth_principals",
+      "ddl": "CREATE TABLE \"marker_auth_principals\" (\n  session_hash TEXT PRIMARY KEY REFERENCES marker_auth_sessions(session_hash) ON DELETE CASCADE,\n  tenant_id TEXT NOT NULL REFERENCES marker_auth_operator(tenant_id),\n  user_id TEXT NOT NULL REFERENCES marker_auth_operator(user_id),\n  auth_method TEXT NOT NULL CHECK(auth_method IN ('email','google','github')),\n  authenticated_at INTEGER NOT NULL\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "session_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "tenant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "user_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "auth_method",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "authenticated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "user_id",
+          "to": "user_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "tenant_id",
+          "to": "tenant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        },
+        {
+          "id": 2,
+          "seq": 0,
+          "table": "marker_auth_sessions",
+          "from": "session_hash",
+          "to": "session_hash",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_auth_principals_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "session_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "auth_method",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "authenticated_at",
               "desc": 0,
               "coll": "BINARY",
               "key": 0
@@ -377,6 +1732,1131 @@
           "ddl": null
         }
       ]
+    },
+    {
+      "name": "marker_mcp_clients",
+      "ddl": "CREATE TABLE marker_mcp_clients (\n  client_id TEXT PRIMARY KEY, name TEXT NOT NULL, redirect_uris TEXT NOT NULL,\n  created_at INTEGER NOT NULL, expires_at INTEGER NOT NULL\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "client_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "name",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "redirect_uris",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_mcp_clients_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "client_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "name",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "redirect_uris",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "created_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_mcp_codes",
+      "ddl": "CREATE TABLE marker_mcp_codes (\n  code_hash TEXT PRIMARY KEY CHECK(length(code_hash)=64),\n  grant_id TEXT NOT NULL REFERENCES marker_mcp_grants(grant_id) ON DELETE CASCADE,\n  client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,\n  redirect_uri TEXT NOT NULL, challenge TEXT NOT NULL,\n  expires_at INTEGER NOT NULL, consumed_by TEXT\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "code_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "grant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "client_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "redirect_uri",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "challenge",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "consumed_by",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_mcp_clients",
+          "from": "client_id",
+          "to": "client_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "marker_mcp_grants",
+          "from": "grant_id",
+          "to": "grant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_mcp_codes_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "code_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "grant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "client_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "redirect_uri",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "challenge",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 6,
+              "cid": 6,
+              "name": "consumed_by",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_mcp_effects",
+      "ddl": "CREATE TABLE marker_mcp_effects (\n  grant_id TEXT NOT NULL REFERENCES marker_mcp_grants(grant_id) ON DELETE CASCADE,\n  request_id TEXT NOT NULL, digest TEXT NOT NULL, status TEXT NOT NULL,\n  result_json TEXT, created_at INTEGER NOT NULL,\n  PRIMARY KEY(grant_id,request_id)\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "grant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "request_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 2,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "digest",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "result_json",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_mcp_grants",
+          "from": "grant_id",
+          "to": "grant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_mcp_effects_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "grant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "request_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "digest",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "status",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "result_json",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "created_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_mcp_grants",
+      "ddl": "CREATE TABLE marker_mcp_grants (\n  grant_id TEXT PRIMARY KEY, client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,\n  user_id TEXT NOT NULL REFERENCES marker_auth_operator(user_id) ON DELETE CASCADE,\n  tenant_id TEXT NOT NULL REFERENCES marker_auth_operator(tenant_id) ON DELETE CASCADE,\n  scopes TEXT NOT NULL, resource TEXT NOT NULL, created_at INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL, revoked_at INTEGER\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "grant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "client_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "user_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "tenant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "scopes",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "resource",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 7,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 8,
+          "name": "revoked_at",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "tenant_id",
+          "to": "tenant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "user_id",
+          "to": "user_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        },
+        {
+          "id": 2,
+          "seq": 0,
+          "table": "marker_mcp_clients",
+          "from": "client_id",
+          "to": "client_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "marker_mcp_grants_owner",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 2,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 3,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": 0,
+              "name": "grant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_mcp_grants_owner ON marker_mcp_grants(user_id,tenant_id)"
+        },
+        {
+          "name": "sqlite_autoindex_marker_mcp_grants_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "grant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "client_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "scopes",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "resource",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 6,
+              "cid": 6,
+              "name": "created_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 7,
+              "cid": 7,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 8,
+              "cid": 8,
+              "name": "revoked_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_mcp_limits",
+      "ddl": "CREATE TABLE marker_mcp_limits (\n  key TEXT PRIMARY KEY, window_start INTEGER NOT NULL, count INTEGER NOT NULL\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "window_start",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "count",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_mcp_limits_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "key",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "window_start",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "count",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_mcp_requests",
+      "ddl": "CREATE TABLE marker_mcp_requests (\n  request_hash TEXT PRIMARY KEY CHECK(length(request_hash)=64),\n  client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,\n  user_id TEXT NOT NULL REFERENCES marker_auth_operator(user_id) ON DELETE CASCADE,\n  tenant_id TEXT NOT NULL REFERENCES marker_auth_operator(tenant_id) ON DELETE CASCADE,\n  document TEXT NOT NULL, expires_at INTEGER NOT NULL, consumed_by TEXT\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "request_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "client_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "user_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "tenant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "consumed_by",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "tenant_id",
+          "to": "tenant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "user_id",
+          "to": "user_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        },
+        {
+          "id": 2,
+          "seq": 0,
+          "table": "marker_mcp_clients",
+          "from": "client_id",
+          "to": "client_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_mcp_requests_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "request_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "client_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "document",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 6,
+              "cid": 6,
+              "name": "consumed_by",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_mcp_tokens",
+      "ddl": "CREATE TABLE marker_mcp_tokens (\n  access_hash TEXT PRIMARY KEY CHECK(length(access_hash)=64),\n  refresh_hash TEXT UNIQUE NOT NULL CHECK(length(refresh_hash)=64),\n  grant_id TEXT NOT NULL REFERENCES marker_mcp_grants(grant_id) ON DELETE CASCADE,\n  client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,\n  access_expires_at INTEGER NOT NULL, refresh_expires_at INTEGER NOT NULL, consumed_by TEXT\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "access_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "refresh_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "grant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "client_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "access_expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "refresh_expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "consumed_by",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_mcp_clients",
+          "from": "client_id",
+          "to": "client_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "marker_mcp_grants",
+          "from": "grant_id",
+          "to": "grant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "marker_mcp_tokens_grant",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 2,
+              "name": "grant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 0,
+              "name": "access_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": "CREATE INDEX marker_mcp_tokens_grant ON marker_mcp_tokens(grant_id)"
+        },
+        {
+          "name": "sqlite_autoindex_marker_mcp_tokens_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 1,
+              "name": "refresh_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 0,
+              "name": "access_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        },
+        {
+          "name": "sqlite_autoindex_marker_mcp_tokens_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "access_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "refresh_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "grant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "client_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "access_expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "refresh_expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 6,
+              "cid": 6,
+              "name": "consumed_by",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_profile",
+      "ddl": "CREATE TABLE marker_profile (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  revision INTEGER NOT NULL DEFAULT 0 CHECK(revision>=0),\n  name TEXT NOT NULL DEFAULT '' CHECK(length(name)<=120),\n  country TEXT NOT NULL DEFAULT '' CHECK(length(country)<=80),\n  email TEXT NOT NULL DEFAULT '' CHECK(length(email)<=254)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": "0",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "name",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": "''",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "country",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": "''",
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "email",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": "''",
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
     },
     {
       "name": "marker_studio_analysis",
@@ -1577,6 +4057,352 @@
       "indexes": []
     }
   ],
-  "triggers": [],
+  "triggers": [
+    {
+      "name": "marker_account_deleted_permanent",
+      "table": "marker_account_lifecycle",
+      "ddl": "CREATE TRIGGER marker_account_deleted_permanent BEFORE UPDATE ON marker_account_lifecycle\nWHEN OLD.status='deleted' AND NEW.status!='deleted'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_connections_account_insert",
+      "table": "marker_agent_connections",
+      "ddl": "CREATE TRIGGER marker_agent_connections_account_insert BEFORE INSERT ON marker_agent_connections\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_connections_account_update",
+      "table": "marker_agent_connections",
+      "ddl": "CREATE TRIGGER marker_agent_connections_account_update BEFORE UPDATE ON marker_agent_connections\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_events_account_insert",
+      "table": "marker_agent_events",
+      "ddl": "CREATE TRIGGER marker_agent_events_account_insert BEFORE INSERT ON marker_agent_events\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_events_account_update",
+      "table": "marker_agent_events",
+      "ddl": "CREATE TRIGGER marker_agent_events_account_update BEFORE UPDATE ON marker_agent_events\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_meta_account_insert",
+      "table": "marker_agent_meta",
+      "ddl": "CREATE TRIGGER marker_agent_meta_account_insert BEFORE INSERT ON marker_agent_meta\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_meta_account_update",
+      "table": "marker_agent_meta",
+      "ddl": "CREATE TRIGGER marker_agent_meta_account_update BEFORE UPDATE ON marker_agent_meta\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_proposals_account_insert",
+      "table": "marker_agent_proposals",
+      "ddl": "CREATE TRIGGER marker_agent_proposals_account_insert BEFORE INSERT ON marker_agent_proposals\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_proposals_account_update",
+      "table": "marker_agent_proposals",
+      "ddl": "CREATE TRIGGER marker_agent_proposals_account_update BEFORE UPDATE ON marker_agent_proposals\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_runs_account_insert",
+      "table": "marker_agent_runs",
+      "ddl": "CREATE TRIGGER marker_agent_runs_account_insert BEFORE INSERT ON marker_agent_runs\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_runs_account_update",
+      "table": "marker_agent_runs",
+      "ddl": "CREATE TRIGGER marker_agent_runs_account_update BEFORE UPDATE ON marker_agent_runs\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_sessions_account_insert",
+      "table": "marker_agent_sessions",
+      "ddl": "CREATE TRIGGER marker_agent_sessions_account_insert BEFORE INSERT ON marker_agent_sessions\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_agent_sessions_account_update",
+      "table": "marker_agent_sessions",
+      "ddl": "CREATE TRIGGER marker_agent_sessions_account_update BEFORE UPDATE ON marker_agent_sessions\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_challenges_account_insert",
+      "table": "marker_auth_challenges",
+      "ddl": "CREATE TRIGGER marker_auth_challenges_account_insert BEFORE INSERT ON marker_auth_challenges\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_challenges_account_update",
+      "table": "marker_auth_challenges",
+      "ddl": "CREATE TRIGGER marker_auth_challenges_account_update BEFORE UPDATE ON marker_auth_challenges\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_identities_account_insert",
+      "table": "marker_auth_identities",
+      "ddl": "CREATE TRIGGER marker_auth_identities_account_insert BEFORE INSERT ON marker_auth_identities\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_identities_account_update",
+      "table": "marker_auth_identities",
+      "ddl": "CREATE TRIGGER marker_auth_identities_account_update BEFORE UPDATE ON marker_auth_identities\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_limits_account_insert",
+      "table": "marker_auth_limits",
+      "ddl": "CREATE TRIGGER marker_auth_limits_account_insert BEFORE INSERT ON marker_auth_limits\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_limits_account_update",
+      "table": "marker_auth_limits",
+      "ddl": "CREATE TRIGGER marker_auth_limits_account_update BEFORE UPDATE ON marker_auth_limits\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_oauth_flows_account_insert",
+      "table": "marker_auth_oauth_flows",
+      "ddl": "CREATE TRIGGER marker_auth_oauth_flows_account_insert BEFORE INSERT ON marker_auth_oauth_flows\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_oauth_flows_account_update",
+      "table": "marker_auth_oauth_flows",
+      "ddl": "CREATE TRIGGER marker_auth_oauth_flows_account_update BEFORE UPDATE ON marker_auth_oauth_flows\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_oauth_limits_account_insert",
+      "table": "marker_auth_oauth_limits",
+      "ddl": "CREATE TRIGGER marker_auth_oauth_limits_account_insert BEFORE INSERT ON marker_auth_oauth_limits\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_oauth_limits_account_update",
+      "table": "marker_auth_oauth_limits",
+      "ddl": "CREATE TRIGGER marker_auth_oauth_limits_account_update BEFORE UPDATE ON marker_auth_oauth_limits\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_operator_account_insert",
+      "table": "marker_auth_operator",
+      "ddl": "CREATE TRIGGER marker_auth_operator_account_insert BEFORE INSERT ON marker_auth_operator\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_operator_account_update",
+      "table": "marker_auth_operator",
+      "ddl": "CREATE TRIGGER marker_auth_operator_account_update BEFORE UPDATE ON marker_auth_operator\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_principals_account_insert",
+      "table": "marker_auth_principals",
+      "ddl": "CREATE TRIGGER marker_auth_principals_account_insert BEFORE INSERT ON marker_auth_principals\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_principals_account_update",
+      "table": "marker_auth_principals",
+      "ddl": "CREATE TRIGGER marker_auth_principals_account_update BEFORE UPDATE ON marker_auth_principals\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_sessions_account_insert",
+      "table": "marker_auth_sessions",
+      "ddl": "CREATE TRIGGER marker_auth_sessions_account_insert BEFORE INSERT ON marker_auth_sessions\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_auth_sessions_account_update",
+      "table": "marker_auth_sessions",
+      "ddl": "CREATE TRIGGER marker_auth_sessions_account_update BEFORE UPDATE ON marker_auth_sessions\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_clients_active_insert",
+      "table": "marker_mcp_clients",
+      "ddl": "CREATE TRIGGER marker_mcp_clients_active_insert BEFORE INSERT ON marker_mcp_clients WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_clients_active_update",
+      "table": "marker_mcp_clients",
+      "ddl": "CREATE TRIGGER marker_mcp_clients_active_update BEFORE UPDATE ON marker_mcp_clients WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_codes_active_insert",
+      "table": "marker_mcp_codes",
+      "ddl": "CREATE TRIGGER marker_mcp_codes_active_insert BEFORE INSERT ON marker_mcp_codes WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_codes_active_update",
+      "table": "marker_mcp_codes",
+      "ddl": "CREATE TRIGGER marker_mcp_codes_active_update BEFORE UPDATE ON marker_mcp_codes WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_effects_active_insert",
+      "table": "marker_mcp_effects",
+      "ddl": "CREATE TRIGGER marker_mcp_effects_active_insert BEFORE INSERT ON marker_mcp_effects WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_effects_active_update",
+      "table": "marker_mcp_effects",
+      "ddl": "CREATE TRIGGER marker_mcp_effects_active_update BEFORE UPDATE ON marker_mcp_effects WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_grants_active_insert",
+      "table": "marker_mcp_grants",
+      "ddl": "CREATE TRIGGER marker_mcp_grants_active_insert BEFORE INSERT ON marker_mcp_grants WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_grants_active_update",
+      "table": "marker_mcp_grants",
+      "ddl": "CREATE TRIGGER marker_mcp_grants_active_update BEFORE UPDATE ON marker_mcp_grants WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_limits_active_insert",
+      "table": "marker_mcp_limits",
+      "ddl": "CREATE TRIGGER marker_mcp_limits_active_insert BEFORE INSERT ON marker_mcp_limits WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_limits_active_update",
+      "table": "marker_mcp_limits",
+      "ddl": "CREATE TRIGGER marker_mcp_limits_active_update BEFORE UPDATE ON marker_mcp_limits WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_requests_active_insert",
+      "table": "marker_mcp_requests",
+      "ddl": "CREATE TRIGGER marker_mcp_requests_active_insert BEFORE INSERT ON marker_mcp_requests WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_requests_active_update",
+      "table": "marker_mcp_requests",
+      "ddl": "CREATE TRIGGER marker_mcp_requests_active_update BEFORE UPDATE ON marker_mcp_requests WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_tokens_active_insert",
+      "table": "marker_mcp_tokens",
+      "ddl": "CREATE TRIGGER marker_mcp_tokens_active_insert BEFORE INSERT ON marker_mcp_tokens WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_tokens_active_update",
+      "table": "marker_mcp_tokens",
+      "ddl": "CREATE TRIGGER marker_mcp_tokens_active_update BEFORE UPDATE ON marker_mcp_tokens WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_profile_account_insert",
+      "table": "marker_profile",
+      "ddl": "CREATE TRIGGER marker_profile_account_insert BEFORE INSERT ON marker_profile\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_profile_account_update",
+      "table": "marker_profile",
+      "ddl": "CREATE TRIGGER marker_profile_account_update BEFORE UPDATE ON marker_profile\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_analysis_account_insert",
+      "table": "marker_studio_analysis",
+      "ddl": "CREATE TRIGGER marker_studio_analysis_account_insert BEFORE INSERT ON marker_studio_analysis\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_analysis_account_update",
+      "table": "marker_studio_analysis",
+      "ddl": "CREATE TRIGGER marker_studio_analysis_account_update BEFORE UPDATE ON marker_studio_analysis\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_assets_account_insert",
+      "table": "marker_studio_assets",
+      "ddl": "CREATE TRIGGER marker_studio_assets_account_insert BEFORE INSERT ON marker_studio_assets\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_assets_account_update",
+      "table": "marker_studio_assets",
+      "ddl": "CREATE TRIGGER marker_studio_assets_account_update BEFORE UPDATE ON marker_studio_assets\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_campaigns_account_insert",
+      "table": "marker_studio_campaigns",
+      "ddl": "CREATE TRIGGER marker_studio_campaigns_account_insert BEFORE INSERT ON marker_studio_campaigns\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_campaigns_account_update",
+      "table": "marker_studio_campaigns",
+      "ddl": "CREATE TRIGGER marker_studio_campaigns_account_update BEFORE UPDATE ON marker_studio_campaigns\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_compute_account_insert",
+      "table": "marker_studio_compute",
+      "ddl": "CREATE TRIGGER marker_studio_compute_account_insert BEFORE INSERT ON marker_studio_compute\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_compute_account_update",
+      "table": "marker_studio_compute",
+      "ddl": "CREATE TRIGGER marker_studio_compute_account_update BEFORE UPDATE ON marker_studio_compute\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_jobs_account_insert",
+      "table": "marker_studio_jobs",
+      "ddl": "CREATE TRIGGER marker_studio_jobs_account_insert BEFORE INSERT ON marker_studio_jobs\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_jobs_account_update",
+      "table": "marker_studio_jobs",
+      "ddl": "CREATE TRIGGER marker_studio_jobs_account_update BEFORE UPDATE ON marker_studio_jobs\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_limits_account_insert",
+      "table": "marker_studio_limits",
+      "ddl": "CREATE TRIGGER marker_studio_limits_account_insert BEFORE INSERT ON marker_studio_limits\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_limits_account_update",
+      "table": "marker_studio_limits",
+      "ddl": "CREATE TRIGGER marker_studio_limits_account_update BEFORE UPDATE ON marker_studio_limits\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_materials_account_insert",
+      "table": "marker_studio_materials",
+      "ddl": "CREATE TRIGGER marker_studio_materials_account_insert BEFORE INSERT ON marker_studio_materials\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_materials_account_update",
+      "table": "marker_studio_materials",
+      "ddl": "CREATE TRIGGER marker_studio_materials_account_update BEFORE UPDATE ON marker_studio_materials\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_meta_account_insert",
+      "table": "marker_studio_meta",
+      "ddl": "CREATE TRIGGER marker_studio_meta_account_insert BEFORE INSERT ON marker_studio_meta\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_meta_account_update",
+      "table": "marker_studio_meta",
+      "ddl": "CREATE TRIGGER marker_studio_meta_account_update BEFORE UPDATE ON marker_studio_meta\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_settings_account_insert",
+      "table": "marker_studio_settings",
+      "ddl": "CREATE TRIGGER marker_studio_settings_account_insert BEFORE INSERT ON marker_studio_settings\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_settings_account_update",
+      "table": "marker_studio_settings",
+      "ddl": "CREATE TRIGGER marker_studio_settings_account_update BEFORE UPDATE ON marker_studio_settings\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_uploads_account_insert",
+      "table": "marker_studio_uploads",
+      "ddl": "CREATE TRIGGER marker_studio_uploads_account_insert BEFORE INSERT ON marker_studio_uploads\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_uploads_account_update",
+      "table": "marker_studio_uploads",
+      "ddl": "CREATE TRIGGER marker_studio_uploads_account_update BEFORE UPDATE ON marker_studio_uploads\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_variants_account_insert",
+      "table": "marker_studio_variants",
+      "ddl": "CREATE TRIGGER marker_studio_variants_account_insert BEFORE INSERT ON marker_studio_variants\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_studio_variants_account_update",
+      "table": "marker_studio_variants",
+      "ddl": "CREATE TRIGGER marker_studio_variants_account_update BEFORE UPDATE ON marker_studio_variants\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_workspace_account_insert",
+      "table": "marker_workspace",
+      "ddl": "CREATE TRIGGER marker_workspace_account_insert BEFORE INSERT ON marker_workspace\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_workspace_account_update",
+      "table": "marker_workspace",
+      "ddl": "CREATE TRIGGER marker_workspace_account_update BEFORE UPDATE ON marker_workspace\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    }
+  ],
   "views": []
 }

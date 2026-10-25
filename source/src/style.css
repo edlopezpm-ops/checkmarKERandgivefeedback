@@ -1,0 +1,75 @@
+@font-face {
+  font-family: Montserrat;
+  src: url('/fonts/Montserrat-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url('/fonts/Montserrat-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+:root {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  color: #30363a;
+  /* Measured from the unmodified approved PNG perimeter. */
+  --page-color: #f7f6f0;
+  background: var(--page-color);
+  /* A quiet mineral texture belongs to the page, never to the logo. */
+  --page-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='mineral' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.085' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeColorMatrix type='matrix' values='.026 0 0 0 .95288 0 .026 0 0 .94955 0 0 .026 0 .92994 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23mineral)'/%3E%3C/svg%3E");
+  background-image: var(--page-texture);
+  background-attachment: fixed;
+  font-synthesis: none;
+  font-weight: 500;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+button, summary, input, select { cursor: pointer; }
+button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #337c7a; outline-offset: 5px; }
+button:disabled { cursor: default; opacity: .45; }
+.app-shell { isolation: isolate; min-height: 100svh; }
+.app-content { position: relative; z-index: 1; }
+.is-workspace .site-header { position: sticky; top: 0; z-index: 3; background-color: var(--page-color); background-image: var(--page-texture); background-attachment: fixed; border: 0; box-shadow: none; }
+.toolbar { display: flex; align-items: flex-start; flex-wrap: wrap; justify-content: flex-end; gap: 18px; position: absolute; top: max(28px, env(safe-area-inset-top)); right: max(36px, env(safe-area-inset-right)); z-index: 3; }
+.identity { display: flex; justify-content: center; padding-top: clamp(90px, 12svh, 150px); pointer-events: none; }
+/* The complete original canvas is displayed at its natural aspect ratio. */
+.brand { display: block; width: min(1040px, 100%); height: auto; }
+.preferences { position: relative; font-size: 13.2px; }
+.preferences > summary { list-style: none; display: flex; align-items: center; gap: 9px; color: #73787b; padding: 10px 0 10px 14px; }
+.preferences > summary::-webkit-details-marker { display: none; }
+.preferences-panel { position: absolute; right: 0; top: 42px; width: min(350px, calc(100vw - 40px)); max-height: calc(100svh - 110px); overflow: auto; padding: 24px; background: #faf9f4; border: 1px solid #deded5; border-radius: 12px; box-shadow: 0 10px 28px #30363a0a; }
+h1, h2, h3, h4, h5, h6 { font-weight: 800; }
+h2 { font-size: 18.7px; font-weight: 800; margin: 0 0 18px; }
+.setting { display: flex; align-items: center; gap: 18px; justify-content: space-between; padding: 16px 0; border-top: 1px solid #e7e5dc; }
+.setting strong { font-size: 13.2px; font-weight: 800; }
+.setting small { display: block; font-size: 12.1px; color: #73787b; margin-top: 6px; line-height: 1.4; }
+.setting input { flex-shrink: 0; }
+.setting-note, .fine-print { font-size: 12.1px; color: #73787b; line-height: 1.6; margin: 12px 0 0; }
+.fine-print { padding-top: 14px; border-top: 1px solid #e7e5dc; font-size: 11px; }
+.decoration { position: fixed; z-index: 0; right: max(var(--scene-margin, 18px), env(safe-area-inset-right)); bottom: max(var(--scene-margin, 18px), env(safe-area-inset-bottom)); width: min(var(--scene-width, 384px), calc(100vw - 36px), calc(45svh * 16 / 9)); aspect-ratio: 16 / 9; overflow: hidden; contain: strict; pointer-events: none; user-select: none; }
+.decoration canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; pointer-events: none; }
+.review-controls { position: fixed; left: max(36px, env(safe-area-inset-left)); bottom: max(30px, env(safe-area-inset-bottom)); text-align: right; }
+.review-status { display: flex; justify-content: flex-end; align-items: center; gap: 7px; font-size: 12.1px; color: #73787b; margin: 0 0 12px; }
+.activity-dot { width: 4px; height: 4px; border-radius: 50%; background: #b6b8b0; }
+.activity-dot.active { background: #629b94; }
+.review-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.review-actions button, .review-actions select { border: 1px solid #deded5; background: transparent; border-radius: 7px; padding: 9px 12px; font-size: 12.1px; color: #50585a; }
+.review-actions button { display: flex; gap: 7px; align-items: center; background: #f0efe7; }
+.review-actions button:hover:enabled { background: #eae9df; }
+.review-caption { display: block; color: #73787b; font-size: 9px; letter-spacing: .04em; margin-top: 10px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 640px) {
+  .toolbar { top: max(16px, env(safe-area-inset-top)); right: max(22px, env(safe-area-inset-right)); gap: 14px; }
+  .identity { padding-top: clamp(90px, 20svh, 170px); }
+  .review-controls { left: auto; right: 22px; bottom: calc(min(384px, 100vw - 36px, 80svh) * 9 / 16 + 40px); }
+}
+@media (max-height: 500px) and (min-width: 641px) {
+  .identity { padding-top: 24px; }
+  .brand { width: min(580px, 78vw); }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }

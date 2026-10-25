@@ -1,0 +1,11 @@
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import assert from 'node:assert/strict';
+const expected = '34ee71440f595b7ffa7b0ac0f23ee6ef1164724b88e3fd0a7f1cd5a834403b1b';
+const manifest = JSON.parse(readFileSync('public/brand/manifest.json', 'utf8'));
+const file = readFileSync(`public/brand/${manifest.file}`);
+assert.equal(createHash('sha256').update(file).digest('hex'), expected, 'Approved logo bytes changed');
+assert.equal(manifest.sha256, expected); assert.equal(manifest.width,file.readUInt32BE(16)); assert.equal(manifest.height,file.readUInt32BE(20)); assert.equal(manifest.bytes,file.length);
+const decorativeBytes = readdirSync('public/decoration').reduce((total, name)=>total+statSync(`public/decoration/${name}`).size,0);
+assert.ok(decorativeBytes<=5*1024*1024);
+console.log(JSON.stringify({logo:'PASS',...manifest,decorativeBytes},null,2));

@@ -1,28 +1,25 @@
-# marKER — check and give feedback
+# marKER — full current-source review
 
-Public, source-backed technical dossier for reviewing **marKER** with another AI model without granting access to the private application repository. Snapshot: **2026-10-24**, source `main` at `1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9`.
+This public repository contains the complete reviewable marKER product snapshot: **333 source/assets/configuration/test files**, plus an architectural dossier, data catalogs, source navigation and an external-review prompt. Start with [the reading contract](00-START-HERE.md) and [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md).
 
-Start with [00-START-HERE](00-START-HERE.md), then read the [single complete dossier](marKER-FULL-DOSSIER.md). For a smaller model context, use [AI-QUICK-CONTEXT](AI-QUICK-CONTEXT.md). The [AI analysis prompt](AI_ANALYSIS_PROMPT.md) asks for evidence-based feedback and bounded change proposals. The combined dossier repeats the chapters for convenient ingestion; it is not independent evidence.
+**Snapshot:** 2026-10-24, source base `de0a4a65d6d37642e5f7efda66151c4270ec2a02`, with **12 explicitly recorded working-tree paths**. The [manifest](source-snapshot-manifest.json) identifies the exact captured bytes; the base commit alone does not identify uncommitted demo changes. The source repository remains privately maintained; this separately authorized projection is public.
 
-The package explains the current codebase, frontend, backend, authentication, data structures, APIs, media processor, deterministic campaign planner, Settings, animation, failure paths and operations. Mermaid diagrams identify functional nodes, state boundaries and external effects. The [database reference](database/README.md), [source/test/dependency reference](10-source-map-tests-and-dependencies.md) and [module index](code-flow/05-module-symbol-index.md) provide structural detail and source locations.
-
-marKER is a private console for one owner. Its manual editorial workflow and separate media Studio coexist. The hosted entry uses Cloudflare Workers, D1, private R2 and a managed-container FFmpeg processor; local development uses loopback APIs and local files/SQLite. Rule-based assembly is implemented. Live AI generation, connected social publishing, advertising activation and live social metrics are not implemented. Technical analysis has a local implementation, but its hosted toolchain pin is deliberately disabled. A submitted interest request for an AI connection is not provider admission.
-
-This repository publishes descriptions and structural inventories. It contains no complete application source, private configuration values, credentials, owner media or business records. Source pointers refer to the private snapshot and can be matched by its owner; a reviewer can analyze this dossier independently but cannot claim to have audited unavailable code. Facts about code capability, configured routing, actual runtime execution and human acceptance are labeled separately. Product tests, deployment, authenticated flows and restoration were not rerun for this documentary publication.
-
-| Reading path | Contents |
+| Review entry | Contents |
 | --- | --- |
-| [Architecture](01-architecture-and-stack.md) | Runtime topology, node ownership, dependency and trust boundaries. |
-| [Data](02-data-model-and-transactions.md) | Editorial/Studio entities, revision protocols, quotas and persistence. |
-| [Product](03-product-and-user-workflows.md) | Current modules, user sequences, review and outcomes. |
-| [Frontend](04-frontend-and-interaction.md) | React state, navigation, forms, recovery, language and help. |
-| [Backend and access](05-backend-api-and-access.md) | Authentication, routes, validation and error contracts. |
-| [Processing](06-studio-processing-and-jobs.md) | Upload, probing, rendering, jobs and effect custody. |
-| [Integrations](07-integrations-and-capability-status.md) | Implemented, inactive and proposed capabilities. |
-| [Operations](08-operations-quality-and-limits.md) | Local/hosted differences, quality evidence, recovery and limits. |
-| [Feedback guide](09-review-guide-and-open-decisions.md) | What to preserve, review questions and implementable feedback format. |
-| [Catalogs](10-source-map-tests-and-dependencies.md) | Exact source, symbols, API and test inventories, locked dependencies. |
-| [Database](11-database-and-catalog-reference.md) | Empty-schema reconstruction, fields, keys and structural limitations. |
-| [Code flow](code-flow/README.md) | Named function/node traces and troubleshooting. |
+| [Full implementation](source/) | Frontend, backend, native domain/planner/classifier, Agents bridge, authenticated MCP connector, tests, tools, processor, migrations, config, docs and public assets. |
+| [One-file dossier](marKER-FULL-DOSSIER.md) | Current architecture, behavior, trust boundaries, operations and review questions. |
+| [Quick context](AI-QUICK-CONTEXT.md) | Concise orientation before reading the code. |
+| [Source inventory](inventories/source-paths.md) | Every included path, byte size and SHA-256. |
+| [Code flow](code-flow/README.md) | Request/auth/storage, UI/editorial, media, Agents/MCP and source-symbol navigation. |
+| [Data catalog](11-database-and-catalog-reference.md) | All included D1 migrations replayed into an empty SQLite schema; local Studio schema separately reconstructed. |
+| [Evidence and limits](08-operations-quality-and-limits.md) | Fresh package checks versus root-reported product checks, deployment and actual host/device gaps. |
 
-Integrity: [CURRENT-STATE.json](CURRENT-STATE.json), [source-snapshot-manifest.json](source-snapshot-manifest.json), [PACKAGE-MANIFEST.json](PACKAGE-MANIFEST.json), [PACKAGE-VERIFICATION.json](PACKAGE-VERIFICATION.json), [SHA256SUMS.txt](SHA256SUMS.txt). See [publication scope](NOTICE.md).
+marKER's native Space → classify → prepare editable campaign → render → review/approve → export flow works without an AI connection. Optional local Agents and the new external MCP adapter reuse that foundation. An export is not social publication. The authenticated MCP source/local SDK flow is verified separately from production activation and actual Dot installation/conversation.
+
+Public demo: [watch](https://marker.aekr.io/demo/); both original public MP4s, poster, captions and player are included in [source/public/demo/](source/public/demo/), with [metadata/URLs/hashes](inventories/public-media.json). Original branding and font license files are preserved.
+
+Private governance/evidence, runtime owner data, account stores, actual secret/environment files, dependency installations and generated outputs are excluded. Blank example configuration and public instance/site identifiers remain in the source; no live credential value or credential-store digest is published. See [NOTICE.md](NOTICE.md).
+
+Español: este repositorio permite revisar el código completo y sus flujos actuales. Las pruebas locales, el despliegue, la conexión real en Dot y la aceptación humana se distinguen expresamente.
+
+Integrity: [source snapshot](source-snapshot-manifest.json), [current state](CURRENT-STATE.json), [package manifest](PACKAGE-MANIFEST.json), [verification](PACKAGE-VERIFICATION.json), [SHA-256 list](SHA256SUMS.txt).

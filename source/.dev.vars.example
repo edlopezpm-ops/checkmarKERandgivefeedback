@@ -1,0 +1,19 @@
+# Development-only secret, generated locally. Never commit actual values.
+# Hosted secret is configured separately through Wrangler secret storage.
+# npm run dev uses the loopback editorial API without email authentication.
+MARKER_AUTH_SECRET=
+
+# Optional dedicated marKER Google OAuth web client. Never reuse another app's secret.
+# These remain unset until the client and fixed callback are configured.
+# MARKER_GOOGLE_CLIENT_ID=
+# MARKER_GOOGLE_CLIENT_SECRET=
+
+# Optional dedicated GitHub OAuth client; no repository or email scope.
+# MARKER_GITHUB_CLIENT_ID=
+# MARKER_GITHUB_CLIENT_SECRET=
+
+# Hosted bot verification: public sitekey, private secret, exact production host.
+# Local Vite development does not require authentication or a CAPTCHA.
+# TURNSTILE_SITE_KEY=
+# TURNSTILE_SECRET=
+# TURNSTILE_HOSTNAMES=marker.aekr.io

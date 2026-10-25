@@ -1,0 +1,5 @@
+.auth-turnstile { display: grid; gap: 8px; min-width: 0; width: 100%; }
+.auth-turnstile > div { max-width: 100%; }
+.auth-turnstile small { font-size: 12px; line-height: 1.5; color: var(--muted, #697168); }
+.auth-provider-choice { display: grid; gap: .7rem; }
+.auth-provider-choice + .auth-provider-choice { margin-top: .5rem; }

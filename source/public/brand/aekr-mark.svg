@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">AEKR mark</title>
+  <desc id="desc">Four governed orbital loops around a central node.</desc>
+  <defs>
+    <linearGradient id="aekr-orbit" x1="12" y1="10" x2="53" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4f7fb"/>
+      <stop offset=".58" stop-color="#90a5b7"/>
+      <stop offset="1" stop-color="#28d8c2"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#aekr-orbit)" stroke-width="2.2" stroke-linecap="round">
+    <path d="M30 28C19 21 20 8 32 6c11 2 13 14 5 21"/>
+    <path d="M36 29c7-11 21-8 22 4-2 11-15 12-21 4"/>
+    <path d="M34 37c10 7 7 20-4 22-11-2-12-15-4-21"/>
+    <path d="M27 35c-7 10-20 7-21-4 2-11 15-12 21-4"/>
+    <circle cx="32" cy="32" r="6.5" stroke="#91a1b5"/>
+  </g>
+  <g fill="#eef4f8">
+    <circle cx="32" cy="6" r="2.8"/><circle cx="58" cy="33" r="2.8"/>
+    <circle cx="30" cy="59" r="2.8"/><circle cx="6" cy="31" r="2.8"/>
+    <circle cx="32" cy="32" r="3.2"/>
+  </g>
+  <circle cx="39" cy="11" r="1.7" fill="#28d8c2"/>
+</svg>

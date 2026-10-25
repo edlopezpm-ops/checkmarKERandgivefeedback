@@ -1,43 +1,20 @@
 # 10 — Source map, tests and dependencies
 
-The snapshot is pinned to product commit `1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9`. It inventories every one of the 203 tracked paths: 8,869,800 committed bytes, 102 UTF-8 text paths and 31,504 text lines. These descriptive counts include maintained documentation, the lockfile, generated platform declarations, tests and assets. They are not complexity or test-coverage scores.
+The source projection contains **333 files** totaling **35,585,752 bytes**, including full source, tests, migrations, build/configuration, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
 
-[Every tracked path](inventories/source-paths.md) and the [source snapshot manifest](source-snapshot-manifest.json) provide Git blob IDs, committed SHA-256/size/line counts and separate clean-checkout SHA-256/size/line counts. Git-normalized blob bytes can differ from Windows CRLF checkout bytes; both are named explicitly. Asset entries expose metadata and hashes, not pixels, fonts or embedded content. The source code itself is not distributed.
+- [Every source path and hash](inventories/source-paths.md).
+- [Machine snapshot, source commit and dirty qualifications](source-snapshot-manifest.json).
+- [Module/symbol/import/call navigation](code-flow/05-module-symbol-index.md).
+- [Full AST metadata](inventories/ast-index.json).
+- [Server route occurrences](inventories/routes.md).
+- [All static test declarations](inventories/test-index.md).
+- [Locked dependencies and commands](inventories/dependencies.md).
+- [Public demo hashes/URLs](inventories/public-media.json).
 
-## Module families
+The TypeScript parser indexed **112 modules**. The static test index contains **292 declarations across 39 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
 
-| Paths | Responsibility |
-| --- | --- |
-| `src/App.tsx`, `src/main.tsx`, `src/i18n.tsx` | Application/session bootstrap, navigation/settings state, React mounting and language context. |
-| `src/console/` | Legacy manual editorial UI, current Space/Studio Campaigns, deterministic planner, technical analysis, settings, local text simulation and bilingual help. |
-| `src/core/` | Shared editorial/Studio domain, validation, persistence contracts, recipe and analysis types, deterministic proposal rules and settings constraints. |
-| `server/api.ts`, `server/d1.ts`, `server/local.ts` | Shared legacy command HTTP boundary and effective D1 / loopback JSON repositories. |
-| `server/native-auth.js`, `server/native-auth-store.js` | Native owner-only code/challenge/session/rate-limit system and SQL store. |
-| `server/studio-local.ts`, `server/studio-hosted.ts` | Distinct local/hosted Studio adapters implementing state, uploads, jobs, analysis and settings. |
-| `server/studio-render.ts`, `server/studio-analysis.ts`, `server/studio-processor.ts`, `processor/runner.mjs` | Native bounded media/analysis algorithms and hosted durable/container processing bridge. |
-| `server/entry.ts`, `server/worker.ts` | Worker entry, static asset/native API routing and scheduled auth cleanup. |
-| `server/supabase.ts`, `migrations/0001_editorial.sql` | Inactive prepared PostgreSQL/Auth alternative. |
-| `src/decoration/` | Optional Canvas character assets, scene choreography, renderer and scheduler. |
-| `migrations-d1/` | Five ordered static D1 structural migrations. |
-| `tests/` | 19 tracked test files with 144 syntactic test/subtest declarations. |
-| `tools/`, `vite.config.ts`, `tsconfig*.json`, `wrangler.jsonc` | Asset preparation/verification, local HTTP boundary, compilation and hosted configuration. Actual deployment identifiers are not copied into this dossier. |
+Source files were copied byte-for-byte from the frozen checkout. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
 
-The [module/symbol index](code-flow/05-module-symbol-index.md) links product callable/type declarations to source lines. The complete [AST JSON](inventories/ast-index.json) records 62 tracked TS/TSX/JS/MJS modules, 10,530 declaration/field records, 278 imports/re-exports and 9,427 call/new-expression sites using TypeScript 5.9.3. All 62 files parsed with zero syntax diagnostics. Generated platform declarations dominate the symbol count; this does not mean the application contains 10,530 business functions.
+For local review, enter `source/`, install the exact lockfile with `npm ci`, then use the documented type/build/test commands with synthetic local data. Native media tests require the declared local FFmpeg toolchain. These setup steps are optional reviewer actions; this documentary refresh did not repeat the root product suite. The product does not need private governance files to build.
 
-This is syntactic indexing. Calls are unresolved textual targets; initializer values, call arguments and executable bodies are excluded. Inferred return types are marked `inferred`, dynamic targets use placeholders, and anonymous callbacks are not assigned invented globally unique identities. The index is not a resolved runtime call graph or behavioral proof.
-
-## Tests and evidence boundaries
-
-The [test index](inventories/test-index.md) lists every declared name and location, including nested `t.test` declarations; [JSON](inventories/test-declarations.json) supports machine analysis. Intended areas include domain transitions, CAS, auth/rate limits, SQL-backed persistence, origin/payload guards, resumable uploads, planner eligibility/reuse, technical analysis, media rendering, processing jobs, settings, help, assets and motion.
-
-No product test, build, browser workflow, hosted migration or deployment was rerun for this documentation-only task. Test names describe intended contracts, not freshly demonstrated results. Existing product verification and human acceptance must remain separate from this static inventory. A future proposed change should identify affected declarations, test cases and additional evidence needed for its specific behavior.
-
-## Dependencies and commands
-
-[Dependency reference](inventories/dependencies.md) lists the eight direct dependencies and all 136 lockfile package entries with exact versions, dev/optional classification and license labels when supplied. [JSON](inventories/dependencies.json) additionally preserves integrity hashes and package scripts. The application declares only React and React DOM as runtime dependencies; TypeScript/Vite/Wrangler and type packages are development dependencies. Native FFmpeg/FFprobe and platform bindings are separate operational requirements, not npm dependencies inferred from that count.
-
-The documentary tools use Python's stdlib, Git and the already installed product TypeScript parser. No product dependency was added. Reproduction instructions are in [tools/README.md](tools/README.md).
-
-## Navigating without source access
-
-Start with architecture/workflow chapters, then select the relevant domain/adapter symbol and its source line. Use [curated routes](inventories/routes.md) for accepted method/path contracts, [schema catalogs](database/README.md) for relational constraints and declared types for JSON fields. Every path can be checked against the frozen manifest. The package intentionally cannot prove unobserved runtime behavior or provide line-by-line implementation editing without the private repository.
+Excluded paths are explicitly listed in the manifest. Dependency installations, build/generated output, private inputs/governance/evidence, actual environment/secret files, account/credential stores and runtime owner data are not missing implementation. The safe blank `.dev.vars.example` and public Wrangler/site identifiers remain available for configuration review.

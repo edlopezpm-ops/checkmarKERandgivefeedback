@@ -1,35 +1,24 @@
 # 09 — Review guide and open decisions
 
-## Preserve before proposing
+Review the full source projection, not only this narrative. Preserve the independent no-agent native workflow, one retained owner/tenant, explicit rights/readiness/speech facts, original media, immutable generation/job provenance, revision conflicts, human approval of exact output and manual export. Preserve the original logo/font/license assets. Avoid rebuilding delivered functionality or adding a provider call to deterministic work.
 
-Preserve the single-owner access model, server-side revision/rights/admission checks, original media custody, separate editorial and Studio state, explicit review/approval/export, paused paid proposals, immutable job history and exact original logo/font identity. The planner's deterministic abstention is intentional when input is insufficient; do not replace it with fabricated copy or an implicit provider call.
+| Area | Concrete review question |
+| --- | --- |
+| Native flow | Can Space selection, recovered drafts or cached variants substitute an earlier source set or overwrite human copy? |
+| Classification | Can missing-label rules accidentally imply rights, readiness, semantic quality or speech absence? |
+| Planner | Can changed permissions, ranges/history, explicit consent or stale fingerprints bypass server recomputation? |
+| UI | Are selection, stale revisions, interrupted uploads, optional Agents and errors understandable on narrow screens and keyboard navigation? |
+| Auth/lifecycle | Can concurrent callback/session/bridge/MCP work survive account freeze, relink identity incorrectly or recreate deleted data? |
+| MCP authorization | Are PKCE/resource/client/tenant/scope checks, refresh reuse, consent CSRF, private downloads and revocation correct at every boundary? |
+| MCP effects | Can ambiguous network failure cause a duplicated mutation, stuck receipt or unsafe retry? Is reconciliation actionable? |
+| Agents | Can context drift, lease expiry, cancellation or completion replay fabricate provenance or repeat inference/effects? |
+| Processor/custody | Are deadlines, parser/protocol bounds, reservations, enqueue recovery and object finalization safe under interruption? |
+| Retention | Are applied evidence, grants, multipart leftovers and deletion exclusions truthful and operationally maintainable? |
+| Complexity | Which abstraction or duplicated boundary can be removed while preserving the mandatory behavior? |
+| Value | Which minimal workflow improvement would measurably reduce active preparation time? |
 
-A detached reviewer can assess architecture and contracts from this package. They must state that source bodies and live state are unavailable. A recommendation becomes implementable only after the maintainer maps it back to the pinned source and checks any later drift. Line references are navigation evidence, not a proof that a suggested patch compiles.
+Open decisions include actual hosted SIWC admission; actual connector-host installation and capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
 
-## Concrete review questions
+For every finding provide priority, exact source path/line, observed behavior, trigger or counterexample, confidence/evidence class, user impact, smallest coherent change, affected frontend/backend/schema/effect boundaries, preserved invariants, focused success/failure/concurrency tests, migration/recovery needs and any unresolved owner decision. Separate demonstrated defects, plausible risks, usability improvements and optional roadmap work. Do not claim runtime performance, provider eligibility, actual invoices, UAT or deployed behavior from static source.
 
-| Area | Question tied to current behavior | Useful evidence for a change |
-| --- | --- | --- |
-| Creative workflow | Which required owner actions create friction between capture, classification, proposal, editing, render, review and export? | Exact current sequence, proposed delta and realistic owner pilot timings/correction count. |
-| Frontend state | Are form recovery, stale inputs and independent revision conflicts legible across two tabs/devices? | Named component/state/error path and a conflict scenario preserving both drafts. |
-| Product wording | Do Space/Campaigns, Drafting, analysis and AI labels accurately describe delivered behavior? | Exact screen/function and replacement text, EN/ES parity, no invented capability. |
-| Data model | When does one editorial JSON document stop being sufficient, and which entity genuinely needs normalization next? | Measured volume/contention/query need and migration/rollback boundary. |
-| Processor | Is per-operation native bootstrap sufficiently reliable within 240 seconds? | Actual cold-start timing/toolchain identity, failure phase and bounded alternative cost/maintenance. |
-| Jobs | Can enqueue, lease expiry, object finalization or failed cleanup leave conservative reservations or uncertain state? | Named durable stages, safe reconcile operation and failure injection. |
-| Planner | Are rights, literal copy, coverage, reuse and fingerprint checks sufficient for a realistic campaign? | Counterexample mapped to source checks and a minimal deterministic correction. |
-| Storage | What is the explicit retention/purge/recovery contract before more owner media accumulates? | Dependencies, dedup/history preservation, object/DB reconciliation, undo/recovery and authorization. |
-| AI | Which actual admission/entitlement and retention decisions must be evidenced before live generation? | Selected route, issued grant/model/accounting contract and explicit limits; no assumed eligibility. |
-| Devices | Which iPhone/Safari and Android/Chrome interactions/codec interruptions remain unverified? | Physical device/browser versions, authorized media, observed errors and recovery. |
-| Documentation | Where do older architecture/setup/backlog claims contradict implemented Studio/Settings? | Pinned source and precise prose correction; do not rebuild implemented work. |
-
-## Known unresolved decisions and capabilities
-
-Actual SIWC hosted admission/client/model/plan grant, provider-aware usage limits, uncertainty/retention/recovery remain open. Hosted technical analysis needs exact native toolchain verification before the disabled pin is changed. Phone/creative pilot, invoice comparison and restore rehearsal require actual operational evidence. The public dossier does not resolve those decisions.
-
-Potential additions include transcription/subtitles, per-clip crop/brand/cover controls, capture/background/PWA workflow, licensed music/trends, CSV/live metrics, one selected social publication operation and eventually advertising/native automation. Their value and scope must be justified against current workflows. They are not all preconditions to using the current manual console.
-
-## Required feedback record
-
-For each substantive finding, supply: ID/priority; observed current behavior and exact dossier section/node; source anchor or catalog entry; whether it is a demonstrated contradiction, inference or unknown; concrete user impact; smallest coherent change; affected frontend/backend/schema/job boundaries; preserved invariants; alternatives/tradeoffs; focused success/failure/conflict checks; migration/recovery implications; exact unresolved owner decision. Avoid generic advice, invented endpoints, duplicate infrastructure and unsupported security/performance claims.
-
-Order suggestions by practical value and dependencies. Separate correctness defects, workflow improvements, structural hardening and optional scope. If a fact cannot be resolved without source/runtime evidence, request that exact evidence rather than invent it. Do not provide a pretend ready-to-apply patch against unavailable code.
+End with a coverage ledger: files/flows actually read, tests actually run, evidence unavailable, and findings ordered by impact. Recommendations can propose changes, but this review request itself does not authorize deployment, paid/provider calls, credential access, messages, social publication or destructive owner-data operations.

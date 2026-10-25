@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "marker",
+  "main": "server/entry.ts",
+  "compatibility_date": "2026-10-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "marker.aekr.io", "custom_domain": true }],
+  "assets": { "directory": "./dist", "binding": "ASSETS", "not_found_handling": "single-page-application", "run_worker_first": ["/api/*", "/.well-known/oauth-authorization-server", "/.well-known/oauth-protected-resource/api/mcp", "/demo/marKER_demo_55s_ES_v1_1080p.mp4", "/demo/marKER_demo_55s_ES_v1_4K.mp4"] },
+  "vars": { "MARKER_ORIGIN": "https://marker.aekr.io", "MARKER_OWNER_EMAIL": "elopez@aekr.io", "MARKER_SENDER_EMAIL": "marker@aekr.io", "TURNSTILE_SITE_KEY": "0x4AAAAAAFkEMTXQKxrm1af6", "TURNSTILE_HOSTNAMES": "marker.aekr.io" },
+  "d1_databases": [{ "binding": "DB", "database_name": "marker-private", "database_id": "103e3d55-4d6f-4215-8e02-445424a3ddfc", "migrations_dir": "migrations-d1" }],
+  "send_email": [{ "name": "EMAIL", "allowed_destination_addresses": ["elopez@aekr.io"], "allowed_sender_addresses": ["marker@aekr.io"] }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "marker-private-media" }],
+  "durable_objects": { "bindings": [{ "name": "STUDIO_PROCESSOR", "class_name": "StudioProcessor" }] },
+  "migrations": [{ "tag": "studio-processor-v1", "new_sqlite_classes": ["StudioProcessor"] }],
+  "containers": [{ "class_name": "StudioProcessor", "scheduling_policy": "durable_object", "observability": { "logs": { "enabled": false } } }],
+  "rules": [{ "type": "Text", "globs": ["**/processor/runner.mjs", "**/processor/*.generated.txt"], "fallthrough": true }],
+  "triggers": { "crons": ["17 0 * * *"] },
+  "observability": { "enabled": true, "logs": { "enabled": true, "invocation_logs": false } }
+}

@@ -1,72 +1,102 @@
 {
-  "format": "marker-public-review-state/v1",
+  "format": "marker-public-review-state/v2",
   "snapshot_date": "2026-10-24",
   "source": {
     "project": "marKER",
-    "visibility": "private",
     "branch": "main",
-    "commit": "1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9",
-    "tree": "a46b98ed36320a420b7b1181bebeb70949d2a858",
-    "committed_at": "2026-10-23T22:18:41-04:00",
-    "worktree_at_intake": "clean",
-    "tracked_paths": 203
+    "commit": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
+    "tree": "35d9783ff71498e411faa75b11dedbbca4113318",
+    "dirty_paths": [
+      " M docs/console.md",
+      " M server/entry.ts",
+      " M src/console/EnvironmentSettings.tsx",
+      " M src/console/release.css",
+      " M wrangler.jsonc",
+      "?? public/demo/index.html",
+      "?? public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
+      "?? public/demo/marKER_demo_55s_ES_v1_4K.mp4",
+      "?? public/demo/marKER_demo_ES_v1.vtt",
+      "?? public/demo/marKER_demo_ES_v1_poster.png",
+      "?? server/demo-media.ts",
+      "?? tests/demo-media.test.ts"
+    ],
+    "projection_files": 333,
+    "projection_bytes": 35585752,
+    "scope": "complete explicitly selected product source plus public assets; no private runtime data"
   },
   "publication": {
-    "repository": "edlopezpm-ops/checkmarkerandgivefeedback",
-    "requested_visibility": "public",
-    "scope": "explanatory dossier and structural metadata, without full application source or runtime data",
-    "authority": "direct owner request for this separate public repository",
-    "product_changes": false,
-    "deployment_or_provider_activation": false
+    "repository": "edlopezpm-ops/checkmarKERandgivefeedback",
+    "visibility": "PUBLIC",
+    "authority": "direct owner full-source review repository refresh and commit/push",
+    "source_product_modified_by_refresh": false
   },
-  "source_verified": [
-    "React/Vite bilingual sole-owner editorial console and distinct media Studio",
-    "Default hosted native email-code access, D1 editorial CAS and Studio metadata",
-    "Private R2 streams, resumable uploads and bounded managed-container native media processing",
-    "Rule-based planner, literal text, source/rights/provenance checks, revision approval and export",
-    "Settings saved limits and separate per-browser Environment preferences",
-    "Local simulation only; no live AI or connected social publication",
-    "Hosted technical analysis pin is null; admission disabled"
+  "fresh_package_checks": [
+    "exact eligible source path coverage and byte hashes",
+    "AST syntax index",
+    "all D1 migrations and local Studio constructor schema in empty SQLite plus replay/integrity/FK",
+    "safe exclusions and credential-pattern scan",
+    "dossier links and package seal"
   ],
-  "document_reported_not_reexecuted": [
-    "Prior owner acceptance of manual editorial/UI/demo scope",
-    "Prior hosted Studio/planner/Settings delivery and readback"
-  ],
-  "fresh_documentary_checks": [
-    "Tracked source path/blob/raw-byte inventory",
-    "TypeScript parser structural metadata and static test/API occurrences",
-    "Five D1 migrations applied to empty local in-memory SQLite",
-    "Local Studio structural schema separately reconstructed",
-    "Package links/source locations/known-private-values/credential-pattern/hash checks"
-  ],
-  "not_executed_here": [
-    "product tests or build",
-    "cloud deployment or migrations",
-    "authenticated runtime login/media/planner/settings operations",
-    "physical phone or creative-quality pilot",
-    "live AI/social/provider eligibility or invoice verification",
-    "backup restoration"
+  "root_reported_mcp_checks": {
+    "oauth_sqlite_tests": 15,
+    "tool_backend_tests": 8,
+    "official_sdk_integration_tests": 4,
+    "targeted_profile_native_provenance_regressions": 48,
+    "types_build_logo_worker_dry_run": "PASS",
+    "real_local_sdk_media_flow": "OAuth PKCE, native plan/save, FFmpeg 10s 1080x1920, separate first-party approval, private delegated export 46703 bytes",
+    "provider_model_calls_in_mcp_fixture": 0,
+    "qualification": "Reported by implementation coordinator; not independently rerun by dossier worker. Does not establish installed Dot/host or hosted activation.",
+    "focused_tests_total": 75,
+    "later_sdk_tool_contract_subset": 12,
+    "profile_tool_contract": "standard {id}; stable across reconnect",
+    "browser_checks": "EN/light and ES/dark connection list, two-step revocation, ES consent Montserrat/original logo/no overflow PASS",
+    "parent_review": "PASS_WITH_OBSERVATIONS; bounded scope, no product-wide certification"
+  },
+  "not_established_by_refresh": [
+    "new MCP remote migration/deployment",
+    "actual Dot/ChatGPT/other-host installation and conversation",
+    "human UAT/creative time-saved pilot/physical-device acceptance",
+    "hosted analysis toolchain",
+    "provider invoice hard cap or restore rehearsal",
+    "security certification or independent OS containment"
   ],
   "catalog_counts": {
-    "d1_tables": 15,
-    "d1_columns": 82,
-    "d1_explicit_indexes": 8,
-    "d1_triggers": 0,
+    "tracked_paths": 326,
+    "projected_paths": 333,
+    "source_checkout_bytes": 35585752,
+    "source_text_paths": 171,
+    "text_lines": 40138,
+    "lock_packages": 232,
+    "d1_tables": 35,
+    "d1_columns": 195,
+    "d1_explicit_indexes": 14,
+    "d1_triggers": 69,
     "local_studio_tables": 10,
     "local_studio_columns": 33,
-    "parsed_modules": 62,
-    "declarations_and_fields": 10530,
-    "import_and_reexport_records": 278,
-    "syntactic_call_and_new_sites": 9427,
-    "declared_tests": 144,
-    "lock_packages": 136
+    "parsed_modules": 112,
+    "static_test_declarations": 292
   },
-  "limits": [
-    "Static catalogs do not resolve runtime reachability, dynamic dispatch or test outcomes",
-    "Generated Worker declaration contracts dominate raw symbol counts",
-    "Empty SQLite structure is not a live D1 object/data/configuration inventory",
-    "Known-value and pattern checks are not exhaustive secret detection",
-    "Dossier review is not a private code audit or security certification",
-    "No fresh product acceptance or external effect authority follows from publication"
-  ]
+  "exclusions": [
+    "private governance/evidence/archive payloads (.aekr)",
+    "local runtime/business/account stores (.local and credential stores)",
+    "real .env/.dev.vars, credentials, secrets and key files",
+    "node_modules, build/output/generated processor staging, .git, caches",
+    "owner attachments, local Font directory and private inputs",
+    "provider credentials and raw auth/session/token hashes from runtime stores"
+  ],
+  "known_limits": [
+    "Source dirty demo bytes are explicitly part of snapshot rather than falsely attributed to base commit.",
+    "MCP receipt admission is not atomic with domain effects; uncertain writes require reconciliation.",
+    "Actual external-host model identity is not fabricated as trusted generation provenance.",
+    "Applied Agent provenance survives selective history cleanup; connector grant cleanup has different retention.",
+    "Original asset hashes do not prove browser/temporal quality."
+  ],
+  "deployment_at_freeze": {
+    "new_mcp_migration_0010": "NOT_APPLIED_REMOTELY",
+    "new_mcp_deployment": "NOT_PERFORMED",
+    "actual_external_host_installation_conversation": "NOT_ESTABLISHED",
+    "prior_hosted_version": "5998a3eb-8557-4ab4-88b8-9c402d6be0d6",
+    "prior_version_evidence": "Coordinator-reported previous receipt, not fresh readback",
+    "source_main_remote": "Matched frozen commit"
+  }
 }

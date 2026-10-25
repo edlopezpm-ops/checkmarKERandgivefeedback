@@ -1,2 +1,13 @@
-__pycache__/
-*.pyc
+.review-work/
+**/__pycache__/
+**/*.pyc
+source/node_modules/
+source/dist/
+source/output/
+source/.local/
+source/.wrangler/
+source/.aekr/
+source/.dev.vars
+source/.env
+source/.env.*
+!source/.env.example

@@ -1,8 +1,10 @@
-# marKER public review dossier
+# marKER full-source review
 
-Source snapshot: 2026-10-24, main 1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9.
-Read README.md, 00-START-HERE.md, marKER-FULL-DOSSIER.md and AI_ANALYSIS_PROMPT.md.
-Structural appendices: database/README.md, inventories/, source-snapshot-manifest.json.
-The combined dossier repeats canonical chapters. Do not count duplicates as new evidence.
-Full application source, runtime/private data and credentials are not included.
-Do not claim a code audit, fresh runtime verification, provider admission or human acceptance.
+Start: README.md, 00-START-HERE.md, CURRENT-STATE.json, source-snapshot-manifest.json.
+Full implementation: source/ (all selected public product source and assets).
+Reading copy: marKER-FULL-DOSSIER.md.
+Review request: AI_ANALYSIS_PROMPT.md.
+Navigation: inventories/source-paths.md, code-flow/README.md, inventories/test-index.md, inventories/routes.md.
+Schema: database/d1-reference.md, database/local-studio-reference.md.
+Evidence: 08-operations-quality-and-limits.md, PACKAGE-VERIFICATION.json.
+Private governance/runtime owner data/actual credentials are excluded. Respect source-commit/dirty and local/hosted/human evidence qualifications.

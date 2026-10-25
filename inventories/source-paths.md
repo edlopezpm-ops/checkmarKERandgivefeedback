@@ -1,209 +1,339 @@
-# Complete tracked source path inventory
+# Complete source projection
 
-Source revision: `1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9`. All 203 paths are listed. SHA-256/bytes below describe Git blob bytes; clean-checkout CRLF differences are separately preserved in the [JSON manifest](../source-snapshot-manifest.json). No file bodies or image pixels are included. Null line counts mean binary.
+Base `de0a4a65d6d37642e5f7efda66151c4270ec2a02`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
 
-| Path | Bytes | Text lines | SHA-256 |
-| --- | --- | --- | --- |
-| `.dev.vars.example` | 244 | 4 | `c09e56b8991459690caa6cada1d22719adc9236ba892081b1e3e06d5d7f5be54` |
-| `.gitattributes` | 139 | 8 | `eca3fbfa052942aa08c1a5a665291b01f2e54b75cb325d955fd333e0b8069e6f` |
-| `.gitignore` | 414 | 31 | `af47c780e7e8ff958548f97a9b5773deb5d03c3eef5337bbcf4fc593d757c031` |
-| `PROJECT_MAP.md` | 3673 | 35 | `a76472b5c0893a6a45296cb16a7b73214df309ddd25a77a7a272e2ff6b0e52c3` |
-| `README.md` | 4548 | 32 | `e5a0ec9d3d31c38b9c591da5449fb2b8d5038a0bc6972a0994be2962e4e75835` |
-| `assets/AEKR-BANNER-LICENSE.txt` | 1349 | 28 | `fa138a953a6c531e43113361f013ddbf4d3b203c72e04f27dc7a8dcb6a9a3f1c` |
-| `assets/aekr-banner.png` | 1006315 | None | `81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc` |
-| `docs/ai-connection-decision.md` | 11515 | 60 | `dc92bf8e23ebdeaa51cff207a2b55b0329daffe15caad49633374edce4879bb1` |
-| `docs/architecture.md` | 3378 | 25 | `93e061cdcbc2862cd3c1cad4e0d7b378b58f4caeb4f8336960546cb53d3b7e2e` |
-| `docs/console.md` | 7163 | 35 | `ddbaa0ed9aabfad5d7c9b919c193053611336c700e215c70bcfb5c520adb8970` |
-| `docs/decoration.md` | 5257 | 34 | `c87bf08589554bdc5a465d2f44e7d5e31a0b3f3136a3a6626a947c75337409fb` |
-| `docs/hosted-studio.md` | 7813 | 43 | `75c14f9e403724b2551456690e88ed1252dc89d38db81d5886893dc5360b31b4` |
-| `docs/implementation-next-steps.md` | 6319 | 36 | `b122ebf893887f0e49ef1b492d7e4da0c88a2235b0074ee58c2acdfc2e3daad6` |
-| `docs/local-studio.md` | 10248 | 55 | `52ad7181171d827f1811c01b87f6c21d3571cc766a8be48efec3c7fecc92a5e5` |
-| `docs/settings.md` | 4469 | 33 | `e9bb1144f69409e3f73de7b2e66104c1b2869fcc54913c25da4ba4273b06417e` |
-| `docs/studio-planner.md` | 7519 | 41 | `9e35888df32cac337f2570396cc18653a23f0c88a3b03305bea2cd0cdf405ae8` |
-| `docs/text-simulation.md` | 3134 | 13 | `6d475f010a56e0e9f8cddf06bec96e8c4cbd9495107a2794ee4428ce6530b176` |
-| `index.html` | 481 | 2 | `87fbf1b5c8ea0c7f9244017b291cee48e0a8b239ac167847215f1739f0ac3529` |
-| `migrations-d1/0001_private.sql` | 1365 | 26 | `d7836325da283d9f561e8b142bf8205a64c07e29cc4257b79bfdd82883decb48` |
-| `migrations-d1/0002_studio.sql` | 2406 | 49 | `9d60433c5bd046ffb5b4c19ec2fd584507ea0469761d822d21f7de6f7ea43ed3` |
-| `migrations-d1/0003_studio_hosted.sql` | 1268 | 23 | `474ad650967e899ce1e491cd075f1b20528ddc2d3ab2aacd6116083fac8d5866` |
-| `migrations-d1/0004_studio_analysis.sql` | 1172 | 20 | `7e39a0aa2ab5bd2809cc0eea6db1934513958c30cba0430907f033c0c6ff7b9d` |
-| `migrations-d1/0005_studio_settings.sql` | 921 | 13 | `e1afc97c1a451b4710b03c4fd466319d3fd488b645f824d3799c992258ccb663` |
-| `migrations/0001_editorial.sql` | 2955 | 52 | `d9fc772129a93bcd8567967ceff2151e21a597f114a49452ebb415c1da55958c` |
-| `package-lock.json` | 73988 | 2336 | `46faadaf48df9cc5178169ab681cbdf7e164c2ef3cd2b06b445556f93aceb109` |
-| `package.json` | 777 | 26 | `1b9c1cfa5fe32a69791121efb1dd5da976503512a64cb1fffb915f5b43cd481d` |
-| `processor/runner.mjs` | 5667 | 106 | `9ff887e7e2c28a6cbab7668fba401305a56de32395ffa92029d48192563c51d1` |
-| `public/brand/aekr-mark.svg` | 1115 | 24 | `2523744cb53e1392f771ef6a9b4637aab21844a404914f98f9cc63c5c4fad504` |
-| `public/brand/manifest.json` | 188 | 8 | `48a790c3fe10fde00d9b6dc08aa140bded05628e5dd7d6cfede2c66d17b4b8e1` |
-| `public/brand/marker-logo-v1.png` | 1483680 | None | `34ee71440f595b7ffa7b0ac0f23ee6ef1164724b88e3fd0a7f1cd5a834403b1b` |
-| `public/brand/marker-tab-v1.svg` | 159302 | 1 | `0c2c9304489ad8bf3263743582e6961c2fc5229c228bcf3a79415f8b6cffd0ad` |
-| `public/decoration/characters-v1.svg` | 1223 | 5 | `d9b1ab96e8acb4ab0f853a22185ff5c0601ef2dd6e8da56d1bbf235239df56b8` |
-| `public/decoration/characters-v2.svg` | 7714 | 1 | `e6f575a640e2f4544116249474704d4163173f3ee072e8d0c8f2113e64e12d1d` |
-| `public/fonts/Montserrat-Medium.ttf` | 340508 | None | `1576fea0dad9c310757ce479f1378953c88b6ae27da08a7e63663a1386db66f6` |
-| `public/fonts/Montserrat-Variable.woff2` | 124596 | None | `758ec03efffe485ffea4db1bbb73ac9aeb20b63a5ba74aab30718bf001227cfb` |
-| `public/fonts/Montserrat-VariableItalic.woff2` | 130036 | None | `d9f5ecd8b59a7d5dec4bbbdbf7d1cfe64c1b81d17a249ee63513acd6a3aa08ff` |
-| `public/fonts/OFL.txt` | 4257 | 22 | `65c3f6e711f0e178ac153a11282410791a313354d626c9d13774022dc052912c` |
-| `public/help/en/account-1.png` | 29719 | None | `17794e8562bd43369113c912a7b1053feb9ffbaa0837ef14ee1958869f4372bf` |
-| `public/help/en/account-2.png` | 35488 | None | `4c4b8c241e4955c95f602d3e10964514266ceb8c98a93b2591ef6dad5c36b6a8` |
-| `public/help/en/account-3.png` | 9647 | None | `7f12ccb0c134eef7abc5c0203b52991f5994a28bfd4eba27f0dd66f8b2e586e4` |
-| `public/help/en/accounts-1.png` | 18628 | None | `ed250f334fa8277821948ecddcdfc26d0ef3d63256b99a77d838c5ea2db844a4` |
-| `public/help/en/accounts-2.png` | 17505 | None | `2004a40f33b271994ca0dc7ded048c8e539bc04e51e6cfd034c6bb8eae969e60` |
-| `public/help/en/accounts-3.png` | 37792 | None | `33ea0dbc57faa69bf1b7f1dffb05433d7e7aeb9544e4068f094ac5027a755922` |
-| `public/help/en/ambiente-1.png` | 31711 | None | `c0f5c5344c9eee57346920be5feb21aed3845ed3d1f4647407fe7acd98a6c844` |
-| `public/help/en/ambiente-2.png` | 7477 | None | `38001942ed2cc6b73ce1ddd85f4134ad304922ca95e9f7d446232aba769658fe` |
-| `public/help/en/ambiente-3.png` | 4511 | None | `5fff07f7bffa09bd0068d7d7f81be0e33f7e436a55ab4ca39eb4aa1851f72789` |
-| `public/help/en/ambiente-4.png` | 10526 | None | `320e5b27cdb57602a78ea811c638ec8e6de16eea982da56bb9e01d69755bcac2` |
-| `public/help/en/campaign-1.png` | 27604 | None | `231eee0f66de7a77725ffd5cbcb61b3c16a6b7afa8e55b3cc4380580f23c4c3e` |
-| `public/help/en/campaign-2.png` | 25358 | None | `6d9409420f4b4a318d9638cea84e2100e39fc0146e781fdcb303ec6fe5235475` |
-| `public/help/en/campaign-3.png` | 33207 | None | `10c741a80e0c165c4a21f55a3bd99e8f53bff2974ee8932c7d778d267feec783` |
-| `public/help/en/campaign-4.png` | 10489 | None | `8a0a049a1a89a858e8fd54d81806a713e1d0fec0d78488ac8b9e37cf1e2a0a61` |
-| `public/help/en/campaigns-1.png` | 19903 | None | `639a7f3f125df85e7b374d2628c36c1d24576ebede09a1b85e1d214a2bf1b35f` |
-| `public/help/en/campaigns-2.png` | 17487 | None | `4f2debe4dd8ad414ab6383d0bd2aa99c1f9853a367722f4076c726ab01a85211` |
-| `public/help/en/campaigns-3.png` | 41356 | None | `9a41f3a7d4e045c83fb648ba62de876ed974b928a9ffc610bd3287257d8a1620` |
-| `public/help/en/overview-1.png` | 22062 | None | `fc8c4642a6d3f6f81e1ba7139b7c3e64eae70829b0393fc8dbe09305d4a8cdf2` |
-| `public/help/en/overview-2.png` | 27580 | None | `dd78b7597875135b91c70553d6af097b1731f4dd2ce66ee1410f2b41b80161be` |
-| `public/help/en/overview-3.png` | 143197 | None | `e6e808886b7a45e0db44232e2aed4a5e7d6055e58fa537913f73fd159c441e8f` |
-| `public/help/en/overview-4.png` | 21814 | None | `75860e01376f2964157557ceed8d3a833478255f8ff32d1d6cace73d96131a2a` |
-| `public/help/en/post-1.png` | 62297 | None | `eab27f2c8af7647f507bf55f3bd69fd7aa585fe0ffafef2ddeb31c33c927c189` |
-| `public/help/en/post-2.png` | 20366 | None | `f69fea717c60a7b1d30df8882f4c1793b9c464b14a869343da9d93b85636d977` |
-| `public/help/en/post-3.png` | 67892 | None | `f5fbd982ac3d8499e25888006b81529b6fb1588b2e0e632cdef37b8bbc26f4eb` |
-| `public/help/en/post-4.png` | 62501 | None | `76dcd0350cc869a642b954dd90f3129e2f9c92a306b09f67202a2094ad4f9b2c` |
-| `public/help/en/product-1.png` | 38717 | None | `6ef2d62cceed9d92153764b74991bdc89e2ffc963822ffb5728d1c55f2739793` |
-| `public/help/en/product-2.png` | 39974 | None | `ad60a8a6e5daf5f49b103efee2b095eb38c3ab66cab755e3fdd5677d740a2577` |
-| `public/help/en/product-3.png` | 9563 | None | `3eb956993b4f0f7a771de71937c0a05c02630dd55b378d00784534df554a1ef3` |
-| `public/help/en/products-1.png` | 18251 | None | `702fbf78038bdc06b7c6c01d44d55a85a66c8a0d5d16ac33c4f82159e2066618` |
-| `public/help/en/products-2.png` | 9964 | None | `963c0e84b4e9b11462005d57548df687eef1308dc1218f674bea5b6271708d45` |
-| `public/help/en/products-3.png` | 42858 | None | `e5d8e9ee2406021148e172a45738e4665f02976678e056f37adbf4e9601553ae` |
-| `public/help/en/queue-1.png` | 35916 | None | `f39dad261f0de689d9799f6311a6e566ef18d1d6866e767fc42ade8cc07469bb` |
-| `public/help/en/queue-2.png` | 77732 | None | `9d607545c3ce9409e27a12935f86fda666d482ed2f79468e4889d5f6c108d1cc` |
-| `public/help/en/queue-3.png` | 21042 | None | `ffc206624206e7e792130ca5786519ddaea71aa6b78fab3f7f9661813d4a7244` |
-| `public/help/en/queue-4.png` | 21017 | None | `6a959a9f472eb42d1e012f12c3f010b1623d331e4516266acbab1f39d711112f` |
-| `public/help/en/source-1.png` | 37162 | None | `02b25dffadfd242990c1e1d9d63cb0c8449a704429362f91f6f9bec2fd5fac47` |
-| `public/help/en/source-2.png` | 12712 | None | `a5ab465c60ab52fd2a8a624d438fb9e4398351327eb3b1526f38717e87a28bbd` |
-| `public/help/en/source-3.png` | 10480 | None | `eee3be046886f2d9cb47ce61883300ef7d4c44acf740dd89c79fdd9848771ae7` |
-| `public/help/en/space-1.png` | 17617 | None | `df5f4be1fc15b15ec59634f430489e8a32c23111b02facde2610cba21149c3a9` |
-| `public/help/en/space-2.png` | 17487 | None | `4f2debe4dd8ad414ab6383d0bd2aa99c1f9853a367722f4076c726ab01a85211` |
-| `public/help/en/space-3.png` | 57409 | None | `961188f8e7487d5d2971d0417a135cb5bb22979fe56264f222f41c8f8f2064c6` |
-| `public/help/en/studio-campaign-create.png` | 87482 | None | `b34b2bb5c8e4f7c44acf9df307214e62e6d6244322c91dec8cb2f31bc73d1c1d` |
-| `public/help/en/studio-campaign-export.png` | 118304 | None | `33e0e0fea34fc9010a7903d4d79a682a6fcaac716900a7de9c8c7871011df621` |
-| `public/help/en/studio-campaign-message.png` | 106479 | None | `973a45e97182b686516ea5cd19c680640a4b1525c15c0a17347e8fd9412cbb1b` |
-| `public/help/en/studio-campaign-preview.png` | 68662 | None | `c96b63ec5c8c4bea08a3170bc8e08c2b17cdfed53b17c7f0921866c5bd4d32f2` |
-| `public/help/en/studio-campaign-sources.png` | 113099 | None | `b51e06493d2a001409f654f1cd9483eac15b3849e2019ecb6622543d2fb5a6b4` |
-| `public/help/en/studio-space-capture.png` | 91202 | None | `aca03ff26893c9f18ed2cc2eca14470dcac7a3b284a2888caf8313246fa2d1b5` |
-| `public/help/en/studio-space-filters.png` | 116908 | None | `a61ffb7e212c4f4db9491ebd0c78193fe50adf694e919c1f794630e133310418` |
-| `public/help/es/account-1.png` | 29749 | None | `ad67cadc25c11551c902a2042ce9f7fc738e2bf72bef1d4368563acf8e33fe51` |
-| `public/help/es/account-2.png` | 35385 | None | `f3a8f60a0b3511326ca4723811d0cfd79eb9fed54623a80b39bba1297d8a2914` |
-| `public/help/es/account-3.png` | 11664 | None | `50a17762c4605e31df118267faf5d109113eff998004f102c0e629c11c55fbcb` |
-| `public/help/es/accounts-1.png` | 17964 | None | `51ce7ab74389f2dc5043f4ae0061bb851595bb7ca42125092dedf36649cfcf84` |
-| `public/help/es/accounts-2.png` | 20108 | None | `c337e56f7ddd0ae5b4e2d0dfa980c1c8fc26707fcb3cd445dfe00e9534e1fca1` |
-| `public/help/es/accounts-3.png` | 37487 | None | `8d594c3cafb9acb50c61cb04d2aed9394a9e131f452a3cd44fa799145db174c8` |
-| `public/help/es/ambiente-1.png` | 28785 | None | `754ec750c737346b23c062d3026971513c8f83fff55d1c7feee1e9a38dd1b58c` |
-| `public/help/es/ambiente-2.png` | 9342 | None | `5fd29a5f07e6a9b0d60a7584f0875c8930b2bb14c6c1adce35b3463265ef8134` |
-| `public/help/es/ambiente-3.png` | 4983 | None | `e8042bf5a6cb67ef037db8643e5e6d298c68d473493b164cb2ddaac7f4dcd1eb` |
-| `public/help/es/ambiente-4.png` | 8969 | None | `2660c71c3eca746996ceded6fa70041cc59a649adabd1055c83c4478c03ac730` |
-| `public/help/es/campaign-1.png` | 28971 | None | `302633872d2dc40843a531848b452ab310aef1dd3d9e137fd4f6d646688219fc` |
-| `public/help/es/campaign-2.png` | 27959 | None | `3c436f52bd0d8e79e5911b9dfa55d9f5b501e242cd402fdcd6aec4e4081f7294` |
-| `public/help/es/campaign-3.png` | 33999 | None | `9604d9027a6e56d1ec2381890521665dd9e02424e8f7db4f8195ffd1b3211850` |
-| `public/help/es/campaign-4.png` | 12377 | None | `4440ecfbd2320c9e8b5e8a9fb573dc31adc9197acaf2d364ce992b2b7fcabf50` |
-| `public/help/es/campaigns-1.png` | 19484 | None | `5368f71a5e39df6dc769ec211df25c06eb37e1a4dabed48934617b10427fda6a` |
-| `public/help/es/campaigns-2.png` | 20108 | None | `c337e56f7ddd0ae5b4e2d0dfa980c1c8fc26707fcb3cd445dfe00e9534e1fca1` |
-| `public/help/es/campaigns-3.png` | 45961 | None | `bef52cf3e05a6dcf1d3d93c58050231473132e01304a006bacecbc7e97e4b970` |
-| `public/help/es/overview-1.png` | 23857 | None | `dfa0d8eb9df25a68c9a083279c5854f8c2294f733db415c169537abd424d491d` |
-| `public/help/es/overview-2.png` | 28128 | None | `05d9cc9db7702190898b89928a9753b6fec771820d03127ce2ff5d9ab7ef2aca` |
-| `public/help/es/overview-3.png` | 145233 | None | `922d9f42d1cf0aac55efbdcfe77cd0c3cc7bcfb5e4e2c1190b6478bf219b22d7` |
-| `public/help/es/overview-4.png` | 21321 | None | `8bb40c487b84962b50a2bd38ed87fb0a5d794734199f3caf312075fee3c5d518` |
-| `public/help/es/post-1.png` | 63183 | None | `1b28fc6ce0153310ade60bb41fe07cc1db3b4eab9d4b4dcf8abf570307fa1a82` |
-| `public/help/es/post-2.png` | 21517 | None | `3118c82d66e377aaf4846c464abc931fc85d6bfc985cd982fab9df7e718d4b16` |
-| `public/help/es/post-3.png` | 76492 | None | `efe6c82d522bef113a43f206748db3d551d1f69e6a171b9b76732295d6c8c243` |
-| `public/help/es/post-4.png` | 58587 | None | `e0a6952ea9dfd0ee4efb20ba6e76fcaeda05e066896ec829c08690bd8be75278` |
-| `public/help/es/product-1.png` | 39574 | None | `97a342fc3163b0c8ae77a349d300689bab3d415ba7070c11f256471dd2242192` |
-| `public/help/es/product-2.png` | 41036 | None | `38b80b771f943a4547c59c92831a2a83f81771d2027ebecdf7cc1cb5122a2112` |
-| `public/help/es/product-3.png` | 11724 | None | `976dd3595cee42ea8424d62e23cf92e52c34d96f5bb30e4201bf56a6ca183a6d` |
-| `public/help/es/products-1.png` | 19103 | None | `766e86b6046499ed15a976bbe96cf1ad4e8237f98269b652856aa0e30dd187d8` |
-| `public/help/es/products-2.png` | 10545 | None | `ccdf0a296e509f419c075f5348204023a27b37e9b04e939da1e1239638868c06` |
-| `public/help/es/products-3.png` | 43927 | None | `b53744925fb8d1db31945cd94b8ae2d173aaa328b30c87aba6f5293491bd6c5c` |
-| `public/help/es/queue-1.png` | 38692 | None | `01754d6da830ed72d9604136e3ff1b0f12491003085b58fbfec6229742509ea9` |
-| `public/help/es/queue-2.png` | 72697 | None | `71d7d1f51ac6be2f6b62593f1b6a15c4df8a998ba16be6f54add48f78b1fa37c` |
-| `public/help/es/queue-3.png` | 17670 | None | `44c20d7384ecb02a3bbadd702578a05de35c4c6d1764577b87e7335e96e4322e` |
-| `public/help/es/queue-4.png` | 17670 | None | `44c20d7384ecb02a3bbadd702578a05de35c4c6d1764577b87e7335e96e4322e` |
-| `public/help/es/source-1.png` | 38944 | None | `3b7ff96e5c6043337f524e8d3d4628ef8d79606dcd43e4b1d9418457c556d743` |
-| `public/help/es/source-2.png` | 14867 | None | `8fc089e8ed223b5b9d35aa5a33d137e9e5c9811a104507824046bde9d8af05d2` |
-| `public/help/es/source-3.png` | 12600 | None | `d0f2de18ca297369aa0cb3173e94cb104806484084de922e1d709f23dfbe881d` |
-| `public/help/es/space-1.png` | 17964 | None | `70e37093c4dd80802ecde07d08dc3c1b39c1d01eb9860d8f2a702afcf5d94d27` |
-| `public/help/es/space-2.png` | 20110 | None | `9e63f9d9db89c36740dabd2547ca0a357d9fcb7aabbeed0a665da67e6bc005a0` |
-| `public/help/es/space-3.png` | 59475 | None | `06a8e3a0999a0d13370f637707c3b8abcf1482660cd6bc52a917e6486cf64a88` |
-| `public/help/es/studio-campaign-create.png` | 87482 | None | `b34b2bb5c8e4f7c44acf9df307214e62e6d6244322c91dec8cb2f31bc73d1c1d` |
-| `public/help/es/studio-campaign-export.png` | 118304 | None | `33e0e0fea34fc9010a7903d4d79a682a6fcaac716900a7de9c8c7871011df621` |
-| `public/help/es/studio-campaign-message.png` | 106479 | None | `973a45e97182b686516ea5cd19c680640a4b1525c15c0a17347e8fd9412cbb1b` |
-| `public/help/es/studio-campaign-preview.png` | 68662 | None | `c96b63ec5c8c4bea08a3170bc8e08c2b17cdfed53b17c7f0921866c5bd4d32f2` |
-| `public/help/es/studio-campaign-sources.png` | 113099 | None | `b51e06493d2a001409f654f1cd9483eac15b3849e2019ecb6622543d2fb5a6b4` |
-| `public/help/es/studio-space-capture.png` | 91202 | None | `aca03ff26893c9f18ed2cc2eca14470dcac7a3b284a2888caf8313246fa2d1b5` |
-| `public/help/es/studio-space-filters.png` | 116908 | None | `a61ffb7e212c4f4db9491ebd0c78193fe50adf694e919c1f794630e133310418` |
-| `server/api.ts` | 3098 | 96 | `6518c8a68134e8720e91c65eccdf21c3450af8d2d3757da6a0e44cc4540dd5c9` |
-| `server/d1.ts` | 2031 | 24 | `7e4c5a5ca7177f474f4401e180b88a2fc99127005f12dc3983fc4c1ff653653a` |
-| `server/entry.ts` | 96 | 2 | `8047dbde7cf1373e12006c5dfb6aca180614a9e34eeec84f349c1860c00762ee` |
-| `server/local.ts` | 1761 | 54 | `7d102c23138cd3a5bb5f9e4456de2d37bcf9bd0d15fd18076b7fdf07e9f9bfa0` |
-| `server/native-auth-store.js` | 9597 | 144 | `e100d4de92db14931c87341fec0c0c06eaaac5f3296cca102a334b692f6125b9` |
-| `server/native-auth.d.ts` | 446 | 4 | `3cea8daebddca13a7708da2169f7f10930a24619aaf33e05e7d854f0127608ee` |
-| `server/native-auth.js` | 13636 | 217 | `29a122e900b4967c4c1ddb8c4260657012d5458eb5c6214138e2cc7d9830f15b` |
-| `server/studio-analysis.ts` | 9306 | 133 | `cba07c7efd54b4cbd285c8bd124d3d242c9f82d7ad8db335c18f35b3a4ce71e2` |
-| `server/studio-hosted.ts` | 66265 | 679 | `085be6294e2e77d4c0c0369467b997ef876b709f5b6531d20c285e0051c16da5` |
-| `server/studio-local.ts` | 50994 | 638 | `5a5bff907618290c2b200f45cfc24e8b12f90e40851d151c524e83e173d9f7f8` |
-| `server/studio-processor.ts` | 18125 | 283 | `f43148c1779d32cfe3ca59be86d3c42315ed1a0d1524d6c0a43ecf129fbbc57d` |
-| `server/studio-render.ts` | 19939 | 282 | `dd7f3f878d434c2fea1e171f452bb8143626028f1b95ad12853b91490b2f1ac2` |
-| `server/supabase.ts` | 2812 | 90 | `40d048d4a2f792a421f1be40af7199725e18288c6148ed4d55917182f775c559` |
-| `server/worker.ts` | 5230 | 128 | `7a0ee52c40c70f02f41aeb8f3d0ce2bb4872c33c8e6fa0337c3be8710961eb33` |
-| `src/App.tsx` | 4670 | 80 | `f67ce533710de69965984e60e65e433a74a0e8f5829bfeadef76b31e063b0388` |
-| `src/console/Console.tsx` | 54141 | 1403 | `678a0f61fd4c97571f10d0bbe31107ea43350c76707764c88c6b9ed6e92074ad` |
-| `src/console/EnvironmentSettings.tsx` | 2965 | 22 | `e2a5d7063f56fde8d404267cf5136f398b432bf1b5d7b4274a5525d5534bfa3e` |
-| `src/console/Help.tsx` | 44978 | 191 | `2502975b59c37646de29cc7af01943d735cff654a45fefd5043757494dc682dd` |
-| `src/console/Settings.tsx` | 11138 | 94 | `e46361ef34c4f2016e5a2c0f39608bf1796cfd04b4ab40762898fc8c658c473d` |
-| `src/console/Studio.tsx` | 49326 | 343 | `4e90a0611175d33216598b11aabda61eca36f2ba93245855247ce22b7732b5b5` |
-| `src/console/StudioAnalysis.tsx` | 12565 | 109 | `a6abdc960077de0f0dc0d675ccab328a0d87439cbffbdf05eac3176a23fd0335` |
-| `src/console/StudioPlanner.tsx` | 24699 | 158 | `04a24d275d43da5e9858dcd4f50024c3bc0848453122769e0386525013894e98` |
-| `src/console/TextSimulation.tsx` | 6886 | 118 | `1846113f1ad50c1e8547e7bab098969c284568c38f6b757a08930f35bfcbe791` |
-| `src/console/console.css` | 8287 | 467 | `1fa81d2b489befe2deda9ca399180a590b97d03b6e53333311ab7d80fe82b09a` |
-| `src/console/help.css` | 2676 | 102 | `b794250e781fc2159b8ef3cafed3301dbc0b9d8295a442881d591f500cbfbb5f` |
-| `src/console/release.css` | 5292 | 152 | `e9101c6a44df62b9813dcdb8c9c0d9287ee9ba22e453adb45f40c2a319b66059` |
-| `src/console/settings.css` | 1024 | 10 | `f3b311282026751781aa00ae0fdd89c170e8c8a7965a446c2c6c5fafc190859b` |
-| `src/console/studio.css` | 5088 | 55 | `59471b378fa291cf8c505f1d59f1583093c613235e09511871c5d37d1451d9ca` |
-| `src/core/client.ts` | 1578 | 33 | `60df04e7a7f08afee867dce035d66b6514b5db413f2f33dbf971f424d4fc8eca` |
-| `src/core/domain.ts` | 14368 | 456 | `c173e8c2b99f6c9c5e3356cf747ed2007cd5b4b4a191eca2dd4df97ddbcd6180` |
-| `src/core/generation.ts` | 10587 | 184 | `4407242938a1e2abba9ad27a8657ce5c3264479b2430c14b76983143b431bab0` |
-| `src/core/settings.ts` | 2330 | 39 | `dda4eb9cfbde3fa81e55b192fa3766547b4a8d70f5f1b673e47c4b463fa7a01d` |
-| `src/core/studio-analysis.ts` | 4676 | 73 | `4029396a74d3c0b826f3ec050ab032fb38f2093d83abe5b5cfd0187b52910dfa` |
-| `src/core/studio-planner.ts` | 24986 | 246 | `d357653874047eae052e0dc72993ca948536748b7c3f3cc18ac88501de0e2734` |
-| `src/core/studio.ts` | 26649 | 416 | `8a44e09779c44e4176569fda7d9f0af780be64adeb52cd574146db9b22f4b549` |
-| `src/decoration/Background.tsx` | 5049 | 125 | `43be832ed011a3f8ce5db1136cb4fc1bd4e4a7cc1a90c607024d1159d284a782` |
-| `src/decoration/assets.ts` | 3739 | 68 | `b03774df10eca7b629e85b3d86110165e0c4a533aa253f84b0e5ad4754205988` |
-| `src/decoration/registry.ts` | 1051 | 18 | `499dbc79407f0299750457f82789260fa0ae099d27d8fa4ceef6648c60fbb0f4` |
-| `src/decoration/renderer.ts` | 12284 | 210 | `c84e3bee7776748eec6c23ce39b865dab23924b3cb3a3388da79dbb9dbd7d39a` |
-| `src/decoration/scenes.ts` | 19213 | 218 | `c1c0b12c6335ef1cda0d30dc2ee481f5d033ed3391f1b4288c91b39ab2868916` |
-| `src/decoration/scheduler.ts` | 2851 | 61 | `adcf1e02e8ea5d93ab6ed81f92ef205698be6af04b6c823f1149fe48580e5cd7` |
-| `src/i18n.tsx` | 24707 | 352 | `0f194c69e579b6ec6d9c031bb236bb6927a482ee845b2f120101d9596bf705ad` |
-| `src/main.tsx` | 366 | 9 | `7c8fb1696f3dee2b04bd9b6548fb7a28db8cd4e5147f1f455a406e1e7b8a5645` |
-| `src/style.css` | 5674 | 75 | `6a9d0e3f4c560032d6838b00fb807ab93e9727d86ea4335909a3c99438f80b38` |
-| `tests/access-help.test.ts` | 9360 | 146 | `29a89d155ecccce8608a559b05fbaea44406520a871f7f06e5e5caf3513bec6d` |
-| `tests/assets.test.ts` | 3347 | 40 | `60dfc1c330dc82a1fc8c27d40c26581927076990c062446acf285bc026774e2a` |
-| `tests/d1-hosted.test.ts` | 6557 | 81 | `bf814b1089844781c80f65cc788823795e2b59c248330a0796090c7e94804cfc` |
-| `tests/editorial.test.ts` | 10296 | 352 | `d489d2ee3b7566716ccdcd7f530b2532dd370d89d7f969fac47e8aab23f28835` |
-| `tests/generation.test.ts` | 10716 | 139 | `e4288895e65421efad42d59fb9a43af94d26f4af75803e6befe3e2faa5f001ce` |
-| `tests/hosted.test.ts` | 3428 | 109 | `3c3b4f14cad975e268c2897874fb774cc130d0c1d899870aa1bea14d6963eaff` |
-| `tests/motion.test.ts` | 6554 | 101 | `0952f865b44a4c7fcd942f023c531a54b4f57b5b4fde04df60bae2d7a9453a65` |
-| `tests/native-auth.test.ts` | 15128 | 239 | `fd01163808505c644ed1fa5aff2565a4cf0bdebef7f8b4f0c1b71c1bc50d8db5` |
-| `tests/scheduler.test.ts` | 2922 | 36 | `5ebadef3eeb70d8ae45141af0caaf6ff570ef0b79cff6b7dbbbbd93b23423e87` |
-| `tests/studio-analysis.test.ts` | 7237 | 92 | `ece83bde25c2f7d8faa0d4d70eae5cb94f1ebd96672098a572eb9cd52740ccb2` |
-| `tests/studio-api.test.ts` | 24617 | 314 | `e03f0f4a0bdf074f43aedefcefed398db09a8f5c3f2d6da669bf6bc0f7d84fdd` |
-| `tests/studio-hosted.test.ts` | 41083 | 396 | `a27b55bc70e92eca6b690833006d82e7eaa147ca90238bf287128105c84eac81` |
-| `tests/studio-planner.test.ts` | 15103 | 214 | `c032c23c02d038b14f7fddbe8296a146114150cf9462c6744aec8f216be9aa4c` |
-| `tests/studio-processor.test.ts` | 18717 | 238 | `5a1d9f2a333e6e2d2ba10d55bdda10ac3b4fa55e298c678c08b442ad280055ce` |
-| `tests/studio-render.test.ts` | 10632 | 123 | `97c858a9b1b780a331349a276a4d61e6204e516cbac389e5ee8ee8d0ff5552e9` |
-| `tests/studio-vite.test.ts` | 11517 | 166 | `879f7234093c36dcf396fba366bd692171a12e297688f8f648b497617ab8c2e8` |
-| `tests/studio-watch.test.ts` | 3611 | 48 | `7e482fc2e913c67f98de7e340a7aa2eb71c32249627aae345c62b2595f0bfa4d` |
-| `tests/studio.test.ts` | 16380 | 221 | `d59cf6d53b29c7219774c84f92e029e38df9ff38baf42ce815bc2045a4d4fea1` |
-| `tests/ui-help.test.ts` | 5121 | 76 | `852d515556b748bfb4200eb0641b4eb9bf793b5eb01b141fdfb8975e7aefabec` |
-| `tools/prepare-processor.mjs` | 568 | 8 | `7b43d9fcf75421f9b0b8514481c05815b6d4f422ac054879a4aee445f2441338` |
-| `tools/verify-assets.mjs` | 916 | 11 | `2f9fb6a5265ab3d45b5fb6593ff57cfc6502b4c6837e284ef6fa0f7c7e6fd453` |
-| `tsconfig.json` | 315 | 8 | `3f7151b7f71bea9343cbe1034acc8463b461ef8c91ff08343608aac8771530f7` |
-| `tsconfig.server.json` | 215 | 5 | `39de3f5e7afbb65a0ca50854ca6fe2a0a23b8fdd1656249417af97739f91127c` |
-| `vite.config.ts` | 6437 | 142 | `eefafd65f926b2372dd49461f741f948c77c5c38a2c5a882f58d21c6ea141420` |
-| `worker-configuration.d.ts` | 626649 | 16290 | `584ad2b48c978865226129faf3981f8c527db1039a70a9c2d4237a9bb22606ff` |
-| `wrangler.jsonc` | 1578 | 21 | `33d0647b010eeefc80182a99b1f69f3154c866cb8184f5006cfa148787ba44e4` |
+| Source path | Bytes | Text lines | Tracked | SHA-256 |
+| --- | --- | --- | --- | --- |
+| [.dev.vars.example](../source/.dev.vars.example) | 846 | 19 | True | 33b4ac87871a338e9aa66f21dcb3cb02c8fe86e189a08080f48c6d97f30defd7 |
+| [.gitattributes](../source/.gitattributes) | 139 | 8 | True | eca3fbfa052942aa08c1a5a665291b01f2e54b75cb325d955fd333e0b8069e6f |
+| [.gitignore](../source/.gitignore) | 445 | 31 | True | f6e01bef0c8f531f3bd34b555f9d85e4207bc0e89ee0668ffc2eb737e6109019 |
+| [PROJECT_MAP.md](../source/PROJECT_MAP.md) | 4450 | 44 | True | 97f05c405e4ce6615dbfcfff808b59cb0f916302f3825b337142b99ad52620d7 |
+| [README.md](../source/README.md) | 7025 | 43 | True | 03404ce261ece188f2c96542a0d6f101a3470f0057f5a259da439356a0c2aae3 |
+| [assets/AEKR-BANNER-LICENSE.txt](../source/assets/AEKR-BANNER-LICENSE.txt) | 1377 | 28 | True | b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703 |
+| [assets/aekr-banner.png](../source/assets/aekr-banner.png) | 1006315 | None | True | 81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc |
+| [docs/AGENT_BRIDGE.md](../source/docs/AGENT_BRIDGE.md) | 9370 | 72 | True | 26570e22cf5d1a0541e79ace6521db733ea831aee37f5acdaeabf5104790e553 |
+| [docs/agents.md](../source/docs/agents.md) | 5715 | 29 | True | a7c9cbfbfaad64f2e822c9eb3282ac2539941734c3b80e337e88b605e37154f1 |
+| [docs/ai-connection-decision.md](../source/docs/ai-connection-decision.md) | 12644 | 71 | True | 8299435f36b2b9e30e6f7db6191b031b5274236b7f669cdcfb5280b757115b0f |
+| [docs/architecture.md](../source/docs/architecture.md) | 4861 | 31 | True | cd171adccc3af2656155313d96bfc7379e4c604ed745a731c53bf097fa32eab2 |
+| [docs/authentication.md](../source/docs/authentication.md) | 9443 | 173 | True | b29745ee2efd622fd41614864ee4b35b7dd6ae471ee99c1ea1f74767c415d334 |
+| [docs/console.md](../source/docs/console.md) | 8391 | 39 | True | 646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e |
+| [docs/decoration.md](../source/docs/decoration.md) | 5257 | 34 | True | c87bf08589554bdc5a465d2f44e7d5e31a0b3f3136a3a6626a947c75337409fb |
+| [docs/email.md](../source/docs/email.md) | 1574 | 9 | True | 8e192c1e114b67ce00a042c2fe179283eeb806ab51d24b75b8f169ad24d814fb |
+| [docs/hosted-studio.md](../source/docs/hosted-studio.md) | 7813 | 43 | True | 75c14f9e403724b2551456690e88ed1252dc89d38db81d5886893dc5360b31b4 |
+| [docs/implementation-next-steps.md](../source/docs/implementation-next-steps.md) | 7037 | 47 | True | e8e801152287f2278e24236c347dffb55ae31a420df8af64dbc788c854fbc20b |
+| [docs/local-studio.md](../source/docs/local-studio.md) | 10248 | 55 | True | 52ad7181171d827f1811c01b87f6c21d3571cc766a8be48efec3c7fecc92a5e5 |
+| [docs/mcp-connector.md](../source/docs/mcp-connector.md) | 7118 | 112 | True | 9f2b0e014f7ef12414c51fef2576c87b4371a2c2fff1700940e67b70cee36faf |
+| [docs/profile-and-data.md](../source/docs/profile-and-data.md) | 4059 | 68 | True | 45e1f7a316b35abcbb7870386e196c5057e129df159e2e351c98cc93f40b147d |
+| [docs/settings.md](../source/docs/settings.md) | 4553 | 33 | True | 14383f00f6ba5dd9493d6a02f83c4ae5054c8a98cb41d7511f30516407665b61 |
+| [docs/studio-planner.md](../source/docs/studio-planner.md) | 9967 | 55 | True | 945b050a63b49fe133af2c968bce53356f70fe973d05ebe9006a80ab7d3bfda8 |
+| [docs/text-simulation.md](../source/docs/text-simulation.md) | 3134 | 13 | True | 6d475f010a56e0e9f8cddf06bec96e8c4cbd9495107a2794ee4428ce6530b176 |
+| [index.html](../source/index.html) | 481 | 2 | True | 87fbf1b5c8ea0c7f9244017b291cee48e0a8b239ac167847215f1739f0ac3529 |
+| [migrations-d1/0001_private.sql](../source/migrations-d1/0001_private.sql) | 1391 | 26 | True | 244f5e2f7c5199a2626c09f9013236eafd3204c136627cfcfa1890e0c068a8c0 |
+| [migrations-d1/0002_studio.sql](../source/migrations-d1/0002_studio.sql) | 2455 | 49 | True | d421b018d55c109af460e37ae73bcab2a97ad1e8a13ddbddea168cd87961f038 |
+| [migrations-d1/0003_studio_hosted.sql](../source/migrations-d1/0003_studio_hosted.sql) | 1291 | 23 | True | 3ea300dfbfc5c791fb9eed593b01a3b85b6dc73b74ad7fd19384e8c5755f70b5 |
+| [migrations-d1/0004_studio_analysis.sql](../source/migrations-d1/0004_studio_analysis.sql) | 1172 | 20 | True | 7e39a0aa2ab5bd2809cc0eea6db1934513958c30cba0430907f033c0c6ff7b9d |
+| [migrations-d1/0005_studio_settings.sql](../source/migrations-d1/0005_studio_settings.sql) | 921 | 13 | True | e1afc97c1a451b4710b03c4fd466319d3fd488b645f824d3799c992258ccb663 |
+| [migrations-d1/0006_agents.sql](../source/migrations-d1/0006_agents.sql) | 1943 | 13 | True | 7cfce64aa41bf68880b366170652922de42c5e496425dfa903e63fa3923c632b |
+| [migrations-d1/0007_single_tenant_auth.sql](../source/migrations-d1/0007_single_tenant_auth.sql) | 2108 | 39 | True | 9b699cc815e2c0748e0ff10cee1f866f3f19e25df0eeffa146e797afa6333926 |
+| [migrations-d1/0008_github_auth.sql](../source/migrations-d1/0008_github_auth.sql) | 1530 | 24 | True | 7bf1c097f5fa726cb7c0687cf745808df603cb8af76b2a149bae371d3f060131 |
+| [migrations-d1/0009_profile_account.sql](../source/migrations-d1/0009_profile_account.sql) | 13933 | 187 | True | ad0d7a0bbf4474b86ce935afb37114e1eeb2b623c86e71333db26b54d8c2904b |
+| [migrations-d1/0010_mcp.sql](../source/migrations-d1/0010_mcp.sql) | 5764 | 59 | True | 29a254501f66ef75b814cc0faa4b784bcaf8dd5b9a3c99480479f95cf28100fa |
+| [migrations/0001_editorial.sql](../source/migrations/0001_editorial.sql) | 3007 | 52 | True | ec5ded4cb4a0b4bea1221672867858afd70be0ae2569428ea6017bef7dd64b88 |
+| [package-lock.json](../source/package-lock.json) | 117092 | 3548 | True | 6cc22858def60be3c2cf7b0cc118c63c43f40bb892f634aae042716c3115bbbe |
+| [package.json](../source/package.json) | 909 | 29 | True | 3a158f1856a3220f40117e55e4c2b6c43b562e6215db11e2409fc2e1fd1ec306 |
+| [processor/runner.mjs](../source/processor/runner.mjs) | 5667 | 106 | True | 9ff887e7e2c28a6cbab7668fba401305a56de32395ffa92029d48192563c51d1 |
+| [public/brand/aekr-mark.svg](../source/public/brand/aekr-mark.svg) | 1139 | 24 | True | e6adbcafa4a1ad203c41303876588da23bf1c3e54a5e9b841088fbc9b2727b74 |
+| [public/brand/manifest.json](../source/public/brand/manifest.json) | 188 | 8 | True | 48a790c3fe10fde00d9b6dc08aa140bded05628e5dd7d6cfede2c66d17b4b8e1 |
+| [public/brand/marker-logo-v1.png](../source/public/brand/marker-logo-v1.png) | 1483680 | None | True | 34ee71440f595b7ffa7b0ac0f23ee6ef1164724b88e3fd0a7f1cd5a834403b1b |
+| [public/brand/marker-tab-v1.svg](../source/public/brand/marker-tab-v1.svg) | 159303 | 1 | True | ece0a089ae2bfb86ca17556f2deb17d641a74d3ee5625d5dcf03afcf08cd430d |
+| [public/decoration/characters-v1.svg](../source/public/decoration/characters-v1.svg) | 1228 | 5 | True | 7d012bbc52423f6818891f6978723a9a904ca77b05c475ef49e5ea021fa33042 |
+| [public/decoration/characters-v2.svg](../source/public/decoration/characters-v2.svg) | 7715 | 1 | True | f20b82a95f2ebd5ce76467ac5991b72e28fc509dd9cfbc26e9f52b2019b42cb9 |
+| [public/demo/index.html](../source/public/demo/index.html) | 8216 | 79 | False | 66fbf01ed0091396c6994dae2c6b051aea8763c7eadcb09dc47d65de85dd843c |
+| [public/demo/marKER_demo_55s_ES_v1_1080p.mp4](../source/public/demo/marKER_demo_55s_ES_v1_1080p.mp4) | 6137380 | None | False | b822ee2fb443e16ed0e685daba2d743ed0946e515b034ef82d17b9ddcee60a71 |
+| [public/demo/marKER_demo_55s_ES_v1_4K.mp4](../source/public/demo/marKER_demo_55s_ES_v1_4K.mp4) | 14495058 | None | False | fdb82854cc3f19107c846ac56cf3fb1f84d3aef3a407c5327ea5679c0dea85df |
+| [public/demo/marKER_demo_ES_v1.vtt](../source/public/demo/marKER_demo_ES_v1.vtt) | 872 | 42 | False | f6d7221c8980dd6201aaad36f0e2609569a2da0b669e3a4837bd20fa13f631c2 |
+| [public/demo/marKER_demo_ES_v1_poster.png](../source/public/demo/marKER_demo_ES_v1_poster.png) | 1621513 | None | False | f2973374a14246f3419ba6ed025f0b7495095d7a60b0d0fbb96de7cf7a167e35 |
+| [public/fonts/Montserrat-Medium.ttf](../source/public/fonts/Montserrat-Medium.ttf) | 340508 | None | True | 1576fea0dad9c310757ce479f1378953c88b6ae27da08a7e63663a1386db66f6 |
+| [public/fonts/Montserrat-Variable.woff2](../source/public/fonts/Montserrat-Variable.woff2) | 124596 | None | True | 758ec03efffe485ffea4db1bbb73ac9aeb20b63a5ba74aab30718bf001227cfb |
+| [public/fonts/Montserrat-VariableItalic.woff2](../source/public/fonts/Montserrat-VariableItalic.woff2) | 130036 | None | True | d9f5ecd8b59a7d5dec4bbbdbf7d1cfe64c1b81d17a249ee63513acd6a3aa08ff |
+| [public/fonts/OFL.txt](../source/public/fonts/OFL.txt) | 4278 | 22 | True | 25f1e8b783e65e7320a141d4682a4361e7019721058b856448632a06887b8335 |
+| [public/help/en/account-1.png](../source/public/help/en/account-1.png) | 29719 | None | True | 17794e8562bd43369113c912a7b1053feb9ffbaa0837ef14ee1958869f4372bf |
+| [public/help/en/account-2.png](../source/public/help/en/account-2.png) | 35488 | None | True | 4c4b8c241e4955c95f602d3e10964514266ceb8c98a93b2591ef6dad5c36b6a8 |
+| [public/help/en/account-3.png](../source/public/help/en/account-3.png) | 9647 | None | True | 7f12ccb0c134eef7abc5c0203b52991f5994a28bfd4eba27f0dd66f8b2e586e4 |
+| [public/help/en/accounts-1.png](../source/public/help/en/accounts-1.png) | 18628 | None | True | ed250f334fa8277821948ecddcdfc26d0ef3d63256b99a77d838c5ea2db844a4 |
+| [public/help/en/accounts-2.png](../source/public/help/en/accounts-2.png) | 17505 | None | True | 2004a40f33b271994ca0dc7ded048c8e539bc04e51e6cfd034c6bb8eae969e60 |
+| [public/help/en/accounts-3.png](../source/public/help/en/accounts-3.png) | 37792 | None | True | 33ea0dbc57faa69bf1b7f1dffb05433d7e7aeb9544e4068f094ac5027a755922 |
+| [public/help/en/ambiente-1.png](../source/public/help/en/ambiente-1.png) | 31711 | None | True | c0f5c5344c9eee57346920be5feb21aed3845ed3d1f4647407fe7acd98a6c844 |
+| [public/help/en/ambiente-2.png](../source/public/help/en/ambiente-2.png) | 7477 | None | True | 38001942ed2cc6b73ce1ddd85f4134ad304922ca95e9f7d446232aba769658fe |
+| [public/help/en/ambiente-3.png](../source/public/help/en/ambiente-3.png) | 4511 | None | True | 5fff07f7bffa09bd0068d7d7f81be0e33f7e436a55ab4ca39eb4aa1851f72789 |
+| [public/help/en/ambiente-4.png](../source/public/help/en/ambiente-4.png) | 10526 | None | True | 320e5b27cdb57602a78ea811c638ec8e6de16eea982da56bb9e01d69755bcac2 |
+| [public/help/en/campaign-1.png](../source/public/help/en/campaign-1.png) | 27604 | None | True | 231eee0f66de7a77725ffd5cbcb61b3c16a6b7afa8e55b3cc4380580f23c4c3e |
+| [public/help/en/campaign-2.png](../source/public/help/en/campaign-2.png) | 25358 | None | True | 6d9409420f4b4a318d9638cea84e2100e39fc0146e781fdcb303ec6fe5235475 |
+| [public/help/en/campaign-3.png](../source/public/help/en/campaign-3.png) | 33207 | None | True | 10c741a80e0c165c4a21f55a3bd99e8f53bff2974ee8932c7d778d267feec783 |
+| [public/help/en/campaign-4.png](../source/public/help/en/campaign-4.png) | 10489 | None | True | 8a0a049a1a89a858e8fd54d81806a713e1d0fec0d78488ac8b9e37cf1e2a0a61 |
+| [public/help/en/campaigns-1.png](../source/public/help/en/campaigns-1.png) | 19903 | None | True | 639a7f3f125df85e7b374d2628c36c1d24576ebede09a1b85e1d214a2bf1b35f |
+| [public/help/en/campaigns-2.png](../source/public/help/en/campaigns-2.png) | 17487 | None | True | 4f2debe4dd8ad414ab6383d0bd2aa99c1f9853a367722f4076c726ab01a85211 |
+| [public/help/en/campaigns-3.png](../source/public/help/en/campaigns-3.png) | 41356 | None | True | 9a41f3a7d4e045c83fb648ba62de876ed974b928a9ffc610bd3287257d8a1620 |
+| [public/help/en/help-v2-accounts-list.png](../source/public/help/en/help-v2-accounts-list.png) | 84723 | None | True | 2ee91a859164fea91c12ac57d6f879be1f1c20baa17619415b1777f605789d90 |
+| [public/help/en/help-v2-agents-connect.png](../source/public/help/en/help-v2-agents-connect.png) | 66514 | None | True | db465fc6ace1501369549d29503a890b19ec8e57d1caa317f4e84fa6142a9884 |
+| [public/help/en/help-v2-agents-context.png](../source/public/help/en/help-v2-agents-context.png) | 28116 | None | True | 3fa8e5f315c33d0a8d20530e7dcde412209f6e15d7bf9adfe085961c9dae51d0 |
+| [public/help/en/help-v2-agents-conversation.png](../source/public/help/en/help-v2-agents-conversation.png) | 52293 | None | True | cc1f806e5768ff3157768fc8f2f8a2789ccd6449cf5a031bf68feca835d5dfa0 |
+| [public/help/en/help-v2-agents-production.png](../source/public/help/en/help-v2-agents-production.png) | 43478 | None | True | 1478ec2a41f3252e42b112a11cb5204a72f097675ad2eec98f273887c47ccab8 |
+| [public/help/en/help-v2-agents-proposal.png](../source/public/help/en/help-v2-agents-proposal.png) | 47106 | None | True | b0cbf44810e9d55c2f5243af5abf79fdd2c2f973c8077256901e29ad3f35202e |
+| [public/help/en/help-v2-agents-review.png](../source/public/help/en/help-v2-agents-review.png) | 48160 | None | True | 9fb64161768bf41b1de2499dce10b35aed1247001765933b9aed419f1a0ae1d8 |
+| [public/help/en/help-v2-ambiente-controls.png](../source/public/help/en/help-v2-ambiente-controls.png) | 47440 | None | True | 65ef93c8589c991010518f8e1cbb0640751896f13dbf45049786fb2794bffc78 |
+| [public/help/en/help-v2-campaign-previous.png](../source/public/help/en/help-v2-campaign-previous.png) | 24327 | None | True | 7f063ae8ebaca71c3c09394c20a274bdeffe841bc31bbf35a95c52249c6e6ce3 |
+| [public/help/en/help-v2-campaigns-create.png](../source/public/help/en/help-v2-campaigns-create.png) | 38849 | None | True | d158ee32cae4b3e10d76f91ab473cedd1598a7e9ba305680bed37b1cefcbc792 |
+| [public/help/en/help-v2-campaigns-output.png](../source/public/help/en/help-v2-campaigns-output.png) | 125086 | None | True | ffb5fe07b90559e62a141581be9212c4c4d3a7ada692133c32d75e0d21134c3e |
+| [public/help/en/help-v2-campaigns-plan-materials.png](../source/public/help/en/help-v2-campaigns-plan-materials.png) | 116034 | None | True | 0e72a4032ccfdd3693981d4791b5ee5ba9dd91511f79d99615a6b2c555c6bacf |
+| [public/help/en/help-v2-campaigns-plan-message.png](../source/public/help/en/help-v2-campaigns-plan-message.png) | 55487 | None | True | 7bb0b48deb768657f6231e326f66d318b957a65954c602566cb9655e0734a55d |
+| [public/help/en/help-v2-campaigns-plan-results.png](../source/public/help/en/help-v2-campaigns-plan-results.png) | 62517 | None | True | 13ace27955556b361789b480342139ed7889b3a9e8c00ea1c3bdd86b408c3a69 |
+| [public/help/en/help-v2-campaigns-recipe-materials.png](../source/public/help/en/help-v2-campaigns-recipe-materials.png) | 69548 | None | True | 08c41d99f17e1512bdaea0809a371ce4d0330bdcdaad8f42b8de110597653a56 |
+| [public/help/en/help-v2-campaigns-recipe-message.png](../source/public/help/en/help-v2-campaigns-recipe-message.png) | 66537 | None | True | 4cd1db3995de3fe3b023fbc1fa4ba227e75136cd392dd66fff1c2f6698cbcff7 |
+| [public/help/en/help-v2-overview-account.png](../source/public/help/en/help-v2-overview-account.png) | 24618 | None | True | ceb03d3194152b76c781539552709f4503bc10e21740bddd2b36490d703c1cdf |
+| [public/help/en/help-v2-overview-summary.png](../source/public/help/en/help-v2-overview-summary.png) | 114893 | None | True | 34a327b5c3ee6cb680d222380dbfc2b5ccef224f67ab8b6b6e22465f6ad9323c |
+| [public/help/en/help-v2-products-list.png](../source/public/help/en/help-v2-products-list.png) | 89562 | None | True | 56ff324856b4d6d0d30e6b323f5ee393e29a77da82260aa9182066e07c3de1b2 |
+| [public/help/en/help-v2-profile-delete.png](../source/public/help/en/help-v2-profile-delete.png) | 66395 | None | True | 039be3916d21efad2da9b237b7edff5ab6a0df94baa3da6b754936727949196a |
+| [public/help/en/help-v2-profile-details.png](../source/public/help/en/help-v2-profile-details.png) | 30110 | None | True | 9b31ef88cdbf126d0bd154732605d513a27c8b06a737ddfb0dc0eccb4b2c0d98 |
+| [public/help/en/help-v2-queue-list.png](../source/public/help/en/help-v2-queue-list.png) | 66552 | None | True | e83eafb2c03bc8601c6c3883cb1ad66c6675abedde3492a10082226455475e56 |
+| [public/help/en/help-v2-settings-access.png](../source/public/help/en/help-v2-settings-access.png) | 48039 | None | True | 751abcaa9043db94a1df7facbea388c75bf7572ccbc4cf8c1918fda4f758687d |
+| [public/help/en/help-v2-settings-agents.png](../source/public/help/en/help-v2-settings-agents.png) | 59786 | None | True | 65765531b6dcadf2e2ccf99d5141adb8bf9bb2470a2369ff6b4549a69f964803 |
+| [public/help/en/help-v2-settings-limits.png](../source/public/help/en/help-v2-settings-limits.png) | 80826 | None | True | 2d684233bd61881fa3d574130b8f291cc54802b2cafbd52227580828cda81757 |
+| [public/help/en/help-v2-space-capture.png](../source/public/help/en/help-v2-space-capture.png) | 30251 | None | True | 95c97fbdfe3986644fa0d6aa7a1b6e55aa573da2ba62f560c7dfc8e1805f5eff |
+| [public/help/en/help-v2-space-edit.png](../source/public/help/en/help-v2-space-edit.png) | 79872 | None | True | 0f7b0e688c41023a0e63677666035dd311b704e79132288c84baa55b73b1f495 |
+| [public/help/en/help-v2-space-library.png](../source/public/help/en/help-v2-space-library.png) | 79514 | None | True | 046a1f630a214336e08c5eca588b0b86a917a797476ec6498b6fa2821ed43eb2 |
+| [public/help/en/help-v2-space-write.png](../source/public/help/en/help-v2-space-write.png) | 76123 | None | True | 1b8c6963913af26d81cb5e7c0aeee2f8c9ddd679fb1b7b05cdb1883789334f78 |
+| [public/help/en/overview-1.png](../source/public/help/en/overview-1.png) | 22062 | None | True | fc8c4642a6d3f6f81e1ba7139b7c3e64eae70829b0393fc8dbe09305d4a8cdf2 |
+| [public/help/en/overview-2.png](../source/public/help/en/overview-2.png) | 27580 | None | True | dd78b7597875135b91c70553d6af097b1731f4dd2ce66ee1410f2b41b80161be |
+| [public/help/en/overview-3.png](../source/public/help/en/overview-3.png) | 143197 | None | True | e6e808886b7a45e0db44232e2aed4a5e7d6055e58fa537913f73fd159c441e8f |
+| [public/help/en/overview-4.png](../source/public/help/en/overview-4.png) | 21814 | None | True | 75860e01376f2964157557ceed8d3a833478255f8ff32d1d6cace73d96131a2a |
+| [public/help/en/post-1.png](../source/public/help/en/post-1.png) | 62297 | None | True | eab27f2c8af7647f507bf55f3bd69fd7aa585fe0ffafef2ddeb31c33c927c189 |
+| [public/help/en/post-2.png](../source/public/help/en/post-2.png) | 20366 | None | True | f69fea717c60a7b1d30df8882f4c1793b9c464b14a869343da9d93b85636d977 |
+| [public/help/en/post-3.png](../source/public/help/en/post-3.png) | 67892 | None | True | f5fbd982ac3d8499e25888006b81529b6fb1588b2e0e632cdef37b8bbc26f4eb |
+| [public/help/en/post-4.png](../source/public/help/en/post-4.png) | 62501 | None | True | 76dcd0350cc869a642b954dd90f3129e2f9c92a306b09f67202a2094ad4f9b2c |
+| [public/help/en/product-1.png](../source/public/help/en/product-1.png) | 38717 | None | True | 6ef2d62cceed9d92153764b74991bdc89e2ffc963822ffb5728d1c55f2739793 |
+| [public/help/en/product-2.png](../source/public/help/en/product-2.png) | 39974 | None | True | ad60a8a6e5daf5f49b103efee2b095eb38c3ab66cab755e3fdd5677d740a2577 |
+| [public/help/en/product-3.png](../source/public/help/en/product-3.png) | 9563 | None | True | 3eb956993b4f0f7a771de71937c0a05c02630dd55b378d00784534df554a1ef3 |
+| [public/help/en/products-1.png](../source/public/help/en/products-1.png) | 18251 | None | True | 702fbf78038bdc06b7c6c01d44d55a85a66c8a0d5d16ac33c4f82159e2066618 |
+| [public/help/en/products-2.png](../source/public/help/en/products-2.png) | 9964 | None | True | 963c0e84b4e9b11462005d57548df687eef1308dc1218f674bea5b6271708d45 |
+| [public/help/en/products-3.png](../source/public/help/en/products-3.png) | 42858 | None | True | e5d8e9ee2406021148e172a45738e4665f02976678e056f37adbf4e9601553ae |
+| [public/help/en/queue-1.png](../source/public/help/en/queue-1.png) | 35916 | None | True | f39dad261f0de689d9799f6311a6e566ef18d1d6866e767fc42ade8cc07469bb |
+| [public/help/en/queue-2.png](../source/public/help/en/queue-2.png) | 77732 | None | True | 9d607545c3ce9409e27a12935f86fda666d482ed2f79468e4889d5f6c108d1cc |
+| [public/help/en/queue-3.png](../source/public/help/en/queue-3.png) | 21042 | None | True | ffc206624206e7e792130ca5786519ddaea71aa6b78fab3f7f9661813d4a7244 |
+| [public/help/en/queue-4.png](../source/public/help/en/queue-4.png) | 21017 | None | True | 6a959a9f472eb42d1e012f12c3f010b1623d331e4516266acbab1f39d711112f |
+| [public/help/en/source-1.png](../source/public/help/en/source-1.png) | 37162 | None | True | 02b25dffadfd242990c1e1d9d63cb0c8449a704429362f91f6f9bec2fd5fac47 |
+| [public/help/en/source-2.png](../source/public/help/en/source-2.png) | 12712 | None | True | a5ab465c60ab52fd2a8a624d438fb9e4398351327eb3b1526f38717e87a28bbd |
+| [public/help/en/source-3.png](../source/public/help/en/source-3.png) | 10480 | None | True | eee3be046886f2d9cb47ce61883300ef7d4c44acf740dd89c79fdd9848771ae7 |
+| [public/help/en/space-1.png](../source/public/help/en/space-1.png) | 17617 | None | True | df5f4be1fc15b15ec59634f430489e8a32c23111b02facde2610cba21149c3a9 |
+| [public/help/en/space-2.png](../source/public/help/en/space-2.png) | 17487 | None | True | 4f2debe4dd8ad414ab6383d0bd2aa99c1f9853a367722f4076c726ab01a85211 |
+| [public/help/en/space-3.png](../source/public/help/en/space-3.png) | 57409 | None | True | 961188f8e7487d5d2971d0417a135cb5bb22979fe56264f222f41c8f8f2064c6 |
+| [public/help/en/studio-campaign-create.png](../source/public/help/en/studio-campaign-create.png) | 87482 | None | True | b34b2bb5c8e4f7c44acf9df307214e62e6d6244322c91dec8cb2f31bc73d1c1d |
+| [public/help/en/studio-campaign-export.png](../source/public/help/en/studio-campaign-export.png) | 118304 | None | True | 33e0e0fea34fc9010a7903d4d79a682a6fcaac716900a7de9c8c7871011df621 |
+| [public/help/en/studio-campaign-message.png](../source/public/help/en/studio-campaign-message.png) | 106479 | None | True | 973a45e97182b686516ea5cd19c680640a4b1525c15c0a17347e8fd9412cbb1b |
+| [public/help/en/studio-campaign-preview.png](../source/public/help/en/studio-campaign-preview.png) | 68662 | None | True | c96b63ec5c8c4bea08a3170bc8e08c2b17cdfed53b17c7f0921866c5bd4d32f2 |
+| [public/help/en/studio-campaign-sources.png](../source/public/help/en/studio-campaign-sources.png) | 113099 | None | True | b51e06493d2a001409f654f1cd9483eac15b3849e2019ecb6622543d2fb5a6b4 |
+| [public/help/en/studio-space-capture.png](../source/public/help/en/studio-space-capture.png) | 91202 | None | True | aca03ff26893c9f18ed2cc2eca14470dcac7a3b284a2888caf8313246fa2d1b5 |
+| [public/help/en/studio-space-filters.png](../source/public/help/en/studio-space-filters.png) | 116908 | None | True | a61ffb7e212c4f4db9491ebd0c78193fe50adf694e919c1f794630e133310418 |
+| [public/help/es/account-1.png](../source/public/help/es/account-1.png) | 29749 | None | True | ad67cadc25c11551c902a2042ce9f7fc738e2bf72bef1d4368563acf8e33fe51 |
+| [public/help/es/account-2.png](../source/public/help/es/account-2.png) | 35385 | None | True | f3a8f60a0b3511326ca4723811d0cfd79eb9fed54623a80b39bba1297d8a2914 |
+| [public/help/es/account-3.png](../source/public/help/es/account-3.png) | 11664 | None | True | 50a17762c4605e31df118267faf5d109113eff998004f102c0e629c11c55fbcb |
+| [public/help/es/accounts-1.png](../source/public/help/es/accounts-1.png) | 17964 | None | True | 51ce7ab74389f2dc5043f4ae0061bb851595bb7ca42125092dedf36649cfcf84 |
+| [public/help/es/accounts-2.png](../source/public/help/es/accounts-2.png) | 20108 | None | True | c337e56f7ddd0ae5b4e2d0dfa980c1c8fc26707fcb3cd445dfe00e9534e1fca1 |
+| [public/help/es/accounts-3.png](../source/public/help/es/accounts-3.png) | 37487 | None | True | 8d594c3cafb9acb50c61cb04d2aed9394a9e131f452a3cd44fa799145db174c8 |
+| [public/help/es/ambiente-1.png](../source/public/help/es/ambiente-1.png) | 28785 | None | True | 754ec750c737346b23c062d3026971513c8f83fff55d1c7feee1e9a38dd1b58c |
+| [public/help/es/ambiente-2.png](../source/public/help/es/ambiente-2.png) | 9342 | None | True | 5fd29a5f07e6a9b0d60a7584f0875c8930b2bb14c6c1adce35b3463265ef8134 |
+| [public/help/es/ambiente-3.png](../source/public/help/es/ambiente-3.png) | 4983 | None | True | e8042bf5a6cb67ef037db8643e5e6d298c68d473493b164cb2ddaac7f4dcd1eb |
+| [public/help/es/ambiente-4.png](../source/public/help/es/ambiente-4.png) | 8969 | None | True | 2660c71c3eca746996ceded6fa70041cc59a649adabd1055c83c4478c03ac730 |
+| [public/help/es/campaign-1.png](../source/public/help/es/campaign-1.png) | 28971 | None | True | 302633872d2dc40843a531848b452ab310aef1dd3d9e137fd4f6d646688219fc |
+| [public/help/es/campaign-2.png](../source/public/help/es/campaign-2.png) | 27959 | None | True | 3c436f52bd0d8e79e5911b9dfa55d9f5b501e242cd402fdcd6aec4e4081f7294 |
+| [public/help/es/campaign-3.png](../source/public/help/es/campaign-3.png) | 33999 | None | True | 9604d9027a6e56d1ec2381890521665dd9e02424e8f7db4f8195ffd1b3211850 |
+| [public/help/es/campaign-4.png](../source/public/help/es/campaign-4.png) | 12377 | None | True | 4440ecfbd2320c9e8b5e8a9fb573dc31adc9197acaf2d364ce992b2b7fcabf50 |
+| [public/help/es/campaigns-1.png](../source/public/help/es/campaigns-1.png) | 19484 | None | True | 5368f71a5e39df6dc769ec211df25c06eb37e1a4dabed48934617b10427fda6a |
+| [public/help/es/campaigns-2.png](../source/public/help/es/campaigns-2.png) | 20108 | None | True | c337e56f7ddd0ae5b4e2d0dfa980c1c8fc26707fcb3cd445dfe00e9534e1fca1 |
+| [public/help/es/campaigns-3.png](../source/public/help/es/campaigns-3.png) | 45961 | None | True | bef52cf3e05a6dcf1d3d93c58050231473132e01304a006bacecbc7e97e4b970 |
+| [public/help/es/help-v2-accounts-list.png](../source/public/help/es/help-v2-accounts-list.png) | 84134 | None | True | b1ea14639dedd98f4a3ba28fdaae912ed68acbb9f432a137170c38141dee8f40 |
+| [public/help/es/help-v2-agents-connect.png](../source/public/help/es/help-v2-agents-connect.png) | 70464 | None | True | 6855d6a3b07c0386a1a6fbd8128cd96d135bf2f553efcae9378840298c0ae6de |
+| [public/help/es/help-v2-agents-context.png](../source/public/help/es/help-v2-agents-context.png) | 29745 | None | True | d0faafb1b8dccab15bf65e8cae533313eba1620ae0cffbe9cdf751803508b984 |
+| [public/help/es/help-v2-agents-conversation.png](../source/public/help/es/help-v2-agents-conversation.png) | 54444 | None | True | 5b95285213b457fa190effb7753e6a9161e1ececd8127f993449ee781a52ec75 |
+| [public/help/es/help-v2-agents-production.png](../source/public/help/es/help-v2-agents-production.png) | 44933 | None | True | f73c445a1948196a1650ce1b4ced26b3c165db010172d959e93c579d612b917a |
+| [public/help/es/help-v2-agents-proposal.png](../source/public/help/es/help-v2-agents-proposal.png) | 48407 | None | True | 28f35bb882613b3dec083c05ecab5a29b65895de7edfb74db8edaa499e897078 |
+| [public/help/es/help-v2-agents-review.png](../source/public/help/es/help-v2-agents-review.png) | 50652 | None | True | 445a781c93015d0c22708cb3f1e10f77983b4e4e0398bfaf21477884e91dfcdd |
+| [public/help/es/help-v2-ambiente-controls.png](../source/public/help/es/help-v2-ambiente-controls.png) | 45411 | None | True | f426080cf740846896e32f146a7e9a46daed607d22a218dfe2b8bd0190c1258c |
+| [public/help/es/help-v2-campaign-previous.png](../source/public/help/es/help-v2-campaign-previous.png) | 26067 | None | True | 5a34262d58000923469d167e8d3fe54a583c7310ce7d51626c76f8405480d84a |
+| [public/help/es/help-v2-campaigns-create.png](../source/public/help/es/help-v2-campaigns-create.png) | 39154 | None | True | 0867d6d0ccd5d7c31390783a89ae7e12a733d008cec04409bd52930b1d006183 |
+| [public/help/es/help-v2-campaigns-output.png](../source/public/help/es/help-v2-campaigns-output.png) | 127563 | None | True | 3e27bef677c60217071f283a5bc2d7bb153c53bfc27211b09ce9ae28c91f67d6 |
+| [public/help/es/help-v2-campaigns-plan-materials.png](../source/public/help/es/help-v2-campaigns-plan-materials.png) | 115169 | None | True | 7e25a8349d1d873426c3362d48d1b3843df1fe7e51feab3f0d2a5c6afeccda3b |
+| [public/help/es/help-v2-campaigns-plan-message.png](../source/public/help/es/help-v2-campaigns-plan-message.png) | 56629 | None | True | c5e962b045deb1852239aa3b4b73d8e74b5194eccf9db660f10a13fc9fb39c48 |
+| [public/help/es/help-v2-campaigns-plan-results.png](../source/public/help/es/help-v2-campaigns-plan-results.png) | 74029 | None | True | f04d2e51aca3563f67fd1375c43e2cd1d9dd07718f6727e15ad8e8a91dcd1e7f |
+| [public/help/es/help-v2-campaigns-recipe-materials.png](../source/public/help/es/help-v2-campaigns-recipe-materials.png) | 70687 | None | True | 566f5175712b80e26b79a31f81bc6d8d9e672ceec36b214aaf3d496a089d15d9 |
+| [public/help/es/help-v2-campaigns-recipe-message.png](../source/public/help/es/help-v2-campaigns-recipe-message.png) | 68658 | None | True | f43e5dda15cda9f05ea6178c3eeff06ce8af45056a2d97b8259df08ea2500289 |
+| [public/help/es/help-v2-overview-account.png](../source/public/help/es/help-v2-overview-account.png) | 27654 | None | True | d4ca24b901b0484b2501ce20679729a89859b2403ebc382c88ba8a37a42ea6e6 |
+| [public/help/es/help-v2-overview-summary.png](../source/public/help/es/help-v2-overview-summary.png) | 113793 | None | True | 3960db2aa90995ea817701913a0186621e0762affc574882078efb5deb7f655f |
+| [public/help/es/help-v2-products-list.png](../source/public/help/es/help-v2-products-list.png) | 90694 | None | True | 0e336684139136af12e31c7ccdea8e33e3f31a16477a12f38b8998864812a208 |
+| [public/help/es/help-v2-profile-delete.png](../source/public/help/es/help-v2-profile-delete.png) | 72597 | None | True | 073a215573a6d68f3009a4f5879b408143842a8bb566aaa9c31725495d329e4f |
+| [public/help/es/help-v2-profile-details.png](../source/public/help/es/help-v2-profile-details.png) | 30039 | None | True | 61fe5cbe8a011ecd996d4e7e1f187e8493520380645e85431b41c81d553af9be |
+| [public/help/es/help-v2-queue-list.png](../source/public/help/es/help-v2-queue-list.png) | 65068 | None | True | a561431165b4c95a85ee8e9fc01d50affa740846036fc7da9a3ca6e0a6866b44 |
+| [public/help/es/help-v2-settings-access.png](../source/public/help/es/help-v2-settings-access.png) | 49374 | None | True | 15174a1a58d7e830df23fc0fd3da99bf9bc34f7c6e9a5c5d2aa675f403429200 |
+| [public/help/es/help-v2-settings-agents.png](../source/public/help/es/help-v2-settings-agents.png) | 64013 | None | True | 86725433e7d790c29dd50e0f0efb8f25d2faf5a27ae58539154fbf2d1eb0e212 |
+| [public/help/es/help-v2-settings-limits.png](../source/public/help/es/help-v2-settings-limits.png) | 86685 | None | True | d62c327e63c719c33dbce2139284d91e77b7032c8bb26461dad18b4a5142edc9 |
+| [public/help/es/help-v2-space-capture.png](../source/public/help/es/help-v2-space-capture.png) | 31475 | None | True | 8ec8af9127edc656590debcfc3d7af4cbb0c76ab84d2bf0a081ab0a5a5fe1f24 |
+| [public/help/es/help-v2-space-edit.png](../source/public/help/es/help-v2-space-edit.png) | 80766 | None | True | faf7e549f3e25c039bc98eb8d4a5fc3982c2cc1fd44f8db0ab726f5b5e3749fc |
+| [public/help/es/help-v2-space-library.png](../source/public/help/es/help-v2-space-library.png) | 81165 | None | True | 20fc966670b6f854b23d42c3ce0bae61f4ceea4fcd0196836366f45e7bbd049c |
+| [public/help/es/help-v2-space-write.png](../source/public/help/es/help-v2-space-write.png) | 78226 | None | True | 6dc4737a7798f167b4acb84cb7ea24b53a4cdabe0c48e6077a151261b49c005d |
+| [public/help/es/overview-1.png](../source/public/help/es/overview-1.png) | 23857 | None | True | dfa0d8eb9df25a68c9a083279c5854f8c2294f733db415c169537abd424d491d |
+| [public/help/es/overview-2.png](../source/public/help/es/overview-2.png) | 28128 | None | True | 05d9cc9db7702190898b89928a9753b6fec771820d03127ce2ff5d9ab7ef2aca |
+| [public/help/es/overview-3.png](../source/public/help/es/overview-3.png) | 145233 | None | True | 922d9f42d1cf0aac55efbdcfe77cd0c3cc7bcfb5e4e2c1190b6478bf219b22d7 |
+| [public/help/es/overview-4.png](../source/public/help/es/overview-4.png) | 21321 | None | True | 8bb40c487b84962b50a2bd38ed87fb0a5d794734199f3caf312075fee3c5d518 |
+| [public/help/es/post-1.png](../source/public/help/es/post-1.png) | 63183 | None | True | 1b28fc6ce0153310ade60bb41fe07cc1db3b4eab9d4b4dcf8abf570307fa1a82 |
+| [public/help/es/post-2.png](../source/public/help/es/post-2.png) | 21517 | None | True | 3118c82d66e377aaf4846c464abc931fc85d6bfc985cd982fab9df7e718d4b16 |
+| [public/help/es/post-3.png](../source/public/help/es/post-3.png) | 76492 | None | True | efe6c82d522bef113a43f206748db3d551d1f69e6a171b9b76732295d6c8c243 |
+| [public/help/es/post-4.png](../source/public/help/es/post-4.png) | 58587 | None | True | e0a6952ea9dfd0ee4efb20ba6e76fcaeda05e066896ec829c08690bd8be75278 |
+| [public/help/es/product-1.png](../source/public/help/es/product-1.png) | 39574 | None | True | 97a342fc3163b0c8ae77a349d300689bab3d415ba7070c11f256471dd2242192 |
+| [public/help/es/product-2.png](../source/public/help/es/product-2.png) | 41036 | None | True | 38b80b771f943a4547c59c92831a2a83f81771d2027ebecdf7cc1cb5122a2112 |
+| [public/help/es/product-3.png](../source/public/help/es/product-3.png) | 11724 | None | True | 976dd3595cee42ea8424d62e23cf92e52c34d96f5bb30e4201bf56a6ca183a6d |
+| [public/help/es/products-1.png](../source/public/help/es/products-1.png) | 19103 | None | True | 766e86b6046499ed15a976bbe96cf1ad4e8237f98269b652856aa0e30dd187d8 |
+| [public/help/es/products-2.png](../source/public/help/es/products-2.png) | 10545 | None | True | ccdf0a296e509f419c075f5348204023a27b37e9b04e939da1e1239638868c06 |
+| [public/help/es/products-3.png](../source/public/help/es/products-3.png) | 43927 | None | True | b53744925fb8d1db31945cd94b8ae2d173aaa328b30c87aba6f5293491bd6c5c |
+| [public/help/es/queue-1.png](../source/public/help/es/queue-1.png) | 38692 | None | True | 01754d6da830ed72d9604136e3ff1b0f12491003085b58fbfec6229742509ea9 |
+| [public/help/es/queue-2.png](../source/public/help/es/queue-2.png) | 72697 | None | True | 71d7d1f51ac6be2f6b62593f1b6a15c4df8a998ba16be6f54add48f78b1fa37c |
+| [public/help/es/queue-3.png](../source/public/help/es/queue-3.png) | 17670 | None | True | 44c20d7384ecb02a3bbadd702578a05de35c4c6d1764577b87e7335e96e4322e |
+| [public/help/es/queue-4.png](../source/public/help/es/queue-4.png) | 17670 | None | True | 44c20d7384ecb02a3bbadd702578a05de35c4c6d1764577b87e7335e96e4322e |
+| [public/help/es/source-1.png](../source/public/help/es/source-1.png) | 38944 | None | True | 3b7ff96e5c6043337f524e8d3d4628ef8d79606dcd43e4b1d9418457c556d743 |
+| [public/help/es/source-2.png](../source/public/help/es/source-2.png) | 14867 | None | True | 8fc089e8ed223b5b9d35aa5a33d137e9e5c9811a104507824046bde9d8af05d2 |
+| [public/help/es/source-3.png](../source/public/help/es/source-3.png) | 12600 | None | True | d0f2de18ca297369aa0cb3173e94cb104806484084de922e1d709f23dfbe881d |
+| [public/help/es/space-1.png](../source/public/help/es/space-1.png) | 17964 | None | True | 70e37093c4dd80802ecde07d08dc3c1b39c1d01eb9860d8f2a702afcf5d94d27 |
+| [public/help/es/space-2.png](../source/public/help/es/space-2.png) | 20110 | None | True | 9e63f9d9db89c36740dabd2547ca0a357d9fcb7aabbeed0a665da67e6bc005a0 |
+| [public/help/es/space-3.png](../source/public/help/es/space-3.png) | 59475 | None | True | 06a8e3a0999a0d13370f637707c3b8abcf1482660cd6bc52a917e6486cf64a88 |
+| [public/help/es/studio-campaign-create.png](../source/public/help/es/studio-campaign-create.png) | 87482 | None | True | b34b2bb5c8e4f7c44acf9df307214e62e6d6244322c91dec8cb2f31bc73d1c1d |
+| [public/help/es/studio-campaign-export.png](../source/public/help/es/studio-campaign-export.png) | 118304 | None | True | 33e0e0fea34fc9010a7903d4d79a682a6fcaac716900a7de9c8c7871011df621 |
+| [public/help/es/studio-campaign-message.png](../source/public/help/es/studio-campaign-message.png) | 106479 | None | True | 973a45e97182b686516ea5cd19c680640a4b1525c15c0a17347e8fd9412cbb1b |
+| [public/help/es/studio-campaign-preview.png](../source/public/help/es/studio-campaign-preview.png) | 68662 | None | True | c96b63ec5c8c4bea08a3170bc8e08c2b17cdfed53b17c7f0921866c5bd4d32f2 |
+| [public/help/es/studio-campaign-sources.png](../source/public/help/es/studio-campaign-sources.png) | 113099 | None | True | b51e06493d2a001409f654f1cd9483eac15b3849e2019ecb6622543d2fb5a6b4 |
+| [public/help/es/studio-space-capture.png](../source/public/help/es/studio-space-capture.png) | 91202 | None | True | aca03ff26893c9f18ed2cc2eca14470dcac7a3b284a2888caf8313246fa2d1b5 |
+| [public/help/es/studio-space-filters.png](../source/public/help/es/studio-space-filters.png) | 116908 | None | True | a61ffb7e212c4f4db9491ebd0c78193fe50adf694e919c1f794630e133310418 |
+| [server/agents-local.ts](../source/server/agents-local.ts) | 1164 | 22 | True | ca2ea6c15a65edcd557b53c5acce6571b5a08a63d38dc88000c9b4f162d135fb |
+| [server/agents-store.ts](../source/server/agents-store.ts) | 839 | 15 | True | 16e9b672c2a826dbf945e2a7e5faeea7c39039d03e1105b982fa0abd92bd7d43 |
+| [server/agents.ts](../source/server/agents.ts) | 43199 | 382 | True | 0f01de132d27972571b32557fb4308960e20ad395640aa98928b3293821961ef |
+| [server/api.ts](../source/server/api.ts) | 3194 | 96 | True | f1d8f87ec55f3050fdac5b537f6e87e1dcf6d965ed131fe7553b7a7521ad4194 |
+| [server/captcha.d.ts](../source/server/captcha.d.ts) | 471 | 3 | True | d10261b515490671ddb41cdf84129d8c83513c61cfb31fea98cf058e8a124a18 |
+| [server/captcha.js](../source/server/captcha.js) | 4324 | 61 | True | 15e96ad7c4e09a06d62aca48db6fb553597b574c785a5a8c7e7f6e064c78218d |
+| [server/d1.ts](../source/server/d1.ts) | 2055 | 24 | True | 166106d98c191a96db879c67a4cc2b6e302bc66a70e8d3b49791da5748f30000 |
+| [server/demo-media.ts](../source/server/demo-media.ts) | 3919 | 79 | False | 5bb110f4463bcb38190c5fa088cc99482e9b06b93a0ac2d2d05139931e51ddd7 |
+| [server/entry.ts](../source/server/entry.ts) | 469 | 11 | True | 96cf7e69377f1ed5dd2dca0dbcae5b828812b76ac5f30f0cc60f1526876b967b |
+| [server/github-auth.js](../source/server/github-auth.js) | 14491 | 91 | True | d1ac5f36a17b4ef70272159ef53e0bf3a92d41495787484da2df7f607d702e94 |
+| [server/google-auth.js](../source/server/google-auth.js) | 17384 | 131 | True | 5108148270a83117ee353db89b544fc351275d9f9c93a4e27a740e50e64a04e9 |
+| [server/local.ts](../source/server/local.ts) | 1815 | 54 | True | 68daf1ad3dea0cadb08f093617117f7b6561040e2d7c9a55be3d21ad32fcee47 |
+| [server/mcp-auth-store.ts](../source/server/mcp-auth-store.ts) | 1800 | 26 | True | 30dd121a85faaa34707e2dbb0a7e0a5267d6a6a5329650b476bb0dba0a214f4f |
+| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 24809 | 241 | True | ebe61d1efc14e0ea08208a09bc94f6ac9b0c26837baeb08fe4942eb28730cd92 |
+| [server/mcp-local.ts](../source/server/mcp-local.ts) | 3579 | 55 | True | 48745797f11b6553c12b71a6b5b337ce67676d5a687e209ba4193fcde825707b |
+| [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 24434 | 213 | True | 9f71aa91f17b9739c54faf58bd10c5177bda995b7163fd223bdc4f623ea0cd70 |
+| [server/mcp.ts](../source/server/mcp.ts) | 10862 | 134 | True | 96a8384ed8f4a8debd6495942b3b10cdc3015506736b74e8be6817c84129e2ad |
+| [server/native-auth-store.js](../source/server/native-auth-store.js) | 9741 | 144 | True | f78e573068ddc498336cf7339c3c76bf3545c64b53a8ea20bf501016020079c3 |
+| [server/native-auth.d.ts](../source/server/native-auth.d.ts) | 1287 | 8 | True | 7efbe739314aa5397d51390d7d0bf2d09afa07db4762fdc73fadeb4315b93b0a |
+| [server/native-auth.js](../source/server/native-auth.js) | 17399 | 254 | True | 90179aa20bd2cfec5a4394eeb7c721bfa9a2d94c64842ca1fd99eefac31cc1c3 |
+| [server/profile-local.ts](../source/server/profile-local.ts) | 2982 | 30 | True | 36039977ce5c36f00abb32954a865c120a5da0382916bb08512ab23389b660b6 |
+| [server/profile.ts](../source/server/profile.ts) | 17069 | 212 | True | 2c11761d81d9e324760ba05365c16addc1961efca34d484821c7bf0ef52fd4ed |
+| [server/studio-analysis.ts](../source/server/studio-analysis.ts) | 9306 | 133 | True | cba07c7efd54b4cbd285c8bd124d3d242c9f82d7ad8db335c18f35b3a4ce71e2 |
+| [server/studio-hosted.ts](../source/server/studio-hosted.ts) | 67886 | 697 | True | 158815a373200874eeec2440814546270628c70716749226f2705d7b771b3b17 |
+| [server/studio-local.ts](../source/server/studio-local.ts) | 51840 | 638 | True | 5cbb22bd634a21cff62faa01da8afdcb0b0375ef69cdc75a9066b24df453923f |
+| [server/studio-processor.ts](../source/server/studio-processor.ts) | 20341 | 319 | True | 6210d181a10c4410ae85bb9eef37ba3ad3a03500a0dc0090cad3f68388456e9a |
+| [server/studio-render.ts](../source/server/studio-render.ts) | 20221 | 282 | True | a8e80f4a7c83f72c281030e1ef476027496811be04c0f66bc720a5920f8fb44e |
+| [server/supabase.ts](../source/server/supabase.ts) | 2902 | 90 | True | a049eaa188b64bf60ca97c78a800414793758e040a69a02c718a6c4aa8638a61 |
+| [server/tenant-auth.js](../source/server/tenant-auth.js) | 3457 | 49 | True | 0f78deb76f579b85d219a935ad25104ba5523ecb9ca89354f847ad002283f417 |
+| [server/worker.ts](../source/server/worker.ts) | 10055 | 202 | True | cad27d59766cf7d3f43269558564f6ccce3b8b093a85c54bdd2bce796be95a84 |
+| [src/App.tsx](../source/src/App.tsx) | 7919 | 113 | True | 215be4b94e11ad18f7d71b6f36e0bbe202dc72b2fe4d7b1feb95e94d3a6f615c |
+| [src/console/Agents.tsx](../source/src/console/Agents.tsx) | 35791 | 221 | True | 022f5d2a7cb5a424c210883ac401f7591d4218da92155a0675c49b2ba47cdcfa |
+| [src/console/Authentication.tsx](../source/src/console/Authentication.tsx) | 6247 | 72 | True | 0a7d41722a49eaacd95738e10a0168d78ab1a06fe5e7cbb6cb5cb4afdebca16c |
+| [src/console/Console.tsx](../source/src/console/Console.tsx) | 66383 | 1490 | True | 4d6331632e7c023613a43521392045c5940bf578374dca43344ecd1170e04027 |
+| [src/console/EnvironmentSettings.tsx](../source/src/console/EnvironmentSettings.tsx) | 3752 | 27 | True | 914f78f3ff89f4d070f221833527604c701dab9ccc738de8306f8b3bc54843c3 |
+| [src/console/ErrorNotice.tsx](../source/src/console/ErrorNotice.tsx) | 950 | 16 | True | 0cc49ecf9e0405e69945d1244ffedc282f805d10f74ccc2c33fc363f4f90521a |
+| [src/console/Help.tsx](../source/src/console/Help.tsx) | 5120 | 88 | True | 113939eabe0608907f2965e8cbd486f0c2d885b0adb61b84b14ef6ae48b9bb44 |
+| [src/console/McpConnections.tsx](../source/src/console/McpConnections.tsx) | 3925 | 49 | True | f770fb2264e59311cdb666197da150e8501df2fd7b2315f59b63a074b458c0f0 |
+| [src/console/Policies.tsx](../source/src/console/Policies.tsx) | 18217 | 77 | True | 81e7a4e19f56f9cb39efd88cdfc8f46f315de6b6219d0ec9db350612cccd4d1e |
+| [src/console/Profile.tsx](../source/src/console/Profile.tsx) | 16428 | 167 | True | fb36886d3de2b573b8f8704b1bf84907ae169c88fd562a48187cdf33b5be6620 |
+| [src/console/Settings.tsx](../source/src/console/Settings.tsx) | 15227 | 119 | True | 10717a8bd0171dbb4ca39500ef9ff811eeb23e29515a9cbef1bb533a0192a0dd |
+| [src/console/Studio.tsx](../source/src/console/Studio.tsx) | 53817 | 378 | True | 938c4535a690d878cd5267000615897f050a5e0206405bcb9c18c4e78ab1af76 |
+| [src/console/StudioAnalysis.tsx](../source/src/console/StudioAnalysis.tsx) | 12698 | 110 | True | 32ed01e8b7b428b12cb593cf91c82e64d4771b92996da1c1494d86ce10bcfd17 |
+| [src/console/StudioPlanner.tsx](../source/src/console/StudioPlanner.tsx) | 26521 | 176 | True | 36e15dab8f8161631cd775c3274d40fdc0813c886533c440b083c09c36389d92 |
+| [src/console/TextSimulation.tsx](../source/src/console/TextSimulation.tsx) | 7028 | 119 | True | 04c21e81e576e31dc15241d7973282fa4b3f19822d98455c7d7682f7a9c75fec |
+| [src/console/Turnstile.tsx](../source/src/console/Turnstile.tsx) | 5828 | 79 | True | 052652c1f29636466187cbcae3c0e6e57f30ddbe5a45f1cac5f2e54660876ed6 |
+| [src/console/agent-context.ts](../source/src/console/agent-context.ts) | 1357 | 21 | True | 10fc62b19112926cd92349018da49e7ba4c0b05c283c0e400b460db76fa3cdfc |
+| [src/console/agent-stream.ts](../source/src/console/agent-stream.ts) | 911 | 16 | True | a3e1fb70dda8792671a1481cb56d20534dc52b906ee9697bc1b5dedd866d1315 |
+| [src/console/agents.css](../source/src/console/agents.css) | 5355 | 61 | True | 7f6deb6e010116a25c058f250b98d64bdb490cb1d20b4e3f0c61f403cafa3920 |
+| [src/console/authentication.css](../source/src/console/authentication.css) | 893 | 9 | True | 728e24948a1ed7bb5309df70b2f3c195f085e8ea6b355105b2b4d1b8e0bdfba9 |
+| [src/console/console.css](../source/src/console/console.css) | 8754 | 467 | True | 220cd5a372a4cf4f7f51409254673bf2e76f45a2e97c84c92c629881997388fb |
+| [src/console/error-notice.css](../source/src/console/error-notice.css) | 668 | 21 | True | 59958477c90c576c2fd46d13c3bd55138e38cbc09b03a25d5079a1f2c7b6212d |
+| [src/console/help-guides.ts](../source/src/console/help-guides.ts) | 45575 | 386 | True | 41e411d2a980c010560036625262533446c12257515ec66e9a28d0685bde40bc |
+| [src/console/help.css](../source/src/console/help.css) | 6567 | 85 | True | a710a9c9dc4e7ff3b79d4ecbea8587e30018f6a2c31ba57a09e23c2c1c491e19 |
+| [src/console/policies.css](../source/src/console/policies.css) | 1939 | 19 | True | 80d26f28b1056fa446a1bdf04356a692b684c423c3f9e62588a1c373f97ded70 |
+| [src/console/profile.css](../source/src/console/profile.css) | 777 | 11 | True | 82c4a8f494f1650997272f5c1c1f54e89e4824c3c2ae94913dde599201305297 |
+| [src/console/release.css](../source/src/console/release.css) | 11805 | 245 | True | 4267e266aa18ec33cffd25d79bf340005ea35085758f64760f1212e11cf54e6b |
+| [src/console/settings.css](../source/src/console/settings.css) | 1024 | 10 | True | f3b311282026751781aa00ae0fdd89c170e8c8a7965a446c2c6c5fafc190859b |
+| [src/console/studio.css](../source/src/console/studio.css) | 5143 | 55 | True | 4f5641cf15ae3a5e744262fe6ff7ad633e392eaba27f8a2aec6b1006c71d3764 |
+| [src/console/turnstile.css](../source/src/console/turnstile.css) | 328 | 5 | True | b3d73cbcf47d1b968f514275da021901ab3059c88c4836bc85087f278b926733 |
+| [src/core/agents.ts](../source/src/core/agents.ts) | 4306 | 60 | True | 3ebebc41dd3648e3e43c80acbad51ec28d30c179c319d7ca2ec445385f7742f3 |
+| [src/core/client.ts](../source/src/core/client.ts) | 1872 | 33 | True | 564a48be1619da01ce3c21cab885eb8c3f7334d004afb9749e7cf2f3869304fc |
+| [src/core/domain.ts](../source/src/core/domain.ts) | 14824 | 456 | True | e5cef108e366180f34ff83d0e243b6952af556771df1859c173a689c048c7cb5 |
+| [src/core/generation.ts](../source/src/core/generation.ts) | 10771 | 184 | True | 54db730580d3b018311aaa804e62a858f753dd25ebb914886d971029b7579202 |
+| [src/core/profile.ts](../source/src/core/profile.ts) | 775 | 11 | True | 05b410a133fafbd98be8dda132b8d8b46774d7c358957a2e21665ccefacfc4b1 |
+| [src/core/settings.ts](../source/src/core/settings.ts) | 2330 | 39 | True | dda4eb9cfbde3fa81e55b192fa3766547b4a8d70f5f1b673e47c4b463fa7a01d |
+| [src/core/studio-analysis.ts](../source/src/core/studio-analysis.ts) | 4676 | 73 | True | 4029396a74d3c0b826f3ec050ab032fb38f2093d83abe5b5cfd0187b52910dfa |
+| [src/core/studio-classification.ts](../source/src/core/studio-classification.ts) | 1498 | 24 | True | 9c683ce795cf87586ca42ee065eae5d36b830437f09fa078e2748127420e5bf1 |
+| [src/core/studio-planner.ts](../source/src/core/studio-planner.ts) | 28079 | 292 | True | 4f075c5e6e089274be38c9239b7bc9676189b7fdc69ca6519a0c231a5a81b9fd |
+| [src/core/studio.ts](../source/src/core/studio.ts) | 28982 | 445 | True | 10373026774513836223c3fba32c2b3b2854cabfa8993c6bb8c7ee5badbcd313 |
+| [src/decoration/Background.tsx](../source/src/decoration/Background.tsx) | 5174 | 125 | True | 85e4686f7d52f4c1fbfc29d358c56d292f0f3d587346ec245cd8ecfd6e155025 |
+| [src/decoration/assets.ts](../source/src/decoration/assets.ts) | 3807 | 68 | True | 926790e8465cff388429d300f36612e37648a4ec5fbb3c193b794a3896ffa569 |
+| [src/decoration/registry.ts](../source/src/decoration/registry.ts) | 1069 | 18 | True | 7599f2119ba0d986394bf687bbe63dfa62233b0d0d27a266d1e685f2a157928d |
+| [src/decoration/renderer.ts](../source/src/decoration/renderer.ts) | 12494 | 210 | True | 285e775b8061d2178da99cd5fa44bec05b2d6198aed45136ab747e726c1460e2 |
+| [src/decoration/scenes.ts](../source/src/decoration/scenes.ts) | 19431 | 218 | True | 11b57b7ddf3cd981a53d0874b45b921d0027fbcf2bd92826460c1de7a901eebe |
+| [src/decoration/scheduler.ts](../source/src/decoration/scheduler.ts) | 2912 | 61 | True | dfdf7880f3cea46df77cde914f5b8a367cb1053c91fb72aefbeb00bd00b8782a |
+| [src/i18n.tsx](../source/src/i18n.tsx) | 25406 | 356 | True | 97630975c25fad0a40fc47892cf4a9b144ea685022059de61ea5c4a025dc708d |
+| [src/main.tsx](../source/src/main.tsx) | 375 | 9 | True | 80fd028803d596f5f668d448405a08b33cbbe02a80253812b5ebb1ea52327b1c |
+| [src/style.css](../source/src/style.css) | 5749 | 75 | True | f6c3127a189b095bc5b9e4cab9d522bc63dbe1ee6d31ab0a9a3ca173f65efe99 |
+| [tests/access-help.test.ts](../source/tests/access-help.test.ts) | 9553 | 147 | True | 57875569d1806d9f07f6b3403de140424c7df26e2244a9090cb3b2b0063252ef |
+| [tests/agent-bridge.test.ts](../source/tests/agent-bridge.test.ts) | 12840 | 208 | True | 63865f52a091254eaf5d75198be4b6b5c228b059d93457463134ad680d6d9202 |
+| [tests/agent-context.test.ts](../source/tests/agent-context.test.ts) | 994 | 16 | True | 692db0f937755da59d017560d1070e4174a538b082f4b831e8ae79a453a9385e |
+| [tests/agent-stream.test.ts](../source/tests/agent-stream.test.ts) | 1297 | 23 | True | 20826fddc50a2d86662892aeb1b8676abf1b9a969128eee1bf5982c2506817a0 |
+| [tests/agents-studio.test.ts](../source/tests/agents-studio.test.ts) | 3697 | 50 | True | 21124c15cac665d2ec690f4d9bcd191560a087a1de499ea2b73546931fb6dde3 |
+| [tests/agents-worker.test.ts](../source/tests/agents-worker.test.ts) | 4605 | 56 | True | bdf308dce3530a7021776181d246d1cdee96197ca82453db5669c31f7888bc1f |
+| [tests/agents.test.ts](../source/tests/agents.test.ts) | 25497 | 248 | True | 3da3ddb2bab9f6e5cabc24efe774faf7cf2f367ab6a06618f3385a2f413ad99c |
+| [tests/assets.test.ts](../source/tests/assets.test.ts) | 3387 | 40 | True | c79c41c4edaba98a2b99a2e3791e58f3b167adfa066d3ba23def1c36301fcc08 |
+| [tests/captcha.test.ts](../source/tests/captcha.test.ts) | 11327 | 120 | True | f8e151568f09c37d1351b79d3da601c078f16220aef6c507dd31547d6d0b9325 |
+| [tests/d1-hosted.test.ts](../source/tests/d1-hosted.test.ts) | 7852 | 94 | True | b1685eaa25ef2e01ab7682b770a7efc7072517585c0f4f4b5d688a9c00056bde |
+| [tests/demo-media.test.ts](../source/tests/demo-media.test.ts) | 7463 | 125 | False | 859a18ac601393b0e4f5a56afd8a2411ae138a1555561660e08f49f62868c752 |
+| [tests/editorial.test.ts](../source/tests/editorial.test.ts) | 10648 | 352 | True | a90a849864271061728b354e94973fa6d6bee7cd9cbe49612ce9b1ce56a40753 |
+| [tests/generation.test.ts](../source/tests/generation.test.ts) | 10855 | 139 | True | b4fd3b2891097b6fc4a7144d4d6da994d33b3fa4b9eb382c0c1a89ade26cccf3 |
+| [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 15656 | 109 | True | be529405b0ed4dcbd2c6a8dadd23d717bc09ab44634353975fab8c423a9644c2 |
+| [tests/google-auth.test.ts](../source/tests/google-auth.test.ts) | 23176 | 201 | True | 094020b327c7b6901aa4c72307334c9c6667a526864e89aba3635a8a846cfa5b |
+| [tests/hosted.test.ts](../source/tests/hosted.test.ts) | 3537 | 109 | True | de34e203f1918b9f8f52657d665f07eaafc7d0473319cad4c219675a61d36ed0 |
+| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 16516 | 154 | True | 88dc6e75c000766d687ba1e1c2104ecb50b517509225ceff87d152e92e0b4913 |
+| [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 10904 | 111 | True | 01aa5bdd0580c61e26978fadd7102e9b2c7dc9ee0207ffd2321e44a92bfff3a8 |
+| [tests/mcp-tools.test.ts](../source/tests/mcp-tools.test.ts) | 19187 | 246 | True | 65aaa86e9459b06e5b7fbecd9bed2dfc7018d7b4b6c98321d9edf7443d5eff50 |
+| [tests/motion.test.ts](../source/tests/motion.test.ts) | 6655 | 101 | True | 19101897c338cb978600024aa538cb55ea233a6ea692d6f9400f72bc3884cfcc |
+| [tests/native-auth.test.ts](../source/tests/native-auth.test.ts) | 16736 | 254 | True | f4f22ef56236d848ca8a01ff0321042be17bff777646e9c4b03b4ab2c943932b |
+| [tests/profile-local.test.ts](../source/tests/profile-local.test.ts) | 2801 | 25 | True | f6753930c9f789932ef1771111e8382fdc4d08eb606a415ad3b2491c524b0a4b |
+| [tests/profile-ui.test.ts](../source/tests/profile-ui.test.ts) | 13034 | 96 | True | 0bc68d65771a27def72340f968402ad992261804489283d97d7f738e60658566 |
+| [tests/profile.test.ts](../source/tests/profile.test.ts) | 22953 | 208 | True | 4aa1db9ad3b57d40a2d33e44df45dbdf3160be8715f21b21a967680f5b9dd0d9 |
+| [tests/scheduler.test.ts](../source/tests/scheduler.test.ts) | 2958 | 36 | True | a4c28d80aabd0e6267163ee95f0bb54e2fbc73f77d4616f5ef6e7da8c76584ac |
+| [tests/studio-analysis.test.ts](../source/tests/studio-analysis.test.ts) | 7237 | 92 | True | ece83bde25c2f7d8faa0d4d70eae5cb94f1ebd96672098a572eb9cd52740ccb2 |
+| [tests/studio-api.test.ts](../source/tests/studio-api.test.ts) | 24931 | 314 | True | 41f24afe6ccf1cf7aaef9ea6b6404b68a3080cbc806dcaca7489cd15f68733da |
+| [tests/studio-classification.test.ts](../source/tests/studio-classification.test.ts) | 5650 | 57 | True | 4d6989f01920ea0a47d015df239c9a43738954cbf98d5e6e7b8acd005c787e37 |
+| [tests/studio-hosted.test.ts](../source/tests/studio-hosted.test.ts) | 43248 | 406 | True | 1d1c2caa67c5a9625ec8ce09444e3f284832bfc3d8b5a17f17909a18563ec6e9 |
+| [tests/studio-native-flow.test.ts](../source/tests/studio-native-flow.test.ts) | 7413 | 65 | True | f205b0acb6fb732080e797f4817ba2987a136c151350f5c386862976cd487abd |
+| [tests/studio-native-ui.test.ts](../source/tests/studio-native-ui.test.ts) | 15876 | 159 | True | 4e5e0e2317649c25886eea4edeb71edf38e1945ba73cfe9c713cceac00fce538 |
+| [tests/studio-planner.test.ts](../source/tests/studio-planner.test.ts) | 20149 | 273 | True | 91ad9214a8882e580c207eaab51dee4b5b41a7314afc041b93e14a28fc625c46 |
+| [tests/studio-processor.test.ts](../source/tests/studio-processor.test.ts) | 23579 | 284 | True | a625ab8ce629e98011c3a9504a762a973c344257f9c16d397eedbb4c45127585 |
+| [tests/studio-render.test.ts](../source/tests/studio-render.test.ts) | 10755 | 123 | True | 4e0a408c3cbb2c08c8bb16be5be95bee0139330c5e170d497e78eb943625cc4a |
+| [tests/studio-vite.test.ts](../source/tests/studio-vite.test.ts) | 11683 | 166 | True | ad5058cff371140b6ab5dc59ec5715c1da456cce6c98e8691a6e4f4c321d728c |
+| [tests/studio-watch.test.ts](../source/tests/studio-watch.test.ts) | 3611 | 48 | True | 7e482fc2e913c67f98de7e340a7aa2eb71c32249627aae345c62b2595f0bfa4d |
+| [tests/studio.test.ts](../source/tests/studio.test.ts) | 16667 | 222 | True | 87113e7f6ee77d63ef3c3f95940674726aef003fb4c61c01409c6c5a7c5bf9ec |
+| [tests/turnstile-ui.test.ts](../source/tests/turnstile-ui.test.ts) | 5781 | 57 | True | d98cd8320aad5f5d71c45e1bcdb15b719cc35ccc050875ebfb5a30bf1c0b8000 |
+| [tests/ui-help.test.ts](../source/tests/ui-help.test.ts) | 4387 | 68 | True | 99b6b9a1d2adfb3dacd77425ea0e8a9c482be5b7504188156f4a2962a2ff46fe |
+| [tools/agent-bridge.mjs](../source/tools/agent-bridge.mjs) | 25918 | 428 | True | 1b779cca6f3ba9d0426ff417a72b1a03e66c6fee64481933cd9e46949e28374e |
+| [tools/prepare-processor.mjs](../source/tools/prepare-processor.mjs) | 568 | 8 | True | 7b43d9fcf75421f9b0b8514481c05815b6d4f422ac054879a4aee445f2441338 |
+| [tools/verify-assets.mjs](../source/tools/verify-assets.mjs) | 916 | 11 | True | 2f9fb6a5265ab3d45b5fb6593ff57cfc6502b4c6837e284ef6fa0f7c7e6fd453 |
+| [tsconfig.json](../source/tsconfig.json) | 315 | 8 | True | 3f7151b7f71bea9343cbe1034acc8463b461ef8c91ff08343608aac8771530f7 |
+| [tsconfig.server.json](../source/tsconfig.server.json) | 215 | 5 | True | 39de3f5e7afbb65a0ca50854ca6fe2a0a23b8fdd1656249417af97739f91127c |
+| [vite.config.ts](../source/vite.config.ts) | 8903 | 169 | True | ab78b5d34cec0a949782701efbc76966755ac7ed4e762fa901ebdedae60277ff |
+| [worker-configuration.d.ts](../source/worker-configuration.d.ts) | 643079 | 16292 | True | cb299b3614a3ced507fb946b6d1cf54d100a426875b8c0d5e3df0e024738ef48 |
+| [wrangler.jsonc](../source/wrangler.jsonc) | 1865 | 21 | True | 87ef519aa930b63a01f71cd2cb44002137591ba7bd8d9ba0fcdf34007f7c6ac4 |

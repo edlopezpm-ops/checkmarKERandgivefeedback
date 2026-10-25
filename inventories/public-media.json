@@ -1,0 +1,42 @@
+{
+  "format": "marker-public-media/v1",
+  "files": [
+    {
+      "path": "public/demo/index.html",
+      "projection": "source/public/demo/index.html",
+      "bytes": 8216,
+      "sha256": "66fbf01ed0091396c6994dae2c6b051aea8763c7eadcb09dc47d65de85dd843c",
+      "hosted_url": "https://marker.aekr.io/demo/index.html"
+    },
+    {
+      "path": "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
+      "projection": "source/public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
+      "bytes": 6137380,
+      "sha256": "b822ee2fb443e16ed0e685daba2d743ed0946e515b034ef82d17b9ddcee60a71",
+      "hosted_url": "https://marker.aekr.io/demo/marKER_demo_55s_ES_v1_1080p.mp4"
+    },
+    {
+      "path": "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
+      "projection": "source/public/demo/marKER_demo_55s_ES_v1_4K.mp4",
+      "bytes": 14495058,
+      "sha256": "fdb82854cc3f19107c846ac56cf3fb1f84d3aef3a407c5327ea5679c0dea85df",
+      "hosted_url": "https://marker.aekr.io/demo/marKER_demo_55s_ES_v1_4K.mp4"
+    },
+    {
+      "path": "public/demo/marKER_demo_ES_v1.vtt",
+      "projection": "source/public/demo/marKER_demo_ES_v1.vtt",
+      "bytes": 872,
+      "sha256": "f6d7221c8980dd6201aaad36f0e2609569a2da0b669e3a4837bd20fa13f631c2",
+      "hosted_url": "https://marker.aekr.io/demo/marKER_demo_ES_v1.vtt"
+    },
+    {
+      "path": "public/demo/marKER_demo_ES_v1_poster.png",
+      "projection": "source/public/demo/marKER_demo_ES_v1_poster.png",
+      "bytes": 1621513,
+      "sha256": "f2973374a14246f3419ba6ed025f0b7495095d7a60b0d0fbb96de7cf7a167e35",
+      "hosted_url": "https://marker.aekr.io/demo/marKER_demo_ES_v1_poster.png"
+    }
+  ],
+  "omitted": [],
+  "claims": "Exact public asset bytes. URLs are navigation, not a fresh hosted readback. Video metadata and captions remain in original source files."
+}

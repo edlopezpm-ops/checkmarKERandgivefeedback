@@ -1,0 +1,9 @@
+.auth-google-choice { display: grid; gap: .7rem; margin: 1.2rem 0; }
+.auth-provider-button { display: flex; align-items: center; justify-content: center; gap: .8rem; width: 100%; min-height: 46px; }
+.auth-provider-mark { font-family: Arial, sans-serif; font-size: 1.2em; font-weight: 700; }
+.auth-method-divider { display: flex; align-items: center; gap: .8rem; margin: .7rem 0; font-size: .88em; color: var(--muted, #697168); }
+.auth-method-divider::before, .auth-method-divider::after { content: ""; height: 1px; flex: 1; background: var(--border, #c4c9bc); }
+.authentication-settings { margin-bottom: 1.5rem; }
+.authentication-settings h2 { margin-top: 0; }
+.auth-method-status { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem 1rem; padding: .75rem 0; border-bottom: 1px solid var(--border, #c4c9bc); }
+.auth-method-status span { color: var(--muted, #697168); }

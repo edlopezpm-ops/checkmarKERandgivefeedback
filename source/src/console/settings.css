@@ -1,0 +1,10 @@
+.settings-page { display: grid; gap: 24px; min-width: 0; }
+.settings-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.settings-heading h2 { margin: 0; }
+.settings-fields { border: 0; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; min-width: 0; }
+.settings-usage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 20px 0; }
+.settings-usage p { display: grid; gap: 8px; border-top: 1px solid #deded5; padding-top: 14px; margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.settings-usage span { font-size: 13px; line-height: 1.6; }
+.settings-page .record-actions { flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.settings-page .review-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+@media(max-width:700px) { .settings-fields, .settings-usage { grid-template-columns: minmax(0, 1fr); } .settings-page .record-actions > button { flex: 1 1 auto; } }

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Read-only tracked snapshot catalog and empty SQLite structural reconstruction.
+"""Read-only captured snapshot catalog and empty SQLite reconstruction.
 
 Usage: python tools/extract-catalogs.py SOURCE_ROOT DOSSIER_ROOT
-Uses only Python stdlib and git. Never reads runtime databases or ignored files.
+Uses Python stdlib. Never reads runtime databases or ignored/private files.
 """
 from __future__ import annotations
 import collections
@@ -14,16 +14,13 @@ import sqlite3
 import subprocess
 import sys
 
-PIN = '1f9415ee19e1e6ed175df6ef8aac8edc7182c9e9'
 source, output = (Path(x).resolve() for x in sys.argv[1:3])
-def git(*args: str) -> bytes:
-    return subprocess.check_output(['git', *args], cwd=source)
-if git('rev-parse', 'HEAD').decode().strip() != PIN or git('status', '--porcelain'):
-    raise SystemExit('Source drift: expected pinned clean tracked checkout')
+manifest = json.loads((output/'source-snapshot-manifest.json').read_text(encoding='utf-8'))
+PIN = manifest['source_revision']
 def write(name: str, value: object) -> None:
     target = output / name
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(value, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    target.write_text(json.dumps(value, indent=2, ensure_ascii=False) + '\n', encoding='utf-8', newline='\n')
 def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 def lines(data: bytes) -> int | None:
@@ -32,27 +29,10 @@ def lines(data: bytes) -> int | None:
         return None if '\x00' in value else len(value.splitlines())
     except UnicodeDecodeError:
         return None
-entries = []
-for row in git('ls-files', '-s', '-z').split(b'\0'):
-    if not row:
-        continue
-    metadata, raw_path = row.split(b'\t', 1)
-    mode, blob, stage = metadata.decode().split()
-    name = raw_path.decode('utf-8')
-    if name.startswith(('.aekr/', '.local/', '.wrangler/')) or name == '.dev.vars':
-        raise SystemExit('Forbidden tracked path')
-    data = git('cat-file', 'blob', blob)
-    checkout = (source / name).read_bytes()
-    entries.append({'path': name, 'git_mode': mode, 'git_blob_sha1': blob,
-                    'bytes': len(data), 'sha256': digest(data), 'text_lines': lines(data),
-                    'checkout_bytes': len(checkout), 'checkout_sha256': digest(checkout),
-                    'checkout_text_lines': lines(checkout)})
-manifest = {'format': 'marker-source-snapshot/v1', 'source_revision': PIN,
-            'source_tree_sha1': git('rev-parse', 'HEAD^{tree}').decode().strip(),
-            'tracked_path_count': len(entries),
-            'hash_semantics': 'bytes/sha256/text_lines describe committed Git blob bytes; checkout_* describe clean working-tree bytes, which may use CRLF. Binary text_lines are null. Source bodies are not included.',
-            'paths': sorted(entries, key=lambda x: x['path'])}
-write('source-snapshot-manifest.json', manifest)
+entries = manifest['paths']
+for row in entries:
+    if digest((source/row['path']).read_bytes()) != row['sha256']:
+        raise SystemExit('Snapshot content drift: '+row['path'])
 lock = json.loads((source / 'package-lock.json').read_text(encoding='utf-8'))
 package = json.loads((source / 'package.json').read_text(encoding='utf-8'))
 dependencies = []
@@ -67,7 +47,7 @@ write('inventories/dependencies.json', {'format': 'marker-lock-dependencies/v1',
        'lockfile_version': lock['lockfileVersion'], 'package': {'name': package['name'], 'version': package['version'], 'private': package['private']},
        'declared_dependencies': package.get('dependencies', {}), 'declared_dev_dependencies': package.get('devDependencies', {}),
        'scripts': package.get('scripts', {}), 'count': len(dependencies), 'packages': dependencies,
-       'limitations': ['Exact versions describe the committed lockfile, not installed/hosted runtime state or a vulnerability assessment.', 'Optional platform variants need not be installed on this host. Registry URLs are intentionally omitted.']})
+       'limitations': ['Exact versions describe the snapshot lockfile, not installed/hosted runtime state or a vulnerability assessment.', 'Optional platform variants need not be installed on this host. Registry URLs are intentionally omitted.']})
 
 def sqlite_catalog(statements: list[tuple[str, str]], stem: str) -> dict:
     db = sqlite3.connect(':memory:')
@@ -96,7 +76,7 @@ def sqlite_catalog(statements: list[tuple[str, str]], stem: str) -> dict:
     ddl = '-- Schema only, reconstructed in an empty in-memory SQLite database. No data or INSERT statements.\nPRAGMA foreign_keys=ON;\n\n' + '\n\n'.join(row[3].strip()+';' for row in objects if row[3]) + '\n'
     target = output / 'database' / f'{stem}-schema.sql'
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(ddl, encoding='utf-8')
+    target.write_text(ddl, encoding='utf-8', newline='\n')
     replay = sqlite3.connect(':memory:'); replay.executescript(ddl)
     recreated = replay.execute("SELECT type,name,tbl_name,sql FROM sqlite_schema WHERE name NOT LIKE 'sqlite_%' ORDER BY CASE type WHEN 'table' THEN 0 WHEN 'index' THEN 1 ELSE 2 END,name").fetchall()
     if objects != recreated:
@@ -118,7 +98,7 @@ local = re.search(r'db\.exec\(`(PRAGMA journal_mode=WAL;.*?)`\);', local_source,
 if not local or '${' in local.group(1):
     raise SystemExit('Local schema not a static reviewed template')
 local_catalog = sqlite_catalog([('server/studio-local.ts', local.group(1))], 'local-studio')
-summary = {'tracked_paths': len(entries), 'git_blob_bytes': sum(e['bytes'] for e in entries),
+summary = {'tracked_paths': manifest['tracked_path_count'], 'projected_paths': len(entries), 'source_checkout_bytes': sum(e['bytes'] for e in entries),
            'source_text_paths': sum(e['text_lines'] is not None for e in entries),
            'text_lines': sum(e['text_lines'] or 0 for e in entries),
            'lock_packages':len(dependencies), 'd1_tables':d1['table_count'],'d1_columns':d1['column_count'],

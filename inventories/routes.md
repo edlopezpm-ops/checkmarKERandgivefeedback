@@ -1,44 +1,112 @@
-# API route reference
+# Server route navigation
 
-30 curated method/path contracts, including two inactive compatibility helper routes. This is a static source contract, not a live endpoint probe. Braced IDs represent regex captures. Captured IDs are validated; optional suffixes and operation alternatives are expanded below. The active Worker entry uses native owner auth and D1. Loopback endpoints are protected by the Vite Host/IP/origin boundary.
+Each row is a route-related source occurrence, including rejection guards and prefixes. This is not a reachable endpoint count. Read the linked branch for exact methods and validation.
 
-| Method | Path/pattern | Adapter | Behavior | Source |
-| --- | --- | --- | --- | --- |
-| POST | `/api/auth/request` | native hosted auth | Owner-only generic code request; challenge cookie and email. | `server/native-auth.js:L4` |
-| POST | `/api/auth/verify` | native hosted auth | Single-use code and same-browser challenge; creates opaque session. | `server/native-auth.js:L5` |
-| POST | `/api/auth/logout` | native hosted auth | Revokes owner session and clears cookies. | `server/native-auth.js:L6` |
-| POST | `/api/auth/help` | native hosted auth | Rate-limited bilingual access instructions with generic response. | `server/native-auth.js:L7` |
-| GET | `/api/session` | native hosted + local | Session status; native owner state or loopback local status. | `server/worker.ts:L119`; `vite.config.ts:L102` |
-| GET | `/api/workspace` | native hosted + local | Read legacy editorial aggregate. | `server/api.ts:L62` |
-| POST | `/api/commands` | native hosted + local | Revision-bound legacy editorial command. | `server/api.ts:L64` |
-| GET | `/api/studio/settings` | native hosted + local | Settings, actual usage, configured limits and AI disconnected flag. | `server/studio-hosted.ts:L546`; `server/studio-local.ts:L477` |
-| POST | `/api/studio/settings` | native hosted + local | Strict settings CAS; active work blocks policy mutation. | `server/studio-hosted.ts:L547`; `server/studio-local.ts:L478` |
-| GET | `/api/studio` | native hosted + local | Library/campaign/variant state, jobs, uploads, usage and capabilities. | `server/studio-hosted.ts:L548`; `server/studio-local.ts:L479` |
-| POST | `/api/studio/plan` | native hosted + local | Deterministic proposal preview without enqueuing a render. | `server/studio-hosted.ts:L553`; `server/studio-local.ts:L483` |
-| POST | `/api/studio/commands` | native hosted + local | Studio revision-bound command; trusted proposal recomputation on save. | `server/studio-hosted.ts:L573`; `server/studio-local.ts:L503` |
-| POST | `/api/studio/analyses` | native hosted + local | Explicit technical analysis admission; hosted unavailable until native version pinned. | `server/studio-hosted.ts:L558`; `server/studio-local.ts:L489` |
-| GET | `/api/studio/analyses?assetId={id}` | native hosted + local | Up to 20 summaries for an asset. | `server/studio-hosted.ts:L559`; `server/studio-local.ts:L490` |
-| GET | `/api/studio/analyses/{id}` | native hosted + local | One analysis record. | `server/studio-hosted.ts:L564`; `server/studio-local.ts:L494` |
-| GET | `/api/studio/analyses/{id}/thumb-{0..5}.jpg` | native hosted + local | Completed declared analysis thumbnail. | `server/studio-hosted.ts:L564`; `server/studio-local.ts:L494` |
-| POST | `/api/studio/uploads` | native hosted + local | Reserve one resumable upload session. | `server/studio-hosted.ts:L596`; `server/studio-local.ts:L528` |
-| GET | `/api/studio/uploads/{id}` | native hosted + local | Read committed upload offset and state. | `server/studio-hosted.ts:L597`; `server/studio-local.ts:L540` |
-| PUT | `/api/studio/uploads/{id}` | native hosted + local | Append bounded chunk at exact offset. | `server/studio-hosted.ts:L597`; `server/studio-local.ts:L540` |
-| DELETE | `/api/studio/uploads/{id}` | native hosted + local | Cancel upload; preserve failed-release reservations until reconciled. | `server/studio-hosted.ts:L597`; `server/studio-local.ts:L540` |
-| POST | `/api/studio/uploads/{id}/complete` | native hosted + local | Probe/hash original, deduplicate and commit metadata. | `server/studio-hosted.ts:L597`; `server/studio-local.ts:L540` |
-| GET | `/api/studio/assets/{id}` | native hosted + local | Original bytes; download=1 requests attachment disposition. | `server/studio-hosted.ts:L626`; `server/studio-local.ts:L553` |
-| GET | `/api/studio/jobs/{id}` | native hosted + local | Job state and immutable receipt when present. | `server/studio-hosted.ts:L632`; `server/studio-local.ts:L559` |
-| GET | `/api/studio/jobs/{id}/video` | native hosted + local | Completed MP4 preview bytes. | `server/studio-hosted.ts:L632`; `server/studio-local.ts:L559` |
-| GET | `/api/studio/jobs/{id}/cover` | native hosted + local | Completed cover PNG. | `server/studio-hosted.ts:L632`; `server/studio-local.ts:L559` |
-| POST | `/api/studio/variants/{id}/render` | native hosted + local | Exact recipe render admission with explicit regeneration semantics. | `server/studio-hosted.ts:L639`; `server/studio-local.ts:L568` |
-| POST | `/api/studio/variants/{id}/approve` | native hosted + local | Explicit confirmed exact recipe/job approval. | `server/studio-hosted.ts:L639`; `server/studio-local.ts:L568` |
-| GET | `/api/studio/variants/{id}/export` | native hosted + local | Permission-bound approved TXT or MP4 export. | `server/studio-hosted.ts:L639`; `server/studio-local.ts:L568` |
-| POST | `/api/login` | inactive Supabase helper | Prepared Supabase compatibility helper; not selected by exported native Worker. | `server/worker.ts:L39` |
-| POST | `/api/logout` | inactive Supabase helper | Prepared Supabase compatibility helper; not selected by exported native Worker. | `server/worker.ts:L34` |
+| Source | Kind | Literal or regex | AST context |
+| --- | --- | --- | --- |
+| [server/agents.ts:64](../source/server/agents.ts#L64) | literal | `/api/studio` | Parameter |
+| [server/agents.ts:140](../source/server/agents.ts#L140) | literal | `/api/agents/bridge/heartbeat` | BinaryExpression |
+| [server/agents.ts:155](../source/server/agents.ts#L155) | literal | `/api/agents/bridge/poll` | BinaryExpression |
+| [server/agents.ts:175](../source/server/agents.ts#L175) | regular_expression | `/^\/api\/agents\/bridge\/runs\/([a-zA-Z0-9_-]+)(?:\/(events\|complete))?$/` | PropertyAccessExpression |
+| [server/agents.ts:221](../source/server/agents.ts#L221) | literal | `/api/agents` | BinaryExpression |
+| [server/agents.ts:221](../source/server/agents.ts#L221) | literal | `/api/agents/` | CallExpression |
+| [server/agents.ts:222](../source/server/agents.ts#L222) | literal | `/api/agents/bridge/` | CallExpression |
+| [server/agents.ts:225](../source/server/agents.ts#L225) | literal | `/api/agents` | BinaryExpression |
+| [server/agents.ts:226](../source/server/agents.ts#L226) | literal | `/api/agents/limits` | BinaryExpression |
+| [server/agents.ts:227](../source/server/agents.ts#L227) | literal | `/api/agents/connections` | BinaryExpression |
+| [server/agents.ts:227](../source/server/agents.ts#L227) | literal | `/api/agents/pair` | BinaryExpression |
+| [server/agents.ts:233](../source/server/agents.ts#L233) | regular_expression | `/^\/api\/agents\/connections\/([^/]+)$/` | PropertyAccessExpression |
+| [server/agents.ts:235](../source/server/agents.ts#L235) | literal | `/api/agents/sessions` | BinaryExpression |
+| [server/agents.ts:241](../source/server/agents.ts#L241) | regular_expression | `/^\/api\/agents\/sessions\/([^/]+)(?:\/(runs))?$/` | PropertyAccessExpression |
+| [server/agents.ts:273](../source/server/agents.ts#L273) | regular_expression | `/^\/api\/agents\/runs\/([^/]+)\/cancel$/` | PropertyAccessExpression |
+| [server/agents.ts:275](../source/server/agents.ts#L275) | regular_expression | `/^\/api\/agents\/proposals\/([^/]+)(?:\/(edit\|apply\|plan\|apply-plan\|production\|render\|export))?$/` | PropertyAccessExpression |
+| [server/agents.ts:317](../source/server/agents.ts#L317) | literal | `/api/studio/plan` | CallExpression |
+| [server/agents.ts:346](../source/server/agents.ts#L346) | literal | `/api/studio/commands` | CallExpression |
+| [server/agents.ts:353](../source/server/agents.ts#L353) | literal | `/api/studio/commands` | CallExpression |
+| [server/api.ts:62](../source/server/api.ts#L62) | literal | `/api/workspace` | BinaryExpression |
+| [server/api.ts:64](../source/server/api.ts#L64) | literal | `/api/commands` | BinaryExpression |
+| [server/captcha.js:2](../source/server/captcha.js#L2) | literal | `/api/auth/request` | ArrayLiteralExpression |
+| [server/captcha.js:3](../source/server/captcha.js#L3) | literal | `/api/auth/verify` | ArrayLiteralExpression |
+| [server/captcha.js:4](../source/server/captcha.js#L4) | literal | `/api/auth/help` | ArrayLiteralExpression |
+| [server/captcha.js:5](../source/server/captcha.js#L5) | literal | `/api/auth/google/start` | ArrayLiteralExpression |
+| [server/captcha.js:6](../source/server/captcha.js#L6) | literal | `/api/auth/github/start` | ArrayLiteralExpression |
+| [server/github-auth.js:4](../source/server/github-auth.js#L4) | literal | `/api/auth/github/start` | VariableDeclaration |
+| [server/github-auth.js:4](../source/server/github-auth.js#L4) | literal | `/api/auth/github/callback` | VariableDeclaration |
+| [server/google-auth.js:4](../source/server/google-auth.js#L4) | literal | `/api/auth/google/start` | VariableDeclaration |
+| [server/google-auth.js:4](../source/server/google-auth.js#L4) | literal | `/api/auth/google/callback` | VariableDeclaration |
+| [server/mcp-auth.ts:13](../source/server/mcp-auth.ts#L13) | literal | `/api/mcp/oauth/` | VariableDeclaration |
+| [server/mcp-auth.ts:74](../source/server/mcp-auth.ts#L74) | literal | `/api/mcp` | BinaryExpression |
+| [server/mcp-auth.ts:209](../source/server/mcp-auth.ts#L209) | literal | `/api/mcp/connections` | ArrayLiteralExpression |
+| [server/mcp-auth.ts:222](../source/server/mcp-auth.ts#L222) | literal | `/api/mcp/connections` | BinaryExpression |
+| [server/mcp-tools.ts:114](../source/server/mcp-tools.ts#L114) | literal | `/api/workspace` | CallExpression |
+| [server/mcp-tools.ts:115](../source/server/mcp-tools.ts#L115) | literal | `/api/studio` | CallExpression |
+| [server/mcp-tools.ts:119](../source/server/mcp-tools.ts#L119) | literal | `/api/commands` | ConditionalExpression |
+| [server/mcp-tools.ts:119](../source/server/mcp-tools.ts#L119) | literal | `/api/studio/commands` | ConditionalExpression |
+| [server/mcp-tools.ts:164](../source/server/mcp-tools.ts#L164) | literal | `/api/studio/plan` | CallExpression |
+| [server/mcp.ts:68](../source/server/mcp.ts#L68) | literal | `/api/mcp` | BinaryExpression |
+| [server/mcp.ts:68](../source/server/mcp.ts#L68) | literal | `/api/mcp/` | CallExpression |
+| [server/mcp.ts:81](../source/server/mcp.ts#L81) | regular_expression | `/^\/api\/mcp\/artifacts\/([A-Za-z0-9_-]{1,100})$/` | PropertyAccessExpression |
+| [server/mcp.ts:82](../source/server/mcp.ts#L82) | literal | `/api/mcp` | BinaryExpression |
+| [server/native-auth.js:8](../source/server/native-auth.js#L8) | literal | `/api/auth/request` | VariableDeclaration |
+| [server/native-auth.js:9](../source/server/native-auth.js#L9) | literal | `/api/auth/verify` | VariableDeclaration |
+| [server/native-auth.js:10](../source/server/native-auth.js#L10) | literal | `/api/auth/logout` | VariableDeclaration |
+| [server/native-auth.js:11](../source/server/native-auth.js#L11) | literal | `/api/auth/help` | VariableDeclaration |
+| [server/profile-local.ts:13](../source/server/profile-local.ts#L13) | literal | `/api/profile` | BinaryExpression |
+| [server/profile.ts:85](../source/server/profile.ts#L85) | literal | `/api/profile/deletion` | BinaryExpression |
+| [server/profile.ts:85](../source/server/profile.ts#L85) | literal | `/api/profile/deletion/resume` | BinaryExpression |
+| [server/profile.ts:96](../source/server/profile.ts#L96) | literal | `/api/profile` | BinaryExpression |
+| [server/studio-hosted.ts:560](../source/server/studio-hosted.ts#L560) | literal | `/api/studio` | BinaryExpression |
+| [server/studio-hosted.ts:560](../source/server/studio-hosted.ts#L560) | literal | `/api/studio/` | CallExpression |
+| [server/studio-hosted.ts:564](../source/server/studio-hosted.ts#L564) | literal | `/api/studio/settings` | BinaryExpression |
+| [server/studio-hosted.ts:565](../source/server/studio-hosted.ts#L565) | literal | `/api/studio/settings` | BinaryExpression |
+| [server/studio-hosted.ts:566](../source/server/studio-hosted.ts#L566) | literal | `/api/studio` | BinaryExpression |
+| [server/studio-hosted.ts:571](../source/server/studio-hosted.ts#L571) | literal | `/api/studio/plan` | BinaryExpression |
+| [server/studio-hosted.ts:576](../source/server/studio-hosted.ts#L576) | literal | `/api/studio/analyses` | BinaryExpression |
+| [server/studio-hosted.ts:577](../source/server/studio-hosted.ts#L577) | literal | `/api/studio/analyses` | BinaryExpression |
+| [server/studio-hosted.ts:582](../source/server/studio-hosted.ts#L582) | regular_expression | `/^\/api\/studio\/analyses\/([^/]+)(\/(thumb-[0-5]\.jpg))?$/` | PropertyAccessExpression |
+| [server/studio-hosted.ts:591](../source/server/studio-hosted.ts#L591) | literal | `/api/studio/commands` | BinaryExpression |
+| [server/studio-hosted.ts:614](../source/server/studio-hosted.ts#L614) | literal | `/api/studio/uploads` | BinaryExpression |
+| [server/studio-hosted.ts:615](../source/server/studio-hosted.ts#L615) | regular_expression | `/^\/api\/studio\/uploads\/([^/]+)(\/complete)?$/` | PropertyAccessExpression |
+| [server/studio-hosted.ts:644](../source/server/studio-hosted.ts#L644) | regular_expression | `/^\/api\/studio\/assets\/([^/]+)$/` | PropertyAccessExpression |
+| [server/studio-hosted.ts:650](../source/server/studio-hosted.ts#L650) | regular_expression | `/^\/api\/studio\/jobs\/([^/]+)(\/(video\|cover))?$/` | PropertyAccessExpression |
+| [server/studio-hosted.ts:657](../source/server/studio-hosted.ts#L657) | regular_expression | `/^\/api\/studio\/variants\/([^/]+)\/(render\|approve\|export)$/` | PropertyAccessExpression |
+| [server/studio-local.ts:474](../source/server/studio-local.ts#L474) | literal | `/api/studio` | CallExpression |
+| [server/studio-local.ts:477](../source/server/studio-local.ts#L477) | literal | `/api/studio/settings` | BinaryExpression |
+| [server/studio-local.ts:478](../source/server/studio-local.ts#L478) | literal | `/api/studio/settings` | BinaryExpression |
+| [server/studio-local.ts:479](../source/server/studio-local.ts#L479) | literal | `/api/studio` | BinaryExpression |
+| [server/studio-local.ts:483](../source/server/studio-local.ts#L483) | literal | `/api/studio/plan` | BinaryExpression |
+| [server/studio-local.ts:489](../source/server/studio-local.ts#L489) | literal | `/api/studio/analyses` | BinaryExpression |
+| [server/studio-local.ts:490](../source/server/studio-local.ts#L490) | literal | `/api/studio/analyses` | BinaryExpression |
+| [server/studio-local.ts:494](../source/server/studio-local.ts#L494) | regular_expression | `/^\/api\/studio\/analyses\/([^/]+)(\/(thumb-[0-5]\.jpg))?$/` | PropertyAccessExpression |
+| [server/studio-local.ts:503](../source/server/studio-local.ts#L503) | literal | `/api/studio/commands` | BinaryExpression |
+| [server/studio-local.ts:528](../source/server/studio-local.ts#L528) | literal | `/api/studio/uploads` | BinaryExpression |
+| [server/studio-local.ts:540](../source/server/studio-local.ts#L540) | regular_expression | `/^\/api\/studio\/uploads\/([^/]+)(\/complete)?$/` | PropertyAccessExpression |
+| [server/studio-local.ts:553](../source/server/studio-local.ts#L553) | regular_expression | `/^\/api\/studio\/assets\/([^/]+)$/` | PropertyAccessExpression |
+| [server/studio-local.ts:559](../source/server/studio-local.ts#L559) | regular_expression | `/^\/api\/studio\/jobs\/([^/]+)(\/(video\|cover))?$/` | PropertyAccessExpression |
+| [server/studio-local.ts:568](../source/server/studio-local.ts#L568) | regular_expression | `/^\/api\/studio\/variants\/([^/]+)\/(render\|approve\|export)$/` | PropertyAccessExpression |
+| [server/studio-local.ts:628](../source/server/studio-local.ts#L628) | literal | `/api/studio` | CallExpression |
+| [server/worker.ts:32](../source/server/worker.ts#L32) | literal | `/api/session` | BinaryExpression |
+| [server/worker.ts:39](../source/server/worker.ts#L39) | literal | `/api/logout` | BinaryExpression |
+| [server/worker.ts:44](../source/server/worker.ts#L44) | literal | `/api/login` | BinaryExpression |
+| [server/worker.ts:93](../source/server/worker.ts#L93) | literal | `/api/session` | BinaryExpression |
+| [server/worker.ts:114](../source/server/worker.ts#L114) | literal | `/api/` | CallExpression |
+| [server/worker.ts:126](../source/server/worker.ts#L126) | literal | `/api/profile` | BinaryExpression |
+| [server/worker.ts:126](../source/server/worker.ts#L126) | literal | `/api/profile/` | CallExpression |
+| [server/worker.ts:128](../source/server/worker.ts#L128) | literal | `/api/session` | BinaryExpression |
+| [server/worker.ts:140](../source/server/worker.ts#L140) | literal | `/api/studio` | CallExpression |
+| [server/worker.ts:148](../source/server/worker.ts#L148) | literal | `/api/auth/` | CallExpression |
+| [server/worker.ts:151](../source/server/worker.ts#L151) | literal | `/api/agents/bridge/` | CallExpression |
+| [server/worker.ts:153](../source/server/worker.ts#L153) | literal | `/api/session` | BinaryExpression |
+| [server/worker.ts:166](../source/server/worker.ts#L166) | literal | `/api/agents` | BinaryExpression |
+| [server/worker.ts:166](../source/server/worker.ts#L166) | literal | `/api/agents/` | CallExpression |
+| [server/worker.ts:167](../source/server/worker.ts#L167) | literal | `/api/studio` | BinaryExpression |
+| [server/worker.ts:167](../source/server/worker.ts#L167) | literal | `/api/studio/` | CallExpression |
+| [vite.config.ts:62](../source/vite.config.ts#L62) | literal | `/api/studio` | CallExpression |
+| [vite.config.ts:63](../source/vite.config.ts#L63) | literal | `/api/commands` | BinaryExpression |
+| [vite.config.ts:66](../source/vite.config.ts#L66) | literal | `/api/studio` | NewExpression |
+| [vite.config.ts:77](../source/vite.config.ts#L77) | literal | `/api/` | CallExpression |
+| [vite.config.ts:85](../source/vite.config.ts#L85) | literal | `/api/mcp/oauth/authorize?` | CallExpression |
+| [vite.config.ts:115](../source/vite.config.ts#L115) | literal | `/api/commands` | BinaryExpression |
+| [vite.config.ts:129](../source/vite.config.ts#L129) | literal | `/api/session` | BinaryExpression |
 
-## Routing limits and guards
-
-The current hosted entry delegates only `/api/` requests to native API routing; other paths use static assets. Native `/api/auth/*` permits only POST and recognized auth operations. `/api/session` supports GET. All remaining native operations require the configured owner session. Studio requires media and processor bindings, then its own canonical-origin/method checks. Local session interception matches the exact raw request URL and is behind loopback checks; its compatibility code does not add hosted login endpoints.
-
-Studio dynamic route regular expressions capture one slash-free ID and explicit optional suffixes. Supported methods depend on each branch; a prefix or regex match does not grant every method. The global hosted Studio gate admits only GET/POST/PUT/DELETE before branch dispatch. Source regex occurrences and other API literals are available in [route-occurrences.json](route-occurrences.json); their list deliberately includes tests and client calls and must not be counted as supported endpoints. This catalog does not infer dynamic network destinations, CORS behavior or runtime availability.
-
-The legacy `hostedApi` function in `server/worker.ts` can implement Supabase login/logout/session/editorial access when called with configuration, but the default Worker fetch path calls `nativeApi`. The inactive Supabase helper also handles `/api/session`; its condition does not restrict the method after its same-origin gate. It is retained as preparation, not a second live authentication claim.
+Auth, Profile, Studio, Agents and MCP are explained in [backend](../05-backend-api-and-access.md) and [integrations](../07-integrations-and-capability-status.md). This is not a dynamic route resolver or live probe.

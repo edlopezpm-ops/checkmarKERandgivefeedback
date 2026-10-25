@@ -1,0 +1,245 @@
+:root {
+  /* Dominant interior pixels sampled from the approved, textured logo PNG. */
+  --brand-orange: #df973f;
+  --brand-charcoal: #34393a;
+  /* Shared by every native checkbox, including controls added later. */
+  --check-width: 44px;
+  --check-track-height: 16px;
+  --check-thumb-size: 16px;
+  --check-thumb-bottom: -5px;
+  --check-thumb-travel: 20px;
+}
+
+.is-landing .identity { padding: 76px 20px 0; }
+.is-landing .brand { width: min(1160px, 96vw); }
+.is-landing .login-form h1 {
+  font-size: clamp(16px, 3.8vw, 25px);
+  line-height: 1.25;
+  letter-spacing: -.4px;
+  white-space: nowrap;
+}
+
+.toolbar { align-items: center; }
+#account-controls { display: flex; align-items: center; gap: 8px; }
+#account-controls:empty { display: none; }
+.account-menu { position: relative; font-size: 13.2px; }
+.account-summary, .account-signout {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand-charcoal);
+  border: 1px solid #deded5;
+  border-radius: 5px;
+  padding: 5px 8px;
+}
+.account-signout { align-self: stretch; background: transparent; font-size: 13.2px; white-space: nowrap; }
+.account-signout:hover:enabled { background: #df973f24; }
+.login-policies { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px auto; }
+.account-summary::-webkit-details-marker { display: none; }
+.account-initials { font-weight: 800; min-width: 21px; text-align: center; }
+.account-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: min(250px, calc(100vw - 44px));
+  padding: 14px;
+  border: 1px solid #deded5;
+  border-radius: 8px;
+  background: #faf9f4;
+  box-shadow: 0 10px 28px #30363a0a;
+}
+.account-panel p { margin: 0 0 10px; color: #73787b; overflow-wrap: anywhere; font-size: 12.1px; }
+.account-panel button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 8px;
+  color: #454c50;
+  background: transparent;
+  font-size: 13.2px;
+}
+.account-panel button:hover:enabled { background: #df973f24; }
+.console .workspace-label, .console .workspace-divider { margin: 0; }
+.workspace-divider { user-select: none; }
+
+@media (max-width: 640px) {
+  .preferences-panel { position: fixed; top: 66px; right: 20px; }
+  .account-panel { position: fixed; top: 66px; right: 22px; }
+}
+
+.console button:hover:enabled,
+.editor-dialog button:hover:enabled { background: #df973f24; }
+.console-nav button[aria-current],
+.console button[aria-pressed="true"],
+.editor-dialog button[aria-pressed="true"],
+.console button.primary,
+.editor-dialog button.primary,
+.console-nav button[aria-current]:hover:enabled,
+.console button[aria-pressed="true"]:hover:enabled,
+.editor-dialog button[aria-pressed="true"]:hover:enabled,
+.console button.primary:hover:enabled,
+.editor-dialog button.primary:hover:enabled {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: var(--brand-charcoal);
+  font-weight: 500;
+}
+.console-nav button[aria-current],
+.console button[aria-pressed="true"],
+.editor-dialog button[aria-pressed="true"],
+.console-nav button[aria-current]:hover:enabled,
+.console button[aria-pressed="true"]:hover:enabled,
+.editor-dialog button[aria-pressed="true"]:hover:enabled { font-weight: 800; }
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 var(--check-width);
+  width: var(--check-width);
+  height: var(--check-track-height);
+  margin: 0 0 5px;
+  padding: 0;
+  border: 1px solid #989c94;
+  border-radius: 2px;
+  background: #f4f3ec;
+  vertical-align: middle;
+  cursor: pointer;
+}
+input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  bottom: var(--check-thumb-bottom);
+  left: 3px;
+  width: var(--check-thumb-size);
+  height: var(--check-thumb-size);
+  border-radius: 1px;
+  background: var(--brand-charcoal);
+}
+input[type="checkbox"]:checked {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+}
+input[type="checkbox"]:checked::before { transform: translateX(var(--check-thumb-travel)); }
+input[type="checkbox"]:disabled { opacity: .45; cursor: default; }
+
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible { outline-color: #9b5e1f; }
+
+.preferences-panel h3 { font-size: 13.2px; font-weight: 800; margin: 25px 0 8px; }
+.environment-demo-link { color: var(--theme-accent, var(--brand-charcoal)); text-underline-offset: 3px; }
+.help-steps { font-size: 12.1px; line-height: 1.7; color: #73787b; padding-left: 17px; }
+.preferences-panel .review-actions { justify-content: flex-start; margin: 14px 0; }
+.aekr-signature { position: fixed; z-index: 2; left: max(18px, env(safe-area-inset-left)); bottom: max(14px, env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 8px; min-height: 32px; padding: 5px 9px; border-radius: 8px; background: #f7f6f0c7; backdrop-filter: blur(8px); color: #73787b; font-size: 10px; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+.aekr-signature img { width: 21px; height: 21px; }
+.aekr-signature strong { font-weight: 800; letter-spacing: .16em; }
+.aekr-signature:hover { background: #eeede4df; }
+
+@media (max-width: 700px) {
+  .is-landing .identity { padding-top: 82px; }
+}
+@media (max-height: 500px) and (min-width: 701px) {
+  .is-landing .identity { padding-top: 20px; }
+  .is-landing .brand { width: min(760px, 78vw); }
+}
+@media (forced-colors: active) {
+  input[type="checkbox"] { border-color: ButtonText; background: Canvas; }
+  input[type="checkbox"]::before { background: ButtonText; }
+  input[type="checkbox"]:checked { background: Highlight; border-color: Highlight; }
+  input[type="checkbox"]:checked::before { background: HighlightText; }
+}
+
+
+/* The preference lives on html so lazy modules, native dialogs and portals
+ * share one palette. The original PNG is preserved by both presentations. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-color: #202522;
+  --page-texture: none;
+  --theme-surface: #292f2b;
+  --theme-raised: #333b35;
+  --theme-field: #1d231f;
+  --theme-text: #eceee3;
+  --theme-muted: #b6c0b2;
+  --theme-secondary: #cbd2c4;
+  --theme-border: #566153;
+  --theme-accent: #edb76e;
+  --muted: var(--theme-muted);
+  --border: var(--theme-border);
+  color: var(--theme-text);
+  background-color: var(--page-color);
+}
+:root[data-theme="dark"] .site-header {
+  background-color: var(--page-color);
+  background-image: none;
+}
+:root[data-theme="dark"] .preferences > summary,
+:root[data-theme="dark"] .account-summary,
+:root[data-theme="dark"] .account-signout {
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: 7px;
+  padding: 9px 12px;
+  color: var(--theme-text);
+}
+:root[data-theme="dark"] :is(.surface, .editor-dialog, .help-dialog, .preferences-panel, .account-panel, .agents-panel) {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  border-color: var(--theme-border);
+  box-shadow: 0 14px 45px #0003;
+}
+:root[data-theme="dark"] :is(.console, .editor-dialog, .help-dialog, .preferences-panel, .account-panel, .agents-panel) button,
+:root[data-theme="dark"] .button-link {
+  background: var(--theme-raised);
+  border-color: var(--theme-border);
+  color: var(--theme-text);
+}
+:root[data-theme="dark"] :is(.console, .editor-dialog, .help-dialog, .preferences-panel, .account-panel, .agents-panel) button:hover:enabled {
+  background: #47513e;
+}
+:root[data-theme="dark"] .console-nav button { background: transparent; border-color: transparent; }
+:root[data-theme="dark"] :is(.console, .editor-dialog, .help-dialog, .preferences-panel, .account-panel, .agents-panel) button:is(.primary, .help-next, [aria-pressed="true"], [aria-current]),
+:root[data-theme="dark"] :is(.console, .editor-dialog, .help-dialog, .preferences-panel, .account-panel, .agents-panel) button:is(.primary, .help-next, [aria-pressed="true"], [aria-current]):hover:enabled {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: var(--brand-charcoal);
+  font-weight: 500;
+}
+:root[data-theme="dark"] :is(.console .text-button, .module-help button.help-link, .help-dialog .help-heading .help-close) {
+  background: transparent;
+  border-color: transparent;
+  color: var(--theme-accent);
+}
+:root[data-theme="dark"] .console a { color: var(--theme-accent); }
+:root[data-theme="dark"] :is(.form-field, .check-field, .setting, .console details, .agents-panel details, .workflow-list, .preserve, .post-copy) { color: var(--theme-secondary); }
+:root[data-theme="dark"] :is(.console-notice, .eyebrow, .stat span, .muted, .setting small, .setting-note, .fine-print, .review-status, .review-caption, .help-steps, .help-progress, .studio-source small, .agents-panel small, .agents-section dt, .account-panel p, .console-footer) { color: var(--theme-muted); }
+:root[data-theme="dark"] :is(.form-field input, .form-field select, .form-field textarea, .login-form input, .login-form select, .login-form textarea, .agents-panel input:not([type="checkbox"]), .agents-panel select, .agents-panel textarea, .review-actions select) {
+  background: var(--theme-field);
+  border-color: var(--theme-border);
+  color: var(--theme-text);
+}
+:root[data-theme="dark"] :is(input, textarea)::placeholder { color: #a8b1a2; opacity: 1; }
+:root[data-theme="dark"] :is(.console-nav, .capability-list li, .setting, .fine-print, .settings-usage p, .dialog-actions, .help-actions, .editor-fields fieldset, .studio-options, .studio-source, .studio-output, .studio-text-preview, .studio-planner, .studio-plan-lock, .studio-plan-result, .studio-analysis, .studio-analysis-result, .agents-panel > header, .agents-section, .agents-message, .agents-proposal, .agents-context-materials li, .agents-status, .console-footer) { border-color: var(--theme-border); }
+:root[data-theme="dark"] .editor-fields legend { color: var(--theme-secondary); }
+:root[data-theme="dark"] :is(.console .stat, .source-references, .help-screenshot, .agents-connection, .agents-command, .agents-message.user) { background: var(--theme-field); color: var(--theme-text); }
+:root[data-theme="dark"] :is(.agents-message, .agents-proposal) { background: var(--theme-surface); }
+:root[data-theme="dark"] :is(.badge, .agents-status) { background: #3b443a; color: #dce6d3; }
+:root[data-theme="dark"] :is(.status-ready, .status-published, .agents-status.available, .success-message) { background: #334331; color: #d2e5c1; }
+:root[data-theme="dark"] :is(.status-paused, .agents-status.running) { background: #4c3b25; color: #f2ce91; }
+:root[data-theme="dark"] .error-message { background: #4a3029; color: #ffd0ba; }
+:root[data-theme="dark"] .empty-state { border-color: var(--theme-border); color: var(--theme-muted); }
+:root[data-theme="dark"] .help-screenshot { border-color: var(--theme-border); }
+:root[data-theme="dark"] .aekr-signature { background: #202522df; color: var(--theme-muted); }
+:root[data-theme="dark"] .aekr-signature:hover { background: var(--theme-raised); }
+:root[data-theme="dark"] .decoration { background: radial-gradient(ellipse at 50% 66%, #e6e5cf70, #a8ad8b1a 52%, transparent 73%); border-radius: 18px; }
+:root[data-theme="dark"] input[type="checkbox"]:not(:checked) { background: #a6ad9d; border-color: #c0c7b7; }
+:root[data-theme="dark"] :is(button, summary, input, select, textarea):focus-visible { outline-color: var(--theme-accent); }
+:root[data-theme="dark"] :is(.editor-dialog, .help-dialog)::backdrop { background: #080c09a3; }
+:root[data-theme="dark"] .agents-mobile-shade { background: #080c09a3; }

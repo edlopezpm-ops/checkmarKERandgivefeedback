@@ -1,0 +1,11 @@
+.profile-page { display: grid; gap: 20px; }
+.profile-page h2 { margin-top: 0; }
+.profile-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.profile-fields small { line-height: 1.5; }
+.profile-fields input[readonly] { cursor: text; }
+.profile-policies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.profile-delete-confirm { display: grid; gap: 14px; max-width: 680px; }
+.profile-delete-check { display: flex; align-items: center; gap: 14px; line-height: 1.6; }
+.console .profile-delete-final { border-color: #a13c33; color: #a13c33; }
+:root[data-theme="dark"] .console .profile-delete-final { border-color: #e7a39c; color: #e7a39c; }
+@media (max-width: 640px) { .profile-fields { grid-template-columns: minmax(0, 1fr); } }

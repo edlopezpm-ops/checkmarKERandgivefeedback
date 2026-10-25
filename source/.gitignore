@@ -1,0 +1,31 @@
+/.aekr/
+
+/.local/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+credentials.json
+secrets.json
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+~$*
+# Owner inputs remain local until explicitly reviewed for publication.
+/marKER-*.md
+/marKER logotipo.md
+/MarKER logo with golden E.png
+/Font/
+/node_modules/
+/dist/
+/processor/*.generated.txt
+/output/
+/.playwright-cli/
+/.wrangler/
+/.dev.vars
+/.dev.vars.*
+!/.dev.vars.example
