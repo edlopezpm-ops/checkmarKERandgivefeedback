@@ -1,6 +1,7 @@
 # Product map
 
 - [Overview](README.md): supported behavior and commands.
+- [Current state and review backlog](docs/current-status-2026-10-24.md): verified assistant connection, native-engine preservation and prioritized remaining evidence.
 - [Console](docs/console.md): manual workflows, limits and environment requirements.
 - [Architecture](docs/architecture.md): local and prepared hosted boundaries.
 - [Decoration](docs/decoration.md): original identity and existing animation.

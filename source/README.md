@@ -1,5 +1,8 @@
 # marKER
 
+See the [current verified state and prioritized review backlog](docs/current-status-2026-10-24.md)
+for the latest delivery evidence and remaining work.
+
 External assistants can use the additive [authenticated MCP connector](docs/mcp-connector.md)
 to read products/materials and prepare editable campaigns with marKER's native
 algorithms. Owner review and approval stay in marKER. Deployment/host installation

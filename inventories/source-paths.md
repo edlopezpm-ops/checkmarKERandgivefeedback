@@ -1,14 +1,14 @@
 # Complete source projection
 
-Base `f9478e66f4c5798b417f7b25b462d8dd0d673295`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
+Base `3b219839086fa6e66e467c02d58df70a49f0d8f0`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
 
 | Source path | Bytes | Text lines | Tracked | SHA-256 |
 | --- | --- | --- | --- | --- |
 | [.dev.vars.example](../source/.dev.vars.example) | 846 | 19 | True | 33b4ac87871a338e9aa66f21dcb3cb02c8fe86e189a08080f48c6d97f30defd7 |
 | [.gitattributes](../source/.gitattributes) | 139 | 8 | True | eca3fbfa052942aa08c1a5a665291b01f2e54b75cb325d955fd333e0b8069e6f |
 | [.gitignore](../source/.gitignore) | 445 | 31 | True | f6e01bef0c8f531f3bd34b555f9d85e4207bc0e89ee0668ffc2eb737e6109019 |
-| [PROJECT_MAP.md](../source/PROJECT_MAP.md) | 4714 | 48 | True | d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f |
-| [README.md](../source/README.md) | 7215 | 45 | True | cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430 |
+| [PROJECT_MAP.md](../source/PROJECT_MAP.md) | 4881 | 49 | True | 76e64d06139f91073b4fb65af03f84e5feaac9591919c0499f424cc2381b9a6e |
+| [README.md](../source/README.md) | 7368 | 48 | True | 82b1e743793817d7cd14284b37778af63f1e84f03402ca71d25b0a4010219d1d |
 | [assets/AEKR-BANNER-LICENSE.txt](../source/assets/AEKR-BANNER-LICENSE.txt) | 1377 | 28 | True | b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703 |
 | [assets/aekr-banner.png](../source/assets/aekr-banner.png) | 1006315 | None | True | 81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc |
 | [docs/AGENT_BRIDGE.md](../source/docs/AGENT_BRIDGE.md) | 9646 | 77 | True | 9add1de4dd2d975c0a15a33b24a33f5240a0784fade099447a61363f94ee06f1 |
@@ -18,6 +18,7 @@ Base `f9478e66f4c5798b417f7b25b462d8dd0d673295`; working-tree qualifications are
 | [docs/assistant-integration-design-2026-10-24.md](../source/docs/assistant-integration-design-2026-10-24.md) | 34413 | 487 | True | 5705eee129dfd67d26aa4beca3af5ae708ec04f31dfc11658c3e8f6867db51a8 |
 | [docs/authentication.md](../source/docs/authentication.md) | 9443 | 173 | True | b29745ee2efd622fd41614864ee4b35b7dd6ae471ee99c1ea1f74767c415d334 |
 | [docs/console.md](../source/docs/console.md) | 8391 | 39 | True | 646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e |
+| [docs/current-status-2026-10-24.md](../source/docs/current-status-2026-10-24.md) | 6153 | 70 | True | b88070c49fb5c860ba9d9e9fe14fb162188e1007ebabef80047b43a0b00c8ee7 |
 | [docs/decoration.md](../source/docs/decoration.md) | 5257 | 34 | True | c87bf08589554bdc5a465d2f44e7d5e31a0b3f3136a3a6626a947c75337409fb |
 | [docs/email.md](../source/docs/email.md) | 1574 | 9 | True | 8e192c1e114b67ce00a042c2fe179283eeb806ab51d24b75b8f169ad24d814fb |
 | [docs/hosted-studio.md](../source/docs/hosted-studio.md) | 7813 | 43 | True | 75c14f9e403724b2551456690e88ed1252dc89d38db81d5886893dc5360b31b4 |
@@ -53,11 +54,11 @@ Base `f9478e66f4c5798b417f7b25b462d8dd0d673295`; working-tree qualifications are
 | [public/brand/marker-tab-v1.svg](../source/public/brand/marker-tab-v1.svg) | 159303 | 1 | True | ece0a089ae2bfb86ca17556f2deb17d641a74d3ee5625d5dcf03afcf08cd430d |
 | [public/decoration/characters-v1.svg](../source/public/decoration/characters-v1.svg) | 1228 | 5 | True | 7d012bbc52423f6818891f6978723a9a904ca77b05c475ef49e5ea021fa33042 |
 | [public/decoration/characters-v2.svg](../source/public/decoration/characters-v2.svg) | 7715 | 1 | True | f20b82a95f2ebd5ce76467ac5991b72e28fc509dd9cfbc26e9f52b2019b42cb9 |
-| [public/demo/index.html](../source/public/demo/index.html) | 8216 | 79 | False | 66fbf01ed0091396c6994dae2c6b051aea8763c7eadcb09dc47d65de85dd843c |
-| [public/demo/marKER_demo_55s_ES_v1_1080p.mp4](../source/public/demo/marKER_demo_55s_ES_v1_1080p.mp4) | 6137380 | None | False | b822ee2fb443e16ed0e685daba2d743ed0946e515b034ef82d17b9ddcee60a71 |
-| [public/demo/marKER_demo_55s_ES_v1_4K.mp4](../source/public/demo/marKER_demo_55s_ES_v1_4K.mp4) | 14495058 | None | False | fdb82854cc3f19107c846ac56cf3fb1f84d3aef3a407c5327ea5679c0dea85df |
-| [public/demo/marKER_demo_ES_v1.vtt](../source/public/demo/marKER_demo_ES_v1.vtt) | 872 | 42 | False | f6d7221c8980dd6201aaad36f0e2609569a2da0b669e3a4837bd20fa13f631c2 |
-| [public/demo/marKER_demo_ES_v1_poster.png](../source/public/demo/marKER_demo_ES_v1_poster.png) | 1621513 | None | False | f2973374a14246f3419ba6ed025f0b7495095d7a60b0d0fbb96de7cf7a167e35 |
+| [public/demo/index.html](../source/public/demo/index.html) | 8216 | 79 | True | 66fbf01ed0091396c6994dae2c6b051aea8763c7eadcb09dc47d65de85dd843c |
+| [public/demo/marKER_demo_55s_ES_v1_1080p.mp4](../source/public/demo/marKER_demo_55s_ES_v1_1080p.mp4) | 6137380 | None | True | b822ee2fb443e16ed0e685daba2d743ed0946e515b034ef82d17b9ddcee60a71 |
+| [public/demo/marKER_demo_55s_ES_v1_4K.mp4](../source/public/demo/marKER_demo_55s_ES_v1_4K.mp4) | 14495058 | None | True | fdb82854cc3f19107c846ac56cf3fb1f84d3aef3a407c5327ea5679c0dea85df |
+| [public/demo/marKER_demo_ES_v1.vtt](../source/public/demo/marKER_demo_ES_v1.vtt) | 872 | 42 | True | f6d7221c8980dd6201aaad36f0e2609569a2da0b669e3a4837bd20fa13f631c2 |
+| [public/demo/marKER_demo_ES_v1_poster.png](../source/public/demo/marKER_demo_ES_v1_poster.png) | 1621513 | None | True | f2973374a14246f3419ba6ed025f0b7495095d7a60b0d0fbb96de7cf7a167e35 |
 | [public/fonts/Montserrat-Medium.ttf](../source/public/fonts/Montserrat-Medium.ttf) | 340508 | None | True | 1576fea0dad9c310757ce479f1378953c88b6ae27da08a7e63663a1386db66f6 |
 | [public/fonts/Montserrat-Variable.woff2](../source/public/fonts/Montserrat-Variable.woff2) | 124596 | None | True | 758ec03efffe485ffea4db1bbb73ac9aeb20b63a5ba74aab30718bf001227cfb |
 | [public/fonts/Montserrat-VariableItalic.woff2](../source/public/fonts/Montserrat-VariableItalic.woff2) | 130036 | None | True | d9f5ecd8b59a7d5dec4bbbdbf7d1cfe64c1b81d17a249ee63513acd6a3aa08ff |
@@ -227,7 +228,7 @@ Base `f9478e66f4c5798b417f7b25b462d8dd0d673295`; working-tree qualifications are
 | [server/captcha.d.ts](../source/server/captcha.d.ts) | 471 | 3 | True | d10261b515490671ddb41cdf84129d8c83513c61cfb31fea98cf058e8a124a18 |
 | [server/captcha.js](../source/server/captcha.js) | 4324 | 61 | True | 15e96ad7c4e09a06d62aca48db6fb553597b574c785a5a8c7e7f6e064c78218d |
 | [server/d1.ts](../source/server/d1.ts) | 2055 | 24 | True | 166106d98c191a96db879c67a4cc2b6e302bc66a70e8d3b49791da5748f30000 |
-| [server/demo-media.ts](../source/server/demo-media.ts) | 3919 | 79 | False | 5bb110f4463bcb38190c5fa088cc99482e9b06b93a0ac2d2d05139931e51ddd7 |
+| [server/demo-media.ts](../source/server/demo-media.ts) | 3919 | 79 | True | 5bb110f4463bcb38190c5fa088cc99482e9b06b93a0ac2d2d05139931e51ddd7 |
 | [server/entry.ts](../source/server/entry.ts) | 469 | 11 | True | 96cf7e69377f1ed5dd2dca0dbcae5b828812b76ac5f30f0cc60f1526876b967b |
 | [server/github-auth.js](../source/server/github-auth.js) | 14491 | 91 | True | d1ac5f36a17b4ef70272159ef53e0bf3a92d41495787484da2df7f607d702e94 |
 | [server/google-auth.js](../source/server/google-auth.js) | 17384 | 131 | True | 5108148270a83117ee353db89b544fc351275d9f9c93a4e27a740e50e64a04e9 |
@@ -310,7 +311,7 @@ Base `f9478e66f4c5798b417f7b25b462d8dd0d673295`; working-tree qualifications are
 | [tests/assets.test.ts](../source/tests/assets.test.ts) | 3387 | 40 | True | c79c41c4edaba98a2b99a2e3791e58f3b167adfa066d3ba23def1c36301fcc08 |
 | [tests/captcha.test.ts](../source/tests/captcha.test.ts) | 11327 | 120 | True | f8e151568f09c37d1351b79d3da601c078f16220aef6c507dd31547d6d0b9325 |
 | [tests/d1-hosted.test.ts](../source/tests/d1-hosted.test.ts) | 7852 | 94 | True | b1685eaa25ef2e01ab7682b770a7efc7072517585c0f4f4b5d688a9c00056bde |
-| [tests/demo-media.test.ts](../source/tests/demo-media.test.ts) | 7463 | 125 | False | 859a18ac601393b0e4f5a56afd8a2411ae138a1555561660e08f49f62868c752 |
+| [tests/demo-media.test.ts](../source/tests/demo-media.test.ts) | 7463 | 125 | True | 859a18ac601393b0e4f5a56afd8a2411ae138a1555561660e08f49f62868c752 |
 | [tests/editorial.test.ts](../source/tests/editorial.test.ts) | 10648 | 352 | True | a90a849864271061728b354e94973fa6d6bee7cd9cbe49612ce9b1ce56a40753 |
 | [tests/generation.test.ts](../source/tests/generation.test.ts) | 10855 | 139 | True | b4fd3b2891097b6fc4a7144d4d6da994d33b3fa4b9eb382c0c1a89ade26cccf3 |
 | [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 15656 | 109 | True | be529405b0ed4dcbd2c6a8dadd23d717bc09ab44634353975fab8c423a9644c2 |

@@ -1,6 +1,6 @@
 # marKER — complete technical dossier
 
-Snapshot 2026-10-24; source base `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus the explicitly inventoried working-tree delta.
+Snapshot 2026-10-24; source commit `3b219839086fa6e66e467c02d58df70a49f0d8f0` with a clean tracked source checkout and no working-tree overlay.
 
 This reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.
 
@@ -11,14 +11,14 @@ Canonical chapter: [00-START-HERE.md](00-START-HERE.md)
 
 # Start here
 
-This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source base is `f9478e66f4c5798b417f7b25b462d8dd0d673295` on `main`; 12 working-tree paths are qualified in the [snapshot manifest](source-snapshot-manifest.json). Read the exact projected files when narrative and code differ.
+This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source commit is `3b219839086fa6e66e467c02d58df70a49f0d8f0` on `main`; the checkout is clean, all 347 projected files are tracked and no dirty overlay remains. The [snapshot manifest](source-snapshot-manifest.json) preserves the former demo-path provenance. Read the exact projected files when narrative and code differ.
 
-Read [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review prompt](AI_ANALYSIS_PROMPT.md). Use the [complete source inventory](inventories/source-paths.md), [symbol index](code-flow/05-module-symbol-index.md), [test index](inventories/test-index.md) and [route occurrences](inventories/routes.md) to close coverage gaps. A complete review requires inspecting implementation, tests and negative paths; a chapter summary alone does not establish that coverage.
+Read [prioritized pending work](PENDING-REPORT.md), [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review prompt](AI_ANALYSIS_PROMPT.md). Use the [complete source inventory](inventories/source-paths.md), [symbol index](code-flow/05-module-symbol-index.md), [test index](inventories/test-index.md) and [route occurrences](inventories/routes.md) to close coverage gaps. A complete review requires inspecting implementation, tests and negative paths; a chapter summary alone does not establish that coverage.
 
 | Evidence label | Exact meaning |
 | --- | --- |
 | Snapshot source | Included implementation/configuration at the manifest's byte identity. |
-| Package verification | The current 346-file snapshot includes the combined three-path consent/callback correction. Source identities and AST/routes/test navigation were refreshed; unchanged empty-schema/dependency evidence retains the preceding 27-path increment's verification. Prior publications remain in Git; product-test execution is separately reported. |
+| Package verification | The current 347-file snapshot closes unchanged demo bytes into Git and adds a public pending handoff/navigation. Complete paths, bytes and clean status are verified; AST/schema/dependency artifacts retain their prior execution evidence by unchanged hashes. Prior publications remain in Git; product-test execution is separately reported. |
 | Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
 | Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
 | Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records current Worker identity, real OAuth/token exchange, fourteen-tool discovery and two connected reads, separately from five fresh anonymous checks and 185 exact assets supplied by the implementation coordinator. |
@@ -282,9 +282,9 @@ Canonical chapter: [08-operations-quality-and-limits.md](08-operations-quality-a
 
 # 08 — Operations, quality and limits
 
-The current 346-file snapshot captures the combined three-path consent/callback correction since public publication `e4553fa`. Source identities, static AST/routes/test navigation, public boundaries, links and package hashes are checked afresh. Unchanged dependency and empty-schema catalogs retain their preceding verification; product tests and browser/host evidence are coordinator-reported and were not rerun by this review worker. [CURRENT-STATE.json](CURRENT-STATE.json) records each scope.
+The current 347-file snapshot closes source Git custody: the twelve former demo paths are committed unchanged, two navigation documents are updated and one public status handoff is added. Complete source identities, clean status, public boundaries, links and package hashes are checked afresh. Unchanged AST/schema/dependency catalogs retain prior verification; product tests and browser/host evidence are coordinator-reported and were not rerun by this review worker. [CURRENT-STATE.json](CURRENT-STATE.json) records each scope.
 
-The coordinator reports **28 focused OAuth/SDK/policy tests**, server TypeScript and Worker dry run PASS, plus an independent final review PASS. The five protected native classifier/planner/analysis/domain modules remain unchanged. All twelve preexisting uncommitted demo paths remain byte-identical to the preceding public snapshot and explicitly separate from the source commit.
+The coordinator reports **28 focused OAuth/SDK/policy tests**, server TypeScript and Worker dry run PASS, plus an independent final review PASS. The five protected native classifier/planner/analysis/domain modules remain unchanged. All twelve formerly uncommitted demo paths are now tracked in the source closure commit with byte-identical contents. The coordinator also reports a fresh closure build including frontend/server types and original-logo checks PASS. No native-engine change or new deployment accompanies this closure.
 
 Two real-browser failures required focused corrections. First, the consent HTML's `no-referrer` policy produced `Origin: null` in a native form despite a present owner cookie; strict Origin validation correctly rejected it before any grant write. HTML now uses `same-origin`. Second, the consent page's self-only form policy blocked the external callback after a grant had committed. Validated DNS/IPv4 callback origins now appear exactly in the consent CSP for the 303 return. Bracketed IPv6 returns through an escaped 200 meta/anchor document with no JavaScript, no referrer/store and a self-only form policy. Strict Origin, owner cookies, PKCE, client/resource/callback matching and single-use consent remain enforced; unsafe hostname punctuation is rejected before CSP construction.
 
@@ -337,6 +337,8 @@ Review the full source projection, not only this narrative. Preserve the indepen
 
 Real owner OAuth and fourteen-tool discovery are now verified after native-form referrer and callback-CSP corrections. Review browser policy, exact callback-origin construction, IPv6 return handling and retry/replay cases together; a successful SDK fixture alone did not cover the original browser failures. Two actual connected reads (profile and bounded product search) now pass. Business writes, remaining tool paths and a full assistant-driven campaign remain untested.
 
+Follow the [prioritized pending report](PENDING-REPORT.md), including the exact original Torres del Paine and sun icon (not applied: owning App UI has no logo-edit control), private-plugin/public-submission distinction, deliberate sole-owner eligibility and bounded integration-durability followups. These are explicit gaps or future choices, not demonstrated failures.
+
 Open decisions include actual hosted SIWC admission; actual registered-App business writes, unexecuted tool paths and complete campaign flow and Dot/voice/phone capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
 
 For every finding provide priority, exact source path/line, observed behavior, trigger or counterexample, confidence/evidence class, user impact, smallest coherent change, affected frontend/backend/schema/effect boundaries, preserved invariants, focused success/failure/concurrency tests, migration/recovery needs and any unresolved owner decision. Separate demonstrated defects, plausible risks, usability improvements and optional roadmap work. Do not claim runtime performance, provider eligibility, actual invoices, UAT or deployed behavior from static source.
@@ -350,10 +352,10 @@ Canonical chapter: [10-source-map-tests-and-dependencies.md](10-source-map-tests
 
 # 10 — Source map, tests and dependencies
 
-The source projection contains **346 files** totaling **35,798,911 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The source projection contains **347 files** totaling **35,805,384 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
 
 - [Every source path and hash](inventories/source-paths.md).
-- [Machine snapshot, source commit and dirty qualifications](source-snapshot-manifest.json).
+- [Machine snapshot, clean source commit and historical demo provenance](source-snapshot-manifest.json).
 - [Module/symbol/import/call navigation](code-flow/05-module-symbol-index.md).
 - [Full AST metadata](inventories/ast-index.json).
 - [Server route occurrences](inventories/routes.md).
@@ -363,7 +365,7 @@ The source projection contains **346 files** totaling **35,798,911 bytes**, incl
 
 The TypeScript parser indexed **116 modules**. The static test index contains **308 declarations across 42 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
 
-Source files were copied byte-for-byte from the frozen checkout. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
+Source files were copied byte-for-byte from the frozen clean checkout; all are tracked and no working-tree overlay remains. The previous 346-file projection is retained in Git, with only two navigation docs changed and one public status handoff added. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
 
 For local review, enter `source/`, install the exact lockfile with `npm ci`, then use the documented type/build/test commands with synthetic local data. Native media tests require the declared local FFmpeg toolchain. These setup steps are optional reviewer actions; this documentary refresh did not repeat the root product suite. The product does not need private governance files to build.
 
@@ -1888,15 +1890,37 @@ The [portable metadata](source/integrations/chatgpt/marker/plugin.json), [MCP co
 
 ---
 
+Canonical chapter: [PENDING-REPORT.md](PENDING-REPORT.md)
+
+# Prioritized pending work
+
+The native engine remains unchanged. Actual owner OAuth, fourteen-tool discovery and two connected reads are verified. These establish the connection and the exercised read paths; the remaining work below is explicit, not a claim that existing functionality is absent.
+
+| Order | Pending work | Completion evidence |
+| --- | --- | --- |
+| 1 | Exercise an authorized business write and one complete assistant-driven campaign: select material, prepare/edit, save, render, human approval of the exact result, then export. | Actual host results with revision/retry behavior and native approval preserved; distinguish successful read, write, render, approval and export. No social publication implied. |
+| 2 | Verify Dot/voice and physical-phone use. | Real supported host/device sessions, including reconnect, permissions, interruption, capture/codec and recovery. Desktop/mobile viewport fixtures are not physical-device evidence. |
+| 3 | Validate connection lifecycle and bounded protocol compatibility. | Actual host renewal, revocation/reconnection and scope upgrades; protocol compatibility and future CIMD/structured-output support; private-file attachment behavior versus a signed-in download. These are unverified paths or future design work, not demonstrated failures. |
+| 4 | Apply the exact original Torres del Paine and sun icon to the registered App when a supported owning-App control becomes available. | Readback from the actual owning App. Its current UI exposes no logo-edit control, so this change is not applied. Preserve the [original symbol](source/public/brand/marker-tab-v1.svg); do not substitute an invented icon, recreate the connection or infer success from portable plugin metadata. |
+| 5 | Measure the native product's time-saving and media quality. | Human ten-piece creative/time-saved pilot; actual correction counts; hosted analysis binaries before enablement. Transcription, subtitles and semantic selection remain separate future work. |
+| 6 | Decide later public readiness and complete operational validation. | Owner decision on public submission/distribution; platform eligibility, reviewer requirements and listing assets; security/accessibility, actual costs/limits and complete D1/R2/job/provider recovery. The registered App-backed plugin remains private; public review-source access does not publish the plugin or widen its audience. Existing bounded checks retain their original scope. |
+
+Sole-owner eligibility is deliberate. Generic public multi-tenant/SaaS use remains deferred; publishing a plugin listing alone would not authorize or enable additional users. Review the existing [integration design](source/docs/assistant-integration-design-2026-10-24.md) before proposing compatibility or distribution changes.
+
+These priorities guide external AI review and future owner decisions. This repository refresh authorizes source/document publication only; it does not itself run business writes, inference, a new deployment, public submission or destructive data operations. Consult [current deployment evidence](DEPLOYMENT-STATUS.md), [machine state](CURRENT-STATE.json) and the [review prompt](AI_ANALYSIS_PROMPT.md).
+
+
+---
+
 Canonical chapter: [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md)
 
 # Full marKER review prompt
 
-Review this repository as the current full-source snapshot of marKER. Begin with README, CURRENT-STATE.json and source-snapshot-manifest.json; identify the base commit and working-tree qualifications. Then inspect the implementation under source/, its tests/migrations/configuration, the dossier and generated catalogs. This is a review request, not permission to modify/deploy the app, run provider inference, access private credentials/data, send messages or publish socially.
+Review this repository as the current full-source snapshot of marKER. Begin with README, CURRENT-STATE.json and source-snapshot-manifest.json; identify the clean source commit, empty dirty inventory and historical demo provenance. Read PENDING-REPORT.md and source/docs/current-status-2026-10-24.md before proposing work. Then inspect the implementation under source/, its tests/migrations/configuration, the dossier and generated catalogs. This is a review request, not permission to modify/deploy the app, run provider inference, access private credentials/data, send messages or publish socially.
 
 Assess end-to-end product/workflow usefulness, frontend state/recovery/accessibility, backend/domain correctness, schema/CAS/concurrency, original-media custody and processing, native classification/planning, optional local Agents, authenticated external MCP, owner identity/Profile/deletion, security/privacy/retention/limits, operational recovery, dependencies and justified complexity. Preserve the independent native no-agent path and original brand assets. Do not propose replacing deterministic rules with prompts.
 
-Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The current deployment, real owner OAuth return/token exchange, fourteen-tool catalog and two connected reads are recorded in DEPLOYMENT-STATUS.md. Those observations do not establish business writes, remaining unexecuted tool paths, a complete hosted campaign, Dot/voice/phone behavior, physical-device UAT, creative quality, invoice limits or restoration. Review the current login/resume, native-form referrer policy, validated callback CSP/IPv6 handoff, approved-client lifetime, scope challenges and developer-only bridge boundaries. Distinguish the registered private App-backed plugin from the portable host-package source; do not assume every host, protocol version or voice/phone surface works. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
+Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The current deployment, real owner OAuth return/token exchange, fourteen-tool catalog and two connected reads are recorded in DEPLOYMENT-STATUS.md. Those observations do not establish business writes, remaining unexecuted tool paths, a complete hosted campaign, Dot/voice/phone behavior, physical-device UAT, creative quality, invoice limits or restoration. Review the current login/resume, native-form referrer policy, validated callback CSP/IPv6 handoff, approved-client lifetime, scope challenges and developer-only bridge boundaries. Distinguish the registered private App-backed plugin from the portable host-package source; do not assume every host, protocol version or voice/phone surface works. The source closure commits previously deployed demo bytes and documentation; it is not a fresh runtime deployment. The requested exact original Torres del Paine and sun App icon remains unapplied because the owning App UI has no logo-edit control. The plugin remains private; public submission and generic multi-tenant/SaaS are future owner decisions, and a listing alone would not admit other users. Evaluate bounded CIMD/protocol/structured-output followups, actual renewal/revoke/reconnect/scope upgrades and host private-file attachments versus signed-in downloads without treating unverified paths as confirmed defects. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
 
 For each finding give priority, exact source path and line, concrete trigger/counterexample, impact, confidence and evidence, minimal coherent correction, affected boundaries, invariants to preserve, focused failure/concurrency checks and migration/recovery implications. Separate confirmed defects, plausible risks, usability opportunities and optional roadmap. Avoid generic best practices, invented facts/endpoints, duplicate systems and unsupported security certification.
 

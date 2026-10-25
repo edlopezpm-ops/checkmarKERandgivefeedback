@@ -1,6 +1,6 @@
 {
   "format": "marker-review-package/v2",
-  "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+  "source_revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
   "exclusions": [
     "PACKAGE-MANIFEST.json",
     "PACKAGE-VERIFICATION.json",
@@ -21,9 +21,9 @@
     },
     {
       "path": "00-START-HERE.md",
-      "bytes": 2905,
-      "sha256": "7613ebec136e1abf320b8047009bd708d07f91cef82bfa8293f77e6d62742759",
-      "lf_text_sha256": "7613ebec136e1abf320b8047009bd708d07f91cef82bfa8293f77e6d62742759"
+      "bytes": 3047,
+      "sha256": "9d1fb52ba958d010d8b4b9ba8f17a41fdf6d84aa34abed78db36c1f2934e430a",
+      "lf_text_sha256": "9d1fb52ba958d010d8b4b9ba8f17a41fdf6d84aa34abed78db36c1f2934e430a"
     },
     {
       "path": "01-architecture-and-stack.md",
@@ -69,21 +69,21 @@
     },
     {
       "path": "08-operations-quality-and-limits.md",
-      "bytes": 6415,
-      "sha256": "d43b1e615fd9ebd99752488c236fc1a4f7ab89fa33fa9a91444d55df061f3354",
-      "lf_text_sha256": "d43b1e615fd9ebd99752488c236fc1a4f7ab89fa33fa9a91444d55df061f3354"
+      "bytes": 6599,
+      "sha256": "1b842825504b5fef452348392dbf3edff73844c34ebad629377c1c46538e67dc",
+      "lf_text_sha256": "1b842825504b5fef452348392dbf3edff73844c34ebad629377c1c46538e67dc"
     },
     {
       "path": "09-review-guide-and-open-decisions.md",
-      "bytes": 4084,
-      "sha256": "0511c90efa3ad02a2888a28febaae74bbc62815076f41e2934ef8ba56fcf208a",
-      "lf_text_sha256": "0511c90efa3ad02a2888a28febaae74bbc62815076f41e2934ef8ba56fcf208a"
+      "bytes": 4455,
+      "sha256": "993a38b0039834787a01f2f4717ab7fd732b17c50ad1b9b680e849b0c46fcc8d",
+      "lf_text_sha256": "993a38b0039834787a01f2f4717ab7fd732b17c50ad1b9b680e849b0c46fcc8d"
     },
     {
       "path": "10-source-map-tests-and-dependencies.md",
-      "bytes": 2573,
-      "sha256": "0ebd31e4b7738436c76fec5b98dda9d3a739acfacb01440129e5c1a12c9cf0fb",
-      "lf_text_sha256": "0ebd31e4b7738436c76fec5b98dda9d3a739acfacb01440129e5c1a12c9cf0fb"
+      "bytes": 2772,
+      "sha256": "4bf046d0d9bea75dd43d50c51312bdc9f1be083b5bf02af14b2513ae0e0ccc20",
+      "lf_text_sha256": "4bf046d0d9bea75dd43d50c51312bdc9f1be083b5bf02af14b2513ae0e0ccc20"
     },
     {
       "path": "11-database-and-catalog-reference.md",
@@ -93,15 +93,15 @@
     },
     {
       "path": "AI-QUICK-CONTEXT.md",
-      "bytes": 2721,
-      "sha256": "59fe5a65e7838459b7b4135f17de1155371ccf213b2864e4ea83247feff0f2a3",
-      "lf_text_sha256": "59fe5a65e7838459b7b4135f17de1155371ccf213b2864e4ea83247feff0f2a3"
+      "bytes": 3152,
+      "sha256": "4193bdd7b2ab3ca8c9c73ed7abb038cfb1f166b9a5bcc614ee6e372b3a879acb",
+      "lf_text_sha256": "4193bdd7b2ab3ca8c9c73ed7abb038cfb1f166b9a5bcc614ee6e372b3a879acb"
     },
     {
       "path": "AI_ANALYSIS_PROMPT.md",
-      "bytes": 3049,
-      "sha256": "51a5d986d7975df5c2800d57548f8222c43515e113cc886e683dcb09eb769285",
-      "lf_text_sha256": "51a5d986d7975df5c2800d57548f8222c43515e113cc886e683dcb09eb769285"
+      "bytes": 3795,
+      "sha256": "4eb14b0c51b8d2f28a2bbfab3ea329875a1cd88949d84ba445de812bd62f5914",
+      "lf_text_sha256": "4eb14b0c51b8d2f28a2bbfab3ea329875a1cd88949d84ba445de812bd62f5914"
     },
     {
       "path": "code-flow/01-request-auth-and-storage.md",
@@ -147,9 +147,9 @@
     },
     {
       "path": "CURRENT-STATE.json",
-      "bytes": 18083,
-      "sha256": "d78bf5341fe3248fbdbb32ee5de5f8d05666c3d473c251b3316fc53b4d6f891b",
-      "lf_text_sha256": "d78bf5341fe3248fbdbb32ee5de5f8d05666c3d473c251b3316fc53b4d6f891b"
+      "bytes": 21665,
+      "sha256": "546948489919cd37307f4fbe91160be5a180801a0cb680b9fd163a7b754436cf",
+      "lf_text_sha256": "546948489919cd37307f4fbe91160be5a180801a0cb680b9fd163a7b754436cf"
     },
     {
       "path": "database/d1-catalog.json",
@@ -201,9 +201,9 @@
     },
     {
       "path": "DEPLOYMENT-STATUS.md",
-      "bytes": 4035,
-      "sha256": "fa3befb32a430f893c2fce252a27b80c9a5001741fc394429ce19796acfce5cb",
-      "lf_text_sha256": "fa3befb32a430f893c2fce252a27b80c9a5001741fc394429ce19796acfce5cb"
+      "bytes": 4690,
+      "sha256": "6c4735d2e155df37eb0e571d5cbe195011d8de214ebe18a0ab55aedb98302bfd",
+      "lf_text_sha256": "6c4735d2e155df37eb0e571d5cbe195011d8de214ebe18a0ab55aedb98302bfd"
     },
     {
       "path": "inventories/ast-index.json",
@@ -214,14 +214,14 @@
     {
       "path": "inventories/catalog-summary.json",
       "bytes": 314,
-      "sha256": "35c7fed203e18545a5386426a0948c378fc22d6e48272a3a15c2fcc0d960565d",
-      "lf_text_sha256": "35c7fed203e18545a5386426a0948c378fc22d6e48272a3a15c2fcc0d960565d"
+      "sha256": "e3dae23d51e19ff03db035efbeb08eece3218ebe27887d11d053a631a2e188a4",
+      "lf_text_sha256": "e3dae23d51e19ff03db035efbeb08eece3218ebe27887d11d053a631a2e188a4"
     },
     {
       "path": "inventories/catalog-verification.json",
-      "bytes": 5033,
-      "sha256": "5b25eebd7711e108b53b690f85b6fa563105a01181a11f7bf19a470e37575974",
-      "lf_text_sha256": "5b25eebd7711e108b53b690f85b6fa563105a01181a11f7bf19a470e37575974"
+      "bytes": 5789,
+      "sha256": "55974f22180e0f954c0fbc6d21a876c845c4904cd9256a074d5a4e5589d53a34",
+      "lf_text_sha256": "55974f22180e0f954c0fbc6d21a876c845c4904cd9256a074d5a4e5589d53a34"
     },
     {
       "path": "inventories/dependencies.json",
@@ -261,9 +261,9 @@
     },
     {
       "path": "inventories/source-paths.md",
-      "bytes": 57447,
-      "sha256": "ecb1e6cc5101a646f46fc252909040d75dbcf08f3c0c91361eef3f861890afb4",
-      "lf_text_sha256": "ecb1e6cc5101a646f46fc252909040d75dbcf08f3c0c91361eef3f861890afb4"
+      "bytes": 57611,
+      "sha256": "95d7a3c20ac10ba8075789f974f025776a96276eb0a103a5c143fdc7003a36f0",
+      "lf_text_sha256": "95d7a3c20ac10ba8075789f974f025776a96276eb0a103a5c143fdc7003a36f0"
     },
     {
       "path": "inventories/test-declarations.json",
@@ -285,15 +285,15 @@
     },
     {
       "path": "marKER-FULL-DOSSIER-2026-10-24.md",
-      "bytes": 246547,
-      "sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df",
-      "lf_text_sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df"
+      "bytes": 251461,
+      "sha256": "7e744e3b09748e25cbfc48b1b76da13e7dec0f546930ea607ddf25507e9a9aa6",
+      "lf_text_sha256": "7e744e3b09748e25cbfc48b1b76da13e7dec0f546930ea607ddf25507e9a9aa6"
     },
     {
       "path": "marKER-FULL-DOSSIER.md",
-      "bytes": 246547,
-      "sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df",
-      "lf_text_sha256": "702ff6022a766d2b94a2e67aa6ed0a5ea0a8de04d590da05302328eba7f2b1df"
+      "bytes": 251461,
+      "sha256": "7e744e3b09748e25cbfc48b1b76da13e7dec0f546930ea607ddf25507e9a9aa6",
+      "lf_text_sha256": "7e744e3b09748e25cbfc48b1b76da13e7dec0f546930ea607ddf25507e9a9aa6"
     },
     {
       "path": "NOTICE.md",
@@ -302,10 +302,16 @@
       "lf_text_sha256": "43baba3bf3f7ee555ad9e127a3c88beea5fe7f96226dfc6b8f398148c969743d"
     },
     {
+      "path": "PENDING-REPORT.md",
+      "bytes": 3190,
+      "sha256": "cac5b4a9560cc55b4352c49a5bdbe5774f7fd9d572139580cb959420e3cd8ac1",
+      "lf_text_sha256": "cac5b4a9560cc55b4352c49a5bdbe5774f7fd9d572139580cb959420e3cd8ac1"
+    },
+    {
       "path": "README.md",
-      "bytes": 3772,
-      "sha256": "c100430d0402aeb55f35741419a5c0e7a73973bff699c7e9b5d5cc34f9843002",
-      "lf_text_sha256": "c100430d0402aeb55f35741419a5c0e7a73973bff699c7e9b5d5cc34f9843002"
+      "bytes": 4366,
+      "sha256": "87a5d27561feb08f6632c794ca9909db7a1328267398c49b04d24cfec7af0111",
+      "lf_text_sha256": "87a5d27561feb08f6632c794ca9909db7a1328267398c49b04d24cfec7af0111"
     },
     {
       "path": "review-assets/mcp-connections-es-dark.png",
@@ -390,6 +396,12 @@
       "bytes": 8391,
       "sha256": "646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e",
       "lf_text_sha256": "646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e"
+    },
+    {
+      "path": "source/docs/current-status-2026-10-24.md",
+      "bytes": 6153,
+      "sha256": "b88070c49fb5c860ba9d9e9fe14fb162188e1007ebabef80047b43a0b00c8ee7",
+      "lf_text_sha256": "b88070c49fb5c860ba9d9e9fe14fb162188e1007ebabef80047b43a0b00c8ee7"
     },
     {
       "path": "source/docs/decoration.md",
@@ -567,9 +579,9 @@
     },
     {
       "path": "source/PROJECT_MAP.md",
-      "bytes": 4714,
-      "sha256": "d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f",
-      "lf_text_sha256": "d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f"
+      "bytes": 4881,
+      "sha256": "76e64d06139f91073b4fb65af03f84e5feaac9591919c0499f424cc2381b9a6e",
+      "lf_text_sha256": "76e64d06139f91073b4fb65af03f84e5feaac9591919c0499f424cc2381b9a6e"
     },
     {
       "path": "source/public/brand/aekr-mark.svg",
@@ -1611,9 +1623,9 @@
     },
     {
       "path": "source/README.md",
-      "bytes": 7215,
-      "sha256": "cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430",
-      "lf_text_sha256": "cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430"
+      "bytes": 7368,
+      "sha256": "82b1e743793817d7cd14284b37778af63f1e84f03402ca71d25b0a4010219d1d",
+      "lf_text_sha256": "82b1e743793817d7cd14284b37778af63f1e84f03402ca71d25b0a4010219d1d"
     },
     {
       "path": "source/server/agents-local.ts",
@@ -2397,15 +2409,15 @@
     },
     {
       "path": "source-snapshot-manifest.json",
-      "bytes": 154992,
-      "sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025",
-      "lf_text_sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025"
+      "bytes": 156203,
+      "sha256": "0cb04dbcff1aa1f3152d2a297594660a042281e33383e28eed33295152f981d7",
+      "lf_text_sha256": "0cb04dbcff1aa1f3152d2a297594660a042281e33383e28eed33295152f981d7"
     },
     {
       "path": "tools/assemble.py",
-      "bytes": 2508,
-      "sha256": "b2eb4e0a8f1761f198b4424092d1c20e43410684fb5f800200e377352284ed24",
-      "lf_text_sha256": "b2eb4e0a8f1761f198b4424092d1c20e43410684fb5f800200e377352284ed24"
+      "bytes": 2669,
+      "sha256": "ece72a731496fb43c4697b173cb3f7d74f84ed2d0a87b8f9c5d198d8bf079ad7",
+      "lf_text_sha256": "ece72a731496fb43c4697b173cb3f7d74f84ed2d0a87b8f9c5d198d8bf079ad7"
     },
     {
       "path": "tools/extract-catalogs.py",
@@ -2421,9 +2433,9 @@
     },
     {
       "path": "tools/README.md",
-      "bytes": 3582,
-      "sha256": "0f02fe1442733396bc2ec4465504a41d0407a57de8c871e2b322f5a7b89a8c00",
-      "lf_text_sha256": "0f02fe1442733396bc2ec4465504a41d0407a57de8c871e2b322f5a7b89a8c00"
+      "bytes": 4030,
+      "sha256": "50f5b305d40e2066968b79b3de120e38405074dd44fe733ec779ee67872ca9de",
+      "lf_text_sha256": "50f5b305d40e2066968b79b3de120e38405074dd44fe733ec779ee67872ca9de"
     },
     {
       "path": "tools/render-catalog-references.py",

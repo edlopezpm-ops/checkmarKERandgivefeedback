@@ -4,41 +4,58 @@
   "source": {
     "project": "marKER",
     "branch": "main",
-    "commit": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-    "tree": "9f5386b9eb64fd8e81ee715bff4685d0a8fea4bd",
-    "dirty_paths": [
-      " M docs/console.md",
-      " M server/entry.ts",
-      " M src/console/EnvironmentSettings.tsx",
-      " M src/console/release.css",
-      " M wrangler.jsonc",
-      "?? public/demo/index.html",
-      "?? public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
-      "?? public/demo/marKER_demo_55s_ES_v1_4K.mp4",
-      "?? public/demo/marKER_demo_ES_v1.vtt",
-      "?? public/demo/marKER_demo_ES_v1_poster.png",
-      "?? server/demo-media.ts",
-      "?? tests/demo-media.test.ts"
-    ],
-    "projection_files": 346,
-    "projection_bytes": 35798911,
+    "commit": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+    "tree": "645e4f45db2d36d618c8b0e6553b2f9012bf4d91",
+    "dirty_paths": [],
+    "projection_files": 347,
+    "projection_bytes": 35805384,
     "scope": "complete explicitly selected product source plus public assets; no private runtime data",
     "previous_publication": {
-      "review_commit": "e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b",
-      "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-      "source_manifest_sha256": "5f9e2331e7f6c4d741c7bdf15c2999689175eaad082484a64eba919427f69906",
-      "intermediate_source_revision": "cd5e3fb57544a2699bab6fd2a5fbf77591ccc1a7",
-      "changed_paths": [
-        "server/mcp-auth.ts",
-        "tests/mcp-auth.test.ts",
-        "tests/mcp-consent-policy.test.ts"
+      "review_commit": "d20f76a6c53acda02bbdfec397e049a49ee26ddb",
+      "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+      "source_manifest_sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025",
+      "changed_existing_projection_paths": [
+        "PROJECT_MAP.md",
+        "README.md"
       ],
-      "new_paths": [
-        "tests/mcp-consent-policy.test.ts"
+      "new_projection_paths": [
+        "docs/current-status-2026-10-24.md"
       ],
-      "dirty_demo_paths_byte_identical": 12,
-      "method": "Combined three-path delta since the last public snapshot, across two consent/callback correction commits. Exact copied hashes, unchanged tracked blob identities, complete eligible path set and all twelve dirty demo hashes checked. AST/routes/test navigation refreshed; unchanged schema/dependencies retained without reexecution. Product/browser/host evidence coordinator-reported."
-    }
+      "unchanged_projection_files": 344,
+      "formerly_dirty_demo_paths_committed_byte_identical": [
+        "docs/console.md",
+        "server/entry.ts",
+        "src/console/EnvironmentSettings.tsx",
+        "src/console/release.css",
+        "wrangler.jsonc",
+        "public/demo/index.html",
+        "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
+        "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
+        "public/demo/marKER_demo_ES_v1.vtt",
+        "public/demo/marKER_demo_ES_v1_poster.png",
+        "server/demo-media.ts",
+        "tests/demo-media.test.ts"
+      ],
+      "source_commit_changed_paths": [
+        "PROJECT_MAP.md",
+        "README.md",
+        "docs/console.md",
+        "docs/current-status-2026-10-24.md",
+        "public/demo/index.html",
+        "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
+        "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
+        "public/demo/marKER_demo_ES_v1.vtt",
+        "public/demo/marKER_demo_ES_v1_poster.png",
+        "server/demo-media.ts",
+        "server/entry.ts",
+        "src/console/EnvironmentSettings.tsx",
+        "src/console/release.css",
+        "tests/demo-media.test.ts",
+        "wrangler.jsonc"
+      ],
+      "method": "Complete eligible path/hash comparison. Two source navigation documents changed and one public handoff was added; all 344 other preceding projected files and the 12 formerly dirty demo paths retain exact bytes. The source checkout is now clean; no dirty overlay remains. AST/schema/dependency/product execution was not repeated."
+    },
+    "checkout_state": "CLEAN; all projected paths tracked"
   },
   "publication": {
     "repository": "edlopezpm-ops/checkmarKERandgivefeedback",
@@ -71,14 +88,17 @@
     "human creative/time-saved UAT",
     "hosted analysis toolchain",
     "provider invoice hard cap or complete D1/R2/job/provider recovery",
-    "security certification, universal host compatibility or independent OS containment"
+    "security certification, universal host compatibility or independent OS containment",
+    "requested registered-App icon change",
+    "public plugin listing or generic multi-tenant/SaaS eligibility",
+    "actual renewal/revoke/reconnect/scope upgrade, host private-file attachment and future CIMD/protocol/structured-output support"
   ],
   "catalog_counts": {
-    "tracked_paths": 339,
-    "projected_paths": 346,
-    "source_checkout_bytes": 35798911,
-    "source_text_paths": 180,
-    "text_lines": 41338,
+    "tracked_paths": 347,
+    "projected_paths": 347,
+    "source_checkout_bytes": 35805384,
+    "source_text_paths": 181,
+    "text_lines": 41412,
     "lock_packages": 232,
     "d1_tables": 36,
     "d1_columns": 201,
@@ -99,7 +119,7 @@
     "private registered-App binding files (.app.json); published installation CTA is public configuration"
   ],
   "known_limits": [
-    "Source dirty demo bytes are explicitly part of snapshot rather than falsely attributed to base commit.",
+    "The twelve former demo working-tree paths are now committed unchanged; no current dirty overlay remains. Last hosted deployment still records their then-uncommitted provenance.",
     "MCP receipt admission is not atomic with domain effects; uncertain writes require reconciliation.",
     "Actual external-host model identity is not fabricated as trusted generation provenance.",
     "Applied Agent provenance survives selective history cleanup; connector grant cleanup has different retention.",
@@ -125,7 +145,10 @@
     "public_checks_total": 5,
     "exact_static_assets": 185,
     "anonymous_checks_owner_session_used": false,
-    "generic_error_html_policy": "same-origin referrer policy; self-only CSP"
+    "generic_error_html_policy": "same-origin referrer policy; self-only CSP",
+    "current_source_commit": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+    "current_source_commit_deployed": false,
+    "closure_qualification": "Last deployed runtime remains f9478e66 plus the same twelve demo path bytes, now committed unchanged. This closure adds documentation/navigation and Git custody, with no new deployment requested or performed."
   },
   "host_plugin_package": {
     "canonical_connection": "Registered App-backed private plugin",
@@ -179,7 +202,9 @@
       }
     ],
     "business_writes": "NOT_INVOKED",
-    "remaining_tool_paths": "NOT_INDIVIDUALLY_EXECUTED"
+    "remaining_tool_paths": "NOT_INDIVIDUALLY_EXECUTED",
+    "requested_icon": "Exact original Torres del Paine and sun; not applied because owning App UI lacks a logo-edit control",
+    "public_submission": "FUTURE; private audience unchanged"
   },
   "prior_evidence": {
     "review_commit": "17fffc123149d62b87df4da430628cea6f453b06",
@@ -328,11 +353,11 @@
     }
   },
   "fresh_package_checks": [
-    "combined three-path source delta and complete 346-file eligible path set",
-    "unchanged tracked Git identities and twelve prior demo hashes verified",
-    "AST/routes/test navigation refreshed:116 modules,308 static declarations,zero parse diagnostics",
-    "unchanged schema/dependency catalog identities retained without execution",
-    "public exclusions, links, exact source/index bytes and refreshed package seal"
+    "complete clean 347-file eligible path set and source/index byte verification",
+    "344 preceding projection files unchanged; two navigation docs updated and one public handoff added",
+    "all 12 formerly dirty demo paths committed with exact prior bytes",
+    "AST/schema/dependency artifacts retained by hash; no execution repeated",
+    "public exclusions, prioritized pending report, local links and refreshed package seal"
   ],
   "consent_callback_increment": {
     "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
@@ -348,5 +373,55 @@
     "unsafe_callback_host_punctuation": "REJECTED before CSP construction",
     "json_return_referrer_policy": "no-referrer",
     "strict_origin_cookies_pkce_single_use": "RETAINED"
-  }
+  },
+  "source_closure": {
+    "source_revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+    "source_clean": true,
+    "former_demo_paths_committed": 12,
+    "former_demo_bytes_unchanged": true,
+    "changed_existing_projection_files": [
+      "PROJECT_MAP.md",
+      "README.md"
+    ],
+    "new_public_document": "docs/current-status-2026-10-24.md",
+    "coordinator_fresh_build_frontend_server_types_original_logo": "PASS",
+    "review_worker_product_tests_repeated": false,
+    "new_deployment": "NOT_REQUESTED; NOT_PERFORMED",
+    "native_engine": "UNCHANGED",
+    "coordinator_independent_demo_byte_checks": "12/12 PASS",
+    "coordinator_native_core_git_blobs": "5/5 exact native baseline 2535536183928c7d3e581617af0b03a525658ba4"
+  },
+  "pending_work": [
+    {
+      "order": 1,
+      "topic": "Actual business write and complete assistant-driven campaign",
+      "status": "NOT_EXECUTED; actual OAuth and two reads already PASS"
+    },
+    {
+      "order": 2,
+      "topic": "Dot/voice and physical phone",
+      "status": "UNVERIFIED; viewport fixtures are insufficient"
+    },
+    {
+      "order": 3,
+      "topic": "CIMD/protocol compatibility, structured outputs, actual renewal/revoke/reconnect/scope upgrade and host private-file attachment versus signed-in download",
+      "status": "UNVERIFIED OR FUTURE; not demonstrated failures"
+    },
+    {
+      "order": 4,
+      "topic": "Exact original Torres del Paine and sun icon on registered App",
+      "status": "NOT_APPLIED; owning App UI exposes no logo-edit control; original design preserved"
+    },
+    {
+      "order": 5,
+      "topic": "Native product creative/time-saved pilot and hosted analysis",
+      "status": "OUTSTANDING; hosted analysis disabled until toolchain verified"
+    },
+    {
+      "order": 6,
+      "topic": "Public readiness, security/accessibility, costs/limits and complete recovery",
+      "status": "FUTURE OR OUTSTANDING; current audience PRIVATE; listing alone does not admit additional users"
+    }
+  ],
+  "eligibility": "Single-owner by deliberate design; generic public multi-tenant/SaaS deferred; public listing alone enables no additional users"
 }

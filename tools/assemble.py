@@ -14,7 +14,7 @@ CHAPTERS = [
     "database/README.md", "code-flow/README.md",
     "code-flow/01-request-auth-and-storage.md", "code-flow/02-browser-and-editorial.md",
     "code-flow/03-media-planning-render-export.md", "code-flow/04-animation-and-help.md",
-    "code-flow/05-module-symbol-index.md", "code-flow/06-agents-and-mcp.md", "AI_ANALYSIS_PROMPT.md",
+    "code-flow/05-module-symbol-index.md", "code-flow/06-agents-and-mcp.md", "PENDING-REPORT.md", "AI_ANALYSIS_PROMPT.md",
 ]
 
 def linked(text, origin):
@@ -30,7 +30,8 @@ def linked(text, origin):
 
 def main():
     snapshot = json.loads((ROOT/'source-snapshot-manifest.json').read_text(encoding='utf-8'))
-    pieces = [f"# marKER — complete technical dossier\n\nSnapshot 2026-10-24; source base `{snapshot['source_revision']}` plus the explicitly inventoried working-tree delta.\n\nThis reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.\n"]
+    qualification = "plus the explicitly inventoried working-tree delta" if snapshot['source_dirty'] else "with a clean tracked source checkout and no working-tree overlay"
+    pieces = [f"# marKER — complete technical dossier\n\nSnapshot 2026-10-24; source commit `{snapshot['source_revision']}` {qualification}.\n\nThis reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.\n"]
     for name in CHAPTERS:
         path = ROOT / name
         pieces.append(f"\n---\n\nCanonical chapter: [{name}]({name})\n\n" + linked(path.read_text(encoding="utf-8"), path))

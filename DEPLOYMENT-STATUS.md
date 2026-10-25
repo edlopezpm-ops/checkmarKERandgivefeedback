@@ -1,6 +1,8 @@
 # Hosted assistant connection status
 
-Current source: `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus twelve explicitly inventoried, byte-preserved uncommitted demo paths. The public projection includes 346 source files. Since public snapshot `e4553fa`, only the authorization source and two test files changed across the consent-referrer and callback-return corrections.
+Current source: clean commit `3b219839086fa6e66e467c02d58df70a49f0d8f0`; all 347 projected files are tracked. The twelve former demo paths are committed with the same previously reviewed/deployed bytes; two source navigation documents change and one public status handoff is added. **The last deployed runtime remains `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus those identical demo bytes**, on the Worker below. This Git/document closure performs no new deployment.
+
+The coordinator reports a fresh closure build including frontend/server types and original-logo checks PASS. Existing native engine, OAuth runtime, schema and assets are unchanged. Prior runtime test/host receipts keep their original source and execution scope.
 
 | Item | Current evidence boundary |
 | --- | --- |
@@ -20,6 +22,8 @@ The first correction made consent HTML use `Referrer-Policy: same-origin`, prese
 The implementation coordinator supplied these final deployment/browser/host facts. This documentary worker did not open private account UI screenshots, chat payloads, tokens, codes, App bindings, backups or owner records; it did not invoke product tools, query production, deploy or rerun product tests. The source and review-package identities are independently checked here.
 
 Migrations 0010/0011 remain applied from the preceding release. No new migration or asset change accompanies this correction. The coordinator freshly reran five anonymous checks and the 185-asset SHA readback on the final Worker at the timestamp above. Those public checks are separate from actual owner OAuth and the two connected read operations. Prior D1 restoration/0011 rehearsal and earlier local native-media evidence retain their stated scopes.
+
+See [prioritized pending work](PENDING-REPORT.md) for actual writes/campaign, Dot/voice/phone, the unapplied original App icon and integration durability. Deliberate sole-owner eligibility remains; a future public listing would not enable generic users.
 
 The App-backed private plugin remains version 1.0.1, with read/write/produce defaults and delete unchecked. Its served CTA and historical raw-plugin identifier are authorized public noncredential configuration; private binding files remain excluded and the audience remains private. The portable 0.1.0 package is a separate developer artifact.
 

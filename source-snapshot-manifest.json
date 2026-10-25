@@ -1,27 +1,14 @@
 {
   "format": "marker-source-snapshot/v2",
-  "captured_at_utc": "2026-10-25T02:32:59.500753+00:00",
-  "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-  "source_tree_sha1": "9f5386b9eb64fd8e81ee715bff4685d0a8fea4bd",
+  "captured_at_utc": "2026-10-25T02:53:04.580404+00:00",
+  "source_revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+  "source_tree_sha1": "645e4f45db2d36d618c8b0e6553b2f9012bf4d91",
   "source_branch": "main",
-  "source_dirty": [
-    " M docs/console.md",
-    " M server/entry.ts",
-    " M src/console/EnvironmentSettings.tsx",
-    " M src/console/release.css",
-    " M wrangler.jsonc",
-    "?? public/demo/index.html",
-    "?? public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
-    "?? public/demo/marKER_demo_55s_ES_v1_4K.mp4",
-    "?? public/demo/marKER_demo_ES_v1.vtt",
-    "?? public/demo/marKER_demo_ES_v1_poster.png",
-    "?? server/demo-media.ts",
-    "?? tests/demo-media.test.ts"
-  ],
-  "tracked_path_count": 339,
-  "projected_path_count": 346,
-  "projected_bytes": 35798911,
-  "hash_semantics": "SHA-256 describes exact source checkout bytes copied to source/. Source HEAD is the base; source_dirty explicitly qualifies any uncommitted bytes. No private payload was inventoried or hashed. Git may normalize text line endings; verification accepts only exact bytes or the documented LF text equivalent. Binary bytes must match exactly.",
+  "source_dirty": [],
+  "tracked_path_count": 347,
+  "projected_path_count": 347,
+  "projected_bytes": 35805384,
+  "hash_semantics": "SHA-256 describes exact clean source checkout bytes copied to source/. Every selected path is tracked at source_revision; source_dirty is empty. Git text normalization may give the source commit blob different line-ending bytes; each index blob identity is recorded. Review Git stores original captured bytes. Binary bytes match exactly. No private payload was inventoried or hashed.",
   "paths": [
     {
       "path": ".dev.vars.example",
@@ -57,21 +44,21 @@
       "path": "PROJECT_MAP.md",
       "projection": "source/PROJECT_MAP.md",
       "tracked": true,
-      "git_index_blob_sha1": "a9513d4412cc8706e62553b4ebc43f17eca60736",
-      "bytes": 4714,
-      "sha256": "d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f",
-      "checkout_sha256": "d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f",
-      "text_lines": 48
+      "git_index_blob_sha1": "ee4325d6bfa79f8cda2db4988cc960d5895377d4",
+      "bytes": 4881,
+      "sha256": "76e64d06139f91073b4fb65af03f84e5feaac9591919c0499f424cc2381b9a6e",
+      "checkout_sha256": "76e64d06139f91073b4fb65af03f84e5feaac9591919c0499f424cc2381b9a6e",
+      "text_lines": 49
     },
     {
       "path": "README.md",
       "projection": "source/README.md",
       "tracked": true,
-      "git_index_blob_sha1": "fbe646a39c16ffcc8161687783b935223009c22b",
-      "bytes": 7215,
-      "sha256": "cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430",
-      "checkout_sha256": "cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430",
-      "text_lines": 45
+      "git_index_blob_sha1": "b18eb9bf52e62dbe70acb5b5da8fd71688834d6e",
+      "bytes": 7368,
+      "sha256": "82b1e743793817d7cd14284b37778af63f1e84f03402ca71d25b0a4010219d1d",
+      "checkout_sha256": "82b1e743793817d7cd14284b37778af63f1e84f03402ca71d25b0a4010219d1d",
+      "text_lines": 48
     },
     {
       "path": "assets/AEKR-BANNER-LICENSE.txt",
@@ -157,11 +144,21 @@
       "path": "docs/console.md",
       "projection": "source/docs/console.md",
       "tracked": true,
-      "git_index_blob_sha1": "2ee927cd53df1370040be779660e52e4ddaa33b8",
+      "git_index_blob_sha1": "b3cda4c74979b60e76a345ad08b9d74c6aabfa88",
       "bytes": 8391,
       "sha256": "646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e",
       "checkout_sha256": "646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e",
       "text_lines": 39
+    },
+    {
+      "path": "docs/current-status-2026-10-24.md",
+      "projection": "source/docs/current-status-2026-10-24.md",
+      "tracked": true,
+      "git_index_blob_sha1": "e95389b7b4af181b6d7f64f388ea2b672dc47d3d",
+      "bytes": 6153,
+      "sha256": "b88070c49fb5c860ba9d9e9fe14fb162188e1007ebabef80047b43a0b00c8ee7",
+      "checkout_sha256": "b88070c49fb5c860ba9d9e9fe14fb162188e1007ebabef80047b43a0b00c8ee7",
+      "text_lines": 70
     },
     {
       "path": "docs/decoration.md",
@@ -516,8 +513,8 @@
     {
       "path": "public/demo/index.html",
       "projection": "source/public/demo/index.html",
-      "tracked": false,
-      "git_index_blob_sha1": null,
+      "tracked": true,
+      "git_index_blob_sha1": "960571196d5a6d19f80c43d0d40c5feb00b4ba2e",
       "bytes": 8216,
       "sha256": "66fbf01ed0091396c6994dae2c6b051aea8763c7eadcb09dc47d65de85dd843c",
       "checkout_sha256": "66fbf01ed0091396c6994dae2c6b051aea8763c7eadcb09dc47d65de85dd843c",
@@ -526,8 +523,8 @@
     {
       "path": "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
       "projection": "source/public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
-      "tracked": false,
-      "git_index_blob_sha1": null,
+      "tracked": true,
+      "git_index_blob_sha1": "a826718c26e0ee4c90f8557786572747f8f04b95",
       "bytes": 6137380,
       "sha256": "b822ee2fb443e16ed0e685daba2d743ed0946e515b034ef82d17b9ddcee60a71",
       "checkout_sha256": "b822ee2fb443e16ed0e685daba2d743ed0946e515b034ef82d17b9ddcee60a71",
@@ -536,8 +533,8 @@
     {
       "path": "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
       "projection": "source/public/demo/marKER_demo_55s_ES_v1_4K.mp4",
-      "tracked": false,
-      "git_index_blob_sha1": null,
+      "tracked": true,
+      "git_index_blob_sha1": "9db184986adec41f402b0b58bbc6ff4f1bbb8d17",
       "bytes": 14495058,
       "sha256": "fdb82854cc3f19107c846ac56cf3fb1f84d3aef3a407c5327ea5679c0dea85df",
       "checkout_sha256": "fdb82854cc3f19107c846ac56cf3fb1f84d3aef3a407c5327ea5679c0dea85df",
@@ -546,8 +543,8 @@
     {
       "path": "public/demo/marKER_demo_ES_v1.vtt",
       "projection": "source/public/demo/marKER_demo_ES_v1.vtt",
-      "tracked": false,
-      "git_index_blob_sha1": null,
+      "tracked": true,
+      "git_index_blob_sha1": "cdad193bb698f849bcefdb1700822ac5c93fee74",
       "bytes": 872,
       "sha256": "f6d7221c8980dd6201aaad36f0e2609569a2da0b669e3a4837bd20fa13f631c2",
       "checkout_sha256": "f6d7221c8980dd6201aaad36f0e2609569a2da0b669e3a4837bd20fa13f631c2",
@@ -556,8 +553,8 @@
     {
       "path": "public/demo/marKER_demo_ES_v1_poster.png",
       "projection": "source/public/demo/marKER_demo_ES_v1_poster.png",
-      "tracked": false,
-      "git_index_blob_sha1": null,
+      "tracked": true,
+      "git_index_blob_sha1": "e5e4f26a8e2d11110e27618cd6e50f17f7323067",
       "bytes": 1621513,
       "sha256": "f2973374a14246f3419ba6ed025f0b7495095d7a60b0d0fbb96de7cf7a167e35",
       "checkout_sha256": "f2973374a14246f3419ba6ed025f0b7495095d7a60b0d0fbb96de7cf7a167e35",
@@ -2256,8 +2253,8 @@
     {
       "path": "server/demo-media.ts",
       "projection": "source/server/demo-media.ts",
-      "tracked": false,
-      "git_index_blob_sha1": null,
+      "tracked": true,
+      "git_index_blob_sha1": "3aa59bffe05e9a5bdc618dbdfe994b6646e7dacb",
       "bytes": 3919,
       "sha256": "5bb110f4463bcb38190c5fa088cc99482e9b06b93a0ac2d2d05139931e51ddd7",
       "checkout_sha256": "5bb110f4463bcb38190c5fa088cc99482e9b06b93a0ac2d2d05139931e51ddd7",
@@ -2267,7 +2264,7 @@
       "path": "server/entry.ts",
       "projection": "source/server/entry.ts",
       "tracked": true,
-      "git_index_blob_sha1": "829cac76994f014ee0a7568f073d8edb83ebb63d",
+      "git_index_blob_sha1": "911b3b3770f1af5aa8596c09d9b4a7408d2f3a1f",
       "bytes": 469,
       "sha256": "96cf7e69377f1ed5dd2dca0dbcae5b828812b76ac5f30f0cc60f1526876b967b",
       "checkout_sha256": "96cf7e69377f1ed5dd2dca0dbcae5b828812b76ac5f30f0cc60f1526876b967b",
@@ -2527,7 +2524,7 @@
       "path": "src/console/EnvironmentSettings.tsx",
       "projection": "source/src/console/EnvironmentSettings.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "f905489f04f43fa816fa43bfe9fd312469cb51a4",
+      "git_index_blob_sha1": "836ca4a6c9c63cdaad03236cd0cde71fcb1c85e6",
       "bytes": 3752,
       "sha256": "914f78f3ff89f4d070f221833527604c701dab9ccc738de8306f8b3bc54843c3",
       "checkout_sha256": "914f78f3ff89f4d070f221833527604c701dab9ccc738de8306f8b3bc54843c3",
@@ -2757,7 +2754,7 @@
       "path": "src/console/release.css",
       "projection": "source/src/console/release.css",
       "tracked": true,
-      "git_index_blob_sha1": "b2fc8d038a07f26a9a3a21efaac13140b0234ae8",
+      "git_index_blob_sha1": "9cf98f9e439540d19f4520c64609b74c679b354a",
       "bytes": 11805,
       "sha256": "4267e266aa18ec33cffd25d79bf340005ea35085758f64760f1212e11cf54e6b",
       "checkout_sha256": "4267e266aa18ec33cffd25d79bf340005ea35085758f64760f1212e11cf54e6b",
@@ -3086,8 +3083,8 @@
     {
       "path": "tests/demo-media.test.ts",
       "projection": "source/tests/demo-media.test.ts",
-      "tracked": false,
-      "git_index_blob_sha1": null,
+      "tracked": true,
+      "git_index_blob_sha1": "b92fd7e8d8a572a33eedd98017e63350da2e530e",
       "bytes": 7463,
       "sha256": "859a18ac601393b0e4f5a56afd8a2411ae138a1555561660e08f49f62868c752",
       "checkout_sha256": "859a18ac601393b0e4f5a56afd8a2411ae138a1555561660e08f49f62868c752",
@@ -3477,7 +3474,7 @@
       "path": "wrangler.jsonc",
       "projection": "source/wrangler.jsonc",
       "tracked": true,
-      "git_index_blob_sha1": "e227a4b97f574c898f5e05b8466436821fc7f0e1",
+      "git_index_blob_sha1": "c713679c6c60406f3a161513b2b1a701aa40526f",
       "bytes": 1865,
       "sha256": "87ef519aa930b63a01f71cd2cb44002137591ba7bd8d9ba0fcdf34007f7c6ac4",
       "checkout_sha256": "87ef519aa930b63a01f71cd2cb44002137591ba7bd8d9ba0fcdf34007f7c6ac4",
@@ -3496,19 +3493,48 @@
   ],
   "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template. The user-facing registered-plugin installation URL/identifier is explicitly authorized public configuration already served in the browser bundle; it grants no account access. Private App bindings are excluded. The historical raw-plugin identifier in the design document is also explicitly authorized public noncredential configuration; this does not widen either private audience.",
   "previous_publication": {
-    "review_commit": "e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b",
-    "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-    "source_manifest_sha256": "5f9e2331e7f6c4d741c7bdf15c2999689175eaad082484a64eba919427f69906",
-    "intermediate_source_revision": "cd5e3fb57544a2699bab6fd2a5fbf77591ccc1a7",
-    "changed_paths": [
-      "server/mcp-auth.ts",
-      "tests/mcp-auth.test.ts",
-      "tests/mcp-consent-policy.test.ts"
+    "review_commit": "d20f76a6c53acda02bbdfec397e049a49ee26ddb",
+    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+    "source_manifest_sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025",
+    "changed_existing_projection_paths": [
+      "PROJECT_MAP.md",
+      "README.md"
     ],
-    "new_paths": [
-      "tests/mcp-consent-policy.test.ts"
+    "new_projection_paths": [
+      "docs/current-status-2026-10-24.md"
     ],
-    "dirty_demo_paths_byte_identical": 12,
-    "method": "Combined three-path delta since the last public snapshot, across two consent/callback correction commits. Exact copied hashes, unchanged tracked blob identities, complete eligible path set and all twelve dirty demo hashes checked. AST/routes/test navigation refreshed; unchanged schema/dependencies retained without reexecution. Product/browser/host evidence coordinator-reported."
+    "unchanged_projection_files": 344,
+    "formerly_dirty_demo_paths_committed_byte_identical": [
+      "docs/console.md",
+      "server/entry.ts",
+      "src/console/EnvironmentSettings.tsx",
+      "src/console/release.css",
+      "wrangler.jsonc",
+      "public/demo/index.html",
+      "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
+      "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
+      "public/demo/marKER_demo_ES_v1.vtt",
+      "public/demo/marKER_demo_ES_v1_poster.png",
+      "server/demo-media.ts",
+      "tests/demo-media.test.ts"
+    ],
+    "source_commit_changed_paths": [
+      "PROJECT_MAP.md",
+      "README.md",
+      "docs/console.md",
+      "docs/current-status-2026-10-24.md",
+      "public/demo/index.html",
+      "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
+      "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
+      "public/demo/marKER_demo_ES_v1.vtt",
+      "public/demo/marKER_demo_ES_v1_poster.png",
+      "server/demo-media.ts",
+      "server/entry.ts",
+      "src/console/EnvironmentSettings.tsx",
+      "src/console/release.css",
+      "tests/demo-media.test.ts",
+      "wrangler.jsonc"
+    ],
+    "method": "Complete eligible path/hash comparison. Two source navigation documents changed and one public handoff was added; all 344 other preceding projected files and the 12 formerly dirty demo paths retain exact bytes. The source checkout is now clean; no dirty overlay remains. AST/schema/dependency/product execution was not repeated."
   }
 }

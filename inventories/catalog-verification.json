@@ -1,41 +1,44 @@
 {
   "format": "marker-documentary-catalog-verification/v3",
-  "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-  "checked_at_utc": "2026-10-25T02:35:48.349049+00:00",
+  "source_revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+  "checked_at_utc": "2026-10-25T02:53:35.432112+00:00",
   "previous_verification": {
-    "review_commit": "e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b",
-    "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-    "checked_at_utc": "2026-10-25T02:05:23.179041+00:00",
+    "review_commit": "d20f76a6c53acda02bbdfec397e049a49ee26ddb",
+    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
+    "checked_at_utc": "2026-10-25T02:35:48.349049+00:00",
     "checks": {
       "catalog_json_parse": "PASS",
-      "python_syntax": "PASS",
       "typescript_parse_diagnostics": 0,
-      "d1_empty_schema_replay_integrity_foreign_keys": "PASS",
-      "d1_migrations": 11,
-      "local_studio_empty_schema_replay_integrity_foreign_keys": "PASS",
+      "source_delta_paths": 3,
+      "new_source_paths": 1,
       "source_dirty_qualification": 12,
       "prior_dirty_paths_byte_identity": "PASS",
-      "tracked_paths": 338,
-      "projected_paths": 345
+      "tracked_paths": 339,
+      "projected_paths": 346,
+      "unchanged_schema_dependency_hashes": "PASS",
+      "schema_and_product_execution": "NOT_REPEATED"
     }
   },
   "checks": {
     "catalog_json_parse": "PASS",
-    "typescript_parse_diagnostics": 0,
-    "source_delta_paths": 3,
+    "source_byte_delta_paths": 3,
     "new_source_paths": 1,
-    "source_dirty_qualification": 12,
-    "prior_dirty_paths_byte_identity": "PASS",
-    "tracked_paths": 339,
-    "projected_paths": 346,
-    "unchanged_schema_dependency_hashes": "PASS",
-    "schema_and_product_execution": "NOT_REPEATED"
+    "unchanged_projected_files": 344,
+    "source_dirty_qualification": 0,
+    "source_checkout_clean": "PASS",
+    "all_projected_paths_tracked": true,
+    "former_dirty_demo_paths_committed_byte_identical": 12,
+    "tracked_paths": 347,
+    "projected_paths": 347,
+    "retained_catalog_output_hashes": 17,
+    "unchanged_ast_schema_dependency_hashes": "PASS",
+    "ast_schema_dependency_product_execution": "NOT_REPEATED"
   },
   "limitations": [
     "No runtime databases, owner records, private App bindings or credentials exported.",
-    "AST, routes, static test declarations and empty-schema checks are documentary verification, not product tests or host acceptance.",
-    "The authorized served installation CTA identifier is public configuration, not a credential or account binding.",
-    "This increment refreshes AST/routes/test navigation only; empty-schema/dependency execution retains the preceding publication evidence."
+    "All structural AST/schema/dependency execution evidence is inherited by unchanged hashes; only clean-source provenance, path/count navigation, public handoff and package verification are refreshed.",
+    "A clean source Git closure is not a new deployment or product acceptance.",
+    "The served installation CTA is authorized public configuration, not a credential or account binding."
   ],
   "outputs": [
     {
@@ -86,7 +89,7 @@
     {
       "path": "inventories/catalog-summary.json",
       "bytes": 314,
-      "sha256": "35c7fed203e18545a5386426a0948c378fc22d6e48272a3a15c2fcc0d960565d"
+      "sha256": "e3dae23d51e19ff03db035efbeb08eece3218ebe27887d11d053a631a2e188a4"
     },
     {
       "path": "inventories/dependencies.json",
@@ -120,8 +123,8 @@
     },
     {
       "path": "inventories/source-paths.md",
-      "bytes": 57447,
-      "sha256": "ecb1e6cc5101a646f46fc252909040d75dbcf08f3c0c91361eef3f861890afb4"
+      "bytes": 57611,
+      "sha256": "95d7a3c20ac10ba8075789f974f025776a96276eb0a103a5c143fdc7003a36f0"
     },
     {
       "path": "inventories/test-declarations.json",
@@ -135,8 +138,27 @@
     },
     {
       "path": "source-snapshot-manifest.json",
-      "bytes": 154992,
-      "sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025"
+      "bytes": 156203,
+      "sha256": "0cb04dbcff1aa1f3152d2a297594660a042281e33383e28eed33295152f981d7"
     }
+  ],
+  "retained_catalog_outputs": [
+    "database/d1-catalog.json",
+    "database/d1-reference.md",
+    "database/d1-schema.sql",
+    "database/local-studio-catalog.json",
+    "database/local-studio-reference.md",
+    "database/local-studio-schema.sql",
+    "database/README.md",
+    "database/supabase-reference.md",
+    "inventories/ast-index.json",
+    "inventories/dependencies.json",
+    "inventories/dependencies.md",
+    "inventories/public-media.json",
+    "inventories/route-occurrences.json",
+    "inventories/routes.json",
+    "inventories/routes.md",
+    "inventories/test-declarations.json",
+    "inventories/test-index.md"
   ]
 }
