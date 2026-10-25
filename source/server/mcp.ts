@@ -20,6 +20,20 @@ function failure(code: string, status: number, message: string): McpToolResult {
   const data = { code, status, message };
   return { content: [{ type: 'text', text: JSON.stringify(data) }], structuredContent: data, isError: true };
 }
+function bearerChallenge(origin: string, scopes: string[], insufficient = false): string {
+  const parameters = [
+    `resource_metadata="${origin}/.well-known/oauth-protected-resource/api/mcp"`,
+    ...(insufficient ? ['error="insufficient_scope"', 'error_description="The connection requires additional permission for this operation."'] : []),
+    `scope="${scopes.join(' ')}"`,
+  ];
+  return 'Bearer ' + parameters.join(', ');
+}
+function insufficientScope(origin: string, scopes: string[]): McpToolResult {
+  return {
+    ...failure('INSUFFICIENT_SCOPE', 403, 'La conexión no tiene este permiso.'),
+    _meta: { 'mcp/www_authenticate': [bearerChallenge(origin, scopes, true)] },
+  };
+}
 function canonical(value: unknown): string {
   if (Array.isArray(value)) return '[' + value.map(canonical).join(',') + ']';
   if (value && typeof value === 'object') return '{' + Object.entries(value).sort(([a], [b]) => a.localeCompare(b)).map(([key, item]) => JSON.stringify(key) + ':' + canonical(item)).join(',') + '}';
@@ -36,7 +50,7 @@ async function digest(value: unknown) {
 export async function executeMcpTool(options: Pick<McpOptions, 'db' | 'origin' | 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult> {
   const definition = MCP_TOOLS.find(tool => tool.name === name);
   if (!definition) return failure('UNKNOWN_TOOL', 404, 'Herramienta no disponible.');
-  if (!definition.scopes.every(scope => principal.scopes.includes(scope))) return failure('INSUFFICIENT_SCOPE', 403, 'La conexión no tiene este permiso.');
+  if (!definition.scopes.every(scope => principal.scopes.includes(scope))) return insufficientScope(options.origin, definition.scopes);
   if (!toolValidators.get(name)!(args).valid) return failure('INVALID_ARGUMENTS', 400, 'Revisa los campos de la herramienta.');
   const tools = createMcpTools({ origin: options.origin, backend: options.backend, principal });
   if (definition.annotations.readOnlyHint) return tools.call(name, args);
@@ -104,19 +118,23 @@ export function createMcpApi(options: McpOptions) {
         }
         if (!principal) {
           const response = json({ error: 'AUTHORIZATION_REQUIRED' }, 401);
-          response.headers.set('WWW-Authenticate', `Bearer resource_metadata="${options.origin}/.well-known/oauth-protected-resource/api/mcp"`);
+          response.headers.set('WWW-Authenticate', bearerChallenge(options.origin, ['marker:read']));
           return response;
         }
         const tenant = request.headers.get('X-Tenant-ID') ?? url.searchParams.get('tenant_id');
         if (tenant !== null && tenant !== principal.tenantId) return json({ error: 'ACCESS_DENIED' }, 403);
         if (artifact) {
           if (request.method !== 'GET') return json({ error: 'METHOD_NOT_ALLOWED' }, 405);
-          if (!principal.scopes.includes('marker:produce')) return json({ error: 'INSUFFICIENT_SCOPE' }, 403);
+          if (!principal.scopes.includes('marker:produce')) {
+            const response = json({ error: 'INSUFFICIENT_SCOPE' }, 403);
+            response.headers.set('WWW-Authenticate', bearerChallenge(options.origin, ['marker:produce'], true));
+            return response;
+          }
           return exportArtifact();
         }
         if (request.method !== 'POST') return json({ error: 'METHOD_NOT_ALLOWED' }, 405);
         const server = new Server({ name: 'marKER', version: '0.1.0' }, { capabilities: { tools: {} }, instructions, jsonSchemaValidator: validator });
-        server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: MCP_TOOLS.filter(tool => tool.scopes.every(scope => principal.scopes.includes(scope))).map(({ scopes, ...tool }) => ({ ...tool, securitySchemes: [{ type: 'oauth2', scopes }], ...(tool.name === 'marker_get_profile' ? { outputSchema: { type: 'object' as const, properties: { id: { type: 'string', minLength: 1, pattern: '\\S' } }, required: ['id'], additionalProperties: false } } : {}), _meta: { securitySchemes: [{ type: 'oauth2', scopes }], ...(tool.name === 'marker_get_profile' ? { 'openai/profile': true } : {}) } })) }));
+        server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: MCP_TOOLS.filter(tool => tool.name !== 'marker_delete' || principal.scopes.includes('marker:delete')).map(({ scopes, ...tool }) => ({ ...tool, securitySchemes: [{ type: 'oauth2', scopes }], ...(tool.name === 'marker_get_profile' ? { outputSchema: { type: 'object' as const, properties: { id: { type: 'string', minLength: 1, pattern: '\\S' } }, required: ['id'], additionalProperties: false } } : {}), _meta: { securitySchemes: [{ type: 'oauth2', scopes }], ...(tool.name === 'marker_get_profile' ? { 'openai/profile': true } : {}) } })) }));
         server.setRequestHandler(CallToolRequestSchema, async request => executeMcpTool(options, principal, request.params.name, request.params.arguments ?? {}));
         const transport = new WebStandardStreamableHTTPServerTransport({ sessionIdGenerator: undefined, enableJsonResponse: true, maxRequestBodySize: 300_000 });
         await server.connect(transport);

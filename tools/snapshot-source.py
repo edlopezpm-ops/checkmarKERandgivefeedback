@@ -16,7 +16,7 @@ def git(source, *args):
 def eligible(name):
     p = Path(name)
     if any(x in DENIED_PARTS for x in p.parts): return False
-    if p.name in {'.dev.vars','.env','credentials.json','secrets.json','auth.json'}: return False
+    if p.name in {'.dev.vars','.env','.app.json','credentials.json','secrets.json','auth.json'}: return False
     if p.suffix.lower() in {'.pem','.key','.pfx','.sqlite','.db','.log','.tmp'}: return False
     if p.name.startswith(('.dev.vars.','.env.')) and name not in ALLOWED_FILES: return False
     return name in ALLOWED_FILES or (len(p.parts)>1 and p.parts[0] in ALLOWED_ROOTS)

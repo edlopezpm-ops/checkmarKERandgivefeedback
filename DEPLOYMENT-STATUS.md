@@ -1,53 +1,25 @@
-# Hosted MCP deployment status
+# Hosted assistant integration deployment status
 
-Updated 2026-10-24 America/New_York; deployment timestamp is in UTC.
-This is a bounded operational update after source snapshot publication
-`80fc3db665fcad787f4033cafd70e8af4b3ec2a1`. The initial 333-file source projection is preserved at that commit. The current
-336-file projection uses source base `a675f8dfccf32986530205cb1636dac7624afc21`
-plus the same 12 byte-preserved working-tree demo paths. Its later four-path delta
-contains three canonical plugin-package files and one connector-document update.
-The deployed runtime remains source `de0a4a65d6d37642e5f7efda66151c4270ec2a02`
-plus those demo bytes; the package-only increment changes no runtime or deployment.
-Structural catalogs and product test evidence retain their original scope.
+Current source: `00398e155dcbd0a05942bf3466cfe8a29a63c604` plus the twelve explicitly inventoried uncommitted demo paths. All 345 eligible source files are included. The preceding 336-file publication remains in Git at `17fffc123149d62b87df4da430628cea6f453b06`; its source/deployment facts are historical.
 
-| Item | Verified/reporting boundary |
+| Item | Current evidence boundary |
 | --- | --- |
-| Authority | Direct owner authorization for private D1 backup, additive migration 0010 and hosted deployment. |
-| Active Worker | `99baf771-ac51-40d9-a76f-7652aaeb4e51`, 100% deployment allocation. |
-| Deployment | `208f8770-cb9e-42f2-a169-21e802660b52`, created `2026-10-25T00:49:26.283236Z`. |
-| Previous Worker | Fresh predeployment inspection: `c525b283-3ba7-453d-a429-d76c73e81924`. The earlier dossier's 5998 reference came from an older receipt. |
-| D1 | Migration `0010_mcp.sql` applied; all seven MCP tables confirmed by readonly inspection (`rows_written=0`, `changed_db=false`). |
-| Hosted checks | Independent implementation-team readback: **18/18 PASS**. |
-| Public assets | **182/182** dist assets matched exact bytes and SHA-256, totaling **32,761,835 bytes**; approved original logo matched. |
-| Public demo | Both MP4s passed range, suffix-range and HEAD checks. `/index.html` and `/demo/index.html` returned canonical 307 redirects whose targets returned matching 200 content. |
+| Active Worker | `d48f31ec-1641-4097-bb5f-c0ccd7fd26ae`, 100% allocation; timestamp `2026-10-25T02:01:10.735Z`. |
+| D1 | Migration 0011 applied after fresh private backup and isolated restore/migration rehearsal; 0010 remains applied. Eight MCP application tables. |
+| Fresh hosted readback | Five checks PASS at `2026-10-25T02:01:28.630Z`; no owner session used. |
+| Static assets | 185 files matched SHA-256. No new total-byte measurement is supplied by this receipt. |
+| Protected-resource metadata | Canonical resource with minimal read scope. |
+| OAuth discovery | PKCE, dynamic client registration and refresh retained. |
+| Anonymous MCP | OAuth required with minimal authentication challenge. |
+| Bad login continuation | Malformed resume returns the local branded reconnect page. |
+| Owner connection privacy | Connection list remains unavailable without an owner session. |
 
-The hosted metadata identifies the exact resource, issuer and OAuth endpoints.
-Anonymous and invalid-bearer MCP requests return 401 with the authentication
-challenge; foreign-Origin requests return 403. Private application APIs and
-private artifacts deny unauthorized access. Public endpoint:
-[https://marker.aekr.io/api/mcp](https://marker.aekr.io/api/mcp).
+The implementation coordinator supplied the release/migration/test facts. This review worker read only the named sanitized public-check receipt; it did not read backups, App bindings, credentials, tokens or owner records, query production, deploy, invoke a provider or repeat product tests. The coordinator reports 47 focused tests, build/logo checks and an independent review with no actionable finding. Synthetic desktop/mobile production-UI fixtures made zero `/api/agents` calls and exposed no bridge commands.
 
-These observations were supplied by the implementation coordinator from the
-bounded hosted readback. This documentary worker did not rerun product tests,
-query D1, deploy, read/copy the private backup, inspect owner records or invoke a
-model/provider. The earlier 75 focused local tests, later 12-test subset and real
-local SDK/FFmpeg flow retain their original scope; they are not represented as
-new hosted authenticated end-to-end tests.
+The narrow backup rehearsal preserved 36 existing tables from that backup before applying 0011 in isolation. It is distinct from the fresh empty application-schema reconstruction and does not prove complete R2/job/provider recovery. No backup contents or fingerprints are published here.
 
-A private user-level plugin package was created and its manifest read back. It
-uses the hosted endpoint and public-client dynamic registration, with read,
-write and produce permissions requested by default. Delete is not a default
-permission. Private account IDs and installation links are not published here.
+The canonical connection is an **App-backed private plugin version 1.0.1** with read/write/produce defaults and delete unchecked. Its ordinary installation CTA and the historical raw-plugin identifier retained in the design document are authorized public noncredential configuration, previously served by the product. This does not widen the plugin audience or publish its private binding. The portable 0.1.0 package remains a developer artifact; the earlier raw plugin checkpoint is not the canonical connection.
 
-After the owner completed CAPTCHA, the account plugin page visibly listed
-**Installed**, with **one MCP server and one skill**. A fresh readonly aggregate
-D1 inspection still showed **zero registered clients and zero active grants**,
-with zero rows written. The start action navigated to a desktop open-app page;
-browser security blocked Open ChatGPT and the owner was asked to complete desktop
-opening manually. No workaround was used.
+**The actual server connection is incomplete and under diagnosis.** The owner reported “Connected”, but the subsequent host test session exposed no product read/create/delete tools and plugin management still offered Connect. Sanitized production aggregates show **one registered client, zero approved clients, zero active grants, zero resumed logins and zero token rows**. These aggregate facts are supplied by the coordinator; no chat payload, account identifier or private configuration is published. No successful delegated tool execution, Dot conversation or physical-phone validation is established. Registered plugin/configuration, local SDK runs, public metadata checks and mobile viewport fixtures do not prove them. No 100% host compatibility, voice support, human UAT or creative acceptance is asserted.
 
-**Owner OAuth, actual Dot tools and a conversation remain unverified.** Account
-installation visibility and server deployment do not establish an authorized
-tool connection or conversational experience. Human UAT, physical-device/creative pilot and backup restoration
-remain separate. A successful backup or retained previous Worker reference is
-not proof of a completed restoration.
+Earlier publication [17fffc1](https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/17fffc123149d62b87df4da430628cea6f453b06/DEPLOYMENT-STATUS.md) preserves Worker `99baf771`, 18 hosted checks, 182 exact assets and the previous installed-page/zero-grant checkpoint. Those observations are not relabeled as fresh checks of this release. Public endpoint: [marKER MCP](https://marker.aekr.io/api/mcp).

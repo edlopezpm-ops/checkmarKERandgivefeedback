@@ -1,5 +1,9 @@
 # Local Codex connection
 
+This is developer-only localhost tooling. Normal user connections use the
+[registered assistant plugin and OAuth](mcp-connector.md). Production does not
+show bridge commands, pairing tokens or the experimental local bridge chat.
+
 marKER's Agent panel uses a separate local Node process and the official Codex app-server protocol. The selected provider is OpenAI Codex, the authentication mode is native ChatGPT, and usage belongs to the signed-in ChatGPT subscription. No API key or paid API fallback is supported by this adapter. Studio continues to own material saving, planning, variants, rendering, review, approval and export.
 
 The native adapter accepts **loopback marKER origins only**. Current [official OpenAI app-server documentation](https://learn.chatgpt.com/docs/app-server) limits its native authentication to local/open-source applications and excludes commercial/hosted services. This implementation does not establish hosted Sign in with ChatGPT admission. The Worker/D1 agent contracts remain portable, while a future hosted provider requires its own authorized adapter. The official app-server interface is experimental; verify compatibility when updating Codex.
@@ -12,6 +16,7 @@ The native adapter accepts **loopback marKER origins only**. Current [official O
 4. In another PowerShell terminal, from the marKER repository, run the command shown by the panel. For example:
 
 ```powershell
+Set-Location -LiteralPath 'C:\path\to\marKER'
 $env:MARKER_ORIGIN = 'http://127.0.0.1:5173'
 $env:MARKER_BRIDGE_TOKEN = '<pairing token shown in marKER>'
 npm run agent:bridge

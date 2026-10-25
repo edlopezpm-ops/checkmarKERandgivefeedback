@@ -3,17 +3,19 @@ import { McpAuthStore } from './mcp-auth-store.ts';
 export const MCP_SCOPES = ['marker:read', 'marker:write', 'marker:produce', 'marker:delete'] as const;
 export type McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] };
 type Owner = { userId: string; tenantId: string; email: string };
-type Client = { client_id: string; name: string; redirect_uris: string; expires_at: number };
+type Client = { client_id: string; name: string; redirect_uris: string; expires_at: number; authorized_at: number | null };
 type Grant = { grant_id: string; client_id: string; user_id: string; tenant_id: string; scopes: string; resource: string; expires_at: number; revoked_at: number | null };
 type Consent = { clientId: string; redirectUri: string; challenge: string; scope: string; state: string; resource: string; language: 'es' | 'en' };
 type ConsentRow = { document: string; user_id: string; tenant_id: string; expires_at: number; consumed_by: string | null };
+type LoginRow = { document: string; client_id: string; expires_at: number; consumed_by: string | null };
 type CodeRow = Grant & { redirect_uri: string; challenge: string; code_expires_at: number; consumed_by: string | null };
 type TokenRow = Grant & { refresh_expires_at: number; consumed_by: string | null };
 const encoder = new TextEncoder(), OPAQUE = /^[A-Za-z0-9_-]{43}$/, PKCE = /^[A-Za-z0-9._~-]{43,128}$/;
 const ROUTE = '/api/mcp/oauth/', ACCESS_TTL = 900, FAMILY_TTL = 30 * 86400;
 class OAuthError extends Error {
   status: number;
-  constructor(error: string, status = 400) { super(error); this.status = status; }
+  description?: string;
+  constructor(error: string, status = 400, description?: string) { super(error); this.status = status; this.description = description; }
 }
 function opaque() { return btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32)))).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', ''); }
 async function digest(value: string) { return new Uint8Array(await crypto.subtle.digest('SHA-256', encoder.encode(value))); }
@@ -55,16 +57,25 @@ async function body(request: Request, json = false): Promise<Record<string, unkn
 }
 function text(value: unknown, max = 2048) { if (typeof value !== 'string' || value.length > max || /[\u0000-\u001f\u007f]/.test(value)) throw new OAuthError('invalid_request'); return value; }
 function loopback(url: URL) { return ['127.0.0.1', '[::1]', 'localhost'].includes(url.hostname); }
+function nativeCallback(url: URL) { return url.protocol === 'http:' && ['127.0.0.1', '[::1]'].includes(url.hostname); }
 function allowedRedirect(value: unknown, origin: URL) {
   const uri = text(value); let url: URL; try { url = new URL(uri); } catch { throw new OAuthError('invalid_redirect_uri'); }
-  if (url.href !== uri || url.username || url.password || url.hash || (loopback(url) && !loopback(origin)) || !(url.protocol === 'https:' || (loopback(origin) && loopback(url) && url.protocol === 'http:'))) throw new OAuthError('invalid_redirect_uri');
+  const allowed = nativeCallback(url) || (url.protocol === 'https:' && !loopback(url)) || (loopback(origin) && loopback(url) && ['http:', 'https:'].includes(url.protocol));
+  if (url.href !== uri || url.username || url.password || url.hash || !allowed) throw new OAuthError('invalid_redirect_uri');
   return uri;
 }
-function page(language: 'es' | 'en', content: string) {
+function matchesRedirect(registered: string, candidate: string) {
+  if (registered === candidate) return true;
+  const left = new URL(registered), right = new URL(candidate);
+  if (!nativeCallback(left) || !nativeCallback(right)) return false;
+  left.port = ''; right.port = '';
+  return left.href === right.href;
+}
+function page(language: 'es' | 'en', content: string, status = 200) {
   return new Response(`<!doctype html><html lang="${language}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>marKER</title><style>@font-face{font-family:Montserrat;src:url(/fonts/Montserrat-Variable.woff2) format('woff2');font-weight:100 900;font-display:swap}body{margin:0;background:#f7f6f0;color:#292927;font:16px Montserrat,Arial,sans-serif}main{max-width:480px;margin:5vh auto;padding:24px}img{display:block;width:280px;max-width:100%;height:auto;margin-bottom:24px}h1{font-size:24px}p,li{line-height:1.6}small{overflow-wrap:anywhere}button,a{font:inherit}button{padding:12px 18px;border:1px solid #ccc;background:#fff;border-radius:8px;cursor:pointer;margin:8px 8px 8px 0}button[value=allow]{background:#ffad67;border-color:#ffad67;color:#292927}a{color:#292927}</style><main><img src="/brand/marker-logo-v1.png" alt="marKER">${content}</main></html>`, { headers: {
     'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY',
     'Content-Security-Policy': "default-src 'none'; img-src 'self'; font-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",
-  } });
+  }, status });
 }
 
 /** Delegated account access, independent from email/Google/GitHub owner login. */
@@ -81,7 +92,7 @@ export function createMcpAuthorization(options: { db: D1Database; origin: string
   function sameOrigin(request: Request) { if (request.headers.get('Origin') !== origin.origin) throw new OAuthError('access_denied', 403); }
   async function client(id: unknown) {
     if (typeof id !== 'string' || !OPAQUE.test(id)) throw new OAuthError('invalid_client');
-    const value = await store.first<Client>('SELECT * FROM marker_mcp_clients WHERE client_id=? AND expires_at>?', id, now());
+    const value = await store.first<Client>('SELECT * FROM marker_mcp_clients WHERE client_id=? AND (authorized_at IS NOT NULL OR expires_at>?)', id, now());
     if (!value) throw new OAuthError('invalid_client'); return value;
   }
   function redirect(consent: Consent, values: Record<string, string>) {
@@ -105,26 +116,61 @@ export function createMcpAuthorization(options: { db: D1Database; origin: string
     const id = opaque(), issued = now();
     const result = await store.run(`INSERT INTO marker_mcp_clients(client_id,name,redirect_uris,created_at,expires_at)
       SELECT ?,?,?,?,? WHERE (SELECT count(*) FROM marker_mcp_clients)<200`, id, name, JSON.stringify(redirects), issued, issued+90*86400);
-    if (result.meta.changes !== 1) throw new OAuthError('temporarily_unavailable', 429);
+    if (result.meta.changes !== 1) throw new OAuthError('temporarily_unavailable', 429, 'Connection capacity reached. Try again later or contact marKER.');
     return response({ client_id: id, client_id_issued_at: issued, client_name: name, redirect_uris: redirects, token_endpoint_auth_method: 'none', grant_types: ['authorization_code', 'refresh_token'], response_types: ['code'], scope: MCP_SCOPES.join(' ') }, 201);
+  }
+  async function openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string) {
+    await store.cleanup(now());
+    if (!await store.rate(await hash('consent:' + principal.userId), now(), 30, 600)) throw new OAuthError('slow_down', 429);
+    const nonce = opaque(), nonceHash = await hash(nonce), expires = now()+600;
+    if (loginHash) {
+      const tag = opaque();
+      const result = await store.batch([
+        store.statement('UPDATE marker_mcp_login_requests SET consumed_by=? WHERE request_hash=? AND consumed_by IS NULL AND expires_at>? RETURNING request_hash', tag, loginHash, now()),
+        store.statement(`INSERT INTO marker_mcp_requests(request_hash,client_id,user_id,tenant_id,document,expires_at)
+          SELECT ?,client_id,?,?,document,? FROM marker_mcp_login_requests WHERE request_hash=? AND consumed_by=?`, nonceHash, principal.userId, principal.tenantId, expires, loginHash, tag),
+      ]);
+      if (!result[0].results.length) throw new OAuthError('access_denied', 403);
+    } else {
+      await store.run('INSERT INTO marker_mcp_requests(request_hash,client_id,user_id,tenant_id,document,expires_at) VALUES(?,?,?,?,?,?)', nonceHash, app.client_id, principal.userId, principal.tenantId, JSON.stringify(consent), expires);
+    }
+    const es = consent.language === 'es';
+    const labels: Record<string, string> = es ? { 'marker:read': 'Consultar productos, biblioteca y campañas', 'marker:write': 'Crear y editar materiales, campañas y propuestas', 'marker:produce': 'Preparar renders y exportar versiones aprobadas', 'marker:delete': 'Eliminar elementos que marKER permita borrar' } : { 'marker:read': 'Read products, library and campaigns', 'marker:write': 'Create and edit materials, campaigns and proposals', 'marker:produce': 'Prepare renders and export approved versions', 'marker:delete': 'Delete items that marKER allows to be deleted' };
+    return page(consent.language, `<h1>${es ? 'Conectar' : 'Connect'} ${esc(app.name)}</h1><p>${esc(principal.email)}</p><ul>${scopes(consent.scope).map(scope => `<li>${labels[scope]}</li>`).join('')}</ul><small>${es ? 'Volverás a' : 'Return address'}: ${esc(new URL(consent.redirectUri).origin)}</small><form method="post" action="${ROUTE}authorize"><input type="hidden" name="request" value="${nonce}"><button name="decision" value="allow">${es ? 'Permitir' : 'Allow'}</button><button name="decision" value="deny">${es ? 'Cancelar' : 'Cancel'}</button></form>`);
+  }
+  async function startLogin(request: Request, consent: Consent) {
+    await store.cleanup(now());
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    if (!await store.rate(await hash('login:' + ip), now(), 20, 600)) throw new OAuthError('slow_down', 429);
+    const handle = opaque();
+    const result = await store.run(`INSERT INTO marker_mcp_login_requests(request_hash,client_id,document,expires_at)
+      SELECT ?,?,?,? WHERE (SELECT count(*) FROM marker_mcp_login_requests)<2000`, await hash(handle), consent.clientId, JSON.stringify(consent), now()+600);
+    if (result.meta.changes !== 1) throw new OAuthError('temporarily_unavailable', 429);
+    return new Response(null, { status: 303, headers: { Location: origin.origin+'/?mcp_resume='+handle, 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' } });
+  }
+  async function resume(request: Request, url: URL) {
+    const data = params(url.searchParams);
+    if (!OPAQUE.test(data.request || '')) throw new OAuthError('invalid_request');
+    const loginHash = await hash(data.request);
+    const row = await store.first<LoginRow>('SELECT * FROM marker_mcp_login_requests WHERE request_hash=?', loginHash);
+    if (!row || row.consumed_by || row.expires_at <= now()) throw new OAuthError('access_denied', 403);
+    const consent = JSON.parse(row.document) as Consent, app = await client(row.client_id);
+    if (consent.clientId !== app.client_id || consent.resource !== resource || !(JSON.parse(app.redirect_uris) as string[]).some(uri => matchesRedirect(uri, allowedRedirect(consent.redirectUri, origin)))) throw new OAuthError('access_denied', 403);
+    const principal = await options.ownerSession(request);
+    if (!principal) return new Response(null, { status: 303, headers: { Location: origin.origin+'/?mcp_resume='+data.request, 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' } });
+    return openConsent(consent, app, principal, loginHash);
   }
   async function authorize(request: Request, url: URL) {
     if (request.method === 'GET') {
       if (url.search.length > 8192) throw new OAuthError('invalid_request', 413);
       const data = params(url.searchParams), app = await client(data.client_id);
       const redirectUri = allowedRedirect(data.redirect_uri, origin);
-      if (!(JSON.parse(app.redirect_uris) as string[]).includes(redirectUri)) throw new OAuthError('invalid_redirect_uri');
+      if (!(JSON.parse(app.redirect_uris) as string[]).some(uri => matchesRedirect(uri, redirectUri))) throw new OAuthError('invalid_redirect_uri');
       if (data.response_type !== 'code' || data.code_challenge_method !== 'S256' || !OPAQUE.test(data.code_challenge || '')) throw new OAuthError('invalid_request');
       if (data.resource !== resource) throw new OAuthError('invalid_target');
       const consent: Consent = { clientId: app.client_id, redirectUri, challenge: data.code_challenge, scope: scopes(data.scope || 'marker:read').join(' '), state: text(data.state || '', 1024), resource, language: /^(es)(?:\b|[-_])/i.test(data.ui_locales || request.headers.get('Accept-Language') || '') ? 'es' : 'en' };
-      const es = consent.language === 'es', principal = await options.ownerSession(request);
-      if (!principal) return page(consent.language, `<h1>${es ? 'Conecta tu cuenta' : 'Connect your account'}</h1><p>${es ? 'Entra en marKER y vuelve a esta pestaña.' : 'Sign in to marKER, then return to this tab.'}</p><p><a href="${esc(origin.origin)}" target="_blank" rel="noopener noreferrer">${es ? 'Entrar en marKER' : 'Sign in to marKER'}</a></p><a href="${esc(url.href)}">${es ? 'Continuar' : 'Continue'}</a>`);
-      await store.cleanup(now());
-      if (!await store.rate(await hash('consent:' + principal.userId), now(), 30, 600)) throw new OAuthError('slow_down', 429);
-      const nonce = opaque();
-      await store.run('INSERT INTO marker_mcp_requests(request_hash,client_id,user_id,tenant_id,document,expires_at) VALUES(?,?,?,?,?,?)', await hash(nonce), app.client_id, principal.userId, principal.tenantId, JSON.stringify(consent), now()+600);
-      const labels: Record<string, string> = es ? { 'marker:read': 'Consultar productos, biblioteca y campañas', 'marker:write': 'Crear y editar materiales, campañas y propuestas', 'marker:produce': 'Preparar renders y exportar versiones aprobadas', 'marker:delete': 'Eliminar elementos que marKER permita borrar' } : { 'marker:read': 'Read products, library and campaigns', 'marker:write': 'Create and edit materials, campaigns and proposals', 'marker:produce': 'Prepare renders and export approved versions', 'marker:delete': 'Delete items that marKER allows to be deleted' };
-      return page(consent.language, `<h1>${es ? 'Conectar' : 'Connect'} ${esc(app.name)}</h1><p>${esc(principal.email)}</p><ul>${scopes(consent.scope).map(scope => `<li>${labels[scope]}</li>`).join('')}</ul><small>${es ? 'Volverás a' : 'Return address'}: ${esc(new URL(redirectUri).origin)}</small><form method="post" action="${ROUTE}authorize"><input type="hidden" name="request" value="${nonce}"><button name="decision" value="allow">${es ? 'Permitir' : 'Allow'}</button><button name="decision" value="deny">${es ? 'Cancelar' : 'Cancel'}</button></form>`);
+      const principal = await options.ownerSession(request);
+      return principal ? openConsent(consent, app, principal) : startLogin(request, consent);
     }
     sameOrigin(request); const principal = await owner(request), data = await body(request);
     if (!OPAQUE.test(String(data.request)) || !['allow', 'deny'].includes(String(data.decision))) throw new OAuthError('invalid_request');
@@ -144,6 +190,7 @@ export function createMcpAuthorization(options: { db: D1Database; origin: string
         SELECT ?,client_id,user_id,tenant_id,?,?,?,? FROM marker_mcp_requests WHERE request_hash=? AND consumed_by=?`, grantId, consent.scope, resource, issued, issued+FAMILY_TTL, requestHash, tag),
       store.statement(`INSERT INTO marker_mcp_codes(code_hash,grant_id,client_id,redirect_uri,challenge,expires_at)
         SELECT ?,grant_id,client_id,?,?,? FROM marker_mcp_grants WHERE grant_id=?`, await hash(code), consent.redirectUri, consent.challenge, issued+120, grantId),
+      store.statement(`UPDATE marker_mcp_clients SET authorized_at=COALESCE(authorized_at,?) WHERE client_id=? AND EXISTS(SELECT 1 FROM marker_mcp_requests WHERE request_hash=? AND consumed_by=?)`, issued, consent.clientId, requestHash, tag),
     ]);
     if (!result[0].results.length) throw new OAuthError('access_denied', 403);
     return redirect(consent, { code });
@@ -206,27 +253,34 @@ export function createMcpAuthorization(options: { db: D1Database; origin: string
   return {
     async handle(request: Request): Promise<Response | null> {
       const url = new URL(request.url), path = url.pathname;
-      const known = [ROUTE+'register', ROUTE+'authorize', ROUTE+'token', ROUTE+'revoke', '/api/mcp/connections', '/.well-known/oauth-protected-resource/api/mcp', '/.well-known/oauth-authorization-server'];
+      const known = [ROUTE+'register', ROUTE+'authorize', ROUTE+'resume', ROUTE+'token', ROUTE+'revoke', '/api/mcp/connections', '/.well-known/oauth-protected-resource/api/mcp', '/.well-known/oauth-authorization-server'];
       if (!known.includes(path)) return null;
       try {
         if (url.origin !== origin.origin) throw new OAuthError('access_denied', 403);
         await active();
         if (path.startsWith('/.well-known/')) {
           if (request.method !== 'GET') throw new OAuthError('invalid_request', 405);
-          return response(path.includes('oauth-protected-resource') ? { resource, authorization_servers: [origin.origin], scopes_supported: MCP_SCOPES, bearer_methods_supported: ['header'] } : {
+          return response(path.includes('oauth-protected-resource') ? { resource, authorization_servers: [origin.origin], scopes_supported: ['marker:read'], bearer_methods_supported: ['header'] } : {
             issuer: origin.origin, authorization_endpoint: origin.origin+ROUTE+'authorize', token_endpoint: origin.origin+ROUTE+'token', registration_endpoint: origin.origin+ROUTE+'register', revocation_endpoint: origin.origin+ROUTE+'revoke',
             response_types_supported: ['code'], grant_types_supported: ['authorization_code', 'refresh_token'], code_challenge_methods_supported: ['S256'], token_endpoint_auth_methods_supported: ['none'], revocation_endpoint_auth_methods_supported: ['none'], scopes_supported: MCP_SCOPES,
             authorization_response_iss_parameter_supported: true, client_id_metadata_document_supported: false,
           });
         }
-        const methods = path === ROUTE+'authorize' || path === '/api/mcp/connections' ? ['GET', 'POST'] : ['POST'];
+        const methods = path === ROUTE+'resume' ? ['GET'] : path === ROUTE+'authorize' || path === '/api/mcp/connections' ? ['GET', 'POST'] : ['POST'];
         if (!methods.includes(request.method)) throw new OAuthError('invalid_request', 405);
         if (path === ROUTE+'register') return await register(request);
         if (path === ROUTE+'authorize') return await authorize(request, url);
+        if (path === ROUTE+'resume') return await resume(request, url);
         if (path === ROUTE+'token') return await tokens(request);
         if (path === ROUTE+'revoke') return await revoke(request);
         return await connections(request);
-      } catch (error) { return error instanceof OAuthError ? response({ error: error.message }, error.status) : response({ error: 'temporarily_unavailable' }, 503); }
+      } catch (error) {
+        if (path === ROUTE+'resume' && request.method === 'GET') {
+          const es = /^es\b/i.test(request.headers.get('Accept-Language') || '');
+          return page(es ? 'es' : 'en', `<h1>${es ? 'Vuelve a conectar marKER' : 'Reconnect marKER'}</h1><p>${es ? 'Esta conexión venció o no pudo completarse. Vuelve al asistente e inicia la conexión de nuevo.' : 'This connection expired or could not be completed. Return to your assistant and start connecting again.'}</p><a href="${origin.origin}">${es ? 'Abrir marKER' : 'Open marKER'}</a>`, error instanceof OAuthError ? error.status : 503);
+        }
+        return error instanceof OAuthError ? response({ error: error.message, ...(error.description ? { error_description: error.description } : {}) }, error.status) : response({ error: 'temporarily_unavailable' }, 503);
+      }
     },
     async authenticate(request: Request): Promise<McpPrincipal | null> {
       try {

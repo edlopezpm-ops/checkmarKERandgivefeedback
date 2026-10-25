@@ -19,6 +19,13 @@ export function createLocalMcpApi(options: { directory: string; backend(request:
       sql.exec('COMMIT');
     } catch (error) { sql.exec('ROLLBACK'); sql.close(); throw error; }
   }
+  if (!sql.prepare('PRAGMA table_info(marker_mcp_clients)').all().some(column => column.name === 'authorized_at')) {
+    sql.exec('BEGIN IMMEDIATE');
+    try {
+      sql.exec(readFileSync(new URL('../migrations-d1/0011_mcp_connections.sql', import.meta.url), 'utf8'));
+      sql.exec('COMMIT');
+    } catch (error) { sql.exec('ROLLBACK'); sql.close(); throw error; }
+  }
   type LocalStatement = { execute(): { success: boolean; results: unknown[]; meta: { changes: number } }; bind(...values: unknown[]): LocalStatement; first<T>(): Promise<T | null>; all(): Promise<unknown>; run(): Promise<unknown> };
   const adapter = {
     prepare(text: string): LocalStatement {

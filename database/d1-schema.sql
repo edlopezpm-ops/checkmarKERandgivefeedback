@@ -95,7 +95,7 @@ CREATE TABLE marker_auth_sessions (
 CREATE TABLE marker_mcp_clients (
   client_id TEXT PRIMARY KEY, name TEXT NOT NULL, redirect_uris TEXT NOT NULL,
   created_at INTEGER NOT NULL, expires_at INTEGER NOT NULL
-) WITHOUT ROWID;
+, authorized_at INTEGER) WITHOUT ROWID;
 
 CREATE TABLE marker_mcp_codes (
   code_hash TEXT PRIMARY KEY CHECK(length(code_hash)=64),
@@ -122,6 +122,12 @@ CREATE TABLE marker_mcp_grants (
 
 CREATE TABLE marker_mcp_limits (
   key TEXT PRIMARY KEY, window_start INTEGER NOT NULL, count INTEGER NOT NULL
+) WITHOUT ROWID;
+
+CREATE TABLE marker_mcp_login_requests (
+  request_hash TEXT PRIMARY KEY CHECK(length(request_hash)=64),
+  client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,
+  document TEXT NOT NULL, expires_at INTEGER NOT NULL, consumed_by TEXT
 ) WITHOUT ROWID;
 
 CREATE TABLE marker_mcp_requests (
@@ -403,6 +409,10 @@ CREATE TRIGGER marker_mcp_grants_active_update BEFORE UPDATE ON marker_mcp_grant
 CREATE TRIGGER marker_mcp_limits_active_insert BEFORE INSERT ON marker_mcp_limits WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
 
 CREATE TRIGGER marker_mcp_limits_active_update BEFORE UPDATE ON marker_mcp_limits WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
+
+CREATE TRIGGER marker_mcp_login_requests_active_insert BEFORE INSERT ON marker_mcp_login_requests WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
+
+CREATE TRIGGER marker_mcp_login_requests_active_update BEFORE UPDATE ON marker_mcp_login_requests WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
 
 CREATE TRIGGER marker_mcp_requests_active_insert BEFORE INSERT ON marker_mcp_requests WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
 

@@ -2,7 +2,7 @@
 
 All snapshot D1 migrations, including Agents, retained operator identities, Google/GitHub linking, Profile/account lifecycle and additive MCP grants/effects, were applied to an empty in-memory SQLite database. Exported schema-only DDL was replayed into another empty database and checked for integrity and foreign-key consistency. No live/local runtime database was opened.
 
-The reconstructed D1 application schema has **35 tables, 195 columns, 14 explicit indexes and 69 triggers**. Local Studio initialization has **10 tables and 33 columns**. These are different catalogs; local auth/Agents/MCP use additional separate stores as shown in their adapters.
+The reconstructed D1 application schema has **36 tables, 201 columns, 14 explicit indexes and 71 triggers**. Local Studio initialization has **10 tables and 33 columns**. These are different catalogs; local auth/Agents/MCP use additional separate stores as shown in their adapters.
 
 | Reference | Contents |
 | --- | --- |

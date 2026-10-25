@@ -1,6 +1,6 @@
 # D1 application schema
 
-35 tables; 195 columns; 14 explicit indexes; 69 triggers. Applied to an empty in-memory SQLite database and replayed from schema-only DDL. No runtime database or owner records were read. This does not establish remote migration state.
+36 tables; 201 columns; 14 explicit indexes; 71 triggers. Applied to an empty in-memory SQLite database and replayed from schema-only DDL. No runtime database or owner records were read. This does not establish remote migration state.
 
 [SQL](d1-schema.sql) · [Catalog](d1-catalog.json)
 
@@ -21,11 +21,12 @@
 | marker_auth_operator | 4 | 0 | 3 |
 | marker_auth_principals | 5 | 3 | 1 |
 | marker_auth_sessions | 5 | 0 | 1 |
-| marker_mcp_clients | 5 | 0 | 1 |
+| marker_mcp_clients | 6 | 0 | 1 |
 | marker_mcp_codes | 7 | 2 | 1 |
 | marker_mcp_effects | 6 | 1 | 1 |
 | marker_mcp_grants | 9 | 3 | 2 |
 | marker_mcp_limits | 3 | 0 | 1 |
+| marker_mcp_login_requests | 5 | 1 | 1 |
 | marker_mcp_requests | 7 | 3 | 1 |
 | marker_mcp_tokens | 7 | 2 | 3 |
 | marker_profile | 5 | 0 | 0 |
@@ -54,6 +55,7 @@
 - [migrations-d1/0008_github_auth.sql](../source/migrations-d1/0008_github_auth.sql)
 - [migrations-d1/0009_profile_account.sql](../source/migrations-d1/0009_profile_account.sql)
 - [migrations-d1/0010_mcp.sql](../source/migrations-d1/0010_mcp.sql)
+- [migrations-d1/0011_mcp_connections.sql](../source/migrations-d1/0011_mcp_connections.sql)
 
 ## marker_account_lifecycle
 
@@ -356,12 +358,13 @@ CREATE TABLE marker_auth_sessions (
 | redirect_uris | TEXT | True | None | 0 |
 | created_at | INTEGER | True | None | 0 |
 | expires_at | INTEGER | True | None | 0 |
+| authorized_at | INTEGER | False | None | 0 |
 
 ```sql
 CREATE TABLE marker_mcp_clients (
   client_id TEXT PRIMARY KEY, name TEXT NOT NULL, redirect_uris TEXT NOT NULL,
   created_at INTEGER NOT NULL, expires_at INTEGER NOT NULL
-) WITHOUT ROWID;
+, authorized_at INTEGER) WITHOUT ROWID;
 ```
 
 ## marker_mcp_codes
@@ -458,6 +461,28 @@ CREATE TABLE marker_mcp_limits (
   key TEXT PRIMARY KEY, window_start INTEGER NOT NULL, count INTEGER NOT NULL
 ) WITHOUT ROWID;
 ```
+
+## marker_mcp_login_requests
+
+| Column | Type | Not null | Default | PK |
+| --- | --- | --- | --- | --- |
+| request_hash | TEXT | True | None | 1 |
+| client_id | TEXT | True | None | 0 |
+| document | TEXT | True | None | 0 |
+| expires_at | INTEGER | True | None | 0 |
+| consumed_by | TEXT | False | None | 0 |
+
+```sql
+CREATE TABLE marker_mcp_login_requests (
+  request_hash TEXT PRIMARY KEY CHECK(length(request_hash)=64),
+  client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,
+  document TEXT NOT NULL, expires_at INTEGER NOT NULL, consumed_by TEXT
+) WITHOUT ROWID;
+```
+
+| From | Table | To | On delete |
+| --- | --- | --- | --- |
+| client_id | marker_mcp_clients | client_id | CASCADE |
 
 ## marker_mcp_requests
 
@@ -834,6 +859,8 @@ CREATE TABLE marker_workspace (id INTEGER PRIMARY KEY CHECK(id = 1), revision IN
 | marker_mcp_grants_active_update | marker_mcp_grants |
 | marker_mcp_limits_active_insert | marker_mcp_limits |
 | marker_mcp_limits_active_update | marker_mcp_limits |
+| marker_mcp_login_requests_active_insert | marker_mcp_login_requests |
+| marker_mcp_login_requests_active_update | marker_mcp_login_requests |
 | marker_mcp_requests_active_insert | marker_mcp_requests |
 | marker_mcp_requests_active_update | marker_mcp_requests |
 | marker_mcp_tokens_active_insert | marker_mcp_tokens |

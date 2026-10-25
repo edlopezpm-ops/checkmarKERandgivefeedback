@@ -31,15 +31,42 @@ function fixture(t) {
 test('MCP discovery names exact resource and PKCE public-client endpoints without owner cookies',async t=>{
   const f=fixture(t), resource=await(await f.call('/.well-known/oauth-protected-resource/api/mcp')).json();
   assert.equal(resource.resource,RESOURCE);assert.deepEqual(resource.authorization_servers,[ORIGIN]);
+  assert.deepEqual(resource.scopes_supported,['marker:read']);
   const result=await f.call('/.well-known/oauth-authorization-server');const issuer=await result.json();
   assert.equal(issuer.issuer,ORIGIN);assert.deepEqual(issuer.code_challenge_methods_supported,['S256']);assert.deepEqual(issuer.token_endpoint_auth_methods_supported,['none']);
   assert.equal(issuer.client_id_metadata_document_supported,false);assert.equal(result.headers.get('Cache-Control'),'no-store');
   assert.equal(await f.call('/api/something-else'),null);
 });
 
-test('DCR bounds public metadata and requires exact HTTPS redirects in hosted mode',async t=>{
+test('native OAuth callbacks accept literal loopback and a changed port while the code binds the concrete URI',async t=>{
   const f=fixture(t);
-  for(const uri of ['http://assistant.example.invalid/callback','http://127.0.0.1:3000/callback','https://127.0.0.1:3000/callback','https://a:b@assistant.example.invalid/callback',CALLBACK+'#fragment','javascript:alert(1)']) {
+  for(const [registered,redirect] of [
+    ['http://127.0.0.1:54321/callback/native?route=marker','http://127.0.0.1:54322/callback/native?route=marker'],
+    ['http://[::1]:54321/callback','http://[::1]:54322/callback'],
+  ]) {
+    const app=await f.register('Native desktop',registered);
+    const code=await f.approve(app,{redirect_uri:redirect});
+    assert.equal((await f.exchange(app,code,{redirect_uri:registered})).status,400);
+    assert.equal((await f.exchange(app,code,{redirect_uri:redirect,code_verifier:'w'.repeat(43)})).status,400);
+    const result=await f.exchange(app,code,{redirect_uri:redirect});
+    assert.equal(result.status,200,await result.clone().text());
+    assert.ok(await f.authenticate((await result.json()).access_token));
+  }
+});
+
+test('native OAuth port exception never permits changing callback host, path, query or scheme',async t=>{
+  const f=fixture(t),app=await f.register('Native desktop','http://127.0.0.1:54321/callback/native?route=marker');
+  for(const redirect of [
+    'http://[::1]:54322/callback/native?route=marker','http://localhost:54322/callback/native?route=marker',
+    'http://127.0.0.1:54322/callback/other?route=marker','http://127.0.0.1:54322/callback/native?route=other',
+    'https://127.0.0.1:54322/callback/native?route=marker','http://127.0.0.1.evil.invalid:54322/callback/native?route=marker',
+  ]) assert.equal((await f.call(f.authorization(app,{redirect_uri:redirect}),undefined,{owner:'owner'})).status,400,redirect);
+  assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_requests').get().n,0);
+});
+
+test('DCR bounds metadata and rejects plaintext remote or noncanonical redirects',async t=>{
+  const f=fixture(t);
+  for(const uri of ['http://assistant.example.invalid/callback','http://localhost:3000/callback','https://127.0.0.1:3000/callback','http://127.1:3000/callback','http://127.0.0.1:3000/callback#fragment','http://127.0.0.1:3000/callback@evil.invalid#x','http://0.0.0.0:3000/callback','https://a:b@assistant.example.invalid/callback',CALLBACK+'#fragment','javascript:alert(1)']) {
     const result=await f.call('/api/mcp/oauth/register',{client_name:'Test',redirect_uris:[uri]},{json:true});assert.equal(result.status,400);
   }
   for(const data of [{redirect_uris:[CALLBACK],token_endpoint_auth_method:'client_secret_basic'},{redirect_uris:[CALLBACK],grant_types:['password']},{redirect_uris:[]},{redirect_uris:[CALLBACK],client_name:'x'.repeat(101)}])assert.equal((await f.call('/api/mcp/oauth/register',data,{json:true})).status,400);
@@ -47,13 +74,76 @@ test('DCR bounds public metadata and requires exact HTTPS redirects in hosted mo
   assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_clients').get().n,1);
 });
 
-test('anonymous authorize requests do not grant access; signed-in consent escapes names and preserves original logo',async t=>{
+test('anonymous authorization creates only a bounded login handle; signed-in consent preserves the original logo',async t=>{
   const f=fixture(t),app=await f.register('<script>alert(1)</script>');
-  const anonymous=await f.call(f.authorization(app));assert.equal(anonymous.status,200);assert.match(await anonymous.text(),/Sign in to marKER/);
+  const anonymous=await f.call(f.authorization(app));assert.equal(anonymous.status,303);
+  const login=new URL(anonymous.headers.get('Location'));assert.equal(login.origin,ORIGIN);assert.equal(login.pathname,'/');
+  assert.match(login.searchParams.get('mcp_resume'),/^[A-Za-z0-9_-]{43}$/);
+  assert.deepEqual([...login.searchParams.keys()],['mcp_resume']);
   assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_requests').get().n,0);
+  assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_login_requests').get().n,1);
   const result=await f.call(f.authorization(app,{ui_locales:'es'}),undefined,{owner:'owner'}),html=await result.text();
   assert.match(html,/&lt;script&gt;alert\(1\)&lt;\/script&gt;/);assert.match(html,/\/brand\/marker-logo-v1\.png/);assert.match(html,/Permitir/);
   assert.equal(result.headers.get('X-Frame-Options'),'DENY');assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_grants').get().n,0);
+});
+
+test('normal login resumes the exact validated OAuth transaction once, then requires explicit consent',async t=>{
+  const f=fixture(t),app=await f.register('Connected assistant');
+  const started=await f.call(f.authorization(app)),handle=new URL(started.headers.get('Location')).searchParams.get('mcp_resume');
+  const route='/api/mcp/oauth/resume?request='+handle;
+  assert.equal((await f.call(route)).status,303);
+  assert.equal(f.sql.prepare('SELECT consumed_by FROM marker_mcp_login_requests').get().consumed_by,null);
+  const resumed=await f.call(route,undefined,{owner:'owner'});assert.equal(resumed.status,200);
+  const html=await resumed.text(),nonce=/name="request" value="([A-Za-z0-9_-]+)"/.exec(html)?.[1];assert.ok(nonce);
+  assert.match(html,/Connected assistant/);assert.match(html,/assistant.example.invalid/);
+  assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_grants').get().n,0);
+  assert.equal((await f.call(route,undefined,{owner:'owner'})).status,403);
+  const allowed=await f.call('/api/mcp/oauth/authorize',{request:nonce,decision:'allow'},{owner:'owner',headers:{Origin:ORIGIN}});
+  assert.equal(allowed.status,303);const callback=new URL(allowed.headers.get('Location'));
+  assert.equal(callback.origin+callback.pathname,CALLBACK);assert.equal(callback.searchParams.get('state'),'opaque-state');assert.equal(callback.searchParams.get('iss'),ORIGIN);
+  assert.equal((await f.exchange(app,callback.searchParams.get('code'))).status,200);
+});
+
+test('expired or malformed login handles never redirect externally, and interrupted resume can retry safely',async t=>{
+  const f=fixture(t),app=await f.register();
+  const started=await f.call(f.authorization(app)),handle=new URL(started.headers.get('Location')).searchParams.get('mcp_resume');
+  const route='/api/mcp/oauth/resume?request='+handle;
+  for(const query of ['request=https%3A%2F%2Fevil.invalid','request='+handle+'&request='+handle]) {
+    const response=await f.call('/api/mcp/oauth/resume?'+query,undefined,{owner:'owner'});assert.equal(response.status,400);assert.equal(response.headers.get('Location'),null);
+  }
+  f.sql.exec("CREATE TEMP TRIGGER fail_resume BEFORE INSERT ON marker_mcp_requests BEGIN SELECT RAISE(ABORT,'synthetic interrupted resume'); END;");
+  assert.equal((await f.call(route,undefined,{owner:'owner'})).status,503);
+  assert.equal(f.sql.prepare('SELECT consumed_by FROM marker_mcp_login_requests').get().consumed_by,null);
+  f.sql.exec('DROP TRIGGER fail_resume');assert.equal((await f.call(route,undefined,{owner:'owner'})).status,200);
+  const next=await f.call(f.authorization(app)),nextHandle=new URL(next.headers.get('Location')).searchParams.get('mcp_resume');
+  f.sql.prepare('UPDATE marker_mcp_login_requests SET expires_at=0 WHERE consumed_by IS NULL').run();
+  const expired=await f.call('/api/mcp/oauth/resume?request='+nextHandle,undefined,{owner:'owner'});assert.equal(expired.status,403);assert.match(await expired.text(),/Reconnect marKER/);
+  assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_grants').get().n,0);
+});
+
+test('authorized DCR identities survive expiry and revoke while unused registrations expire',async t=>{
+  const f=fixture(t),connection=await f.connect(),unused=await f.register('Never approved');
+  assert.ok(f.sql.prepare('SELECT authorized_at FROM marker_mcp_clients WHERE client_id=?').get(connection.app.client_id).authorized_at);
+  await f.call('/api/mcp/oauth/revoke',{client_id:connection.app.client_id,token:connection.access_token});
+  const future=Date.now()+91*86400_000;t.mock.method(Date,'now',()=>future);
+  await f.register('Cleanup trigger');
+  assert.equal(f.sql.prepare('SELECT client_id FROM marker_mcp_clients WHERE client_id=?').get(unused.client_id),undefined);
+  assert.ok(f.sql.prepare('SELECT client_id FROM marker_mcp_clients WHERE client_id=?').get(connection.app.client_id));
+  const code=await f.approve(connection.app);assert.equal((await f.exchange(connection.app,code)).status,200);
+});
+
+test('only committed Allow promotes a DCR identity; denied or failed grants preserve retry safety',async t=>{
+  const f=fixture(t),app=await f.register();let nonce=await f.consent(app);
+  await f.call('/api/mcp/oauth/authorize',{request:nonce,decision:'deny'},{owner:'owner',headers:{Origin:ORIGIN}});
+  assert.equal(f.sql.prepare('SELECT authorized_at FROM marker_mcp_clients').get().authorized_at,null);
+  nonce=await f.consent(app);
+  f.sql.exec("CREATE TEMP TRIGGER fail_promotion BEFORE UPDATE OF authorized_at ON marker_mcp_clients BEGIN SELECT RAISE(ABORT,'synthetic promotion failure'); END;");
+  const data={request:nonce,decision:'allow'},options={owner:'owner',headers:{Origin:ORIGIN}};
+  assert.equal((await f.call('/api/mcp/oauth/authorize',data,options)).status,503);
+  assert.equal(f.sql.prepare('SELECT authorized_at FROM marker_mcp_clients').get().authorized_at,null);
+  assert.equal(f.sql.prepare('SELECT count(*) AS n FROM marker_mcp_grants').get().n,0);
+  assert.equal(f.sql.prepare('SELECT consumed_by FROM marker_mcp_requests WHERE request_hash=?').get(createHash('sha256').update(nonce).digest('hex')).consumed_by,null);
+  f.sql.exec('DROP TRIGGER fail_promotion');assert.equal((await f.call('/api/mcp/oauth/authorize',data,options)).status,303);
 });
 
 test('authorize rejects redirect substitution, duplicate parameters, unbound resources, PKCE downgrade and unknown scopes',async t=>{

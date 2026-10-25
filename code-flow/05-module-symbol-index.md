@@ -1,6 +1,6 @@
 # Module and symbol index
 
-112 parsed modules; 13792 declarations/fields, 536 imports/re-exports, 17205 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
+115 parsed modules; 13951 declarations/fields, 549 imports/re-exports, 17676 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
 
 | Module | Symbols | Imports | Calls |
 | --- | --- | --- | --- |
@@ -17,11 +17,11 @@
 | [server/github-auth.js](../source/server/github-auth.js) | 82 | 2 | 201 |
 | [server/google-auth.js](../source/server/google-auth.js) | 96 | 2 | 240 |
 | [server/local.ts](../source/server/local.ts) | 11 | 4 | 18 |
-| [server/mcp-auth-store.ts](../source/server/mcp-auth-store.ts) | 12 | 0 | 17 |
-| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 168 | 1 | 297 |
-| [server/mcp-local.ts](../source/server/mcp-local.ts) | 37 | 5 | 47 |
-| [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 127 | 3 | 252 |
-| [server/mcp.ts](../source/server/mcp.ts) | 55 | 7 | 118 |
+| [server/mcp-auth-store.ts](../source/server/mcp-auth-store.ts) | 12 | 0 | 18 |
+| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 197 | 1 | 345 |
+| [server/mcp-local.ts](../source/server/mcp-local.ts) | 38 | 5 | 57 |
+| [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 128 | 3 | 252 |
+| [server/mcp.ts](../source/server/mcp.ts) | 59 | 7 | 124 |
 | [server/native-auth-store.js](../source/server/native-auth-store.js) | 21 | 0 | 67 |
 | [server/native-auth.d.ts](../source/server/native-auth.d.ts) | 32 | 0 | 0 |
 | [server/native-auth.js](../source/server/native-auth.js) | 89 | 5 | 236 |
@@ -36,16 +36,16 @@
 | [server/tenant-auth.js](../source/server/tenant-auth.js) | 16 | 0 | 32 |
 | [server/worker.ts](../source/server/worker.ts) | 37 | 11 | 108 |
 | [src/App.tsx](../source/src/App.tsx) | 33 | 8 | 55 |
-| [src/console/Agents.tsx](../source/src/console/Agents.tsx) | 143 | 13 | 416 |
+| [src/console/Agents.tsx](../source/src/console/Agents.tsx) | 146 | 14 | 421 |
 | [src/console/Authentication.tsx](../source/src/console/Authentication.tsx) | 61 | 4 | 32 |
-| [src/console/Console.tsx](../source/src/console/Console.tsx) | 176 | 12 | 555 |
+| [src/console/Console.tsx](../source/src/console/Console.tsx) | 176 | 13 | 557 |
 | [src/console/EnvironmentSettings.tsx](../source/src/console/EnvironmentSettings.tsx) | 22 | 3 | 24 |
 | [src/console/ErrorNotice.tsx](../source/src/console/ErrorNotice.tsx) | 7 | 3 | 5 |
 | [src/console/Help.tsx](../source/src/console/Help.tsx) | 25 | 6 | 32 |
-| [src/console/McpConnections.tsx](../source/src/console/McpConnections.tsx) | 19 | 3 | 41 |
+| [src/console/McpConnections.tsx](../source/src/console/McpConnections.tsx) | 24 | 3 | 52 |
 | [src/console/Policies.tsx](../source/src/console/Policies.tsx) | 17 | 3 | 15 |
 | [src/console/Profile.tsx](../source/src/console/Profile.tsx) | 81 | 4 | 172 |
-| [src/console/Settings.tsx](../source/src/console/Settings.tsx) | 52 | 7 | 188 |
+| [src/console/Settings.tsx](../source/src/console/Settings.tsx) | 54 | 7 | 192 |
 | [src/console/Studio.tsx](../source/src/console/Studio.tsx) | 196 | 10 | 711 |
 | [src/console/StudioAnalysis.tsx](../source/src/console/StudioAnalysis.tsx) | 67 | 5 | 141 |
 | [src/console/StudioPlanner.tsx](../source/src/console/StudioPlanner.tsx) | 74 | 6 | 271 |
@@ -53,7 +53,8 @@
 | [src/console/Turnstile.tsx](../source/src/console/Turnstile.tsx) | 47 | 4 | 59 |
 | [src/console/agent-context.ts](../source/src/console/agent-context.ts) | 29 | 1 | 1 |
 | [src/console/agent-stream.ts](../source/src/console/agent-stream.ts) | 4 | 0 | 5 |
-| [src/console/help-guides.ts](../source/src/console/help-guides.ts) | 19 | 0 | 126 |
+| [src/console/help-guides.ts](../source/src/console/help-guides.ts) | 19 | 0 | 122 |
+| [src/console/mcp-resume.ts](../source/src/console/mcp-resume.ts) | 20 | 0 | 27 |
 | [src/core/agents.ts](../source/src/core/agents.ts) | 122 | 2 | 13 |
 | [src/core/client.ts](../source/src/core/client.ts) | 9 | 1 | 12 |
 | [src/core/domain.ts](../source/src/core/domain.ts) | 105 | 0 | 159 |
@@ -88,14 +89,16 @@
 | [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 81 | 5 | 299 |
 | [tests/google-auth.test.ts](../source/tests/google-auth.test.ts) | 128 | 5 | 416 |
 | [tests/hosted.test.ts](../source/tests/hosted.test.ts) | 8 | 3 | 46 |
-| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 108 | 6 | 328 |
-| [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 72 | 12 | 174 |
+| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 147 | 6 | 482 |
+| [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 89 | 13 | 217 |
+| [tests/mcp-local-migration.test.ts](../source/tests/mcp-local-migration.test.ts) | 8 | 7 | 42 |
+| [tests/mcp-resume.test.ts](../source/tests/mcp-resume.test.ts) | 30 | 3 | 112 |
 | [tests/mcp-tools.test.ts](../source/tests/mcp-tools.test.ts) | 89 | 10 | 274 |
 | [tests/motion.test.ts](../source/tests/motion.test.ts) | 31 | 4 | 122 |
 | [tests/native-auth.test.ts](../source/tests/native-auth.test.ts) | 97 | 5 | 302 |
 | [tests/profile-local.test.ts](../source/tests/profile-local.test.ts) | 16 | 6 | 60 |
 | [tests/profile-ui.test.ts](../source/tests/profile-ui.test.ts) | 60 | 5 | 241 |
-| [tests/profile.test.ts](../source/tests/profile.test.ts) | 118 | 7 | 437 |
+| [tests/profile.test.ts](../source/tests/profile.test.ts) | 118 | 7 | 447 |
 | [tests/scheduler.test.ts](../source/tests/scheduler.test.ts) | 29 | 3 | 83 |
 | [tests/studio-analysis.test.ts](../source/tests/studio-analysis.test.ts) | 20 | 10 | 113 |
 | [tests/studio-api.test.ts](../source/tests/studio-api.test.ts) | 116 | 11 | 437 |
@@ -313,41 +316,47 @@
 | --- | --- | --- | --- |
 | [server/mcp-auth.ts:4](../source/server/mcp-auth.ts#L4) |  | TypeAliasDeclaration | `McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] }` |
 | [server/mcp-auth.ts:5](../source/server/mcp-auth.ts#L5) |  | TypeAliasDeclaration | `Owner = { userId: string; tenantId: string; email: string }` |
-| [server/mcp-auth.ts:6](../source/server/mcp-auth.ts#L6) |  | TypeAliasDeclaration | `Client = { client_id: string; name: string; redirect_uris: string; expires_at: number }` |
+| [server/mcp-auth.ts:6](../source/server/mcp-auth.ts#L6) |  | TypeAliasDeclaration | `Client = { client_id: string; name: string; redirect_uris: string; expires_at: number; authorized_at: number \| null }` |
 | [server/mcp-auth.ts:7](../source/server/mcp-auth.ts#L7) |  | TypeAliasDeclaration | `Grant = { grant_id: string; client_id: string; user_id: string; tenant_id: string; scopes: string; resource: string; expires_at: number; revoked_at: number \| null }` |
 | [server/mcp-auth.ts:8](../source/server/mcp-auth.ts#L8) |  | TypeAliasDeclaration | `Consent = { clientId: string; redirectUri: string; challenge: string; scope: string; state: string; resource: string; language: 'es' \| 'en' }` |
 | [server/mcp-auth.ts:9](../source/server/mcp-auth.ts#L9) |  | TypeAliasDeclaration | `ConsentRow = { document: string; user_id: string; tenant_id: string; expires_at: number; consumed_by: string \| null }` |
-| [server/mcp-auth.ts:10](../source/server/mcp-auth.ts#L10) |  | TypeAliasDeclaration | `CodeRow = Grant & { redirect_uri: string; challenge: string; code_expires_at: number; consumed_by: string \| null }` |
-| [server/mcp-auth.ts:11](../source/server/mcp-auth.ts#L11) |  | TypeAliasDeclaration | `TokenRow = Grant & { refresh_expires_at: number; consumed_by: string \| null }` |
-| [server/mcp-auth.ts:14](../source/server/mcp-auth.ts#L14) |  | ClassDeclaration | `OAuthError` |
-| [server/mcp-auth.ts:16](../source/server/mcp-auth.ts#L16) | OAuthError | Constructor | `constructor(error: string, status?: inferred): inferred` |
-| [server/mcp-auth.ts:18](../source/server/mcp-auth.ts#L18) |  | FunctionDeclaration | `opaque(): inferred` |
-| [server/mcp-auth.ts:19](../source/server/mcp-auth.ts#L19) |  | FunctionDeclaration | `digest(value: string): inferred` |
-| [server/mcp-auth.ts:20](../source/server/mcp-auth.ts#L20) |  | FunctionDeclaration | `hash(value: string): inferred` |
-| [server/mcp-auth.ts:21](../source/server/mcp-auth.ts#L21) |  | FunctionDeclaration | `challenge(value: string): inferred` |
-| [server/mcp-auth.ts:22](../source/server/mcp-auth.ts#L22) |  | FunctionVariable | `esc(value: string): inferred` |
-| [server/mcp-auth.ts:23](../source/server/mcp-auth.ts#L23) |  | FunctionDeclaration | `response(value: unknown, status?: inferred): inferred` |
-| [server/mcp-auth.ts:27](../source/server/mcp-auth.ts#L27) |  | FunctionDeclaration | `scopes(value: string): inferred` |
-| [server/mcp-auth.ts:32](../source/server/mcp-auth.ts#L32) |  | FunctionDeclaration | `params(value: URLSearchParams): inferred` |
-| [server/mcp-auth.ts:37](../source/server/mcp-auth.ts#L37) |  | FunctionDeclaration | `body(request: Request, json?: inferred): Promise<Record<string, unknown>>` |
-| [server/mcp-auth.ts:56](../source/server/mcp-auth.ts#L56) |  | FunctionDeclaration | `text(value: unknown, max?: inferred): inferred` |
-| [server/mcp-auth.ts:57](../source/server/mcp-auth.ts#L57) |  | FunctionDeclaration | `loopback(url: URL): inferred` |
-| [server/mcp-auth.ts:58](../source/server/mcp-auth.ts#L58) |  | FunctionDeclaration | `allowedRedirect(value: unknown, origin: URL): inferred` |
-| [server/mcp-auth.ts:63](../source/server/mcp-auth.ts#L63) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string): inferred` |
-| [server/mcp-auth.ts:71](../source/server/mcp-auth.ts#L71) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
-| [server/mcp-auth.ts:75](../source/server/mcp-auth.ts#L75) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
-| [server/mcp-auth.ts:76](../source/server/mcp-auth.ts#L76) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
-| [server/mcp-auth.ts:80](../source/server/mcp-auth.ts#L80) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
-| [server/mcp-auth.ts:81](../source/server/mcp-auth.ts#L81) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
-| [server/mcp-auth.ts:82](../source/server/mcp-auth.ts#L82) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
-| [server/mcp-auth.ts:87](../source/server/mcp-auth.ts#L87) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
-| [server/mcp-auth.ts:92](../source/server/mcp-auth.ts#L92) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
-| [server/mcp-auth.ts:111](../source/server/mcp-auth.ts#L111) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
-| [server/mcp-auth.ts:151](../source/server/mcp-auth.ts#L151) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
-| [server/mcp-auth.ts:186](../source/server/mcp-auth.ts#L186) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
-| [server/mcp-auth.ts:195](../source/server/mcp-auth.ts#L195) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
-| [server/mcp-auth.ts:207](../source/server/mcp-auth.ts#L207) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp-auth.ts:231](../source/server/mcp-auth.ts#L231) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
+| [server/mcp-auth.ts:10](../source/server/mcp-auth.ts#L10) |  | TypeAliasDeclaration | `LoginRow = { document: string; client_id: string; expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:11](../source/server/mcp-auth.ts#L11) |  | TypeAliasDeclaration | `CodeRow = Grant & { redirect_uri: string; challenge: string; code_expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:12](../source/server/mcp-auth.ts#L12) |  | TypeAliasDeclaration | `TokenRow = Grant & { refresh_expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:15](../source/server/mcp-auth.ts#L15) |  | ClassDeclaration | `OAuthError` |
+| [server/mcp-auth.ts:18](../source/server/mcp-auth.ts#L18) | OAuthError | Constructor | `constructor(error: string, status?: inferred, description?: string): inferred` |
+| [server/mcp-auth.ts:20](../source/server/mcp-auth.ts#L20) |  | FunctionDeclaration | `opaque(): inferred` |
+| [server/mcp-auth.ts:21](../source/server/mcp-auth.ts#L21) |  | FunctionDeclaration | `digest(value: string): inferred` |
+| [server/mcp-auth.ts:22](../source/server/mcp-auth.ts#L22) |  | FunctionDeclaration | `hash(value: string): inferred` |
+| [server/mcp-auth.ts:23](../source/server/mcp-auth.ts#L23) |  | FunctionDeclaration | `challenge(value: string): inferred` |
+| [server/mcp-auth.ts:24](../source/server/mcp-auth.ts#L24) |  | FunctionVariable | `esc(value: string): inferred` |
+| [server/mcp-auth.ts:25](../source/server/mcp-auth.ts#L25) |  | FunctionDeclaration | `response(value: unknown, status?: inferred): inferred` |
+| [server/mcp-auth.ts:29](../source/server/mcp-auth.ts#L29) |  | FunctionDeclaration | `scopes(value: string): inferred` |
+| [server/mcp-auth.ts:34](../source/server/mcp-auth.ts#L34) |  | FunctionDeclaration | `params(value: URLSearchParams): inferred` |
+| [server/mcp-auth.ts:39](../source/server/mcp-auth.ts#L39) |  | FunctionDeclaration | `body(request: Request, json?: inferred): Promise<Record<string, unknown>>` |
+| [server/mcp-auth.ts:58](../source/server/mcp-auth.ts#L58) |  | FunctionDeclaration | `text(value: unknown, max?: inferred): inferred` |
+| [server/mcp-auth.ts:59](../source/server/mcp-auth.ts#L59) |  | FunctionDeclaration | `loopback(url: URL): inferred` |
+| [server/mcp-auth.ts:60](../source/server/mcp-auth.ts#L60) |  | FunctionDeclaration | `nativeCallback(url: URL): inferred` |
+| [server/mcp-auth.ts:61](../source/server/mcp-auth.ts#L61) |  | FunctionDeclaration | `allowedRedirect(value: unknown, origin: URL): inferred` |
+| [server/mcp-auth.ts:67](../source/server/mcp-auth.ts#L67) |  | FunctionDeclaration | `matchesRedirect(registered: string, candidate: string): inferred` |
+| [server/mcp-auth.ts:74](../source/server/mcp-auth.ts#L74) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string, status?: inferred): inferred` |
+| [server/mcp-auth.ts:82](../source/server/mcp-auth.ts#L82) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
+| [server/mcp-auth.ts:86](../source/server/mcp-auth.ts#L86) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
+| [server/mcp-auth.ts:87](../source/server/mcp-auth.ts#L87) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
+| [server/mcp-auth.ts:91](../source/server/mcp-auth.ts#L91) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
+| [server/mcp-auth.ts:92](../source/server/mcp-auth.ts#L92) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
+| [server/mcp-auth.ts:93](../source/server/mcp-auth.ts#L93) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
+| [server/mcp-auth.ts:98](../source/server/mcp-auth.ts#L98) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
+| [server/mcp-auth.ts:103](../source/server/mcp-auth.ts#L103) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
+| [server/mcp-auth.ts:122](../source/server/mcp-auth.ts#L122) | createMcpAuthorization | FunctionDeclaration | `openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string): inferred` |
+| [server/mcp-auth.ts:141](../source/server/mcp-auth.ts#L141) | createMcpAuthorization | FunctionDeclaration | `startLogin(request: Request, consent: Consent): inferred` |
+| [server/mcp-auth.ts:151](../source/server/mcp-auth.ts#L151) | createMcpAuthorization | FunctionDeclaration | `resume(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:163](../source/server/mcp-auth.ts#L163) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:198](../source/server/mcp-auth.ts#L198) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
+| [server/mcp-auth.ts:233](../source/server/mcp-auth.ts#L233) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
+| [server/mcp-auth.ts:242](../source/server/mcp-auth.ts#L242) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
+| [server/mcp-auth.ts:254](../source/server/mcp-auth.ts#L254) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp-auth.ts:285](../source/server/mcp-auth.ts#L285) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
 
 ## server/mcp-local.ts
 
@@ -355,22 +364,22 @@
 | --- | --- | --- | --- |
 | [server/mcp-local.ts:9](../source/server/mcp-local.ts#L9) |  | FunctionDeclaration | `createLocalMcpApi(options: { directory: string; backend(request: Request): Promise<Response> }): inferred` |
 | [server/mcp-local.ts:9](../source/server/mcp-local.ts#L9) | createLocalMcpApi | MethodSignature | `backend(request: Request): Promise<Response>` |
-| [server/mcp-local.ts:22](../source/server/mcp-local.ts#L22) | createLocalMcpApi | TypeAliasDeclaration | `LocalStatement = { execute(): { success: boolean; results: unknown[]; meta: { changes: number } }; bind(...values: unknown[]): LocalStatement; first<T>(): Promise<T \| null>; all(): Promise<unknown>; run(): Promise<unknown> }` |
-| [server/mcp-local.ts:22](../source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `execute(): { success: boolean; results: unknown[]; meta: { changes: number } }` |
-| [server/mcp-local.ts:22](../source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `bind(...values: unknown[]): LocalStatement` |
-| [server/mcp-local.ts:22](../source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `first<T>(): Promise<T \| null>` |
-| [server/mcp-local.ts:22](../source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `all(): Promise<unknown>` |
-| [server/mcp-local.ts:22](../source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `run(): Promise<unknown>` |
-| [server/mcp-local.ts:24](../source/server/mcp-local.ts#L24) | createLocalMcpApi | MethodDeclaration | `prepare(text: string): LocalStatement` |
-| [server/mcp-local.ts:27](../source/server/mcp-local.ts#L27) | createLocalMcpApi.prepare | MethodDeclaration | `bind(...values: inferred): inferred` |
-| [server/mcp-local.ts:28](../source/server/mcp-local.ts#L28) | createLocalMcpApi.prepare | MethodDeclaration | `execute(): inferred` |
-| [server/mcp-local.ts:29](../source/server/mcp-local.ts#L29) | createLocalMcpApi.prepare | MethodDeclaration | `first<T>(): inferred` |
-| [server/mcp-local.ts:30](../source/server/mcp-local.ts#L30) | createLocalMcpApi.prepare | MethodDeclaration | `all(): inferred` |
-| [server/mcp-local.ts:31](../source/server/mcp-local.ts#L31) | createLocalMcpApi.prepare | MethodDeclaration | `run(): inferred` |
-| [server/mcp-local.ts:35](../source/server/mcp-local.ts#L35) | createLocalMcpApi | MethodDeclaration | `batch(statements: LocalStatement[]): inferred` |
-| [server/mcp-local.ts:44](../source/server/mcp-local.ts#L44) | createLocalMcpApi | MethodDeclaration | `close(): inferred` |
-| [server/mcp-local.ts:45](../source/server/mcp-local.ts#L45) | createLocalMcpApi | MethodDeclaration | `handle(request: Request): inferred` |
-| [server/mcp-local.ts:51](../source/server/mcp-local.ts#L51) | createLocalMcpApi.handle | MethodDeclaration | `assertActive(): inferred` |
+| [server/mcp-local.ts:29](../source/server/mcp-local.ts#L29) | createLocalMcpApi | TypeAliasDeclaration | `LocalStatement = { execute(): { success: boolean; results: unknown[]; meta: { changes: number } }; bind(...values: unknown[]): LocalStatement; first<T>(): Promise<T \| null>; all(): Promise<unknown>; run(): Promise<unknown> }` |
+| [server/mcp-local.ts:29](../source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `execute(): { success: boolean; results: unknown[]; meta: { changes: number } }` |
+| [server/mcp-local.ts:29](../source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `bind(...values: unknown[]): LocalStatement` |
+| [server/mcp-local.ts:29](../source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `first<T>(): Promise<T \| null>` |
+| [server/mcp-local.ts:29](../source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `all(): Promise<unknown>` |
+| [server/mcp-local.ts:29](../source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `run(): Promise<unknown>` |
+| [server/mcp-local.ts:31](../source/server/mcp-local.ts#L31) | createLocalMcpApi | MethodDeclaration | `prepare(text: string): LocalStatement` |
+| [server/mcp-local.ts:34](../source/server/mcp-local.ts#L34) | createLocalMcpApi.prepare | MethodDeclaration | `bind(...values: inferred): inferred` |
+| [server/mcp-local.ts:35](../source/server/mcp-local.ts#L35) | createLocalMcpApi.prepare | MethodDeclaration | `execute(): inferred` |
+| [server/mcp-local.ts:36](../source/server/mcp-local.ts#L36) | createLocalMcpApi.prepare | MethodDeclaration | `first<T>(): inferred` |
+| [server/mcp-local.ts:37](../source/server/mcp-local.ts#L37) | createLocalMcpApi.prepare | MethodDeclaration | `all(): inferred` |
+| [server/mcp-local.ts:38](../source/server/mcp-local.ts#L38) | createLocalMcpApi.prepare | MethodDeclaration | `run(): inferred` |
+| [server/mcp-local.ts:42](../source/server/mcp-local.ts#L42) | createLocalMcpApi | MethodDeclaration | `batch(statements: LocalStatement[]): inferred` |
+| [server/mcp-local.ts:51](../source/server/mcp-local.ts#L51) | createLocalMcpApi | MethodDeclaration | `close(): inferred` |
+| [server/mcp-local.ts:52](../source/server/mcp-local.ts#L52) | createLocalMcpApi | MethodDeclaration | `handle(request: Request): inferred` |
+| [server/mcp-local.ts:58](../source/server/mcp-local.ts#L58) | createLocalMcpApi.handle | MethodDeclaration | `assertActive(): inferred` |
 
 ## server/mcp-tools.ts
 
@@ -379,7 +388,7 @@
 | [server/mcp-tools.ts:7](../source/server/mcp-tools.ts#L7) |  | TypeAliasDeclaration | `Schema = { type: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; enum?: readonly unknown[]; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number; minItems?: number; maxItems?: number; uniqueItems?: boolean }` |
 | [server/mcp-tools.ts:8](../source/server/mcp-tools.ts#L8) |  | TypeAliasDeclaration | `Args = Record<string, unknown>` |
 | [server/mcp-tools.ts:9](../source/server/mcp-tools.ts#L9) |  | TypeAliasDeclaration | `McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] }` |
-| [server/mcp-tools.ts:10](../source/server/mcp-tools.ts#L10) |  | TypeAliasDeclaration | `McpToolResult = { content: Array<{ type: "text"; text: string }>; structuredContent: Record<string, unknown>; isError?: boolean }` |
+| [server/mcp-tools.ts:10](../source/server/mcp-tools.ts#L10) |  | TypeAliasDeclaration | `McpToolResult = { content: Array<{ type: "text"; text: string }>; structuredContent: Record<string, unknown>; isError?: boolean; _meta?: Record<string, unknown> }` |
 | [server/mcp-tools.ts:11](../source/server/mcp-tools.ts#L11) |  | TypeAliasDeclaration | `McpToolDescriptor = { name: string; description: string; inputSchema: Schema; annotations: { readOnlyHint: boolean; destructiveHint: boolean; idempotentHint: boolean; openWorldHint: boolean }; scopes: string[] }` |
 | [server/mcp-tools.ts:13](../source/server/mcp-tools.ts#L13) |  | FunctionVariable | `string(maxLength: number): Schema` |
 | [server/mcp-tools.ts:14](../source/server/mcp-tools.ts#L14) |  | FunctionVariable | `choice(...values: string[]): Schema` |
@@ -415,14 +424,16 @@
 | [server/mcp.ts:13](../source/server/mcp.ts#L13) |  | MethodSignature | `assertActive(): Promise<void>` |
 | [server/mcp.ts:14](../source/server/mcp.ts#L14) |  | MethodSignature | `backend(request: Request): Promise<Response>` |
 | [server/mcp.ts:19](../source/server/mcp.ts#L19) |  | FunctionDeclaration | `failure(code: string, status: number, message: string): McpToolResult` |
-| [server/mcp.ts:23](../source/server/mcp.ts#L23) |  | FunctionDeclaration | `canonical(value: unknown): string` |
-| [server/mcp.ts:28](../source/server/mcp.ts#L28) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
-| [server/mcp.ts:36](../source/server/mcp.ts#L36) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
-| [server/mcp.ts:67](../source/server/mcp.ts#L67) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
-| [server/mcp.ts:70](../source/server/mcp.ts#L70) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
-| [server/mcp.ts:73](../source/server/mcp.ts#L73) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp.ts:86](../source/server/mcp.ts#L86) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
-| [server/mcp.ts:89](../source/server/mcp.ts#L89) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
+| [server/mcp.ts:23](../source/server/mcp.ts#L23) |  | FunctionDeclaration | `bearerChallenge(origin: string, scopes: string[], insufficient?: inferred): string` |
+| [server/mcp.ts:31](../source/server/mcp.ts#L31) |  | FunctionDeclaration | `insufficientScope(origin: string, scopes: string[]): McpToolResult` |
+| [server/mcp.ts:37](../source/server/mcp.ts#L37) |  | FunctionDeclaration | `canonical(value: unknown): string` |
+| [server/mcp.ts:42](../source/server/mcp.ts#L42) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
+| [server/mcp.ts:50](../source/server/mcp.ts#L50) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
+| [server/mcp.ts:81](../source/server/mcp.ts#L81) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
+| [server/mcp.ts:84](../source/server/mcp.ts#L84) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
+| [server/mcp.ts:87](../source/server/mcp.ts#L87) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp.ts:100](../source/server/mcp.ts#L100) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
+| [server/mcp.ts:103](../source/server/mcp.ts#L103) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
 
 ## server/native-auth-store.js
 
@@ -734,32 +745,32 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Agents.tsx:15](../source/src/console/Agents.tsx#L15) |  | FunctionDeclaration | `agentApi<T>(path?: inferred, data?: unknown, method?: inferred): Promise<T>` |
-| [src/console/Agents.tsx:22](../source/src/console/Agents.tsx#L22) |  | FunctionVariable | `selection(context: StudioAgentContext): AgentContextSelection` |
-| [src/console/Agents.tsx:23](../source/src/console/Agents.tsx#L23) |  | FunctionVariable | `selectionKey(context: AgentContextSelection): inferred` |
-| [src/console/Agents.tsx:24](../source/src/console/Agents.tsx#L24) |  | FunctionVariable | `readStored(key: string): inferred` |
-| [src/console/Agents.tsx:25](../source/src/console/Agents.tsx#L25) |  | FunctionVariable | `store(key: string, value: string): inferred` |
-| [src/console/Agents.tsx:26](../source/src/console/Agents.tsx#L26) |  | TypeAliasDeclaration | `Props = { open: boolean; context: StudioAgentContext; workspace: Workspace; onClose: () => void; onStudioChange: (update: Omit<AgentStudioUpdate, "nonce">) => void; onOpenStudio: () => void }` |
-| [src/console/Agents.tsx:28](../source/src/console/Agents.tsx#L28) |  | FunctionDeclaration | `Agents({ open, context, workspace, onClose, onStudioChange, onOpenStudio }: Props): inferred` |
-| [src/console/Agents.tsx:30](../source/src/console/Agents.tsx#L30) | Agents | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Agents.tsx:47](../source/src/console/Agents.tsx#L47) | Agents | FunctionVariable | `update(): inferred` |
-| [src/console/Agents.tsx:51](../source/src/console/Agents.tsx#L51) | Agents | FunctionDeclaration | `loadOverview(): inferred` |
-| [src/console/Agents.tsx:56](../source/src/console/Agents.tsx#L56) | Agents | FunctionDeclaration | `loadDetail(id?: inferred): inferred` |
-| [src/console/Agents.tsx:64](../source/src/console/Agents.tsx#L64) | Agents | FunctionVariable | `refresh(): inferred` |
-| [src/console/Agents.tsx:74](../source/src/console/Agents.tsx#L74) | Agents | FunctionDeclaration | `action(operation: () => Promise<void>): inferred` |
-| [src/console/Agents.tsx:78](../source/src/console/Agents.tsx#L78) | Agents | FunctionDeclaration | `createSession(): Promise<AgentSession>` |
-| [src/console/Agents.tsx:82](../source/src/console/Agents.tsx#L82) | Agents | FunctionDeclaration | `submit(event?: FormEvent, customPrompt?: string): inferred` |
-| [src/console/Agents.tsx:101](../source/src/console/Agents.tsx#L101) | Agents | FunctionVariable | `psQuote(value: string): inferred` |
-| [src/console/Agents.tsx:103](../source/src/console/Agents.tsx#L103) | Agents | FunctionVariable | `status(value: string): inferred` |
-| [src/console/Agents.tsx:104](../source/src/console/Agents.tsx#L104) | Agents | FunctionDeclaration | `keyboard(event: React.KeyboardEvent): inferred` |
-| [src/console/Agents.tsx:158](../source/src/console/Agents.tsx#L158) |  | FunctionDeclaration | `Proposal({ active, capturedVariant, proposal, context, workspace, onReload, onStudioChange, onOpenStudio }: { active: boolean; capturedVariant?: StudioVariant; proposal: AgentProposal; context: StudioAgentContext; workspace: Workspace; onReload: () => Promise<void>; onStudioChange: Props["onStudioChange"]; onOpenStudio: () => void }): inferred` |
-| [src/console/Agents.tsx:160](../source/src/console/Agents.tsx#L160) | Proposal | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Agents.tsx:162](../source/src/console/Agents.tsx#L162) | Proposal | FunctionVariable | `copy({ title, hook, body, cta }: AgentCopy): AgentCopy` |
-| [src/console/Agents.tsx:167](../source/src/console/Agents.tsx#L167) | Proposal | TypeAliasDeclaration | `Production = { variant: StudioVariant; jobs: Array<{ id: string; variantId: string; recipeRevision: number; status: string; error?: string }> }` |
-| [src/console/Agents.tsx:175](../source/src/console/Agents.tsx#L175) | Proposal | FunctionDeclaration | `refreshProduction(): inferred` |
-| [src/console/Agents.tsx:193](../source/src/console/Agents.tsx#L193) | Proposal | FunctionDeclaration | `perform(operation: () => Promise<void>): inferred` |
-| [src/console/Agents.tsx:194](../source/src/console/Agents.tsx#L194) | Proposal | FunctionDeclaration | `saveEdits(): inferred` |
-| [src/console/Agents.tsx:195](../source/src/console/Agents.tsx#L195) | Proposal | FunctionVariable | `field(label: string, name: keyof AgentCopy, max: number, multiline?: inferred): inferred` |
+| [src/console/Agents.tsx:16](../source/src/console/Agents.tsx#L16) |  | FunctionDeclaration | `agentApi<T>(path?: inferred, data?: unknown, method?: inferred): Promise<T>` |
+| [src/console/Agents.tsx:23](../source/src/console/Agents.tsx#L23) |  | FunctionVariable | `selection(context: StudioAgentContext): AgentContextSelection` |
+| [src/console/Agents.tsx:24](../source/src/console/Agents.tsx#L24) |  | FunctionVariable | `selectionKey(context: AgentContextSelection): inferred` |
+| [src/console/Agents.tsx:25](../source/src/console/Agents.tsx#L25) |  | FunctionVariable | `readStored(key: string): inferred` |
+| [src/console/Agents.tsx:26](../source/src/console/Agents.tsx#L26) |  | FunctionVariable | `store(key: string, value: string): inferred` |
+| [src/console/Agents.tsx:27](../source/src/console/Agents.tsx#L27) |  | TypeAliasDeclaration | `Props = { open: boolean; context: StudioAgentContext; workspace: Workspace; onClose: () => void; onStudioChange: (update: Omit<AgentStudioUpdate, "nonce">) => void; onOpenStudio: () => void }` |
+| [src/console/Agents.tsx:29](../source/src/console/Agents.tsx#L29) |  | FunctionDeclaration | `Agents({ open, context, workspace, onClose, onStudioChange, onOpenStudio }: Props): inferred` |
+| [src/console/Agents.tsx:31](../source/src/console/Agents.tsx#L31) | Agents | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Agents.tsx:51](../source/src/console/Agents.tsx#L51) | Agents | FunctionVariable | `update(): inferred` |
+| [src/console/Agents.tsx:55](../source/src/console/Agents.tsx#L55) | Agents | FunctionDeclaration | `loadOverview(): inferred` |
+| [src/console/Agents.tsx:60](../source/src/console/Agents.tsx#L60) | Agents | FunctionDeclaration | `loadDetail(id?: inferred): inferred` |
+| [src/console/Agents.tsx:68](../source/src/console/Agents.tsx#L68) | Agents | FunctionVariable | `refresh(): inferred` |
+| [src/console/Agents.tsx:78](../source/src/console/Agents.tsx#L78) | Agents | FunctionDeclaration | `action(operation: () => Promise<void>): inferred` |
+| [src/console/Agents.tsx:82](../source/src/console/Agents.tsx#L82) | Agents | FunctionDeclaration | `createSession(): Promise<AgentSession>` |
+| [src/console/Agents.tsx:86](../source/src/console/Agents.tsx#L86) | Agents | FunctionDeclaration | `submit(event?: FormEvent, customPrompt?: string): inferred` |
+| [src/console/Agents.tsx:105](../source/src/console/Agents.tsx#L105) | Agents | FunctionVariable | `psQuote(value: string): inferred` |
+| [src/console/Agents.tsx:107](../source/src/console/Agents.tsx#L107) | Agents | FunctionVariable | `status(value: string): inferred` |
+| [src/console/Agents.tsx:108](../source/src/console/Agents.tsx#L108) | Agents | FunctionDeclaration | `keyboard(event: React.KeyboardEvent): inferred` |
+| [src/console/Agents.tsx:166](../source/src/console/Agents.tsx#L166) |  | FunctionDeclaration | `Proposal({ active, capturedVariant, proposal, context, workspace, onReload, onStudioChange, onOpenStudio }: { active: boolean; capturedVariant?: StudioVariant; proposal: AgentProposal; context: StudioAgentContext; workspace: Workspace; onReload: () => Promise<void>; onStudioChange: Props["onStudioChange"]; onOpenStudio: () => void }): inferred` |
+| [src/console/Agents.tsx:168](../source/src/console/Agents.tsx#L168) | Proposal | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Agents.tsx:170](../source/src/console/Agents.tsx#L170) | Proposal | FunctionVariable | `copy({ title, hook, body, cta }: AgentCopy): AgentCopy` |
+| [src/console/Agents.tsx:175](../source/src/console/Agents.tsx#L175) | Proposal | TypeAliasDeclaration | `Production = { variant: StudioVariant; jobs: Array<{ id: string; variantId: string; recipeRevision: number; status: string; error?: string }> }` |
+| [src/console/Agents.tsx:183](../source/src/console/Agents.tsx#L183) | Proposal | FunctionDeclaration | `refreshProduction(): inferred` |
+| [src/console/Agents.tsx:201](../source/src/console/Agents.tsx#L201) | Proposal | FunctionDeclaration | `perform(operation: () => Promise<void>): inferred` |
+| [src/console/Agents.tsx:202](../source/src/console/Agents.tsx#L202) | Proposal | FunctionDeclaration | `saveEdits(): inferred` |
+| [src/console/Agents.tsx:203](../source/src/console/Agents.tsx#L203) | Proposal | FunctionVariable | `field(label: string, name: keyof AgentCopy, max: number, multiline?: inferred): inferred` |
 
 ## src/console/Authentication.tsx
 
@@ -782,40 +793,40 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Console.tsx:45](../source/src/console/Console.tsx#L45) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
-| [src/console/Console.tsx:47](../source/src/console/Console.tsx#L47) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
-| [src/console/Console.tsx:62](../source/src/console/Console.tsx#L62) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
-| [src/console/Console.tsx:75](../source/src/console/Console.tsx#L75) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:83](../source/src/console/Console.tsx#L83) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
-| [src/console/Console.tsx:86](../source/src/console/Console.tsx#L86) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
-| [src/console/Console.tsx:94](../source/src/console/Console.tsx#L94) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
-| [src/console/Console.tsx:111](../source/src/console/Console.tsx#L111) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
-| [src/console/Console.tsx:115](../source/src/console/Console.tsx#L115) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
-| [src/console/Console.tsx:117](../source/src/console/Console.tsx#L117) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Console.tsx:118](../source/src/console/Console.tsx#L118) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:165](../source/src/console/Console.tsx#L165) | Console | FunctionVariable | `navigate(): inferred` |
-| [src/console/Console.tsx:177](../source/src/console/Console.tsx#L177) | Console | FunctionDeclaration | `refresh(): inferred` |
-| [src/console/Console.tsx:199](../source/src/console/Console.tsx#L199) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
-| [src/console/Console.tsx:203](../source/src/console/Console.tsx#L203) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
-| [src/console/Console.tsx:209](../source/src/console/Console.tsx#L209) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
-| [src/console/Console.tsx:223](../source/src/console/Console.tsx#L223) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:239](../source/src/console/Console.tsx#L239) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:268](../source/src/console/Console.tsx#L268) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
-| [src/console/Console.tsx:289](../source/src/console/Console.tsx#L289) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:307](../source/src/console/Console.tsx#L307) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
-| [src/console/Console.tsx:315](../source/src/console/Console.tsx#L315) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
-| [src/console/Console.tsx:323](../source/src/console/Console.tsx#L323) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
-| [src/console/Console.tsx:326](../source/src/console/Console.tsx#L326) | Console | FunctionDeclaration | `reload(): inferred` |
-| [src/console/Console.tsx:336](../source/src/console/Console.tsx#L336) | Console | FunctionDeclaration | `logout(): inferred` |
-| [src/console/Console.tsx:459](../source/src/console/Console.tsx#L459) | Console | FunctionVariable | `productName(id: string): inferred` |
-| [src/console/Console.tsx:461](../source/src/console/Console.tsx#L461) | Console | FunctionVariable | `accountName(id: string): inferred` |
-| [src/console/Console.tsx:463](../source/src/console/Console.tsx#L463) | Console | FunctionVariable | `matches(value: string): inferred` |
-| [src/console/Console.tsx:465](../source/src/console/Console.tsx#L465) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
-| [src/console/Console.tsx:971](../source/src/console/Console.tsx#L971) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
-| [src/console/Console.tsx:983](../source/src/console/Console.tsx#L983) | EditorDialog | MethodSignature | `close(): void` |
-| [src/console/Console.tsx:984](../source/src/console/Console.tsx#L984) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:1015](../source/src/console/Console.tsx#L1015) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
-| [src/console/Console.tsx:1026](../source/src/console/Console.tsx#L1026) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:46](../source/src/console/Console.tsx#L46) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
+| [src/console/Console.tsx:48](../source/src/console/Console.tsx#L48) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
+| [src/console/Console.tsx:63](../source/src/console/Console.tsx#L63) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
+| [src/console/Console.tsx:76](../source/src/console/Console.tsx#L76) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:84](../source/src/console/Console.tsx#L84) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
+| [src/console/Console.tsx:87](../source/src/console/Console.tsx#L87) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
+| [src/console/Console.tsx:95](../source/src/console/Console.tsx#L95) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
+| [src/console/Console.tsx:112](../source/src/console/Console.tsx#L112) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
+| [src/console/Console.tsx:116](../source/src/console/Console.tsx#L116) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
+| [src/console/Console.tsx:118](../source/src/console/Console.tsx#L118) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Console.tsx:119](../source/src/console/Console.tsx#L119) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:166](../source/src/console/Console.tsx#L166) | Console | FunctionVariable | `navigate(): inferred` |
+| [src/console/Console.tsx:178](../source/src/console/Console.tsx#L178) | Console | FunctionDeclaration | `refresh(): inferred` |
+| [src/console/Console.tsx:202](../source/src/console/Console.tsx#L202) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
+| [src/console/Console.tsx:206](../source/src/console/Console.tsx#L206) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
+| [src/console/Console.tsx:212](../source/src/console/Console.tsx#L212) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
+| [src/console/Console.tsx:226](../source/src/console/Console.tsx#L226) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:242](../source/src/console/Console.tsx#L242) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:271](../source/src/console/Console.tsx#L271) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
+| [src/console/Console.tsx:292](../source/src/console/Console.tsx#L292) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:310](../source/src/console/Console.tsx#L310) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
+| [src/console/Console.tsx:318](../source/src/console/Console.tsx#L318) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
+| [src/console/Console.tsx:326](../source/src/console/Console.tsx#L326) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
+| [src/console/Console.tsx:329](../source/src/console/Console.tsx#L329) | Console | FunctionDeclaration | `reload(): inferred` |
+| [src/console/Console.tsx:339](../source/src/console/Console.tsx#L339) | Console | FunctionDeclaration | `logout(): inferred` |
+| [src/console/Console.tsx:462](../source/src/console/Console.tsx#L462) | Console | FunctionVariable | `productName(id: string): inferred` |
+| [src/console/Console.tsx:464](../source/src/console/Console.tsx#L464) | Console | FunctionVariable | `accountName(id: string): inferred` |
+| [src/console/Console.tsx:466](../source/src/console/Console.tsx#L466) | Console | FunctionVariable | `matches(value: string): inferred` |
+| [src/console/Console.tsx:468](../source/src/console/Console.tsx#L468) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
+| [src/console/Console.tsx:974](../source/src/console/Console.tsx#L974) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
+| [src/console/Console.tsx:986](../source/src/console/Console.tsx#L986) | EditorDialog | MethodSignature | `close(): void` |
+| [src/console/Console.tsx:987](../source/src/console/Console.tsx#L987) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:1018](../source/src/console/Console.tsx#L1018) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
+| [src/console/Console.tsx:1029](../source/src/console/Console.tsx#L1029) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
 
 ## src/console/EnvironmentSettings.tsx
 
@@ -845,10 +856,11 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/McpConnections.tsx:5](../source/src/console/McpConnections.tsx#L5) |  | TypeAliasDeclaration | `Connection = { id: string; clientName: string; scopes: string[] }` |
-| [src/console/McpConnections.tsx:6](../source/src/console/McpConnections.tsx#L6) |  | FunctionDeclaration | `McpConnections(): inferred` |
-| [src/console/McpConnections.tsx:24](../source/src/console/McpConnections.tsx#L24) | McpConnections | FunctionDeclaration | `revoke(id: string): inferred` |
-| [src/console/McpConnections.tsx:33](../source/src/console/McpConnections.tsx#L33) | McpConnections | FunctionVariable | `permission(scope: string): inferred` |
+| [src/console/McpConnections.tsx:7](../source/src/console/McpConnections.tsx#L7) |  | TypeAliasDeclaration | `Connection = { id: string; clientName: string; scopes: string[] }` |
+| [src/console/McpConnections.tsx:8](../source/src/console/McpConnections.tsx#L8) |  | FunctionDeclaration | `McpConnections({ active }: { active?: boolean }): inferred` |
+| [src/console/McpConnections.tsx:22](../source/src/console/McpConnections.tsx#L22) | McpConnections | FunctionVariable | `onFocus(): inferred` |
+| [src/console/McpConnections.tsx:33](../source/src/console/McpConnections.tsx#L33) | McpConnections | FunctionDeclaration | `revoke(id: string): inferred` |
+| [src/console/McpConnections.tsx:42](../source/src/console/McpConnections.tsx#L42) | McpConnections | FunctionVariable | `permission(scope: string): inferred` |
 
 ## src/console/Policies.tsx
 
@@ -891,18 +903,18 @@
 | [src/console/Settings.tsx:12](../source/src/console/Settings.tsx#L12) |  | FunctionDeclaration | `recovered(): { draft?: Draft; revision?: number }` |
 | [src/console/Settings.tsx:17](../source/src/console/Settings.tsx#L17) |  | FunctionDeclaration | `Settings({ environment }: { environment?: ReactNode }): inferred` |
 | [src/console/Settings.tsx:19](../source/src/console/Settings.tsx#L19) | Settings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:40](../source/src/console/Settings.tsx#L40) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
-| [src/console/Settings.tsx:48](../source/src/console/Settings.tsx#L48) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
-| [src/console/Settings.tsx:49](../source/src/console/Settings.tsx#L49) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
-| [src/console/Settings.tsx:51](../source/src/console/Settings.tsx#L51) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
-| [src/console/Settings.tsx:58](../source/src/console/Settings.tsx#L58) | Settings | FunctionDeclaration | `save(): inferred` |
-| [src/console/Settings.tsx:68](../source/src/console/Settings.tsx#L68) | Settings | FunctionVariable | `usd(cents: number): inferred` |
-| [src/console/Settings.tsx:69](../source/src/console/Settings.tsx#L69) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
-| [src/console/Settings.tsx:100](../source/src/console/Settings.tsx#L100) |  | FunctionDeclaration | `AgentSettings(): inferred` |
-| [src/console/Settings.tsx:102](../source/src/console/Settings.tsx#L102) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:106](../source/src/console/Settings.tsx#L106) | AgentSettings | FunctionDeclaration | `load(): inferred` |
-| [src/console/Settings.tsx:108](../source/src/console/Settings.tsx#L108) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
-| [src/console/Settings.tsx:113](../source/src/console/Settings.tsx#L113) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
+| [src/console/Settings.tsx:41](../source/src/console/Settings.tsx#L41) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
+| [src/console/Settings.tsx:49](../source/src/console/Settings.tsx#L49) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
+| [src/console/Settings.tsx:50](../source/src/console/Settings.tsx#L50) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
+| [src/console/Settings.tsx:52](../source/src/console/Settings.tsx#L52) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
+| [src/console/Settings.tsx:59](../source/src/console/Settings.tsx#L59) | Settings | FunctionDeclaration | `save(): inferred` |
+| [src/console/Settings.tsx:69](../source/src/console/Settings.tsx#L69) | Settings | FunctionVariable | `usd(cents: number): inferred` |
+| [src/console/Settings.tsx:70](../source/src/console/Settings.tsx#L70) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
+| [src/console/Settings.tsx:101](../source/src/console/Settings.tsx#L101) |  | FunctionDeclaration | `AgentSettings({ active }: { active: boolean }): inferred` |
+| [src/console/Settings.tsx:103](../source/src/console/Settings.tsx#L103) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:107](../source/src/console/Settings.tsx#L107) | AgentSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/Settings.tsx:109](../source/src/console/Settings.tsx#L109) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
+| [src/console/Settings.tsx:114](../source/src/console/Settings.tsx#L114) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
 
 ## src/console/Studio.tsx
 
@@ -1014,6 +1026,17 @@
 | [src/console/help-guides.ts:12](../source/src/console/help-guides.ts#L12) |  | FunctionVariable | `picture(image: string, captureSelector: string, en: string, es: string): View` |
 | [src/console/help-guides.ts:13](../source/src/console/help-guides.ts#L13) |  | FunctionVariable | `view(name: string, selector: string, en: string, es: string): inferred` |
 | [src/console/help-guides.ts:14](../source/src/console/help-guides.ts#L14) |  | FunctionVariable | `step(image: View, enTitle: string, esTitle: string, enText: string, esText: string): HelpStep` |
+
+## src/console/mcp-resume.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/mcp-resume.ts:5](../source/src/console/mcp-resume.ts#L5) |  | FunctionVariable | `isHandle(value: unknown): value is string` |
+| [src/console/mcp-resume.ts:7](../source/src/console/mcp-resume.ts#L7) |  | TypeAliasDeclaration | `ResumeBrowser = { readonly location: { readonly href: string; replace(url: string): void }; readonly history: { readonly state: unknown; replaceState(data: unknown, unused: string, url: string \| URL): void }; readonly sessionStorage: Pick<Storage, "getItem" \| "setItem" \| "removeItem">; }` |
+| [src/console/mcp-resume.ts:8](../source/src/console/mcp-resume.ts#L8) |  | MethodSignature | `replace(url: string): void` |
+| [src/console/mcp-resume.ts:9](../source/src/console/mcp-resume.ts#L9) |  | MethodSignature | `replaceState(data: unknown, unused: string, url: string \| URL): void` |
+| [src/console/mcp-resume.ts:15](../source/src/console/mcp-resume.ts#L15) |  | FunctionDeclaration | `captureMcpResume(browser: ResumeBrowser, now?: inferred): void` |
+| [src/console/mcp-resume.ts:33](../source/src/console/mcp-resume.ts#L33) |  | FunctionDeclaration | `resumeMcpLogin(browser: ResumeBrowser, authenticated: unknown, now?: inferred): boolean` |
 
 ## src/core/agents.ts
 

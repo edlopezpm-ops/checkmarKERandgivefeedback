@@ -11,6 +11,7 @@ import StudioPlanner from "./StudioPlanner";
 import { progressiveAgentMessage } from "./agent-stream";
 import type { AgentStudioUpdate, StudioAgentContext } from "./agent-context";
 import { agentVariantDrift } from "./agent-context";
+import { McpConnections } from "./McpConnections";
 
 export async function agentApi<T>(path = "", data?: unknown, method = "POST"): Promise<T> {
   const response = await fetch(`/api/agents${path}`, { credentials: "same-origin", cache: "no-store", ...(data === undefined && method === "POST" ? {} : { method, headers: { "Content-Type": "application/json", "X-Marker-Auth": "1" }, ...(data === undefined ? {} : { body: JSON.stringify(data) }) }) });
@@ -28,6 +29,9 @@ type Props = { open: boolean; context: StudioAgentContext; workspace: Workspace;
 export default function Agents({ open, context, workspace, onClose, onStudioChange, onOpenStudio }: Props) {
   const { language } = useLanguage();
   const l = (es: string, en: string) => language === "es" ? es : en;
+  const localDevelopment = import.meta.env.DEV && ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
+  const [developerOpen, setDeveloperOpen] = useState(false);
+  const developerActive = open && localDevelopment && developerOpen;
   const [overview, setOverview] = useState<AgentOverview>();
   const [sessionId, setSessionId] = useState(() => readStored("marker-agent-session"));
   const [detail, setDetail] = useState<AgentSessionDetail>();
@@ -59,7 +63,7 @@ export default function Agents({ open, context, workspace, onClose, onStudioChan
     if (sessionRef.current === id) setDetail(next);
   }
   useEffect(() => {
-    if (!open) return;
+    if (!developerActive) return;
     let active = true, pending = false;
     const refresh = async () => {
       if (pending) return; pending = true;
@@ -69,8 +73,8 @@ export default function Agents({ open, context, workspace, onClose, onStudioChan
     };
     void refresh(); const interval = setInterval(() => { if (document.visibilityState === "visible") void refresh(); }, 1800);
     return () => { active = false; clearInterval(interval); };
-  }, [open]);
-  useEffect(() => { setDetail(undefined); if (open && sessionId) void loadDetail(sessionId).catch(e => setError(e.message)); }, [sessionId]);
+  }, [developerActive]);
+  useEffect(() => { setDetail(undefined); if (developerActive && sessionId) void loadDetail(sessionId).catch(e => setError(e.message)); }, [sessionId]);
   async function action(operation: () => Promise<void>) {
     if (busy) return; setBusy(true); setError(""); setNotice("");
     try { await operation(); } catch (e) { setError((e as Error).message); } finally { setBusy(false); }
@@ -112,8 +116,11 @@ export default function Agents({ open, context, workspace, onClose, onStudioChan
   return createPortal(<>
     {open && mobile && <div className="agents-mobile-shade" onClick={onClose} aria-hidden="true" />}
     <aside ref={panel} id="marker-agents" className="agents-panel" hidden={!open} role={mobile ? "dialog" : "complementary"} aria-modal={mobile && open ? true : undefined} aria-labelledby="agents-title" onKeyDown={keyboard}>
-      <header><div><h2 id="agents-title">{l("Agentes", "Agents")}</h2><small>{l("Redacta · prepara · revisa", "Write · assemble · review")}</small></div><button ref={closeRef} type="button" onClick={onClose} aria-label={l("Cerrar agentes", "Close agents")}>×</button></header>
+      <header><div><h2 id="agents-title">{l("Agentes", "Agents")}</h2><small>{l("Conecta tu asistente", "Connect your assistant")}</small></div><button ref={closeRef} type="button" onClick={onClose} aria-label={l("Cerrar agentes", "Close agents")}>×</button></header>
       <div className="agents-scroll">
+        <McpConnections active={open} />
+        {localDevelopment && <details className="agents-section" onToggle={event => setDeveloperOpen(event.currentTarget.open)}><summary>{l("Desarrollo · pruebas del bridge local", "Development · local bridge testing")}</summary>{developerOpen && <>
+        <p>{l("Herramientas de prueba para desarrolladores. Esta conversación local requiere su propio bridge; la conexión de tu asistente se gestiona arriba.", "Developer test tools. This local conversation requires its own bridge; manage your assistant connection above.")}</p>
         {error && <ErrorNotice message={error}> <button onClick={() => void action(async () => { await loadOverview(); await loadDetail(); onStudioChange({}); })}>{l("Reconciliar estado", "Recover status")}</button></ErrorNotice>}
         {notice && <p role="status">{notice}</p>}
         <details className="agents-section" open><summary>{l("Contexto de Studio", "Studio context")} · {context.materialIds.length} {l("materiales", "materials")}</summary><dl><dt>{l("Producto", "Product")}</dt><dd>{context.productName || l("Sin selección", "None selected")}</dd><dt>{l("Campaña", "Campaign")}</dt><dd>{context.campaignName || l("Sin selección de Studio", "No Studio selection")}</dd><dt>{l("Variante", "Variant")}</dt><dd>{context.variantId ? `${context.variantId} · r${context.state?.variants.find(item => item.id === context.variantId)?.recipeRevision}` : l("Nueva / sin selección", "New / none selected")}</dd></dl>
@@ -144,11 +151,12 @@ export default function Agents({ open, context, workspace, onClose, onStudioChan
             {recipeDrift && <p role="alert" className="agents-message">{l("La receta utilizada cambió", "The recipe used has changed")}: r{recipeDrift.capturedRevision} → {recipeDrift.currentRevision === undefined ? l("retirada", "removed") : `r${recipeDrift.currentRevision}`}. {l("Compara el contexto y prepara otra ejecución antes de aplicar propuestas anteriores.", "Compare the context and prepare another run before applying earlier proposals.")} <button type="button" onClick={() => onStudioChange({})}>{l("Actualizar contexto", "Refresh context")}</button> <button type="button" disabled={busy || !!activeRun} onClick={() => { setTask(run.task); setPrompt(run.prompt); }}>{l("Preparar otra ejecución con este contexto", "Prepare another run with this context")}</button></p>}
             <details><summary>{l("Comparar contexto utilizado", "Compare context used")}</summary><p>{run.context.product?.name} · {run.context.campaign?.title || l("Sin campaña", "No campaign")}</p>{run.context.variant && <p>{l("Variante", "Variant")}: {run.context.variant.id} · {l("capturada", "captured")} r{run.context.variant.recipeRevision} · {l("actual", "current")} {currentCapturedVariant ? `r${currentCapturedVariant.recipeRevision}` : context.state ? l("retirada", "removed") : l("por consultar", "awaiting snapshot")}</p>}{run.context.materials.map(material => <div key={material.id}><p>{material.title} · v{material.contentVersion}</p>{material.text && <p className="agents-live">{material.text}</p>}</div>)}</details>
             {(run.status === "running" || run.status === "queued") && <button disabled={busy || run.cancelRequested} onClick={() => void action(async () => { await agentApi(`/runs/${encodeURIComponent(run.id)}/cancel`, {}); await loadDetail(); })}>{run.cancelRequested ? l("Cancelación solicitada", "Cancellation requested") : l("Cancelar ejecución", "Cancel run")}</button>}
-            {proposals.map(proposal => <Proposal key={proposal.id} capturedVariant={run.context.variant} active={open} proposal={proposal} context={context} workspace={workspace} onReload={() => loadDetail()} onStudioChange={onStudioChange} onOpenStudio={onOpenStudio} />)}
+            {proposals.map(proposal => <Proposal key={proposal.id} capturedVariant={run.context.variant} active={developerActive} proposal={proposal} context={context} workspace={workspace} onReload={() => loadDetail()} onStudioChange={onStudioChange} onOpenStudio={onOpenStudio} />)}
           </section>;
         })}</div>
         {!detail?.runs.length && <p>{l("Pide tres propuestas con gancho, mensaje y llamada a la acción. Puedes editar cada campo antes de guardarlo en Studio.", "Ask for three proposals with a hook, message and call to action. Edit each field before saving it to Studio.")}</p>}
         <form className="agents-composer" onSubmit={event => void submit(event)}><label className="form-field"><span>{l("Función", "Role")}</span><select value={task} onChange={e => setTask(e.target.value as typeof task)}><option value="copy">{l("Redactar propuestas", "Write proposals")}</option><option value="assembly">{l("Preparar montaje", "Prepare assembly")}</option><option value="review">{l("Revisar contenido", "Review content")}</option></select></label><label className="form-field"><span>{l("Mensaje", "Message")}</span><textarea value={prompt} onChange={e => setPrompt(e.target.value)} rows={4} maxLength={8000} placeholder={l("Con estos materiales, prepara tres propuestas. Tono directo, buen hook y llamada a la acción clara.", "With these materials, prepare three proposals. Direct tone, a strong hook and a clear call to action.")} /></label><div className="record-actions"><button className="primary" disabled={busy || !connection?.available || !!activeRun || !prompt.trim() || !context.state || context.materialIds.length > 30}>{l("Enviar al agente", "Send to agent")}</button>{!connection?.available && <small>{l("Conecta un bridge disponible para comenzar.", "Connect an available bridge to begin.")}</small>}</div></form>
+        </>}</details>}
       </div>
       <Help topic="agents" />
     </aside>

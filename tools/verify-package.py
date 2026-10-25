@@ -53,7 +53,7 @@ def main():
     for p in paths:
         name=p.relative_to(ROOT).as_posix()
         if p.stat().st_size>=100*1024*1024:errors.append('GitHub oversize file: '+name)
-        if p.name in {'.env','.dev.vars','credentials.json','secrets.json','auth.json'} or p.suffix.lower() in {'.pem','.key','.pfx','.sqlite','.db'}:errors.append('forbidden payload: '+name)
+        if p.name in {'.env','.dev.vars','.app.json','credentials.json','secrets.json','auth.json'} or p.suffix.lower() in {'.pem','.key','.pfx','.sqlite','.db'}:errors.append('forbidden payload: '+name)
         try:s=p.read_text(encoding='utf-8')
         except UnicodeDecodeError:continue
         if '\0' in s:continue

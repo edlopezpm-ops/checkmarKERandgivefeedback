@@ -1,38 +1,44 @@
 {
   "format": "marker-documentary-catalog-verification/v3",
-  "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
-  "checked_at_utc": "2026-10-25T00:57:46.798059+00:00",
+  "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+  "checked_at_utc": "2026-10-25T02:05:23.179041+00:00",
+  "previous_verification": {
+    "review_commit": "17fffc123149d62b87df4da430628cea6f453b06",
+    "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
+    "checked_at_utc": "2026-10-25T00:57:46.798059+00:00"
+  },
   "checks": {
     "catalog_json_parse": "PASS",
-    "unchanged_structural_catalog_bytes": "PASS against initial publication receipt",
-    "source_delta_paths": 4,
-    "new_source_paths": 3,
+    "python_syntax": "PASS",
+    "typescript_parse_diagnostics": 0,
+    "d1_empty_schema_replay_integrity_foreign_keys": "PASS",
+    "d1_migrations": 11,
+    "local_studio_empty_schema_replay_integrity_foreign_keys": "PASS",
     "source_dirty_qualification": 12,
-    "tracked_paths": 329,
-    "projected_paths": 336,
-    "ast_schema_product_execution": "NOT_REPEATED"
+    "prior_dirty_paths_byte_identity": "PASS",
+    "tracked_paths": 338,
+    "projected_paths": 345
   },
   "limitations": [
-    "No runtime databases, owner records, credentials or private governance exported.",
-    "Static parser output is not resolved runtime reachability, test results or security certification.",
-    "AST, dependency, route, test and schema artifacts retain their original verification; only package path/count/provenance outputs changed.",
-    "Current source identities and package links are checked separately; no fresh product test execution is implied."
+    "No runtime databases, owner records, private App bindings or credentials exported.",
+    "AST, routes, static test declarations and empty-schema checks are documentary verification, not product tests or host acceptance.",
+    "The authorized served installation CTA identifier is public configuration, not a credential or account binding."
   ],
   "outputs": [
     {
       "path": "database/d1-catalog.json",
-      "bytes": 127817,
-      "sha256": "e752030d6a6991b260af42c360342bd81aa4e1909697eb7d7167019c9ce4f165"
+      "bytes": 131997,
+      "sha256": "a20bb2e368ae29b6cc86d9f33bc155cd9d978c5ca6a0be92508b0022637d0668"
     },
     {
       "path": "database/d1-reference.md",
-      "bytes": 32190,
-      "sha256": "37a71d61648f31d83f73f07afe9f30403f158bb7d548488b4ac7b3521bb27284"
+      "bytes": 33260,
+      "sha256": "355b301a9257a308a305c3e19f55a61dd8882288a9c589f5d0f4a535027ad54d"
     },
     {
       "path": "database/d1-schema.sql",
-      "bytes": 28696,
-      "sha256": "8ea03382f19e230c2867c874d81c413a8a0d2e0d4dbbefcd0925024fd216416f"
+      "bytes": 29478,
+      "sha256": "58f259e61f24038be71a204d57a95f5c21640d0ce55e8ea367fecbc717946c8b"
     },
     {
       "path": "database/local-studio-catalog.json",
@@ -61,13 +67,13 @@
     },
     {
       "path": "inventories/ast-index.json",
-      "bytes": 7220891,
-      "sha256": "78ae4557851e389fd015db9ec57e361d241131516c7840ddae4c6b8762c24e05"
+      "bytes": 7354065,
+      "sha256": "e0465b9dd0ca6f7cba9093cdc2409a8a07cefa1101daf0a7b48e185b8f43eead"
     },
     {
       "path": "inventories/catalog-summary.json",
       "bytes": 314,
-      "sha256": "c108a888304148c8e5fca527ddc97edfeb392633405b995e076efa4f264ca8f0"
+      "sha256": "ac87c8e3b198d7383d46ac1212796cad62b643ce6be1a9a544cb27fa66064470"
     },
     {
       "path": "inventories/dependencies.json",
@@ -86,53 +92,38 @@
     },
     {
       "path": "inventories/route-occurrences.json",
-      "bytes": 64273,
-      "sha256": "758e6a0e8efe9e81604143a50c720109cb3a26daeb2d28ecc9f4729fab3e50e7"
+      "bytes": 66565,
+      "sha256": "e3af0b1dd3af4a204e32a0de48ad3c2d3791213e63aa73ddb41009f1269e7ad9"
     },
     {
       "path": "inventories/routes.json",
       "bytes": 21330,
-      "sha256": "b6e25dd985b1c42b9bd544f5631aa1fea2f37e8234bc0fa478565c39c7fc8e76"
+      "sha256": "505f4d867ad118c6c5a757b66b667bff5acef1547bc8f8116509ce463cd6bd8b"
     },
     {
       "path": "inventories/routes.md",
       "bytes": 13229,
-      "sha256": "fcf941d265b83540c820e36ea61eb72eac44be9eda31822ba6da91b6c0dc7844"
+      "sha256": "11cd5d7b49b6cab303970e76d40864654055ebb8d116ab7ab2847b4d565d24a6"
     },
     {
       "path": "inventories/source-paths.md",
-      "bytes": 55720,
-      "sha256": "05549218e1b888cd51b116843bafe814e211d4ea75950203999b21513ad551ca"
+      "bytes": 57278,
+      "sha256": "dfde1fe1d270397657971d7ef9207f5e5b9646bbeb43b3823a4aef269c2f5486"
     },
     {
       "path": "inventories/test-declarations.json",
-      "bytes": 67220,
-      "sha256": "5c0b4bc92812beadba1d6bddec538156c1dc235cf1da8f8280d8c7ba9241b7ce"
+      "bytes": 70384,
+      "sha256": "e9ab9dbf5e9d764170f02acf50e1993783059fdebb03805b4bfd6cab70f71789"
     },
     {
       "path": "inventories/test-index.md",
-      "bytes": 54432,
-      "sha256": "8c38c08762f1e19ef136345d2580437abaade9af00a2157f7b365203a0f58986"
+      "bytes": 56982,
+      "sha256": "be404550de4bc91e39c1f0cd96a1c8219fd48b251cf372d35b1889e207ebde39"
     },
     {
       "path": "source-snapshot-manifest.json",
-      "bytes": 150177,
-      "sha256": "cb8ce6b918b1f226e7a39bcb1533f4dd87a70b89d9d58493984b619f411cfa52"
+      "bytes": 155566,
+      "sha256": "5f9e2331e7f6c4d741c7bdf15c2999689175eaad082484a64eba919427f69906"
     }
-  ],
-  "initial_verification": {
-    "review_commit": "80fc3db665fcad787f4033cafd70e8af4b3ec2a1",
-    "source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
-    "checked_at_utc": "2026-10-25T00:41:44.006215+00:00",
-    "checks": {
-      "catalog_json_parse": "PASS",
-      "python_syntax": "PASS",
-      "typescript_parse_diagnostics": 0,
-      "d1_empty_schema_replay_integrity_foreign_keys": "PASS",
-      "local_studio_empty_schema_replay_integrity_foreign_keys": "PASS",
-      "source_dirty_qualification": 12,
-      "tracked_paths": 326,
-      "projected_paths": 333
-    }
-  }
+  ]
 }

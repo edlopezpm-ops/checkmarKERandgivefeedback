@@ -1,8 +1,8 @@
 # marKER — full current-source review
 
-This public repository contains the complete reviewable marKER product snapshot: **336 source/assets/configuration/test files**, plus an architectural dossier, data catalogs, source navigation and an external-review prompt. Start with [the reading contract](00-START-HERE.md) and [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md).
+This public repository contains the complete reviewable marKER product snapshot: **345 source/assets/configuration/test files**, plus an architectural dossier, data catalogs, source navigation and an external-review prompt. Start with [the reading contract](00-START-HERE.md) and [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md).
 
-**Snapshot:** 2026-10-24, source base `a675f8dfccf32986530205cb1636dac7624afc21`, with **12 explicitly recorded working-tree paths**. The [manifest](source-snapshot-manifest.json) identifies the exact captured bytes; the base commit alone does not identify uncommitted demo changes. The source repository remains privately maintained; this separately authorized projection is public.
+**Snapshot:** 2026-10-24, source base `00398e155dcbd0a05942bf3466cfe8a29a63c604`, with **12 explicitly recorded working-tree paths**. The [manifest](source-snapshot-manifest.json) identifies the exact captured bytes; the base commit alone does not identify uncommitted demo changes. The source repository remains privately maintained; this separately authorized projection is public.
 
 | Review entry | Contents |
 | --- | --- |
@@ -14,11 +14,11 @@ This public repository contains the complete reviewable marKER product snapshot:
 | [Data catalog](11-database-and-catalog-reference.md) | All included D1 migrations replayed into an empty SQLite schema; local Studio schema separately reconstructed. |
 | [Evidence and limits](08-operations-quality-and-limits.md) | Fresh package checks versus root-reported product checks, deployment and actual host/device gaps. |
 
-marKER's native Space → classify → prepare editable campaign → render → review/approve → export flow works without an AI connection. Optional local Agents and the external MCP adapter reuse that foundation. An export is not social publication. The [hosted MCP release is now technically verified](DEPLOYMENT-STATUS.md): migration 0010 is applied and Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` serves production at 100%. The account plugin is visibly listed as Installed; owner OAuth, desktop host use and a Dot conversation remain unverified.
+marKER's native Space → classify → prepare editable campaign → render → review/approve → export flow works without an AI connection. Optional local Agents and the external MCP adapter reuse that foundation. An export is not social publication. The [hosted MCP release is now technically verified](DEPLOYMENT-STATUS.md): migrations 0010/0011 are applied and Worker `d48f31ec-1641-4097-bb5f-c0ccd7fd26ae` serves production at 100%. The ordinary Agents/Environment flow opens the registered private App-backed plugin; login resumes its validated consent transaction. The owner reported “Connected”, but the server has no approved grant and the tested host session exposes no product tools. The actual connection is incomplete and under diagnosis; Dot conversation and physical-phone behavior remain unverified.
 
 Public demo: [watch](https://marker.aekr.io/demo/); both original public MP4s, poster, captions and player are included in [source/public/demo/](source/public/demo/), with [metadata/URLs/hashes](inventories/public-media.json). Original branding and font license files are preserved.
 
-Private governance/evidence, runtime owner data, account stores, actual secret/environment files, dependency installations and generated outputs are excluded. Blank example configuration and public instance/site identifiers remain in the source; no live credential value or credential-store digest is published. See [NOTICE.md](NOTICE.md).
+Private governance/evidence, runtime owner data, account stores, actual secret/environment files, dependency installations and generated outputs are excluded. Blank example configuration and public instance/site identifiers remain in the source; no live credential value, credential-store digest or private App binding is published. The served installation CTA is authorized public configuration; it does not make the plugin audience public. See [NOTICE.md](NOTICE.md).
 
 Español: este repositorio permite revisar el código completo y sus flujos actuales. Las pruebas locales, el despliegue, la conexión real en Dot y la aceptación humana se distinguen expresamente.
 

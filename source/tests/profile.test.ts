@@ -39,18 +39,21 @@ function fixture(t, migrate = true) {
 test('account deletion freezes and removes all delegated MCP credentials and effect receipts', async t => {
   const f = fixture(t), owner = await f.login();
   f.sql.exec(readFileSync(new URL('../migrations-d1/0010_mcp.sql', import.meta.url), 'utf8'));
+  f.sql.exec(readFileSync(new URL('../migrations-d1/0011_mcp_connections.sql', import.meta.url), 'utf8'));
   const operator = f.sql.prepare('SELECT user_id,tenant_id FROM marker_auth_operator').get();
   const expires = Math.floor(Date.now() / 1000) + 1000;
-  f.sql.prepare('INSERT INTO marker_mcp_clients VALUES(?,?,?,?,?)').run('client', 'Synthetic assistant', '["https://assistant.example.invalid/callback"]', 1, expires);
+  f.sql.prepare('INSERT INTO marker_mcp_clients(client_id,name,redirect_uris,created_at,expires_at) VALUES(?,?,?,?,?)').run('client', 'Synthetic assistant', '["https://assistant.example.invalid/callback"]', 1, expires);
   f.sql.prepare('INSERT INTO marker_mcp_grants VALUES(?,?,?,?,?,?,?,?,NULL)').run('grant', 'client', operator.user_id, operator.tenant_id, 'marker:read', ORIGIN + '/api/mcp', 1, expires);
   f.sql.prepare('INSERT INTO marker_mcp_requests VALUES(?,?,?,?,?,?,NULL)').run('a'.repeat(64), 'client', operator.user_id, operator.tenant_id, '{}', expires);
   f.sql.prepare('INSERT INTO marker_mcp_codes VALUES(?,?,?,?,?,?,NULL)').run('b'.repeat(64), 'grant', 'client', 'https://assistant.example.invalid/callback', 'c'.repeat(43), expires);
   f.sql.prepare('INSERT INTO marker_mcp_tokens VALUES(?,?,?,?,?,?,NULL)').run('d'.repeat(64), 'e'.repeat(64), 'grant', 'client', expires, expires);
   f.sql.prepare("INSERT INTO marker_mcp_effects VALUES('grant','request_1','digest','completed','{}',1)").run();
   f.sql.prepare("INSERT INTO marker_mcp_limits VALUES('limit',1,1)").run();
+  f.sql.prepare('INSERT INTO marker_mcp_login_requests VALUES(?,?,?,?,NULL)').run('f'.repeat(64), 'client', '{}', expires);
   const capability = await f.start(owner);
   assert.equal((await f.call('/api/mcp', {}, '', 'POST', { Authorization: 'Bearer ' + 'x'.repeat(43) })).status, 423);
   assert.throws(() => f.sql.prepare("INSERT INTO marker_mcp_limits VALUES('new',1,1)").run(), /ACCOUNT_CLOSED/);
+  assert.throws(() => f.sql.prepare('INSERT INTO marker_mcp_login_requests VALUES(?,?,?,?,NULL)').run('g'.repeat(64), 'client', '{}', expires), /ACCOUNT_CLOSED/);
   await f.finish(capability);
   for (const { name } of f.sql.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'marker_mcp_%'").all()) assert.equal(f.sql.prepare(`SELECT count(*) AS n FROM ${name}`).get().n, 0, name);
 });

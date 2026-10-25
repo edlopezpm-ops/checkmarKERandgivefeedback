@@ -3,7 +3,9 @@
 External assistants can use the additive [authenticated MCP connector](docs/mcp-connector.md)
 to read products/materials and prepare editable campaigns with marKER's native
 algorithms. Owner review and approval stay in marKER. Deployment/host installation
-and social publishing are separate from source implementation.
+and social publishing are separate from source implementation. The normal
+connection uses the registered assistant app and OAuth, with login resumed
+automatically. Local bridge scripts are development-only tooling.
 
 Private editorial console with products, shared social accounts, text/Markdown Spaces, campaigns, per-destination drafts, manual review/export and explicitly confirmed outcomes. The approved identity and decorative Claude/Codex pixel characters are preserved.
 
@@ -29,7 +31,7 @@ See [console behavior and setup](docs/console.md), [architecture](docs/architect
 
 The owner-requested three fictional DEMO scenarios and the ordered implementation backlog are described in [implementation next steps](docs/implementation-next-steps.md). Examples remain editable drafts; the simulated paid proposal stays paused.
 
-The [connection decision](docs/ai-connection-decision.md) records the hosted-app Sign in with ChatGPT access requirements and remaining eligibility evidence. The local Codex bridge uses its own official managed ChatGPT login and refuses hosted origins and API-key billing. The connection's account, model and availability are reported by the running bridge; installing the code does not connect a provider automatically.
+The [assistant integration design](docs/assistant-integration-design-2026-10-24.md) defines the normal external-assistant OAuth connection and real-client checks. The [connection decision](docs/ai-connection-decision.md) separately records hosted-app Sign in with ChatGPT inference requirements. The developer-only local Codex bridge uses its official managed ChatGPT login and refuses hosted origins and API-key billing; it is not part of normal connection.
 
 The owner submitted the SIWC interest request; receipt is acknowledged, while admission and plan-usage permission remain pending. A [local text simulation](docs/text-simulation.md) is available in the development Editorial queue to select sources, review a simulated response and save an editable draft. It makes no OpenAI requests and is excluded from the production UI.
 

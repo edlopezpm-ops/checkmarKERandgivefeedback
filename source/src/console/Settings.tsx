@@ -23,6 +23,7 @@ export default function Settings({ environment }: { environment?: ReactNode }) {
   const [revision, setRevision] = useState<number | undefined>(stored.revision);
   const [busy, setBusy] = useState(false), [error, setError] = useState(""), [notice, setNotice] = useState("");
   const [confirmCurrent, setConfirmCurrent] = useState(false);
+  const [developerOpen, setDeveloperOpen] = useState(false);
   const stale = !!result && revision !== undefined && revision !== result.settings.revision;
   const dirty = !!draft && !!result && JSON.stringify(draft) !== JSON.stringify(asDraft(result.settings));
   useEffect(() => {
@@ -83,7 +84,7 @@ export default function Settings({ environment }: { environment?: ReactNode }) {
             {field(l("Límite de almacenamiento (GiB)", "Storage limit (GiB)"), "storage", "0", "2", "any")}
             {field(l("Duración inicial de nuevas piezas (s)", "Default duration for new pieces (s)"), "duration", "5", "60", "1")}
           </fieldset>
-          <p className="setting-note">{l("Procesamiento + IA debe caber en el total. La reserva de IA por API sólo prepara un límite. El bridge de Codex utiliza la suscripción y los límites propios de tu cuenta. El procesamiento se detiene al agotar sus créditos; los archivos existentes se conservan al reducir límites.", "Processing + AI must fit within the total. API AI allocation only prepares a limit. The Codex bridge uses your account subscription and its own limits. Processing stops when its credits run out; existing files are retained when limits are reduced.")}</p>
+          <p className="setting-note">{l("Procesamiento + IA debe caber en el total. La reserva de IA por API sólo prepara un límite. Tu asistente gestiona sus propios límites. El procesamiento se detiene al agotar sus créditos; los archivos existentes se conservan al reducir límites.", "Processing + AI must fit within the total. API AI allocation only prepares a limit. Your assistant manages its own limits. Processing stops when its credits run out; existing files are retained when limits are reduced.")}</p>
           <p className="setting-note">{l("Tope actual: US$20 internos y 2 GiB. Guardar no borra archivos, modifica piezas existentes ni activa servicios.", "Current ceiling: US$20 internal and 2 GiB. Saving does not delete files, modify existing pieces or activate services.")}</p>
           {stale && <div role="alert"><p>{l("Los ajustes guardados cambiaron. Compara sus valores actuales antes de sustituirlos por tus campos.", "Saved settings changed. Compare their current values before replacing them with your fields.")}</p><p className="setting-note">{l("Guardado actualmente", "Currently saved")}: {usd(result.settings.monthlyBudgetCents)} · {l("procesamiento", "processing")} {usd(result.settings.processingBudgetCents)} · IA {usd(result.settings.aiBudgetCents)} · {(result.settings.storageLimitBytes / 1024 ** 3).toFixed(2)} GiB · {result.settings.defaultDurationSeconds} s</p><label className="studio-confirm"><input type="checkbox" checked={confirmCurrent} onChange={e => setConfirmCurrent(e.target.checked)} />{l("Revisé los valores actuales y confirmo guardar mis campos sobre esa versión.", "I reviewed current values and confirm saving my fields over that version.")}</label></div>}
           <div className="record-actions"><button className="primary" disabled={busy || !dirty || stale && !confirmCurrent}>{l("Guardar ajustes", "Save settings")}</button><button type="button" disabled={busy} onClick={() => void refresh(false)}>{l("Actualizar estado sin perder mis cambios", "Refresh status and keep my changes")}</button><button type="button" disabled={busy || !dirty} onClick={() => void refresh(true)}>{l("Restaurar valores guardados", "Restore saved values")}</button></div>
@@ -91,27 +92,27 @@ export default function Settings({ environment }: { environment?: ReactNode }) {
       </>}
       {!result && <button type="button" disabled={busy} onClick={() => void refresh()}>{l("Reintentar carga", "Retry loading")}</button>}
     </section>
-    <AgentSettings />
+    {import.meta.env.DEV && ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname) && <details className="surface" onToggle={event => setDeveloperOpen(event.currentTarget.open)}><summary>{l("Desarrollo · límites del bridge local", "Development · local bridge limits")}</summary><AgentSettings active={developerOpen} /></details>}
     {environment && <section className="surface"><h2>{l("Ambiente de este navegador", "Environment in this browser")}</h2>{environment}</section>}
   </div>;
 }
 
 
-function AgentSettings() {
+function AgentSettings({ active }: { active: boolean }) {
   const { language } = useLanguage();
   const l = (es: string, en: string) => language === "es" ? es : en;
   const [result, setResult] = useState<AgentOverview>();
   const [draft, setDraft] = useState<AgentLimits>();
   const [busy, setBusy] = useState(false), [error, setError] = useState(""), [notice, setNotice] = useState("");
   async function load() { const value = await request<AgentOverview>("/api/agents"); setResult(value); setDraft(value.limits); }
-  useEffect(() => { void load().catch(e => setError(e.message)); }, []);
+  useEffect(() => { if (active && !result) void load().catch(e => setError(e.message)); }, [active]);
   async function save(event: React.FormEvent) {
     event.preventDefault(); if (!draft || busy) return; setBusy(true); setError(""); setNotice("");
     try { await request("/api/agents/limits", draft); await load(); setNotice(l("Límites del agente guardados.", "Agent limits saved.")); }
     catch (e) { setError((e as Error).message); } finally { setBusy(false); }
   }
   const field = (label: string, key: keyof AgentLimits, min: number, max: number) => <label className="form-field"><span>{label}</span><input type="number" min={min} max={max} step="1" required value={draft?.[key] ?? ""} onChange={e => setDraft(current => current && { ...current, [key]: Number(e.target.value) })} /></label>;
-  return <section className="surface"><h2>{l("Agentes · conexión y límites", "Agents · connection and limits")}</h2><p>{l("Codex trabaja mediante un bridge local y la sesión oficial de ChatGPT de tu equipo. La suscripción y las cuotas se gestionan en tu cuenta; esta conexión no selecciona facturación por API.", "Codex works through a local bridge and the official ChatGPT session on your computer. Your account manages the subscription and quotas; this connection does not select API billing.")}</p>
+  return <section className="surface"><h2>{l("Desarrollo · límites del bridge local", "Development · local bridge limits")}</h2><p>{l("Estos límites corresponden a las pruebas del bridge local. Conecta y administra tu asistente en Agentes o Ambiente; su conversación y sus límites se gestionan en el asistente.", "These limits apply to local bridge testing. Connect and manage your assistant in Agents or Environment; its conversation and limits are managed in the assistant.")}</p>
     {error && <ErrorNotice message={error}> <button disabled={busy} onClick={() => void load().catch(e => setError(e.message))}>{l("Reintentar", "Retry")}</button></ErrorNotice>}{notice && <p role="status">{notice}</p>}
     {result && <p>{l("Disponibles", "Available")}: {result.connections.filter(item => item.available).length} · {l("Ejecuciones hoy", "Runs today")}: {result.usage.todayRuns} · {l("Activas", "Active")}: {result.usage.activeRuns}</p>}
     {draft && <form onSubmit={event => void save(event)}><fieldset disabled={busy} className="agents-settings-grid"><legend className="sr-only">{l("Límites del agente", "Agent limits")}</legend>{field(l("Máximo de ejecuciones al día", "Maximum runs per day"), "dailyRuns", 1, 200)}{field(l("Tiempo máximo por ejecución (s)", "Maximum run duration (s)"), "maxRunSeconds", 30, 900)}{field(l("Ejecuciones simultáneas", "Concurrent runs"), "maxConcurrentRuns", 1, 1)}{field(l("Limpieza de historial no aplicado (días)", "Unused history cleanup (days)"), "retentionDays", 1, 90)}</fieldset><p className="setting-note">{l("El tiempo máximo solicita la cancelación del proceso. Los límites de marKER no limitan la factura ni sustituyen los límites de tu suscripción. La limpieza elimina actividad antigua y conversaciones sin resultados aplicados. Las propuestas guardadas, su contexto de origen y sus registros se conservan para trazabilidad y recuperación; los materiales y variantes siguen en Studio.", "The duration limit requests process cancellation. marKER limits do not cap billing or replace your subscription limits. Cleanup removes old activity and conversations without applied results. Saved proposals, their original context and associated records remain for traceability and recovery; Studio keeps saved materials and variants.")}</p><button className="primary" disabled={busy || JSON.stringify(draft) === JSON.stringify(result?.limits)}>{l("Guardar límites del agente", "Save agent limits")}</button></form>}

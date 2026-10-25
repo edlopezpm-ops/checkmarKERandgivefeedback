@@ -10,6 +10,7 @@ import { createLocalMcpApi } from '../server/mcp-local.ts';
 import { LocalRepository } from '../server/local.ts';
 import { editorialApi } from '../server/api.ts';
 import { createStudioApi } from '../server/studio-local.ts';
+import { executeMcpTool } from '../server/mcp.ts';
 
 const ORIGIN = 'http://127.0.0.1:5191';
 async function fixture(t) {
@@ -52,10 +53,20 @@ async function fixture(t) {
 }
 const args = (revision, suffix) => ({ expected_revision: revision, request_id: 'request_' + suffix });
 function data(result) { assert.equal(result.isError, undefined, JSON.stringify(result)); return result.structuredContent; }
+function assertChallenge(value, scope, insufficient = false) {
+  assert.equal(typeof value, 'string');
+  assert.ok(value.startsWith('Bearer '));
+  assert.ok(value.includes(`resource_metadata="${ORIGIN}/.well-known/oauth-protected-resource/api/mcp"`));
+  assert.equal(/(?:^|, )scope="([^"]*)"/.exec(value)?.[1], scope);
+  if (insufficient) {
+    assert.ok(value.includes('error="insufficient_scope"'));
+    assert.match(value, /error_description="[^"\r\n]+"/);
+  }
+}
 
 test('official SDK negotiates Streamable HTTP and persists real tools; duplicate requests never duplicate products', async t => {
   const f = await fixture(t), grant = await f.grant(), client = await f.client(grant.access_token);
-  const tools = await client.listTools(); assert.equal(tools.tools.length, 15); assert.ok(!tools.tools.some(tool => /approve|publish|account_delete/.test(tool.name)));
+  const tools = await client.listTools(); assert.equal(tools.tools.length, 15); assert.ok(tools.tools.some(tool => tool.name === 'marker_delete')); assert.ok(!tools.tools.some(tool => /approve|publish|account_delete/.test(tool.name)));
   assert.equal(tools.tools.find(tool => tool.name === 'marker_get_profile')._meta['openai/profile'], true);
   const create = { ...args(0, 'create_product'), name: 'Demo MCP cuaderno', description: 'Guarda una idea cada día.', cta: 'Guarda tu idea' };
   const first = await client.callTool({ name: 'marker_save_product', arguments: create }); const product = data(first).record;
@@ -78,13 +89,50 @@ test('official SDK negotiates Streamable HTTP and persists real tools; duplicate
 
 test('transport rejects missing/invalid identity, cross-origin and caller-selected tenant before product effects', async t => {
   const f = await fixture(t);
-  const denied = await f.call('/api/mcp', { jsonrpc: '2.0', id: 1, method: 'tools/list' }); assert.equal(denied.status, 401); assert.match(denied.headers.get('WWW-Authenticate'), /oauth-protected-resource/);
+  const denied = await f.call('/api/mcp', { jsonrpc: '2.0', id: 1, method: 'tools/list' }); assert.equal(denied.status, 401); assertChallenge(denied.headers.get('WWW-Authenticate'), 'marker:read');
   const grant = await f.grant('marker:read'); const client = await f.client(grant.access_token);
-  assert.ok((await client.listTools()).tools.every(tool => tool.annotations.readOnlyHint));
+  const catalog = (await client.listTools()).tools;
+  assert.equal(catalog.length, 14);
+  assert.ok(!catalog.some(tool => tool.name === 'marker_delete'));
+  for (const [name, scope] of [['marker_save_product', 'marker:write'], ['marker_render', 'marker:produce'], ['marker_export', 'marker:produce']]) {
+    const descriptor = catalog.find(tool => tool.name === name); assert.ok(descriptor);
+    assert.deepEqual(descriptor._meta.securitySchemes, [{ type: 'oauth2', scopes: [scope] }]);
+  }
+  // The generic SDK strips unknown top-level descriptor extensions; OpenAI's
+  // HTTP client receives both the normal field and its compatibility metadata.
+  const rawCatalogResponse = await f.call('/api/mcp', { jsonrpc: '2.0', id: 'catalog', method: 'tools/list' }, { Authorization: 'Bearer ' + grant.access_token, Accept: 'application/json, text/event-stream' });
+  assert.equal(rawCatalogResponse.status, 200);
+  const rawCatalog = (await rawCatalogResponse.json()).result.tools;
+  const rawWrite = rawCatalog.find(tool => tool.name === 'marker_save_product');
+  assert.deepEqual(rawWrite.securitySchemes, [{ type: 'oauth2', scopes: ['marker:write'] }]);
+  assert.deepEqual(rawWrite._meta.securitySchemes, rawWrite.securitySchemes);
   const before = f.calls;
-  const write = await client.callTool({ name: 'marker_save_product', arguments: { ...args(0, 'forbidden'), name: 'Forbidden' } }); assert.equal(write.structuredContent.status, 403);
+  const write = await client.callTool({ name: 'marker_save_product', arguments: { ...args(0, 'forbidden'), name: 'Forbidden' } });
+  assert.equal(write.isError, true); assert.equal(write.structuredContent.status, 403);
+  assert.equal(write._meta['mcp/www_authenticate'].length, 1);
+  assertChallenge(write._meta['mcp/www_authenticate'][0], 'marker:write', true);
+  const render = await client.callTool({ name: 'marker_render', arguments: { ...args(0, 'forbidden_render'), id: 'not-a-variant', recipe_revision: 1 } });
+  assert.equal(render.isError, true); assertChallenge(render._meta['mcp/www_authenticate'][0], 'marker:produce', true);
+  const artifact = await f.call('/api/mcp/artifacts/not-a-variant?recipe_revision=1', undefined, { Authorization: 'Bearer ' + grant.access_token });
+  assert.equal(artifact.status, 403); assertChallenge(artifact.headers.get('WWW-Authenticate'), 'marker:produce', true);
   for (const headers of [{ Authorization: 'Bearer ' + grant.access_token, Origin: 'https://evil.example.invalid' }, { Authorization: 'Bearer ' + grant.access_token, 'X-Tenant-ID': 'foreign' }]) assert.equal((await f.call('/api/mcp', {}, headers)).status, 403);
   assert.equal(f.calls, before); assert.equal((await f.repository.read()).products.length, 0);
+});
+
+test('scope challenges precede any effect receipt or business backend access', async () => {
+  let receipts = 0, backendCalls = 0;
+  const options = {
+    origin: ORIGIN,
+    db: { prepare() { receipts++; throw new Error('Unauthorized receipt access'); } },
+    async backend() { backendCalls++; throw new Error('Unauthorized business access'); },
+  };
+  const principal = { userId: 'user', tenantId: 'tenant', clientId: 'client', grantId: 'grant', scopes: ['marker:read'] };
+  for (const [name, required] of [['marker_save_product', 'marker:write'], ['marker_render', 'marker:produce'], ['marker_delete', 'marker:delete']]) {
+    const result = await executeMcpTool(options, principal, name, { ...args(0, 'not_admitted'), id: 'target', confirmation_id: 'target' });
+    assert.equal(result.isError, true); assert.equal(result.structuredContent.status, 403);
+    assertChallenge(result._meta['mcp/www_authenticate'][0], required, true);
+  }
+  assert.equal(receipts, 0); assert.equal(backendCalls, 0);
 });
 
 test('concurrent identical writes admit once and uncertain committed effects never automatically run again', async t => {

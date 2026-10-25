@@ -8,6 +8,15 @@ existing backend. Its OAuth grants are separate from the local Codex bridge and
 from hosted Sign in with ChatGPT inference. Production activation and actual host
 installation/conversation require their own verification; social APIs stay deferred.
 
+The normal Agents panel opens the registered assistant app and shows actual OAuth
+connections. Conversations and model inference happen in the external assistant;
+its tools execute the existing marKER backend. Users sign in and authorize without
+scripts. The local bridge/chat described below is development-only, collapsed and
+available solely in a DEV build on literal loopback. It is not a dependency of the
+hosted connection. See the [normal integration design](assistant-integration-design-2026-10-24.md).
+
+## Local development adapter
+
 The Agents panel works beside Space and Campaigns. Studio stays mounted while the panel is open or another Console section is selected. The visible context identifies the product, Studio campaign, selected material cards and variant; editorial campaigns remain a separate workflow.
 
 The first adapter uses the official local Codex app-server with its managed ChatGPT sign-in. The agent role (copy, assembly or review), provider/model, runtime and product tools are separate records. A Node bridge runs independently of the Cloudflare Worker and FFmpeg processor. It polls for explicitly requested runs, reports real activity/text events and returns structured copy proposals. Provider credentials remain in Codex's own managed account store; they are never copied to the browser, Studio or D1.

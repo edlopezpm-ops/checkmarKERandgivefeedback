@@ -37,8 +37,12 @@ Hosted follow-up: `server/entry.ts` exports the existing Worker and `StudioProce
 
 Additional source boundaries: migrations `0006`–`0009` provide the Agents ledger,
 single-owner email/Google/GitHub identity and profile/account lifecycle. Migration
-`0010_mcp.sql` adds scoped connector authorization and effect receipts; its
-production activation is separate from this source increment. `server/mcp.ts`
+`0010_mcp.sql` adds scoped connector authorization and effect receipts;
+`0011_mcp_connections.sql` retains approved client IDs and resumes normal login.
+`server/mcp.ts`
 owns transport/receipts, `server/mcp-auth*` OAuth, `server/mcp-tools.ts` the finite
 backend adapter and `server/mcp-local.ts` isolated local authorization storage.
-`src/console/McpConnections.tsx` provides Environment connection management.
+`src/console/McpConnections.tsx` provides the normal Agents/Environment connection
+flow; `src/console/mcp-resume.ts` keeps only the pending login correlation handle.
+The [integration design](docs/assistant-integration-design-2026-10-24.md) separates
+real host evidence, local development tooling and future public submission.

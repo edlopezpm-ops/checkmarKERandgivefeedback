@@ -245,32 +245,32 @@
     },
     {
       "path": "server/mcp-auth.ts",
-      "line": 13,
-      "end_line": 13,
+      "line": 14,
+      "end_line": 14,
       "kind": "literal",
       "pattern": "/api/mcp/oauth/",
       "parent_kind": "VariableDeclaration"
     },
     {
       "path": "server/mcp-auth.ts",
-      "line": 74,
-      "end_line": 74,
+      "line": 85,
+      "end_line": 85,
       "kind": "literal",
       "pattern": "/api/mcp",
       "parent_kind": "BinaryExpression"
     },
     {
       "path": "server/mcp-auth.ts",
-      "line": 209,
-      "end_line": 209,
+      "line": 256,
+      "end_line": 256,
       "kind": "literal",
       "pattern": "/api/mcp/connections",
       "parent_kind": "ArrayLiteralExpression"
     },
     {
       "path": "server/mcp-auth.ts",
-      "line": 222,
-      "end_line": 222,
+      "line": 269,
+      "end_line": 269,
       "kind": "literal",
       "pattern": "/api/mcp/connections",
       "parent_kind": "BinaryExpression"
@@ -317,32 +317,32 @@
     },
     {
       "path": "server/mcp.ts",
-      "line": 68,
-      "end_line": 68,
+      "line": 82,
+      "end_line": 82,
       "kind": "literal",
       "pattern": "/api/mcp",
       "parent_kind": "BinaryExpression"
     },
     {
       "path": "server/mcp.ts",
-      "line": 68,
-      "end_line": 68,
+      "line": 82,
+      "end_line": 82,
       "kind": "literal",
       "pattern": "/api/mcp/",
       "parent_kind": "CallExpression"
     },
     {
       "path": "server/mcp.ts",
-      "line": 81,
-      "end_line": 81,
+      "line": 95,
+      "end_line": 95,
       "kind": "regular_expression",
       "pattern": "/^\\/api\\/mcp\\/artifacts\\/([A-Za-z0-9_-]{1,100})$/",
       "parent_kind": "PropertyAccessExpression"
     },
     {
       "path": "server/mcp.ts",
-      "line": 82,
-      "end_line": 82,
+      "line": 96,
+      "end_line": 96,
       "kind": "literal",
       "pattern": "/api/mcp",
       "parent_kind": "BinaryExpression"

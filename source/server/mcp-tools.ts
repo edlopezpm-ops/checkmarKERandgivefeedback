@@ -7,7 +7,7 @@ import { prepareStudioPlan, type StudioPlanInput } from "../src/core/studio-plan
 type Schema = { type: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; enum?: readonly unknown[]; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number; minItems?: number; maxItems?: number; uniqueItems?: boolean };
 type Args = Record<string, unknown>;
 export type McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] };
-export type McpToolResult = { content: Array<{ type: "text"; text: string }>; structuredContent: Record<string, unknown>; isError?: boolean };
+export type McpToolResult = { content: Array<{ type: "text"; text: string }>; structuredContent: Record<string, unknown>; isError?: boolean; _meta?: Record<string, unknown> };
 export type McpToolDescriptor = { name: string; description: string; inputSchema: Schema; annotations: { readOnlyHint: boolean; destructiveHint: boolean; idempotentHint: boolean; openWorldHint: boolean }; scopes: string[] };
 
 const string = (maxLength: number): Schema => ({ type: "string", maxLength });

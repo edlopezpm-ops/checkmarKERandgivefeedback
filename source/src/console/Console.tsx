@@ -34,6 +34,7 @@ import "./agents.css";
 import { AuthenticationSettings, ProviderSignIn, type AuthSession, type OAuthProvider } from "./Authentication";
 import { Turnstile } from "./Turnstile";
 import type { ProfileResponse } from "./Profile";
+import { captureMcpResume, resumeMcpLogin } from "./mcp-resume";
 
 const TextSimulation = import.meta.env.DEV ? lazy(() => import("./TextSimulation")) : null;
 const Studio = lazy(() => import("./Studio"));
@@ -178,6 +179,7 @@ export function Console({ onAccessChange, environment }: { onAccessChange?: (aut
     setError("");
     try {
       const result = await request<NonNullable<typeof session>>("/api/session");
+      if (resumeMcpLogin(window, result.authenticated)) return;
       setSession(result);
       if (result.authenticated) setState(await loadWorkspace());
       else setState(undefined);
@@ -186,6 +188,7 @@ export function Console({ onAccessChange, environment }: { onAccessChange?: (aut
     }
   }
   useEffect(() => {
+    captureMcpResume(window);
     void refresh();
   }, []);
   useEffect(() => { onAccessChange?.(!!session?.authenticated); }, [session?.authenticated, onAccessChange]);
@@ -650,7 +653,7 @@ export function Console({ onAccessChange, environment }: { onAccessChange?: (aut
                   <Badge value="Manual" />
                 </li>
                 <li>
-                  <span>{"Codex"}</span>
+                  <span>{language === "es" ? "Asistente" : "Assistant"}</span>
                   <button type="button" onClick={() => { setAgentsLoaded(true); setAgentsOpen(true); }}>{language === "es" ? "Ver estado en Agentes" : "Check Agents status"}</button>
                 </li>
                 <li>
@@ -663,7 +666,7 @@ export function Console({ onAccessChange, environment }: { onAccessChange?: (aut
                 </li>
               </ul>
               <p className="muted">
-                {language === "es" ? "Los mensajes enviados desde Agentes comparten el contexto seleccionado con Codex. Revisa y guarda sus propuestas; la publicación sigue siendo manual." : "Messages sent from Agents share your selected context with Codex. Review and save its proposals; publishing remains manual."}</p>
+                {language === "es" ? "Conecta tu asistente desde Agentes y continúa la conversación allí. Revisa y aprueba sus resultados en marKER; la publicación sigue siendo manual." : "Connect your assistant from Agents and continue the conversation there. Review and approve its results in marKER; publishing remains manual."}</p>
             </article>
           </div>
         </>

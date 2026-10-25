@@ -16,10 +16,11 @@ export class McpAuthStore {
   async cleanup(now: number) {
     // Retain consumed refresh hashes until the family expires: reuse detection needs them.
     await this.batch([
+      this.statement('DELETE FROM marker_mcp_login_requests WHERE expires_at<=?', now),
       this.statement('DELETE FROM marker_mcp_requests WHERE expires_at<=?', now),
       this.statement('DELETE FROM marker_mcp_codes WHERE expires_at<=?', now),
       this.statement('DELETE FROM marker_mcp_grants WHERE expires_at<=?', now),
-      this.statement('DELETE FROM marker_mcp_clients WHERE expires_at<=? AND NOT EXISTS(SELECT 1 FROM marker_mcp_grants g WHERE g.client_id=marker_mcp_clients.client_id)', now),
+      this.statement('DELETE FROM marker_mcp_clients WHERE authorized_at IS NULL AND expires_at<=? AND NOT EXISTS(SELECT 1 FROM marker_mcp_grants g WHERE g.client_id=marker_mcp_clients.client_id)', now),
       this.statement('DELETE FROM marker_mcp_limits WHERE window_start<?', now-86400),
     ]);
   }

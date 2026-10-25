@@ -1,8 +1,8 @@
 {
   "format": "marker-source-snapshot/v2",
-  "captured_at_utc": "2026-10-25T00:57:46.798059+00:00",
-  "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
-  "source_tree_sha1": "1c129d7b559885e8cba53e416908ce43dc0a0340",
+  "captured_at_utc": "2026-10-25T02:02:08.866195+00:00",
+  "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
+  "source_tree_sha1": "afe452fa2eb870a6d061f269d9eb5ab22db77992",
   "source_branch": "main",
   "source_dirty": [
     " M docs/console.md",
@@ -18,9 +18,9 @@
     "?? server/demo-media.ts",
     "?? tests/demo-media.test.ts"
   ],
-  "tracked_path_count": 329,
-  "projected_path_count": 336,
-  "projected_bytes": 35589745,
+  "tracked_path_count": 338,
+  "projected_path_count": 345,
+  "projected_bytes": 35789619,
   "hash_semantics": "SHA-256 describes exact source checkout bytes copied to source/. Source HEAD is the base; source_dirty explicitly qualifies any uncommitted bytes. No private payload was inventoried or hashed. Git may normalize text line endings; verification accepts only exact bytes or the documented LF text equivalent. Binary bytes must match exactly.",
   "paths": [
     {
@@ -57,21 +57,21 @@
       "path": "PROJECT_MAP.md",
       "projection": "source/PROJECT_MAP.md",
       "tracked": true,
-      "git_index_blob_sha1": "d68ace18276ec0de5b758f61630a3e11ee2745df",
-      "bytes": 4450,
-      "sha256": "97f05c405e4ce6615dbfcfff808b59cb0f916302f3825b337142b99ad52620d7",
-      "checkout_sha256": "97f05c405e4ce6615dbfcfff808b59cb0f916302f3825b337142b99ad52620d7",
-      "text_lines": 44
+      "git_index_blob_sha1": "a9513d4412cc8706e62553b4ebc43f17eca60736",
+      "bytes": 4714,
+      "sha256": "d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f",
+      "checkout_sha256": "d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f",
+      "text_lines": 48
     },
     {
       "path": "README.md",
       "projection": "source/README.md",
       "tracked": true,
-      "git_index_blob_sha1": "5cc932a46994fa2fdcecd1f02380640ec56ac703",
-      "bytes": 7025,
-      "sha256": "03404ce261ece188f2c96542a0d6f101a3470f0057f5a259da439356a0c2aae3",
-      "checkout_sha256": "03404ce261ece188f2c96542a0d6f101a3470f0057f5a259da439356a0c2aae3",
-      "text_lines": 43
+      "git_index_blob_sha1": "fbe646a39c16ffcc8161687783b935223009c22b",
+      "bytes": 7215,
+      "sha256": "cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430",
+      "checkout_sha256": "cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430",
+      "text_lines": 45
     },
     {
       "path": "assets/AEKR-BANNER-LICENSE.txt",
@@ -97,21 +97,21 @@
       "path": "docs/AGENT_BRIDGE.md",
       "projection": "source/docs/AGENT_BRIDGE.md",
       "tracked": true,
-      "git_index_blob_sha1": "9f2a98c16b7f0475285043c8838dbccdf11b6162",
-      "bytes": 9370,
-      "sha256": "26570e22cf5d1a0541e79ace6521db733ea831aee37f5acdaeabf5104790e553",
-      "checkout_sha256": "26570e22cf5d1a0541e79ace6521db733ea831aee37f5acdaeabf5104790e553",
-      "text_lines": 72
+      "git_index_blob_sha1": "d6034933283ad05146bdf58efa6a1e975aa19877",
+      "bytes": 9646,
+      "sha256": "9add1de4dd2d975c0a15a33b24a33f5240a0784fade099447a61363f94ee06f1",
+      "checkout_sha256": "9add1de4dd2d975c0a15a33b24a33f5240a0784fade099447a61363f94ee06f1",
+      "text_lines": 77
     },
     {
       "path": "docs/agents.md",
       "projection": "source/docs/agents.md",
       "tracked": true,
-      "git_index_blob_sha1": "b780cd6381105d71dc14a66f36b45a7d600104e3",
-      "bytes": 5715,
-      "sha256": "a7c9cbfbfaad64f2e822c9eb3282ac2539941734c3b80e337e88b605e37154f1",
-      "checkout_sha256": "a7c9cbfbfaad64f2e822c9eb3282ac2539941734c3b80e337e88b605e37154f1",
-      "text_lines": 29
+      "git_index_blob_sha1": "1b8ee8b40478af12983f70648958a321a1332250",
+      "bytes": 6257,
+      "sha256": "9717cf39c5a6ce31688aca4d5820a32305a202234ef4c47ebf84a84b2fab94d9",
+      "checkout_sha256": "9717cf39c5a6ce31688aca4d5820a32305a202234ef4c47ebf84a84b2fab94d9",
+      "text_lines": 38
     },
     {
       "path": "docs/ai-connection-decision.md",
@@ -132,6 +132,16 @@
       "sha256": "cd171adccc3af2656155313d96bfc7379e4c604ed745a731c53bf097fa32eab2",
       "checkout_sha256": "cd171adccc3af2656155313d96bfc7379e4c604ed745a731c53bf097fa32eab2",
       "text_lines": 31
+    },
+    {
+      "path": "docs/assistant-integration-design-2026-10-24.md",
+      "projection": "source/docs/assistant-integration-design-2026-10-24.md",
+      "tracked": true,
+      "git_index_blob_sha1": "4371287ed15c7c3e79f2c116207b6337a5fa0298",
+      "bytes": 34413,
+      "sha256": "5705eee129dfd67d26aa4beca3af5ae708ec04f31dfc11658c3e8f6867db51a8",
+      "checkout_sha256": "5705eee129dfd67d26aa4beca3af5ae708ec04f31dfc11658c3e8f6867db51a8",
+      "text_lines": 487
     },
     {
       "path": "docs/authentication.md",
@@ -207,11 +217,11 @@
       "path": "docs/mcp-connector.md",
       "projection": "source/docs/mcp-connector.md",
       "tracked": true,
-      "git_index_blob_sha1": "66760b874f7bf1c822e7122465e618db03dc0de8",
-      "bytes": 7776,
-      "sha256": "fb5d2ca7e1e209bbba3753fbed67bd34597783ab5fdd930bfecc18e9ac7037b2",
-      "checkout_sha256": "fb5d2ca7e1e209bbba3753fbed67bd34597783ab5fdd930bfecc18e9ac7037b2",
-      "text_lines": 122
+      "git_index_blob_sha1": "943a1e8d2822e35e48bb79b3bdbb3dd4f41b61ab",
+      "bytes": 9812,
+      "sha256": "07e0e4a6de4f8572c6303544fd1bcc8a25788e6ca6b7d9a8592bb429c1019326",
+      "checkout_sha256": "07e0e4a6de4f8572c6303544fd1bcc8a25788e6ca6b7d9a8592bb429c1019326",
+      "text_lines": 151
     },
     {
       "path": "docs/profile-and-data.md",
@@ -392,6 +402,16 @@
       "sha256": "29a254501f66ef75b814cc0faa4b784bcaf8dd5b9a3c99480479f95cf28100fa",
       "checkout_sha256": "29a254501f66ef75b814cc0faa4b784bcaf8dd5b9a3c99480479f95cf28100fa",
       "text_lines": 59
+    },
+    {
+      "path": "migrations-d1/0011_mcp_connections.sql",
+      "projection": "source/migrations-d1/0011_mcp_connections.sql",
+      "tracked": true,
+      "git_index_blob_sha1": "66bd7908066191e9e4c49657e0295552ca284818",
+      "bytes": 1299,
+      "sha256": "0e158a26bd903e1835e0f905acd2269939ef61c3b2fc09b0409556e0cb49f1ae",
+      "checkout_sha256": "0e158a26bd903e1835e0f905acd2269939ef61c3b2fc09b0409556e0cb49f1ae",
+      "text_lines": 15
     },
     {
       "path": "migrations/0001_editorial.sql",
@@ -641,6 +661,26 @@
       "bytes": 37792,
       "sha256": "33ea0dbc57faa69bf1b7f1dffb05433d7e7aeb9544e4068f094ac5027a755922",
       "checkout_sha256": "33ea0dbc57faa69bf1b7f1dffb05433d7e7aeb9544e4068f094ac5027a755922",
+      "text_lines": null
+    },
+    {
+      "path": "public/help/en/agents-connect.png",
+      "projection": "source/public/help/en/agents-connect.png",
+      "tracked": true,
+      "git_index_blob_sha1": "d92d977c59f139d41528cc873b2d2a5495d5ef9a",
+      "bytes": 30008,
+      "sha256": "3b9602547b67ad081e1d5faa677a8f34157e819a0a2e9c456b883889d920494f",
+      "checkout_sha256": "3b9602547b67ad081e1d5faa677a8f34157e819a0a2e9c456b883889d920494f",
+      "text_lines": null
+    },
+    {
+      "path": "public/help/en/agents-context.png",
+      "projection": "source/public/help/en/agents-context.png",
+      "tracked": true,
+      "git_index_blob_sha1": "cd5ec0326f5a5e7140dc6f87b1ce9a8fe11bd66d",
+      "bytes": 35043,
+      "sha256": "4e3b3b193bab061ad7415235b83142d766f77af8d82178ca9295cabe79e1224f",
+      "checkout_sha256": "4e3b3b193bab061ad7415235b83142d766f77af8d82178ca9295cabe79e1224f",
       "text_lines": null
     },
     {
@@ -1411,6 +1451,26 @@
       "bytes": 37487,
       "sha256": "8d594c3cafb9acb50c61cb04d2aed9394a9e131f452a3cd44fa799145db174c8",
       "checkout_sha256": "8d594c3cafb9acb50c61cb04d2aed9394a9e131f452a3cd44fa799145db174c8",
+      "text_lines": null
+    },
+    {
+      "path": "public/help/es/agents-connect.png",
+      "projection": "source/public/help/es/agents-connect.png",
+      "tracked": true,
+      "git_index_blob_sha1": "7b682da8379bd86507f6dc2ec129611d18c70553",
+      "bytes": 29673,
+      "sha256": "27ea8944aadb572465c775a77cf6809987809e0c50c363fa8cbfe7d0ca3ead86",
+      "checkout_sha256": "27ea8944aadb572465c775a77cf6809987809e0c50c363fa8cbfe7d0ca3ead86",
+      "text_lines": null
+    },
+    {
+      "path": "public/help/es/agents-context.png",
+      "projection": "source/public/help/es/agents-context.png",
+      "tracked": true,
+      "git_index_blob_sha1": "328e6b3e97446f7ce7242fa71f9dba614a1e4663",
+      "bytes": 34685,
+      "sha256": "337dcd5fc716c8f57109e2109de451830094b1e743faea9216700ecf74b9ac3a",
+      "checkout_sha256": "337dcd5fc716c8f57109e2109de451830094b1e743faea9216700ecf74b9ac3a",
       "text_lines": null
     },
     {
@@ -2247,51 +2307,51 @@
       "path": "server/mcp-auth-store.ts",
       "projection": "source/server/mcp-auth-store.ts",
       "tracked": true,
-      "git_index_blob_sha1": "864d7c7772bffe6e50371d3128bf30599a645330",
-      "bytes": 1800,
-      "sha256": "30dd121a85faaa34707e2dbb0a7e0a5267d6a6a5329650b476bb0dba0a214f4f",
-      "checkout_sha256": "30dd121a85faaa34707e2dbb0a7e0a5267d6a6a5329650b476bb0dba0a214f4f",
-      "text_lines": 26
+      "git_index_blob_sha1": "f309c36c436089f0e6d7d67514fdc02f34e1d42c",
+      "bytes": 1914,
+      "sha256": "d9a4f87a57da9dc53ab0c375a6e73b82fcc28625d92a9693893e6edee6de5620",
+      "checkout_sha256": "d9a4f87a57da9dc53ab0c375a6e73b82fcc28625d92a9693893e6edee6de5620",
+      "text_lines": 27
     },
     {
       "path": "server/mcp-auth.ts",
       "projection": "source/server/mcp-auth.ts",
       "tracked": true,
-      "git_index_blob_sha1": "8af163faeaa1644f3b3ddbb9dbd73223934801ac",
-      "bytes": 24809,
-      "sha256": "ebe61d1efc14e0ea08208a09bc94f6ac9b0c26837baeb08fe4942eb28730cd92",
-      "checkout_sha256": "ebe61d1efc14e0ea08208a09bc94f6ac9b0c26837baeb08fe4942eb28730cd92",
-      "text_lines": 241
+      "git_index_blob_sha1": "119676ea7b1db533cfe8b8467335637a8c4df392",
+      "bytes": 29198,
+      "sha256": "885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3",
+      "checkout_sha256": "885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3",
+      "text_lines": 295
     },
     {
       "path": "server/mcp-local.ts",
       "projection": "source/server/mcp-local.ts",
       "tracked": true,
-      "git_index_blob_sha1": "9ca4a98168716b3025c9aaa5f6a3fcbf6958feb1",
-      "bytes": 3579,
-      "sha256": "48745797f11b6553c12b71a6b5b337ce67676d5a687e209ba4193fcde825707b",
-      "checkout_sha256": "48745797f11b6553c12b71a6b5b337ce67676d5a687e209ba4193fcde825707b",
-      "text_lines": 55
+      "git_index_blob_sha1": "109dbaafb426ed701a413e567adc8c34dc18047c",
+      "bytes": 3950,
+      "sha256": "fa9dcb130939399f9f5a1a1c9494c3acdf67e359d3e8b22926e8a7af01b46317",
+      "checkout_sha256": "fa9dcb130939399f9f5a1a1c9494c3acdf67e359d3e8b22926e8a7af01b46317",
+      "text_lines": 62
     },
     {
       "path": "server/mcp-tools.ts",
       "projection": "source/server/mcp-tools.ts",
       "tracked": true,
-      "git_index_blob_sha1": "40c3c5067759baa139b693840b5d08a78481e0b9",
-      "bytes": 24434,
-      "sha256": "9f71aa91f17b9739c54faf58bd10c5177bda995b7163fd223bdc4f623ea0cd70",
-      "checkout_sha256": "9f71aa91f17b9739c54faf58bd10c5177bda995b7163fd223bdc4f623ea0cd70",
+      "git_index_blob_sha1": "45b37d40da6cf8142bb74775404175b00fc873e2",
+      "bytes": 24467,
+      "sha256": "c4342ae3bc339abfa0cb66810e1d9d9278ae2b21367cd49b69d0252aa51b1e00",
+      "checkout_sha256": "c4342ae3bc339abfa0cb66810e1d9d9278ae2b21367cd49b69d0252aa51b1e00",
       "text_lines": 213
     },
     {
       "path": "server/mcp.ts",
       "projection": "source/server/mcp.ts",
       "tracked": true,
-      "git_index_blob_sha1": "6e82951f51eb5bd0d865732fd8a71ccb10047160",
-      "bytes": 10862,
-      "sha256": "96a8384ed8f4a8debd6495942b3b10cdc3015506736b74e8be6817c84129e2ad",
-      "checkout_sha256": "96a8384ed8f4a8debd6495942b3b10cdc3015506736b74e8be6817c84129e2ad",
-      "text_lines": 134
+      "git_index_blob_sha1": "35106aa9b8ffb4bded2f6742c6209fb609be45e0",
+      "bytes": 11681,
+      "sha256": "c2346e0128fea0d41c1b06a9d293770726169391a343f57d3ffb2ae70984b7c0",
+      "checkout_sha256": "c2346e0128fea0d41c1b06a9d293770726169391a343f57d3ffb2ae70984b7c0",
+      "text_lines": 152
     },
     {
       "path": "server/native-auth-store.js",
@@ -2437,11 +2497,11 @@
       "path": "src/console/Agents.tsx",
       "projection": "source/src/console/Agents.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "ab909f1e05f4d193786cbb7995f011291d3df296",
-      "bytes": 35791,
-      "sha256": "022f5d2a7cb5a424c210883ac401f7591d4218da92155a0675c49b2ba47cdcfa",
-      "checkout_sha256": "022f5d2a7cb5a424c210883ac401f7591d4218da92155a0675c49b2ba47cdcfa",
-      "text_lines": 221
+      "git_index_blob_sha1": "5459c372d8aafca32e739bed5664d2b4f6aac296",
+      "bytes": 36725,
+      "sha256": "f8ba43faeed1ddb6177c0503bdf8cc5ee83735dfc2150a3e0fbe1ce9d05820db",
+      "checkout_sha256": "f8ba43faeed1ddb6177c0503bdf8cc5ee83735dfc2150a3e0fbe1ce9d05820db",
+      "text_lines": 229
     },
     {
       "path": "src/console/Authentication.tsx",
@@ -2457,11 +2517,11 @@
       "path": "src/console/Console.tsx",
       "projection": "source/src/console/Console.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "89310682eb153535cf28e42d2b2dd87687057df7",
-      "bytes": 66383,
-      "sha256": "4d6331632e7c023613a43521392045c5940bf578374dca43344ecd1170e04027",
-      "checkout_sha256": "4d6331632e7c023613a43521392045c5940bf578374dca43344ecd1170e04027",
-      "text_lines": 1490
+      "git_index_blob_sha1": "20cce2927f317f7fa0ffa9c05d0c3217f6b846b7",
+      "bytes": 66600,
+      "sha256": "88f48a94a301b41fd00b3f56eab920e7bcf03d01bfe18061937ee55de23549ab",
+      "checkout_sha256": "88f48a94a301b41fd00b3f56eab920e7bcf03d01bfe18061937ee55de23549ab",
+      "text_lines": 1493
     },
     {
       "path": "src/console/EnvironmentSettings.tsx",
@@ -2497,11 +2557,11 @@
       "path": "src/console/McpConnections.tsx",
       "projection": "source/src/console/McpConnections.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "a0010b26d46308005c6801bfd803947f2593e29a",
-      "bytes": 3925,
-      "sha256": "f770fb2264e59311cdb666197da150e8501df2fd7b2315f59b63a074b458c0f0",
-      "checkout_sha256": "f770fb2264e59311cdb666197da150e8501df2fd7b2315f59b63a074b458c0f0",
-      "text_lines": 49
+      "git_index_blob_sha1": "474ca5b375422ba45e79001ca014e624a7f85035",
+      "bytes": 6130,
+      "sha256": "2e4450b050ac7ac0b25569724f249565d9a91b937e3e960ce3922d481f8482e5",
+      "checkout_sha256": "2e4450b050ac7ac0b25569724f249565d9a91b937e3e960ce3922d481f8482e5",
+      "text_lines": 68
     },
     {
       "path": "src/console/Policies.tsx",
@@ -2527,11 +2587,11 @@
       "path": "src/console/Settings.tsx",
       "projection": "source/src/console/Settings.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "2b71f659d713d03f6cd0508a9c5d43ff0544f2ac",
-      "bytes": 15227,
-      "sha256": "10717a8bd0171dbb4ca39500ef9ff811eeb23e29515a9cbef1bb533a0192a0dd",
-      "checkout_sha256": "10717a8bd0171dbb4ca39500ef9ff811eeb23e29515a9cbef1bb533a0192a0dd",
-      "text_lines": 119
+      "git_index_blob_sha1": "726a6d472671e27214e381dcab4459900f62f754",
+      "bytes": 15583,
+      "sha256": "7a97b625cca0a1a8069417eb375c7588986d81d2128ab5649a336f752e289b13",
+      "checkout_sha256": "7a97b625cca0a1a8069417eb375c7588986d81d2128ab5649a336f752e289b13",
+      "text_lines": 120
     },
     {
       "path": "src/console/Studio.tsx",
@@ -2647,11 +2707,11 @@
       "path": "src/console/help-guides.ts",
       "projection": "source/src/console/help-guides.ts",
       "tracked": true,
-      "git_index_blob_sha1": "ef1d3f6cb0935ec787f53a0e61b782c4a0169146",
-      "bytes": 45575,
-      "sha256": "41e411d2a980c010560036625262533446c12257515ec66e9a28d0685bde40bc",
-      "checkout_sha256": "41e411d2a980c010560036625262533446c12257515ec66e9a28d0685bde40bc",
-      "text_lines": 386
+      "git_index_blob_sha1": "eeb322918e2d6ebbd99b4dd07dca9462035b1aa1",
+      "bytes": 44087,
+      "sha256": "e5d0656fd823cf9702dcba64d76de10292710bca54d2429b862f084eed6f3108",
+      "checkout_sha256": "e5d0656fd823cf9702dcba64d76de10292710bca54d2429b862f084eed6f3108",
+      "text_lines": 374
     },
     {
       "path": "src/console/help.css",
@@ -2662,6 +2722,16 @@
       "sha256": "a710a9c9dc4e7ff3b79d4ecbea8587e30018f6a2c31ba57a09e23c2c1c491e19",
       "checkout_sha256": "a710a9c9dc4e7ff3b79d4ecbea8587e30018f6a2c31ba57a09e23c2c1c491e19",
       "text_lines": 85
+    },
+    {
+      "path": "src/console/mcp-resume.ts",
+      "projection": "source/src/console/mcp-resume.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "a0f297000885d1889cbb1f67f45305deb4df8aa9",
+      "bytes": 2779,
+      "sha256": "f3efee3ee356e6936c7ecaee8fbe53f2c0e32eb122ddbd19b960745be988065f",
+      "checkout_sha256": "f3efee3ee356e6936c7ecaee8fbe53f2c0e32eb122ddbd19b960745be988065f",
+      "text_lines": 50
     },
     {
       "path": "src/console/policies.css",
@@ -3077,21 +3147,41 @@
       "path": "tests/mcp-auth.test.ts",
       "projection": "source/tests/mcp-auth.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "acd882a3b3c348c4a9cfa512b7b30c34f8e85175",
-      "bytes": 16516,
-      "sha256": "88dc6e75c000766d687ba1e1c2104ecb50b517509225ceff87d152e92e0b4913",
-      "checkout_sha256": "88dc6e75c000766d687ba1e1c2104ecb50b517509225ceff87d152e92e0b4913",
-      "text_lines": 154
+      "git_index_blob_sha1": "b8afd7fb384ee4366fc7b4eddaf7e7f4b2eacbfa",
+      "bytes": 24022,
+      "sha256": "40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9",
+      "checkout_sha256": "40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9",
+      "text_lines": 244
     },
     {
       "path": "tests/mcp-integration.test.ts",
       "projection": "source/tests/mcp-integration.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "905d02ab179fb31e33959e7df843ea37b47889e3",
-      "bytes": 10904,
-      "sha256": "01aa5bdd0580c61e26978fadd7102e9b2c7dc9ee0207ffd2321e44a92bfff3a8",
-      "checkout_sha256": "01aa5bdd0580c61e26978fadd7102e9b2c7dc9ee0207ffd2321e44a92bfff3a8",
-      "text_lines": 111
+      "git_index_blob_sha1": "8b952e6103a87027e056ae9414cc06d37aad4c36",
+      "bytes": 14348,
+      "sha256": "9d56bdac7069a873a7c9f0e5cbc336448a5f616e7d430718f95d05d1dffc098b",
+      "checkout_sha256": "9d56bdac7069a873a7c9f0e5cbc336448a5f616e7d430718f95d05d1dffc098b",
+      "text_lines": 159
+    },
+    {
+      "path": "tests/mcp-local-migration.test.ts",
+      "projection": "source/tests/mcp-local-migration.test.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "426bdcbfd49d8a394140ca2f36386a19bbf08af2",
+      "bytes": 2553,
+      "sha256": "c8b7e6957556ab373a865f1bcb96cd7c6fc8880eb5572f9ae9e9be61cfcaeb07",
+      "checkout_sha256": "c8b7e6957556ab373a865f1bcb96cd7c6fc8880eb5572f9ae9e9be61cfcaeb07",
+      "text_lines": 32
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "projection": "source/tests/mcp-resume.test.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "65ca818b0dfbf1683fc7c800b759c77a048da159",
+      "bytes": 6767,
+      "sha256": "4647e920a893fc39cc4dce58041c614baa63f401a45362f4c4c14df4ebf7cc70",
+      "checkout_sha256": "4647e920a893fc39cc4dce58041c614baa63f401a45362f4c4c14df4ebf7cc70",
+      "text_lines": 112
     },
     {
       "path": "tests/mcp-tools.test.ts",
@@ -3147,11 +3237,11 @@
       "path": "tests/profile.test.ts",
       "projection": "source/tests/profile.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "fa28e8c0d62c65f458914106e869fd82489ccf31",
-      "bytes": 22953,
-      "sha256": "4aa1db9ad3b57d40a2d33e44df45dbdf3160be8715f21b21a967680f5b9dd0d9",
-      "checkout_sha256": "4aa1db9ad3b57d40a2d33e44df45dbdf3160be8715f21b21a967680f5b9dd0d9",
-      "text_lines": 208
+      "git_index_blob_sha1": "a0692e1d6018d41fa6995dc8ae7809fb3863de25",
+      "bytes": 23399,
+      "sha256": "a47a97851aa09f5f2f8076c7db8f5d915268b097de300326080848029189c49a",
+      "checkout_sha256": "a47a97851aa09f5f2f8076c7db8f5d915268b097de300326080848029189c49a",
+      "text_lines": 211
     },
     {
       "path": "tests/scheduler.test.ts",
@@ -3391,26 +3481,55 @@
     "real .env/.dev.vars, credentials, secrets and key files",
     "node_modules, build/output/generated processor staging, .git, caches",
     "owner attachments, local Font directory and private inputs",
-    "provider credentials and raw auth/session/token hashes from runtime stores"
+    "provider credentials and raw auth/session/token hashes from runtime stores",
+    "private registered-App binding files (.app.json); published installation CTA is public configuration"
   ],
-  "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template.",
-  "incremental_capture": {
-    "previous_review_commit": "80fc3db665fcad787f4033cafd70e8af4b3ec2a1",
-    "previous_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
-    "previous_source_manifest_sha256": "851d607b02ae1e68fd71c34585a516fc5c7135e39ea7f3c8f8de98a5ca3ac3a5",
+  "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template. The user-facing registered-plugin installation URL/identifier is explicitly authorized public configuration already served in the browser bundle; it grants no account access. Private App bindings are excluded. The historical raw-plugin identifier in the design document is also explicitly authorized public noncredential configuration; this does not widen either private audience.",
+  "previous_publication": {
+    "review_commit": "17fffc123149d62b87df4da430628cea6f453b06",
+    "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
+    "source_manifest_sha256": "cb8ce6b918b1f226e7a39bcb1533f4dd87a70b89d9d58493984b619f411cfa52",
     "changed_paths": [
+      "PROJECT_MAP.md",
+      "README.md",
+      "docs/AGENT_BRIDGE.md",
+      "docs/agents.md",
+      "docs/assistant-integration-design-2026-10-24.md",
       "docs/mcp-connector.md",
-      "integrations/chatgpt/marker/mcp.json",
-      "integrations/chatgpt/marker/plugin.json",
-      "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md"
+      "migrations-d1/0011_mcp_connections.sql",
+      "public/help/en/agents-connect.png",
+      "public/help/en/agents-context.png",
+      "public/help/es/agents-connect.png",
+      "public/help/es/agents-context.png",
+      "server/mcp-auth-store.ts",
+      "server/mcp-auth.ts",
+      "server/mcp-local.ts",
+      "server/mcp-tools.ts",
+      "server/mcp.ts",
+      "src/console/Agents.tsx",
+      "src/console/Console.tsx",
+      "src/console/McpConnections.tsx",
+      "src/console/Settings.tsx",
+      "src/console/help-guides.ts",
+      "src/console/mcp-resume.ts",
+      "tests/mcp-auth.test.ts",
+      "tests/mcp-integration.test.ts",
+      "tests/mcp-local-migration.test.ts",
+      "tests/mcp-resume.test.ts",
+      "tests/profile.test.ts"
     ],
     "new_paths": [
-      "integrations/chatgpt/marker/mcp.json",
-      "integrations/chatgpt/marker/plugin.json",
-      "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md"
+      "docs/assistant-integration-design-2026-10-24.md",
+      "migrations-d1/0011_mcp_connections.sql",
+      "public/help/en/agents-connect.png",
+      "public/help/en/agents-context.png",
+      "public/help/es/agents-connect.png",
+      "public/help/es/agents-context.png",
+      "src/console/mcp-resume.ts",
+      "tests/mcp-local-migration.test.ts",
+      "tests/mcp-resume.test.ts"
     ],
-    "method": "Four authorized source paths copied and hashed; all unchanged tracked Git blob identities checked; all 12 preserved dirty paths rehashed; complete eligible path set compared. Unchanged source bytes retain the original publication proof. No product tests, AST or schema execution repeated.",
-    "deployed_runtime_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
-    "runtime_change": false
+    "dirty_demo_paths_byte_identical": 12,
+    "method": "Fresh complete eligible source capture and exact-byte verification. Prior 12 demo paths remain uncommitted and byte-identical to the preceding review snapshot. Runtime source, AST/routes/tests and empty-schema catalogs refreshed; product tests are coordinator-reported, not rerun by this worker."
   }
 }

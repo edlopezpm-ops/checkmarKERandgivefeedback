@@ -1,20 +1,21 @@
 # Complete source projection
 
-Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
+Base `00398e155dcbd0a05942bf3466cfe8a29a63c604`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
 
 | Source path | Bytes | Text lines | Tracked | SHA-256 |
 | --- | --- | --- | --- | --- |
 | [.dev.vars.example](../source/.dev.vars.example) | 846 | 19 | True | 33b4ac87871a338e9aa66f21dcb3cb02c8fe86e189a08080f48c6d97f30defd7 |
 | [.gitattributes](../source/.gitattributes) | 139 | 8 | True | eca3fbfa052942aa08c1a5a665291b01f2e54b75cb325d955fd333e0b8069e6f |
 | [.gitignore](../source/.gitignore) | 445 | 31 | True | f6e01bef0c8f531f3bd34b555f9d85e4207bc0e89ee0668ffc2eb737e6109019 |
-| [PROJECT_MAP.md](../source/PROJECT_MAP.md) | 4450 | 44 | True | 97f05c405e4ce6615dbfcfff808b59cb0f916302f3825b337142b99ad52620d7 |
-| [README.md](../source/README.md) | 7025 | 43 | True | 03404ce261ece188f2c96542a0d6f101a3470f0057f5a259da439356a0c2aae3 |
+| [PROJECT_MAP.md](../source/PROJECT_MAP.md) | 4714 | 48 | True | d48c10638028f2a35799e6a1464ea332466ec0110f65958b7bf4ed913fa03c8f |
+| [README.md](../source/README.md) | 7215 | 45 | True | cef5e43cff559e53841b036c571c07492ea25566f760dc4bd83744b41e3b4430 |
 | [assets/AEKR-BANNER-LICENSE.txt](../source/assets/AEKR-BANNER-LICENSE.txt) | 1377 | 28 | True | b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703 |
 | [assets/aekr-banner.png](../source/assets/aekr-banner.png) | 1006315 | None | True | 81a60d8e3d28b2e0934cecd22c703af20e2bddd164f68a0888193647c1b816fc |
-| [docs/AGENT_BRIDGE.md](../source/docs/AGENT_BRIDGE.md) | 9370 | 72 | True | 26570e22cf5d1a0541e79ace6521db733ea831aee37f5acdaeabf5104790e553 |
-| [docs/agents.md](../source/docs/agents.md) | 5715 | 29 | True | a7c9cbfbfaad64f2e822c9eb3282ac2539941734c3b80e337e88b605e37154f1 |
+| [docs/AGENT_BRIDGE.md](../source/docs/AGENT_BRIDGE.md) | 9646 | 77 | True | 9add1de4dd2d975c0a15a33b24a33f5240a0784fade099447a61363f94ee06f1 |
+| [docs/agents.md](../source/docs/agents.md) | 6257 | 38 | True | 9717cf39c5a6ce31688aca4d5820a32305a202234ef4c47ebf84a84b2fab94d9 |
 | [docs/ai-connection-decision.md](../source/docs/ai-connection-decision.md) | 12644 | 71 | True | 8299435f36b2b9e30e6f7db6191b031b5274236b7f669cdcfb5280b757115b0f |
 | [docs/architecture.md](../source/docs/architecture.md) | 4861 | 31 | True | cd171adccc3af2656155313d96bfc7379e4c604ed745a731c53bf097fa32eab2 |
+| [docs/assistant-integration-design-2026-10-24.md](../source/docs/assistant-integration-design-2026-10-24.md) | 34413 | 487 | True | 5705eee129dfd67d26aa4beca3af5ae708ec04f31dfc11658c3e8f6867db51a8 |
 | [docs/authentication.md](../source/docs/authentication.md) | 9443 | 173 | True | b29745ee2efd622fd41614864ee4b35b7dd6ae471ee99c1ea1f74767c415d334 |
 | [docs/console.md](../source/docs/console.md) | 8391 | 39 | True | 646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e |
 | [docs/decoration.md](../source/docs/decoration.md) | 5257 | 34 | True | c87bf08589554bdc5a465d2f44e7d5e31a0b3f3136a3a6626a947c75337409fb |
@@ -22,7 +23,7 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [docs/hosted-studio.md](../source/docs/hosted-studio.md) | 7813 | 43 | True | 75c14f9e403724b2551456690e88ed1252dc89d38db81d5886893dc5360b31b4 |
 | [docs/implementation-next-steps.md](../source/docs/implementation-next-steps.md) | 7037 | 47 | True | e8e801152287f2278e24236c347dffb55ae31a420df8af64dbc788c854fbc20b |
 | [docs/local-studio.md](../source/docs/local-studio.md) | 10248 | 55 | True | 52ad7181171d827f1811c01b87f6c21d3571cc766a8be48efec3c7fecc92a5e5 |
-| [docs/mcp-connector.md](../source/docs/mcp-connector.md) | 7776 | 122 | True | fb5d2ca7e1e209bbba3753fbed67bd34597783ab5fdd930bfecc18e9ac7037b2 |
+| [docs/mcp-connector.md](../source/docs/mcp-connector.md) | 9812 | 151 | True | 07e0e4a6de4f8572c6303544fd1bcc8a25788e6ca6b7d9a8592bb429c1019326 |
 | [docs/profile-and-data.md](../source/docs/profile-and-data.md) | 4059 | 68 | True | 45e1f7a316b35abcbb7870386e196c5057e129df159e2e351c98cc93f40b147d |
 | [docs/settings.md](../source/docs/settings.md) | 4553 | 33 | True | 14383f00f6ba5dd9493d6a02f83c4ae5054c8a98cb41d7511f30516407665b61 |
 | [docs/studio-planner.md](../source/docs/studio-planner.md) | 9967 | 55 | True | 945b050a63b49fe133af2c968bce53356f70fe973d05ebe9006a80ab7d3bfda8 |
@@ -41,6 +42,7 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [migrations-d1/0008_github_auth.sql](../source/migrations-d1/0008_github_auth.sql) | 1530 | 24 | True | 7bf1c097f5fa726cb7c0687cf745808df603cb8af76b2a149bae371d3f060131 |
 | [migrations-d1/0009_profile_account.sql](../source/migrations-d1/0009_profile_account.sql) | 13933 | 187 | True | ad0d7a0bbf4474b86ce935afb37114e1eeb2b623c86e71333db26b54d8c2904b |
 | [migrations-d1/0010_mcp.sql](../source/migrations-d1/0010_mcp.sql) | 5764 | 59 | True | 29a254501f66ef75b814cc0faa4b784bcaf8dd5b9a3c99480479f95cf28100fa |
+| [migrations-d1/0011_mcp_connections.sql](../source/migrations-d1/0011_mcp_connections.sql) | 1299 | 15 | True | 0e158a26bd903e1835e0f905acd2269939ef61c3b2fc09b0409556e0cb49f1ae |
 | [migrations/0001_editorial.sql](../source/migrations/0001_editorial.sql) | 3007 | 52 | True | ec5ded4cb4a0b4bea1221672867858afd70be0ae2569428ea6017bef7dd64b88 |
 | [package-lock.json](../source/package-lock.json) | 117092 | 3548 | True | 6cc22858def60be3c2cf7b0cc118c63c43f40bb892f634aae042716c3115bbbe |
 | [package.json](../source/package.json) | 909 | 29 | True | 3a158f1856a3220f40117e55e4c2b6c43b562e6215db11e2409fc2e1fd1ec306 |
@@ -66,6 +68,8 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [public/help/en/accounts-1.png](../source/public/help/en/accounts-1.png) | 18628 | None | True | ed250f334fa8277821948ecddcdfc26d0ef3d63256b99a77d838c5ea2db844a4 |
 | [public/help/en/accounts-2.png](../source/public/help/en/accounts-2.png) | 17505 | None | True | 2004a40f33b271994ca0dc7ded048c8e539bc04e51e6cfd034c6bb8eae969e60 |
 | [public/help/en/accounts-3.png](../source/public/help/en/accounts-3.png) | 37792 | None | True | 33ea0dbc57faa69bf1b7f1dffb05433d7e7aeb9544e4068f094ac5027a755922 |
+| [public/help/en/agents-connect.png](../source/public/help/en/agents-connect.png) | 30008 | None | True | 3b9602547b67ad081e1d5faa677a8f34157e819a0a2e9c456b883889d920494f |
+| [public/help/en/agents-context.png](../source/public/help/en/agents-context.png) | 35043 | None | True | 4e3b3b193bab061ad7415235b83142d766f77af8d82178ca9295cabe79e1224f |
 | [public/help/en/ambiente-1.png](../source/public/help/en/ambiente-1.png) | 31711 | None | True | c0f5c5344c9eee57346920be5feb21aed3845ed3d1f4647407fe7acd98a6c844 |
 | [public/help/en/ambiente-2.png](../source/public/help/en/ambiente-2.png) | 7477 | None | True | 38001942ed2cc6b73ce1ddd85f4134ad304922ca95e9f7d446232aba769658fe |
 | [public/help/en/ambiente-3.png](../source/public/help/en/ambiente-3.png) | 4511 | None | True | 5fff07f7bffa09bd0068d7d7f81be0e33f7e436a55ab4ca39eb4aa1851f72789 |
@@ -143,6 +147,8 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [public/help/es/accounts-1.png](../source/public/help/es/accounts-1.png) | 17964 | None | True | 51ce7ab74389f2dc5043f4ae0061bb851595bb7ca42125092dedf36649cfcf84 |
 | [public/help/es/accounts-2.png](../source/public/help/es/accounts-2.png) | 20108 | None | True | c337e56f7ddd0ae5b4e2d0dfa980c1c8fc26707fcb3cd445dfe00e9534e1fca1 |
 | [public/help/es/accounts-3.png](../source/public/help/es/accounts-3.png) | 37487 | None | True | 8d594c3cafb9acb50c61cb04d2aed9394a9e131f452a3cd44fa799145db174c8 |
+| [public/help/es/agents-connect.png](../source/public/help/es/agents-connect.png) | 29673 | None | True | 27ea8944aadb572465c775a77cf6809987809e0c50c363fa8cbfe7d0ca3ead86 |
+| [public/help/es/agents-context.png](../source/public/help/es/agents-context.png) | 34685 | None | True | 337dcd5fc716c8f57109e2109de451830094b1e743faea9216700ecf74b9ac3a |
 | [public/help/es/ambiente-1.png](../source/public/help/es/ambiente-1.png) | 28785 | None | True | 754ec750c737346b23c062d3026971513c8f83fff55d1c7feee1e9a38dd1b58c |
 | [public/help/es/ambiente-2.png](../source/public/help/es/ambiente-2.png) | 9342 | None | True | 5fd29a5f07e6a9b0d60a7584f0875c8930b2bb14c6c1adce35b3463265ef8134 |
 | [public/help/es/ambiente-3.png](../source/public/help/es/ambiente-3.png) | 4983 | None | True | e8042bf5a6cb67ef037db8643e5e6d298c68d473493b164cb2ddaac7f4dcd1eb |
@@ -226,11 +232,11 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [server/github-auth.js](../source/server/github-auth.js) | 14491 | 91 | True | d1ac5f36a17b4ef70272159ef53e0bf3a92d41495787484da2df7f607d702e94 |
 | [server/google-auth.js](../source/server/google-auth.js) | 17384 | 131 | True | 5108148270a83117ee353db89b544fc351275d9f9c93a4e27a740e50e64a04e9 |
 | [server/local.ts](../source/server/local.ts) | 1815 | 54 | True | 68daf1ad3dea0cadb08f093617117f7b6561040e2d7c9a55be3d21ad32fcee47 |
-| [server/mcp-auth-store.ts](../source/server/mcp-auth-store.ts) | 1800 | 26 | True | 30dd121a85faaa34707e2dbb0a7e0a5267d6a6a5329650b476bb0dba0a214f4f |
-| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 24809 | 241 | True | ebe61d1efc14e0ea08208a09bc94f6ac9b0c26837baeb08fe4942eb28730cd92 |
-| [server/mcp-local.ts](../source/server/mcp-local.ts) | 3579 | 55 | True | 48745797f11b6553c12b71a6b5b337ce67676d5a687e209ba4193fcde825707b |
-| [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 24434 | 213 | True | 9f71aa91f17b9739c54faf58bd10c5177bda995b7163fd223bdc4f623ea0cd70 |
-| [server/mcp.ts](../source/server/mcp.ts) | 10862 | 134 | True | 96a8384ed8f4a8debd6495942b3b10cdc3015506736b74e8be6817c84129e2ad |
+| [server/mcp-auth-store.ts](../source/server/mcp-auth-store.ts) | 1914 | 27 | True | d9a4f87a57da9dc53ab0c375a6e73b82fcc28625d92a9693893e6edee6de5620 |
+| [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 29198 | 295 | True | 885bc4d0eb7057a1135c91463006d4ca330b91502d68af5ad780f36c4e2aabe3 |
+| [server/mcp-local.ts](../source/server/mcp-local.ts) | 3950 | 62 | True | fa9dcb130939399f9f5a1a1c9494c3acdf67e359d3e8b22926e8a7af01b46317 |
+| [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 24467 | 213 | True | c4342ae3bc339abfa0cb66810e1d9d9278ae2b21367cd49b69d0252aa51b1e00 |
+| [server/mcp.ts](../source/server/mcp.ts) | 11681 | 152 | True | c2346e0128fea0d41c1b06a9d293770726169391a343f57d3ffb2ae70984b7c0 |
 | [server/native-auth-store.js](../source/server/native-auth-store.js) | 9741 | 144 | True | f78e573068ddc498336cf7339c3c76bf3545c64b53a8ea20bf501016020079c3 |
 | [server/native-auth.d.ts](../source/server/native-auth.d.ts) | 1287 | 8 | True | 7efbe739314aa5397d51390d7d0bf2d09afa07db4762fdc73fadeb4315b93b0a |
 | [server/native-auth.js](../source/server/native-auth.js) | 17399 | 254 | True | 90179aa20bd2cfec5a4394eeb7c721bfa9a2d94c64842ca1fd99eefac31cc1c3 |
@@ -245,16 +251,16 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [server/tenant-auth.js](../source/server/tenant-auth.js) | 3457 | 49 | True | 0f78deb76f579b85d219a935ad25104ba5523ecb9ca89354f847ad002283f417 |
 | [server/worker.ts](../source/server/worker.ts) | 10055 | 202 | True | cad27d59766cf7d3f43269558564f6ccce3b8b093a85c54bdd2bce796be95a84 |
 | [src/App.tsx](../source/src/App.tsx) | 7919 | 113 | True | 215be4b94e11ad18f7d71b6f36e0bbe202dc72b2fe4d7b1feb95e94d3a6f615c |
-| [src/console/Agents.tsx](../source/src/console/Agents.tsx) | 35791 | 221 | True | 022f5d2a7cb5a424c210883ac401f7591d4218da92155a0675c49b2ba47cdcfa |
+| [src/console/Agents.tsx](../source/src/console/Agents.tsx) | 36725 | 229 | True | f8ba43faeed1ddb6177c0503bdf8cc5ee83735dfc2150a3e0fbe1ce9d05820db |
 | [src/console/Authentication.tsx](../source/src/console/Authentication.tsx) | 6247 | 72 | True | 0a7d41722a49eaacd95738e10a0168d78ab1a06fe5e7cbb6cb5cb4afdebca16c |
-| [src/console/Console.tsx](../source/src/console/Console.tsx) | 66383 | 1490 | True | 4d6331632e7c023613a43521392045c5940bf578374dca43344ecd1170e04027 |
+| [src/console/Console.tsx](../source/src/console/Console.tsx) | 66600 | 1493 | True | 88f48a94a301b41fd00b3f56eab920e7bcf03d01bfe18061937ee55de23549ab |
 | [src/console/EnvironmentSettings.tsx](../source/src/console/EnvironmentSettings.tsx) | 3752 | 27 | True | 914f78f3ff89f4d070f221833527604c701dab9ccc738de8306f8b3bc54843c3 |
 | [src/console/ErrorNotice.tsx](../source/src/console/ErrorNotice.tsx) | 950 | 16 | True | 0cc49ecf9e0405e69945d1244ffedc282f805d10f74ccc2c33fc363f4f90521a |
 | [src/console/Help.tsx](../source/src/console/Help.tsx) | 5120 | 88 | True | 113939eabe0608907f2965e8cbd486f0c2d885b0adb61b84b14ef6ae48b9bb44 |
-| [src/console/McpConnections.tsx](../source/src/console/McpConnections.tsx) | 3925 | 49 | True | f770fb2264e59311cdb666197da150e8501df2fd7b2315f59b63a074b458c0f0 |
+| [src/console/McpConnections.tsx](../source/src/console/McpConnections.tsx) | 6130 | 68 | True | 2e4450b050ac7ac0b25569724f249565d9a91b937e3e960ce3922d481f8482e5 |
 | [src/console/Policies.tsx](../source/src/console/Policies.tsx) | 18217 | 77 | True | 81e7a4e19f56f9cb39efd88cdfc8f46f315de6b6219d0ec9db350612cccd4d1e |
 | [src/console/Profile.tsx](../source/src/console/Profile.tsx) | 16428 | 167 | True | fb36886d3de2b573b8f8704b1bf84907ae169c88fd562a48187cdf33b5be6620 |
-| [src/console/Settings.tsx](../source/src/console/Settings.tsx) | 15227 | 119 | True | 10717a8bd0171dbb4ca39500ef9ff811eeb23e29515a9cbef1bb533a0192a0dd |
+| [src/console/Settings.tsx](../source/src/console/Settings.tsx) | 15583 | 120 | True | 7a97b625cca0a1a8069417eb375c7588986d81d2128ab5649a336f752e289b13 |
 | [src/console/Studio.tsx](../source/src/console/Studio.tsx) | 53817 | 378 | True | 938c4535a690d878cd5267000615897f050a5e0206405bcb9c18c4e78ab1af76 |
 | [src/console/StudioAnalysis.tsx](../source/src/console/StudioAnalysis.tsx) | 12698 | 110 | True | 32ed01e8b7b428b12cb593cf91c82e64d4771b92996da1c1494d86ce10bcfd17 |
 | [src/console/StudioPlanner.tsx](../source/src/console/StudioPlanner.tsx) | 26521 | 176 | True | 36e15dab8f8161631cd775c3274d40fdc0813c886533c440b083c09c36389d92 |
@@ -266,8 +272,9 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [src/console/authentication.css](../source/src/console/authentication.css) | 893 | 9 | True | 728e24948a1ed7bb5309df70b2f3c195f085e8ea6b355105b2b4d1b8e0bdfba9 |
 | [src/console/console.css](../source/src/console/console.css) | 8754 | 467 | True | 220cd5a372a4cf4f7f51409254673bf2e76f45a2e97c84c92c629881997388fb |
 | [src/console/error-notice.css](../source/src/console/error-notice.css) | 668 | 21 | True | 59958477c90c576c2fd46d13c3bd55138e38cbc09b03a25d5079a1f2c7b6212d |
-| [src/console/help-guides.ts](../source/src/console/help-guides.ts) | 45575 | 386 | True | 41e411d2a980c010560036625262533446c12257515ec66e9a28d0685bde40bc |
+| [src/console/help-guides.ts](../source/src/console/help-guides.ts) | 44087 | 374 | True | e5d0656fd823cf9702dcba64d76de10292710bca54d2429b862f084eed6f3108 |
 | [src/console/help.css](../source/src/console/help.css) | 6567 | 85 | True | a710a9c9dc4e7ff3b79d4ecbea8587e30018f6a2c31ba57a09e23c2c1c491e19 |
+| [src/console/mcp-resume.ts](../source/src/console/mcp-resume.ts) | 2779 | 50 | True | f3efee3ee356e6936c7ecaee8fbe53f2c0e32eb122ddbd19b960745be988065f |
 | [src/console/policies.css](../source/src/console/policies.css) | 1939 | 19 | True | 80d26f28b1056fa446a1bdf04356a692b684c423c3f9e62588a1c373f97ded70 |
 | [src/console/profile.css](../source/src/console/profile.css) | 777 | 11 | True | 82c4a8f494f1650997272f5c1c1f54e89e4824c3c2ae94913dde599201305297 |
 | [src/console/release.css](../source/src/console/release.css) | 11805 | 245 | True | 4267e266aa18ec33cffd25d79bf340005ea35085758f64760f1212e11cf54e6b |
@@ -309,14 +316,16 @@ Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are
 | [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 15656 | 109 | True | be529405b0ed4dcbd2c6a8dadd23d717bc09ab44634353975fab8c423a9644c2 |
 | [tests/google-auth.test.ts](../source/tests/google-auth.test.ts) | 23176 | 201 | True | 094020b327c7b6901aa4c72307334c9c6667a526864e89aba3635a8a846cfa5b |
 | [tests/hosted.test.ts](../source/tests/hosted.test.ts) | 3537 | 109 | True | de34e203f1918b9f8f52657d665f07eaafc7d0473319cad4c219675a61d36ed0 |
-| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 16516 | 154 | True | 88dc6e75c000766d687ba1e1c2104ecb50b517509225ceff87d152e92e0b4913 |
-| [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 10904 | 111 | True | 01aa5bdd0580c61e26978fadd7102e9b2c7dc9ee0207ffd2321e44a92bfff3a8 |
+| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 24022 | 244 | True | 40abc19158ab5f46a89b440698e7bbcadb78ff77eeabf483a052a2f6e5a059f9 |
+| [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 14348 | 159 | True | 9d56bdac7069a873a7c9f0e5cbc336448a5f616e7d430718f95d05d1dffc098b |
+| [tests/mcp-local-migration.test.ts](../source/tests/mcp-local-migration.test.ts) | 2553 | 32 | True | c8b7e6957556ab373a865f1bcb96cd7c6fc8880eb5572f9ae9e9be61cfcaeb07 |
+| [tests/mcp-resume.test.ts](../source/tests/mcp-resume.test.ts) | 6767 | 112 | True | 4647e920a893fc39cc4dce58041c614baa63f401a45362f4c4c14df4ebf7cc70 |
 | [tests/mcp-tools.test.ts](../source/tests/mcp-tools.test.ts) | 19187 | 246 | True | 65aaa86e9459b06e5b7fbecd9bed2dfc7018d7b4b6c98321d9edf7443d5eff50 |
 | [tests/motion.test.ts](../source/tests/motion.test.ts) | 6655 | 101 | True | 19101897c338cb978600024aa538cb55ea233a6ea692d6f9400f72bc3884cfcc |
 | [tests/native-auth.test.ts](../source/tests/native-auth.test.ts) | 16736 | 254 | True | f4f22ef56236d848ca8a01ff0321042be17bff777646e9c4b03b4ab2c943932b |
 | [tests/profile-local.test.ts](../source/tests/profile-local.test.ts) | 2801 | 25 | True | f6753930c9f789932ef1771111e8382fdc4d08eb606a415ad3b2491c524b0a4b |
 | [tests/profile-ui.test.ts](../source/tests/profile-ui.test.ts) | 13034 | 96 | True | 0bc68d65771a27def72340f968402ad992261804489283d97d7f738e60658566 |
-| [tests/profile.test.ts](../source/tests/profile.test.ts) | 22953 | 208 | True | 4aa1db9ad3b57d40a2d33e44df45dbdf3160be8715f21b21a967680f5b9dd0d9 |
+| [tests/profile.test.ts](../source/tests/profile.test.ts) | 23399 | 211 | True | a47a97851aa09f5f2f8076c7db8f5d915268b097de300326080848029189c49a |
 | [tests/scheduler.test.ts](../source/tests/scheduler.test.ts) | 2958 | 36 | True | a4c28d80aabd0e6267163ee95f0bb54e2fbc73f77d4616f5ef6e7da8c76584ac |
 | [tests/studio-analysis.test.ts](../source/tests/studio-analysis.test.ts) | 7237 | 92 | True | ece83bde25c2f7d8faa0d4d70eae5cb94f1ebd96672098a572eb9cd52740ccb2 |
 | [tests/studio-api.test.ts](../source/tests/studio-api.test.ts) | 24931 | 314 | True | 41f24afe6ccf1cf7aaef9ea6b6404b68a3080cbc806dcaca7489cd15f68733da |

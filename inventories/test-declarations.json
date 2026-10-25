@@ -1,7 +1,7 @@
 {
   "format": "marker-static-tests/v1",
   "coverage": "Syntactic node:test/test/it/describe and t.test declarations; no tests executed.",
-  "count": 292,
+  "count": 306,
   "files": [
     "tests/access-help.test.ts",
     "tests/agent-bridge.test.ts",
@@ -21,6 +21,8 @@
     "tests/hosted.test.ts",
     "tests/mcp-auth.test.ts",
     "tests/mcp-integration.test.ts",
+    "tests/mcp-local-migration.test.ts",
+    "tests/mcp-resume.test.ts",
     "tests/mcp-tools.test.ts",
     "tests/motion.test.ts",
     "tests/native-auth.test.ts",
@@ -754,135 +756,233 @@
     {
       "path": "tests/mcp-auth.test.ts",
       "line": 31,
-      "end_line": 38,
+      "end_line": 39,
       "kind": "test",
       "name": "MCP discovery names exact resource and PKCE public-client endpoints without owner cookies"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 40,
-      "end_line": 48,
+      "line": 41,
+      "end_line": 55,
       "kind": "test",
-      "name": "DCR bounds public metadata and requires exact HTTPS redirects in hosted mode"
+      "name": "native OAuth callbacks accept literal loopback and a changed port while the code binds the concrete URI"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 50,
-      "end_line": 57,
+      "line": 57,
+      "end_line": 65,
       "kind": "test",
-      "name": "anonymous authorize requests do not grant access; signed-in consent escapes names and preserves original logo"
+      "name": "native OAuth port exception never permits changing callback host, path, query or scheme"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 59,
-      "end_line": 64,
+      "line": 67,
+      "end_line": 75,
+      "kind": "test",
+      "name": "DCR bounds metadata and rejects plaintext remote or noncanonical redirects"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "line": 77,
+      "end_line": 88,
+      "kind": "test",
+      "name": "anonymous authorization creates only a bounded login handle; signed-in consent preserves the original logo"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "line": 90,
+      "end_line": 105,
+      "kind": "test",
+      "name": "normal login resumes the exact validated OAuth transaction once, then requires explicit consent"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "line": 107,
+      "end_line": 122,
+      "kind": "test",
+      "name": "expired or malformed login handles never redirect externally, and interrupted resume can retry safely"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "line": 124,
+      "end_line": 133,
+      "kind": "test",
+      "name": "authorized DCR identities survive expiry and revoke while unused registrations expire"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "line": 135,
+      "end_line": 147,
+      "kind": "test",
+      "name": "only committed Allow promotes a DCR identity; denied or failed grants preserve retry safety"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "line": 149,
+      "end_line": 154,
       "kind": "test",
       "name": "authorize rejects redirect substitution, duplicate parameters, unbound resources, PKCE downgrade and unknown scopes"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 66,
-      "end_line": 74,
+      "line": 156,
+      "end_line": 164,
       "kind": "test",
       "name": "consent requires same-origin authenticated owner and single-use explicit Allow or Deny"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 76,
-      "end_line": 86,
+      "line": 166,
+      "end_line": 176,
       "kind": "test",
       "name": "real SQLite code exchange binds PKCE, client, redirect, resource and opaque hashed credentials"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 88,
-      "end_line": 92,
+      "line": 178,
+      "end_line": 182,
       "kind": "test",
       "name": "concurrent code exchanges admit exactly one token pair"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 94,
-      "end_line": 98,
+      "line": 184,
+      "end_line": 188,
       "kind": "test",
       "name": "failed token transaction rolls back code consumption and permits a correct retry"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 100,
-      "end_line": 105,
+      "line": 190,
+      "end_line": 195,
       "kind": "test",
       "name": "refresh rotates once; replay revokes whole grant family including latest access token"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 107,
-      "end_line": 110,
+      "line": 197,
+      "end_line": 200,
       "kind": "test",
       "name": "concurrent refresh races revoke the family rather than leaving replayable credentials"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 112,
-      "end_line": 118,
+      "line": 202,
+      "end_line": 208,
       "kind": "test",
       "name": "cross-client refresh/revoke and scope escalation fail without revoking valid owner grant"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 120,
-      "end_line": 129,
+      "line": 210,
+      "end_line": 219,
       "kind": "test",
       "name": "owner can list and revoke delegated connections; another owner and cross-origin requests cannot"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 131,
-      "end_line": 136,
+      "line": 221,
+      "end_line": 226,
       "kind": "test",
       "name": "RFC revocation accepts access or refresh credentials and makes authentication fail"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 138,
-      "end_line": 144,
+      "line": 228,
+      "end_line": 234,
       "kind": "test",
       "name": "expiry and durable account freeze deny access; migration blocks already-admitted writes"
     },
     {
       "path": "tests/mcp-auth.test.ts",
-      "line": 146,
-      "end_line": 154,
+      "line": 236,
+      "end_line": 244,
       "kind": "test",
       "name": "endpoints bound methods, bodies, registration rate and do not accept client-secret auth"
     },
     {
       "path": "tests/mcp-integration.test.ts",
-      "line": 56,
-      "end_line": 77,
+      "line": 67,
+      "end_line": 88,
       "kind": "test",
       "name": "official SDK negotiates Streamable HTTP and persists real tools; duplicate requests never duplicate products"
     },
     {
       "path": "tests/mcp-integration.test.ts",
-      "line": 79,
-      "end_line": 88,
+      "line": 90,
+      "end_line": 120,
       "kind": "test",
       "name": "transport rejects missing/invalid identity, cross-origin and caller-selected tenant before product effects"
     },
     {
       "path": "tests/mcp-integration.test.ts",
-      "line": 90,
-      "end_line": 101,
+      "line": 122,
+      "end_line": 136,
+      "kind": "test",
+      "name": "scope challenges precede any effect receipt or business backend access"
+    },
+    {
+      "path": "tests/mcp-integration.test.ts",
+      "line": 138,
+      "end_line": 149,
       "kind": "test",
       "name": "concurrent identical writes admit once and uncertain committed effects never automatically run again"
     },
     {
       "path": "tests/mcp-integration.test.ts",
-      "line": 103,
-      "end_line": 111,
+      "line": 151,
+      "end_line": 159,
       "kind": "test",
       "name": "owner revocation invalidates established SDK connections and local authorization persists across factories"
+    },
+    {
+      "path": "tests/mcp-local-migration.test.ts",
+      "line": 9,
+      "end_line": 32,
+      "kind": "test",
+      "name": "local MCP upgrades a legacy database once while preserving identity and authorized client IDs"
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "line": 27,
+      "end_line": 34,
+      "kind": "test",
+      "name": "capture stores only the opaque correlation handle before cleaning its query key"
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "line": 36,
+      "end_line": 48,
+      "kind": "test",
+      "name": "malformed, URL-shaped and duplicate handles are discarded without retaining an older flow"
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "line": 50,
+      "end_line": 68,
+      "kind": "test",
+      "name": "provider navigation preserves the pending handle and resumes once after real authentication"
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "line": 70,
+      "end_line": 79,
+      "kind": "test",
+      "name": "ten-minute expiry is enforced and provider returns do not extend it"
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "line": 81,
+      "end_line": 92,
+      "kind": "test",
+      "name": "invalid stored data and future timestamps never become redirect targets"
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "line": 94,
+      "end_line": 112,
+      "kind": "test",
+      "name": "storage failures preserve login usability and cannot cause repeat redirects"
     },
     {
       "path": "tests/mcp-tools.test.ts",
@@ -1167,77 +1267,77 @@
     {
       "path": "tests/profile.test.ts",
       "line": 39,
-      "end_line": 56,
+      "end_line": 59,
       "kind": "test",
       "name": "account deletion freezes and removes all delegated MCP credentials and effect receipts"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 58,
-      "end_line": 82,
+      "line": 61,
+      "end_line": 85,
       "kind": "test",
       "name": "profile derives initials automatically and retains only the readonly access email on owner PATCH with revision CAS"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 84,
-      "end_line": 86,
+      "line": 87,
+      "end_line": 89,
       "kind": "test",
       "name": "shared automatic initials follow current name or email without an owner-specific default"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 88,
-      "end_line": 103,
+      "line": 91,
+      "end_line": 106,
       "kind": "test",
       "name": "deletion requires exact double confirmation, fresh independent email, session, origin and singleton tenant"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 105,
-      "end_line": 142,
+      "line": 108,
+      "end_line": 145,
       "kind": "test",
       "name": "durable freeze, lost-start retry and same-browser cleanup purge all active D1/R2 rows without recreating owner data"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 144,
-      "end_line": 155,
+      "line": 147,
+      "end_line": 158,
       "kind": "test",
       "name": "cleanup waits existing write leases and retries multipart/R2 failures without a false completion"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 157,
-      "end_line": 168,
+      "line": 160,
+      "end_line": 171,
       "kind": "test",
       "name": "concurrent resumes hold one durable lease and final D1 purge rolls back atomically on failure"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 170,
-      "end_line": 177,
+      "line": 173,
+      "end_line": 180,
       "kind": "test",
       "name": "final empty-bucket recheck catches late objects; scheduled recovery completes only an owner-started deletion"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 179,
-      "end_line": 183,
+      "line": 182,
+      "end_line": 186,
       "kind": "test",
       "name": "missing lifecycle migration fails closed before any auth, bridge, or profile effect"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 185,
-      "end_line": 190,
+      "line": 188,
+      "end_line": 193,
       "kind": "test",
       "name": "completed or previously aborted multipart uploads permit cleanup only for documented NoSuchUpload errors"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 192,
-      "end_line": 208,
+      "line": 195,
+      "end_line": 211,
       "kind": "test",
       "name": "additive profile migration preserves existing Google identity, owner/session and workspace bytes; absent lifecycle also freezes D1 writes"
     },

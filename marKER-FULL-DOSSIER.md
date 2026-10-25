@@ -1,6 +1,6 @@
 # marKER — complete technical dossier
 
-Snapshot 2026-10-24; source base `a675f8dfccf32986530205cb1636dac7624afc21` plus the explicitly inventoried working-tree delta.
+Snapshot 2026-10-24; source base `00398e155dcbd0a05942bf3466cfe8a29a63c604` plus the explicitly inventoried working-tree delta.
 
 This reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.
 
@@ -11,17 +11,17 @@ Canonical chapter: [00-START-HERE.md](00-START-HERE.md)
 
 # Start here
 
-This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source base is `a675f8dfccf32986530205cb1636dac7624afc21` on `main`; 12 working-tree paths are qualified in the [snapshot manifest](source-snapshot-manifest.json). Read the exact projected files when narrative and code differ.
+This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source base is `00398e155dcbd0a05942bf3466cfe8a29a63c604` on `main`; 12 working-tree paths are qualified in the [snapshot manifest](source-snapshot-manifest.json). Read the exact projected files when narrative and code differ.
 
 Read [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review prompt](AI_ANALYSIS_PROMPT.md). Use the [complete source inventory](inventories/source-paths.md), [symbol index](code-flow/05-module-symbol-index.md), [test index](inventories/test-index.md) and [route occurrences](inventories/routes.md) to close coverage gaps. A complete review requires inspecting implementation, tests and negative paths; a chapter summary alone does not establish that coverage.
 
 | Evidence label | Exact meaning |
 | --- | --- |
 | Snapshot source | Included implementation/configuration at the manifest's byte identity. |
-| Package verification | The initial 333-file publication executed completeness, hashes, AST parse and empty-schema reconstruction. The later four-path packaging delta updates provenance and links without rerunning unchanged product, AST or schema checks; see the manifest and catalog receipt. |
+| Package verification | This 345-file refresh verifies complete source bytes and regenerates structural AST/routes/tests and empty-schema catalogs after the 27-path product increment. Prior publications remain in Git; product-test execution is separately reported. |
 | Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
 | Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
-| Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records migration 0010, production Worker identity, public metadata/denial checks and asset parity supplied by the implementation coordinator. |
+| Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records migrations 0010/0011, current production Worker identity, five bounded public checks and 185 exact assets supplied by the implementation coordinator. |
 | Not established | Owner OAuth, desktop host use and Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
 
 The review contains no private governance, owner workspace, sessions, provider accounts or runtime database rows. Schema catalogs are empty reconstructions. Test fixtures and Help/demo assets are synthetic/public product material. Package integrity is not security certification or product acceptance.
@@ -94,7 +94,7 @@ Studio uses separate [typed contracts](source/src/core/studio.ts) and normalized
 
 Planner provenance retains source IDs/versions/hashes, selected ranges, consent, native planner version and fingerprints. Server recomputation prevents a client from inventing eligibility. A trusted local Agent generation receipt carries actual run/model/proposal identity into materials, variants and render receipts. An external MCP request records its client/grant/action, but does not invent the host's model or forge an Agent receipt.
 
-The persisted authentication singleton supplies immutable user/tenant IDs without remapping earlier business records. Profile stores optional display data separately. The account lifecycle freezes writes during confirmed deletion; triggers cover existing domain/auth/Agent tables and all new MCP tables. Connector grants/tokens/requests/receipts use seven additive tables from [0010_mcp.sql](source/migrations-d1/0010_mcp.sql).
+The persisted authentication singleton supplies immutable user/tenant IDs without remapping earlier business records. Profile stores optional display data separately. The account lifecycle freezes writes during confirmed deletion; triggers cover existing domain/auth/Agent tables and all new MCP tables. Connector grants/tokens/requests/receipts start with seven additive tables in [0010_mcp.sql](source/migrations-d1/0010_mcp.sql). [0011_mcp_connections.sql](source/migrations-d1/0011_mcp_connections.sql) adds a nullable authorized-client timestamp and an eighth table for expiring, single-use pending-login correlation. Existing grants backfill authorization time. Approved client identity survives grant expiry/revocation; a login handle itself grants no owner or data access. Account deletion freezes and purges all eight tables.
 
 Read all migration SQL in [source/migrations-d1/](source/migrations-d1) and the [generated D1 catalog](database/d1-reference.md). Catalog replay verifies empty schema structure, not live D1 rows, remote applied versions, runtime query coverage or restoration. Entity JSON fields must be read with their TypeScript contracts.
 
@@ -142,7 +142,7 @@ Canonical chapter: [04-frontend-and-interaction.md](04-frontend-and-interaction.
 | Authentication/CAPTCHA | [Authentication.tsx](source/src/console/Authentication.tsx), [Turnstile.tsx](source/src/console/Turnstile.tsx) |
 | Profile/policies | [Profile.tsx](source/src/console/Profile.tsx), [Policies.tsx](source/src/console/Policies.tsx) |
 | Limits/device preferences | [Settings.tsx](source/src/console/Settings.tsx), [EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx) |
-| Delegated connections | [McpConnections.tsx](source/src/console/McpConnections.tsx) |
+| Delegated connections/login continuation | [McpConnections.tsx](source/src/console/McpConnections.tsx), [mcp-resume.ts](source/src/console/mcp-resume.ts) |
 | Help/errors/language | [Help.tsx](source/src/console/Help.tsx), [help-guides.ts](source/src/console/help-guides.ts), [ErrorNotice.tsx](source/src/console/ErrorNotice.tsx), [i18n.tsx](source/src/i18n.tsx) |
 
 English is default; Spanish and optional dark mode are browser preferences. Language changes UI copy, not saved content. Settings persists workspace limits across devices while Environment holds device choices. Unsaved text/recipes can be recovered from browser session storage with explicit conflict handling. Microphone recording is bounded and permission-driven, but unfinished recording recovery in memory is not durable background capture.
@@ -151,9 +151,11 @@ The complete approved logo is retained as its original asset; font/license and A
 
 Contextual lowercase help is at the bottom left of modules. The source guide includes topic/step navigation and images for each step in both languages. Error notices, focus restoration, nested Escape handling, keyboard use, narrow-width overflow and draft preservation are review targets; prior browser checks do not imply universal assistive-technology or physical-device coverage.
 
-Environment's connected-assistant UI exposes the endpoint and revocable grants. Showing a URL or an empty connection list is not evidence that an external host has installed it. Consent occurs at the connector authorization page using the existing owner session.
+Agents and Environment share the ordinary connect/status/revoke view. The main CTA opens the registered private marKER App-backed plugin in ChatGPT; an expandable secondary path supplies the endpoint for another compatible assistant. Explicit loading, retry/refresh and two-step disconnect distinguish connection states. Chat happens in the external assistant; marKER retains draft review, approval and export. Local bridge controls, polling and bridge-limit settings appear only in explicit loopback development affordances.
 
-A [synthetic local UI view](review-assets/README.md) shows Spanish dark-mode connections. It was visually inspected before inclusion; its local-fixture status is explicit.
+On OAuth login handoff, [mcp-resume.ts](source/src/console/mcp-resume.ts) accepts one bounded correlation handle, removes only that query parameter while preserving other URL/history values, and keeps it briefly in session storage. It consumes the handle before navigation and resumes only after `/api/session` reports authenticated=true. Invalid, repeated, expired or unavailable-storage cases do not authorize a continuation. The server validates the actual transaction and explicit owner consent; Strict owner-cookie behavior is retained.
+
+The [retained synthetic local screenshot](review-assets/README.md) documents the earlier connection-list UI, not the current connect flow. Current bilingual connection/context illustrations are included in [public Help source](source/public/help); four new images accompany the updated guide. Reported desktop/mobile viewport checks use synthetic fixtures and do not establish physical-phone or actual host OAuth behavior.
 
 
 ---
@@ -173,13 +175,15 @@ The [Worker](source/server/worker.ts) resolves authenticated native access and l
 | Studio | [studio-hosted.ts](source/server/studio-hosted.ts), [studio-local.ts](source/server/studio-local.ts): materials/plans/commands/settings/uploads/assets/analysis/jobs/render/approve/export. |
 | Agents | [agents.ts](source/server/agents.ts): owner/pairing routes, bounded context, connections/sessions/runs/events/proposals/effect receipts. |
 | Profile/lifecycle | [profile.ts](source/server/profile.ts): independent revision, explicit deletion, durable resumable cleanup. |
-| MCP/OAuth | [mcp-auth.ts](source/server/mcp-auth.ts), [mcp.ts](source/server/mcp.ts): metadata, registration, consent/token/revocation, bearer tools and private artifacts. |
+| MCP/OAuth | [mcp-auth.ts](source/server/mcp-auth.ts), [mcp.ts](source/server/mcp.ts): metadata, registration, bounded login/resume, consent/token/revocation, bearer tools and private artifacts. |
 
 The sole-owner model never authorizes by email equality with Google/GitHub or by a client-supplied tenant. First linking needs native email proof under five minutes at start and callback; later provider login uses the retained immutable identity. Email is a recovery path. OAuth credentials/tokens remain server-side; configured public client/site identifiers are not secrets. Native sessions have six-hour absolute and thirty-minute idle limits.
 
 Turnstile validates the expected action and exact configured production hostname, then consumes a durable digest so repeated provider success cannot replay one token. Partial configuration fails closed. Completely absent configuration retains the explicit baseline during setup. Local Vite development is separately trusted; it does not emulate production CAPTCHA/email authentication.
 
 Profile name/country are editable; identity/email comes from the verified principal. Deletion requires exact `DELETE`, all-data confirmation, same-origin/header checks, retained tenant and fresh native email proof. A lifecycle marker and SQL triggers freeze writes, then cleanup stops the processor, waits for leases, aborts known multipart uploads, removes private objects and purges application tables. Status/resume uses a distinct same-browser HttpOnly capability; retries retain progress. A minimal tombstone prevents automatic account recreation. GET status is readonly. No actual owner deletion is asserted by this dossier.
+
+OAuth login continuation is server-bound: a ten-minute hashed handle references a validated client/callback/PKCE/resource transaction, is consumed once, and creates consent only for the authenticated owner. Native literal IPv4/IPv6 loopback HTTP callbacks may vary only their port; remote HTTPS callback matching stays exact, and token exchange binds the concrete chosen callback. Missing permissions produce standard HTTP or MCP authentication challenges before domain effects or retry receipts.
 
 Review bearer scope/resource/client/tenant binding, stale sessions, replay, concurrent token rotation, deletion races, private artifact authorization, rate/capacity limits and error disclosure together. A synthetic SQLite suite does not by itself establish a fresh live owner login or external-provider activation.
 
@@ -220,6 +224,8 @@ Canonical chapter: [07-integrations-and-capability-status.md](07-integrations-an
 
 There are three distinct AI-related routes. The optional **local Agents bridge** can invoke official local Codex managed-ChatGPT inference. The **MCP connector** lets an external host call finite marKER product tools using delegated authorization; marKER need not host inference. **Hosted SIWC inference** is a separate admission/grant question and is not enabled by a Pro subscription, pairing token or MCP consent.
 
+The hosted Agents surface now presents the ordinary external-assistant connection flow. The local bridge remains available only through explicit loopback development controls; it is not a prerequisite for hosted users.
+
 Local Agents are implemented in [agents.ts](source/server/agents.ts), [agents-store.ts](source/server/agents-store.ts), [Agents.tsx](source/src/console/Agents.tsx) and [agent-bridge.mjs](source/tools/agent-bridge.mjs). Server-derived context binds current product, campaign and up to 30 material versions. The bridge only accepts loopback marKER origins, communicates with its Codex child over stdio and polls marKER; it opens no inbound listener. Native provider credentials stay in Codex-managed storage. The bridge strips inherited provider/pairing credentials from child environment, disables inherited MCP servers and editing/external tools, and checks effective policy. Those controls are not a proof of OS containment.
 
 Runs have explicit request identity, deadlines, one concurrent turn, lease/cancellation and final-output reconciliation. A lost completion response can replay a private receipt without invoking inference again. Offline/expired/failed runs remain visible and do not choose another billing route. Editable copy is explicitly saved through Studio with trusted provenance; assembly/render/approval/export reuse native rules. Local 30-day default cleanup removes old activity/unused conversations while preserving applied proposal/run/context evidence. Retained-history ceilings can require maintenance; no provider-side erasure guarantee follows.
@@ -228,7 +234,7 @@ Runs have explicit request identity, deadlines, one concurrent turn, lease/cance
 
 Read the complete [connector contract](source/docs/mcp-connector.md), [transport](source/server/mcp.ts), [authorization](source/server/mcp-auth.ts), [store](source/server/mcp-auth-store.ts), [tools](source/server/mcp-tools.ts), [local adapter](source/server/mcp-local.ts) and [migration](source/migrations-d1/0010_mcp.sql). The endpoint is `/api/mcp`; OAuth metadata paths must run before SPA fallback. The official SDK serves stateless Streamable HTTP/JSON with the Workers-compatible schema validator.
 
-Public clients use dynamic registration (`none` token authentication), Authorization Code and PKCE S256. Existing marKER owner login precedes an explicit consent page naming client/callback/scopes. Tokens are opaque; stored access/refresh/code/consent values are hashes. Proofs bind resource, client, redirect, tenant and user. Refresh rotation reuse revokes its family; Environment can revoke a grant. A client cannot select a tenant.
+Public clients use dynamic registration (`none` token authentication), Authorization Code and PKCE S256. Existing marKER owner login precedes an explicit consent page naming client/callback/scopes. A server-validated, single-use ten-minute correlation handle carries the transaction through ordinary email/Google/GitHub login; the same-origin UI resumes it after authenticated session discovery while retaining the Strict owner cookie. Native literal-loopback HTTP callbacks may vary only their port, and token exchange binds the concrete callback. Tokens are opaque; stored access/refresh/code/consent values are hashes. Proofs bind resource, client, redirect, tenant and user. Refresh rotation reuse revokes its family; Environment can revoke a grant. A client cannot select a tenant.
 
 | Scope | Finite tools |
 | --- | --- |
@@ -237,13 +243,15 @@ Public clients use dynamic registration (`none` token authentication), Authoriza
 | `marker:produce` | `marker_render`, `marker_export` |
 | `marker:delete` | `marker_delete` |
 
+The normal tool catalog exposes fourteen read/write/produce descriptors, including actions whose permission has not yet been granted, so a host can request an upgrade. `marker_delete` is listed only after a separate delete grant. Discovery never grants execution: missing scope returns HTTP or MCP `_meta["mcp/www_authenticate"]` challenges before effects or receipts. Protected-resource discovery starts with minimal read scope; authorization metadata lists all supported scopes.
+
 New text/ideas default to unknown rights and unreviewed unless the user explicitly supplies facts. Tools cannot approve, publish socially, delete the account, execute SQL/shell/HTTP generically or upload arbitrary originals. They call the same native preparation/domain/Studio routes; human approval remains in marKER.
 
 Writes require expected revisions and stable request IDs bound to grant/tool/arguments. Identical completed requests replay results. Pending/uncertain execution is not automatically retried. This is at-most-once admission, **not a cross-store transaction** between domain mutation and effect receipt; a committed write with lost receipt requires reconciliation. Per-grant effect capacity is 5,000.
 
-TXT export returns approved literal text. MP4 export returns a private revision-bound URI, with scoped token or existing owner-session download and a fresh check of native approval/export rules. No public bearer URL is created. Access tokens last 15 minutes; grant families 30 days; codes 2 minutes; consent 10 minutes; clients 90 days. Limits include 200 clients, 20 registrations per observed IP/hour and 30 owner consent requests per ten minutes. CIMD is not advertised. Browser-origin calls are restricted to the canonical marKER origin; server-to-server hosts omit Origin. Remote hosts cannot reach a local loopback endpoint.
+TXT export returns approved literal text. MP4 export returns a private revision-bound URI, with scoped token or existing owner-session download and a fresh check of native approval/export rules. No public bearer URL is created. Access tokens last 15 minutes; grant families 30 days; codes 2 minutes; consent 10 minutes; never-authorized registrations 90 days. Approved client IDs persist across grant expiry, revocation and reconnection. Limits include 200 retained clients, 20 registrations per observed IP/hour and 30 owner consent requests per ten minutes. Pending-login admission allows 20 attempts per observed IP per ten minutes and 2,000 retained pending requests; each expires after ten minutes. CIMD is not advertised. Browser-origin calls are restricted to the canonical marKER origin; server-to-server hosts omit Origin. Remote hosts cannot reach a local loopback endpoint.
 
-Expired grants cascade credentials and request receipts; applied product entities retain normal domain custody. Account deletion freezes and purges all seven connector tables. This is not indefinite connector audit retention.
+Expired grants cascade credentials and request receipts; applied product entities retain normal domain custody. [Migration 0011](source/migrations-d1/0011_mcp_connections.sql) adds approved-client lifetime and the pending-login table; the local MCP store upgrades transactionally while preserving its separate identity. Account deletion freezes and purges all eight connector tables. This is not indefinite connector audit retention.
 
 ## Capability ledger
 
@@ -253,15 +261,15 @@ Expired grants cascade credentials and request receipts; applied product entitie
 | Deterministic missing-label classification/library preparation | Implemented and verified locally; no semantic inference. |
 | Local managed-ChatGPT Agents bridge | Implemented; one prior actual fictional-copy request reported in product docs; no new provider call in this refresh. |
 | Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; actual authorized Dot/other-host tools and conversation remain unestablished. |
-| Hosted MCP migration/deployment | Migration 0010 and all seven tables verified; Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, with hosted metadata/denial and asset readback. See [deployment evidence](DEPLOYMENT-STATUS.md). |
+| Hosted MCP migration/deployment | Migrations 0010/0011 applied; Worker `d48f31ec-1641-4097-bb5f-c0ccd7fd26ae` at 100%, with five fresh public checks and 185 exact assets. See [deployment evidence](DEPLOYMENT-STATUS.md). |
 | Hosted SIWC inference | Admission/client/effective plan grant unresolved. |
 | Hosted technical analysis | Disabled until native toolchain verification. |
 | Connected social APIs, advertising activation, live metrics, Android automation | Deferred/unimplemented. |
 | Transcription/subtitles/semantic media selection/PWA background capture | Separate future capabilities. |
 
-A private user-level plugin package was created and its manifest read back. Its default requested permissions are read, write and produce; delete is not a default permission. After the owner completed CAPTCHA, the account plugin page visibly listed marKER as Installed with one MCP server and one skill. This does not complete server OAuth: readonly aggregate D1 inspection still reported zero registered clients and zero active grants, with zero rows written. The start action reached a desktop open-app page; browser security blocked Open ChatGPT, so the owner must finish desktop opening manually. No successful Dot tool connection or conversation is asserted. Private account identifiers and the private installation URL are intentionally outside this public dossier.
+The canonical connection is now an **App-backed private plugin, version 1.0.1**, registered through the host's custom-MCP flow and retaining its real App binding when the campaign skill was added. Read is the base permission, read/write/produce are selected defaults, and delete remains unchecked. The earlier raw package is retained as a developer artifact. The ordinary CTA points to the registered connection. The served installation URL/identifier is explicitly authorized public configuration; the plugin audience remains private and its account binding files are excluded. The owner subsequently reported “Connected”, but the observed host test session exposed no product read/create/delete tools and plugin management still offered Connect. Sanitized server aggregates show one registered client and zero approved clients, active grants, resumed logins or token rows. Server connection is therefore incomplete and under diagnosis. No successful delegated tool execution, Dot conversation or phone behavior is established. Earlier installed-page and zero-grant observations belong to the prior package checkpoint and are not fresh grant counts for this release.
 
-The reproducible package lives in [plugin.json](source/integrations/chatgpt/marker/plugin.json), [mcp.json](source/integrations/chatgpt/marker/mcp.json) and [prepare-campaign/SKILL.md](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). It contains no account-specific installation ID or credential. The skill requires current revisions, stable request IDs, explicit facts/rights and first-party approval. The coordinator verified three-file ZIP parity and the intended manifest contract. OpenAI authentication extensions can diverge from the generic portable base-schema validation; this is not an all-host compatibility claim. The package commit changes no application runtime.
+The reproducible package lives in [plugin.json](source/integrations/chatgpt/marker/plugin.json), [mcp.json](source/integrations/chatgpt/marker/mcp.json) and [prepare-campaign/SKILL.md](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). This portable version 0.1.0 contains no account-specific installation ID or credential and does not by itself create the registered App connection. The skill requires current revisions, stable request IDs, explicit facts/rights and first-party approval. The prior packaging increment verified three-file ZIP parity and the intended portable manifest contract; that is not validation of the current private App binding. OpenAI authentication extensions can diverge from the generic portable base-schema validation; this is not an all-host compatibility claim. The [integration design](source/docs/assistant-integration-design-2026-10-24.md) records the a675f8d baseline and implementation plan; its future-tense gaps are historical. Use current code and this capability ledger for delivered behavior. CIMD/SDK/public-submission work remains separately qualified. The pinned SDK currently negotiates MCP2025-11-25; the actual host version must be observed. No universal-host, newer-protocol or voice compatibility claim follows.
 
 
 ---
@@ -270,36 +278,34 @@ Canonical chapter: [08-operations-quality-and-limits.md](08-operations-quality-a
 
 # 08 — Operations, quality and limits
 
-The initial source publication executed documentary verification: complete explicit source selection, raw-byte identity, safe exclusions, static AST parse, empty-schema reconstruction/replay, source navigation, package links, credential-pattern screening and sealed manifests. The later packaging/hosted-status update verifies the bounded source delta, preserved catalog bytes, links and package seal without repeating product tests, AST parsing or schema execution. Neither step inspects runtime owner databases. [CURRENT-STATE.json](CURRENT-STATE.json) records the precise source and evidence boundary.
+This refresh captures all eligible source bytes at the current manifest revision, regenerates static AST/routes/test navigation and all eleven D1 migrations in empty SQLite, replays schema-only DDL, and checks hashes, public boundaries, links and the package seal. It does not rerun product tests, open owner stores or deploy. [CURRENT-STATE.json](CURRENT-STATE.json) separates fresh package checks from coordinator-reported runtime evidence.
 
-The implementation coordinator reports 15 OAuth/SQLite tests, 8 tool/backend tests, 4 official-SDK integration tests and 48 targeted Profile/native/provenance regressions passing, plus frontend/server type checks, build, immutable-logo verification and Worker dry run. These are separate focused runs, not an invented full-suite coverage number. Profile coverage includes all seven MCP tables in confirmed deletion. Final counts or added checks are recorded in CURRENT-STATE when supplied by the coordinator.
+For the current seamless connection increment, the coordinator reports **47 focused tests PASS**, build and original-logo checks PASS, and an independent review with no actionable finding. Production UI code was exercised with synthetic desktop/mobile viewport fixtures: ordinary Agents/Environment connection screens made **zero `/api/agents` calls** and showed no bridge commands. Four new bilingual Help images accompany the connection/context instructions. These observations do not establish real owner OAuth, phone behavior or an actual Dot conversation.
 
-The final coordinator handoff confirms **75 focused tests** in those groups and a subsequent **12-test SDK/tool subset** after the standard profile `{id}` contract correction. It also reports English/light and Spanish/dark connection-list/two-step-revocation checks and Spanish consent font/original-logo/overflow checks passing. A [synthetic local connection screenshot](review-assets/README.md) is included separately. The bounded parent review passed with observations; it is not a product-wide security certification.
+The five protected native classifier/planner/analysis/domain modules remain unchanged. The complete source includes the same twelve uncommitted demo paths, each byte-identical to the preceding public snapshot. The source commit alone therefore does not identify the full captured checkout; read its dirty-path manifest.
 
-The coordinator also reports an isolated real HTTP/SDK sequence: OAuth PKCE → create product/campaign → native plan → save → actual FFmpeg 10-second 1080×1920 MP4 → separate first-party approval → delegated streamed MP4 export (46,703 bytes), with zero model/provider calls. An initial synthetic plan without explicit mute consent correctly failed with HTTP 422; the fixture supplied explicit consent and reran, leaving native checks intact. This proves that tested local backend/SDK sequence, not actual Dot conversation, hosted MCP activation, physical-device acceptance or human creative quality.
+The coordinator applied migration **0011** after a private backup and isolated restoration/migration rehearsal that preserved all 36 existing tables in that backup. This is a bounded D1 migration/recovery check, not proof of full D1/R2/job/provider recovery. This review worker did not read or copy that backup or its data.
 
-Prior receipts report hosted manual/Studio/auth/Profile/Help/demo delivery. Current-source refresh is not a new readback of those releases. The frozen main commit adds authenticated MCP tools over the native campaign engine, following the earlier native-classification increment; preexisting deployed demo bytes remain dirty. A base commit, a successful build and a source config are three different facts; none alone identifies what is currently running remotely.
+Current hosted release: Worker `d48f31ec-1641-4097-bb5f-c0ccd7fd26ae` at **100%**, deployment timestamp `2026-10-25T02:01:10.735Z`. A sanitized readback at `2026-10-25T02:01:28.630Z` reports **five checks PASS** and **185 static assets matching SHA-256**. It used no owner session. The checks cover minimal-read resource discovery, PKCE/DCR/refresh metadata, anonymous OAuth challenge, branded malformed-resume recovery and connection-list privacy. [Deployment status](DEPLOYMENT-STATUS.md) records these bounds.
 
-The initial review publication `80fc3db` captured source before the newly authorized MCP deployment. Its old-receipt reference to `5998a3eb-8557-4ab4-88b8-9c402d6be0d6` was not a live verification. Fresh predeployment inspection subsequently identified `c525b283-3ba7-453d-a429-d76c73e81924` as the actual previous hosted version. That 333-file snapshot remains preserved in Git. Source commit `a675f8dfccf32986530205cb1636dac7624afc21` subsequently adds three canonical plugin-package files and updates the connector document; the same 12 demo paths retain their original byte identities. The deployed runtime still corresponds to `de0a4a65d6d37642e5f7efda66151c4270ec2a02` plus those demo bytes; packaging introduces no runtime change or new deployment.
+Prior publications retain earlier evidence separately: the original connector had 75 focused local checks, a later 12-test SDK/tool subset, and an actual local SDK→native plan/save→FFmpeg 10-second 1080×1920 MP4→separate first-party approval→46,703-byte delegated export with zero provider/model calls. Worker `99baf771` had 18 hosted checks and 182 exact assets. Those counts are historical; they are not added to the current 47-test or five-check runs and do not become a hosted authenticated campaign test.
 
-The owner then authorized the private D1 backup, additive migration 0010 and deployment. The coordinator reports Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, independent hosted readback **18/18 PASS**, all **182 dist assets** byte/SHA-identical (**32,761,835 bytes**), the exact approved logo and both public demo range/HEAD checks passing. Readonly D1 inspection confirms migration 0010 and its seven tables, with zero rows written by the inspection. [DEPLOYMENT-STATUS.md](DEPLOYMENT-STATUS.md) records the bounded public evidence. This review worker reads no backup and makes no change to the canonical product repository or runtime.
-
-This establishes the verified hosted server/assets and negative authorization behavior. After owner-completed CAPTCHA, the account plugin page visibly lists Installed, one MCP server and one skill. Owner OAuth and Dot tools/conversation remain unverified: readonly aggregate D1 inspection reported zero registered clients and active grants. Browser security blocked the desktop-open action; manual owner handoff remains. No new human UAT, creative-quality result, real hosted authenticated end-to-end campaign or restoration proof is inferred.
+The registered App-backed private plugin 1.0.1 and product CTA are present. The owner subsequently reported “Connected”, but follow-up host observation exposed no product read/create/delete tools and still offered Connect. Sanitized server aggregates show one registered client and zero approved clients, active grants, resumed logins and token rows. The actual server connection is incomplete and under diagnosis. Dot conversation, voice support and physical-phone use remain unverified. The portable package is a separate developer artifact. No public plugin listing, widened audience, human UAT or creative-quality acceptance is asserted.
 
 | Operational control | Bound and limitation |
 | --- | --- |
 | Settings | US$20 internal planning maximum, initially US$10 processing, US$0 future AI, 2 GiB storage, 20-second default duration. |
 | Compute admission | Probe 5 internal cents; render 10; enabled analysis 5. Credits are not measured Cloudflare billing or an invoice hard cap. |
-| Agent defaults | 30 runs/day, one concurrent, 300 seconds, 30-day selective cleanup; retained provenance survives cleanup and ceilings remain. |
-| Connector | Token/grant/client/request limits in the connector chapter; no external-host/model quota guarantee. |
-| Recovery | Preserve D1/R2/job IDs and receipts together; a rollback reference or Time Travel bookmark is not a restore rehearsal. |
-| Retention | Ordinary material deletion retains originals/history; confirmed account deletion has its own resumable workflow and exclusions. |
+| Local bridge defaults | 30 runs/day, one concurrent, 300 seconds, 30-day selective cleanup; retained provenance survives cleanup and ceilings remain. These developer controls do not set external-host quotas. |
+| Connector | Client/grant/token/login/request bounds in the connector chapter; approved client identity persists while grants/tokens remain independently expiring and revocable. |
+| Recovery | Preserve D1/R2/job IDs and receipts together; the bounded D1 rehearsal does not establish complete system restoration. |
+| Retention | Ordinary material deletion retains originals/history; confirmed account deletion freezes and purges all eight MCP tables within its resumable workflow. |
 
 Known orphan multipart uploads without a recoverable reference depend on the bucket lifecycle rule. Product docs report a seven-day all-prefix abort rule readback on 2026-10-24; this refresh did not recheck it. Downloads, independent local copies, provider account data/logs/backups and operator recovery copies are outside immediate active-account erasure. Do not restore deleted identity/content from recovery copies.
 
-Review exact Node/FFmpeg/managed-container compatibility before deployment, apply additive migrations through the existing release process, and verify Worker routing, source assets and authenticated flows separately. Do not run bridge `--smoke`, deployment, remote migrations or owner deletion merely to read this dossier. The provided source enables review and local synthetic verification without those effects.
+Review exact Node/FFmpeg/managed-container compatibility before deployment, apply additive migrations through the existing release process, and verify Worker routing, assets and authenticated flows separately. Do not run bridge smoke inference, deployment, remote migrations or owner deletion merely to read this dossier.
 
-Remaining evidence gaps: actual desktop host connection/consent/tool conversation; iPhone/Safari and Android/Chrome physical capture/codec/interruption checks; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; restore rehearsal; broader security/accessibility evaluation. No product-wide acceptance or independent containment is claimed.
+Remaining evidence gaps: actual host owner consent/tool conversation; physical iPhone/Safari and Android/Chrome capture/codec/interruption checks; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; complete recovery rehearsal; broader security/accessibility evaluation. No product-wide acceptance or independent OS containment is claimed.
 
 
 ---
@@ -317,7 +323,7 @@ Review the full source projection, not only this narrative. Preserve the indepen
 | Planner | Can changed permissions, ranges/history, explicit consent or stale fingerprints bypass server recomputation? |
 | UI | Are selection, stale revisions, interrupted uploads, optional Agents and errors understandable on narrow screens and keyboard navigation? |
 | Auth/lifecycle | Can concurrent callback/session/bridge/MCP work survive account freeze, relink identity incorrectly or recreate deleted data? |
-| MCP authorization | Are PKCE/resource/client/tenant/scope checks, refresh reuse, consent CSRF, private downloads and revocation correct at every boundary? |
+| MCP authorization | Are PKCE/resource/client/tenant/scope checks, single-use login/resume, literal-loopback callback port matching, approved-client lifetime, refresh reuse, consent CSRF, scope-upgrade challenges, private downloads and revocation correct at every boundary? |
 | MCP effects | Can ambiguous network failure cause a duplicated mutation, stuck receipt or unsafe retry? Is reconciliation actionable? |
 | Agents | Can context drift, lease expiry, cancellation or completion replay fabricate provenance or repeat inference/effects? |
 | Processor/custody | Are deadlines, parser/protocol bounds, reservations, enqueue recovery and object finalization safe under interruption? |
@@ -325,7 +331,9 @@ Review the full source projection, not only this narrative. Preserve the indepen
 | Complexity | Which abstraction or duplicated boundary can be removed while preserving the mandatory behavior? |
 | Value | Which minimal workflow improvement would measurably reduce active preparation time? |
 
-Open decisions include actual hosted SIWC admission; actual connector-host installation and capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
+The latest observed host integration is incomplete: a registered client exists, but approved grants/tokens are absent and the tested host session exposes no product tools. Treat this as a known integration gap under diagnosis, separate from the passing public-server and synthetic-SDK checks.
+
+Open decisions include actual hosted SIWC admission; actual registered-App owner OAuth, tool conversation and host/voice/phone capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
 
 For every finding provide priority, exact source path/line, observed behavior, trigger or counterexample, confidence/evidence class, user impact, smallest coherent change, affected frontend/backend/schema/effect boundaries, preserved invariants, focused success/failure/concurrency tests, migration/recovery needs and any unresolved owner decision. Separate demonstrated defects, plausible risks, usability improvements and optional roadmap work. Do not claim runtime performance, provider eligibility, actual invoices, UAT or deployed behavior from static source.
 
@@ -338,7 +346,7 @@ Canonical chapter: [10-source-map-tests-and-dependencies.md](10-source-map-tests
 
 # 10 — Source map, tests and dependencies
 
-The source projection contains **336 files** totaling **35,589,745 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The source projection contains **345 files** totaling **35,789,619 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
 
 - [Every source path and hash](inventories/source-paths.md).
 - [Machine snapshot, source commit and dirty qualifications](source-snapshot-manifest.json).
@@ -349,7 +357,7 @@ The source projection contains **336 files** totaling **35,589,745 bytes**, incl
 - [Locked dependencies and commands](inventories/dependencies.md).
 - [Public demo hashes/URLs](inventories/public-media.json).
 
-The TypeScript parser indexed **112 modules**. The static test index contains **292 declarations across 39 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
+The TypeScript parser indexed **115 modules**. The static test index contains **306 declarations across 41 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
 
 Source files were copied byte-for-byte from the frozen checkout. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
 
@@ -366,7 +374,7 @@ Canonical chapter: [11-database-and-catalog-reference.md](11-database-and-catalo
 
 All snapshot D1 migrations, including Agents, retained operator identities, Google/GitHub linking, Profile/account lifecycle and additive MCP grants/effects, were applied to an empty in-memory SQLite database. Exported schema-only DDL was replayed into another empty database and checked for integrity and foreign-key consistency. No live/local runtime database was opened.
 
-The reconstructed D1 application schema has **35 tables, 195 columns, 14 explicit indexes and 69 triggers**. Local Studio initialization has **10 tables and 33 columns**. These are different catalogs; local auth/Agents/MCP use additional separate stores as shown in their adapters.
+The reconstructed D1 application schema has **36 tables, 201 columns, 14 explicit indexes and 71 triggers**. Local Studio initialization has **10 tables and 33 columns**. These are different catalogs; local auth/Agents/MCP use additional separate stores as shown in their adapters.
 
 | Reference | Contents |
 | --- | --- |
@@ -407,7 +415,7 @@ Hosted: [entry](source/server/entry.ts) → [worker](source/server/worker.ts) �
 
 Local: [vite.config.ts](source/vite.config.ts) loopback guard → local session/API adapters → [local repository](source/server/local.ts) or [Studio SQLite](source/server/studio-local.ts). Local development trusts its OS account and uses separate data.
 
-Auth: email challenge → same-browser proof → opaque session → retained operator; Google/GitHub first link additionally requires recent native email proof. Profile deletion establishes durable freeze before stopping compute and purging app stores. Read [profile.ts](source/server/profile.ts) together with [0009](source/migrations-d1/0009_profile_account.sql) and [0010](source/migrations-d1/0010_mcp.sql) to assess already-admitted writes.
+Auth: email challenge → same-browser proof → opaque session → retained operator; Google/GitHub first link additionally requires recent native email proof. Profile deletion establishes durable freeze before stopping compute and purging app stores. Read [profile.ts](source/server/profile.ts) together with [0009](source/migrations-d1/0009_profile_account.sql) [0010](source/migrations-d1/0010_mcp.sql) and [0011](source/migrations-d1/0011_mcp_connections.sql) to assess already-admitted writes.
 
 
 ---
@@ -417,6 +425,8 @@ Canonical chapter: [code-flow/02-browser-and-editorial.md](code-flow/02-browser-
 # Browser and editorial flow
 
 [Console](source/src/console/Console.tsx) → [client](source/src/core/client.ts) → [shared API](source/server/api.ts) → [domain command](source/src/core/domain.ts) → repository CAS → fresh snapshot. Server validation owns relationships, slot conflicts, deletion guards and explicit outcomes. Browser drafts and error display do not authoritatively override a failed command.
+
+An OAuth handoff supplies only a short-lived correlation handle. [mcp-resume.ts](source/src/console/mcp-resume.ts) removes it from the visible URL, preserves unrelated query/history values, and consumes it before authenticated navigation to the server resume endpoint. It cannot itself grant owner access.
 
 Studio is mounted separately; selection/draft state flows through [StudioPlanner](source/src/console/StudioPlanner.tsx). The [native UI regression tests](source/tests/studio-native-ui.test.ts) target explicit selection versus saved/cached variants. Profile and Settings use independent revision domains. Old editor/source/account controls remain available without becoming social provider connections.
 
@@ -451,7 +461,7 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 # Module and symbol index
 
-112 parsed modules; 13792 declarations/fields, 536 imports/re-exports, 17205 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
+115 parsed modules; 13951 declarations/fields, 549 imports/re-exports, 17676 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
 
 | Module | Symbols | Imports | Calls |
 | --- | --- | --- | --- |
@@ -468,11 +478,11 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/github-auth.js](source/server/github-auth.js) | 82 | 2 | 201 |
 | [server/google-auth.js](source/server/google-auth.js) | 96 | 2 | 240 |
 | [server/local.ts](source/server/local.ts) | 11 | 4 | 18 |
-| [server/mcp-auth-store.ts](source/server/mcp-auth-store.ts) | 12 | 0 | 17 |
-| [server/mcp-auth.ts](source/server/mcp-auth.ts) | 168 | 1 | 297 |
-| [server/mcp-local.ts](source/server/mcp-local.ts) | 37 | 5 | 47 |
-| [server/mcp-tools.ts](source/server/mcp-tools.ts) | 127 | 3 | 252 |
-| [server/mcp.ts](source/server/mcp.ts) | 55 | 7 | 118 |
+| [server/mcp-auth-store.ts](source/server/mcp-auth-store.ts) | 12 | 0 | 18 |
+| [server/mcp-auth.ts](source/server/mcp-auth.ts) | 197 | 1 | 345 |
+| [server/mcp-local.ts](source/server/mcp-local.ts) | 38 | 5 | 57 |
+| [server/mcp-tools.ts](source/server/mcp-tools.ts) | 128 | 3 | 252 |
+| [server/mcp.ts](source/server/mcp.ts) | 59 | 7 | 124 |
 | [server/native-auth-store.js](source/server/native-auth-store.js) | 21 | 0 | 67 |
 | [server/native-auth.d.ts](source/server/native-auth.d.ts) | 32 | 0 | 0 |
 | [server/native-auth.js](source/server/native-auth.js) | 89 | 5 | 236 |
@@ -487,16 +497,16 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/tenant-auth.js](source/server/tenant-auth.js) | 16 | 0 | 32 |
 | [server/worker.ts](source/server/worker.ts) | 37 | 11 | 108 |
 | [src/App.tsx](source/src/App.tsx) | 33 | 8 | 55 |
-| [src/console/Agents.tsx](source/src/console/Agents.tsx) | 143 | 13 | 416 |
+| [src/console/Agents.tsx](source/src/console/Agents.tsx) | 146 | 14 | 421 |
 | [src/console/Authentication.tsx](source/src/console/Authentication.tsx) | 61 | 4 | 32 |
-| [src/console/Console.tsx](source/src/console/Console.tsx) | 176 | 12 | 555 |
+| [src/console/Console.tsx](source/src/console/Console.tsx) | 176 | 13 | 557 |
 | [src/console/EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx) | 22 | 3 | 24 |
 | [src/console/ErrorNotice.tsx](source/src/console/ErrorNotice.tsx) | 7 | 3 | 5 |
 | [src/console/Help.tsx](source/src/console/Help.tsx) | 25 | 6 | 32 |
-| [src/console/McpConnections.tsx](source/src/console/McpConnections.tsx) | 19 | 3 | 41 |
+| [src/console/McpConnections.tsx](source/src/console/McpConnections.tsx) | 24 | 3 | 52 |
 | [src/console/Policies.tsx](source/src/console/Policies.tsx) | 17 | 3 | 15 |
 | [src/console/Profile.tsx](source/src/console/Profile.tsx) | 81 | 4 | 172 |
-| [src/console/Settings.tsx](source/src/console/Settings.tsx) | 52 | 7 | 188 |
+| [src/console/Settings.tsx](source/src/console/Settings.tsx) | 54 | 7 | 192 |
 | [src/console/Studio.tsx](source/src/console/Studio.tsx) | 196 | 10 | 711 |
 | [src/console/StudioAnalysis.tsx](source/src/console/StudioAnalysis.tsx) | 67 | 5 | 141 |
 | [src/console/StudioPlanner.tsx](source/src/console/StudioPlanner.tsx) | 74 | 6 | 271 |
@@ -504,7 +514,8 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/console/Turnstile.tsx](source/src/console/Turnstile.tsx) | 47 | 4 | 59 |
 | [src/console/agent-context.ts](source/src/console/agent-context.ts) | 29 | 1 | 1 |
 | [src/console/agent-stream.ts](source/src/console/agent-stream.ts) | 4 | 0 | 5 |
-| [src/console/help-guides.ts](source/src/console/help-guides.ts) | 19 | 0 | 126 |
+| [src/console/help-guides.ts](source/src/console/help-guides.ts) | 19 | 0 | 122 |
+| [src/console/mcp-resume.ts](source/src/console/mcp-resume.ts) | 20 | 0 | 27 |
 | [src/core/agents.ts](source/src/core/agents.ts) | 122 | 2 | 13 |
 | [src/core/client.ts](source/src/core/client.ts) | 9 | 1 | 12 |
 | [src/core/domain.ts](source/src/core/domain.ts) | 105 | 0 | 159 |
@@ -539,14 +550,16 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [tests/github-auth.test.ts](source/tests/github-auth.test.ts) | 81 | 5 | 299 |
 | [tests/google-auth.test.ts](source/tests/google-auth.test.ts) | 128 | 5 | 416 |
 | [tests/hosted.test.ts](source/tests/hosted.test.ts) | 8 | 3 | 46 |
-| [tests/mcp-auth.test.ts](source/tests/mcp-auth.test.ts) | 108 | 6 | 328 |
-| [tests/mcp-integration.test.ts](source/tests/mcp-integration.test.ts) | 72 | 12 | 174 |
+| [tests/mcp-auth.test.ts](source/tests/mcp-auth.test.ts) | 147 | 6 | 482 |
+| [tests/mcp-integration.test.ts](source/tests/mcp-integration.test.ts) | 89 | 13 | 217 |
+| [tests/mcp-local-migration.test.ts](source/tests/mcp-local-migration.test.ts) | 8 | 7 | 42 |
+| [tests/mcp-resume.test.ts](source/tests/mcp-resume.test.ts) | 30 | 3 | 112 |
 | [tests/mcp-tools.test.ts](source/tests/mcp-tools.test.ts) | 89 | 10 | 274 |
 | [tests/motion.test.ts](source/tests/motion.test.ts) | 31 | 4 | 122 |
 | [tests/native-auth.test.ts](source/tests/native-auth.test.ts) | 97 | 5 | 302 |
 | [tests/profile-local.test.ts](source/tests/profile-local.test.ts) | 16 | 6 | 60 |
 | [tests/profile-ui.test.ts](source/tests/profile-ui.test.ts) | 60 | 5 | 241 |
-| [tests/profile.test.ts](source/tests/profile.test.ts) | 118 | 7 | 437 |
+| [tests/profile.test.ts](source/tests/profile.test.ts) | 118 | 7 | 447 |
 | [tests/scheduler.test.ts](source/tests/scheduler.test.ts) | 29 | 3 | 83 |
 | [tests/studio-analysis.test.ts](source/tests/studio-analysis.test.ts) | 20 | 10 | 113 |
 | [tests/studio-api.test.ts](source/tests/studio-api.test.ts) | 116 | 11 | 437 |
@@ -764,41 +777,47 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | --- | --- | --- | --- |
 | [server/mcp-auth.ts:4](source/server/mcp-auth.ts#L4) |  | TypeAliasDeclaration | `McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] }` |
 | [server/mcp-auth.ts:5](source/server/mcp-auth.ts#L5) |  | TypeAliasDeclaration | `Owner = { userId: string; tenantId: string; email: string }` |
-| [server/mcp-auth.ts:6](source/server/mcp-auth.ts#L6) |  | TypeAliasDeclaration | `Client = { client_id: string; name: string; redirect_uris: string; expires_at: number }` |
+| [server/mcp-auth.ts:6](source/server/mcp-auth.ts#L6) |  | TypeAliasDeclaration | `Client = { client_id: string; name: string; redirect_uris: string; expires_at: number; authorized_at: number \| null }` |
 | [server/mcp-auth.ts:7](source/server/mcp-auth.ts#L7) |  | TypeAliasDeclaration | `Grant = { grant_id: string; client_id: string; user_id: string; tenant_id: string; scopes: string; resource: string; expires_at: number; revoked_at: number \| null }` |
 | [server/mcp-auth.ts:8](source/server/mcp-auth.ts#L8) |  | TypeAliasDeclaration | `Consent = { clientId: string; redirectUri: string; challenge: string; scope: string; state: string; resource: string; language: 'es' \| 'en' }` |
 | [server/mcp-auth.ts:9](source/server/mcp-auth.ts#L9) |  | TypeAliasDeclaration | `ConsentRow = { document: string; user_id: string; tenant_id: string; expires_at: number; consumed_by: string \| null }` |
-| [server/mcp-auth.ts:10](source/server/mcp-auth.ts#L10) |  | TypeAliasDeclaration | `CodeRow = Grant & { redirect_uri: string; challenge: string; code_expires_at: number; consumed_by: string \| null }` |
-| [server/mcp-auth.ts:11](source/server/mcp-auth.ts#L11) |  | TypeAliasDeclaration | `TokenRow = Grant & { refresh_expires_at: number; consumed_by: string \| null }` |
-| [server/mcp-auth.ts:14](source/server/mcp-auth.ts#L14) |  | ClassDeclaration | `OAuthError` |
-| [server/mcp-auth.ts:16](source/server/mcp-auth.ts#L16) | OAuthError | Constructor | `constructor(error: string, status?: inferred): inferred` |
-| [server/mcp-auth.ts:18](source/server/mcp-auth.ts#L18) |  | FunctionDeclaration | `opaque(): inferred` |
-| [server/mcp-auth.ts:19](source/server/mcp-auth.ts#L19) |  | FunctionDeclaration | `digest(value: string): inferred` |
-| [server/mcp-auth.ts:20](source/server/mcp-auth.ts#L20) |  | FunctionDeclaration | `hash(value: string): inferred` |
-| [server/mcp-auth.ts:21](source/server/mcp-auth.ts#L21) |  | FunctionDeclaration | `challenge(value: string): inferred` |
-| [server/mcp-auth.ts:22](source/server/mcp-auth.ts#L22) |  | FunctionVariable | `esc(value: string): inferred` |
-| [server/mcp-auth.ts:23](source/server/mcp-auth.ts#L23) |  | FunctionDeclaration | `response(value: unknown, status?: inferred): inferred` |
-| [server/mcp-auth.ts:27](source/server/mcp-auth.ts#L27) |  | FunctionDeclaration | `scopes(value: string): inferred` |
-| [server/mcp-auth.ts:32](source/server/mcp-auth.ts#L32) |  | FunctionDeclaration | `params(value: URLSearchParams): inferred` |
-| [server/mcp-auth.ts:37](source/server/mcp-auth.ts#L37) |  | FunctionDeclaration | `body(request: Request, json?: inferred): Promise<Record<string, unknown>>` |
-| [server/mcp-auth.ts:56](source/server/mcp-auth.ts#L56) |  | FunctionDeclaration | `text(value: unknown, max?: inferred): inferred` |
-| [server/mcp-auth.ts:57](source/server/mcp-auth.ts#L57) |  | FunctionDeclaration | `loopback(url: URL): inferred` |
-| [server/mcp-auth.ts:58](source/server/mcp-auth.ts#L58) |  | FunctionDeclaration | `allowedRedirect(value: unknown, origin: URL): inferred` |
-| [server/mcp-auth.ts:63](source/server/mcp-auth.ts#L63) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string): inferred` |
-| [server/mcp-auth.ts:71](source/server/mcp-auth.ts#L71) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
-| [server/mcp-auth.ts:75](source/server/mcp-auth.ts#L75) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
-| [server/mcp-auth.ts:76](source/server/mcp-auth.ts#L76) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
-| [server/mcp-auth.ts:80](source/server/mcp-auth.ts#L80) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
-| [server/mcp-auth.ts:81](source/server/mcp-auth.ts#L81) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
-| [server/mcp-auth.ts:82](source/server/mcp-auth.ts#L82) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
-| [server/mcp-auth.ts:87](source/server/mcp-auth.ts#L87) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
-| [server/mcp-auth.ts:92](source/server/mcp-auth.ts#L92) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
-| [server/mcp-auth.ts:111](source/server/mcp-auth.ts#L111) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
-| [server/mcp-auth.ts:151](source/server/mcp-auth.ts#L151) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
-| [server/mcp-auth.ts:186](source/server/mcp-auth.ts#L186) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
-| [server/mcp-auth.ts:195](source/server/mcp-auth.ts#L195) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
-| [server/mcp-auth.ts:207](source/server/mcp-auth.ts#L207) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp-auth.ts:231](source/server/mcp-auth.ts#L231) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
+| [server/mcp-auth.ts:10](source/server/mcp-auth.ts#L10) |  | TypeAliasDeclaration | `LoginRow = { document: string; client_id: string; expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:11](source/server/mcp-auth.ts#L11) |  | TypeAliasDeclaration | `CodeRow = Grant & { redirect_uri: string; challenge: string; code_expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:12](source/server/mcp-auth.ts#L12) |  | TypeAliasDeclaration | `TokenRow = Grant & { refresh_expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:15](source/server/mcp-auth.ts#L15) |  | ClassDeclaration | `OAuthError` |
+| [server/mcp-auth.ts:18](source/server/mcp-auth.ts#L18) | OAuthError | Constructor | `constructor(error: string, status?: inferred, description?: string): inferred` |
+| [server/mcp-auth.ts:20](source/server/mcp-auth.ts#L20) |  | FunctionDeclaration | `opaque(): inferred` |
+| [server/mcp-auth.ts:21](source/server/mcp-auth.ts#L21) |  | FunctionDeclaration | `digest(value: string): inferred` |
+| [server/mcp-auth.ts:22](source/server/mcp-auth.ts#L22) |  | FunctionDeclaration | `hash(value: string): inferred` |
+| [server/mcp-auth.ts:23](source/server/mcp-auth.ts#L23) |  | FunctionDeclaration | `challenge(value: string): inferred` |
+| [server/mcp-auth.ts:24](source/server/mcp-auth.ts#L24) |  | FunctionVariable | `esc(value: string): inferred` |
+| [server/mcp-auth.ts:25](source/server/mcp-auth.ts#L25) |  | FunctionDeclaration | `response(value: unknown, status?: inferred): inferred` |
+| [server/mcp-auth.ts:29](source/server/mcp-auth.ts#L29) |  | FunctionDeclaration | `scopes(value: string): inferred` |
+| [server/mcp-auth.ts:34](source/server/mcp-auth.ts#L34) |  | FunctionDeclaration | `params(value: URLSearchParams): inferred` |
+| [server/mcp-auth.ts:39](source/server/mcp-auth.ts#L39) |  | FunctionDeclaration | `body(request: Request, json?: inferred): Promise<Record<string, unknown>>` |
+| [server/mcp-auth.ts:58](source/server/mcp-auth.ts#L58) |  | FunctionDeclaration | `text(value: unknown, max?: inferred): inferred` |
+| [server/mcp-auth.ts:59](source/server/mcp-auth.ts#L59) |  | FunctionDeclaration | `loopback(url: URL): inferred` |
+| [server/mcp-auth.ts:60](source/server/mcp-auth.ts#L60) |  | FunctionDeclaration | `nativeCallback(url: URL): inferred` |
+| [server/mcp-auth.ts:61](source/server/mcp-auth.ts#L61) |  | FunctionDeclaration | `allowedRedirect(value: unknown, origin: URL): inferred` |
+| [server/mcp-auth.ts:67](source/server/mcp-auth.ts#L67) |  | FunctionDeclaration | `matchesRedirect(registered: string, candidate: string): inferred` |
+| [server/mcp-auth.ts:74](source/server/mcp-auth.ts#L74) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string, status?: inferred): inferred` |
+| [server/mcp-auth.ts:82](source/server/mcp-auth.ts#L82) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
+| [server/mcp-auth.ts:86](source/server/mcp-auth.ts#L86) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
+| [server/mcp-auth.ts:87](source/server/mcp-auth.ts#L87) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
+| [server/mcp-auth.ts:91](source/server/mcp-auth.ts#L91) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
+| [server/mcp-auth.ts:92](source/server/mcp-auth.ts#L92) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
+| [server/mcp-auth.ts:93](source/server/mcp-auth.ts#L93) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
+| [server/mcp-auth.ts:98](source/server/mcp-auth.ts#L98) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
+| [server/mcp-auth.ts:103](source/server/mcp-auth.ts#L103) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
+| [server/mcp-auth.ts:122](source/server/mcp-auth.ts#L122) | createMcpAuthorization | FunctionDeclaration | `openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string): inferred` |
+| [server/mcp-auth.ts:141](source/server/mcp-auth.ts#L141) | createMcpAuthorization | FunctionDeclaration | `startLogin(request: Request, consent: Consent): inferred` |
+| [server/mcp-auth.ts:151](source/server/mcp-auth.ts#L151) | createMcpAuthorization | FunctionDeclaration | `resume(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:163](source/server/mcp-auth.ts#L163) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:198](source/server/mcp-auth.ts#L198) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
+| [server/mcp-auth.ts:233](source/server/mcp-auth.ts#L233) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
+| [server/mcp-auth.ts:242](source/server/mcp-auth.ts#L242) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
+| [server/mcp-auth.ts:254](source/server/mcp-auth.ts#L254) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp-auth.ts:285](source/server/mcp-auth.ts#L285) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
 
 ## server/mcp-local.ts
 
@@ -806,22 +825,22 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | --- | --- | --- | --- |
 | [server/mcp-local.ts:9](source/server/mcp-local.ts#L9) |  | FunctionDeclaration | `createLocalMcpApi(options: { directory: string; backend(request: Request): Promise<Response> }): inferred` |
 | [server/mcp-local.ts:9](source/server/mcp-local.ts#L9) | createLocalMcpApi | MethodSignature | `backend(request: Request): Promise<Response>` |
-| [server/mcp-local.ts:22](source/server/mcp-local.ts#L22) | createLocalMcpApi | TypeAliasDeclaration | `LocalStatement = { execute(): { success: boolean; results: unknown[]; meta: { changes: number } }; bind(...values: unknown[]): LocalStatement; first<T>(): Promise<T \| null>; all(): Promise<unknown>; run(): Promise<unknown> }` |
-| [server/mcp-local.ts:22](source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `execute(): { success: boolean; results: unknown[]; meta: { changes: number } }` |
-| [server/mcp-local.ts:22](source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `bind(...values: unknown[]): LocalStatement` |
-| [server/mcp-local.ts:22](source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `first<T>(): Promise<T \| null>` |
-| [server/mcp-local.ts:22](source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `all(): Promise<unknown>` |
-| [server/mcp-local.ts:22](source/server/mcp-local.ts#L22) | createLocalMcpApi | MethodSignature | `run(): Promise<unknown>` |
-| [server/mcp-local.ts:24](source/server/mcp-local.ts#L24) | createLocalMcpApi | MethodDeclaration | `prepare(text: string): LocalStatement` |
-| [server/mcp-local.ts:27](source/server/mcp-local.ts#L27) | createLocalMcpApi.prepare | MethodDeclaration | `bind(...values: inferred): inferred` |
-| [server/mcp-local.ts:28](source/server/mcp-local.ts#L28) | createLocalMcpApi.prepare | MethodDeclaration | `execute(): inferred` |
-| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi.prepare | MethodDeclaration | `first<T>(): inferred` |
-| [server/mcp-local.ts:30](source/server/mcp-local.ts#L30) | createLocalMcpApi.prepare | MethodDeclaration | `all(): inferred` |
-| [server/mcp-local.ts:31](source/server/mcp-local.ts#L31) | createLocalMcpApi.prepare | MethodDeclaration | `run(): inferred` |
-| [server/mcp-local.ts:35](source/server/mcp-local.ts#L35) | createLocalMcpApi | MethodDeclaration | `batch(statements: LocalStatement[]): inferred` |
-| [server/mcp-local.ts:44](source/server/mcp-local.ts#L44) | createLocalMcpApi | MethodDeclaration | `close(): inferred` |
-| [server/mcp-local.ts:45](source/server/mcp-local.ts#L45) | createLocalMcpApi | MethodDeclaration | `handle(request: Request): inferred` |
-| [server/mcp-local.ts:51](source/server/mcp-local.ts#L51) | createLocalMcpApi.handle | MethodDeclaration | `assertActive(): inferred` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | TypeAliasDeclaration | `LocalStatement = { execute(): { success: boolean; results: unknown[]; meta: { changes: number } }; bind(...values: unknown[]): LocalStatement; first<T>(): Promise<T \| null>; all(): Promise<unknown>; run(): Promise<unknown> }` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `execute(): { success: boolean; results: unknown[]; meta: { changes: number } }` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `bind(...values: unknown[]): LocalStatement` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `first<T>(): Promise<T \| null>` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `all(): Promise<unknown>` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `run(): Promise<unknown>` |
+| [server/mcp-local.ts:31](source/server/mcp-local.ts#L31) | createLocalMcpApi | MethodDeclaration | `prepare(text: string): LocalStatement` |
+| [server/mcp-local.ts:34](source/server/mcp-local.ts#L34) | createLocalMcpApi.prepare | MethodDeclaration | `bind(...values: inferred): inferred` |
+| [server/mcp-local.ts:35](source/server/mcp-local.ts#L35) | createLocalMcpApi.prepare | MethodDeclaration | `execute(): inferred` |
+| [server/mcp-local.ts:36](source/server/mcp-local.ts#L36) | createLocalMcpApi.prepare | MethodDeclaration | `first<T>(): inferred` |
+| [server/mcp-local.ts:37](source/server/mcp-local.ts#L37) | createLocalMcpApi.prepare | MethodDeclaration | `all(): inferred` |
+| [server/mcp-local.ts:38](source/server/mcp-local.ts#L38) | createLocalMcpApi.prepare | MethodDeclaration | `run(): inferred` |
+| [server/mcp-local.ts:42](source/server/mcp-local.ts#L42) | createLocalMcpApi | MethodDeclaration | `batch(statements: LocalStatement[]): inferred` |
+| [server/mcp-local.ts:51](source/server/mcp-local.ts#L51) | createLocalMcpApi | MethodDeclaration | `close(): inferred` |
+| [server/mcp-local.ts:52](source/server/mcp-local.ts#L52) | createLocalMcpApi | MethodDeclaration | `handle(request: Request): inferred` |
+| [server/mcp-local.ts:58](source/server/mcp-local.ts#L58) | createLocalMcpApi.handle | MethodDeclaration | `assertActive(): inferred` |
 
 ## server/mcp-tools.ts
 
@@ -830,7 +849,7 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/mcp-tools.ts:7](source/server/mcp-tools.ts#L7) |  | TypeAliasDeclaration | `Schema = { type: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; enum?: readonly unknown[]; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number; minItems?: number; maxItems?: number; uniqueItems?: boolean }` |
 | [server/mcp-tools.ts:8](source/server/mcp-tools.ts#L8) |  | TypeAliasDeclaration | `Args = Record<string, unknown>` |
 | [server/mcp-tools.ts:9](source/server/mcp-tools.ts#L9) |  | TypeAliasDeclaration | `McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] }` |
-| [server/mcp-tools.ts:10](source/server/mcp-tools.ts#L10) |  | TypeAliasDeclaration | `McpToolResult = { content: Array<{ type: "text"; text: string }>; structuredContent: Record<string, unknown>; isError?: boolean }` |
+| [server/mcp-tools.ts:10](source/server/mcp-tools.ts#L10) |  | TypeAliasDeclaration | `McpToolResult = { content: Array<{ type: "text"; text: string }>; structuredContent: Record<string, unknown>; isError?: boolean; _meta?: Record<string, unknown> }` |
 | [server/mcp-tools.ts:11](source/server/mcp-tools.ts#L11) |  | TypeAliasDeclaration | `McpToolDescriptor = { name: string; description: string; inputSchema: Schema; annotations: { readOnlyHint: boolean; destructiveHint: boolean; idempotentHint: boolean; openWorldHint: boolean }; scopes: string[] }` |
 | [server/mcp-tools.ts:13](source/server/mcp-tools.ts#L13) |  | FunctionVariable | `string(maxLength: number): Schema` |
 | [server/mcp-tools.ts:14](source/server/mcp-tools.ts#L14) |  | FunctionVariable | `choice(...values: string[]): Schema` |
@@ -866,14 +885,16 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/mcp.ts:13](source/server/mcp.ts#L13) |  | MethodSignature | `assertActive(): Promise<void>` |
 | [server/mcp.ts:14](source/server/mcp.ts#L14) |  | MethodSignature | `backend(request: Request): Promise<Response>` |
 | [server/mcp.ts:19](source/server/mcp.ts#L19) |  | FunctionDeclaration | `failure(code: string, status: number, message: string): McpToolResult` |
-| [server/mcp.ts:23](source/server/mcp.ts#L23) |  | FunctionDeclaration | `canonical(value: unknown): string` |
-| [server/mcp.ts:28](source/server/mcp.ts#L28) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
-| [server/mcp.ts:36](source/server/mcp.ts#L36) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
-| [server/mcp.ts:67](source/server/mcp.ts#L67) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
-| [server/mcp.ts:70](source/server/mcp.ts#L70) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
-| [server/mcp.ts:73](source/server/mcp.ts#L73) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp.ts:86](source/server/mcp.ts#L86) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
-| [server/mcp.ts:89](source/server/mcp.ts#L89) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
+| [server/mcp.ts:23](source/server/mcp.ts#L23) |  | FunctionDeclaration | `bearerChallenge(origin: string, scopes: string[], insufficient?: inferred): string` |
+| [server/mcp.ts:31](source/server/mcp.ts#L31) |  | FunctionDeclaration | `insufficientScope(origin: string, scopes: string[]): McpToolResult` |
+| [server/mcp.ts:37](source/server/mcp.ts#L37) |  | FunctionDeclaration | `canonical(value: unknown): string` |
+| [server/mcp.ts:42](source/server/mcp.ts#L42) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
+| [server/mcp.ts:50](source/server/mcp.ts#L50) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
+| [server/mcp.ts:81](source/server/mcp.ts#L81) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
+| [server/mcp.ts:84](source/server/mcp.ts#L84) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
+| [server/mcp.ts:87](source/server/mcp.ts#L87) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp.ts:100](source/server/mcp.ts#L100) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
+| [server/mcp.ts:103](source/server/mcp.ts#L103) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
 
 ## server/native-auth-store.js
 
@@ -1185,32 +1206,32 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Agents.tsx:15](source/src/console/Agents.tsx#L15) |  | FunctionDeclaration | `agentApi<T>(path?: inferred, data?: unknown, method?: inferred): Promise<T>` |
-| [src/console/Agents.tsx:22](source/src/console/Agents.tsx#L22) |  | FunctionVariable | `selection(context: StudioAgentContext): AgentContextSelection` |
-| [src/console/Agents.tsx:23](source/src/console/Agents.tsx#L23) |  | FunctionVariable | `selectionKey(context: AgentContextSelection): inferred` |
-| [src/console/Agents.tsx:24](source/src/console/Agents.tsx#L24) |  | FunctionVariable | `readStored(key: string): inferred` |
-| [src/console/Agents.tsx:25](source/src/console/Agents.tsx#L25) |  | FunctionVariable | `store(key: string, value: string): inferred` |
-| [src/console/Agents.tsx:26](source/src/console/Agents.tsx#L26) |  | TypeAliasDeclaration | `Props = { open: boolean; context: StudioAgentContext; workspace: Workspace; onClose: () => void; onStudioChange: (update: Omit<AgentStudioUpdate, "nonce">) => void; onOpenStudio: () => void }` |
-| [src/console/Agents.tsx:28](source/src/console/Agents.tsx#L28) |  | FunctionDeclaration | `Agents({ open, context, workspace, onClose, onStudioChange, onOpenStudio }: Props): inferred` |
-| [src/console/Agents.tsx:30](source/src/console/Agents.tsx#L30) | Agents | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Agents.tsx:47](source/src/console/Agents.tsx#L47) | Agents | FunctionVariable | `update(): inferred` |
-| [src/console/Agents.tsx:51](source/src/console/Agents.tsx#L51) | Agents | FunctionDeclaration | `loadOverview(): inferred` |
-| [src/console/Agents.tsx:56](source/src/console/Agents.tsx#L56) | Agents | FunctionDeclaration | `loadDetail(id?: inferred): inferred` |
-| [src/console/Agents.tsx:64](source/src/console/Agents.tsx#L64) | Agents | FunctionVariable | `refresh(): inferred` |
-| [src/console/Agents.tsx:74](source/src/console/Agents.tsx#L74) | Agents | FunctionDeclaration | `action(operation: () => Promise<void>): inferred` |
-| [src/console/Agents.tsx:78](source/src/console/Agents.tsx#L78) | Agents | FunctionDeclaration | `createSession(): Promise<AgentSession>` |
-| [src/console/Agents.tsx:82](source/src/console/Agents.tsx#L82) | Agents | FunctionDeclaration | `submit(event?: FormEvent, customPrompt?: string): inferred` |
-| [src/console/Agents.tsx:101](source/src/console/Agents.tsx#L101) | Agents | FunctionVariable | `psQuote(value: string): inferred` |
-| [src/console/Agents.tsx:103](source/src/console/Agents.tsx#L103) | Agents | FunctionVariable | `status(value: string): inferred` |
-| [src/console/Agents.tsx:104](source/src/console/Agents.tsx#L104) | Agents | FunctionDeclaration | `keyboard(event: React.KeyboardEvent): inferred` |
-| [src/console/Agents.tsx:158](source/src/console/Agents.tsx#L158) |  | FunctionDeclaration | `Proposal({ active, capturedVariant, proposal, context, workspace, onReload, onStudioChange, onOpenStudio }: { active: boolean; capturedVariant?: StudioVariant; proposal: AgentProposal; context: StudioAgentContext; workspace: Workspace; onReload: () => Promise<void>; onStudioChange: Props["onStudioChange"]; onOpenStudio: () => void }): inferred` |
-| [src/console/Agents.tsx:160](source/src/console/Agents.tsx#L160) | Proposal | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Agents.tsx:162](source/src/console/Agents.tsx#L162) | Proposal | FunctionVariable | `copy({ title, hook, body, cta }: AgentCopy): AgentCopy` |
-| [src/console/Agents.tsx:167](source/src/console/Agents.tsx#L167) | Proposal | TypeAliasDeclaration | `Production = { variant: StudioVariant; jobs: Array<{ id: string; variantId: string; recipeRevision: number; status: string; error?: string }> }` |
-| [src/console/Agents.tsx:175](source/src/console/Agents.tsx#L175) | Proposal | FunctionDeclaration | `refreshProduction(): inferred` |
-| [src/console/Agents.tsx:193](source/src/console/Agents.tsx#L193) | Proposal | FunctionDeclaration | `perform(operation: () => Promise<void>): inferred` |
-| [src/console/Agents.tsx:194](source/src/console/Agents.tsx#L194) | Proposal | FunctionDeclaration | `saveEdits(): inferred` |
-| [src/console/Agents.tsx:195](source/src/console/Agents.tsx#L195) | Proposal | FunctionVariable | `field(label: string, name: keyof AgentCopy, max: number, multiline?: inferred): inferred` |
+| [src/console/Agents.tsx:16](source/src/console/Agents.tsx#L16) |  | FunctionDeclaration | `agentApi<T>(path?: inferred, data?: unknown, method?: inferred): Promise<T>` |
+| [src/console/Agents.tsx:23](source/src/console/Agents.tsx#L23) |  | FunctionVariable | `selection(context: StudioAgentContext): AgentContextSelection` |
+| [src/console/Agents.tsx:24](source/src/console/Agents.tsx#L24) |  | FunctionVariable | `selectionKey(context: AgentContextSelection): inferred` |
+| [src/console/Agents.tsx:25](source/src/console/Agents.tsx#L25) |  | FunctionVariable | `readStored(key: string): inferred` |
+| [src/console/Agents.tsx:26](source/src/console/Agents.tsx#L26) |  | FunctionVariable | `store(key: string, value: string): inferred` |
+| [src/console/Agents.tsx:27](source/src/console/Agents.tsx#L27) |  | TypeAliasDeclaration | `Props = { open: boolean; context: StudioAgentContext; workspace: Workspace; onClose: () => void; onStudioChange: (update: Omit<AgentStudioUpdate, "nonce">) => void; onOpenStudio: () => void }` |
+| [src/console/Agents.tsx:29](source/src/console/Agents.tsx#L29) |  | FunctionDeclaration | `Agents({ open, context, workspace, onClose, onStudioChange, onOpenStudio }: Props): inferred` |
+| [src/console/Agents.tsx:31](source/src/console/Agents.tsx#L31) | Agents | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Agents.tsx:51](source/src/console/Agents.tsx#L51) | Agents | FunctionVariable | `update(): inferred` |
+| [src/console/Agents.tsx:55](source/src/console/Agents.tsx#L55) | Agents | FunctionDeclaration | `loadOverview(): inferred` |
+| [src/console/Agents.tsx:60](source/src/console/Agents.tsx#L60) | Agents | FunctionDeclaration | `loadDetail(id?: inferred): inferred` |
+| [src/console/Agents.tsx:68](source/src/console/Agents.tsx#L68) | Agents | FunctionVariable | `refresh(): inferred` |
+| [src/console/Agents.tsx:78](source/src/console/Agents.tsx#L78) | Agents | FunctionDeclaration | `action(operation: () => Promise<void>): inferred` |
+| [src/console/Agents.tsx:82](source/src/console/Agents.tsx#L82) | Agents | FunctionDeclaration | `createSession(): Promise<AgentSession>` |
+| [src/console/Agents.tsx:86](source/src/console/Agents.tsx#L86) | Agents | FunctionDeclaration | `submit(event?: FormEvent, customPrompt?: string): inferred` |
+| [src/console/Agents.tsx:105](source/src/console/Agents.tsx#L105) | Agents | FunctionVariable | `psQuote(value: string): inferred` |
+| [src/console/Agents.tsx:107](source/src/console/Agents.tsx#L107) | Agents | FunctionVariable | `status(value: string): inferred` |
+| [src/console/Agents.tsx:108](source/src/console/Agents.tsx#L108) | Agents | FunctionDeclaration | `keyboard(event: React.KeyboardEvent): inferred` |
+| [src/console/Agents.tsx:166](source/src/console/Agents.tsx#L166) |  | FunctionDeclaration | `Proposal({ active, capturedVariant, proposal, context, workspace, onReload, onStudioChange, onOpenStudio }: { active: boolean; capturedVariant?: StudioVariant; proposal: AgentProposal; context: StudioAgentContext; workspace: Workspace; onReload: () => Promise<void>; onStudioChange: Props["onStudioChange"]; onOpenStudio: () => void }): inferred` |
+| [src/console/Agents.tsx:168](source/src/console/Agents.tsx#L168) | Proposal | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Agents.tsx:170](source/src/console/Agents.tsx#L170) | Proposal | FunctionVariable | `copy({ title, hook, body, cta }: AgentCopy): AgentCopy` |
+| [src/console/Agents.tsx:175](source/src/console/Agents.tsx#L175) | Proposal | TypeAliasDeclaration | `Production = { variant: StudioVariant; jobs: Array<{ id: string; variantId: string; recipeRevision: number; status: string; error?: string }> }` |
+| [src/console/Agents.tsx:183](source/src/console/Agents.tsx#L183) | Proposal | FunctionDeclaration | `refreshProduction(): inferred` |
+| [src/console/Agents.tsx:201](source/src/console/Agents.tsx#L201) | Proposal | FunctionDeclaration | `perform(operation: () => Promise<void>): inferred` |
+| [src/console/Agents.tsx:202](source/src/console/Agents.tsx#L202) | Proposal | FunctionDeclaration | `saveEdits(): inferred` |
+| [src/console/Agents.tsx:203](source/src/console/Agents.tsx#L203) | Proposal | FunctionVariable | `field(label: string, name: keyof AgentCopy, max: number, multiline?: inferred): inferred` |
 
 ## src/console/Authentication.tsx
 
@@ -1233,40 +1254,40 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Console.tsx:45](source/src/console/Console.tsx#L45) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
-| [src/console/Console.tsx:47](source/src/console/Console.tsx#L47) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
-| [src/console/Console.tsx:62](source/src/console/Console.tsx#L62) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
-| [src/console/Console.tsx:75](source/src/console/Console.tsx#L75) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:83](source/src/console/Console.tsx#L83) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
-| [src/console/Console.tsx:86](source/src/console/Console.tsx#L86) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
-| [src/console/Console.tsx:94](source/src/console/Console.tsx#L94) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
-| [src/console/Console.tsx:111](source/src/console/Console.tsx#L111) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
-| [src/console/Console.tsx:115](source/src/console/Console.tsx#L115) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
-| [src/console/Console.tsx:117](source/src/console/Console.tsx#L117) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Console.tsx:118](source/src/console/Console.tsx#L118) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:165](source/src/console/Console.tsx#L165) | Console | FunctionVariable | `navigate(): inferred` |
-| [src/console/Console.tsx:177](source/src/console/Console.tsx#L177) | Console | FunctionDeclaration | `refresh(): inferred` |
-| [src/console/Console.tsx:199](source/src/console/Console.tsx#L199) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
-| [src/console/Console.tsx:203](source/src/console/Console.tsx#L203) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
-| [src/console/Console.tsx:209](source/src/console/Console.tsx#L209) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
-| [src/console/Console.tsx:223](source/src/console/Console.tsx#L223) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:239](source/src/console/Console.tsx#L239) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:268](source/src/console/Console.tsx#L268) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
-| [src/console/Console.tsx:289](source/src/console/Console.tsx#L289) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:307](source/src/console/Console.tsx#L307) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
-| [src/console/Console.tsx:315](source/src/console/Console.tsx#L315) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
-| [src/console/Console.tsx:323](source/src/console/Console.tsx#L323) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
-| [src/console/Console.tsx:326](source/src/console/Console.tsx#L326) | Console | FunctionDeclaration | `reload(): inferred` |
-| [src/console/Console.tsx:336](source/src/console/Console.tsx#L336) | Console | FunctionDeclaration | `logout(): inferred` |
-| [src/console/Console.tsx:459](source/src/console/Console.tsx#L459) | Console | FunctionVariable | `productName(id: string): inferred` |
-| [src/console/Console.tsx:461](source/src/console/Console.tsx#L461) | Console | FunctionVariable | `accountName(id: string): inferred` |
-| [src/console/Console.tsx:463](source/src/console/Console.tsx#L463) | Console | FunctionVariable | `matches(value: string): inferred` |
-| [src/console/Console.tsx:465](source/src/console/Console.tsx#L465) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
-| [src/console/Console.tsx:971](source/src/console/Console.tsx#L971) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
-| [src/console/Console.tsx:983](source/src/console/Console.tsx#L983) | EditorDialog | MethodSignature | `close(): void` |
-| [src/console/Console.tsx:984](source/src/console/Console.tsx#L984) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:1015](source/src/console/Console.tsx#L1015) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
-| [src/console/Console.tsx:1026](source/src/console/Console.tsx#L1026) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:46](source/src/console/Console.tsx#L46) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
+| [src/console/Console.tsx:48](source/src/console/Console.tsx#L48) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
+| [src/console/Console.tsx:63](source/src/console/Console.tsx#L63) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
+| [src/console/Console.tsx:76](source/src/console/Console.tsx#L76) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:84](source/src/console/Console.tsx#L84) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
+| [src/console/Console.tsx:87](source/src/console/Console.tsx#L87) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
+| [src/console/Console.tsx:95](source/src/console/Console.tsx#L95) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
+| [src/console/Console.tsx:112](source/src/console/Console.tsx#L112) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
+| [src/console/Console.tsx:116](source/src/console/Console.tsx#L116) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
+| [src/console/Console.tsx:118](source/src/console/Console.tsx#L118) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Console.tsx:119](source/src/console/Console.tsx#L119) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:166](source/src/console/Console.tsx#L166) | Console | FunctionVariable | `navigate(): inferred` |
+| [src/console/Console.tsx:178](source/src/console/Console.tsx#L178) | Console | FunctionDeclaration | `refresh(): inferred` |
+| [src/console/Console.tsx:202](source/src/console/Console.tsx#L202) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
+| [src/console/Console.tsx:206](source/src/console/Console.tsx#L206) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
+| [src/console/Console.tsx:212](source/src/console/Console.tsx#L212) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
+| [src/console/Console.tsx:226](source/src/console/Console.tsx#L226) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:242](source/src/console/Console.tsx#L242) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:271](source/src/console/Console.tsx#L271) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
+| [src/console/Console.tsx:292](source/src/console/Console.tsx#L292) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:310](source/src/console/Console.tsx#L310) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
+| [src/console/Console.tsx:318](source/src/console/Console.tsx#L318) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
+| [src/console/Console.tsx:326](source/src/console/Console.tsx#L326) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
+| [src/console/Console.tsx:329](source/src/console/Console.tsx#L329) | Console | FunctionDeclaration | `reload(): inferred` |
+| [src/console/Console.tsx:339](source/src/console/Console.tsx#L339) | Console | FunctionDeclaration | `logout(): inferred` |
+| [src/console/Console.tsx:462](source/src/console/Console.tsx#L462) | Console | FunctionVariable | `productName(id: string): inferred` |
+| [src/console/Console.tsx:464](source/src/console/Console.tsx#L464) | Console | FunctionVariable | `accountName(id: string): inferred` |
+| [src/console/Console.tsx:466](source/src/console/Console.tsx#L466) | Console | FunctionVariable | `matches(value: string): inferred` |
+| [src/console/Console.tsx:468](source/src/console/Console.tsx#L468) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
+| [src/console/Console.tsx:974](source/src/console/Console.tsx#L974) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
+| [src/console/Console.tsx:986](source/src/console/Console.tsx#L986) | EditorDialog | MethodSignature | `close(): void` |
+| [src/console/Console.tsx:987](source/src/console/Console.tsx#L987) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:1018](source/src/console/Console.tsx#L1018) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
+| [src/console/Console.tsx:1029](source/src/console/Console.tsx#L1029) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
 
 ## src/console/EnvironmentSettings.tsx
 
@@ -1296,10 +1317,11 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/McpConnections.tsx:5](source/src/console/McpConnections.tsx#L5) |  | TypeAliasDeclaration | `Connection = { id: string; clientName: string; scopes: string[] }` |
-| [src/console/McpConnections.tsx:6](source/src/console/McpConnections.tsx#L6) |  | FunctionDeclaration | `McpConnections(): inferred` |
-| [src/console/McpConnections.tsx:24](source/src/console/McpConnections.tsx#L24) | McpConnections | FunctionDeclaration | `revoke(id: string): inferred` |
-| [src/console/McpConnections.tsx:33](source/src/console/McpConnections.tsx#L33) | McpConnections | FunctionVariable | `permission(scope: string): inferred` |
+| [src/console/McpConnections.tsx:7](source/src/console/McpConnections.tsx#L7) |  | TypeAliasDeclaration | `Connection = { id: string; clientName: string; scopes: string[] }` |
+| [src/console/McpConnections.tsx:8](source/src/console/McpConnections.tsx#L8) |  | FunctionDeclaration | `McpConnections({ active }: { active?: boolean }): inferred` |
+| [src/console/McpConnections.tsx:22](source/src/console/McpConnections.tsx#L22) | McpConnections | FunctionVariable | `onFocus(): inferred` |
+| [src/console/McpConnections.tsx:33](source/src/console/McpConnections.tsx#L33) | McpConnections | FunctionDeclaration | `revoke(id: string): inferred` |
+| [src/console/McpConnections.tsx:42](source/src/console/McpConnections.tsx#L42) | McpConnections | FunctionVariable | `permission(scope: string): inferred` |
 
 ## src/console/Policies.tsx
 
@@ -1342,18 +1364,18 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/console/Settings.tsx:12](source/src/console/Settings.tsx#L12) |  | FunctionDeclaration | `recovered(): { draft?: Draft; revision?: number }` |
 | [src/console/Settings.tsx:17](source/src/console/Settings.tsx#L17) |  | FunctionDeclaration | `Settings({ environment }: { environment?: ReactNode }): inferred` |
 | [src/console/Settings.tsx:19](source/src/console/Settings.tsx#L19) | Settings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:40](source/src/console/Settings.tsx#L40) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
-| [src/console/Settings.tsx:48](source/src/console/Settings.tsx#L48) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
-| [src/console/Settings.tsx:49](source/src/console/Settings.tsx#L49) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
-| [src/console/Settings.tsx:51](source/src/console/Settings.tsx#L51) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
-| [src/console/Settings.tsx:58](source/src/console/Settings.tsx#L58) | Settings | FunctionDeclaration | `save(): inferred` |
-| [src/console/Settings.tsx:68](source/src/console/Settings.tsx#L68) | Settings | FunctionVariable | `usd(cents: number): inferred` |
-| [src/console/Settings.tsx:69](source/src/console/Settings.tsx#L69) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
-| [src/console/Settings.tsx:100](source/src/console/Settings.tsx#L100) |  | FunctionDeclaration | `AgentSettings(): inferred` |
-| [src/console/Settings.tsx:102](source/src/console/Settings.tsx#L102) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:106](source/src/console/Settings.tsx#L106) | AgentSettings | FunctionDeclaration | `load(): inferred` |
-| [src/console/Settings.tsx:108](source/src/console/Settings.tsx#L108) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
-| [src/console/Settings.tsx:113](source/src/console/Settings.tsx#L113) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
+| [src/console/Settings.tsx:41](source/src/console/Settings.tsx#L41) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
+| [src/console/Settings.tsx:49](source/src/console/Settings.tsx#L49) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
+| [src/console/Settings.tsx:50](source/src/console/Settings.tsx#L50) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
+| [src/console/Settings.tsx:52](source/src/console/Settings.tsx#L52) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
+| [src/console/Settings.tsx:59](source/src/console/Settings.tsx#L59) | Settings | FunctionDeclaration | `save(): inferred` |
+| [src/console/Settings.tsx:69](source/src/console/Settings.tsx#L69) | Settings | FunctionVariable | `usd(cents: number): inferred` |
+| [src/console/Settings.tsx:70](source/src/console/Settings.tsx#L70) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
+| [src/console/Settings.tsx:101](source/src/console/Settings.tsx#L101) |  | FunctionDeclaration | `AgentSettings({ active }: { active: boolean }): inferred` |
+| [src/console/Settings.tsx:103](source/src/console/Settings.tsx#L103) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:107](source/src/console/Settings.tsx#L107) | AgentSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/Settings.tsx:109](source/src/console/Settings.tsx#L109) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
+| [src/console/Settings.tsx:114](source/src/console/Settings.tsx#L114) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
 
 ## src/console/Studio.tsx
 
@@ -1465,6 +1487,17 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/console/help-guides.ts:12](source/src/console/help-guides.ts#L12) |  | FunctionVariable | `picture(image: string, captureSelector: string, en: string, es: string): View` |
 | [src/console/help-guides.ts:13](source/src/console/help-guides.ts#L13) |  | FunctionVariable | `view(name: string, selector: string, en: string, es: string): inferred` |
 | [src/console/help-guides.ts:14](source/src/console/help-guides.ts#L14) |  | FunctionVariable | `step(image: View, enTitle: string, esTitle: string, enText: string, esText: string): HelpStep` |
+
+## src/console/mcp-resume.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/mcp-resume.ts:5](source/src/console/mcp-resume.ts#L5) |  | FunctionVariable | `isHandle(value: unknown): value is string` |
+| [src/console/mcp-resume.ts:7](source/src/console/mcp-resume.ts#L7) |  | TypeAliasDeclaration | `ResumeBrowser = { readonly location: { readonly href: string; replace(url: string): void }; readonly history: { readonly state: unknown; replaceState(data: unknown, unused: string, url: string \| URL): void }; readonly sessionStorage: Pick<Storage, "getItem" \| "setItem" \| "removeItem">; }` |
+| [src/console/mcp-resume.ts:8](source/src/console/mcp-resume.ts#L8) |  | MethodSignature | `replace(url: string): void` |
+| [src/console/mcp-resume.ts:9](source/src/console/mcp-resume.ts#L9) |  | MethodSignature | `replaceState(data: unknown, unused: string, url: string \| URL): void` |
+| [src/console/mcp-resume.ts:15](source/src/console/mcp-resume.ts#L15) |  | FunctionDeclaration | `captureMcpResume(browser: ResumeBrowser, now?: inferred): void` |
+| [src/console/mcp-resume.ts:33](source/src/console/mcp-resume.ts#L33) |  | FunctionDeclaration | `resumeMcpLogin(browser: ResumeBrowser, authenticated: unknown, now?: inferred): boolean` |
 
 ## src/core/agents.ts
 
@@ -1835,13 +1868,17 @@ Canonical chapter: [code-flow/06-agents-and-mcp.md](code-flow/06-agents-and-mcp.
 
 # Optional Agents and external MCP
 
-Local Agents: [panel](source/src/console/Agents.tsx) → [server-derived context/run ledger](source/server/agents.ts) → [loopback bridge](source/tools/agent-bridge.mjs) → official app-server → validated proposal → explicit Studio material save → native planner. Original run/context/model provenance persists; final-output replay is separate from repeating inference.
+Hosted [Agents](source/src/console/Agents.tsx) and Environment → [shared connection view](source/src/console/McpConnections.tsx) → registered private App-backed plugin → host starts OAuth → [registration/PKCE validation](source/server/mcp-auth.ts) → bounded pending-login transaction if needed → [browser capture/session resume](source/src/console/mcp-resume.ts) → authenticated consent → opaque scoped grant/token.
 
-External host: OAuth metadata → [public client registration, owner consent and PKCE](source/server/mcp-auth.ts) → [opaque scoped token store](source/server/mcp-auth-store.ts) → [SDK transport/idempotency](source/server/mcp.ts) → [fifteen finite tools](source/server/mcp-tools.ts) → existing editorial/Studio backend. Revocation/expiry/deletion must close tool and artifact access. MCP cannot approve; the owner uses the ordinary app before export.
+Authorized external host → [SDK transport](source/server/mcp.ts) → fourteen normal descriptors (plus delete only with its explicit grant) → permission challenge or [finite native tool](source/server/mcp-tools.ts) → existing editorial/Studio backend. Permission failures occur before effects/request receipts. Stable request identity and domain CAS remain independent safeguards. Human review/approval stays in marKER before private revision-bound export.
 
-Read [OAuth tests](source/tests/mcp-auth.test.ts), [tool tests](source/tests/mcp-tools.test.ts), [SDK integration tests](source/tests/mcp-integration.test.ts) and [Profile deletion tests](source/tests/profile.test.ts). An SDK client and synthetic fixture are not an actual installed Dot/ChatGPT conversation or proof of compatibility with every host.
+[Migration 0011](source/migrations-d1/0011_mcp_connections.sql) preserves approved client identity and adds single-use pending-login state. The [local adapter](source/server/mcp-local.ts) upgrades its own database transactionally without copying hosted identity or credentials. Revocation, expiry and account deletion close delegated access; the latter purges all eight MCP tables.
 
-Canonical host package: [metadata](source/integrations/chatgpt/marker/plugin.json) + [MCP/OAuth configuration](source/integrations/chatgpt/marker/mcp.json) + [campaign skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). Packaging and hosted server verification do not establish owner OAuth or an actual host conversation.
+Local developer path only: explicit loopback development panel → [context/run ledger](source/server/agents.ts) → [bridge](source/tools/agent-bridge.mjs) → official app-server → validated proposal → explicit Studio save → native planner. Ordinary hosted UI does not poll this path or require bridge commands.
+
+Read [OAuth tests](source/tests/mcp-auth.test.ts), [resume tests](source/tests/mcp-resume.test.ts), [local migration tests](source/tests/mcp-local-migration.test.ts), [tool tests](source/tests/mcp-tools.test.ts), [SDK tests](source/tests/mcp-integration.test.ts) and [Profile deletion tests](source/tests/profile.test.ts). A synthetic fixture or mobile viewport is not real host OAuth, a Dot conversation or physical-phone validation.
+
+The [portable metadata](source/integrations/chatgpt/marker/plugin.json), [MCP configuration](source/integrations/chatgpt/marker/mcp.json) and [campaign skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) remain developer source. They do not recreate the registered private App binding by themselves. [The connector document](source/docs/mcp-connector.md) describes that distinction and the authorized public installation CTA.
 
 
 ---
@@ -1854,7 +1891,7 @@ Review this repository as the current full-source snapshot of marKER. Begin with
 
 Assess end-to-end product/workflow usefulness, frontend state/recovery/accessibility, backend/domain correctness, schema/CAS/concurrency, original-media custody and processing, native classification/planning, optional local Agents, authenticated external MCP, owner identity/Profile/deletion, security/privacy/retention/limits, operational recovery, dependencies and justified complexity. Preserve the independent native no-agent path and original brand assets. Do not propose replacing deterministic rules with prompts.
 
-Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The hosted migration/deployment and its bounded readback are recorded in DEPLOYMENT-STATUS.md. Do not extend that evidence into actual desktop host connection/OAuth/tool conversation, authenticated hosted campaign execution, external identity activation, physical-device UAT, creative quality, invoice limits or restoration. Review the canonical host-package source and its OpenAI authentication extensions without assuming compatibility with every host. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
+Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The hosted migration/deployment and its bounded readback are recorded in DEPLOYMENT-STATUS.md. Do not extend that evidence into actual desktop host connection/OAuth/tool conversation, authenticated hosted campaign execution, external identity activation, physical-device UAT, creative quality, invoice limits or restoration. Review the current login/resume, native callback matching, approved-client lifetime, scope challenges and developer-only bridge boundaries. Distinguish the registered private App-backed plugin from the portable host-package source; do not assume every host, protocol version or voice/phone surface works. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
 
 For each finding give priority, exact source path and line, concrete trigger/counterexample, impact, confidence and evidence, minimal coherent correction, affected boundaries, invariants to preserve, focused failure/concurrency checks and migration/recovery implications. Separate confirmed defects, plausible risks, usability opportunities and optional roadmap. Avoid generic best practices, invented facts/endpoints, duplicate systems and unsupported security certification.
 

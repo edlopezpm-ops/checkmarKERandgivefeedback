@@ -53,12 +53,17 @@
       "path": "migrations-d1/0010_mcp.sql",
       "sha256": "29a254501f66ef75b814cc0faa4b784bcaf8dd5b9a3c99480479f95cf28100fa",
       "text_lines": 59
+    },
+    {
+      "path": "migrations-d1/0011_mcp_connections.sql",
+      "sha256": "0e158a26bd903e1835e0f905acd2269939ef61c3b2fc09b0409556e0cb49f1ae",
+      "text_lines": 15
     }
   ],
-  "table_count": 35,
-  "column_count": 195,
+  "table_count": 36,
+  "column_count": 201,
   "explicit_index_count": 14,
-  "trigger_count": 69,
+  "trigger_count": 71,
   "tables": [
     {
       "name": "marker_account_lifecycle",
@@ -1735,7 +1740,7 @@
     },
     {
       "name": "marker_mcp_clients",
-      "ddl": "CREATE TABLE marker_mcp_clients (\n  client_id TEXT PRIMARY KEY, name TEXT NOT NULL, redirect_uris TEXT NOT NULL,\n  created_at INTEGER NOT NULL, expires_at INTEGER NOT NULL\n) WITHOUT ROWID",
+      "ddl": "CREATE TABLE marker_mcp_clients (\n  client_id TEXT PRIMARY KEY, name TEXT NOT NULL, redirect_uris TEXT NOT NULL,\n  created_at INTEGER NOT NULL, expires_at INTEGER NOT NULL\n, authorized_at INTEGER) WITHOUT ROWID",
       "columns": [
         {
           "cid": 0,
@@ -1778,6 +1783,15 @@
           "name": "expires_at",
           "type": "INTEGER",
           "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "authorized_at",
+          "type": "INTEGER",
+          "notnull": 0,
           "default": null,
           "pk": 0,
           "hidden": 0
@@ -1827,6 +1841,14 @@
               "seqno": 4,
               "cid": 4,
               "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "authorized_at",
               "desc": 0,
               "coll": "BINARY",
               "key": 0
@@ -2420,6 +2442,120 @@
               "seqno": 2,
               "cid": 2,
               "name": "count",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
+      "name": "marker_mcp_login_requests",
+      "ddl": "CREATE TABLE marker_mcp_login_requests (\n  request_hash TEXT PRIMARY KEY CHECK(length(request_hash)=64),\n  client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,\n  document TEXT NOT NULL, expires_at INTEGER NOT NULL, consumed_by TEXT\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "request_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "client_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "document",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "consumed_by",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_mcp_clients",
+          "from": "client_id",
+          "to": "client_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_mcp_login_requests_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "request_hash",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "client_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "document",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "expires_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "consumed_by",
               "desc": 0,
               "coll": "BINARY",
               "key": 0
@@ -4252,6 +4388,16 @@
       "name": "marker_mcp_limits_active_update",
       "table": "marker_mcp_limits",
       "ddl": "CREATE TRIGGER marker_mcp_limits_active_update BEFORE UPDATE ON marker_mcp_limits WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_login_requests_active_insert",
+      "table": "marker_mcp_login_requests",
+      "ddl": "CREATE TRIGGER marker_mcp_login_requests_active_insert BEFORE INSERT ON marker_mcp_login_requests WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_mcp_login_requests_active_update",
+      "table": "marker_mcp_login_requests",
+      "ddl": "CREATE TRIGGER marker_mcp_login_requests_active_update BEFORE UPDATE ON marker_mcp_login_requests WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')!='active' BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
     },
     {
       "name": "marker_mcp_requests_active_insert",

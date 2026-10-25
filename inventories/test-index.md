@@ -1,6 +1,6 @@
 # Test declaration index
 
-292 static declarations across 39 files. Includes subtests; this is neither execution count nor code coverage.
+306 static declarations across 41 files. Includes subtests; this is neither execution count nor code coverage.
 
 | File | Declarations |
 | --- | --- |
@@ -20,8 +20,10 @@
 | [tests/github-auth.test.ts](../source/tests/github-auth.test.ts) | 6 |
 | [tests/google-auth.test.ts](../source/tests/google-auth.test.ts) | 11 |
 | [tests/hosted.test.ts](../source/tests/hosted.test.ts) | 2 |
-| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 15 |
-| [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 4 |
+| [tests/mcp-auth.test.ts](../source/tests/mcp-auth.test.ts) | 21 |
+| [tests/mcp-integration.test.ts](../source/tests/mcp-integration.test.ts) | 5 |
+| [tests/mcp-local-migration.test.ts](../source/tests/mcp-local-migration.test.ts) | 1 |
+| [tests/mcp-resume.test.ts](../source/tests/mcp-resume.test.ts) | 6 |
 | [tests/mcp-tools.test.ts](../source/tests/mcp-tools.test.ts) | 8 |
 | [tests/motion.test.ts](../source/tests/motion.test.ts) | 5 |
 | [tests/native-auth.test.ts](../source/tests/native-auth.test.ts) | 12 |
@@ -150,24 +152,38 @@
 | [tests/hosted.test.ts:10](../source/tests/hosted.test.ts#L10) | test | unconfigured hosted backend fails closed, anonymous and other identities cannot read or write |
 | [tests/hosted.test.ts:65](../source/tests/hosted.test.ts#L65) | test | configured owner reads through Supabase and successful login returns HttpOnly cookie without browser tokens |
 | [tests/mcp-auth.test.ts:31](../source/tests/mcp-auth.test.ts#L31) | test | MCP discovery names exact resource and PKCE public-client endpoints without owner cookies |
-| [tests/mcp-auth.test.ts:40](../source/tests/mcp-auth.test.ts#L40) | test | DCR bounds public metadata and requires exact HTTPS redirects in hosted mode |
-| [tests/mcp-auth.test.ts:50](../source/tests/mcp-auth.test.ts#L50) | test | anonymous authorize requests do not grant access; signed-in consent escapes names and preserves original logo |
-| [tests/mcp-auth.test.ts:59](../source/tests/mcp-auth.test.ts#L59) | test | authorize rejects redirect substitution, duplicate parameters, unbound resources, PKCE downgrade and unknown scopes |
-| [tests/mcp-auth.test.ts:66](../source/tests/mcp-auth.test.ts#L66) | test | consent requires same-origin authenticated owner and single-use explicit Allow or Deny |
-| [tests/mcp-auth.test.ts:76](../source/tests/mcp-auth.test.ts#L76) | test | real SQLite code exchange binds PKCE, client, redirect, resource and opaque hashed credentials |
-| [tests/mcp-auth.test.ts:88](../source/tests/mcp-auth.test.ts#L88) | test | concurrent code exchanges admit exactly one token pair |
-| [tests/mcp-auth.test.ts:94](../source/tests/mcp-auth.test.ts#L94) | test | failed token transaction rolls back code consumption and permits a correct retry |
-| [tests/mcp-auth.test.ts:100](../source/tests/mcp-auth.test.ts#L100) | test | refresh rotates once; replay revokes whole grant family including latest access token |
-| [tests/mcp-auth.test.ts:107](../source/tests/mcp-auth.test.ts#L107) | test | concurrent refresh races revoke the family rather than leaving replayable credentials |
-| [tests/mcp-auth.test.ts:112](../source/tests/mcp-auth.test.ts#L112) | test | cross-client refresh/revoke and scope escalation fail without revoking valid owner grant |
-| [tests/mcp-auth.test.ts:120](../source/tests/mcp-auth.test.ts#L120) | test | owner can list and revoke delegated connections; another owner and cross-origin requests cannot |
-| [tests/mcp-auth.test.ts:131](../source/tests/mcp-auth.test.ts#L131) | test | RFC revocation accepts access or refresh credentials and makes authentication fail |
-| [tests/mcp-auth.test.ts:138](../source/tests/mcp-auth.test.ts#L138) | test | expiry and durable account freeze deny access; migration blocks already-admitted writes |
-| [tests/mcp-auth.test.ts:146](../source/tests/mcp-auth.test.ts#L146) | test | endpoints bound methods, bodies, registration rate and do not accept client-secret auth |
-| [tests/mcp-integration.test.ts:56](../source/tests/mcp-integration.test.ts#L56) | test | official SDK negotiates Streamable HTTP and persists real tools; duplicate requests never duplicate products |
-| [tests/mcp-integration.test.ts:79](../source/tests/mcp-integration.test.ts#L79) | test | transport rejects missing/invalid identity, cross-origin and caller-selected tenant before product effects |
-| [tests/mcp-integration.test.ts:90](../source/tests/mcp-integration.test.ts#L90) | test | concurrent identical writes admit once and uncertain committed effects never automatically run again |
-| [tests/mcp-integration.test.ts:103](../source/tests/mcp-integration.test.ts#L103) | test | owner revocation invalidates established SDK connections and local authorization persists across factories |
+| [tests/mcp-auth.test.ts:41](../source/tests/mcp-auth.test.ts#L41) | test | native OAuth callbacks accept literal loopback and a changed port while the code binds the concrete URI |
+| [tests/mcp-auth.test.ts:57](../source/tests/mcp-auth.test.ts#L57) | test | native OAuth port exception never permits changing callback host, path, query or scheme |
+| [tests/mcp-auth.test.ts:67](../source/tests/mcp-auth.test.ts#L67) | test | DCR bounds metadata and rejects plaintext remote or noncanonical redirects |
+| [tests/mcp-auth.test.ts:77](../source/tests/mcp-auth.test.ts#L77) | test | anonymous authorization creates only a bounded login handle; signed-in consent preserves the original logo |
+| [tests/mcp-auth.test.ts:90](../source/tests/mcp-auth.test.ts#L90) | test | normal login resumes the exact validated OAuth transaction once, then requires explicit consent |
+| [tests/mcp-auth.test.ts:107](../source/tests/mcp-auth.test.ts#L107) | test | expired or malformed login handles never redirect externally, and interrupted resume can retry safely |
+| [tests/mcp-auth.test.ts:124](../source/tests/mcp-auth.test.ts#L124) | test | authorized DCR identities survive expiry and revoke while unused registrations expire |
+| [tests/mcp-auth.test.ts:135](../source/tests/mcp-auth.test.ts#L135) | test | only committed Allow promotes a DCR identity; denied or failed grants preserve retry safety |
+| [tests/mcp-auth.test.ts:149](../source/tests/mcp-auth.test.ts#L149) | test | authorize rejects redirect substitution, duplicate parameters, unbound resources, PKCE downgrade and unknown scopes |
+| [tests/mcp-auth.test.ts:156](../source/tests/mcp-auth.test.ts#L156) | test | consent requires same-origin authenticated owner and single-use explicit Allow or Deny |
+| [tests/mcp-auth.test.ts:166](../source/tests/mcp-auth.test.ts#L166) | test | real SQLite code exchange binds PKCE, client, redirect, resource and opaque hashed credentials |
+| [tests/mcp-auth.test.ts:178](../source/tests/mcp-auth.test.ts#L178) | test | concurrent code exchanges admit exactly one token pair |
+| [tests/mcp-auth.test.ts:184](../source/tests/mcp-auth.test.ts#L184) | test | failed token transaction rolls back code consumption and permits a correct retry |
+| [tests/mcp-auth.test.ts:190](../source/tests/mcp-auth.test.ts#L190) | test | refresh rotates once; replay revokes whole grant family including latest access token |
+| [tests/mcp-auth.test.ts:197](../source/tests/mcp-auth.test.ts#L197) | test | concurrent refresh races revoke the family rather than leaving replayable credentials |
+| [tests/mcp-auth.test.ts:202](../source/tests/mcp-auth.test.ts#L202) | test | cross-client refresh/revoke and scope escalation fail without revoking valid owner grant |
+| [tests/mcp-auth.test.ts:210](../source/tests/mcp-auth.test.ts#L210) | test | owner can list and revoke delegated connections; another owner and cross-origin requests cannot |
+| [tests/mcp-auth.test.ts:221](../source/tests/mcp-auth.test.ts#L221) | test | RFC revocation accepts access or refresh credentials and makes authentication fail |
+| [tests/mcp-auth.test.ts:228](../source/tests/mcp-auth.test.ts#L228) | test | expiry and durable account freeze deny access; migration blocks already-admitted writes |
+| [tests/mcp-auth.test.ts:236](../source/tests/mcp-auth.test.ts#L236) | test | endpoints bound methods, bodies, registration rate and do not accept client-secret auth |
+| [tests/mcp-integration.test.ts:67](../source/tests/mcp-integration.test.ts#L67) | test | official SDK negotiates Streamable HTTP and persists real tools; duplicate requests never duplicate products |
+| [tests/mcp-integration.test.ts:90](../source/tests/mcp-integration.test.ts#L90) | test | transport rejects missing/invalid identity, cross-origin and caller-selected tenant before product effects |
+| [tests/mcp-integration.test.ts:122](../source/tests/mcp-integration.test.ts#L122) | test | scope challenges precede any effect receipt or business backend access |
+| [tests/mcp-integration.test.ts:138](../source/tests/mcp-integration.test.ts#L138) | test | concurrent identical writes admit once and uncertain committed effects never automatically run again |
+| [tests/mcp-integration.test.ts:151](../source/tests/mcp-integration.test.ts#L151) | test | owner revocation invalidates established SDK connections and local authorization persists across factories |
+| [tests/mcp-local-migration.test.ts:9](../source/tests/mcp-local-migration.test.ts#L9) | test | local MCP upgrades a legacy database once while preserving identity and authorized client IDs |
+| [tests/mcp-resume.test.ts:27](../source/tests/mcp-resume.test.ts#L27) | test | capture stores only the opaque correlation handle before cleaning its query key |
+| [tests/mcp-resume.test.ts:36](../source/tests/mcp-resume.test.ts#L36) | test | malformed, URL-shaped and duplicate handles are discarded without retaining an older flow |
+| [tests/mcp-resume.test.ts:50](../source/tests/mcp-resume.test.ts#L50) | test | provider navigation preserves the pending handle and resumes once after real authentication |
+| [tests/mcp-resume.test.ts:70](../source/tests/mcp-resume.test.ts#L70) | test | ten-minute expiry is enforced and provider returns do not extend it |
+| [tests/mcp-resume.test.ts:81](../source/tests/mcp-resume.test.ts#L81) | test | invalid stored data and future timestamps never become redirect targets |
+| [tests/mcp-resume.test.ts:94](../source/tests/mcp-resume.test.ts#L94) | test | storage failures preserve login usability and cannot cause repeat redirects |
 | [tests/mcp-tools.test.ts:33](../source/tests/mcp-tools.test.ts#L33) | test | finite descriptors require bounded closed schemas and declare the business effects |
 | [tests/mcp-tools.test.ts:49](../source/tests/mcp-tools.test.ts#L49) | test | real local repository and SQLite: create → literal library plan → save → human approval → TXT export |
 | [tests/mcp-tools.test.ts:127](../source/tests/mcp-tools.test.ts#L127) | test | input and grant rejection precede backend effects; no path, tenant, approval or provenance injection |
@@ -209,16 +225,16 @@
 | [tests/profile-ui.test.ts:88](../source/tests/profile-ui.test.ts#L88) | test | purged capability status404 resolves terminal deletion through public session without a mutation |
 | [tests/profile-ui.test.ts:93](../source/tests/profile-ui.test.ts#L93) | test | lost final resume response resolves the public tombstone and never repeats DELETE |
 | [tests/profile.test.ts:39](../source/tests/profile.test.ts#L39) | test | account deletion freezes and removes all delegated MCP credentials and effect receipts |
-| [tests/profile.test.ts:58](../source/tests/profile.test.ts#L58) | test | profile derives initials automatically and retains only the readonly access email on owner PATCH with revision CAS |
-| [tests/profile.test.ts:84](../source/tests/profile.test.ts#L84) | test | shared automatic initials follow current name or email without an owner-specific default |
-| [tests/profile.test.ts:88](../source/tests/profile.test.ts#L88) | test | deletion requires exact double confirmation, fresh independent email, session, origin and singleton tenant |
-| [tests/profile.test.ts:105](../source/tests/profile.test.ts#L105) | test | durable freeze, lost-start retry and same-browser cleanup purge all active D1/R2 rows without recreating owner data |
-| [tests/profile.test.ts:144](../source/tests/profile.test.ts#L144) | test | cleanup waits existing write leases and retries multipart/R2 failures without a false completion |
-| [tests/profile.test.ts:157](../source/tests/profile.test.ts#L157) | test | concurrent resumes hold one durable lease and final D1 purge rolls back atomically on failure |
-| [tests/profile.test.ts:170](../source/tests/profile.test.ts#L170) | test | final empty-bucket recheck catches late objects; scheduled recovery completes only an owner-started deletion |
-| [tests/profile.test.ts:179](../source/tests/profile.test.ts#L179) | test | missing lifecycle migration fails closed before any auth, bridge, or profile effect |
-| [tests/profile.test.ts:185](../source/tests/profile.test.ts#L185) | test | completed or previously aborted multipart uploads permit cleanup only for documented NoSuchUpload errors |
-| [tests/profile.test.ts:192](../source/tests/profile.test.ts#L192) | test | additive profile migration preserves existing Google identity, owner/session and workspace bytes; absent lifecycle also freezes D1 writes |
+| [tests/profile.test.ts:61](../source/tests/profile.test.ts#L61) | test | profile derives initials automatically and retains only the readonly access email on owner PATCH with revision CAS |
+| [tests/profile.test.ts:87](../source/tests/profile.test.ts#L87) | test | shared automatic initials follow current name or email without an owner-specific default |
+| [tests/profile.test.ts:91](../source/tests/profile.test.ts#L91) | test | deletion requires exact double confirmation, fresh independent email, session, origin and singleton tenant |
+| [tests/profile.test.ts:108](../source/tests/profile.test.ts#L108) | test | durable freeze, lost-start retry and same-browser cleanup purge all active D1/R2 rows without recreating owner data |
+| [tests/profile.test.ts:147](../source/tests/profile.test.ts#L147) | test | cleanup waits existing write leases and retries multipart/R2 failures without a false completion |
+| [tests/profile.test.ts:160](../source/tests/profile.test.ts#L160) | test | concurrent resumes hold one durable lease and final D1 purge rolls back atomically on failure |
+| [tests/profile.test.ts:173](../source/tests/profile.test.ts#L173) | test | final empty-bucket recheck catches late objects; scheduled recovery completes only an owner-started deletion |
+| [tests/profile.test.ts:182](../source/tests/profile.test.ts#L182) | test | missing lifecycle migration fails closed before any auth, bridge, or profile effect |
+| [tests/profile.test.ts:188](../source/tests/profile.test.ts#L188) | test | completed or previously aborted multipart uploads permit cleanup only for documented NoSuchUpload errors |
+| [tests/profile.test.ts:195](../source/tests/profile.test.ts#L195) | test | additive profile migration preserves existing Google identity, owner/session and workspace bytes; absent lifecycle also freezes D1 writes |
 | [tests/scheduler.test.ts:13](../source/tests/scheduler.test.ts#L13) | test | first episode waits 30–60 seconds, next wait starts after finish |
 | [tests/scheduler.test.ts:19](../source/tests/scheduler.test.ts#L19) | test | hidden wait resumes remaining time without catch-up |
 | [tests/scheduler.test.ts:24](../source/tests/scheduler.test.ts#L24) | test | hidden episode pauses completion; dispose cancels all timers |

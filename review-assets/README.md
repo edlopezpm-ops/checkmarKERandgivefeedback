@@ -1,9 +1,9 @@
-# Synthetic local connector view
+# Historical synthetic local connector view
 
 This original screenshot was explicitly approved for this review package by the
 implementation coordinator. It shows the isolated local fixture, a test client
 and a loopback connection URL. No credential or owner runtime data is visible.
-It is a separate review illustration, not product source or a hosted readback.
+It is a retained illustration from the original connector publication, not the current seamless connection UI, product source or a fresh hosted readback. Current connection/context Help images live in the projected public/help source.
 
 ![Connected assistants in Spanish dark mode](mcp-connections-es-dark.png)
 
