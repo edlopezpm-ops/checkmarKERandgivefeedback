@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "marker",
+  "version": "0.1.0",
+  "description": "Prepare editable marKER campaigns with the existing native classifier, planner, render and export backend.",
+  "homepage": "https://marker.aekr.io",
+  "author": { "name": "AEKR" },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "marKER",
+        "shortDescription": "Prepare your next campaign",
+        "longDescription": "Find products and Space materials, prepare and save editable campaigns using marKER's native engine, render previews and export approved revisions. The connected account controls permissions and can revoke access in Environment.",
+        "developerName": "AEKR",
+        "category": "Productivity",
+        "capabilities": [],
+        "defaultPrompt": "Help me prepare a campaign from my marKER products and Space materials."
+      }
+    }
+  }
+}

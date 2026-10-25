@@ -1,6 +1,6 @@
 # Complete source projection
 
-Base `de0a4a65d6d37642e5f7efda66151c4270ec2a02`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
+Base `a675f8dfccf32986530205cb1636dac7624afc21`; working-tree qualifications are in the [manifest](../source-snapshot-manifest.json). Every listed file is included under source/. Hashes identify exact captured bytes.
 
 | Source path | Bytes | Text lines | Tracked | SHA-256 |
 | --- | --- | --- | --- | --- |
@@ -22,12 +22,15 @@ Base `de0a4a65d6d37642e5f7efda66151c4270ec2a02`; working-tree qualifications are
 | [docs/hosted-studio.md](../source/docs/hosted-studio.md) | 7813 | 43 | True | 75c14f9e403724b2551456690e88ed1252dc89d38db81d5886893dc5360b31b4 |
 | [docs/implementation-next-steps.md](../source/docs/implementation-next-steps.md) | 7037 | 47 | True | e8e801152287f2278e24236c347dffb55ae31a420df8af64dbc788c854fbc20b |
 | [docs/local-studio.md](../source/docs/local-studio.md) | 10248 | 55 | True | 52ad7181171d827f1811c01b87f6c21d3571cc766a8be48efec3c7fecc92a5e5 |
-| [docs/mcp-connector.md](../source/docs/mcp-connector.md) | 7118 | 112 | True | 9f2b0e014f7ef12414c51fef2576c87b4371a2c2fff1700940e67b70cee36faf |
+| [docs/mcp-connector.md](../source/docs/mcp-connector.md) | 7776 | 122 | True | fb5d2ca7e1e209bbba3753fbed67bd34597783ab5fdd930bfecc18e9ac7037b2 |
 | [docs/profile-and-data.md](../source/docs/profile-and-data.md) | 4059 | 68 | True | 45e1f7a316b35abcbb7870386e196c5057e129df159e2e351c98cc93f40b147d |
 | [docs/settings.md](../source/docs/settings.md) | 4553 | 33 | True | 14383f00f6ba5dd9493d6a02f83c4ae5054c8a98cb41d7511f30516407665b61 |
 | [docs/studio-planner.md](../source/docs/studio-planner.md) | 9967 | 55 | True | 945b050a63b49fe133af2c968bce53356f70fe973d05ebe9006a80ab7d3bfda8 |
 | [docs/text-simulation.md](../source/docs/text-simulation.md) | 3134 | 13 | True | 6d475f010a56e0e9f8cddf06bec96e8c4cbd9495107a2794ee4428ce6530b176 |
 | [index.html](../source/index.html) | 481 | 2 | True | 87fbf1b5c8ea0c7f9244017b291cee48e0a8b239ac167847215f1739f0ac3529 |
+| [integrations/chatgpt/marker/mcp.json](../source/integrations/chatgpt/marker/mcp.json) | 522 | 20 | True | bdba9242fcd4b12f30eeb8151365d976fdc8104048790948cbf060271a097297 |
+| [integrations/chatgpt/marker/plugin.json](../source/integrations/chatgpt/marker/plugin.json) | 943 | 21 | True | f1a65e8d282a133b07af7bd37f7b728bc853e3a60fab4f103eeb2e4f12ea0457 |
+| [integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md](../source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) | 1870 | 33 | True | f05a47d79341f52f0e46202ea82d04d454677964a347c9383e4a831e38d3be8b |
 | [migrations-d1/0001_private.sql](../source/migrations-d1/0001_private.sql) | 1391 | 26 | True | 244f5e2f7c5199a2626c09f9013236eafd3204c136627cfcfa1890e0c068a8c0 |
 | [migrations-d1/0002_studio.sql](../source/migrations-d1/0002_studio.sql) | 2455 | 49 | True | d421b018d55c109af460e37ae73bcab2a97ad1e8a13ddbddea168cd87961f038 |
 | [migrations-d1/0003_studio_hosted.sql](../source/migrations-d1/0003_studio_hosted.sql) | 1291 | 23 | True | 3ea300dfbfc5c791fb9eed593b01a3b85b6dc73b74ad7fd19384e8c5755f70b5 |

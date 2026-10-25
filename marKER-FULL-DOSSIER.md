@@ -1,6 +1,6 @@
 # marKER — complete technical dossier
 
-Snapshot 2026-10-24; source base `de0a4a65d6d37642e5f7efda66151c4270ec2a02` plus the explicitly inventoried working-tree delta.
+Snapshot 2026-10-24; source base `a675f8dfccf32986530205cb1636dac7624afc21` plus the explicitly inventoried working-tree delta.
 
 This reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.
 
@@ -11,17 +11,18 @@ Canonical chapter: [00-START-HERE.md](00-START-HERE.md)
 
 # Start here
 
-This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source base is `de0a4a65d6d37642e5f7efda66151c4270ec2a02` on `main`; 12 working-tree paths are qualified in the [snapshot manifest](source-snapshot-manifest.json). Read the exact projected files when narrative and code differ.
+This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source base is `a675f8dfccf32986530205cb1636dac7624afc21` on `main`; 12 working-tree paths are qualified in the [snapshot manifest](source-snapshot-manifest.json). Read the exact projected files when narrative and code differ.
 
 Read [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review prompt](AI_ANALYSIS_PROMPT.md). Use the [complete source inventory](inventories/source-paths.md), [symbol index](code-flow/05-module-symbol-index.md), [test index](inventories/test-index.md) and [route occurrences](inventories/routes.md) to close coverage gaps. A complete review requires inspecting implementation, tests and negative paths; a chapter summary alone does not establish that coverage.
 
 | Evidence label | Exact meaning |
 | --- | --- |
 | Snapshot source | Included implementation/configuration at the manifest's byte identity. |
-| Fresh package check | File completeness, hashes, safe path selection, AST parse, links and empty-schema reconstruction executed for this repository refresh. |
+| Package verification | The initial 333-file publication executed completeness, hashes, AST parse and empty-schema reconstruction. The later four-path packaging delta updates provenance and links without rerunning unchanged product, AST or schema checks; see the manifest and catalog receipt. |
 | Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
 | Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
-| Not established | Actual Dot installation/conversation, new MCP hosted activation, physical-device/creative pilot or human acceptance where expressly outstanding. |
+| Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records migration 0010, production Worker identity, public metadata/denial checks and asset parity supplied by the implementation coordinator. |
+| Not established | Actual host installation/OAuth and Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
 
 The review contains no private governance, owner workspace, sessions, provider accounts or runtime database rows. Schema catalogs are empty reconstructions. Test fixtures and Help/demo assets are synthetic/public product material. Package integrity is not security certification or product acceptance.
 
@@ -64,6 +65,7 @@ flowchart TD
 | Storage | [D1](source/server/d1.ts), [hosted Studio](source/server/studio-hosted.ts), [local Studio](source/server/studio-local.ts) | Independent editorial/Studio revisions, objects, jobs and admission. |
 | Native media | [renderer](source/server/studio-render.ts), [processor](source/server/studio-processor.ts), [runner](source/processor/runner.mjs) | Bounded fixed-argument processes and streamed originals/results. |
 | Optional Agents | [API](source/server/agents.ts), [store](source/server/agents-store.ts), [bridge](source/tools/agent-bridge.mjs) | Provider run/proposal/effect custody; local managed-ChatGPT route. |
+| Host package | [manifest](source/integrations/chatgpt/marker/plugin.json), [MCP config](source/integrations/chatgpt/marker/mcp.json), [skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) | Reproducible external-host configuration and explicit campaign-action instructions; separate from installation/OAuth. |
 | External assistant | [MCP transport](source/server/mcp.ts), [authorization](source/server/mcp-auth.ts), [tools](source/server/mcp-tools.ts) | Delegated scoped access through existing product operations. |
 
 The pinned runtime packages include React 19, the official MCP SDK and a Workers-compatible non-code-generating JSON-schema provider. Vite, TypeScript and Wrangler are development/build dependencies. Exact resolved versions, transitive packages and commands are in [dependencies](inventories/dependencies.md). Installing a dependency does not create a provider, migration or deployment.
@@ -251,11 +253,15 @@ Expired grants cascade credentials and request receipts; applied product entitie
 | Deterministic missing-label classification/library preparation | Implemented and verified locally; no semantic inference. |
 | Local managed-ChatGPT Agents bridge | Implemented; one prior actual fictional-copy request reported in product docs; no new provider call in this refresh. |
 | Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; actual Dot/other-host installation/conversation remains unestablished. |
-| Hosted MCP migration/deployment | Separate activation boundary; see exact current-state evidence, not source config alone. |
+| Hosted MCP migration/deployment | Migration 0010 and all seven tables verified; Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, with hosted metadata/denial and asset readback. See [deployment evidence](DEPLOYMENT-STATUS.md). |
 | Hosted SIWC inference | Admission/client/effective plan grant unresolved. |
 | Hosted technical analysis | Disabled until native toolchain verification. |
 | Connected social APIs, advertising activation, live metrics, Android automation | Deferred/unimplemented. |
 | Transcription/subtitles/semantic media selection/PWA background capture | Separate future capabilities. |
+
+A private user-level plugin package was created and its manifest read back. Its default requested permissions are read, write and produce; delete is not a default permission. Package creation does not install it in the host or complete owner OAuth. The actual host page encountered CAPTCHA and needs the owner's action; no successful Dot connection or conversation is asserted. Private account identifiers and the private installation URL are intentionally outside this public dossier.
+
+The reproducible package lives in [plugin.json](source/integrations/chatgpt/marker/plugin.json), [mcp.json](source/integrations/chatgpt/marker/mcp.json) and [prepare-campaign/SKILL.md](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). It contains no account-specific installation ID or credential. The skill requires current revisions, stable request IDs, explicit facts/rights and first-party approval. The coordinator verified three-file ZIP parity and the intended manifest contract. OpenAI authentication extensions can diverge from the generic portable base-schema validation; this is not an all-host compatibility claim. The package commit changes no application runtime.
 
 
 ---
@@ -264,7 +270,7 @@ Canonical chapter: [08-operations-quality-and-limits.md](08-operations-quality-a
 
 # 08 — Operations, quality and limits
 
-This repository refresh executes documentary verification: complete explicit source selection, raw-byte identity, safe exclusions, static AST parse, empty-schema reconstruction/replay, source navigation, package links, credential-pattern screening and sealed manifests. It does not rerun the implementation's product suite or inspect runtime owner databases. [CURRENT-STATE.json](CURRENT-STATE.json) records the precise source and evidence boundary.
+The initial source publication executed documentary verification: complete explicit source selection, raw-byte identity, safe exclusions, static AST parse, empty-schema reconstruction/replay, source navigation, package links, credential-pattern screening and sealed manifests. The later packaging/hosted-status update verifies the bounded source delta, preserved catalog bytes, links and package seal without repeating product tests, AST parsing or schema execution. Neither step inspects runtime owner databases. [CURRENT-STATE.json](CURRENT-STATE.json) records the precise source and evidence boundary.
 
 The implementation coordinator reports 15 OAuth/SQLite tests, 8 tool/backend tests, 4 official-SDK integration tests and 48 targeted Profile/native/provenance regressions passing, plus frontend/server type checks, build, immutable-logo verification and Worker dry run. These are separate focused runs, not an invented full-suite coverage number. Profile coverage includes all seven MCP tables in confirmed deletion. Final counts or added checks are recorded in CURRENT-STATE when supplied by the coordinator.
 
@@ -274,7 +280,11 @@ The coordinator also reports an isolated real HTTP/SDK sequence: OAuth PKCE → 
 
 Prior receipts report hosted manual/Studio/auth/Profile/Help/demo delivery. Current-source refresh is not a new readback of those releases. The frozen main commit adds authenticated MCP tools over the native campaign engine, following the earlier native-classification increment; preexisting deployed demo bytes remain dirty. A base commit, a successful build and a source config are three different facts; none alone identifies what is currently running remotely.
 
-At the frozen-source handoff, latest prior hosted version was reported as `5998a3eb-8557-4ab4-88b8-9c402d6be0d6`, without fresh live verification. Native-core commit `2535536` and MCP source commit `de0a4a6` were not newly deployed; migration `0010_mcp.sql` remained unapplied remotely. Source `main` was pushed and its remote SHA matched. These states must not be replaced with a live claim based on this publication.
+The initial review publication `80fc3db` captured source before the newly authorized MCP deployment. Its old-receipt reference to `5998a3eb-8557-4ab4-88b8-9c402d6be0d6` was not a live verification. Fresh predeployment inspection subsequently identified `c525b283-3ba7-453d-a429-d76c73e81924` as the actual previous hosted version. That 333-file snapshot remains preserved in Git. Source commit `a675f8dfccf32986530205cb1636dac7624afc21` subsequently adds three canonical plugin-package files and updates the connector document; the same 12 demo paths retain their original byte identities. The deployed runtime still corresponds to `de0a4a65d6d37642e5f7efda66151c4270ec2a02` plus those demo bytes; packaging introduces no runtime change or new deployment.
+
+The owner then authorized the private D1 backup, additive migration 0010 and deployment. The coordinator reports Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, independent hosted readback **18/18 PASS**, all **182 dist assets** byte/SHA-identical (**32,761,835 bytes**), the exact approved logo and both public demo range/HEAD checks passing. Readonly D1 inspection confirms migration 0010 and its seven tables, with zero rows written by the inspection. [DEPLOYMENT-STATUS.md](DEPLOYMENT-STATUS.md) records the bounded public evidence. This review worker reads no backup and makes no change to the canonical product repository or runtime.
+
+This establishes the verified hosted server/assets and negative authorization behavior. Actual private-plugin installation, owner OAuth consent and Dot conversation remain incomplete; the host page requires owner handling of CAPTCHA. No new human UAT, creative-quality result, real hosted authenticated end-to-end campaign or restoration proof is inferred.
 
 | Operational control | Bound and limitation |
 | --- | --- |
@@ -328,7 +338,7 @@ Canonical chapter: [10-source-map-tests-and-dependencies.md](10-source-map-tests
 
 # 10 — Source map, tests and dependencies
 
-The source projection contains **333 files** totaling **35,585,752 bytes**, including full source, tests, migrations, build/configuration, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The source projection contains **336 files** totaling **35,589,745 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
 
 - [Every source path and hash](inventories/source-paths.md).
 - [Machine snapshot, source commit and dirty qualifications](source-snapshot-manifest.json).
@@ -1831,6 +1841,8 @@ External host: OAuth metadata → [public client registration, owner consent and
 
 Read [OAuth tests](source/tests/mcp-auth.test.ts), [tool tests](source/tests/mcp-tools.test.ts), [SDK integration tests](source/tests/mcp-integration.test.ts) and [Profile deletion tests](source/tests/profile.test.ts). An SDK client and synthetic fixture are not an actual installed Dot/ChatGPT conversation or proof of compatibility with every host.
 
+Canonical host package: [metadata](source/integrations/chatgpt/marker/plugin.json) + [MCP/OAuth configuration](source/integrations/chatgpt/marker/mcp.json) + [campaign skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). Packaging and hosted server verification do not establish owner OAuth or an actual host conversation.
+
 
 ---
 
@@ -1842,7 +1854,7 @@ Review this repository as the current full-source snapshot of marKER. Begin with
 
 Assess end-to-end product/workflow usefulness, frontend state/recovery/accessibility, backend/domain correctness, schema/CAS/concurrency, original-media custody and processing, native classification/planning, optional local Agents, authenticated external MCP, owner identity/Profile/deletion, security/privacy/retention/limits, operational recovery, dependencies and justified complexity. Preserve the independent native no-agent path and original brand assets. Do not propose replacing deterministic rules with prompts.
 
-Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. Do not claim actual Dot/host installation, hosted migration/deployment, external identity activation, physical-device UAT, creative quality, invoice limits or restoration unless the exact evidence establishes it. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
+Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The hosted migration/deployment and its bounded readback are recorded in DEPLOYMENT-STATUS.md. Do not extend that evidence into actual Dot/host installation/OAuth/conversation, authenticated hosted campaign execution, external identity activation, physical-device UAT, creative quality, invoice limits or restoration. Review the canonical host-package source and its OpenAI authentication extensions without assuming compatibility with every host. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
 
 For each finding give priority, exact source path and line, concrete trigger/counterexample, impact, confidence and evidence, minimal coherent correction, affected boundaries, invariants to preserve, focused failure/concurrency checks and migration/recovery implications. Separate confirmed defects, plausible risks, usability opportunities and optional roadmap. Avoid generic best practices, invented facts/endpoints, duplicate systems and unsupported security certification.
 

@@ -1,6 +1,6 @@
 # 10 — Source map, tests and dependencies
 
-The source projection contains **333 files** totaling **35,585,752 bytes**, including full source, tests, migrations, build/configuration, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The source projection contains **336 files** totaling **35,589,745 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
 
 - [Every source path and hash](inventories/source-paths.md).
 - [Machine snapshot, source commit and dirty qualifications](source-snapshot-manifest.json).

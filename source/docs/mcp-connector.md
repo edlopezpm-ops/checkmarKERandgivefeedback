@@ -23,6 +23,16 @@ inference is needed merely to serve these tools.
    appropriate, inspect it, approve the exact revision in marKER, then export.
 5. Disconnect a grant in Environment to revoke its access and refresh credentials.
 
+The reproducible private-plugin package lives in
+[`integrations/chatgpt/marker`](../integrations/chatgpt/marker/). It declares this
+same HTTPS server and OAuth DCR connection, plus campaign workflow instructions.
+Its default permissions are read, write and produce; deletion is requested
+separately. Zip only that directory when importing through Plugin Creator. No
+credentials, account IDs or build/runtime data belong in the package. Saving the
+private plugin does not install it or complete the owner's OAuth consent. Open
+the returned plugin link in ChatGPT, install/connect it and authorize the account
+before testing an actual assistant conversation.
+
 OpenAI's [custom MCP connection guide](https://developers.openai.com/api/docs/guides/custom-mcp-server)
 describes installation. [Dot uses supported installed plugins](https://learn.chatgpt.com/docs/dots/computers-and-apps);
 availability, workspace controls and voice support still require a real host test.

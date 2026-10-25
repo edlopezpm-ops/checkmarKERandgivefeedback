@@ -1,19 +1,19 @@
 {
   "format": "marker-review-verification/v2",
-  "checked_at_utc": "2026-10-25T00:43:33.737543+00:00",
-  "source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
+  "checked_at_utc": "2026-10-25T00:58:31.829855+00:00",
+  "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
   "checks": {
-    "projection_files": 333,
-    "source_live_comparison": true,
+    "projection_files": 336,
+    "source_live_comparison": false,
     "staged_source_comparison": true,
     "source_byte_equality": "PASS",
-    "local_links_checked": 4463,
-    "text_files_pattern_scanned": 232,
-    "payload_files": 392,
+    "local_links_checked": 4504,
+    "text_files_pattern_scanned": 236,
+    "payload_files": 396,
     "git_checkout_lf_equivalents": []
   },
-  "package_manifest_sha256": "7d053a198afb32e8c36f05e43e5bc2c42728255ee64b6a45a08bba38403de54c",
-  "sha256sums_sha256": "657332a8a5a3041bf7239a57cedc7d2394da90c5516e01f4c420f14eeddd8e1f",
+  "package_manifest_sha256": "a2b00eae73052ac3c0b5344b8ee87d4a6f037e523ed52b0d0f7414904938623b",
+  "sha256sums_sha256": "0c31828bb3ca9d65666d78e25824a1e5353dcf5680efb5f83dbb269d392234c0",
   "limitations": [
     "Pattern/boundary checks are not exhaustive secret detection or security certification.",
     "Static AST and empty schema reconstruction do not prove runtime behavior.",

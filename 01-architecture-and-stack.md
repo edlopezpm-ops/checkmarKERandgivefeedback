@@ -30,6 +30,7 @@ flowchart TD
 | Storage | [D1](source/server/d1.ts), [hosted Studio](source/server/studio-hosted.ts), [local Studio](source/server/studio-local.ts) | Independent editorial/Studio revisions, objects, jobs and admission. |
 | Native media | [renderer](source/server/studio-render.ts), [processor](source/server/studio-processor.ts), [runner](source/processor/runner.mjs) | Bounded fixed-argument processes and streamed originals/results. |
 | Optional Agents | [API](source/server/agents.ts), [store](source/server/agents-store.ts), [bridge](source/tools/agent-bridge.mjs) | Provider run/proposal/effect custody; local managed-ChatGPT route. |
+| Host package | [manifest](source/integrations/chatgpt/marker/plugin.json), [MCP config](source/integrations/chatgpt/marker/mcp.json), [skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) | Reproducible external-host configuration and explicit campaign-action instructions; separate from installation/OAuth. |
 | External assistant | [MCP transport](source/server/mcp.ts), [authorization](source/server/mcp-auth.ts), [tools](source/server/mcp-tools.ts) | Delegated scoped access through existing product operations. |
 
 The pinned runtime packages include React 19, the official MCP SDK and a Workers-compatible non-code-generating JSON-schema provider. Vite, TypeScript and Wrangler are development/build dependencies. Exact resolved versions, transitive packages and commands are in [dependencies](inventories/dependencies.md). Installing a dependency does not create a provider, migration or deployment.

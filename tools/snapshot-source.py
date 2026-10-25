@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 import argparse, hashlib, json, subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-ALLOWED_ROOTS = {'src','server','tests','tools','processor','docs','migrations','migrations-d1','public','assets','.github'}
+ALLOWED_ROOTS = {'src','server','tests','tools','processor','docs','migrations','migrations-d1','public','assets','.github','integrations'}
 ALLOWED_FILES = {'.dev.vars.example','.env.example','.gitattributes','.gitignore','README.md','PROJECT_MAP.md','index.html','package.json','package-lock.json','tsconfig.json','tsconfig.server.json','vite.config.ts','worker-configuration.d.ts','wrangler.jsonc'}
 DENIED_PARTS = {'.aekr','.local','.git','.wrangler','.playwright-cli','node_modules','dist','output','Font','__pycache__'}
 MAX_BYTES = 100 * 1024 * 1024

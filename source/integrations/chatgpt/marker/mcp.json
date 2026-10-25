@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "marker": {
+      "type": "streamable-http",
+      "url": "https://marker.aekr.io/api/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": { "mode": "dcr" },
+            "baseScopes": ["marker:read"],
+            "defaultScopes": ["marker:read", "marker:write", "marker:produce"],
+            "oidcEnabled": false
+          }
+        }
+      }
+    }
+  }
+}

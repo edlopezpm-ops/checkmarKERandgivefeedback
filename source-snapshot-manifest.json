@@ -1,8 +1,8 @@
 {
   "format": "marker-source-snapshot/v2",
-  "captured_at_utc": "2026-10-25T00:39:18.515980+00:00",
-  "source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
-  "source_tree_sha1": "35d9783ff71498e411faa75b11dedbbca4113318",
+  "captured_at_utc": "2026-10-25T00:57:46.798059+00:00",
+  "source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
+  "source_tree_sha1": "1c129d7b559885e8cba53e416908ce43dc0a0340",
   "source_branch": "main",
   "source_dirty": [
     " M docs/console.md",
@@ -18,9 +18,9 @@
     "?? server/demo-media.ts",
     "?? tests/demo-media.test.ts"
   ],
-  "tracked_path_count": 326,
-  "projected_path_count": 333,
-  "projected_bytes": 35585752,
+  "tracked_path_count": 329,
+  "projected_path_count": 336,
+  "projected_bytes": 35589745,
   "hash_semantics": "SHA-256 describes exact source checkout bytes copied to source/. Source HEAD is the base; source_dirty explicitly qualifies any uncommitted bytes. No private payload was inventoried or hashed. Git may normalize text line endings; verification accepts only exact bytes or the documented LF text equivalent. Binary bytes must match exactly.",
   "paths": [
     {
@@ -207,11 +207,11 @@
       "path": "docs/mcp-connector.md",
       "projection": "source/docs/mcp-connector.md",
       "tracked": true,
-      "git_index_blob_sha1": "d2fdd7408355512e97f7599dc37868304e4d5bfb",
-      "bytes": 7118,
-      "sha256": "9f2b0e014f7ef12414c51fef2576c87b4371a2c2fff1700940e67b70cee36faf",
-      "checkout_sha256": "9f2b0e014f7ef12414c51fef2576c87b4371a2c2fff1700940e67b70cee36faf",
-      "text_lines": 112
+      "git_index_blob_sha1": "66760b874f7bf1c822e7122465e618db03dc0de8",
+      "bytes": 7776,
+      "sha256": "fb5d2ca7e1e209bbba3753fbed67bd34597783ab5fdd930bfecc18e9ac7037b2",
+      "checkout_sha256": "fb5d2ca7e1e209bbba3753fbed67bd34597783ab5fdd930bfecc18e9ac7037b2",
+      "text_lines": 122
     },
     {
       "path": "docs/profile-and-data.md",
@@ -262,6 +262,36 @@
       "sha256": "87fbf1b5c8ea0c7f9244017b291cee48e0a8b239ac167847215f1739f0ac3529",
       "checkout_sha256": "87fbf1b5c8ea0c7f9244017b291cee48e0a8b239ac167847215f1739f0ac3529",
       "text_lines": 2
+    },
+    {
+      "path": "integrations/chatgpt/marker/mcp.json",
+      "projection": "source/integrations/chatgpt/marker/mcp.json",
+      "tracked": true,
+      "git_index_blob_sha1": "5729651ae0de8f8004fd7a21e41807c38373be6a",
+      "bytes": 522,
+      "sha256": "bdba9242fcd4b12f30eeb8151365d976fdc8104048790948cbf060271a097297",
+      "checkout_sha256": "bdba9242fcd4b12f30eeb8151365d976fdc8104048790948cbf060271a097297",
+      "text_lines": 20
+    },
+    {
+      "path": "integrations/chatgpt/marker/plugin.json",
+      "projection": "source/integrations/chatgpt/marker/plugin.json",
+      "tracked": true,
+      "git_index_blob_sha1": "155ab2d4e7d9857bd6c4fcd82e93a8a02ae2b467",
+      "bytes": 943,
+      "sha256": "f1a65e8d282a133b07af7bd37f7b728bc853e3a60fab4f103eeb2e4f12ea0457",
+      "checkout_sha256": "f1a65e8d282a133b07af7bd37f7b728bc853e3a60fab4f103eeb2e4f12ea0457",
+      "text_lines": 21
+    },
+    {
+      "path": "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md",
+      "projection": "source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md",
+      "tracked": true,
+      "git_index_blob_sha1": "c04e57c5934f56f31a4ff6d665fd1424dfa537ea",
+      "bytes": 1870,
+      "sha256": "f05a47d79341f52f0e46202ea82d04d454677964a347c9383e4a831e38d3be8b",
+      "checkout_sha256": "f05a47d79341f52f0e46202ea82d04d454677964a347c9383e4a831e38d3be8b",
+      "text_lines": 33
     },
     {
       "path": "migrations-d1/0001_private.sql",
@@ -3363,5 +3393,24 @@
     "owner attachments, local Font directory and private inputs",
     "provider credentials and raw auth/session/token hashes from runtime stores"
   ],
-  "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template."
+  "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template.",
+  "incremental_capture": {
+    "previous_review_commit": "80fc3db665fcad787f4033cafd70e8af4b3ec2a1",
+    "previous_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
+    "previous_source_manifest_sha256": "851d607b02ae1e68fd71c34585a516fc5c7135e39ea7f3c8f8de98a5ca3ac3a5",
+    "changed_paths": [
+      "docs/mcp-connector.md",
+      "integrations/chatgpt/marker/mcp.json",
+      "integrations/chatgpt/marker/plugin.json",
+      "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md"
+    ],
+    "new_paths": [
+      "integrations/chatgpt/marker/mcp.json",
+      "integrations/chatgpt/marker/plugin.json",
+      "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md"
+    ],
+    "method": "Four authorized source paths copied and hashed; all unchanged tracked Git blob identities checked; all 12 preserved dirty paths rehashed; complete eligible path set compared. Unchanged source bytes retain the original publication proof. No product tests, AST or schema execution repeated.",
+    "deployed_runtime_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
+    "runtime_change": false
+  }
 }

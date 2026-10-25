@@ -4,8 +4,8 @@
   "source": {
     "project": "marKER",
     "branch": "main",
-    "commit": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
-    "tree": "35d9783ff71498e411faa75b11dedbbca4113318",
+    "commit": "a675f8dfccf32986530205cb1636dac7624afc21",
+    "tree": "1c129d7b559885e8cba53e416908ce43dc0a0340",
     "dirty_paths": [
       " M docs/console.md",
       " M server/entry.ts",
@@ -20,9 +20,28 @@
       "?? server/demo-media.ts",
       "?? tests/demo-media.test.ts"
     ],
-    "projection_files": 333,
-    "projection_bytes": 35585752,
-    "scope": "complete explicitly selected product source plus public assets; no private runtime data"
+    "projection_files": 336,
+    "projection_bytes": 35589745,
+    "scope": "complete explicitly selected product source plus public assets; no private runtime data",
+    "incremental_capture": {
+      "previous_review_commit": "80fc3db665fcad787f4033cafd70e8af4b3ec2a1",
+      "previous_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
+      "previous_source_manifest_sha256": "851d607b02ae1e68fd71c34585a516fc5c7135e39ea7f3c8f8de98a5ca3ac3a5",
+      "changed_paths": [
+        "docs/mcp-connector.md",
+        "integrations/chatgpt/marker/mcp.json",
+        "integrations/chatgpt/marker/plugin.json",
+        "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md"
+      ],
+      "new_paths": [
+        "integrations/chatgpt/marker/mcp.json",
+        "integrations/chatgpt/marker/plugin.json",
+        "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md"
+      ],
+      "method": "Four authorized source paths copied and hashed; all unchanged tracked Git blob identities checked; all 12 preserved dirty paths rehashed; complete eligible path set compared. Unchanged source bytes retain the original publication proof. No product tests, AST or schema execution repeated.",
+      "deployed_runtime_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
+      "runtime_change": false
+    }
   },
   "publication": {
     "repository": "edlopezpm-ops/checkmarKERandgivefeedback",
@@ -30,13 +49,6 @@
     "authority": "direct owner full-source review repository refresh and commit/push",
     "source_product_modified_by_refresh": false
   },
-  "fresh_package_checks": [
-    "exact eligible source path coverage and byte hashes",
-    "AST syntax index",
-    "all D1 migrations and local Studio constructor schema in empty SQLite plus replay/integrity/FK",
-    "safe exclusions and credential-pattern scan",
-    "dossier links and package seal"
-  ],
   "root_reported_mcp_checks": {
     "oauth_sqlite_tests": 15,
     "tool_backend_tests": 8,
@@ -45,7 +57,7 @@
     "types_build_logo_worker_dry_run": "PASS",
     "real_local_sdk_media_flow": "OAuth PKCE, native plan/save, FFmpeg 10s 1080x1920, separate first-party approval, private delegated export 46703 bytes",
     "provider_model_calls_in_mcp_fixture": 0,
-    "qualification": "Reported by implementation coordinator; not independently rerun by dossier worker. Does not establish installed Dot/host or hosted activation.",
+    "qualification": "Reported by implementation coordinator; not independently rerun by dossier worker. Local SDK tests do not establish installed Dot/host or a hosted authenticated campaign; hosted activation has separate evidence below.",
     "focused_tests_total": 75,
     "later_sdk_tool_contract_subset": 12,
     "profile_tool_contract": "standard {id}; stable across reconnect",
@@ -53,19 +65,19 @@
     "parent_review": "PASS_WITH_OBSERVATIONS; bounded scope, no product-wide certification"
   },
   "not_established_by_refresh": [
-    "new MCP remote migration/deployment",
     "actual Dot/ChatGPT/other-host installation and conversation",
+    "actual host owner OAuth and hosted authenticated end-to-end campaign",
     "human UAT/creative time-saved pilot/physical-device acceptance",
     "hosted analysis toolchain",
     "provider invoice hard cap or restore rehearsal",
     "security certification or independent OS containment"
   ],
   "catalog_counts": {
-    "tracked_paths": 326,
-    "projected_paths": 333,
-    "source_checkout_bytes": 35585752,
-    "source_text_paths": 171,
-    "text_lines": 40138,
+    "tracked_paths": 329,
+    "projected_paths": 336,
+    "source_checkout_bytes": 35589745,
+    "source_text_paths": 174,
+    "text_lines": 40222,
     "lock_packages": 232,
     "d1_tables": 35,
     "d1_columns": 195,
@@ -97,6 +109,69 @@
     "actual_external_host_installation_conversation": "NOT_ESTABLISHED",
     "prior_hosted_version": "5998a3eb-8557-4ab4-88b8-9c402d6be0d6",
     "prior_version_evidence": "Coordinator-reported previous receipt, not fresh readback",
-    "source_main_remote": "Matched frozen commit"
+    "source_main_remote": "Matched frozen commit",
+    "qualification": "Historical state of original review publication 80fc3db; superseded for current deployment by hosted_deployment below."
+  },
+  "initial_snapshot_package_checks": [
+    "exact eligible source path coverage and byte hashes",
+    "AST syntax index",
+    "all D1 migrations and local Studio constructor schema in empty SQLite plus replay/integrity/FK",
+    "safe exclusions and credential-pattern scan",
+    "dossier links and package seal"
+  ],
+  "fresh_delta_package_checks": [
+    "exact authorized four-path Git delta and copied source hashes",
+    "unchanged tracked Git blob identities and all 12 dirty demo hashes",
+    "complete 336-file eligible path set",
+    "unchanged structural catalog identities; updated count/path/provenance outputs",
+    "safe exclusions, credential-pattern scan, links and refreshed package seal"
+  ],
+  "hosted_deployment": {
+    "status": "DEPLOYED_VERIFIED",
+    "evidence_source": "Implementation coordinator and independent hosted-readback audit; not rerun by dossier worker",
+    "runtime_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
+    "runtime_working_tree_demo_paths": 12,
+    "later_package_source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
+    "package_runtime_delta": false,
+    "worker_version": "99baf771-ac51-40d9-a76f-7652aaeb4e51",
+    "allocation_percent": 100,
+    "deployment_id": "208f8770-cb9e-42f2-a169-21e802660b52",
+    "created_at_utc": "2026-10-25T00:49:26.283236Z",
+    "previous_worker_version_freshly_observed": "c525b283-3ba7-453d-a429-d76c73e81924",
+    "migration_0010": "APPLIED",
+    "mcp_tables_confirmed": 7,
+    "readback_rows_written": 0,
+    "readback_changed_db": false,
+    "independent_hosted_checks_passed": 18,
+    "independent_hosted_checks_total": 18,
+    "dist_assets_exact": 182,
+    "dist_assets_total": 182,
+    "dist_asset_bytes": 32761835,
+    "original_logo_exact": true,
+    "demo_range_suffix_head": "PASS for both MP4s",
+    "canonical_html_redirects": "307 then exact 200 content for /index.html and /demo/index.html",
+    "oauth_metadata": "Exact resource, issuer and endpoints",
+    "anonymous_invalid_bearer": "401 with authentication challenge",
+    "foreign_origin": "403",
+    "private_api_artifact_access": "Unauthorized access denied",
+    "authority": "Direct owner approved private backup, additive migration and hosted deployment",
+    "backup_content_read_or_published_by_review_worker": false,
+    "product_tests_repeated_by_review_worker": false
+  },
+  "host_plugin_package": {
+    "state": "Private user-level package created and manifest read back; host installation and owner OAuth pending",
+    "canonical_source_directory": "source/integrations/chatgpt/marker",
+    "source_files": 3,
+    "coordinator_zip_byte_parity_and_manifest_contract": "PASS",
+    "default_scopes": [
+      "marker:read",
+      "marker:write",
+      "marker:produce"
+    ],
+    "delete_default": false,
+    "private_account_identifiers_published": false,
+    "actual_dot_conversation": "NOT_ESTABLISHED",
+    "host_handoff": "CAPTCHA requires owner action",
+    "compatibility_qualification": "OpenAI authentication extensions may diverge from generic portable base-schema validation; no all-host claim"
   }
 }

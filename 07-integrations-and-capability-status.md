@@ -35,8 +35,12 @@ Expired grants cascade credentials and request receipts; applied product entitie
 | Deterministic missing-label classification/library preparation | Implemented and verified locally; no semantic inference. |
 | Local managed-ChatGPT Agents bridge | Implemented; one prior actual fictional-copy request reported in product docs; no new provider call in this refresh. |
 | Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; actual Dot/other-host installation/conversation remains unestablished. |
-| Hosted MCP migration/deployment | Separate activation boundary; see exact current-state evidence, not source config alone. |
+| Hosted MCP migration/deployment | Migration 0010 and all seven tables verified; Worker `99baf771-ac51-40d9-a76f-7652aaeb4e51` at 100%, with hosted metadata/denial and asset readback. See [deployment evidence](DEPLOYMENT-STATUS.md). |
 | Hosted SIWC inference | Admission/client/effective plan grant unresolved. |
 | Hosted technical analysis | Disabled until native toolchain verification. |
 | Connected social APIs, advertising activation, live metrics, Android automation | Deferred/unimplemented. |
 | Transcription/subtitles/semantic media selection/PWA background capture | Separate future capabilities. |
+
+A private user-level plugin package was created and its manifest read back. Its default requested permissions are read, write and produce; delete is not a default permission. Package creation does not install it in the host or complete owner OAuth. The actual host page encountered CAPTCHA and needs the owner's action; no successful Dot connection or conversation is asserted. Private account identifiers and the private installation URL are intentionally outside this public dossier.
+
+The reproducible package lives in [plugin.json](source/integrations/chatgpt/marker/plugin.json), [mcp.json](source/integrations/chatgpt/marker/mcp.json) and [prepare-campaign/SKILL.md](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). It contains no account-specific installation ID or credential. The skill requires current revisions, stable request IDs, explicit facts/rights and first-party approval. The coordinator verified three-file ZIP parity and the intended manifest contract. OpenAI authentication extensions can diverge from the generic portable base-schema validation; this is not an all-host compatibility claim. The package commit changes no application runtime.
