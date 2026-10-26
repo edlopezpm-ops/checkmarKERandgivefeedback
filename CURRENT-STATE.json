@@ -1,427 +1,96 @@
 {
-  "format": "marker-public-review-state/v2",
-  "snapshot_date": "2026-10-24",
-  "source": {
-    "project": "marKER",
-    "branch": "main",
-    "commit": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
-    "tree": "645e4f45db2d36d618c8b0e6553b2f9012bf4d91",
-    "dirty_paths": [],
-    "projection_files": 347,
-    "projection_bytes": 35805384,
-    "scope": "complete explicitly selected product source plus public assets; no private runtime data",
-    "previous_publication": {
-      "review_commit": "d20f76a6c53acda02bbdfec397e049a49ee26ddb",
-      "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-      "source_manifest_sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025",
-      "changed_existing_projection_paths": [
-        "PROJECT_MAP.md",
-        "README.md"
-      ],
-      "new_projection_paths": [
-        "docs/current-status-2026-10-24.md"
-      ],
-      "unchanged_projection_files": 344,
-      "formerly_dirty_demo_paths_committed_byte_identical": [
-        "docs/console.md",
-        "server/entry.ts",
-        "src/console/EnvironmentSettings.tsx",
-        "src/console/release.css",
-        "wrangler.jsonc",
-        "public/demo/index.html",
-        "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
-        "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
-        "public/demo/marKER_demo_ES_v1.vtt",
-        "public/demo/marKER_demo_ES_v1_poster.png",
-        "server/demo-media.ts",
-        "tests/demo-media.test.ts"
-      ],
-      "source_commit_changed_paths": [
-        "PROJECT_MAP.md",
-        "README.md",
-        "docs/console.md",
-        "docs/current-status-2026-10-24.md",
-        "public/demo/index.html",
-        "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
-        "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
-        "public/demo/marKER_demo_ES_v1.vtt",
-        "public/demo/marKER_demo_ES_v1_poster.png",
-        "server/demo-media.ts",
-        "server/entry.ts",
-        "src/console/EnvironmentSettings.tsx",
-        "src/console/release.css",
-        "tests/demo-media.test.ts",
-        "wrangler.jsonc"
-      ],
-      "method": "Complete eligible path/hash comparison. Two source navigation documents changed and one public handoff was added; all 344 other preceding projected files and the 12 formerly dirty demo paths retain exact bytes. The source checkout is now clean; no dirty overlay remains. AST/schema/dependency/product execution was not repeated."
-    },
-    "checkout_state": "CLEAN; all projected paths tracked"
+  "format": "marker-public-review-state/v3",
+  "snapshot_date": "2026-10-26",
+  "snapshot_kind": "DOCUMENTARY_OVERLAY_WITH_FROZEN_SOURCE",
+  "public_entry": "https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/main/SNAPSHOT-2026-10-26.md",
+  "public_pages": {
+    "configured": false,
+    "url": null,
+    "verification": "GitHub repository API has_pages=false and Pages endpoint HTTP404 on 2026-10-26; no Pages site created"
   },
   "publication": {
     "repository": "edlopezpm-ops/checkmarKERandgivefeedback",
     "visibility": "PUBLIC",
-    "authority": "direct owner full-source review repository refresh and commit/push",
-    "source_product_modified_by_refresh": false
+    "scope": "Selected status and pending-work summary only; previously published source retained",
+    "product_modified": false,
+    "deployment_performed": false,
+    "history_preserved": true
   },
-  "root_reported_mcp_checks": {
-    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-    "focused_tests_total": 28,
-    "focused_scope": "OAuth, official SDK and consent/callback policy",
-    "focused_tests": "PASS",
-    "server_typescript": "PASS",
-    "worker_dry_run": "PASS",
-    "independent_final_review": "PASS",
-    "synthetic_edge_ipv4_ipv6": {
-      "per_case_callback": 1,
-      "per_case_grant": 1,
-      "code_exchange_status": 200,
-      "per_case_token": 1,
-      "csp_errors": 0,
-      "external_referrer": false
-    },
-    "protected_native_modules_unchanged": 5,
-    "qualification": "Coordinator-reported; not rerun by this documentary worker. Browser fixtures are synthetic; real owner OAuth/catalog has separate evidence below."
+  "frozen_public_source": {
+    "snapshot_date": "2026-10-24",
+    "commit": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+    "projection_files": 347,
+    "manifest": "source-snapshot-manifest.json",
+    "historical_state": "CURRENT-STATE-2026-10-24.json",
+    "refresh_action": "PRESERVED_BYTE_IDENTICAL",
+    "includes_later_product_changes": false
   },
-  "not_established_by_refresh": [
-    "actual business writes, remaining unexecuted tool paths and complete assistant-driven campaign",
-    "Dot/voice conversation and physical-phone behavior",
-    "human creative/time-saved UAT",
-    "hosted analysis toolchain",
-    "provider invoice hard cap or complete D1/R2/job/provider recovery",
-    "security certification, universal host compatibility or independent OS containment",
-    "requested registered-App icon change",
-    "public plugin listing or generic multi-tenant/SaaS eligibility",
-    "actual renewal/revoke/reconnect/scope upgrade, host private-file attachment and future CIMD/protocol/structured-output support"
+  "canonical_product_observed": {
+    "repository": "edlopezpm-ops/marKER",
+    "checkout_branch": "codex/analytics-source-20261025",
+    "head": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+    "remote_main": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+    "dirty_paths": [],
+    "receipt_runtime_source": "b82b407523d6bd2c1ee35768ab4c9423893382fe",
+    "scope": "Git/source/receipts inspected; current authenticated runtime not exercised"
+  },
+  "delivery_state": "TECHNICAL_DELIVERY_WITH_OPERATIONAL_DEPENDENCIES",
+  "reported_2026_10_25": {
+    "policy": "20 EN/ES Terms clauses; visible Version20261025; later deliberate declarations and native protected-action gate",
+    "rights": "Bounded own-data export; not complete media/provider/auth/config archive",
+    "analytics": "Canonical consumer deployed and 0013 applied; later source credential provisioned; source remains paused",
+    "tests": "315 acknowledgement/rights baseline;24 language;47 Analytics directed; scopes overlap and were not rerun here",
+    "hosted": "Dated Analytics receipt:13 exact assets,8 anonymous401,2 media206; not a new 26-Oct result",
+    "central_receipt": "aekr-collectandsecurity/evidence/analytics-delivery-20261025.json"
+  },
+  "fresh_readback": {
+    "checked_at_utc": "2026-10-26T16:33:47.600045+00:00",
+    "state": "INCONCLUSIVE_UNIFORM_HTTP403",
+    "anonymous_requests": 10,
+    "all_returned_status": 403,
+    "owner_session_used": false,
+    "response_bodies_retained": false,
+    "cause": "NOT_ESTABLISHED",
+    "product_regression_established": false,
+    "fresh_hosted_pass": false
+  },
+  "continuity": {
+    "target": "https://console.aekr.io/dossier",
+    "visibility": "PRIVATE_OWNER",
+    "public_history_retained": true,
+    "summary": "DOSSIER-HANDOFF-2026-10-26.json",
+    "import_verified_by_this_refresh": false
+  },
+  "not_established": [
+    "Complete real assistant campaign and remaining business writes",
+    "Dot/voice and physical-phone behavior",
+    "OAuth refresh/revoke/reconnect/scope-upgrade durability",
+    "Owner review/acknowledgement/export and Analytics producer confirmation",
+    "Ten-piece time/quality pilot and hosted analysis toolchain",
+    "Complete security/accessibility/cost/recovery review",
+    "New product acceptance,human UAT,legal approval or security certification",
+    "Public listing,multi-tenant service,paid activation or real commercial income"
   ],
-  "catalog_counts": {
-    "tracked_paths": 347,
-    "projected_paths": 347,
-    "source_checkout_bytes": 35805384,
-    "source_text_paths": 181,
-    "text_lines": 41412,
-    "lock_packages": 232,
-    "d1_tables": 36,
-    "d1_columns": 201,
-    "d1_explicit_indexes": 14,
-    "d1_triggers": 71,
-    "local_studio_tables": 10,
-    "local_studio_columns": 33,
-    "parsed_modules": 116,
-    "static_test_declarations": 308
+  "model_provenance": {
+    "implementation_requested": "gpt-6.1-sol / ultra",
+    "historical_bounded_review_requested": "gpt-6-astra / ultra",
+    "new_independent_review_claimed": false,
+    "independent_runtime_telemetry_verified": false
   },
-  "exclusions": [
-    "private governance/evidence/archive payloads (.aekr)",
-    "local runtime/business/account stores (.local and credential stores)",
-    "real .env/.dev.vars, credentials, secrets and key files",
-    "node_modules, build/output/generated processor staging, .git, caches",
-    "owner attachments, local Font directory and private inputs",
-    "provider credentials and raw auth/session/token hashes from runtime stores",
-    "private registered-App binding files (.app.json); published installation CTA is public configuration"
-  ],
-  "known_limits": [
-    "The twelve former demo working-tree paths are now committed unchanged; no current dirty overlay remains. Last hosted deployment still records their then-uncommitted provenance.",
-    "MCP receipt admission is not atomic with domain effects; uncertain writes require reconciliation.",
-    "Actual external-host model identity is not fabricated as trusted generation provenance.",
-    "Applied Agent provenance survives selective history cleanup; connector grant cleanup has different retention.",
-    "Original asset hashes do not prove browser/temporal quality.",
-    "One grant row from the failed callback return remains; current evidence establishes one exchanged code/token, not two successful connections."
-  ],
-  "hosted_deployment": {
-    "status": "DEPLOYED_VERIFIED_BOUNDED",
-    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-    "working_tree_demo_paths": 12,
-    "worker_version": "d5f43234-74b2-4c45-a850-4f1dab75620c",
-    "allocation_percent": 100,
-    "migration_0010": "APPLIED_PREVIOUS_RELEASE",
-    "migration_0011": "APPLIED_PREVIOUS_RELEASE",
-    "mcp_table_count": 8,
-    "static_demo_assets": "Preserved; no new asset change",
-    "asset_readback_qualification": "Fresh final-Worker SHA comparison; all185 assets exact. Anonymous checks do not assess owner OAuth; actual connected reads are separate evidence.",
-    "evidence_source": "Implementation coordinator final deployment and real-host handoff",
-    "private_account_artifacts_read_or_published_by_review_worker": false,
-    "product_tests_repeated_by_review_worker": false,
-    "readback_at_utc": "2026-10-25T02:34:09Z",
-    "public_checks_passed": 5,
-    "public_checks_total": 5,
-    "exact_static_assets": 185,
-    "anonymous_checks_owner_session_used": false,
-    "generic_error_html_policy": "same-origin referrer policy; self-only CSP",
-    "current_source_commit": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
-    "current_source_commit_deployed": false,
-    "closure_qualification": "Last deployed runtime remains f9478e66 plus the same twelve demo path bytes, now committed unchanged. This closure adds documentation/navigation and Git custody, with no new deployment requested or performed."
-  },
-  "host_plugin_package": {
-    "canonical_connection": "Registered App-backed private plugin",
-    "version": "1.0.1",
-    "state": "CONNECTED; actual OAuth, token exchange, fourteen-tool discovery and two connected reads verified",
-    "audience": "PRIVATE; unchanged",
-    "default_scopes": [
-      "marker:read",
-      "marker:write",
-      "marker:produce"
+  "coordinator_browser_readback": {
+    "state": "COORDINATOR_REPORTED_PUBLIC_BROWSER_LOAD",
+    "date": "2026-10-26",
+    "browser": "Brave connected normal browser",
+    "observed": [
+      "Public overview and original logo visible",
+      "English workspace heading and single-account scope",
+      "Google available;GitHub disabled",
+      "Email entry requires normal security verification",
+      "Policy footer links visible"
     ],
-    "delete_default": false,
-    "portable_source_directory": "source/integrations/chatgpt/marker",
-    "portable_version": "0.1.0",
-    "portable_files": 3,
-    "portable_qualification": "Developer artifact does not create registered App binding by import alone",
-    "public_cta_identifier": "Canonical served CTA and historical raw-plugin identifier explicitly authorized public noncredential configuration; no account access conferred",
-    "private_app_binding_published": false,
-    "actual_owner_oauth": "VERIFIED; returned to ChatGPT; Connect action removed",
-    "actual_dot_conversation": "NOT_ESTABLISHED",
-    "physical_phone_validation": "NOT_ESTABLISHED",
-    "compatibility_qualification": "Actual host/protocol/voice support requires evidence; no all-host claim",
-    "actual_host_catalog": {
-      "read_tools": 6,
-      "write_tools": 8,
-      "total_tools": 14,
-      "native_prepare_classify_visible": true,
-      "marker_delete_visible": false
-    },
-    "server_aggregate": {
-      "approved_clients": 1,
-      "exchanged_codes": 1,
-      "token_rows": 1,
-      "grant_rows": 2,
-      "orphan_grant_from_failed_return": 1
-    },
-    "actual_business_reads_writes": "Two connected reads PASS; business writes NOT_INVOKED",
-    "evidence_source": "Coordinator observed actual host OAuth/UI/catalog and supplied sanitized aggregates; no private screenshots/payloads exported",
-    "actual_connected_reads": [
-      {
-        "tool": "marker_get_profile",
-        "isError": false,
-        "qualification": "Identity present; value not published"
-      },
-      {
-        "tool": "marker_search",
-        "kind": "products",
-        "limit": 1,
-        "isError": false,
-        "qualification": "Workspace revision integer and items structure valid; payload not published"
-      }
-    ],
-    "business_writes": "NOT_INVOKED",
-    "remaining_tool_paths": "NOT_INDIVIDUALLY_EXECUTED",
-    "requested_icon": "Exact original Torres del Paine and sun; not applied because owning App UI lacks a logo-edit control",
-    "public_submission": "FUTURE; private audience unchanged"
-  },
-  "prior_evidence": {
-    "review_commit": "17fffc123149d62b87df4da430628cea6f453b06",
-    "local_mcp_checks": {
-      "oauth_sqlite_tests": 15,
-      "tool_backend_tests": 8,
-      "official_sdk_integration_tests": 4,
-      "targeted_profile_native_provenance_regressions": 48,
-      "types_build_logo_worker_dry_run": "PASS",
-      "real_local_sdk_media_flow": "OAuth PKCE, native plan/save, FFmpeg 10s 1080x1920, separate first-party approval, private delegated export 46703 bytes",
-      "provider_model_calls_in_mcp_fixture": 0,
-      "qualification": "Reported by implementation coordinator; not independently rerun by dossier worker. Local SDK tests do not establish authorized Dot/host tools or a hosted authenticated campaign; hosted activation has separate evidence below.",
-      "focused_tests_total": 75,
-      "later_sdk_tool_contract_subset": 12,
-      "profile_tool_contract": "standard {id}; stable across reconnect",
-      "browser_checks": "EN/light and ES/dark connection list, two-step revocation, ES consent Montserrat/original logo/no overflow PASS",
-      "parent_review": "PASS_WITH_OBSERVATIONS; bounded scope, no product-wide certification"
-    },
-    "hosted_deployment": {
-      "status": "DEPLOYED_VERIFIED",
-      "evidence_source": "Implementation coordinator and independent hosted-readback audit; not rerun by dossier worker",
-      "runtime_source_revision": "de0a4a65d6d37642e5f7efda66151c4270ec2a02",
-      "runtime_working_tree_demo_paths": 12,
-      "later_package_source_revision": "a675f8dfccf32986530205cb1636dac7624afc21",
-      "package_runtime_delta": false,
-      "worker_version": "99baf771-ac51-40d9-a76f-7652aaeb4e51",
-      "allocation_percent": 100,
-      "deployment_id": "208f8770-cb9e-42f2-a169-21e802660b52",
-      "created_at_utc": "2026-10-25T00:49:26.283236Z",
-      "previous_worker_version_freshly_observed": "c525b283-3ba7-453d-a429-d76c73e81924",
-      "migration_0010": "APPLIED",
-      "mcp_tables_confirmed": 7,
-      "readback_rows_written": 0,
-      "readback_changed_db": false,
-      "independent_hosted_checks_passed": 18,
-      "independent_hosted_checks_total": 18,
-      "dist_assets_exact": 182,
-      "dist_assets_total": 182,
-      "dist_asset_bytes": 32761835,
-      "original_logo_exact": true,
-      "demo_range_suffix_head": "PASS for both MP4s",
-      "canonical_html_redirects": "307 then exact 200 content for /index.html and /demo/index.html",
-      "oauth_metadata": "Exact resource, issuer and endpoints",
-      "anonymous_invalid_bearer": "401 with authentication challenge",
-      "foreign_origin": "403",
-      "private_api_artifact_access": "Unauthorized access denied",
-      "authority": "Direct owner approved private backup, additive migration and hosted deployment",
-      "backup_content_read_or_published_by_review_worker": false,
-      "product_tests_repeated_by_review_worker": false
-    },
-    "host_plugin_checkpoint": {
-      "state": "Account plugin page visibly lists Installed with one MCP server and one skill; server OAuth and actual Dot tools/conversation remain unverified",
-      "canonical_source_directory": "source/integrations/chatgpt/marker",
-      "source_files": 3,
-      "coordinator_zip_byte_parity_and_manifest_contract": "PASS",
-      "default_scopes": [
-        "marker:read",
-        "marker:write",
-        "marker:produce"
-      ],
-      "delete_default": false,
-      "private_account_identifiers_published": false,
-      "actual_dot_conversation": "NOT_ESTABLISHED",
-      "host_handoff": "Owner completed CAPTCHA; browser security blocked desktop Open ChatGPT. Owner must finish desktop opening manually; no workaround used.",
-      "compatibility_qualification": "OpenAI authentication extensions may diverge from generic portable base-schema validation; no all-host claim",
-      "registered_clients_aggregate": 0,
-      "active_grants_aggregate": 0,
-      "aggregate_inspection_rows_written": 0,
-      "evidence_source": "Coordinator-reported visible account page and readonly aggregate D1 inspection; no private identifiers published"
-    },
-    "qualification": "Historical evidence, not rerun or current owner-grant counts. Prior source manifests and full receipts remain in Git.",
-    "seamless_release": {
-      "review_commit": "e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b",
-      "root_checks": {
-        "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-        "focused_tests_total": 47,
-        "focused_tests": "PASS",
-        "build_original_logo": "PASS",
-        "independent_review": "No actionable finding",
-        "production_ui_synthetic_viewports": "Desktop/mobile fixtures; zero /api/agents calls; no bridge commands",
-        "new_bilingual_help_images": 4,
-        "protected_native_modules_unchanged": 5,
-        "qualification": "Coordinator-reported, not rerun by dossier worker. Synthetic viewport evidence is not actual owner OAuth, physical-phone or Dot conversation."
-      },
-      "hosted_release": {
-        "status": "DEPLOYED_VERIFIED_BOUNDED",
-        "source_revision": "00398e155dcbd0a05942bf3466cfe8a29a63c604",
-        "working_tree_demo_paths": 12,
-        "worker_version": "d48f31ec-1641-4097-bb5f-c0ccd7fd26ae",
-        "allocation_percent": 100,
-        "deployment_timestamp_utc": "2026-10-25T02:01:10.735Z",
-        "readback_at_utc": "2026-10-25T02:01:28.630Z",
-        "migration_0010": "APPLIED",
-        "migration_0011": "APPLIED",
-        "mcp_table_count": 8,
-        "public_checks_passed": 5,
-        "public_checks_total": 5,
-        "exact_static_assets": 185,
-        "checks": [
-          "canonical resource with minimal read scope",
-          "OAuth discovery retains PKCE DCR and refresh",
-          "anonymous MCP requires OAuth with minimal challenge",
-          "malformed resume returns local branded reconnect page",
-          "connections do not leak without owner session"
-        ],
-        "owner_session_used": false,
-        "evidence_source": "Coordinator release/migration handoff and named sanitized hosted readback receipt",
-        "private_backup_read_or_published_by_review_worker": false,
-        "product_tests_repeated_by_review_worker": false,
-        "isolated_backup_restore_rehearsal": "Coordinator PASS; 36 existing backup tables preserved; bounded D1 migration proof only"
-      },
-      "connection_failure_checkpoint": {
-        "canonical_connection": "Registered App-backed private plugin",
-        "version": "1.0.1",
-        "state": "NOT_CONNECTED_ON_SERVER; tested host session product tools unavailable; diagnosis in progress",
-        "audience": "PRIVATE; unchanged",
-        "default_scopes": [
-          "marker:read",
-          "marker:write",
-          "marker:produce"
-        ],
-        "delete_default": false,
-        "portable_source_directory": "source/integrations/chatgpt/marker",
-        "portable_version": "0.1.0",
-        "portable_files": 3,
-        "portable_qualification": "Developer artifact does not create registered App binding by import alone",
-        "public_cta_identifier": "Canonical served CTA and historical raw-plugin identifier explicitly authorized public noncredential configuration; no account access conferred",
-        "private_app_binding_published": false,
-        "actual_owner_oauth": "NOT_COMPLETED_ON_SERVER; approved grant and token rows absent",
-        "actual_dot_conversation": "NOT_ESTABLISHED",
-        "physical_phone_validation": "NOT_ESTABLISHED",
-        "compatibility_qualification": "Actual host/protocol/voice support requires evidence; no all-host claim",
-        "owner_report": "Connected; owner report subsequently contradicted by missing server grants and host tool availability",
-        "observed_host_tools": "No product read/create/delete tools exposed in the tested session",
-        "plugin_management": "Connect still displayed",
-        "server_aggregate": {
-          "registered_clients": 1,
-          "approved_clients": 0,
-          "active_grants": 0,
-          "resumed_logins": 0,
-          "token_rows": 0
-        },
-        "latest_evidence": "Coordinator-relayed host observation and sanitized production aggregate counts; no private chat payload/configuration exported"
-      },
-      "qualification": "Historical failed-connection checkpoint superseded by current real OAuth/token/catalog evidence; inherited asset/migration checks retain original scope."
-    }
-  },
-  "fresh_package_checks": [
-    "complete clean 347-file eligible path set and source/index byte verification",
-    "344 preceding projection files unchanged; two navigation docs updated and one public handoff added",
-    "all 12 formerly dirty demo paths committed with exact prior bytes",
-    "AST/schema/dependency artifacts retained by hash; no execution repeated",
-    "public exclusions, prioritized pending report, local links and refreshed package seal"
-  ],
-  "consent_callback_increment": {
-    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-    "intermediate_source_revision": "cd5e3fb57544a2699bab6fd2a5fbf77591ccc1a7",
-    "changed_paths": [
-      "server/mcp-auth.ts",
-      "tests/mcp-auth.test.ts",
-      "tests/mcp-consent-policy.test.ts"
-    ],
-    "consent_html_referrer_policy": "same-origin",
-    "dns_ipv4_return": "303; only validated exact callback origin added to consent form-action",
-    "bracketed_ipv6_return": "200 escaped meta-refresh and noreferrer fallback anchor; no JavaScript; no-store/no-referrer/self-only CSP",
-    "unsafe_callback_host_punctuation": "REJECTED before CSP construction",
-    "json_return_referrer_policy": "no-referrer",
-    "strict_origin_cookies_pkce_single_use": "RETAINED"
-  },
-  "source_closure": {
-    "source_revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
-    "source_clean": true,
-    "former_demo_paths_committed": 12,
-    "former_demo_bytes_unchanged": true,
-    "changed_existing_projection_files": [
-      "PROJECT_MAP.md",
-      "README.md"
-    ],
-    "new_public_document": "docs/current-status-2026-10-24.md",
-    "coordinator_fresh_build_frontend_server_types_original_logo": "PASS",
-    "review_worker_product_tests_repeated": false,
-    "new_deployment": "NOT_REQUESTED; NOT_PERFORMED",
-    "native_engine": "UNCHANGED",
-    "coordinator_independent_demo_byte_checks": "12/12 PASS",
-    "coordinator_native_core_git_blobs": "5/5 exact native baseline 2535536183928c7d3e581617af0b03a525658ba4"
-  },
-  "pending_work": [
-    {
-      "order": 1,
-      "topic": "Actual business write and complete assistant-driven campaign",
-      "status": "NOT_EXECUTED; actual OAuth and two reads already PASS"
-    },
-    {
-      "order": 2,
-      "topic": "Dot/voice and physical phone",
-      "status": "UNVERIFIED; viewport fixtures are insufficient"
-    },
-    {
-      "order": 3,
-      "topic": "CIMD/protocol compatibility, structured outputs, actual renewal/revoke/reconnect/scope upgrade and host private-file attachment versus signed-in download",
-      "status": "UNVERIFIED OR FUTURE; not demonstrated failures"
-    },
-    {
-      "order": 4,
-      "topic": "Exact original Torres del Paine and sun icon on registered App",
-      "status": "NOT_APPLIED; owning App UI exposes no logo-edit control; original design preserved"
-    },
-    {
-      "order": 5,
-      "topic": "Native product creative/time-saved pilot and hosted analysis",
-      "status": "OUTSTANDING; hosted analysis disabled until toolchain verified"
-    },
-    {
-      "order": 6,
-      "topic": "Public readiness, security/accessibility, costs/limits and complete recovery",
-      "status": "FUTURE OR OUTSTANDING; current audience PRIVATE; listing alone does not admit additional users"
-    }
-  ],
-  "eligibility": "Single-owner by deliberate design; generic public multi-tenant/SaaS deferred; public listing alone enables no additional users"
+    "owner_login": false,
+    "security_bypass": false,
+    "authenticated_workflow_verified": false,
+    "scope": "Coordinator-reported public browser observation;does not explain separate tooling403 or validate campaign"
+  }
 }

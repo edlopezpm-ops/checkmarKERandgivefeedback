@@ -9,3 +9,7 @@ Excluded: private governance/evidence/archive payloads; actual `.env`/`.dev.vars
 All code paths are mapped in the snapshot manifest. The public demo MP4s fit GitHub limits and are included with original bytes, captions, player and poster. Source text is copied exactly; Git checkout line-ending behavior is explicitly described in the source map and verifier. The original approved logo bytes are unchanged.
 
 Schema-only catalogs describe empty application structure, not live owner rows or deployed provider catalogs. Local/root-reported technical verification is not actual external-host installation, human UAT, product acceptance, invoice proof or a security certification. Recommendations must be checked against this snapshot and any subsequent drift before implementation.
+
+## Dated continuation — 26 October 2026
+
+The [current public summary](SNAPSHOT-2026-10-26.md) and [safe handoff](DOSSIER-HANDOFF-2026-10-26.json) add selected status and pending work. Existing `source/`, generated catalogs and full combined dossiers remain the dated 24-October archive. Later implementation/configuration and complete internal receipts/strategy are not republished. Future owner-only continuity is intended for [Console Dossier](https://console.aekr.io/dossier); this notice does not establish that an import occurred. Public repository visibility and history are preserved. No new Pages site is created.

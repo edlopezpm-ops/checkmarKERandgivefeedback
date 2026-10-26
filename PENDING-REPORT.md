@@ -1,3 +1,7 @@
+> **Estado actualizado al 26/10/2026:** [snapshot público acotado](SNAPSHOT-2026-10-26.md) y [estado actual](CURRENT-STATE.json). El contenido histórico que sigue describe el corte del **24/10**; `source/` permanece en `3b219839` y no incluye los incrementos posteriores. La continuidad prevista es [Dossier privado](https://console.aekr.io/dossier). El aviso no acredita una importación ni acceso público al Dossier.
+
+---
+
 # Prioritized pending work
 
 The native engine remains unchanged. Actual owner OAuth, fourteen-tool discovery and two connected reads are verified. These establish the connection and the exercised read paths; the remaining work below is explicit, not a claim that existing functionality is absent.

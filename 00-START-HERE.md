@@ -1,3 +1,7 @@
+> **Estado actualizado al 26/10/2026:** [snapshot público acotado](SNAPSHOT-2026-10-26.md) y [estado actual](CURRENT-STATE.json). El contenido histórico que sigue describe el corte del **24/10**; `source/` permanece en `3b219839` y no incluye los incrementos posteriores. La continuidad prevista es [Dossier privado](https://console.aekr.io/dossier). El aviso no acredita una importación ni acceso público al Dossier.
+
+---
+
 # Start here
 
 This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source commit is `3b219839086fa6e66e467c02d58df70a49f0d8f0` on `main`; the checkout is clean, all 347 projected files are tracked and no dirty overlay remains. The [snapshot manifest](source-snapshot-manifest.json) preserves the former demo-path provenance. Read the exact projected files when narrative and code differ.

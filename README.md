@@ -1,3 +1,7 @@
+> **Estado actualizado al 26/10/2026:** [snapshot público acotado](SNAPSHOT-2026-10-26.md) y [estado actual](CURRENT-STATE.json). El contenido histórico que sigue describe el corte del **24/10**; `source/` permanece en `3b219839` y no incluye los incrementos posteriores. La continuidad prevista es [Dossier privado](https://console.aekr.io/dossier). El aviso no acredita una importación ni acceso público al Dossier.
+
+---
+
 # marKER — full current-source review
 
 This public repository contains the complete reviewable marKER product snapshot: **347 source/assets/configuration/test files**, plus an architectural dossier, data catalogs, source navigation and an external-review prompt. Start with [the reading contract](00-START-HERE.md) and [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md).

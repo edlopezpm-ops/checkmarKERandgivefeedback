@@ -1,3 +1,9 @@
+# Current review boundary · 26 October 2026
+
+Read [SNAPSHOT-2026-10-26.md](SNAPSHOT-2026-10-26.md) and [CURRENT-STATE.json](CURRENT-STATE.json) first. The source under `source/` and full combined dossiers are the frozen 24-October snapshot at `3b219839`; later policies, rights and Analytics changes are summarized from dated canonical receipts and are **not projected source**. Do not call the archived source current, assert review of unavailable later implementation or treat old deployment identifiers as current. The attempted 26-October anonymous readback is inconclusive after uniform HTTP403. Future internal evidence and strategy belong in the owner's [private Dossier](https://console.aekr.io/dossier); this notice does not verify its import. Public history remains available. The older review prompt below applies only within its dated source/evidence scope.
+
+---
+
 # Full marKER review prompt
 
 Review this repository as the current full-source snapshot of marKER. Begin with README, CURRENT-STATE.json and source-snapshot-manifest.json; identify the clean source commit, empty dirty inventory and historical demo provenance. Read PENDING-REPORT.md and source/docs/current-status-2026-10-24.md before proposing work. Then inspect the implementation under source/, its tests/migrations/configuration, the dossier and generated catalogs. This is a review request, not permission to modify/deploy the app, run provider inference, access private credentials/data, send messages or publish socially.

@@ -1,3 +1,13 @@
+# Current status 2026-10-26
+
+Current public summary: SNAPSHOT-2026-10-26.md and CURRENT-STATE.json.
+Frozen source and full dossiers: 2026-10-24 at 3b219839; later product code is not projected.
+Safe continuity summary: DOSSIER-HANDOFF-2026-10-26.json.
+Future owner-only continuity: https://console.aekr.io/dossier; import not verified here.
+The original navigation below describes the historical source package.
+
+---
+
 # marKER full-source review
 
 Start: README.md, 00-START-HERE.md, CURRENT-STATE.json, source-snapshot-manifest.json.

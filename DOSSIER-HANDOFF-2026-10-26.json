@@ -1,0 +1,116 @@
+{
+  "schema": "aekr-dossier-safe-handoff/v1",
+  "product": "marKER",
+  "as_of": "2026-10-26",
+  "classification": "PUBLIC_SAFE_SUMMARY",
+  "target": "https://console.aekr.io/dossier",
+  "intended_target_visibility": "PRIVATE_OWNER",
+  "readiness": "TECHNICAL_DELIVERY_WITH_OPERATIONAL_DEPENDENCIES",
+  "source": {
+    "repository": "edlopezpm-ops/marKER",
+    "checkout_branch": "codex/analytics-source-20261025",
+    "head": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+    "remote_main": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+    "dirty_paths": [],
+    "receipt_runtime_source": "b82b407523d6bd2c1ee35768ab4c9423893382fe",
+    "scope": "Git/source/receipts inspected; current authenticated runtime not exercised"
+  },
+  "public_review": {
+    "repository": "https://github.com/edlopezpm-ops/checkmarKERandgivefeedback",
+    "snapshot": "https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/main/SNAPSHOT-2026-10-26.md",
+    "pages_url": null,
+    "historical_source_commit": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+    "historical_source_date": "2026-10-24"
+  },
+  "technical_summary": [
+    "Native classifier/planner and exact-revision approval/export remain the foundation",
+    "Dated receipts document Terms EN/ES,deliberate declarations and bounded own-data export",
+    "Dated receipts document private Analytics consumer,compatible schema and provisioning;source paused"
+  ],
+  "next_evidence": [
+    "Owner-authorized complete assistant campaign with persisted revisions,render,review,approval and export",
+    "Real Dot/voice and physical-phone sessions;OAuth lifecycle",
+    "Owner review of policy/rights/Analytics producer confirmation",
+    "Ten-piece quality/time pilot;analysis toolchain;accessibility,cost and complete recovery",
+    "Separate decision and prerequisites for any public listing or commercial activation"
+  ],
+  "unknowns": [
+    "Complete real assistant campaign and remaining business writes",
+    "Dot/voice and physical-phone behavior",
+    "OAuth refresh/revoke/reconnect/scope-upgrade durability",
+    "Owner review/acknowledgement/export and Analytics producer confirmation",
+    "Ten-piece time/quality pilot and hosted analysis toolchain",
+    "Complete security/accessibility/cost/recovery review",
+    "New product acceptance,human UAT,legal approval or security certification",
+    "Public listing,multi-tenant service,paid activation or real commercial income"
+  ],
+  "fresh_readback": {
+    "checked_at_utc": "2026-10-26T16:33:47.600045+00:00",
+    "state": "INCONCLUSIVE_UNIFORM_HTTP403",
+    "anonymous_requests": 10,
+    "all_returned_status": 403,
+    "owner_session_used": false,
+    "response_bodies_retained": false,
+    "cause": "NOT_ESTABLISHED",
+    "product_regression_established": false,
+    "fresh_hosted_pass": false
+  },
+  "evidence_refs": [
+    {
+      "repository": "edlopezpm-ops/marKER",
+      "revision": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+      "paths": [
+        "docs/current-status-2026-10-24.md",
+        "docs/TERMS_DISPLAY_VERSION_ADDENDUM_2026-10-25.md",
+        "docs/POLICY_RIGHTS_RELEASE_2026-10-25.md",
+        "docs/ANALYTICS_RELEASE_2026-10-25.md"
+      ]
+    },
+    {
+      "repository": "edlopezpm-ops/aekr-collectandsecurity",
+      "paths": [
+        "evidence/analytics-delivery-20261025.json",
+        "tos/FOOTER_AND_JUSTIFICATION_2026-10-25.md"
+      ],
+      "scope": "Selected summary inspected locally;raw receipts not republished"
+    }
+  ],
+  "gates": {
+    "private_plugin_single_owner": true,
+    "analytics_source_paused": true,
+    "commercial_activation": false,
+    "human_uat": "NOT_RECORDED",
+    "product_acceptance": "NOT_RECORDED",
+    "security_certification": false,
+    "legal_approval": false,
+    "console_import_verified": false
+  },
+  "exclusions": [
+    "credentials and cookies",
+    "private account and customer data",
+    "operational configuration and service-token metadata",
+    "complete internal reports and strategy corpus"
+  ],
+  "provenance": {
+    "implementation_requested": "gpt-6.1-sol / ultra",
+    "historical_bounded_review_requested": "gpt-6-astra / ultra",
+    "new_independent_review_claimed": false,
+    "independent_runtime_telemetry_verified": false
+  },
+  "coordinator_browser_readback": {
+    "state": "COORDINATOR_REPORTED_PUBLIC_BROWSER_LOAD",
+    "date": "2026-10-26",
+    "browser": "Brave connected normal browser",
+    "observed": [
+      "Public overview and original logo visible",
+      "English workspace heading and single-account scope",
+      "Google available;GitHub disabled",
+      "Email entry requires normal security verification",
+      "Policy footer links visible"
+    ],
+    "owner_login": false,
+    "security_bypass": false,
+    "authenticated_workflow_verified": false,
+    "scope": "Coordinator-reported public browser observation;does not explain separate tooling403 or validate campaign"
+  }
+}

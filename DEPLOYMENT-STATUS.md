@@ -1,3 +1,7 @@
+> **Estado actualizado al 26/10/2026:** [snapshot público acotado](SNAPSHOT-2026-10-26.md) y [estado actual](CURRENT-STATE.json). El contenido histórico que sigue describe el corte del **24/10**; `source/` permanece en `3b219839` y no incluye los incrementos posteriores. La continuidad prevista es [Dossier privado](https://console.aekr.io/dossier). El aviso no acredita una importación ni acceso público al Dossier.
+
+---
+
 # Hosted assistant connection status
 
 Current source: clean commit `3b219839086fa6e66e467c02d58df70a49f0d8f0`; all 347 projected files are tracked. The twelve former demo paths are committed with the same previously reviewed/deployed bytes; two source navigation documents change and one public status handoff is added. **The last deployed runtime remains `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus those identical demo bytes**, on the Worker below. This Git/document closure performs no new deployment.
