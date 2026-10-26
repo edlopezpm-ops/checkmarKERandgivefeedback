@@ -17,3 +17,7 @@ MARKER_AUTH_SECRET=
 # TURNSTILE_SITE_KEY=
 # TURNSTILE_SECRET=
 # TURNSTILE_HOSTNAMES=marker.aekr.io
+
+# Optional source-specific Analytics credential. Keep unset until central
+# marker-owner-production is enabled for its exact permissions and notice.
+# MARKER_ANALYTICS_TOKEN=

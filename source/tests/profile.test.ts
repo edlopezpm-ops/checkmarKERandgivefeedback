@@ -1,3 +1,4 @@
+import { servicePolicyAcknowledgement } from '../src/core/policy.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
@@ -11,7 +12,7 @@ const CONFIRM = { confirmation: 'DELETE', confirmAllData: true };
 function cookie(response, name) { return response.headers.getSetCookie().find(value => value.startsWith(name + '='))?.split(';')[0] ?? ''; }
 function fixture(t, migrate = true) {
   const sql = new DatabaseSync(':memory:'); sql.exec('PRAGMA foreign_keys=ON');
-  if (migrate) for (const name of ['0001_private.sql','0002_studio.sql','0003_studio_hosted.sql','0004_studio_analysis.sql','0005_studio_settings.sql','0006_agents.sql','0007_single_tenant_auth.sql','0008_github_auth.sql','0009_profile_account.sql']) sql.exec(readFileSync(new URL('../migrations-d1/' + name, import.meta.url), 'utf8'));
+  if (migrate) for (const name of ['0001_private.sql','0002_studio.sql','0003_studio_hosted.sql','0004_studio_analysis.sql','0005_studio_settings.sql','0006_agents.sql','0007_single_tenant_auth.sql','0008_github_auth.sql','0009_profile_account.sql','0012_policy_acknowledgements.sql']) sql.exec(readFileSync(new URL('../migrations-d1/' + name, import.meta.url), 'utf8'));
   t.after(() => sql.close());
   let failSql = '', failDelete = false, failAbort = false, blockStop = null, missingMultipartError = Object.assign(new Error('missing'), { code: 10024 });
   const DB = {
@@ -30,7 +31,7 @@ function fixture(t, migrate = true) {
     const result = await nativeApi(new Request(ORIGIN + path, { method, headers: { Origin: ORIGIN, 'X-Marker-Auth': '1', 'content-type': 'application/json', 'CF-Connecting-IP': '192.0.2.73', Cookie: owner, ...extra }, ...(data === undefined ? {} : { body: JSON.stringify(data) }) }), env, ctx);
     await Promise.all(waits.splice(0)); return result;
   }
-  async function login() { const requested = await call('/api/auth/request', { email: env.MARKER_OWNER_EMAIL }); assert.equal(requested.status, 202); const verified = await call('/api/auth/verify', { code: mails.at(-1).text.match(/\b\d{8}\b/)[0] }, cookie(requested, '__Host-marker_challenge')); assert.equal(verified.status, 200); return cookie(verified, '__Host-marker_session'); }
+  async function login() { const requested = await call('/api/auth/request', { email: env.MARKER_OWNER_EMAIL }); assert.equal(requested.status, 202); const verified = await call('/api/auth/verify', { code: mails.at(-1).text.match(/\b\d{8}\b/)[0] }, cookie(requested, '__Host-marker_challenge')); assert.equal(verified.status, 200); const owner = cookie(verified, '__Host-marker_session'); assert.equal((await call('/api/policy', servicePolicyAcknowledgement(), owner)).status, 200); return owner; }
   async function start(owner) { const response = await call('/api/profile', CONFIRM, owner, 'DELETE'); assert.equal(response.status, 202); return cookie(response, '__Host-marker_deletion'); }
   async function finish(capability) { let response; for (let n = 0; n < 20; n++) { response = await call('/api/profile/deletion/resume', {}, capability); assert.ok([200, 202].includes(response.status), await response.clone().text()); if (response.status === 200) return response; } assert.fail('deletion did not finish'); }
   return { sql, env, calls, objects, outsideBucket, multiparts, call, login, start, finish, ctx, waits, faultSql(prefix) { failSql = prefix; }, faultDelete(value) { failDelete = value; }, faultAbort(value) { failAbort = value; }, absentMultipartError(value) { missingMultipartError = value; }, pauseStop(promise) { blockStop = promise; } };

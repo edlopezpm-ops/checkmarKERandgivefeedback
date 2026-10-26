@@ -1,0 +1,955 @@
+{
+  "task": "evaluation_integrity",
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "Outcome": "DONE_WITH_CONCERNS",
+  "Delivery state": "45 test files fully reviewed; complete suite/build/local Worker bundle executed; three independent negative controls and exact source restoration recorded",
+  "Product state": "Final portable source suite333/333PASS; no skips; frontend/types/assets buildPASS; Worker dry-runPASS. Original preconditions/native watcher failures preserved.",
+  "Gate/authority state": "READ_ONLY_AUDIT; NO_PRODUCT_REPAIR; NO_DEPLOYMENT; NO_REAL_PROVIDER; NO_SHARED_HISTORY; final product acceptance not inferred",
+  "source_coverage": [
+    {
+      "path": "tests/access-help.test.ts",
+      "ranges": [
+        [
+          1,
+          147
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/agent-bridge.test.ts",
+      "ranges": [
+        [
+          1,
+          208
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/agent-context.test.ts",
+      "ranges": [
+        [
+          1,
+          16
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/agent-stream.test.ts",
+      "ranges": [
+        [
+          1,
+          23
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/agents-studio.test.ts",
+      "ranges": [
+        [
+          1,
+          50
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/agents-worker.test.ts",
+      "ranges": [
+        [
+          1,
+          58
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/agents.test.ts",
+      "ranges": [
+        [
+          1,
+          248
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/analytics-ui.test.ts",
+      "ranges": [
+        [
+          1,
+          63
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "ranges": [
+        [
+          1,
+          214
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/assets.test.ts",
+      "ranges": [
+        [
+          1,
+          40
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/captcha.test.ts",
+      "ranges": [
+        [
+          1,
+          120
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/d1-hosted.test.ts",
+      "ranges": [
+        [
+          1,
+          96
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/demo-media.test.ts",
+      "ranges": [
+        [
+          1,
+          125
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/editorial.test.ts",
+      "ranges": [
+        [
+          1,
+          352
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/generation.test.ts",
+      "ranges": [
+        [
+          1,
+          139
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/github-auth.test.ts",
+      "ranges": [
+        [
+          1,
+          109
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/google-auth.test.ts",
+      "ranges": [
+        [
+          1,
+          201
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/hosted.test.ts",
+      "ranges": [
+        [
+          1,
+          109
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/mcp-auth.test.ts",
+      "ranges": [
+        [
+          1,
+          268
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/mcp-consent-policy.test.ts",
+      "ranges": [
+        [
+          1,
+          91
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/mcp-integration.test.ts",
+      "ranges": [
+        [
+          1,
+          159
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/mcp-local-migration.test.ts",
+      "ranges": [
+        [
+          1,
+          32
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/mcp-resume.test.ts",
+      "ranges": [
+        [
+          1,
+          112
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/mcp-tools.test.ts",
+      "ranges": [
+        [
+          1,
+          246
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/motion.test.ts",
+      "ranges": [
+        [
+          1,
+          101
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/native-auth.test.ts",
+      "ranges": [
+        [
+          1,
+          254
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/policy-rights.test.ts",
+      "ranges": [
+        [
+          1,
+          106
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/profile-local.test.ts",
+      "ranges": [
+        [
+          1,
+          25
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/profile-ui.test.ts",
+      "ranges": [
+        [
+          1,
+          96
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/profile.test.ts",
+      "ranges": [
+        [
+          1,
+          212
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/scheduler.test.ts",
+      "ranges": [
+        [
+          1,
+          36
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-analysis.test.ts",
+      "ranges": [
+        [
+          1,
+          92
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-api.test.ts",
+      "ranges": [
+        [
+          1,
+          314
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-classification.test.ts",
+      "ranges": [
+        [
+          1,
+          57
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-hosted.test.ts",
+      "ranges": [
+        [
+          1,
+          406
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-native-flow.test.ts",
+      "ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-native-ui.test.ts",
+      "ranges": [
+        [
+          1,
+          159
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-planner.test.ts",
+      "ranges": [
+        [
+          1,
+          273
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-processor.test.ts",
+      "ranges": [
+        [
+          1,
+          284
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-render.test.ts",
+      "ranges": [
+        [
+          1,
+          123
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-vite.test.ts",
+      "ranges": [
+        [
+          1,
+          166
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio-watch.test.ts",
+      "ranges": [
+        [
+          1,
+          48
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/studio.test.ts",
+      "ranges": [
+        [
+          1,
+          222
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/turnstile-ui.test.ts",
+      "ranges": [
+        [
+          1,
+          57
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tests/ui-help.test.ts",
+      "ranges": [
+        [
+          1,
+          68
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tools/prepare-processor.mjs",
+      "ranges": [
+        [
+          1,
+          8
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tools/verify-assets.mjs",
+      "ranges": [
+        [
+          1,
+          11
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tools/agent-bridge.mjs",
+      "ranges": [
+        [
+          1,
+          428
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "processor/runner.mjs",
+      "ranges": [
+        [
+          1,
+          106
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "package.json",
+      "ranges": [
+        [
+          1,
+          29
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tsconfig.json",
+      "ranges": [
+        [
+          1,
+          8
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "tsconfig.server.json",
+      "ranges": [
+        [
+          1,
+          5
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "vite.config.ts",
+      "ranges": [
+        [
+          1,
+          171
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": "wrangler.jsonc",
+      "ranges": [
+        [
+          1,
+          21
+        ]
+      ],
+      "mode": "full_semantic_review"
+    },
+    {
+      "path": ".gitignore",
+      "ranges": [
+        [
+          1,
+          31
+        ]
+      ],
+      "mode": "full_semantic_review"
+    }
+  ],
+  "additional_structured_coverage": [
+    {
+      "path": "package-lock.json",
+      "mode": "all232 package entries parsed, dependency roots/HTTPS/integrity/install metadata reviewed;10 direct installed versions exact lock match",
+      "semantic_vendor_source_review": false
+    }
+  ],
+  "test_file_count": 45,
+  "test_source_lines": 6390,
+  "tests_integrity": {
+    "runner": "node --experimental-strip-types --test tests/*.test.ts; explicit matching all45 files; no filter/skip/only in current scripts",
+    "failure_propagation": "npm build && chain; processor/bridge CLI errors set exitCode1; no zero exit suppression observed",
+    "mock_boundary": "D1 adapters use native SQLite transactions. Supabase, Google/GitHub, CAPTCHA, bridge RPC, R2/DO transport are explicitly synthetic. Real FFmpeg/ffprobe/native runner/Vite HTTP and official MCP SDK run locally. Tests do not establish live external integrations.",
+    "test_source_hooks": "Hosted analysis test source changes only isolated fixture version pin and also asserts production pin disabled. DO loader replaces platform classes/transport; separate actual native runner test decodes media. UI transpilation/hook fakes exercise handlers/SSR and do not establish browser/DOM timing.",
+    "special_casing_observed": false,
+    "evaluator_tampering_observed": false,
+    "intent_or_agent_attribution": "NOT_DETERMINED",
+    "coverage_metrics": "All45 test source files read and executed in final portable run; no line/branch coverage instrumented. 333 includes nested tests and parents, no snapshots inflated by source fixture comparisons.",
+    "CI": "No tracked .github workflows or CI config found; external provider CI configuration not inspected. A historical [skip ci] message alone is not evaluator tampering."
+  },
+  "history_review": {
+    "scope": "Full tracked tests history numstat inventory plus selected semantic diffs; no deleted test files observed in available history",
+    "commits": [
+      "b7fbf0d",
+      "e5cfbc8",
+      "1ad0549",
+      "1f9415e",
+      "f9478e6"
+    ],
+    "observations": [
+      "b7fbf0d adds GPC/expired preference regressions, no removals.",
+      "e5cfbc8 changes unauthorized bridge expectation401to428 after policy gate and adds deliberate acknowledgement plus104 lines policy/own-data tests; no approval bypass found.",
+      "1ad0549 replaces detailed help-copy assertions with illustrated guide/PNG/SSR coverage. Specific budget wording assertions were removed; retained business-limit tests remain elsewhere. This is a test coverage tradeoff, not evidence of intent.",
+      "1f9415e adds native analysis tests and version pin fixtures; disabled hosted production contract is separately tested.",
+      "f9478e6 strengthens canonical callback/CSP/IPv6 exact destination checks; selected status200fallback is paired with exact callback/referrer/CSP expectations."
+    ]
+  },
+  "runs": [
+    {
+      "id": "npm-test",
+      "argv": [
+        "[runtime-executable]",
+        "[runtime-executable]",
+        "test"
+      ],
+      "cwd": "audit/2026-10-26\\snapshot",
+      "exit_code": 1,
+      "duration_seconds": 15.331056833267212,
+      "counts": {
+        "tests": 323,
+        "suites": 0,
+        "pass": 321,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "evidence\\evaluation-npm-test.log",
+      "log_sha256": "1921a1fef539ad10c67ccd8566e73d8c70b634cf84a90f3876f21a61a98a591e",
+      "environment": "allowlist of OS path/temp variables; no application/provider credentials forwarded",
+      "original_log_sha256": "f5794c3d6ae6a9c450ca2cbaacc6ebe9b5266fbd791e322522adb23c00a37d00"
+    },
+    {
+      "id": "npm-build",
+      "argv": [
+        "[runtime-executable]",
+        "[runtime-executable]",
+        "run",
+        "build"
+      ],
+      "cwd": "audit/2026-10-26\\snapshot",
+      "exit_code": 0,
+      "duration_seconds": 6.949582576751709,
+      "counts": {},
+      "log": "evidence\\evaluation-npm-build.log",
+      "log_sha256": "d97ce20f9b9d90ead3c0e0a4720a9f128c1343ad3087eea73659bb58f9a84d0b",
+      "environment": "allowlist of OS path/temp variables; no application/provider credentials forwarded",
+      "original_log_sha256": "d97ce20f9b9d90ead3c0e0a4720a9f128c1343ad3087eea73659bb58f9a84d0b"
+    },
+    {
+      "id": "npm-test-prepared-outside-aekr",
+      "argv": [
+        "[runtime-executable]",
+        "[runtime-executable]",
+        "test"
+      ],
+      "cwd": "[local-execution-path]",
+      "exit_code": 1,
+      "duration_seconds": 14.390355825424194,
+      "counts": {
+        "tests": 333,
+        "suites": 0,
+        "pass": 330,
+        "fail": 3,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "evidence\\evaluation-npm-test-prepared.log",
+      "log_sha256": "c794493a1028ee653653153b3237b5d7c13d7cfe994786c0852de85e6991fc40",
+      "environment": "OS allowlist only, source files unchanged; processor generated modules prepared by baseline npm run build; normal source watcher root outside excluded .aekr path",
+      "original_log_sha256": "f251d9fd54a61df80fb564c2cc0f47a5268d75401bdd9ef399f4f90dfec24793"
+    },
+    {
+      "id": "worker-dry-run",
+      "argv": [
+        "[runtime-executable]",
+        "audit/2026-10-26\\snapshot\\node_modules\\wrangler\\bin\\wrangler.js",
+        "deploy",
+        "--dry-run",
+        "--containers-rollout",
+        "none",
+        "--outdir",
+        "audit/2026-10-26\\evaluation\\worker-bundle",
+        "--metafile",
+        "audit/2026-10-26\\evaluation\\worker-metafile.json"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 1.1622376441955566,
+      "cwd": "audit/2026-10-26\\snapshot",
+      "log": "evidence\\evaluation-worker-dry-run.log",
+      "log_sha256": "3f37459f9c65a388883fd659709f7323302854b19bbc96069c4229974506fbf3",
+      "boundary": "dry-run and containers-rollout none; no secrets env; fresh empty CLI profile; metrics disabled",
+      "documentation": "https://developers.cloudflare.com/workers/wrangler/commands/",
+      "original_log_sha256": "9995d4214ef33e6425364bbb3775480ab7083fff8124cb448d9a222a7e06de48"
+    },
+    {
+      "id": "portable-vite-checks",
+      "argv": [
+        "[runtime-executable]",
+        "--experimental-strip-types",
+        "--test",
+        "tests/studio-watch.test.ts",
+        "tests/studio-vite.test.ts"
+      ],
+      "cwd": "[local-execution-path]",
+      "exit_code": 0,
+      "duration_seconds": 2.526865243911743,
+      "counts": {
+        "tests": 5,
+        "suites": 0,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "evidence\\evaluation-portable-vite-checks.log",
+      "log_sha256": "182382aeff8d9171c2349d2503ef6a98fe56db795a14224c0d6f4b533bcc54b3",
+      "environment": "OS allowlist + CHOKIDAR_USEPOLLING=1; synthetic private-file sentinel added in disposable copy; no product source changed",
+      "original_log_sha256": "182382aeff8d9171c2349d2503ef6a98fe56db795a14224c0d6f4b533bcc54b3"
+    },
+    {
+      "id": "portable-full-suite",
+      "argv": [
+        "[runtime-executable]",
+        "[runtime-executable]",
+        "test"
+      ],
+      "cwd": "[local-execution-path]",
+      "exit_code": 0,
+      "duration_seconds": 13.669005393981934,
+      "counts": {
+        "tests": 333,
+        "suites": 0,
+        "pass": 333,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "evidence\\evaluation-portable-full-suite.log",
+      "log_sha256": "7d027d38ffd94df99114752786a5a8995f56f7a05e7fce873abf1be73aaa9ae8",
+      "environment": "OS allowlist + CHOKIDAR_USEPOLLING=1; synthetic private-file sentinel added in disposable copy; no product source changed",
+      "original_log_sha256": "7d027d38ffd94df99114752786a5a8995f56f7a05e7fce873abf1be73aaa9ae8"
+    }
+  ],
+  "mutation_evidence": "evaluation/mutations.json",
+  "mutations": {
+    "independent": {
+      "detected": 3,
+      "survived": 0,
+      "invalid": 0,
+      "timeout": 0,
+      "not_covered": 0,
+      "restored": 3
+    },
+    "native": {
+      "assertion_detected": 1,
+      "rejected_with_cleanup_error": 1,
+      "timeout_manually_terminated": 1,
+      "not_credited_as_assertion": 2
+    },
+    "tool": "Directed Python mutations plus external Node oracle; no general mutation score"
+  },
+  "dependencies": {
+    "package_count": 232,
+    "direct": [
+      {
+        "name": "@cfworker/json-schema",
+        "group": "dependencies",
+        "requested": "4.1.1",
+        "lock_version": "4.1.1",
+        "installed_version": "4.1.1",
+        "matches_lock": true
+      },
+      {
+        "name": "@modelcontextprotocol/sdk",
+        "group": "dependencies",
+        "requested": "1.32.2",
+        "lock_version": "1.32.2",
+        "installed_version": "1.32.2",
+        "matches_lock": true
+      },
+      {
+        "name": "react",
+        "group": "dependencies",
+        "requested": "^19.2.0",
+        "lock_version": "19.3.1",
+        "installed_version": "19.3.1",
+        "matches_lock": true
+      },
+      {
+        "name": "react-dom",
+        "group": "dependencies",
+        "requested": "^19.2.0",
+        "lock_version": "19.3.1",
+        "installed_version": "19.3.1",
+        "matches_lock": true
+      },
+      {
+        "name": "@types/node",
+        "group": "devDependencies",
+        "requested": "^26.6.5",
+        "lock_version": "26.6.5",
+        "installed_version": "26.6.5",
+        "matches_lock": true
+      },
+      {
+        "name": "@types/react",
+        "group": "devDependencies",
+        "requested": "^19.2.0",
+        "lock_version": "19.3.0",
+        "installed_version": "19.3.0",
+        "matches_lock": true
+      },
+      {
+        "name": "@types/react-dom",
+        "group": "devDependencies",
+        "requested": "^19.2.0",
+        "lock_version": "19.3.0",
+        "installed_version": "19.3.0",
+        "matches_lock": true
+      },
+      {
+        "name": "typescript",
+        "group": "devDependencies",
+        "requested": "^5.9.3",
+        "lock_version": "5.9.3",
+        "installed_version": "5.9.3",
+        "matches_lock": true
+      },
+      {
+        "name": "vite",
+        "group": "devDependencies",
+        "requested": "^7.1.12",
+        "lock_version": "7.3.7",
+        "installed_version": "7.3.7",
+        "matches_lock": true
+      },
+      {
+        "name": "wrangler",
+        "group": "devDependencies",
+        "requested": "^4.152.0",
+        "lock_version": "4.152.0",
+        "installed_version": "4.152.0",
+        "matches_lock": true
+      }
+    ],
+    "registry_hosts": [
+      "registry.npmjs.org"
+    ],
+    "non_https_resolved": [],
+    "missing_integrity": [],
+    "install_script_packages": [
+      "node_modules/esbuild",
+      "node_modules/fsevents",
+      "node_modules/workerd"
+    ],
+    "lock_package_dependency_roots_match": true,
+    "vendor_scope": "Metadata/integrity declarations and direct installed versions reviewed; vendor source and binaries not semantically audited; no install, updates or fixes performed",
+    "vulnerability_audit": "Not run; no claim of absence of dependency vulnerabilities"
+  },
+  "findings": [
+    {
+      "id": "EVAL-W01",
+      "category": "WEAK_TEST",
+      "status": "CONFIRMED",
+      "severity": "MINOR",
+      "title": "Las pruebas no son autónomas en una proyección limpia del producto",
+      "capability": "C15",
+      "score_effect": "None: frozen C15 mandatory build/types/assets succeeds; test preparation limitations disclosed separately",
+      "locations": [
+        {
+          "file": "package.json",
+          "lines": [
+            12
+          ]
+        },
+        {
+          "file": "server/studio-processor.ts",
+          "lines": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file": "tests/studio-vite.test.ts",
+          "lines": [
+            151,
+            153
+          ]
+        }
+      ],
+      "requirement_source": "Prompt audit section 3: test discovery/execution reproducible; README.md npm test quality claim",
+      "expected": "Discover complete suite with declared prerequisites and synthetic private-file fixtures",
+      "observed": "Before npm run build, generated processor .txt absent prevented 10 DO tests from executing; after build all 333 discovered. The private-file HTTP assertion assumes an untracked .aekr/AGENTS.md exists: no file causes legitimate SPA fallback200, synthetic sentinel causes403. Both limitations recovered without editing source.",
+      "evidence": [
+        "evidence/evaluation-npm-test.log",
+        "evidence/evaluation-npm-test-prepared.log",
+        "evidence/evaluation-portable-vite-checks.log",
+        "evidence/evaluation-portable-full-suite.log"
+      ],
+      "alternatives_considered": "Generated modules are legitimate build outputs; fs deny works when actual private file exists. Neither observation proves false business success or evaluator tampering.",
+      "correction": "Declare/prep generated modules for npm test and create a synthetic private-file sentinel in the test itself; document media tool prerequisites."
+    },
+    {
+      "id": "EVAL-W02",
+      "category": "WEAK_TEST",
+      "status": "CONFIRMED",
+      "severity": "MINOR",
+      "title": "Control de streaming puede bloquear el runner y cleanup oculta causas",
+      "capability": "C15",
+      "score_effect": "None: independent verifier recovered reliable behavioral evidence; no confirmed product fault",
+      "locations": [
+        {
+          "file": "tests/demo-media.test.ts",
+          "lines": [
+            103,
+            105,
+            107
+          ]
+        },
+        {
+          "file": "tests/editorial.test.ts",
+          "lines": [
+            348,
+            350
+          ]
+        }
+      ],
+      "requirement_source": "Prompt audit section6: negative controls must detect actual defects; timeout cannot equal correct assertion",
+      "expected": "Range/no-write mutation rejected with bounded, attributable evidence",
+      "observed": "Native Range test consumed an intentionally infinite stream after audit mutation ignored Range; the owned process tree required termination and no test summary was available. No timeout is credited as assertion detection. No-write native test exited1 but rmdir ENOTEMPTY masked the original assertion. Independent external oracle rejected both mutations directly and passed again after exact restore.",
+      "evidence": [
+        "evaluation/mutations.json",
+        "evidence/evaluation-M01-native-suite.log",
+        "evidence/evaluation-M02-native-suite.log",
+        "evidence/evaluation-M01-mutant.log",
+        "evidence/evaluation-M02-mutant.log"
+      ],
+      "alternatives_considered": "The infinite source is legitimate to test early cancellation, but unbounded arrayBuffer and no deadline weaken failure behavior. Production baseline range implementation passes.",
+      "correction": "Bound test duration/bytes and cancel streams in finally; make cleanup preserve original assertion errors."
+    }
+  ],
+  "environment_adjustments": [
+    "Generated processor text modules prepared by the unmodified npm run build.",
+    "Disposable full product copy outside .aekr avoids the product ignore path.",
+    "CHOKIDAR_USEPOLLING=1 recovered source watching on this Windows filesystem; no Vite/test source changed.",
+    "Synthetic .aekr/AGENTS.md sentinel only in disposable copy enables actual private-file denial fixture.",
+    "Commands use OS-only env allowlist; application/provider credentials absent. Worker dry-run used empty profile and metrics disabled."
+  ],
+  "capability_recommendation": {
+    "C15": "PASS for frozen source build/types/assets/runtime bundling commitment, with both WEAK_TEST observations and environment adjustments explicit. No claim of current deployment equivalence.",
+    "C16": "Simulation marked and DEV-only in actual source; tests validate simulation boundary, not inference.",
+    "other": "Integrate with contract/backend agents; this suite alone does not justify any capability PASS."
+  },
+  "limitations": [
+    "No new npm install/npm ci; existing exact-lock direct dependencies junctioned. Transitive vendor source/binaries not fully audited.",
+    "No live hosted provider/browser/account testing; synthetic transport successes cannot grant these claims.",
+    "No line/branch/mutation-wide coverage; directed controls only.",
+    "Inherited subagent context is not fresh-context enforced independence; OS containment not guaranteed."
+  ],
+  "next_action": "Root integrates findings, frozen matrix and independent backend/browser evidence; no product corrections authorized in this audit."
+}

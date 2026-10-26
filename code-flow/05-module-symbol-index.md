@@ -1,6 +1,6 @@
 # Module and symbol index
 
-116 parsed modules; 13990 declarations/fields, 556 imports/re-exports, 17822 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
+127 parsed modules; 14418 declarations/fields, 611 imports/re-exports, 18969 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
 
 | Module | Symbols | Imports | Calls |
 | --- | --- | --- | --- |
@@ -8,6 +8,7 @@
 | [server/agents-local.ts](../source/server/agents-local.ts) | 8 | 4 | 22 |
 | [server/agents-store.ts](../source/server/agents-store.ts) | 13 | 0 | 13 |
 | [server/agents.ts](../source/server/agents.ts) | 259 | 6 | 484 |
+| [server/analytics.ts](../source/server/analytics.ts) | 64 | 3 | 169 |
 | [server/api.ts](../source/server/api.ts) | 20 | 1 | 39 |
 | [server/captcha.d.ts](../source/server/captcha.d.ts) | 12 | 0 | 0 |
 | [server/captcha.js](../source/server/captcha.js) | 29 | 0 | 62 |
@@ -21,12 +22,14 @@
 | [server/mcp-auth.ts](../source/server/mcp-auth.ts) | 202 | 1 | 354 |
 | [server/mcp-local.ts](../source/server/mcp-local.ts) | 38 | 5 | 57 |
 | [server/mcp-tools.ts](../source/server/mcp-tools.ts) | 128 | 3 | 252 |
-| [server/mcp.ts](../source/server/mcp.ts) | 59 | 7 | 124 |
+| [server/mcp.ts](../source/server/mcp.ts) | 63 | 8 | 128 |
 | [server/native-auth-store.js](../source/server/native-auth-store.js) | 21 | 0 | 67 |
 | [server/native-auth.d.ts](../source/server/native-auth.d.ts) | 32 | 0 | 0 |
 | [server/native-auth.js](../source/server/native-auth.js) | 89 | 5 | 236 |
+| [server/policy.ts](../source/server/policy.ts) | 29 | 4 | 59 |
+| [server/privacy-data.ts](../source/server/privacy-data.ts) | 30 | 4 | 61 |
 | [server/profile-local.ts](../source/server/profile-local.ts) | 18 | 5 | 39 |
-| [server/profile.ts](../source/server/profile.ts) | 94 | 4 | 203 |
+| [server/profile.ts](../source/server/profile.ts) | 95 | 5 | 207 |
 | [server/studio-analysis.ts](../source/server/studio-analysis.ts) | 52 | 6 | 84 |
 | [server/studio-hosted.ts](../source/server/studio-hosted.ts) | 399 | 7 | 699 |
 | [server/studio-local.ts](../source/server/studio-local.ts) | 323 | 14 | 620 |
@@ -34,18 +37,21 @@
 | [server/studio-render.ts](../source/server/studio-render.ts) | 159 | 3 | 205 |
 | [server/supabase.ts](../source/server/supabase.ts) | 21 | 3 | 18 |
 | [server/tenant-auth.js](../source/server/tenant-auth.js) | 16 | 0 | 32 |
-| [server/worker.ts](../source/server/worker.ts) | 37 | 11 | 108 |
-| [src/App.tsx](../source/src/App.tsx) | 33 | 8 | 55 |
+| [server/worker.ts](../source/server/worker.ts) | 39 | 14 | 123 |
+| [src/App.tsx](../source/src/App.tsx) | 35 | 8 | 60 |
 | [src/console/Agents.tsx](../source/src/console/Agents.tsx) | 146 | 14 | 421 |
-| [src/console/Authentication.tsx](../source/src/console/Authentication.tsx) | 61 | 4 | 32 |
-| [src/console/Console.tsx](../source/src/console/Console.tsx) | 176 | 13 | 557 |
-| [src/console/EnvironmentSettings.tsx](../source/src/console/EnvironmentSettings.tsx) | 22 | 3 | 24 |
+| [src/console/AnalyticsSettings.tsx](../source/src/console/AnalyticsSettings.tsx) | 32 | 5 | 122 |
+| [src/console/Authentication.tsx](../source/src/console/Authentication.tsx) | 63 | 4 | 32 |
+| [src/console/Console.tsx](../source/src/console/Console.tsx) | 176 | 14 | 564 |
+| [src/console/EnvironmentSettings.tsx](../source/src/console/EnvironmentSettings.tsx) | 22 | 3 | 23 |
 | [src/console/ErrorNotice.tsx](../source/src/console/ErrorNotice.tsx) | 7 | 3 | 5 |
 | [src/console/Help.tsx](../source/src/console/Help.tsx) | 25 | 6 | 32 |
 | [src/console/McpConnections.tsx](../source/src/console/McpConnections.tsx) | 24 | 3 | 52 |
-| [src/console/Policies.tsx](../source/src/console/Policies.tsx) | 17 | 3 | 15 |
+| [src/console/Policies.tsx](../source/src/console/Policies.tsx) | 18 | 4 | 15 |
+| [src/console/PolicyGate.tsx](../source/src/console/PolicyGate.tsx) | 13 | 4 | 22 |
+| [src/console/PrivacyDownload.tsx](../source/src/console/PrivacyDownload.tsx) | 37 | 2 | 41 |
 | [src/console/Profile.tsx](../source/src/console/Profile.tsx) | 81 | 4 | 172 |
-| [src/console/Settings.tsx](../source/src/console/Settings.tsx) | 54 | 7 | 192 |
+| [src/console/Settings.tsx](../source/src/console/Settings.tsx) | 54 | 8 | 192 |
 | [src/console/Studio.tsx](../source/src/console/Studio.tsx) | 196 | 10 | 711 |
 | [src/console/StudioAnalysis.tsx](../source/src/console/StudioAnalysis.tsx) | 67 | 5 | 141 |
 | [src/console/StudioPlanner.tsx](../source/src/console/StudioPlanner.tsx) | 74 | 6 | 271 |
@@ -56,9 +62,11 @@
 | [src/console/help-guides.ts](../source/src/console/help-guides.ts) | 19 | 0 | 122 |
 | [src/console/mcp-resume.ts](../source/src/console/mcp-resume.ts) | 20 | 0 | 27 |
 | [src/core/agents.ts](../source/src/core/agents.ts) | 122 | 2 | 13 |
+| [src/core/analytics.ts](../source/src/core/analytics.ts) | 41 | 0 | 2 |
 | [src/core/client.ts](../source/src/core/client.ts) | 9 | 1 | 12 |
 | [src/core/domain.ts](../source/src/core/domain.ts) | 105 | 0 | 159 |
 | [src/core/generation.ts](../source/src/core/generation.ts) | 83 | 1 | 99 |
+| [src/core/policy.ts](../source/src/core/policy.ts) | 2 | 0 | 0 |
 | [src/core/profile.ts](../source/src/core/profile.ts) | 8 | 0 | 15 |
 | [src/core/settings.ts](../source/src/core/settings.ts) | 32 | 1 | 9 |
 | [src/core/studio-analysis.ts](../source/src/core/studio-analysis.ts) | 32 | 0 | 34 |
@@ -78,11 +86,13 @@
 | [tests/agent-context.test.ts](../source/tests/agent-context.test.ts) | 2 | 3 | 12 |
 | [tests/agent-stream.test.ts](../source/tests/agent-stream.test.ts) | 4 | 3 | 20 |
 | [tests/agents-studio.test.ts](../source/tests/agents-studio.test.ts) | 13 | 8 | 41 |
-| [tests/agents-worker.test.ts](../source/tests/agents-worker.test.ts) | 34 | 5 | 68 |
+| [tests/agents-worker.test.ts](../source/tests/agents-worker.test.ts) | 34 | 6 | 71 |
 | [tests/agents.test.ts](../source/tests/agents.test.ts) | 166 | 13 | 367 |
+| [tests/analytics-ui.test.ts](../source/tests/analytics-ui.test.ts) | 26 | 6 | 76 |
+| [tests/analytics.test.ts](../source/tests/analytics.test.ts) | 75 | 7 | 341 |
 | [tests/assets.test.ts](../source/tests/assets.test.ts) | 22 | 3 | 86 |
 | [tests/captcha.test.ts](../source/tests/captcha.test.ts) | 57 | 5 | 237 |
-| [tests/d1-hosted.test.ts](../source/tests/d1-hosted.test.ts) | 44 | 7 | 143 |
+| [tests/d1-hosted.test.ts](../source/tests/d1-hosted.test.ts) | 44 | 8 | 146 |
 | [tests/demo-media.test.ts](../source/tests/demo-media.test.ts) | 49 | 4 | 143 |
 | [tests/editorial.test.ts](../source/tests/editorial.test.ts) | 34 | 8 | 151 |
 | [tests/generation.test.ts](../source/tests/generation.test.ts) | 50 | 4 | 144 |
@@ -97,9 +107,10 @@
 | [tests/mcp-tools.test.ts](../source/tests/mcp-tools.test.ts) | 89 | 10 | 274 |
 | [tests/motion.test.ts](../source/tests/motion.test.ts) | 31 | 4 | 122 |
 | [tests/native-auth.test.ts](../source/tests/native-auth.test.ts) | 97 | 5 | 302 |
+| [tests/policy-rights.test.ts](../source/tests/policy-rights.test.ts) | 66 | 8 | 208 |
 | [tests/profile-local.test.ts](../source/tests/profile-local.test.ts) | 16 | 6 | 60 |
 | [tests/profile-ui.test.ts](../source/tests/profile-ui.test.ts) | 60 | 5 | 241 |
-| [tests/profile.test.ts](../source/tests/profile.test.ts) | 118 | 7 | 447 |
+| [tests/profile.test.ts](../source/tests/profile.test.ts) | 119 | 8 | 450 |
 | [tests/scheduler.test.ts](../source/tests/scheduler.test.ts) | 29 | 3 | 83 |
 | [tests/studio-analysis.test.ts](../source/tests/studio-analysis.test.ts) | 20 | 10 | 113 |
 | [tests/studio-api.test.ts](../source/tests/studio-api.test.ts) | 116 | 11 | 437 |
@@ -118,7 +129,7 @@
 | [tools/agent-bridge.mjs](../source/tools/agent-bridge.mjs) | 107 | 8 | 272 |
 | [tools/prepare-processor.mjs](../source/tools/prepare-processor.mjs) | 0 | 2 | 11 |
 | [tools/verify-assets.mjs](../source/tools/verify-assets.mjs) | 4 | 3 | 19 |
-| [vite.config.ts](../source/vite.config.ts) | 44 | 15 | 114 |
+| [vite.config.ts](../source/vite.config.ts) | 44 | 16 | 117 |
 | [worker-configuration.d.ts](../source/worker-configuration.d.ts) | 6564 | 2 | 0 |
 
 ## processor/runner.mjs
@@ -199,6 +210,25 @@
 | [server/agents.ts:253](../source/server/agents.ts#L253) | createAgentsApi.route | FunctionDeclaration | `replayRequest(): Promise<Response \| null>` |
 | [server/agents.ts:373](../source/server/agents.ts#L373) | createAgentsApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
 | [server/agents.ts:380](../source/server/agents.ts#L380) | createAgentsApi | MethodDeclaration | `close(): inferred` |
+
+## server/analytics.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/analytics.ts:8](../source/server/analytics.ts#L8) |  | TypeAliasDeclaration | `Principal = { userId: string; tenantId: string }` |
+| [server/analytics.ts:9](../source/server/analytics.ts#L9) |  | TypeAliasDeclaration | `Options = { token?: unknown; subjectSecret: string; db?: D1Database; fetcher?: typeof fetch; now?: () => number }` |
+| [server/analytics.ts:11](../source/server/analytics.ts#L11) |  | FunctionDeclaration | `sourceToken(value: unknown): inferred` |
+| [server/analytics.ts:12](../source/server/analytics.ts#L12) |  | FunctionDeclaration | `centralRequest(token: string, fetcher: typeof fetch, pathname: string, data?: unknown, gpc?: inferred): inferred` |
+| [server/analytics.ts:23](../source/server/analytics.ts#L23) |  | FunctionDeclaration | `deleteAnalyticsSubject(db: D1Database, rawToken: unknown, fetcher?: typeof fetch): inferred` |
+| [server/analytics.ts:36](../source/server/analytics.ts#L36) |  | FunctionDeclaration | `strings(value: unknown, allowed?: readonly string[], limit?: inferred): value is string[]` |
+| [server/analytics.ts:39](../source/server/analytics.ts#L39) |  | FunctionDeclaration | `exactKeys(value: Record<string, unknown>, keys: string[]): inferred` |
+| [server/analytics.ts:42](../source/server/analytics.ts#L42) |  | FunctionDeclaration | `validConfiguration(value: unknown, now: number): value is AnalyticsConfiguration` |
+| [server/analytics.ts:55](../source/server/analytics.ts#L55) |  | FunctionDeclaration | `subjectRef(principal: Principal, secret: string): inferred` |
+| [server/analytics.ts:64](../source/server/analytics.ts#L64) |  | FunctionDeclaration | `analyticsApi(request: Request, principal: Principal, options: Options): Promise<Response>` |
+| [server/analytics.ts:70](../source/server/analytics.ts#L70) | analyticsApi | FunctionDeclaration | `call(pathname: string, data?: unknown, gpc?: inferred): inferred` |
+| [server/analytics.ts:73](../source/server/analytics.ts#L73) | analyticsApi | FunctionDeclaration | `configuration(): inferred` |
+| [server/analytics.ts:78](../source/server/analytics.ts#L78) | analyticsApi | FunctionDeclaration | `registerSubject(subject_ref: string): inferred` |
+| [server/analytics.ts:85](../source/server/analytics.ts#L85) | analyticsApi | FunctionDeclaration | `propagateGpc(subject_ref: string): inferred` |
 
 ## server/api.ts
 
@@ -420,21 +450,22 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [server/mcp.ts:9](../source/server/mcp.ts#L9) |  | TypeAliasDeclaration | `McpOptions = { db: D1Database; origin: string; ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>; assertActive(): Promise<void>; backend(request: Request): Promise<Response>; }` |
-| [server/mcp.ts:12](../source/server/mcp.ts#L12) |  | MethodSignature | `ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>` |
-| [server/mcp.ts:13](../source/server/mcp.ts#L13) |  | MethodSignature | `assertActive(): Promise<void>` |
-| [server/mcp.ts:14](../source/server/mcp.ts#L14) |  | MethodSignature | `backend(request: Request): Promise<Response>` |
-| [server/mcp.ts:19](../source/server/mcp.ts#L19) |  | FunctionDeclaration | `failure(code: string, status: number, message: string): McpToolResult` |
-| [server/mcp.ts:23](../source/server/mcp.ts#L23) |  | FunctionDeclaration | `bearerChallenge(origin: string, scopes: string[], insufficient?: inferred): string` |
-| [server/mcp.ts:31](../source/server/mcp.ts#L31) |  | FunctionDeclaration | `insufficientScope(origin: string, scopes: string[]): McpToolResult` |
-| [server/mcp.ts:37](../source/server/mcp.ts#L37) |  | FunctionDeclaration | `canonical(value: unknown): string` |
-| [server/mcp.ts:42](../source/server/mcp.ts#L42) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
-| [server/mcp.ts:50](../source/server/mcp.ts#L50) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
-| [server/mcp.ts:81](../source/server/mcp.ts#L81) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
-| [server/mcp.ts:84](../source/server/mcp.ts#L84) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
-| [server/mcp.ts:87](../source/server/mcp.ts#L87) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp.ts:100](../source/server/mcp.ts#L100) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
-| [server/mcp.ts:103](../source/server/mcp.ts#L103) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
+| [server/mcp.ts:10](../source/server/mcp.ts#L10) |  | TypeAliasDeclaration | `McpOptions = { db: D1Database; origin: string; ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>; assertActive(): Promise<void>; policyAllowed?(identity: { userId: string; tenantId: string }): Promise<boolean>; backend(request: Request): Promise<Response>; }` |
+| [server/mcp.ts:13](../source/server/mcp.ts#L13) |  | MethodSignature | `ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>` |
+| [server/mcp.ts:14](../source/server/mcp.ts#L14) |  | MethodSignature | `assertActive(): Promise<void>` |
+| [server/mcp.ts:15](../source/server/mcp.ts#L15) |  | MethodSignature | `policyAllowed(identity: { userId: string; tenantId: string }): Promise<boolean>` |
+| [server/mcp.ts:16](../source/server/mcp.ts#L16) |  | MethodSignature | `backend(request: Request): Promise<Response>` |
+| [server/mcp.ts:21](../source/server/mcp.ts#L21) |  | FunctionDeclaration | `failure(code: string, status: number, message: string): McpToolResult` |
+| [server/mcp.ts:25](../source/server/mcp.ts#L25) |  | FunctionDeclaration | `bearerChallenge(origin: string, scopes: string[], insufficient?: inferred): string` |
+| [server/mcp.ts:33](../source/server/mcp.ts#L33) |  | FunctionDeclaration | `insufficientScope(origin: string, scopes: string[]): McpToolResult` |
+| [server/mcp.ts:39](../source/server/mcp.ts#L39) |  | FunctionDeclaration | `canonical(value: unknown): string` |
+| [server/mcp.ts:44](../source/server/mcp.ts#L44) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
+| [server/mcp.ts:52](../source/server/mcp.ts#L52) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
+| [server/mcp.ts:83](../source/server/mcp.ts#L83) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
+| [server/mcp.ts:86](../source/server/mcp.ts#L86) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
+| [server/mcp.ts:89](../source/server/mcp.ts#L89) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp.ts:102](../source/server/mcp.ts#L102) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
+| [server/mcp.ts:105](../source/server/mcp.ts#L105) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
 
 ## server/native-auth-store.js
 
@@ -469,6 +500,28 @@
 | [server/native-auth.js:148](../source/server/native-auth.js#L148) |  | FunctionDeclaration | `handleOwnerAuth(request: inferred, env: inferred, ctx: inferred): inferred` |
 | [server/native-auth.js:249](../source/server/native-auth.js#L249) |  | FunctionDeclaration | `purgeOwnerAuth(env: inferred): inferred` |
 
+## server/policy.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/policy.ts:6](../source/server/policy.ts#L6) |  | TypeAliasDeclaration | `PolicyEnv = Pick<Env, 'DB' \| 'MARKER_ORIGIN' \| 'MARKER_AUTH_SECRET'>` |
+| [server/policy.ts:8](../source/server/policy.ts#L8) |  | TypeAliasDeclaration | `Identity = Pick<OwnerPrincipal, 'userId' \| 'tenantId'>` |
+| [server/policy.ts:9](../source/server/policy.ts#L9) |  | TypeAliasDeclaration | `Receipt = { terms_version: string; privacy_notice_version: string; cookies_notice_version: string; purpose_version: string; acknowledged_at: number }` |
+| [server/policy.ts:11](../source/server/policy.ts#L11) |  | FunctionDeclaration | `policyStatus(db: D1Database, identity?: Identity): inferred` |
+| [server/policy.ts:19](../source/server/policy.ts#L19) |  | FunctionDeclaration | `assertPolicyAcknowledged(db: D1Database, identity?: Identity): Promise<void>` |
+| [server/policy.ts:23](../source/server/policy.ts#L23) |  | FunctionDeclaration | `requireFreshProof(principal: OwnerPrincipal): inferred` |
+| [server/policy.ts:28](../source/server/policy.ts#L28) |  | FunctionDeclaration | `sessionHash(request: Request, env: PolicyEnv): inferred` |
+| [server/policy.ts:38](../source/server/policy.ts#L38) |  | FunctionDeclaration | `policyApi(request: Request, env: PolicyEnv, principal: OwnerPrincipal): Promise<Response>` |
+| [server/policy.ts:62](../source/server/policy.ts#L62) |  | FunctionDeclaration | `policyRequired(origin: string): Response` |
+
+## server/privacy-data.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/privacy-data.ts:6](../source/server/privacy-data.ts#L6) |  | TypeAliasDeclaration | `ExportEnv = Pick<Env, 'DB' \| 'MARKER_ORIGIN' \| 'MARKER_AUTH_SECRET'>` |
+| [server/privacy-data.ts:17](../source/server/privacy-data.ts#L17) |  | FunctionDeclaration | `productData(value: unknown): unknown` |
+| [server/privacy-data.ts:23](../source/server/privacy-data.ts#L23) |  | FunctionDeclaration | `privacyDataApi(request: Request, env: ExportEnv, principal: OwnerPrincipal): Promise<Response>` |
+
 ## server/profile-local.ts
 
 | Source | Scope | Kind | Signature |
@@ -483,27 +536,27 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [server/profile.ts:6](../source/server/profile.ts#L6) |  | TypeAliasDeclaration | `LifecycleStatus = 'active' \| 'deleting' \| 'deleted'` |
-| [server/profile.ts:7](../source/server/profile.ts#L7) |  | TypeAliasDeclaration | `Phase = 'active' \| 'processor' \| 'waiting' \| 'uploads' \| 'media' \| 'database' \| 'done'` |
-| [server/profile.ts:8](../source/server/profile.ts#L8) |  | TypeAliasDeclaration | `LifecycleRow = { status: LifecycleStatus; phase: Phase; capability_hash: string \| null; lease_token: string \| null; lease_until: number; deleted_objects: number; needs_retry: number }` |
-| [server/profile.ts:9](../source/server/profile.ts#L9) |  | TypeAliasDeclaration | `ProfileEnvironment = Pick<Env, 'DB' \| 'MARKER_AUTH_SECRET' \| 'MARKER_ORIGIN' \| 'MARKER_OWNER_EMAIL' \| 'MARKER_SENDER_EMAIL' \| 'EMAIL'> & Partial<Pick<Env, 'MEDIA' \| 'STUDIO_PROCESSOR'>>` |
-| [server/profile.ts:15](../source/server/profile.ts#L15) |  | FunctionDeclaration | `lifecycle(env: Pick<Env, 'DB'>): Promise<LifecycleRow>` |
-| [server/profile.ts:22](../source/server/profile.ts#L22) |  | FunctionDeclaration | `progress(row: LifecycleRow): inferred` |
-| [server/profile.ts:25](../source/server/profile.ts#L25) |  | FunctionDeclaration | `readAccountLifecycle(env: Pick<Env, 'DB'>): inferred` |
-| [server/profile.ts:28](../source/server/profile.ts#L28) |  | FunctionDeclaration | `assertAccountActive(env: Pick<Env, 'DB'>): Promise<void>` |
-| [server/profile.ts:32](../source/server/profile.ts#L32) |  | FunctionDeclaration | `tokenCookie(request: Request, name: string): string \| null` |
-| [server/profile.ts:37](../source/server/profile.ts#L37) |  | FunctionDeclaration | `cookie(token?: inferred, seconds?: inferred): inferred` |
-| [server/profile.ts:40](../source/server/profile.ts#L40) |  | FunctionDeclaration | `hmac(env: ProfileEnvironment, value: string): Promise<string>` |
-| [server/profile.ts:47](../source/server/profile.ts#L47) |  | FunctionDeclaration | `capabilityForSession(request: Request, env: ProfileEnvironment): Promise<string \| null>` |
-| [server/profile.ts:53](../source/server/profile.ts#L53) |  | FunctionDeclaration | `hasCapability(request: Request, env: ProfileEnvironment, row: LifecycleRow): Promise<boolean>` |
-| [server/profile.ts:57](../source/server/profile.ts#L57) |  | FunctionDeclaration | `requireMutation(request: Request, env: ProfileEnvironment): inferred` |
-| [server/profile.ts:60](../source/server/profile.ts#L60) |  | FunctionDeclaration | `fresh(principal: OwnerPrincipal): inferred` |
-| [server/profile.ts:64](../source/server/profile.ts#L64) |  | FunctionDeclaration | `profile(env: ProfileEnvironment, principal: OwnerPrincipal): inferred` |
-| [server/profile.ts:69](../source/server/profile.ts#L69) |  | FunctionDeclaration | `field(value: unknown, max: number): inferred` |
-| [server/profile.ts:73](../source/server/profile.ts#L73) |  | FunctionDeclaration | `deletionResponse(row: LifecycleRow, token?: string): inferred` |
-| [server/profile.ts:82](../source/server/profile.ts#L82) |  | FunctionDeclaration | `profileApi(request: Request, env: ProfileEnvironment): Promise<Response>` |
-| [server/profile.ts:143](../source/server/profile.ts#L143) |  | FunctionDeclaration | `advanceAccountDeletion(env: ProfileEnvironment): Promise<LifecycleRow>` |
-| [server/profile.ts:151](../source/server/profile.ts#L151) | advanceAccountDeletion | FunctionDeclaration | `setPhase(phase: Phase, objects?: inferred): inferred` |
+| [server/profile.ts:7](../source/server/profile.ts#L7) |  | TypeAliasDeclaration | `LifecycleStatus = 'active' \| 'deleting' \| 'deleted'` |
+| [server/profile.ts:8](../source/server/profile.ts#L8) |  | TypeAliasDeclaration | `Phase = 'active' \| 'processor' \| 'waiting' \| 'uploads' \| 'media' \| 'database' \| 'done'` |
+| [server/profile.ts:9](../source/server/profile.ts#L9) |  | TypeAliasDeclaration | `LifecycleRow = { status: LifecycleStatus; phase: Phase; capability_hash: string \| null; lease_token: string \| null; lease_until: number; deleted_objects: number; needs_retry: number }` |
+| [server/profile.ts:10](../source/server/profile.ts#L10) |  | TypeAliasDeclaration | `ProfileEnvironment = Pick<Env, 'DB' \| 'MARKER_AUTH_SECRET' \| 'MARKER_ORIGIN' \| 'MARKER_OWNER_EMAIL' \| 'MARKER_SENDER_EMAIL' \| 'EMAIL'> & Partial<Pick<Env, 'MEDIA' \| 'STUDIO_PROCESSOR'>>` |
+| [server/profile.ts:16](../source/server/profile.ts#L16) |  | FunctionDeclaration | `lifecycle(env: Pick<Env, 'DB'>): Promise<LifecycleRow>` |
+| [server/profile.ts:23](../source/server/profile.ts#L23) |  | FunctionDeclaration | `progress(row: LifecycleRow): inferred` |
+| [server/profile.ts:26](../source/server/profile.ts#L26) |  | FunctionDeclaration | `readAccountLifecycle(env: Pick<Env, 'DB'>): inferred` |
+| [server/profile.ts:29](../source/server/profile.ts#L29) |  | FunctionDeclaration | `assertAccountActive(env: Pick<Env, 'DB'>): Promise<void>` |
+| [server/profile.ts:33](../source/server/profile.ts#L33) |  | FunctionDeclaration | `tokenCookie(request: Request, name: string): string \| null` |
+| [server/profile.ts:38](../source/server/profile.ts#L38) |  | FunctionDeclaration | `cookie(token?: inferred, seconds?: inferred): inferred` |
+| [server/profile.ts:41](../source/server/profile.ts#L41) |  | FunctionDeclaration | `hmac(env: ProfileEnvironment, value: string): Promise<string>` |
+| [server/profile.ts:48](../source/server/profile.ts#L48) |  | FunctionDeclaration | `capabilityForSession(request: Request, env: ProfileEnvironment): Promise<string \| null>` |
+| [server/profile.ts:54](../source/server/profile.ts#L54) |  | FunctionDeclaration | `hasCapability(request: Request, env: ProfileEnvironment, row: LifecycleRow): Promise<boolean>` |
+| [server/profile.ts:58](../source/server/profile.ts#L58) |  | FunctionDeclaration | `requireMutation(request: Request, env: ProfileEnvironment): inferred` |
+| [server/profile.ts:61](../source/server/profile.ts#L61) |  | FunctionDeclaration | `fresh(principal: OwnerPrincipal): inferred` |
+| [server/profile.ts:65](../source/server/profile.ts#L65) |  | FunctionDeclaration | `profile(env: ProfileEnvironment, principal: OwnerPrincipal): inferred` |
+| [server/profile.ts:70](../source/server/profile.ts#L70) |  | FunctionDeclaration | `field(value: unknown, max: number): inferred` |
+| [server/profile.ts:74](../source/server/profile.ts#L74) |  | FunctionDeclaration | `deletionResponse(row: LifecycleRow, token?: string): inferred` |
+| [server/profile.ts:83](../source/server/profile.ts#L83) |  | FunctionDeclaration | `profileApi(request: Request, env: ProfileEnvironment): Promise<Response>` |
+| [server/profile.ts:144](../source/server/profile.ts#L144) |  | FunctionDeclaration | `advanceAccountDeletion(env: ProfileEnvironment): Promise<LifecycleRow>` |
+| [server/profile.ts:152](../source/server/profile.ts#L152) | advanceAccountDeletion | FunctionDeclaration | `setPhase(phase: Phase, objects?: inferred): inferred` |
 
 ## server/studio-analysis.ts
 
@@ -723,15 +776,16 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [server/worker.ts:19](../source/server/worker.ts#L19) |  | FunctionVariable | `cookie(token?: inferred, seconds?: inferred): inferred` |
-| [server/worker.ts:21](../source/server/worker.ts#L21) |  | FunctionDeclaration | `hostedApi(request: Request, config: SupabaseConfig): Promise<Response>` |
-| [server/worker.ts:112](../source/server/worker.ts#L112) |  | MethodDeclaration | `scheduled(_event: inferred, env: inferred, ctx: inferred): inferred` |
-| [server/worker.ts:113](../source/server/worker.ts#L113) |  | MethodDeclaration | `fetch(request: inferred, env: inferred, ctx: inferred): inferred` |
-| [server/worker.ts:120](../source/server/worker.ts#L120) |  | FunctionDeclaration | `nativeApi(request: Request, env: Env, ctx: Pick<ExecutionContext, 'waitUntil'>): Promise<Response>` |
-| [server/worker.ts:137](../source/server/worker.ts#L137) | nativeApi | MethodDeclaration | `assertActive(): inferred` |
-| [server/worker.ts:138](../source/server/worker.ts#L138) | nativeApi | MethodDeclaration | `backend(internal: inferred): inferred` |
-| [server/worker.ts:174](../source/server/worker.ts#L174) |  | FunctionDeclaration | `maintainAccount(env: Env): Promise<void>` |
-| [server/worker.ts:187](../source/server/worker.ts#L187) |  | FunctionDeclaration | `agentApi(request: Request, env: Env): Promise<Response>` |
+| [server/worker.ts:22](../source/server/worker.ts#L22) |  | FunctionVariable | `cookie(token?: inferred, seconds?: inferred): inferred` |
+| [server/worker.ts:24](../source/server/worker.ts#L24) |  | FunctionDeclaration | `hostedApi(request: Request, config: SupabaseConfig): Promise<Response>` |
+| [server/worker.ts:115](../source/server/worker.ts#L115) |  | MethodDeclaration | `scheduled(_event: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/worker.ts:116](../source/server/worker.ts#L116) |  | MethodDeclaration | `fetch(request: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/worker.ts:123](../source/server/worker.ts#L123) |  | FunctionDeclaration | `nativeApi(request: Request, env: Env, ctx: Pick<ExecutionContext, 'waitUntil'>): Promise<Response>` |
+| [server/worker.ts:142](../source/server/worker.ts#L142) | nativeApi | MethodDeclaration | `policyAllowed(identity: inferred): inferred` |
+| [server/worker.ts:143](../source/server/worker.ts#L143) | nativeApi | MethodDeclaration | `assertActive(): inferred` |
+| [server/worker.ts:144](../source/server/worker.ts#L144) | nativeApi | MethodDeclaration | `backend(internal: inferred): inferred` |
+| [server/worker.ts:191](../source/server/worker.ts#L191) |  | FunctionDeclaration | `maintainAccount(env: Env): Promise<void>` |
+| [server/worker.ts:204](../source/server/worker.ts#L204) |  | FunctionDeclaration | `agentApi(request: Request, env: Env): Promise<Response>` |
 
 ## src/App.tsx
 
@@ -740,7 +794,8 @@
 | [src/App.tsx:13](../source/src/App.tsx#L13) |  | FunctionDeclaration | `App(): inferred` |
 | [src/App.tsx:18](../source/src/App.tsx#L18) | App | FunctionDeclaration | `openPolicy(section: PolicySection): inferred` |
 | [src/App.tsx:19](../source/src/App.tsx#L19) | App | FunctionDeclaration | `closePolicy(): inferred` |
-| [src/App.tsx:48](../source/src/App.tsx#L48) | App | FunctionDeclaration | `changeCache(accepted: boolean): inferred` |
+| [src/App.tsx:20](../source/src/App.tsx#L20) | App | FunctionVariable | `show(event: Event): inferred` |
+| [src/App.tsx:49](../source/src/App.tsx#L49) | App | FunctionDeclaration | `changeCache(accepted: boolean): inferred` |
 
 ## src/console/Agents.tsx
 
@@ -773,61 +828,71 @@
 | [src/console/Agents.tsx:202](../source/src/console/Agents.tsx#L202) | Proposal | FunctionDeclaration | `saveEdits(): inferred` |
 | [src/console/Agents.tsx:203](../source/src/console/Agents.tsx#L203) | Proposal | FunctionVariable | `field(label: string, name: keyof AgentCopy, max: number, multiline?: inferred): inferred` |
 
+## src/console/AnalyticsSettings.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/AnalyticsSettings.tsx:16](../source/src/console/AnalyticsSettings.tsx#L16) |  | FunctionDeclaration | `AnalyticsSettings(): inferred` |
+| [src/console/AnalyticsSettings.tsx:18](../source/src/console/AnalyticsSettings.tsx#L18) | AnalyticsSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/AnalyticsSettings.tsx:33](../source/src/console/AnalyticsSettings.tsx#L33) | AnalyticsSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/AnalyticsSettings.tsx:52](../source/src/console/AnalyticsSettings.tsx#L52) | AnalyticsSettings | FunctionDeclaration | `save(status: 'granted' \| 'denied' \| 'withdrawn'): inferred` |
+| [src/console/AnalyticsSettings.tsx:60](../source/src/console/AnalyticsSettings.tsx#L60) | AnalyticsSettings | FunctionDeclaration | `recordInterest(): inferred` |
+
 ## src/console/Authentication.tsx
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
 | [src/console/Authentication.tsx:6](../source/src/console/Authentication.tsx#L6) |  | TypeAliasDeclaration | `OAuthProvider = "google" \| "github"` |
 | [src/console/Authentication.tsx:7](../source/src/console/Authentication.tsx#L7) |  | TypeAliasDeclaration | `OAuthMethod = { configured: boolean; bound: boolean; canLink: boolean; linkRequiresEmailVerification?: boolean }` |
-| [src/console/Authentication.tsx:8](../source/src/console/Authentication.tsx#L8) |  | TypeAliasDeclaration | `AuthSession = { mode: "local" \| "hosted"; authenticated: boolean; configured?: boolean; authFlow?: "code"; auth_method?: "email" \| OAuthProvider; account?: { status: "deleting" \| "deleted" }; tenant_id?: string; user?: { id?: string; email: string; tenant_id?: string }; turnstile?: TurnstileDescriptor; methods?: { email: { configured: boolean }; google: OAuthMethod; github?: OAuthMethod }; }` |
-| [src/console/Authentication.tsx:20](../source/src/console/Authentication.tsx#L20) |  | TypeAliasDeclaration | `OAuthStart = (provider: OAuthProvider, intent: "login" \| "link", captchaToken: string) => Promise<void>` |
-| [src/console/Authentication.tsx:22](../source/src/console/Authentication.tsx#L22) |  | FunctionVariable | `providerName(provider: OAuthProvider): inferred` |
-| [src/console/Authentication.tsx:24](../source/src/console/Authentication.tsx#L24) |  | FunctionDeclaration | `ProviderButton({ provider, intent, session, busy, onOAuth }: { provider: OAuthProvider; intent: "login" \| "link"; session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
-| [src/console/Authentication.tsx:25](../source/src/console/Authentication.tsx#L25) | ProviderButton | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Authentication.tsx:30](../source/src/console/Authentication.tsx#L30) | ProviderButton | FunctionDeclaration | `start(): inferred` |
-| [src/console/Authentication.tsx:44](../source/src/console/Authentication.tsx#L44) |  | FunctionDeclaration | `ProviderSignIn({ session, busy, onOAuth }: { session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
-| [src/console/Authentication.tsx:45](../source/src/console/Authentication.tsx#L45) | ProviderSignIn | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Authentication.tsx:54](../source/src/console/Authentication.tsx#L54) |  | FunctionDeclaration | `AuthenticationSettings({ session, busy, onOAuth, onEmailProof }: { session?: AuthSession; busy: boolean; onOAuth: OAuthStart; onEmailProof: () => void }): inferred` |
-| [src/console/Authentication.tsx:55](../source/src/console/Authentication.tsx#L55) | AuthenticationSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:8](../source/src/console/Authentication.tsx#L8) |  | TypeAliasDeclaration | `AuthSession = { mode: "local" \| "hosted"; authenticated: boolean; policy?: { required: boolean }; configured?: boolean; authFlow?: "code"; auth_method?: "email" \| OAuthProvider; account?: { status: "deleting" \| "deleted" }; tenant_id?: string; user?: { id?: string; email: string; tenant_id?: string }; turnstile?: TurnstileDescriptor; methods?: { email: { configured: boolean }; google: OAuthMethod; github?: OAuthMethod }; }` |
+| [src/console/Authentication.tsx:21](../source/src/console/Authentication.tsx#L21) |  | TypeAliasDeclaration | `OAuthStart = (provider: OAuthProvider, intent: "login" \| "link", captchaToken: string) => Promise<void>` |
+| [src/console/Authentication.tsx:23](../source/src/console/Authentication.tsx#L23) |  | FunctionVariable | `providerName(provider: OAuthProvider): inferred` |
+| [src/console/Authentication.tsx:25](../source/src/console/Authentication.tsx#L25) |  | FunctionDeclaration | `ProviderButton({ provider, intent, session, busy, onOAuth }: { provider: OAuthProvider; intent: "login" \| "link"; session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
+| [src/console/Authentication.tsx:26](../source/src/console/Authentication.tsx#L26) | ProviderButton | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:31](../source/src/console/Authentication.tsx#L31) | ProviderButton | FunctionDeclaration | `start(): inferred` |
+| [src/console/Authentication.tsx:45](../source/src/console/Authentication.tsx#L45) |  | FunctionDeclaration | `ProviderSignIn({ session, busy, onOAuth }: { session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
+| [src/console/Authentication.tsx:46](../source/src/console/Authentication.tsx#L46) | ProviderSignIn | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:55](../source/src/console/Authentication.tsx#L55) |  | FunctionDeclaration | `AuthenticationSettings({ session, busy, onOAuth, onEmailProof }: { session?: AuthSession; busy: boolean; onOAuth: OAuthStart; onEmailProof: () => void }): inferred` |
+| [src/console/Authentication.tsx:56](../source/src/console/Authentication.tsx#L56) | AuthenticationSettings | FunctionVariable | `l(es: string, en: string): inferred` |
 
 ## src/console/Console.tsx
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Console.tsx:46](../source/src/console/Console.tsx#L46) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
-| [src/console/Console.tsx:48](../source/src/console/Console.tsx#L48) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
-| [src/console/Console.tsx:63](../source/src/console/Console.tsx#L63) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
-| [src/console/Console.tsx:76](../source/src/console/Console.tsx#L76) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:84](../source/src/console/Console.tsx#L84) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
-| [src/console/Console.tsx:87](../source/src/console/Console.tsx#L87) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
-| [src/console/Console.tsx:95](../source/src/console/Console.tsx#L95) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
-| [src/console/Console.tsx:112](../source/src/console/Console.tsx#L112) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
-| [src/console/Console.tsx:116](../source/src/console/Console.tsx#L116) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
-| [src/console/Console.tsx:118](../source/src/console/Console.tsx#L118) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Console.tsx:119](../source/src/console/Console.tsx#L119) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:166](../source/src/console/Console.tsx#L166) | Console | FunctionVariable | `navigate(): inferred` |
-| [src/console/Console.tsx:178](../source/src/console/Console.tsx#L178) | Console | FunctionDeclaration | `refresh(): inferred` |
-| [src/console/Console.tsx:202](../source/src/console/Console.tsx#L202) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
-| [src/console/Console.tsx:206](../source/src/console/Console.tsx#L206) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
-| [src/console/Console.tsx:212](../source/src/console/Console.tsx#L212) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
-| [src/console/Console.tsx:226](../source/src/console/Console.tsx#L226) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:242](../source/src/console/Console.tsx#L242) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:271](../source/src/console/Console.tsx#L271) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
-| [src/console/Console.tsx:292](../source/src/console/Console.tsx#L292) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:310](../source/src/console/Console.tsx#L310) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
-| [src/console/Console.tsx:318](../source/src/console/Console.tsx#L318) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
-| [src/console/Console.tsx:326](../source/src/console/Console.tsx#L326) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
-| [src/console/Console.tsx:329](../source/src/console/Console.tsx#L329) | Console | FunctionDeclaration | `reload(): inferred` |
-| [src/console/Console.tsx:339](../source/src/console/Console.tsx#L339) | Console | FunctionDeclaration | `logout(): inferred` |
-| [src/console/Console.tsx:462](../source/src/console/Console.tsx#L462) | Console | FunctionVariable | `productName(id: string): inferred` |
-| [src/console/Console.tsx:464](../source/src/console/Console.tsx#L464) | Console | FunctionVariable | `accountName(id: string): inferred` |
-| [src/console/Console.tsx:466](../source/src/console/Console.tsx#L466) | Console | FunctionVariable | `matches(value: string): inferred` |
-| [src/console/Console.tsx:468](../source/src/console/Console.tsx#L468) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
-| [src/console/Console.tsx:974](../source/src/console/Console.tsx#L974) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
-| [src/console/Console.tsx:986](../source/src/console/Console.tsx#L986) | EditorDialog | MethodSignature | `close(): void` |
-| [src/console/Console.tsx:987](../source/src/console/Console.tsx#L987) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:1018](../source/src/console/Console.tsx#L1018) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
-| [src/console/Console.tsx:1029](../source/src/console/Console.tsx#L1029) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:47](../source/src/console/Console.tsx#L47) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
+| [src/console/Console.tsx:49](../source/src/console/Console.tsx#L49) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
+| [src/console/Console.tsx:64](../source/src/console/Console.tsx#L64) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
+| [src/console/Console.tsx:77](../source/src/console/Console.tsx#L77) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:85](../source/src/console/Console.tsx#L85) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
+| [src/console/Console.tsx:88](../source/src/console/Console.tsx#L88) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
+| [src/console/Console.tsx:96](../source/src/console/Console.tsx#L96) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
+| [src/console/Console.tsx:113](../source/src/console/Console.tsx#L113) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
+| [src/console/Console.tsx:117](../source/src/console/Console.tsx#L117) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
+| [src/console/Console.tsx:119](../source/src/console/Console.tsx#L119) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Console.tsx:120](../source/src/console/Console.tsx#L120) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:167](../source/src/console/Console.tsx#L167) | Console | FunctionVariable | `navigate(): inferred` |
+| [src/console/Console.tsx:179](../source/src/console/Console.tsx#L179) | Console | FunctionDeclaration | `refresh(): inferred` |
+| [src/console/Console.tsx:203](../source/src/console/Console.tsx#L203) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
+| [src/console/Console.tsx:207](../source/src/console/Console.tsx#L207) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
+| [src/console/Console.tsx:213](../source/src/console/Console.tsx#L213) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
+| [src/console/Console.tsx:227](../source/src/console/Console.tsx#L227) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:243](../source/src/console/Console.tsx#L243) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:272](../source/src/console/Console.tsx#L272) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
+| [src/console/Console.tsx:293](../source/src/console/Console.tsx#L293) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:311](../source/src/console/Console.tsx#L311) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
+| [src/console/Console.tsx:319](../source/src/console/Console.tsx#L319) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
+| [src/console/Console.tsx:327](../source/src/console/Console.tsx#L327) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
+| [src/console/Console.tsx:330](../source/src/console/Console.tsx#L330) | Console | FunctionDeclaration | `reload(): inferred` |
+| [src/console/Console.tsx:340](../source/src/console/Console.tsx#L340) | Console | FunctionDeclaration | `logout(): inferred` |
+| [src/console/Console.tsx:464](../source/src/console/Console.tsx#L464) | Console | FunctionVariable | `productName(id: string): inferred` |
+| [src/console/Console.tsx:466](../source/src/console/Console.tsx#L466) | Console | FunctionVariable | `accountName(id: string): inferred` |
+| [src/console/Console.tsx:468](../source/src/console/Console.tsx#L468) | Console | FunctionVariable | `matches(value: string): inferred` |
+| [src/console/Console.tsx:470](../source/src/console/Console.tsx#L470) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
+| [src/console/Console.tsx:976](../source/src/console/Console.tsx#L976) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
+| [src/console/Console.tsx:988](../source/src/console/Console.tsx#L988) | EditorDialog | MethodSignature | `close(): void` |
+| [src/console/Console.tsx:989](../source/src/console/Console.tsx#L989) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:1020](../source/src/console/Console.tsx#L1020) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
+| [src/console/Console.tsx:1031](../source/src/console/Console.tsx#L1031) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
 
 ## src/console/EnvironmentSettings.tsx
 
@@ -867,9 +932,26 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Policies.tsx:5](../source/src/console/Policies.tsx#L5) |  | TypeAliasDeclaration | `PolicySection = 'terms'\|'privacy'\|'cookies'` |
-| [src/console/Policies.tsx:63](../source/src/console/Policies.tsx#L63) |  | FunctionDeclaration | `Policies({section,onClose,onPreferences}: {section:PolicySection;onClose:()=>void;onPreferences:()=>void}): inferred` |
-| [src/console/Policies.tsx:77](../source/src/console/Policies.tsx#L77) |  | FunctionDeclaration | `PolicyLinks({onOpen,variant}: {onOpen:(section:PolicySection)=>void;variant:'footer'\|'environment'}): inferred` |
+| [src/console/Policies.tsx:6](../source/src/console/Policies.tsx#L6) |  | TypeAliasDeclaration | `PolicySection = 'terms'\|'privacy'\|'cookies'` |
+| [src/console/Policies.tsx:91](../source/src/console/Policies.tsx#L91) |  | FunctionDeclaration | `Policies({section,onClose,onPreferences}: {section:PolicySection;onClose:()=>void;onPreferences:()=>void}): inferred` |
+| [src/console/Policies.tsx:106](../source/src/console/Policies.tsx#L106) |  | FunctionDeclaration | `PolicyLinks({onOpen,variant}: {onOpen:(section:PolicySection)=>void;variant:'footer'\|'environment'}): inferred` |
+
+## src/console/PolicyGate.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/PolicyGate.tsx:6](../source/src/console/PolicyGate.tsx#L6) |  | FunctionDeclaration | `openPolicy(section: 'terms' \| 'privacy' \| 'cookies'): inferred` |
+| [src/console/PolicyGate.tsx:9](../source/src/console/PolicyGate.tsx#L9) |  | FunctionDeclaration | `PolicyGate({ onComplete, onVerify }: { onComplete: () => Promise<void>; onVerify: () => void }): inferred` |
+| [src/console/PolicyGate.tsx:13](../source/src/console/PolicyGate.tsx#L13) | PolicyGate | FunctionDeclaration | `continueAccess(): inferred` |
+
+## src/console/PrivacyDownload.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/PrivacyDownload.tsx:3](../source/src/console/PrivacyDownload.tsx#L3) |  | TypeAliasDeclaration | `Page = { format: string; subject: { userId: string; tenantId: string }; category: string; data: unknown; categories: string[]; next: string \| null; excluded: string[]; consistency: string }` |
+| [src/console/PrivacyDownload.tsx:4](../source/src/console/PrivacyDownload.tsx#L4) |  | FunctionDeclaration | `PrivacyDownload(): inferred` |
+| [src/console/PrivacyDownload.tsx:7](../source/src/console/PrivacyDownload.tsx#L7) | PrivacyDownload | FunctionDeclaration | `download(): inferred` |
+| [src/console/PrivacyDownload.tsx:13](../source/src/console/PrivacyDownload.tsx#L13) | PrivacyDownload.download | FunctionDeclaration | `page(category: string, after?: inferred): Promise<Page>` |
 
 ## src/console/Profile.tsx
 
@@ -899,23 +981,23 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Settings.tsx:9](../source/src/console/Settings.tsx#L9) |  | TypeAliasDeclaration | `Draft = { monthly: string; processing: string; ai: string; storage: string; duration: string }` |
-| [src/console/Settings.tsx:11](../source/src/console/Settings.tsx#L11) |  | FunctionVariable | `asDraft(s: StudioSettings): Draft` |
-| [src/console/Settings.tsx:12](../source/src/console/Settings.tsx#L12) |  | FunctionDeclaration | `recovered(): { draft?: Draft; revision?: number }` |
-| [src/console/Settings.tsx:17](../source/src/console/Settings.tsx#L17) |  | FunctionDeclaration | `Settings({ environment }: { environment?: ReactNode }): inferred` |
-| [src/console/Settings.tsx:19](../source/src/console/Settings.tsx#L19) | Settings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:41](../source/src/console/Settings.tsx#L41) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
-| [src/console/Settings.tsx:49](../source/src/console/Settings.tsx#L49) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
-| [src/console/Settings.tsx:50](../source/src/console/Settings.tsx#L50) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
-| [src/console/Settings.tsx:52](../source/src/console/Settings.tsx#L52) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
-| [src/console/Settings.tsx:59](../source/src/console/Settings.tsx#L59) | Settings | FunctionDeclaration | `save(): inferred` |
-| [src/console/Settings.tsx:69](../source/src/console/Settings.tsx#L69) | Settings | FunctionVariable | `usd(cents: number): inferred` |
-| [src/console/Settings.tsx:70](../source/src/console/Settings.tsx#L70) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
-| [src/console/Settings.tsx:101](../source/src/console/Settings.tsx#L101) |  | FunctionDeclaration | `AgentSettings({ active }: { active: boolean }): inferred` |
-| [src/console/Settings.tsx:103](../source/src/console/Settings.tsx#L103) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:107](../source/src/console/Settings.tsx#L107) | AgentSettings | FunctionDeclaration | `load(): inferred` |
-| [src/console/Settings.tsx:109](../source/src/console/Settings.tsx#L109) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
-| [src/console/Settings.tsx:114](../source/src/console/Settings.tsx#L114) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
+| [src/console/Settings.tsx:10](../source/src/console/Settings.tsx#L10) |  | TypeAliasDeclaration | `Draft = { monthly: string; processing: string; ai: string; storage: string; duration: string }` |
+| [src/console/Settings.tsx:12](../source/src/console/Settings.tsx#L12) |  | FunctionVariable | `asDraft(s: StudioSettings): Draft` |
+| [src/console/Settings.tsx:13](../source/src/console/Settings.tsx#L13) |  | FunctionDeclaration | `recovered(): { draft?: Draft; revision?: number }` |
+| [src/console/Settings.tsx:18](../source/src/console/Settings.tsx#L18) |  | FunctionDeclaration | `Settings({ environment }: { environment?: ReactNode }): inferred` |
+| [src/console/Settings.tsx:20](../source/src/console/Settings.tsx#L20) | Settings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:42](../source/src/console/Settings.tsx#L42) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
+| [src/console/Settings.tsx:50](../source/src/console/Settings.tsx#L50) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
+| [src/console/Settings.tsx:51](../source/src/console/Settings.tsx#L51) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
+| [src/console/Settings.tsx:53](../source/src/console/Settings.tsx#L53) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
+| [src/console/Settings.tsx:60](../source/src/console/Settings.tsx#L60) | Settings | FunctionDeclaration | `save(): inferred` |
+| [src/console/Settings.tsx:70](../source/src/console/Settings.tsx#L70) | Settings | FunctionVariable | `usd(cents: number): inferred` |
+| [src/console/Settings.tsx:71](../source/src/console/Settings.tsx#L71) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
+| [src/console/Settings.tsx:103](../source/src/console/Settings.tsx#L103) |  | FunctionDeclaration | `AgentSettings({ active }: { active: boolean }): inferred` |
+| [src/console/Settings.tsx:105](../source/src/console/Settings.tsx#L105) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:109](../source/src/console/Settings.tsx#L109) | AgentSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/Settings.tsx:111](../source/src/console/Settings.tsx#L111) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
+| [src/console/Settings.tsx:116](../source/src/console/Settings.tsx#L116) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
 
 ## src/console/Studio.tsx
 
@@ -1058,6 +1140,17 @@
 | [src/core/agents.ts:41](../source/src/core/agents.ts#L41) |  | FunctionDeclaration | `validateAgentLimits(input: unknown): AgentLimits` |
 | [src/core/agents.ts:52](../source/src/core/agents.ts#L52) |  | FunctionDeclaration | `validateAgentCopy(input: unknown): AgentCopy` |
 
+## src/core/analytics.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/analytics.ts:2](../source/src/core/analytics.ts#L2) |  | TypeAliasDeclaration | `AnalyticsPurpose = typeof analyticsPurposes[number]` |
+| [src/core/analytics.ts:5](../source/src/core/analytics.ts#L5) |  | TypeAliasDeclaration | `AnalyticsConfiguration = { schema_version: 1; source_id: 'marker-owner-production'; product: 'marker'; environment: 'production'; version: number; issued_at: string; expires_at: string; enabled: boolean; events: string[]; fields: string[]; purposes: string[]; retention_days: number; destinations: string[]; restriction_reason: string \| null; }` |
+| [src/core/analytics.ts:11](../source/src/core/analytics.ts#L11) |  | TypeAliasDeclaration | `AnalyticsOverview = { console_url: string; source_id: 'marker-owner-production'; status: 'not_configured' \| 'unavailable' \| 'paused' \| 'active' \| 'confirmation_pending'; desired_version: number \| null; applied_version: number \| null; configuration: AnalyticsConfiguration \| null; }` |
+| [src/core/analytics.ts:17](../source/src/core/analytics.ts#L17) |  | TypeAliasDeclaration | `AnalyticsPreference = { purpose: AnalyticsPurpose; status: 'granted' \| 'denied' \| 'withdrawn' \| 'expired'; permission_ref: string; categories: string[]; recipients: string[]; gpc: boolean; expires_at: string \| null }` |
+| [src/core/analytics.ts:18](../source/src/core/analytics.ts#L18) |  | FunctionDeclaration | `isCurrentAnalyticsGrant(preference: AnalyticsPreference \| undefined, now?: inferred): inferred` |
+| [src/core/analytics.ts:21](../source/src/core/analytics.ts#L21) |  | TypeAliasDeclaration | `AnalyticsAudience = { audience_id: string; version: number; eligible_count: number; as_of: string; mode: 'demo' \| 'production' }` |
+
 ## src/core/client.ts
 
 | Source | Scope | Kind | Signature |
@@ -1111,6 +1204,12 @@
 | [src/core/generation.ts:127](../source/src/core/generation.ts#L127) | createTextSimulation.generate | FunctionVariable | `finish(error?: Error, result?: SimulatedTextResult): inferred` |
 | [src/core/generation.ts:164](../source/src/core/generation.ts#L164) | createTextSimulation | FunctionDeclaration | `prepareSave(state: Workspace, result: SimulatedTextResult, editedText: string): { revision: number; command: Command }` |
 | [src/core/generation.ts:182](../source/src/core/generation.ts#L182) | createTextSimulation | FunctionDeclaration | `clear(): inferred` |
+
+## src/core/policy.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/policy.ts:8](../source/src/core/policy.ts#L8) |  | FunctionVariable | `servicePolicyAcknowledgement(): inferred` |
 
 ## src/core/profile.ts
 
@@ -1391,12 +1490,12 @@
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [vite.config.ts:18](../source/vite.config.ts#L18) |  | FunctionDeclaration | `incomingBody(req: IncomingMessage): ReadableStream<Uint8Array>` |
-| [vite.config.ts:21](../source/vite.config.ts#L21) | incomingBody | MethodDeclaration | `start(controller: inferred): inferred` |
-| [vite.config.ts:27](../source/vite.config.ts#L27) | incomingBody | MethodDeclaration | `pull(): inferred` |
-| [vite.config.ts:28](../source/vite.config.ts#L28) | incomingBody | MethodDeclaration | `cancel(): inferred` |
-| [vite.config.ts:32](../source/vite.config.ts#L32) |  | FunctionDeclaration | `localEditorial(): Plugin` |
-| [vite.config.ts:36](../source/vite.config.ts#L36) | localEditorial | MethodDeclaration | `configureServer(server: inferred): inferred` |
-| [vite.config.ts:61](../source/vite.config.ts#L61) | localEditorial.configureServer | MethodDeclaration | `backend(request: inferred): inferred` |
+| [vite.config.ts:19](../source/vite.config.ts#L19) |  | FunctionDeclaration | `incomingBody(req: IncomingMessage): ReadableStream<Uint8Array>` |
+| [vite.config.ts:22](../source/vite.config.ts#L22) | incomingBody | MethodDeclaration | `start(controller: inferred): inferred` |
+| [vite.config.ts:28](../source/vite.config.ts#L28) | incomingBody | MethodDeclaration | `pull(): inferred` |
+| [vite.config.ts:29](../source/vite.config.ts#L29) | incomingBody | MethodDeclaration | `cancel(): inferred` |
+| [vite.config.ts:33](../source/vite.config.ts#L33) |  | FunctionDeclaration | `localEditorial(): Plugin` |
+| [vite.config.ts:37](../source/vite.config.ts#L37) | localEditorial | MethodDeclaration | `configureServer(server: inferred): inferred` |
+| [vite.config.ts:62](../source/vite.config.ts#L62) | localEditorial.configureServer | MethodDeclaration | `backend(request: inferred): inferred` |
 
 [Complete AST JSON](../inventories/ast-index.json). Aliases, callbacks, dynamic dispatch, SQL and runtime guards need source review. No coverage percentage is inferred.

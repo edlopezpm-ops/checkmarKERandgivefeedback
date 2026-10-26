@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: A valid range must produce partial status
+
+200 !== 206
+
+    at file:///[local-execution-path] {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 200,
+  expected: 206,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

@@ -31,3 +31,11 @@ The current clean-source closure commits all twelve former demo paths unchanged,
 ## Documentary overlay — 26 October 2026
 
 This update preserves the 24-October source projection and combined dossiers byte-for-byte; it does not run `snapshot-source.py`, extraction or assembly. `CURRENT-STATE-2026-10-24.json` preserves the previous state bytes; `CURRENT-STATE.json` v3 identifies canonical source/receipts and later unprojected changes. Regenerate only the package seal with `python tools/verify-package.py --seal`, then verify with `python tools/verify-package.py --index` after staging. Omit `--source ../marKER`: the current product has deliberately advanced beyond this frozen public archive. A successful archive/index check does not establish equality to today's canonical source or current runtime behavior.
+
+## Full source and functional-audit publication — 26 October 2026
+
+The explicit later owner request replaces the preceding minimal documentary overlay for this publication. Current source is the complete clean 77bbedac checkout with 368 paths. Source/catalog extraction and current dossier assembly are rerun; the dated 24-October reading copy remains byte-preserved and refers to the old Git snapshot.
+
+`project-functional-audit.py --audit-root AUDIT_INPUT_DIR --source SOURCE_DIR --date 2026-10-26 --method METHOD_FILE` admits only named technical receipts, selected evidence and portable drivers. It strips local paths, authority/auth metadata and the entire ignored-file inventory, including real credential-file digests. It never copies sandbox stores, CLI profiles, dependency installations or build bundles. The original audit remains local. The public MANIFEST binds derivative bytes; original log hashes are labeled separately when normalized logs differ.
+
+`assemble.py` derives the current date from the source manifest and writes the alias plus the current dated dossier. `verify-package.py` compares those current copies, checks all tracked payload names and scans audit trees without hiding forbidden directories behind PRIVATE filtering. Before sealing, rebuild the audit MANIFEST if a portable driver was adjusted. Run score replay and source/package/index checks, then inspect the exact staged path set before push. This does not rerun the original product suite or grant deployment authority.

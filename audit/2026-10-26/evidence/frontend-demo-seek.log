@@ -1,0 +1,18 @@
+npm notice run marker@0.1.0 npx
+npm notice run playwright-cli -s=marker-audit-frontend eval async () => { const v = document.querySelector("video"); if (!v) throw Error("NO_VIDEO"); v.muted = true; if (v.readyState < 1) await Promise.race([new Promise(r => v.addEventListener("loadedmetadata",r,{once:true})),new Promise((_,j)=>setTimeout(()=>j(Error("METADATA_TIMEOUT")),8000))]); const sought = new Promise((r,j) => {v.addEventListener("seeked",r,{once:true});setTimeout(()=>j(Error("SEEK_TIMEOUT")),8000)}); v.currentTime = 20; await sought; const frame = new Promise((r,j)=> {v.requestVideoFrameCallback((_,metadata)=>r(metadata.mediaTime));setTimeout(()=>j(Error("FRAME_TIMEOUT")),8000)}); await v.play(); const frameTime = await frame; const result = {duration:v.duration,currentTime:v.currentTime,frameTime,readyState:v.readyState,videoWidth:v.videoWidth,videoHeight:v.videoHeight,error:v.error?.code??null,captionTracks:v.textTracks.length};v.pause(); if (Math.abs(result.duration-55)>0.25 || Math.abs(result.currentTime-20)>1 || Math.abs(frameTime-20)>1 || result.videoWidth!==1920 || result.videoHeight!==1080 || result.error) throw Error(JSON.stringify(result)); return result; }
+### Result
+{
+  "duration": 55,
+  "currentTime": 20.004168,
+  "frameTime": 20.033333,
+  "readyState": 4,
+  "videoWidth": 1920,
+  "videoHeight": 1080,
+  "error": null,
+  "captionTracks": 1
+}
+### Ran Playwright code
+```js
+await page.evaluate('async () => { const v = document.querySelector("video"); if (!v) throw Error("NO_VIDEO"); v.muted = true; if (v.readyState < 1) await Promise.race([new Promise(r => v.addEventListener("loadedmetadata",r,{once:true})),new Promise((_,j)=>setTimeout(()=>j(Error("METADATA_TIMEOUT")),8000))]); const sought = new Promise((r,j) => {v.addEventListener("seeked",r,{once:true});setTimeout(()=>j(Error("SEEK_TIMEOUT")),8000)}); v.currentTime = 20; await sought; const frame = new Promise((r,j)=> {v.requestVideoFrameCallback((_,metadata)=>r(metadata.mediaTime));setTimeout(()=>j(Error("FRAME_TIMEOUT")),8000)}); await v.play(); const frameTime = await frame; const result = {duration:v.duration,currentTime:v.currentTime,frameTime,readyState:v.readyState,videoWidth:v.videoWidth,videoHeight:v.videoHeight,error:v.error?.code??null,captionTracks:v.textTracks.length};v.pause(); if (Math.abs(result.duration-55)>0.25 || Math.abs(result.currentTime-20)>1 || Math.abs(frameTime-20)>1 || result.videoWidth!==1920 || result.videoHeight!==1080 || result.error) throw Error(JSON.stringify(result)); return result; }');
+```
+

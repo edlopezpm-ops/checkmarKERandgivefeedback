@@ -1,32 +1,40 @@
 # marKER — complete technical dossier
 
-Snapshot 2026-10-24; source commit `3b219839086fa6e66e467c02d58df70a49f0d8f0` with a clean tracked source checkout and no working-tree overlay.
+Snapshot 2026-10-26; source commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1` with a clean tracked source checkout and no working-tree overlay.
 
-This reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.
+This reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding. The dated 24-October dossier remains historical.
 
 
 ---
 
 Canonical chapter: [00-START-HERE.md](00-START-HERE.md)
 
-# Start here
+# Start here — 26 October 2026
 
-This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source commit is `3b219839086fa6e66e467c02d58df70a49f0d8f0` on `main`; the checkout is clean, all 347 projected files are tracked and no dirty overlay remains. The [snapshot manifest](source-snapshot-manifest.json) preserves the former demo-path provenance. Read the exact projected files when narrative and code differ.
+The current full-source projection is `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`: 368 tracked product files, clean source checkout, no dirty overlay. Read the [snapshot manifest](source-snapshot-manifest.json) and [current state](CURRENT-STATE.json). The dated [24 October dossier](marKER-FULL-DOSSIER-2026-10-24.md) remains historical; the [current combined dossier](marKER-FULL-DOSSIER.md) is assembled for this cut.
 
-Read [prioritized pending work](PENDING-REPORT.md), [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review prompt](AI_ANALYSIS_PROMPT.md). Use the [complete source inventory](inventories/source-paths.md), [symbol index](code-flow/05-module-symbol-index.md), [test index](inventories/test-index.md) and [route occurrences](inventories/routes.md) to close coverage gaps. A complete review requires inspecting implementation, tests and negative paths; a chapter summary alone does not establish that coverage.
+Read in this order:
 
-| Evidence label | Exact meaning |
+1. [Quick context](AI-QUICK-CONTEXT.md) and [pending work](PENDING-REPORT.md).
+2. Chapters [01](01-architecture-and-stack.md)–[11](11-database-and-catalog-reference.md) for implementation navigation.
+3. [Chapter 12](12-functional-integrity-audit.md), [REPORT](audit/2026-10-26/REPORT.md), [MATRIX](audit/2026-10-26/MATRIX.json), [SCORECARD](audit/2026-10-26/SCORECARD.json) and [FINDINGS](audit/2026-10-26/FINDINGS.json).
+4. The corresponding source bodies, tests, SQL and configuration, using [source paths](inventories/source-paths.md), [symbols](code-flow/05-module-symbol-index.md), [test declarations](inventories/test-index.md) and [route occurrences](inventories/routes.md).
+5. [External-review prompt](AI_ANALYSIS_PROMPT.md) for a new independent pass.
+
+| Evidence label | Meaning |
 | --- | --- |
-| Snapshot source | Included implementation/configuration at the manifest's byte identity. |
-| Package verification | The current 347-file snapshot closes unchanged demo bytes into Git and adds a public pending handoff/navigation. Complete paths, bytes and clean status are verified; AST/schema/dependency artifacts retain their prior execution evidence by unchanged hashes. Prior publications remain in Git; product-test execution is separately reported. |
-| Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
-| Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
-| Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records current Worker identity, real OAuth/token exchange, fourteen-tool discovery and two connected reads, separately from five fresh anonymous checks and 185 exact assets supplied by the implementation coordinator. |
-| Not established | Business writes/complete campaign flow, remaining tool paths, Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
+| Current source | Included product bytes at the declared commit. Source facts do not prove deployed behavior. |
+| Audit execution | Local/synthetic tests, independent drivers, real native media and browser observations recorded during the 26 October audit. Prepared suite: 333/333 PASS, no skips; build and Worker dry run PASS. |
+| Package verification | Publication checks on projection identity, generated catalogs, links, exclusions and seals. It is not another product-suite run. |
+| Historical delivery | Dated provider/deployment/owner observations retained under their original receipt. They are not current live readback. |
+| UNKNOWN | Required evidence remains unavailable or insufficient. It neither earns PASS credit nor proves a defect. |
+| Human/provider evidence | Actual host consent, service confirmation, physical-device behavior, creative quality and acceptance require their own evidence. |
 
-The review contains no private governance, owner workspace, sessions, provider accounts or runtime database rows. Schema catalogs are empty reconstructions. Test fixtures and Help/demo assets are synthetic/public product material. Package integrity is not security certification or product acceptance.
+The audit verdict is FAIL because F01 is a confirmed minor localization defect in C12. F03/F04 are two minor WEAK_TEST findings. F02 remains suspected SPEC_AMBIGUITY around the central ACK response. W=60, P=34, F=3, U=23; D=56.67%, C=61.67%, unknown=38.33%. A green suite does not replace that verdict.
 
-The stable product sequence is: sole-owner access; product/material management; deterministic missing-label classification; literal library preparation and rule-based proposal; explicit save/render; actual-result review and exact-revision approval; manual export. Editorial drafts/outcome confirmation remain a distinct earlier workflow. Agents and MCP complement those rules; neither can bypass approval or turn a generated sentence into an external publication.
+The normal flow is owner access → product/material management → native classification/planning → explicit saved recipe/render → actual-result review and exact-revision approval → manual export. Earlier editorial records remain a distinct workflow. Optional Agents and MCP reuse the native rules. Service-notice acknowledgements, own-data rights and Analytics preferences are separate controls.
+
+The review package contains no owner workspace, credential store, live database rows or private agent instructions. Schema catalogs are empty reconstructions. Test/Help/demo material is synthetic or public product material. Do not fetch private data or invoke providers to fill an evidence gap without separate authority. If your review is incomplete, name the unreviewed files and continue in bounded passes.
 
 
 ---
@@ -34,6 +42,8 @@ The stable product sequence is: sole-owner access; product/material management; 
 Canonical chapter: [01-architecture-and-stack.md](01-architecture-and-stack.md)
 
 # 01 — Architecture and stack
+
+Current source cut: 26 October 2026, `77bbedac`. [Functional-integrity results](12-functional-integrity-audit.md) qualify implementation and execution separately.
 
 The product is a React/TypeScript SPA with a shared Fetch-style backend and two runtime adapters. Vite serves loopback engineering APIs with local files/SQLite; the hosted Worker uses native authentication, D1, private R2 and a Durable Object managed-container processor. Supabase/PostgreSQL is retained as an inactive prepared editorial adapter.
 
@@ -72,12 +82,20 @@ The pinned runtime packages include React 19, the official MCP SDK and a Workers
 
 The architecture is deliberately one operator/one retained tenant. It has no public signup, teams, tenant switching, billing customer model or SaaS allocation. Local development trusts the loopback OS account; it is a different security environment from hosted authentication. Native subprocess controls and agents sharing one host do not prove OS isolation.
 
+Service access also passes through [policy.ts](source/server/policy.ts): deliberate versioned Terms acceptance and Privacy/Cookies notice acknowledgements are distinct from visiting or signing in. [privacy-data.ts](source/server/privacy-data.ts) provides bounded own-data export independently of accepting new Terms. These are existing source capabilities, not approvals supplied by this review.
+
+The optional [Analytics relay](source/server/analytics.ts) uses the existing authenticated owner/tenant to consult central configuration, purpose-specific preferences, declared interests and audience counts. Central Analytics owns its ledger and suppression; marKER keeps native campaigns. Missing credentials or invalid configuration disable optional work. The [contract](source/docs/analytics-integration.md) and dated release separate code publication, paused collection and actual activation. C11 remains UNKNOWN because the audit lacks authoritative ACK semantics and real central-effect evidence.
+
+The audit verified native local behavior and build/bundle paths. Real hosted processing/authentication/erasure and optional inference retain their stated unknown portions. A diagram or declared binding is not evidence that a current service ran.
+
 
 ---
 
 Canonical chapter: [02-data-model-and-transactions.md](02-data-model-and-transactions.md)
 
 # 02 — Data model and transactions
+
+Current source: 26 October 2026, `77bbedac`. Exact schema quantities come from the regenerated [catalogs](11-database-and-catalog-reference.md).
 
 The [editorial domain](source/src/core/domain.ts) holds products, social-account metadata, text sources, editorial campaigns, destination drafts/posts and recorded outcomes in one versioned Workspace document. [D1Repository](source/server/d1.ts) persists an atomic revision-checked aggregate with a 1 MiB hosted ceiling. [LocalRepository](source/server/local.ts) serializes commands and atomically replaces its local file; one process owns a data path. The [Supabase adapter](source/server/supabase.ts) and [Postgres migration](source/migrations/0001_editorial.sql) are inactive preparation.
 
@@ -98,12 +116,20 @@ The persisted authentication singleton supplies immutable user/tenant IDs withou
 
 Read all migration SQL in [source/migrations-d1/](source/migrations-d1) and the [generated D1 catalog](database/d1-reference.md). Catalog replay verifies empty schema structure, not live D1 rows, remote applied versions, runtime query coverage or restoration. Entity JSON fields must be read with their TypeScript contracts.
 
+[0012_policy_acknowledgements.sql](source/migrations-d1/0012_policy_acknowledgements.sql) adds the user/tenant-bound declaration receipt. [policy.ts](source/server/policy.ts) compares versions and requires deliberate declarations with recent proof; reading a notice or an agent call cannot accept the contract. Own-data export reads bounded declared categories through [privacy-data.ts](source/server/privacy-data.ts), with scope/exclusions in the resulting JSON.
+
+[0013_analytics_subject.sql](source/migrations-d1/0013_analytics_subject.sql) retains a source-scoped subject reference and optional central deletion receipt, without copying central preference/event history. The relay records the rights-routing reference before a first central mutation and refuses closed-account insertion. Local account deletion must resolve the central rights step before purging identity. Real external suppression remains unverified in this audit.
+
+The 26 October audit replayed all 13 D1 migrations in a new SQLite store and exercised CAS, new-connection persistence, bounded export and synthetic deletion retry/freeze. Empty-schema/catalog success does not establish current remote migration state, live data correctness or provider-side erasure.
+
 
 ---
 
 Canonical chapter: [03-product-and-user-workflows.md](03-product-and-user-workflows.md)
 
 # 03 — Product and user workflows
+
+Current source: 26 October 2026, `77bbedac`. [Audit evidence](12-functional-integrity-audit.md) separates the verified native route from real-service and user-acceptance gaps.
 
 marKER targets a solo marketer preparing reusable content. Reducing active preparation time and Gen Z usability are product goals; measured time savings and demographic validation are not established by source or screenshots.
 
@@ -114,8 +140,8 @@ marKER targets a solo marketer preparing reusable content. Reducing active prepa
 | Production | Request render → observe durable job → inspect actual MP4 → approve exact recipe/result → export MP4/TXT. |
 | Local Agents | Pair loopback bridge → choose context/role/model → request real copy → edit proposal → explicitly save through Studio → use ordinary planner/production. |
 | External MCP | Install authenticated endpoint in a compatible host → owner consent → scoped tool calls → inspect same marKER drafts → approve in marKER → export through existing checks. |
-| Earlier editorial | Manage product/account/source/campaign → draft per destination → review/slot checks → manual export → explicitly confirm actual external outcome. |
-| Profile/access | View/edit display details, link optional identities through fresh email proof, inspect provisional policies, explicitly confirm account deletion if desired. |
+| Earlier editorial records | Open existing editorial campaigns/sources/destination drafts → review/slot checks → manual export → explicitly confirm an actual external outcome. Current new-piece creation uses Studio. |
+| Profile/access and rights | View/edit display details; link optional identities through fresh email proof; deliberately acknowledge current service notices when required; request bounded own-data export or explicitly confirmed account deletion. |
 
 Account records are destination metadata, not active social-network connections. Paid proposals remain paused. An exported file, successful render and confirmed outside publication are different states. Neither Agents nor MCP exposes social publishing or advertising activation.
 
@@ -125,12 +151,18 @@ Classification is a rule-based convenience, not semantic inference. It never gra
 
 The public [55-second demo](https://marker.aekr.io/demo/) is a synthetic demonstration with player, subtitles, poster and two MP4 resolutions included in the snapshot. It is not a real-owner production session or proof of every failure path. The full illustrated Help uses synthetic UI examples and is inspectable under [public/help](source/public/help).
 
+Optional Analytics settings show central source status, separate purposes and authorized audience references/counts. The owner can explicitly declare a closed-category interest only under the applicable current permission. Terms acknowledgement does not grant an optional purpose, and campaign operations do not automatically send private materials or provider-derived content to Analytics. The dated source publication records collection paused; no real interest event or revenue was established by the audit.
+
+Current [Help](source/src/console/help-guides.ts) identifies older editorial source/campaign records as earlier work. [console.md](source/docs/console.md) still contains older creation wording; F05 records that drift without concluding the native path is disconnected.
+
 
 ---
 
 Canonical chapter: [04-frontend-and-interaction.md](04-frontend-and-interaction.md)
 
 # 04 — Frontend and interaction
+
+Current source: 26 October 2026, `77bbedac`. C12 is FAIL for the minor confirmed language defect below; other checks retain their own evidence.
 
 [App](source/src/App.tsx) and [Console](source/src/console/Console.tsx) organize authentication, navigation, lazy-loaded modules and shared state. [Studio](source/src/console/Studio.tsx) stays mounted while the Agents panel or another Console section opens, preserving preparation work. Editorial state and Studio state are separate; refreshed revisions and draft recovery must not silently overwrite newer persisted data.
 
@@ -140,8 +172,8 @@ Canonical chapter: [04-frontend-and-interaction.md](04-frontend-and-interaction.
 | Rules and selection | [StudioPlanner.tsx](source/src/console/StudioPlanner.tsx), [StudioAnalysis.tsx](source/src/console/StudioAnalysis.tsx) |
 | Agents/conversation/proposals | [Agents.tsx](source/src/console/Agents.tsx), [context](source/src/console/agent-context.ts), [stream](source/src/console/agent-stream.ts) |
 | Authentication/CAPTCHA | [Authentication.tsx](source/src/console/Authentication.tsx), [Turnstile.tsx](source/src/console/Turnstile.tsx) |
-| Profile/policies | [Profile.tsx](source/src/console/Profile.tsx), [Policies.tsx](source/src/console/Policies.tsx) |
-| Limits/device preferences | [Settings.tsx](source/src/console/Settings.tsx), [EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx) |
+| Profile/policies/data rights | [Profile.tsx](source/src/console/Profile.tsx), [Policies.tsx](source/src/console/Policies.tsx), [PolicyGate.tsx](source/src/console/PolicyGate.tsx), [PrivacyDownload.tsx](source/src/console/PrivacyDownload.tsx) |
+| Limits/device/Analytics preferences | [Settings.tsx](source/src/console/Settings.tsx), [EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx), [AnalyticsSettings.tsx](source/src/console/AnalyticsSettings.tsx) |
 | Delegated connections/login continuation | [McpConnections.tsx](source/src/console/McpConnections.tsx), [mcp-resume.ts](source/src/console/mcp-resume.ts) |
 | Help/errors/language | [Help.tsx](source/src/console/Help.tsx), [help-guides.ts](source/src/console/help-guides.ts), [ErrorNotice.tsx](source/src/console/ErrorNotice.tsx), [i18n.tsx](source/src/i18n.tsx) |
 
@@ -157,12 +189,20 @@ On OAuth login handoff, [mcp-resume.ts](source/src/console/mcp-resume.ts) accept
 
 The [retained synthetic local screenshot](review-assets/README.md) documents the earlier connection-list UI, not the current connect flow. Current bilingual connection/context illustrations are included in [public Help source](source/public/help); four new images accompany the updated guide. Reported desktop/mobile viewport checks use synthetic fixtures and do not establish physical-phone or actual host OAuth behavior.
 
+The current language control is the header EN/ES button. The Terms modal follows that global language and displays exactly `Version 20261025`; internal Terms and Privacy/Cookies identifiers remain separately versioned. The service gate records deliberate declarations, while Privacy's download control remains available under the own-data contract without accepting new Terms. Optional Analytics purposes are separate choices.
+
+**F01, confirmed minor:** Studio throws the server's raw error text and ErrorNotice displays it literally. A stale campaign form in EN therefore shows “Space cambió. Recarga antes de guardar.” after the correct 409 rejection. The draft is preserved; the defect concerns localization, not failed persistence or a CAS bypass. [Finding and reproduction](audit/2026-10-26/FINDINGS.json).
+
+Audit Edge observations covered EN→ES→reload, preserved synthetic text, a 390px viewport without horizontal overflow, loaded ES Help, real animation/pause/reduced-motion and cache opt-in/revocation. All declared Help references were integrity-checked; every screenshot's contents and physical-device/assistive-technology behavior were not exhaustively verified. These runs were part of the audit, not this documentation publication.
+
 
 ---
 
 Canonical chapter: [05-backend-api-and-access.md](05-backend-api-and-access.md)
 
 # 05 — Backend API and access
+
+Current source: 26 October 2026, `77bbedac`. Read the [audit](12-functional-integrity-audit.md) before interpreting source controls as live-service verification.
 
 The [Worker](source/server/worker.ts) resolves authenticated native access and lifecycle before private application dispatch. [entry.ts](source/server/entry.ts) also serves public demo byte ranges and exports the existing processor. [Vite middleware](source/vite.config.ts) has explicit loopback Host/IP/origin controls and denies private directories. [API route navigation](inventories/routes.md) links actual source occurrences; consult each dispatcher for exact method and dynamic path guards.
 
@@ -174,7 +214,9 @@ The [Worker](source/server/worker.ts) resolves authenticated native access and l
 | Editorial | [api.ts](source/server/api.ts): GET workspace and POST command, strict bounded payload, server revision checks. |
 | Studio | [studio-hosted.ts](source/server/studio-hosted.ts), [studio-local.ts](source/server/studio-local.ts): materials/plans/commands/settings/uploads/assets/analysis/jobs/render/approve/export. |
 | Agents | [agents.ts](source/server/agents.ts): owner/pairing routes, bounded context, connections/sessions/runs/events/proposals/effect receipts. |
-| Profile/lifecycle | [profile.ts](source/server/profile.ts): independent revision, explicit deletion, durable resumable cleanup. |
+| Profile/lifecycle | [profile.ts](source/server/profile.ts): independent revision, explicit deletion, durable resumable cleanup and central rights routing. |
+| Service declarations/own-data rights | [policy.ts](source/server/policy.ts), [privacy-data.ts](source/server/privacy-data.ts): deliberate versioned declarations, recent proof and bounded declared-category JSON export. |
+| Central Analytics | [analytics.ts](source/server/analytics.ts): owner-scoped fixed-origin relay, current configuration/ACK, separate purposes, declared interest and audience counts. |
 | MCP/OAuth | [mcp-auth.ts](source/server/mcp-auth.ts), [mcp.ts](source/server/mcp.ts): metadata, registration, bounded login/resume, consent/token/revocation, bearer tools and private artifacts. |
 
 The sole-owner model never authorizes by email equality with Google/GitHub or by a client-supplied tenant. First linking needs native email proof under five minutes at start and callback; later provider login uses the retained immutable identity. Email is a recovery path. OAuth credentials/tokens remain server-side; configured public client/site identifiers are not secrets. Native sessions have six-hour absolute and thirty-minute idle limits.
@@ -191,12 +233,20 @@ The first native-form consent correction changes HTML pages to `Referrer-Policy:
 
 Bracketed IPv6 cannot be represented as a CSP host source here. Its return uses a 200 HTML document with an escaped exact-callback meta refresh and a `rel=noreferrer` fallback anchor, no JavaScript, `no-store`, `no-referrer` and a self-only form policy. The consent form itself remains same-origin. See [the policy regression](source/tests/mcp-consent-policy.test.ts) and [OAuth callback tests](source/tests/mcp-auth.test.ts). The real synthetic Edge callback/exchange cases and actual host evidence have distinct scopes in [operations](08-operations-quality-and-limits.md).
 
+The current service gate protects product, MCP and bridge use when required declaration versions are missing; agents cannot accept Terms. Authentication, Profile/account rights and the own-data export have their separately defined access boundaries. The export requires a live owner/tenant session and recent proof, with declared categories, pagination and exclusions; it is not a full media archive.
+
+Analytics mutations require the existing owner identity and canonical same-origin/header boundary. The relay uses a fixed central origin, bounded responses/deadlines and a source credential, without exposing a caller-selected destination or private campaign capture. F02 remains specification ambiguity around the semantics of a200 ACK body; the audit did not demonstrate a durable permission bypass.
+
+Synthetic SQLite and signed-provider fixtures exercised access, lifecycle, errors and isolation. C06/C07 still retain UNKNOWN real-service portions: this audit did not send a real code, log into Google/GitHub/Turnstile, delete an owner account or verify external recipients' erasure.
+
 
 ---
 
 Canonical chapter: [06-studio-processing-and-jobs.md](06-studio-processing-and-jobs.md)
 
 # 06 — Studio processing, planning and jobs
+
+Current source: 26 October 2026, `77bbedac`. Native/local proof and real managed-service proof remain distinct.
 
 Original capture is resumable: reserve upload/storage → append bounded chunks at the expected offset → complete/probe/hash → deduplicate original bytes → create library metadata. Reselection of the same file can resume from the committed offset. Unsupported media remains conversion-pending with the original retained; file-type assumptions are checked by native probing. Private R2 bytes stream through authenticated endpoints, including ranges; no public bucket URL is needed.
 
@@ -219,61 +269,47 @@ Technical analysis is optional and limited to three originals/ranges, each ≤12
 
 Review [studio-render.ts](source/server/studio-render.ts), [studio-analysis.ts](source/server/studio-analysis.ts), [processor coordinator](source/server/studio-processor.ts), [runner](source/processor/runner.mjs), [hosted adapter](source/server/studio-hosted.ts) and [planner contract](source/src/core/studio-planner.ts). Job completion, owner approval and manual export are separate transitions. Original/history custody must survive recovery.
 
+The 26 October audit independently exercised a new native flow without an agent: original capture/hash, classification, proposal/fingerprint, saved recipe, actual FFmpeg render, exact-result approval and export. The exported 5-second 1080×1920 H.264 MP4 was probed and fully decoded. After a process restart, records and output SHA remained unchanged. Forged fingerprint, unapproved export, false approval and stale revisions were rejected.
+
+Hosted admission was exercised through real SQLite with synthetic R2/processor dependencies: reservations, 5-cent probe, 10-cent render, lost enqueue/resume, exact reuse and terminal failures. That evidence supports the exercised logic; C05 remains UNKNOWN for real R2/container/toolchain effects. A completed synthetic job is not represented as a completed Cloudflare render. See [audit report](audit/2026-10-26/REPORT.md).
+
 
 ---
 
 Canonical chapter: [07-integrations-and-capability-status.md](07-integrations-and-capability-status.md)
 
-# 07 — Agents, MCP and capability status
+# 07 — Agents, MCP, Analytics and capability status
 
-There are three distinct AI-related routes. The optional **local Agents bridge** can invoke official local Codex managed-ChatGPT inference. The **MCP connector** lets an external host call finite marKER product tools using delegated authorization; marKER need not host inference. **Hosted SIWC inference** is a separate admission/grant question and is not enabled by a Pro subscription, pairing token or MCP consent.
+Current snapshot: 26 October 2026, `77bbedac`. The optional local Agents bridge, external MCP and hosted inference are separate routes. MCP lets an external assistant call finite product tools; marKER does not need to host model inference merely to serve them. A subscription, pairing token or MCP grant does not establish hosted SIWC admission.
 
-The hosted Agents surface now presents the ordinary external-assistant connection flow. The local bridge remains available only through explicit loopback development controls; it is not a prerequisite for hosted users.
+| Route | Current implementation and audit evidence |
+| --- | --- |
+| Native no-agent preparation | Classification, literal library preparation, deterministic planning and ordinary production remain independent of optional providers. Actual native media and restart persistence passed in the audit. |
+| Local Agents bridge | [agents.ts](source/server/agents.ts), [store](source/server/agents-store.ts) and [bridge](source/tools/agent-bridge.mjs) retain context/run/proposal/effect identities. Local loopback managed-ChatGPT route only; no new inference was invoked in this audit. C09 remains UNKNOWN for the real execution portion. |
+| External MCP | [transport](source/server/mcp.ts), [OAuth](source/server/mcp-auth.ts), [tools](source/server/mcp-tools.ts) and [local adapter](source/server/mcp-local.ts) reuse native backends. Local DCR/PKCE/consent/token, 14-tool discovery, a durable product save, replay/conflict, revocation and new-instance persistence passed. |
+| Central Analytics | [relay](source/server/analytics.ts) consults the fixed central collection API for owner-scoped configuration/preferences, explicit interests and audience counts. Current-purpose/GPC/privacy-field/failure logic was exercised locally; C11 remains UNKNOWN for authoritative ACK semantics and real central effects. |
+| Hosted inference/social/paid routes | Hosted SIWC admission and effective plan grant unresolved; social APIs, automatic publication and paid activation remain deferred. Hosted analysis is disabled pending real toolchain verification. |
 
-Local Agents are implemented in [agents.ts](source/server/agents.ts), [agents-store.ts](source/server/agents-store.ts), [Agents.tsx](source/src/console/Agents.tsx) and [agent-bridge.mjs](source/tools/agent-bridge.mjs). Server-derived context binds current product, campaign and up to 30 material versions. The bridge only accepts loopback marKER origins, communicates with its Codex child over stdio and polls marKER; it opens no inbound listener. Native provider credentials stay in Codex-managed storage. The bridge strips inherited provider/pairing credentials from child environment, disables inherited MCP servers and editing/external tools, and checks effective policy. Those controls are not a proof of OS containment.
+The normal hosted Agents/Environment view opens the registered private App-backed plugin and manages authorized connections through [McpConnections](source/src/console/McpConnections.tsx). Developer bridge controls appear only in explicit loopback DEV affordances. Conversations happen in the selected external assistant; first-party human review/approval remains in marKER.
 
-Runs have explicit request identity, deadlines, one concurrent turn, lease/cancellation and final-output reconciliation. A lost completion response can replay a private receipt without invoking inference again. Offline/expired/failed runs remain visible and do not choose another billing route. Editable copy is explicitly saved through Studio with trusted provenance; assembly/render/approval/export reuse native rules. Local 30-day default cleanup removes old activity/unused conversations while preserving applied proposal/run/context evidence. Retained-history ceilings can require maintenance; no provider-side erasure guarantee follows.
-
-## Authenticated external MCP
-
-Read the complete [connector contract](source/docs/mcp-connector.md), [transport](source/server/mcp.ts), [authorization](source/server/mcp-auth.ts), [store](source/server/mcp-auth-store.ts), [tools](source/server/mcp-tools.ts), [local adapter](source/server/mcp-local.ts) and [migration](source/migrations-d1/0010_mcp.sql). The endpoint is `/api/mcp`; OAuth metadata paths must run before SPA fallback. The official SDK serves stateless Streamable HTTP/JSON with the Workers-compatible schema validator.
-
-Public clients use dynamic registration (`none` token authentication), Authorization Code and PKCE S256. Existing marKER owner login precedes an explicit consent page naming client/callback/scopes. A server-validated, single-use ten-minute correlation handle carries the transaction through ordinary email/Google/GitHub login; the same-origin UI resumes it after authenticated session discovery while retaining the Strict owner cookie. Native literal-loopback HTTP callbacks may vary only their port, and token exchange binds the concrete callback. Consent HTML uses `Referrer-Policy: same-origin` so its native form retains canonical Origin for strict validation. DNS/IPv4 callback origins are validated and included exactly in the consent CSP for a 303 return; bracketed IPv6 uses an escaped 200 meta/anchor handoff with self-only CSP and no JavaScript. JSON and return responses retain `no-referrer`. Cookies, strict Origin and single-use consent remain enforced. Focused corrections and browser evidence are qualified in [operations](08-operations-quality-and-limits.md). Tokens are opaque; stored access/refresh/code/consent values are hashes. Proofs bind resource, client, redirect, tenant and user. Refresh rotation reuse revokes its family; Environment can revoke a grant. A client cannot select a tenant.
+MCP uses opaque scoped credentials, Authorization Code/PKCE S256, bounded owner consent and a single-use login-resume handle. Native literal-loopback callbacks may vary only their port; remote callbacks match exactly. Client/resource/user/tenant/scopes and current account lifecycle are validated server-side. Refresh reuse revokes its family, and disconnect closes access. Refer to the [connector contract](source/docs/mcp-connector.md) and [source tests](source/tests/mcp-auth.test.ts) for exact limits and errors.
 
 | Scope | Finite tools |
 | --- | --- |
 | `marker:read` | `marker_get_profile`, `marker_search`, `marker_get_campaign`, `marker_get_material`, `marker_prepare_plan`, `marker_get_job` |
 | `marker:write` | `marker_save_product`, `marker_save_campaign`, `marker_save_material`, `marker_classify_materials`, `marker_save_plan`, `marker_edit_variant` |
 | `marker:produce` | `marker_render`, `marker_export` |
-| `marker:delete` | `marker_delete` |
+| `marker:delete` | `marker_delete`, only after its separate explicit grant |
 
-The normal tool catalog exposes fourteen read/write/produce descriptors, including actions whose permission has not yet been granted, so a host can request an upgrade. `marker_delete` is listed only after a separate delete grant. Discovery never grants execution: missing scope returns HTTP or MCP `_meta["mcp/www_authenticate"]` challenges before effects or receipts. Protected-resource discovery starts with minimal read scope; authorization metadata lists all supported scopes.
+The ordinary catalog describes 14 non-delete actions; listing an action does not grant execution. Writes require applicable revisions and a stable request ID bound to grant/tool/arguments. Identical completed requests replay the result; changed arguments conflict. Pending or uncertain effects require reconciliation rather than a new ID. At-most-once admission is not a distributed transaction between the domain write and the receipt.
 
-New text/ideas default to unknown rights and unreviewed unless the user explicitly supplies facts. Tools cannot approve, publish socially, delete the account, execute SQL/shell/HTTP generically or upload arbitrary originals. They call the same native preparation/domain/Studio routes; human approval remains in marKER.
+Tools cannot approve the result, delete the account, publish socially or execute arbitrary shell/SQL/HTTP. TXT is literal approved text; MP4 uses a private revision-bound download checked against native export rules. Original media enters through the ordinary UI. The portable [plugin package](source/integrations/chatgpt/marker) is reproducible developer source and does not recreate an account-specific registered App binding.
 
-Writes require expected revisions and stable request IDs bound to grant/tool/arguments. Identical completed requests replay results. Pending/uncertain execution is not automatically retried. This is at-most-once admission, **not a cross-store transaction** between domain mutation and effect receipt; a committed write with lost receipt requires reconciliation. Per-grant effect capacity is 5,000.
+Versioned [policy declarations](source/server/policy.ts) are deliberate first-party actions. They do not grant optional Analytics purposes or let an assistant accept agreements. [Own-data export](source/server/privacy-data.ts) and [account deletion](source/server/profile.ts) retain separate rights/access rules. Analytics does not maintain a competing consent/commercial master or automatically capture Space, campaigns or provider-derived content. Its dated [publication receipt](source/docs/ANALYTICS_RELEASE_2026-10-25.md) records collection paused; no live status refresh or commercial event occurred in the audit.
 
-TXT export returns approved literal text. MP4 export returns a private revision-bound URI, with scoped token or existing owner-session download and a fresh check of native approval/export rules. No public bearer URL is created. Access tokens last 15 minutes; grant families 30 days; codes 2 minutes; consent 10 minutes; never-authorized registrations 90 days. Approved client IDs persist across grant expiry, revocation and reconnection. Limits include 200 retained clients, 20 registrations per observed IP/hour and 30 owner consent requests per ten minutes. Pending-login admission allows 20 attempts per observed IP per ten minutes and 2,000 retained pending requests; each expires after ten minutes. CIMD is not advertised. Browser-origin calls are restricted to the canonical marKER origin; server-to-server hosts omit Origin. Remote hosts cannot reach a local loopback endpoint.
+Earlier hosted OAuth/catalog and two connected-read observations are retained under their dated [deployment receipt](DEPLOYMENT-STATUS.md) and product documents. They are historical evidence, not fresh results from this publication or a complete actual-host campaign. The local audit's real tool write does not substitute for that missing target-host flow. Dot/voice/physical-phone use, real refresh/reconnect/scope upgrades, private attachment behavior, CIMD/protocol migration and public submission remain separately bounded work.
 
-Expired grants cascade credentials and request receipts; applied product entities retain normal domain custody. [Migration 0011](source/migrations-d1/0011_mcp_connections.sql) adds approved-client lifetime and the pending-login table; the local MCP store upgrades transactionally while preserving its separate identity. Account deletion freezes and purges all eight connector tables. This is not indefinite connector audit retention.
-
-## Capability ledger
-
-| Capability | Snapshot status |
-| --- | --- |
-| Native manual/editorial/Studio/planner | Implemented; prior hosted delivery and current local native checks have separate evidence. |
-| Deterministic missing-label classification/library preparation | Implemented and verified locally; no semantic inference. |
-| Local managed-ChatGPT Agents bridge | Implemented; one prior actual fictional-copy request reported in product docs; no new provider call in this refresh. |
-| Authenticated MCP source/local SDK/native-media path | Implemented and root-verified locally; real ChatGPT owner OAuth and fourteen-tool discovery now verified. Two actual connected reads pass; business writes, complete campaign flow and Dot/phone conversation remain untested. |
-| Hosted MCP migration/deployment | Migrations 0010/0011 remain applied; Worker `d5f43234-74b2-4c45-a850-4f1dab75620c` at 100%. Five anonymous checks and 185 exact assets were freshly reverified on the final Worker, separately from actual owner OAuth and two connected reads. See [deployment evidence](DEPLOYMENT-STATUS.md). |
-| Hosted SIWC inference | Admission/client/effective plan grant unresolved. |
-| Hosted technical analysis | Disabled until native toolchain verification. |
-| Connected social APIs, advertising activation, live metrics, Android automation | Deferred/unimplemented. |
-| Transcription/subtitles/semantic media selection/PWA background capture | Separate future capabilities. |
-
-The canonical connection is now an **App-backed private plugin, version 1.0.1**, registered through the host's custom-MCP flow and retaining its real App binding when the campaign skill was added. Read is the base permission, read/write/produce are selected defaults, and delete remains unchecked. The earlier raw package is retained as a developer artifact. The ordinary CTA points to the registered connection. The served installation URL/identifier is explicitly authorized public configuration; the plugin audience remains private and its account binding files are excluded. Following the consent/callback corrections, real owner OAuth returned to ChatGPT and the Connect action disappeared. Sanitized server evidence confirms one approved client, one exchanged code, one token row and two grant rows, including one orphan from the earlier failed return. The actual ChatGPT App catalog lists six Read and eight Write tools; native prepare/classify are visible and delete is absent. The coordinator then invoked `marker_get_profile` and `marker_search` for products with limit 1 through the actual OpenAI connected-tool route; both returned non-error results with valid identity/search structure. No returned owner payload is published. These two reads verify that route, not every tool, business writes, a complete campaign or Dot/phone conversation. Earlier installed-page and zero-grant observations belong to the prior package checkpoint and are not fresh grant counts for this release.
-
-The reproducible package lives in [plugin.json](source/integrations/chatgpt/marker/plugin.json), [mcp.json](source/integrations/chatgpt/marker/mcp.json) and [prepare-campaign/SKILL.md](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md). This portable version 0.1.0 contains no account-specific installation ID or credential and does not by itself create the registered App connection. The skill requires current revisions, stable request IDs, explicit facts/rights and first-party approval. The prior packaging increment verified three-file ZIP parity and the intended portable manifest contract; that is not validation of the current private App binding. OpenAI authentication extensions can diverge from the generic portable base-schema validation; this is not an all-host compatibility claim. The [integration design](source/docs/assistant-integration-design-2026-10-24.md) records the a675f8d baseline and implementation plan; its future-tense gaps are historical. Use current code and this capability ledger for delivered behavior. CIMD/SDK/public-submission work remains separately qualified. The pinned SDK currently negotiates MCP2025-11-25; the actual host version must be observed. No universal-host, newer-protocol or voice compatibility claim follows.
+F02 is **suspected SPEC_AMBIGUITY**, not confirmed FALSE_SUCCESS: the relay treats ACK HTTP 200 as confirmed despite a synthetic false/empty JSON body, but the authoritative ACK schema is unavailable. Obtain the contract and a real sandbox readback before deciding correctness. Source/fixture conventions alone cannot define it.
 
 
 ---
@@ -282,34 +318,34 @@ Canonical chapter: [08-operations-quality-and-limits.md](08-operations-quality-a
 
 # 08 — Operations, quality and limits
 
-The current 347-file snapshot closes source Git custody: the twelve former demo paths are committed unchanged, two navigation documents are updated and one public status handoff is added. Complete source identities, clean status, public boundaries, links and package hashes are checked afresh. Unchanged AST/schema/dependency catalogs retain prior verification; product tests and browser/host evidence are coordinator-reported and were not rerun by this review worker. [CURRENT-STATE.json](CURRENT-STATE.json) records each scope.
+Current source projection: 26 October 2026, `77bbedac`, clean, 368 tracked product files. The public package combines the source with sanitized [audit evidence](audit/2026-10-26/REPORT.md). Package checks regenerate source navigation/catalogs and verify publication boundaries; they do not rerun product behavior or perform a deployment.
 
-The coordinator reports **28 focused OAuth/SDK/policy tests**, server TypeScript and Worker dry run PASS, plus an independent final review PASS. The five protected native classifier/planner/analysis/domain modules remain unchanged. All twelve formerly uncommitted demo paths are now tracked in the source closure commit with byte-identical contents. The coordinator also reports a fresh closure build including frontend/server types and original-logo checks PASS. No native-engine change or new deployment accompanies this closure.
+| Evidence from the 26 October audit | Result and boundary |
+| --- | --- |
+| Prepared complete suite | 333 discovered/executed/PASS, 0 skipped. Build-generated processor modules, declared media tools, a synthetic private-file sentinel and Windows polling preparation were required. Initial failures remain recorded. |
+| Build and Worker bundle | Frontend/server types, Vite/assets/logo and local Worker dry run PASS. No deploy or hosted readback follows. |
+| Native media/persistence | New no-agent flow, real 5-second 1080×1920 H.264 MP4, complete decode, independent original/output hashes and persistence after restart. |
+| MCP | Local OAuth/SDK/backend save, 14 descriptors, replay/argument conflict/scopes/revocation and new-instance readback. Actual target-host campaign still missing. |
+| Data/access/failures | New SQLite schemas, retained identity, policy/own-data export, CAS and write failure; synthetic lifecycle/erasure and external-service failures. Real provider effects remain UNKNOWN. |
+| Browser/demo | EN/ES and draft preservation,390px Help, cache and temporal animation controls; actual 55-second demo seek/frame and real-file range comparisons. No physical-phone or current CDN proof. |
+| Negative controls | Directed no-write/range/constant-classification mutations, external judgment and exact baseline restoration. Timeouts were not credited as successful assertions. |
 
-Two real-browser failures required focused corrections. First, the consent HTML's `no-referrer` policy produced `Origin: null` in a native form despite a present owner cookie; strict Origin validation correctly rejected it before any grant write. HTML now uses `same-origin`. Second, the consent page's self-only form policy blocked the external callback after a grant had committed. Validated DNS/IPv4 callback origins now appear exactly in the consent CSP for the 303 return. Bracketed IPv6 returns through an escaped 200 meta/anchor document with no JavaScript, no referrer/store and a self-only form policy. Strict Origin, owner cookies, PKCE, client/resource/callback matching and single-use consent remain enforced; unsafe hostname punctuation is rejected before CSP construction.
+The verdict remains **FAIL for minor F01**, despite the prepared green suite. F03 records non-autonomous test prerequisites/private-file assumptions. F04 records unbounded streaming behavior under mutation and cleanup masking an assertion. Neither weakness establishes evaluator manipulation. The independent checks recovered trustworthy evidence for the exercised behavior. [Finding details](audit/2026-10-26/FINDINGS.json).
 
-Actual synthetic Edge fixtures completed both IPv4 and IPv6 callbacks: one callback, one grant, HTTP 200 code exchange and one token per isolated case, with no CSP errors or external referrer. This browser result is distinct from the unit/SDK checks and from the owner's actual connection.
-
-**Real host connection is now verified.** OAuth returned to ChatGPT, its Connect action disappeared, and the actual App catalog lists **fourteen tools: six Read and eight Write**. Native preparation/classification are visible; `marker_delete` is absent. Sanitized server aggregates show **one approved client, one exchanged code, one token row and two grant rows**, including one orphan from the earlier failed return. No private account UI, token, code, chat payload or binding is exported. The coordinator subsequently invoked `marker_get_profile` and `marker_search` (products, limit 1) through the actual OpenAI connected-tool namespace. Both returned `isError=false`; profile identity was present and the search revision/items structure was valid. These are two actual read operations, not merely catalog visibility. No business writes were performed. Remaining tool paths, campaign execution, a Dot conversation, voice support and phone behavior remain unverified.
-
-Current Worker: `d5f43234-74b2-4c45-a850-4f1dab75620c`, **100%**. No new migration or asset change accompanies this correction; migrations 0010/0011 remain applied. At `2026-10-25T02:34:09Z`, the coordinator freshly reran five anonymous checks and SHA-verified all 185 static assets on the final Worker. Generic error HTML returned same-origin referrer policy and self-only CSP. These anonymous checks do not assess owner authentication; real OAuth and the two connected reads are separate evidence. [Deployment status](DEPLOYMENT-STATUS.md) gives the current and inherited boundaries.
-
-Historical evidence remains in prior publications: the seamless-UI increment had 47 focused tests, build/logo checks, and synthetic desktop/mobile production-UI fixtures with zero `/api/agents` calls and no bridge commands. The original connector had 75 focused local checks, a later 12-test subset, and a local SDK→native plan/save→FFmpeg 10-second 1080×1920 MP4→separate first-party approval→46,703-byte export with zero provider/model calls. These counts are not added to the current 28-test run or represented as a real-host business workflow.
-
-The canonical private App-backed plugin remains version 1.0.1; the portable 0.1.0 package is a separate developer artifact. Public identifiers/CTA are authorized configuration, not private App bindings or expanded audience. No public plugin listing, human UAT or creative-quality acceptance is asserted.
+The frozen capability score is W = 60 = 34 + 3 + 23: D = 56.67%, C = 61.67%, weighted unknown = 38.33%. C05/C06/C07/C09/C11 retain real-service or contract gaps. These figures are neither code coverage nor percentages of all possible defects. No broad dependency-vulnerability audit, universal security certification or OS containment proof is claimed.
 
 | Operational control | Bound and limitation |
 | --- | --- |
-| Settings | US$20 internal planning maximum, initially US$10 processing, US$0 future AI, 2 GiB storage, 20-second default duration. |
-| Compute admission | Probe 5 internal cents; render 10; enabled analysis 5. Credits are not measured Cloudflare billing or an invoice hard cap. |
-| Local bridge defaults | 30 runs/day, one concurrent, 300 seconds, 30-day selective cleanup; retained provenance survives cleanup. These developer controls do not set external-host quotas. |
-| Connector | Client/grant/token/login/request bounds remain in the connector chapter. One retained orphan grant records a failed callback return; no cleanup or second token is claimed. |
-| Recovery | Prior isolated D1 backup/0011 rehearsal preserved 36 existing backup tables; this is not complete D1/R2/job/provider restoration. This worker did not read the backup. |
-| Retention | Ordinary material deletion retains originals/history; confirmed account deletion freezes and purges all eight MCP tables in its resumable workflow. |
+| Settings | US$20 internal planning maximum; initially US$10 processing, US$0 future API AI allocation, 2 GiB storage and 20-second new-piece duration. Saved values and CAS govern admission. |
+| Compute credits | Probe 5 internal cents; render 10; enabled analysis 5. These are admission credits, not measured Cloudflare charges or an invoice hard cap. |
+| Hosted analysis | Refuses admission while its tested hosted tool version is absent. Local FFmpeg evidence does not enable the remote binary. |
+| Connector/Agents | Bounded contexts, grants, requests, histories, leases and deadlines; no automatic inference/provider/billing fallback. Native and host limits are distinct. |
+| Retention and deletion | Originals/history survive ordinary entry removal. Confirmed account deletion freezes access, resumes cleanup and routes central rights. External copies, logs/backups and orphan multipart parts retain disclosed boundaries. |
+| Recovery and costs | No complete D1/R2/job/provider restoration or current invoice comparison was performed. Dated operational receipts retain their own narrower scope. |
 
-Known orphan multipart uploads without a recoverable reference depend on the bucket lifecycle rule. Product docs report a seven-day all-prefix abort rule readback on 2026-10-24; this refresh did not recheck it. Downloads, independent local copies, provider account data/logs/backups and operator recovery copies are outside immediate active-account erasure. Do not restore deleted identity/content from recovery copies.
+Current source adds deliberate service declarations and bounded own-data export, plus the owner-scoped central Analytics relay. The dated [policy/rights release](source/docs/POLICY_RIGHTS_RELEASE_2026-10-25.md) and [Analytics release](source/docs/ANALYTICS_RELEASE_2026-10-25.md) identify their prior deployment/migration evidence. The audit/publication did not rerun those remote operations or activate collection. F02's ACK uncertainty is explicit.
 
-Remaining evidence gaps: actual host business writes, other unexecuted tool paths and complete campaign workflow; Dot/voice and physical iPhone/Safari or Android/Chrome behavior; the ten-piece creative/time-saved pilot; hosted analysis toolchain; invoice comparison; complete recovery rehearsal; broader security/accessibility evaluation. Source reading does not authorize inference, deployment, remote migrations or owner deletion. No product-wide acceptance or independent OS containment is claimed.
+The [24 October dossier](marKER-FULL-DOSSIER-2026-10-24.md) and [deployment status](DEPLOYMENT-STATUS.md) preserve earlier source/host observations. They are not descriptions of the latest live Worker verified today. Remaining priorities are [here](PENDING-REPORT.md): minimal fixes and independent verification, real dedicated sandboxes, actual assistant campaign/lifecycle, physical devices, creative/time-saved pilot and complete operational recovery.
 
 
 ---
@@ -318,32 +354,30 @@ Canonical chapter: [09-review-guide-and-open-decisions.md](09-review-guide-and-o
 
 # 09 — Review guide and open decisions
 
-Review the full source projection, not only this narrative. Preserve the independent no-agent native workflow, one retained owner/tenant, explicit rights/readiness/speech facts, original media, immutable generation/job provenance, revision conflicts, human approval of exact output and manual export. Preserve the original logo/font/license assets. Avoid rebuilding delivered functionality or adding a provider call to deterministic work.
+Read the full current `77bbedac` source, [chapter 12](12-functional-integrity-audit.md) and the [audit findings](audit/2026-10-26/FINDINGS.json). Preserve the no-agent native workflow, one retained owner/tenant, explicit source facts/rights/readiness/speech, original bytes, provenance, CAS, exact-result human approval and manual export. Preserve original logo/font/license assets.
 
 | Area | Concrete review question |
 | --- | --- |
-| Native flow | Can Space selection, recovered drafts or cached variants substitute an earlier source set or overwrite human copy? |
-| Classification | Can missing-label rules accidentally imply rights, readiness, semantic quality or speech absence? |
-| Planner | Can changed permissions, ranges/history, explicit consent or stale fingerprints bypass server recomputation? |
-| UI | Are selection, stale revisions, interrupted uploads, optional Agents and errors understandable on narrow screens and keyboard navigation? |
-| Auth/lifecycle | Can concurrent callback/session/bridge/MCP work survive account freeze, relink identity incorrectly or recreate deleted data? |
-| MCP authorization | Are PKCE/resource/client/tenant/scope checks, single-use login/resume, literal-loopback callback port matching, approved-client lifetime, refresh reuse, consent CSRF, scope-upgrade challenges, private downloads and revocation correct at every boundary? |
-| MCP effects | Can ambiguous network failure cause a duplicated mutation, stuck receipt or unsafe retry? Is reconciliation actionable? |
-| Agents | Can context drift, lease expiry, cancellation or completion replay fabricate provenance or repeat inference/effects? |
-| Processor/custody | Are deadlines, parser/protocol bounds, reservations, enqueue recovery and object finalization safe under interruption? |
-| Retention | Are applied evidence, grants, multipart leftovers and deletion exclusions truthful and operationally maintainable? |
-| Complexity | Which abstraction or duplicated boundary can be removed while preserving the mandatory behavior? |
-| Value | Which minimal workflow improvement would measurably reduce active preparation time? |
+| Confirmed F01 | Can error codes be localized in EN/ES while preserving current 409 rejection, raw saved content and unsaved drafts? |
+| Test reliability F03/F04 | Do tests declare/prepare generated modules and synthetic private fixtures? Can an ignored Range/no-write defect fail promptly with its original assertion preserved? |
+| Analytics F02 | What is the authoritative ACK response schema? Does a real central rejection leave the relay unconfirmed and disabled under the actual contract? |
+| Native planning | Can explicit selection, recovered drafts, rights/history changes or forged/stale fingerprints substitute sources or bypass server recomputation? |
+| Media/effects | Are offsets, quotas/reservations, enqueue loss, exact render reuse, leases and object finalization correct under interruption? |
+| Identity/lifecycle | Can stale callbacks, sessions, bridge/MCP work or late writes escape account freeze, relink identity or recreate deleted records? |
+| Service declarations/rights | Are versioned declarations deliberate and actor-bound? Can own-data rights be exercised without accepting new Terms or optional purposes, with honest export exclusions? |
+| Analytics privacy | Are current config/purpose/GPC/destination checks server-side? Are private Space/campaign/provider contents excluded, and rights receipts distinguished from recipient erasure? |
+| MCP | Are scope/resource/client/user/tenant checks, login-resume, callbacks, refresh reuse, replay, uncertain effects and private exports preserved? |
+| Optional Agents | Do source drift, lease/deadline/cancellation and completion replay retain truthful provenance without repeating inference or effects? |
+| UI/value | Are state/recovery/keyboard/narrow-width behavior understandable, and what measured change reduces active preparation time? |
+| Operations | What real-service, cost and restoration evidence remains unavailable? Which minimal change closes a concrete gap? |
 
-Real owner OAuth and fourteen-tool discovery are now verified after native-form referrer and callback-CSP corrections. Review browser policy, exact callback-origin construction, IPv6 return handling and retry/replay cases together; a successful SDK fixture alone did not cover the original browser failures. Two actual connected reads (profile and bounded product search) now pass. Business writes, remaining tool paths and a full assistant-driven campaign remain untested.
+The audit confirmed one minor product failure, two minor test weaknesses and no evaluator manipulation within its reviewed scope. Challenge those conclusions with reproducible evidence; consensus is not reproduction. F02 must remain suspected until its external contract is established. F05's stale editorial wording does not prove a disconnected main implementation.
 
-Follow the [prioritized pending report](PENDING-REPORT.md), including the exact original Torres del Paine and sun icon (not applied: owning App UI has no logo-edit control), private-plugin/public-submission distinction, deliberate sole-owner eligibility and bounded integration-durability followups. These are explicit gaps or future choices, not demonstrated failures.
+Open evidence includes real hosted processing/authentication/erasure, real bridge inference, central Analytics effects, an actual connected-assistant campaign and lifecycle, Dot/voice/physical-phone use, hosted analysis binary verification, a human creative/time-saved pilot, current invoices and complete recovery. Public source access does not imply public plugin availability, a wider authorized user base, hosted inference eligibility, social publication or paid activation.
 
-Open decisions include actual hosted SIWC admission; actual registered-App business writes, unexecuted tool paths and complete campaign flow and Dot/voice/phone capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
+For every issue provide severity/category, CONFIRMED/SUSPECTED/BLOCKED state, exact path/line, requirement, minimal trigger, expected/observed result, configuration, reproduction/evidence, impact, legitimate alternatives, smallest correction and independent verification. Distinguish source facts, actual local/synthetic runs, dated hosted receipts, inference and unknowns. Do not infer AI authorship, deceptive intent, exploitation or legal/security certification from style or a missing test.
 
-For every finding provide priority, exact source path/line, observed behavior, trigger or counterexample, confidence/evidence class, user impact, smallest coherent change, affected frontend/backend/schema/effect boundaries, preserved invariants, focused success/failure/concurrency tests, migration/recovery needs and any unresolved owner decision. Separate demonstrated defects, plausible risks, usability improvements and optional roadmap work. Do not claim runtime performance, provider eligibility, actual invoices, UAT or deployed behavior from static source.
-
-End with a coverage ledger: files/flows actually read, tests actually run, evidence unavailable, and findings ordered by impact. Recommendations can propose changes, but this review request itself does not authorize deployment, paid/provider calls, credential access, messages, social publication or destructive owner-data operations.
+End with file/flow coverage, tests actually executed, excluded/sampled areas, unresolved evidence and a correction sequence. Use the [review prompt](AI_ANALYSIS_PROMPT.md) and [pending priorities](PENDING-REPORT.md). Review recommendations do not authorize implementation, deployment, providers, credentials, external messages or destructive operations.
 
 
 ---
@@ -352,24 +386,26 @@ Canonical chapter: [10-source-map-tests-and-dependencies.md](10-source-map-tests
 
 # 10 — Source map, tests and dependencies
 
-The source projection contains **347 files** totaling **35,805,384 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The current projection contains the 368 tracked product files at clean source commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`. It includes complete selected source, tests, migrations, build/configuration, portable assistant package, maintained product docs, original brand/fonts, Help and public demo assets. The dated 24 October dossier retains its historical 347-file cut; it is not the current source inventory.
 
-- [Every source path and hash](inventories/source-paths.md).
-- [Machine snapshot, clean source commit and historical demo provenance](source-snapshot-manifest.json).
-- [Module/symbol/import/call navigation](code-flow/05-module-symbol-index.md).
-- [Full AST metadata](inventories/ast-index.json).
-- [Server route occurrences](inventories/routes.md).
-- [All static test declarations](inventories/test-index.md).
-- [Locked dependencies and commands](inventories/dependencies.md).
-- [Public demo hashes/URLs](inventories/public-media.json).
+| Generated reference | Use |
+| --- | --- |
+| [Source paths](inventories/source-paths.md) | Exact current included paths, sizes and hashes. |
+| [Snapshot manifest](source-snapshot-manifest.json) | Captured source identity and projection treatment. |
+| [Module/symbol/import navigation](code-flow/05-module-symbol-index.md) | Navigable source structure. |
+| [AST metadata](inventories/ast-index.json) | Parsed module/symbol/import/call metadata and current counts. |
+| [Route occurrences](inventories/routes.md) | Source occurrences; read dispatchers for effective guards. |
+| [Test index](inventories/test-index.md) | Static declarations and locations, not proof of execution. |
+| [Dependencies/commands](inventories/dependencies.md) | Lockfile resolutions and scripts. |
+| [Public media](inventories/public-media.json) | Included demo URLs, metadata and hashes. |
 
-The TypeScript parser indexed **116 modules**. The static test index contains **308 declarations across 42 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
+Use the generated catalogs for AST/test/file/byte quantities; no stale narrative count is substituted for their current output. Generated Worker runtime declarations and vendor dependencies receive different treatment from first-party executable code. Parse success, declaration counts and package hashes do not prove reachability or a passing suite.
 
-Source files were copied byte-for-byte from the frozen clean checkout; all are tracked and no working-tree overlay remains. The previous 346-file projection is retained in Git, with only two navigation docs changed and one public status handoff added. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
+During the 26 October audit, the prepared complete suite passed 333/333 without skips; build/types/assets and local Worker dry run passed. F03/F04 preserve prerequisite and verifier-failure weaknesses. The package publication does not repeat those runs. See [audit operations](08-operations-quality-and-limits.md) and [REPORT](audit/2026-10-26/REPORT.md).
 
-For local review, enter `source/`, install the exact lockfile with `npm ci`, then use the documented type/build/test commands with synthetic local data. Native media tests require the declared local FFmpeg toolchain. These setup steps are optional reviewer actions; this documentary refresh did not repeat the root product suite. The product does not need private governance files to build.
+A fresh reviewer should use a disposable copy and the exact lockfile, prepare generated processor modules through the documented build, provide declared FFmpeg/font tools and a synthetic private-file fixture when reproducing affected tests. The Windows audit needed source polling. Do not copy private governance or owner data as fixtures. These prerequisites and their limits are evidence, not an instruction to execute providers or expose a development server.
 
-Excluded paths are explicitly listed in the manifest. Dependency installations, build/generated output, private inputs/governance/evidence, actual environment/secret files, account/credential stores and runtime owner data are not missing implementation. The safe blank `.dev.vars.example` and public Wrangler/site identifiers remain available for configuration review.
+Actual credentials/environment values, private inputs/governance, owner runtime stores, dependency installations and generated build outputs are excluded from the source projection. Blank example configuration and public product configuration remain reviewable. Published audit outputs are separately sanitized; their provenance/exclusions belong to the audit package.
 
 
 ---
@@ -378,19 +414,59 @@ Canonical chapter: [11-database-and-catalog-reference.md](11-database-and-catalo
 
 # 11 — Database and catalog reference
 
-All snapshot D1 migrations, including Agents, retained operator identities, Google/GitHub linking, Profile/account lifecycle and additive MCP grants/effects, were applied to an empty in-memory SQLite database. Exported schema-only DDL was replayed into another empty database and checked for integrity and foreign-key consistency. No live/local runtime database was opened.
-
-The reconstructed D1 application schema has **36 tables, 201 columns, 14 explicit indexes and 71 triggers**. Local Studio initialization has **10 tables and 33 columns**. These are different catalogs; local auth/Agents/MCP use additional separate stores as shown in their adapters.
+Current source at `77bbedac` includes the D1 migration sequence through [0013_analytics_subject.sql](source/migrations-d1/0013_analytics_subject.sql). The latest two additions are [0012_policy_acknowledgements.sql](source/migrations-d1/0012_policy_acknowledgements.sql), for deliberate versioned service declarations, and 0013 for central rights-routing identity/receipt. No owner rows or runtime database files are published.
 
 | Reference | Contents |
 | --- | --- |
-| [D1 catalog](database/d1-reference.md) | Tables, fields, keys, indexes, trigger names and source migrations. |
-| [D1 schema](database/d1-schema.sql) | Empty table/index/trigger DDL, without owner data. |
-| [D1 JSON](database/d1-catalog.json) | Structured schema metadata and exact SQL-input provenance. |
-| [Local Studio catalog](database/local-studio-reference.md) | Static Studio constructor SQL separately reconstructed. |
+| [D1 catalog](database/d1-reference.md) | Current tables, columns, keys, indexes, trigger names and migration provenance. |
+| [D1 schema](database/d1-schema.sql) | Empty schema DDL, without owner records. |
+| [D1 JSON](database/d1-catalog.json) | Structured schema metadata and exact input provenance. |
+| [Local Studio catalog](database/local-studio-reference.md) | Local constructor SQL reconstructed separately. |
 | [Supabase reference](database/supabase-reference.md) | Inactive PostgreSQL editorial adapter, separately qualified. |
 
-Migration seed statements create fresh random identities only inside the temporary empty reconstruction; exported DDL contains no rows. Trigger and FK structure does not prove deployed migration state, actor authorization, deletion execution, data validity or query performance. JSON document fields live in application types and validators, beyond SQL columns. Review transaction guards and runtime adapters with the schemas.
+Exact table/column/index/trigger totals come from these regenerated catalogs. The old 24 October 36-table narrative is historical and does not override current generated metadata. Local auth, Agents and MCP use separate stores; local Studio totals are not the hosted schema totals.
+
+Catalog generation replays SQL into empty temporary SQLite databases and checks schema/FK integrity. Migration seeds create only fresh synthetic identities in that reconstruction; exported schema contains no rows. The audit also exercised migrations and selected real SQL transactions, CAS, policy/own-data rights and synthetic deletion failure/retry. Those are separate execution evidence.
+
+Schema structure does not prove remote migration state, actor authorization, provider-side erasure, data validity, performance or restoration. JSON document fields require their application types/validators. Read [policy](source/server/policy.ts), [privacy export](source/server/privacy-data.ts), [profile/lifecycle](source/server/profile.ts), [Analytics](source/server/analytics.ts), [Studio persistence](source/server/studio-hosted.ts) and [MCP store](source/server/mcp-auth-store.ts) with the SQL and [audit limits](12-functional-integrity-audit.md).
+
+
+---
+
+Canonical chapter: [12-functional-integrity-audit.md](12-functional-integrity-audit.md)
+
+# 12 — Functional-integrity audit, 26 October 2026
+
+Snapshot `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`, clean source, full declared product inventory. **Verdict: FAIL because F01 is a minor confirmed interface-language failure.** No evaluator tampering, improper test special-casing or production simulation presented as real execution was observed within the reviewed scope. Authorship and intent are undetermined.
+
+This chapter introduces the published, sanitized audit derivative. The [REPORT](audit/2026-10-26/REPORT.md) is the detailed verdict; [MATRIX](audit/2026-10-26/MATRIX.json) records contracts, weights and decisions; [SCORECARD](audit/2026-10-26/SCORECARD.json) records exact arithmetic; [FINDINGS](audit/2026-10-26/FINDINGS.json) records triggers, evidence, alternatives and follow-up. Reproductions and sanitized outputs are under [repro/](audit/2026-10-26/repro) and [evidence/](audit/2026-10-26/evidence). Publication excludes private governance, owner data, credential stores and secret-bearing metadata; it does not assert byte identity to every private operational artifact.
+
+| Metric | Exact weights | Display |
+| --- | --- | --- |
+| Demonstrated compliance D | P/W =34/60 | 56.67% |
+| Decision coverage C | (P+F)/W =37/60 | 61.67% |
+| Confirmed weighted failure | F/W =3/60 | 5.00% |
+| Weighted unknown | U/W =23/60 | 38.33% |
+
+W=P+F+U=60=34+3+23. Ten capabilities PASS, one FAIL and five UNKNOWN. These policy weights are not scientific scores, defect prevalence or a probability of deception. Unknowns remain in the denominator. Weights were proposed before result review; the physical freeze was saved after a subsequently refuted static legacy-route observation and before executed checks or confirmed frontend findings. No result-driven weight change occurred.
+
+| Finding | Evidence state | Meaning |
+| --- | --- | --- |
+| F01 · CONTRACT_FAILURE · minor | CONFIRMED; C12 FAIL | English Studio displays “Space cambió. Recarga antes de guardar.” after a correct stale-revision rejection. The draft and CAS protection remain intact. |
+| F02 · SPEC_AMBIGUITY | SUSPECTED; C11 UNKNOWN | ACK HTTP 200 with false/empty JSON leaves active/applied state. Without the authoritative central ACK schema, that field cannot be treated as a proved contractual rejection. No confirmed false success or authorization bypass. |
+| F03 · WEAK_TEST · minor | CONFIRMED | Tests need generated processor modules and a synthetic private-file sentinel; the suite does not prepare both autonomously. |
+| F04 · WEAK_TEST · minor | CONFIRMED | A streaming mutation can hang a test, and cleanup can obscure a persistence assertion. External bounded oracles detected the directed defects. |
+| F05 · documentary drift | Observation | Earlier editorial creation wording conflicts with current earlier-record guidance. The legacy API and native Studio path work; a disconnected main implementation was not demonstrated. |
+
+F01 follows [Studio API error handling](source/src/console/Studio.tsx) through [ErrorNotice](source/src/console/ErrorNotice.tsx); the [hosted adapter](source/server/studio-hosted.ts) has the corresponding fixed server message. Reproduce with two fresh local connections: load a campaign form, mutate Studio independently, then submit the stale form in EN. Correct a future version through stable error codes and verify new EN/ES failure cases without weakening validation.
+
+The audit's prepared full suite passed **333/333, no skips**. Frontend/server types, production build, immutable-logo checks and local Worker dry run also passed. Independent checks exercised real native FFmpeg export and full decode; original/hash preservation and restart persistence; local MCP save/replay/revocation; SQL, own-data export and synthetic erasure failure/retry; hosted admission with SQLite and synthetic services; browser language/help/cache/animation; and real demo seeking/ranges. Three selective negative controls and baseline restoration tested verifier sensitivity. This publication does not run the product again.
+
+The remaining 23 unknown weight belongs to C05 hosted processing/admission, C06 real authentication services, C07 external erasure, C09 real bridge inference and C11 central Analytics contract/effects. Synthetic transport and local SQL tests cannot establish the corresponding service's real effect. No production writes, provider inference, deployment, fresh hosted readback, physical-device UAT or human acceptance occurred in this audit.
+
+Review current [policy/profile/data contracts](source/docs/profile-and-data.md), [deliberate notices and own-data release](source/docs/POLICY_RIGHTS_RELEASE_2026-10-25.md), [policy API](source/server/policy.ts), [own-data export](source/server/privacy-data.ts), [Analytics contract](source/docs/analytics-integration.md), [relay](source/server/analytics.ts) and [dated Analytics publication](source/docs/ANALYTICS_RELEASE_2026-10-25.md). Viewing Terms is separate from deliberate acknowledgement; optional preferences and data rights are separate. The dated publication records central collection paused; the audit did not recheck that live state.
+
+Next work is defined in [PENDING-REPORT](PENDING-REPORT.md). A fix requires a new snapshot and independent examples; fixing a later version cannot make the original snapshot correct. The current source projection and audit seals preserve what was actually evaluated.
 
 
 ---
@@ -417,11 +493,15 @@ Canonical chapter: [code-flow/01-request-auth-and-storage.md](code-flow/01-reque
 
 # Request, authentication and persistence
 
-Hosted: [entry](source/server/entry.ts) → [worker](source/server/worker.ts) → native auth/tenant/lifecycle → family dispatcher → domain validation → revision-checked D1 commit → bounded response. Public static/demo and OAuth metadata dispatch are explicit exceptions, not bypasses for private resources.
+Current source: 26 October 2026, `77bbedac`. Hosted [entry](source/server/entry.ts) → [worker](source/server/worker.ts) → native auth/retained tenant/account lifecycle → current [service-declaration gate](source/server/policy.ts) where applicable → family dispatcher → domain validation → revision-checked D1 commit → bounded response. Public static/demo/OAuth discovery and separately defined authentication/data-rights routes have explicit dispatch rules.
 
-Local: [vite.config.ts](source/vite.config.ts) loopback guard → local session/API adapters → [local repository](source/server/local.ts) or [Studio SQLite](source/server/studio-local.ts). Local development trusts its OS account and uses separate data.
+Local [Vite](source/vite.config.ts) loopback guard → local session/API adapters → [file repository](source/server/local.ts) or [Studio SQLite](source/server/studio-local.ts). Local access trusts the OS account and uses disposable, separate data for tests.
 
-Auth: email challenge → same-browser proof → opaque session → retained operator; Google/GitHub first link additionally requires recent native email proof. Profile deletion establishes durable freeze before stopping compute and purging app stores. Read [profile.ts](source/server/profile.ts) together with [0009](source/migrations-d1/0009_profile_account.sql) [0010](source/migrations-d1/0010_mcp.sql) and [0011](source/migrations-d1/0011_mcp_connections.sql) to assess already-admitted writes.
+Email challenge → same-browser proof → opaque session → retained operator. First Google/GitHub linking also requires recent native email proof. [Profile deletion](source/server/profile.ts) freezes writes before stopping compute and purging stores; current [Analytics](source/server/analytics.ts) subject/rights routing precedes final identity removal. Read [0009](source/migrations-d1/0009_profile_account.sql), [0010](source/migrations-d1/0010_mcp.sql), [0011](source/migrations-d1/0011_mcp_connections.sql), [0012](source/migrations-d1/0012_policy_acknowledgements.sql) and [0013](source/migrations-d1/0013_analytics_subject.sql) with those handlers.
+
+[Own-data export](source/server/privacy-data.ts) requires a live owner/tenant session and recent proof, independently of new Terms or optional purposes. Bounded pages → browser aggregation → JSON with scope/exclusions. It is not a media archive.
+
+The [audit](12-functional-integrity-audit.md) exercised local SQL/access/export/failures and synthetic deletion. Real authentication and external-erasure portions remain UNKNOWN; these arrows do not assert provider execution.
 
 
 ---
@@ -430,11 +510,17 @@ Canonical chapter: [code-flow/02-browser-and-editorial.md](code-flow/02-browser-
 
 # Browser and editorial flow
 
-[Console](source/src/console/Console.tsx) → [client](source/src/core/client.ts) → [shared API](source/server/api.ts) → [domain command](source/src/core/domain.ts) → repository CAS → fresh snapshot. Server validation owns relationships, slot conflicts, deletion guards and explicit outcomes. Browser drafts and error display do not authoritatively override a failed command.
+Current source: 26 October 2026, `77bbedac`. [Console](source/src/console/Console.tsx) → [client](source/src/core/client.ts) → [shared API](source/server/api.ts) → [domain](source/src/core/domain.ts) → repository CAS → fresh snapshot. The server owns relationships, slot conflicts, deletion guards and explicit outcomes. A browser message does not override a rejected command.
 
-An OAuth handoff supplies only a short-lived correlation handle. [mcp-resume.ts](source/src/console/mcp-resume.ts) removes it from the visible URL, preserves unrelated query/history values, and consumes it before authenticated navigation to the server resume endpoint. It cannot itself grant owner access.
+An OAuth handoff supplies a short-lived correlation handle. [mcp-resume](source/src/console/mcp-resume.ts) removes that parameter while preserving other URL/history state and consumes it before authenticated server resume. The server still validates the transaction and consent.
 
-Studio is mounted separately; selection/draft state flows through [StudioPlanner](source/src/console/StudioPlanner.tsx). The [native UI regression tests](source/tests/studio-native-ui.test.ts) target explicit selection versus saved/cached variants. Profile and Settings use independent revision domains. Old editor/source/account controls remain available without becoming social provider connections.
+Studio has separate material/campaign/recipe state and [planner](source/src/console/StudioPlanner.tsx). Current new-piece creation is Studio; earlier editorial source/campaign/post records remain inspectable. Profile and Settings use independent revisions. The old creation wording is F05 documentary drift, not a confirmed disconnected main route.
+
+Missing service declarations → [PolicyGate](source/src/console/PolicyGate.tsx) → deliberate versioned submit → [policy backend](source/server/policy.ts) → receipt → refreshed access. Opening a notice cannot record acceptance. Privacy → [PrivacyDownload](source/src/console/PrivacyDownload.tsx) → bounded own-data pages → declared-category JSON, under its separate rights contract.
+
+Settings → [AnalyticsSettings](source/src/console/AnalyticsSettings.tsx) → owner-scoped [relay](source/server/analytics.ts). Optional purposes and declared interests are independent of service declarations and native campaign work.
+
+The header EN/ES control changes interface text without translating saved material. **F01:** Studio's raw server-error path → [ErrorNotice](source/src/console/ErrorNotice.tsx) leaves a Spanish conflict alert in EN. CAS and the unsaved form remain correct. [Evidence and reproduction](audit/2026-10-26/FINDINGS.json); the publication does not rerun the browser.
 
 
 ---
@@ -443,11 +529,17 @@ Canonical chapter: [code-flow/03-media-planning-render-export.md](code-flow/03-m
 
 # Media, planning, rendering and export
 
+Current source: 26 October 2026, `77bbedac`.
+
 [Studio UI](source/src/console/Studio.tsx) → resumable upload adapter → native probe/hash → original asset and material → [classifier](source/src/core/studio-classification.ts). Labels never establish rights/readiness/speech.
 
 Selection → [prepareStudioPlan/native planner](source/src/core/studio-planner.ts) → permissions/history/ranges/copy/readability checks → editable alternatives → server recomputation/fingerprint → [Studio domain](source/src/core/studio.ts) save with CAS.
 
 Saved variant → durable job/admission → [processor](source/server/studio-processor.ts) → [renderer](source/server/studio-render.ts) → private MP4/cover and immutable receipt → actual owner review → exact recipe/job approval → native export. Recipe/permission drift invalidates earlier approval. No stage publishes to a social API. [Native flow tests](source/tests/studio-native-flow.test.ts) and [MCP integration tests](source/tests/mcp-integration.test.ts) cover separate entry routes to this same backend.
+
+Audit execution followed this native path without an agent and decoded the exported 5-second 1080×1920 H.264 MP4. Independent hashes and a process restart checked source/output custody and persistence. Stale revision/fingerprint, unapproved export and changed-recipe approval were rejected. [Audit report](audit/2026-10-26/REPORT.md).
+
+Hosted admission was exercised with SQLite and synthetic R2/processor services. C05 remains UNKNOWN for real managed processing/storage effects; this trace does not certify a current hosted render, phone codec or creative acceptance.
 
 
 ---
@@ -456,9 +548,15 @@ Canonical chapter: [code-flow/04-animation-and-help.md](code-flow/04-animation-a
 
 # Animation, branding and Help
 
+Current source: 26 October 2026, `77bbedac`.
+
 [Background](source/src/decoration/Background.tsx) coordinates [scheduler](source/src/decoration/scheduler.ts), [scenes](source/src/decoration/scenes.ts), [renderer](source/src/decoration/renderer.ts), [registry](source/src/decoration/registry.ts) and [asset lifecycle](source/src/decoration/assets.ts). Off/reduced motion/pause/cache choices remain distinct. Animation code inspection and byte hashes do not prove temporal quality.
 
 [Help](source/src/console/Help.tsx) renders [guide definitions](source/src/console/help-guides.ts) with public synthetic screenshots. Authentication help uses a separately guarded mail request, not these authenticated guides. Original [logo](source/public/brand/marker-logo-v1.png), [brand manifest](source/public/brand/manifest.json), [fonts/license](source/public/fonts) and [AEKR attribution](source/assets) remain included.
+
+In the audit's real local Edge context, playing changed canvas pixels; pause preserved them; reduced-motion produced a static composition and disabled Play. CacheStorage began empty, opt-in wrote the decoration namespace only and revocation removed it. Language persisted through reload without changing synthetic saved text. Help's 15 guides/79 steps/158 bilingual image references were integrity-checked; an ES mobile guide was opened and its image inspected. This does not claim semantic visual inspection of every capture or physical-device acceptance.
+
+The global language control is now the header EN/ES button. Some guide text still points to older Environment language/policy placement; that documentary drift is distinguished from the confirmed Studio error-language defect. [Current audit](12-functional-integrity-audit.md).
 
 
 ---
@@ -467,7 +565,7 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 # Module and symbol index
 
-116 parsed modules; 13990 declarations/fields, 556 imports/re-exports, 17822 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
+127 parsed modules; 14418 declarations/fields, 611 imports/re-exports, 18969 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
 
 | Module | Symbols | Imports | Calls |
 | --- | --- | --- | --- |
@@ -475,6 +573,7 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/agents-local.ts](source/server/agents-local.ts) | 8 | 4 | 22 |
 | [server/agents-store.ts](source/server/agents-store.ts) | 13 | 0 | 13 |
 | [server/agents.ts](source/server/agents.ts) | 259 | 6 | 484 |
+| [server/analytics.ts](source/server/analytics.ts) | 64 | 3 | 169 |
 | [server/api.ts](source/server/api.ts) | 20 | 1 | 39 |
 | [server/captcha.d.ts](source/server/captcha.d.ts) | 12 | 0 | 0 |
 | [server/captcha.js](source/server/captcha.js) | 29 | 0 | 62 |
@@ -488,12 +587,14 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/mcp-auth.ts](source/server/mcp-auth.ts) | 202 | 1 | 354 |
 | [server/mcp-local.ts](source/server/mcp-local.ts) | 38 | 5 | 57 |
 | [server/mcp-tools.ts](source/server/mcp-tools.ts) | 128 | 3 | 252 |
-| [server/mcp.ts](source/server/mcp.ts) | 59 | 7 | 124 |
+| [server/mcp.ts](source/server/mcp.ts) | 63 | 8 | 128 |
 | [server/native-auth-store.js](source/server/native-auth-store.js) | 21 | 0 | 67 |
 | [server/native-auth.d.ts](source/server/native-auth.d.ts) | 32 | 0 | 0 |
 | [server/native-auth.js](source/server/native-auth.js) | 89 | 5 | 236 |
+| [server/policy.ts](source/server/policy.ts) | 29 | 4 | 59 |
+| [server/privacy-data.ts](source/server/privacy-data.ts) | 30 | 4 | 61 |
 | [server/profile-local.ts](source/server/profile-local.ts) | 18 | 5 | 39 |
-| [server/profile.ts](source/server/profile.ts) | 94 | 4 | 203 |
+| [server/profile.ts](source/server/profile.ts) | 95 | 5 | 207 |
 | [server/studio-analysis.ts](source/server/studio-analysis.ts) | 52 | 6 | 84 |
 | [server/studio-hosted.ts](source/server/studio-hosted.ts) | 399 | 7 | 699 |
 | [server/studio-local.ts](source/server/studio-local.ts) | 323 | 14 | 620 |
@@ -501,18 +602,21 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/studio-render.ts](source/server/studio-render.ts) | 159 | 3 | 205 |
 | [server/supabase.ts](source/server/supabase.ts) | 21 | 3 | 18 |
 | [server/tenant-auth.js](source/server/tenant-auth.js) | 16 | 0 | 32 |
-| [server/worker.ts](source/server/worker.ts) | 37 | 11 | 108 |
-| [src/App.tsx](source/src/App.tsx) | 33 | 8 | 55 |
+| [server/worker.ts](source/server/worker.ts) | 39 | 14 | 123 |
+| [src/App.tsx](source/src/App.tsx) | 35 | 8 | 60 |
 | [src/console/Agents.tsx](source/src/console/Agents.tsx) | 146 | 14 | 421 |
-| [src/console/Authentication.tsx](source/src/console/Authentication.tsx) | 61 | 4 | 32 |
-| [src/console/Console.tsx](source/src/console/Console.tsx) | 176 | 13 | 557 |
-| [src/console/EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx) | 22 | 3 | 24 |
+| [src/console/AnalyticsSettings.tsx](source/src/console/AnalyticsSettings.tsx) | 32 | 5 | 122 |
+| [src/console/Authentication.tsx](source/src/console/Authentication.tsx) | 63 | 4 | 32 |
+| [src/console/Console.tsx](source/src/console/Console.tsx) | 176 | 14 | 564 |
+| [src/console/EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx) | 22 | 3 | 23 |
 | [src/console/ErrorNotice.tsx](source/src/console/ErrorNotice.tsx) | 7 | 3 | 5 |
 | [src/console/Help.tsx](source/src/console/Help.tsx) | 25 | 6 | 32 |
 | [src/console/McpConnections.tsx](source/src/console/McpConnections.tsx) | 24 | 3 | 52 |
-| [src/console/Policies.tsx](source/src/console/Policies.tsx) | 17 | 3 | 15 |
+| [src/console/Policies.tsx](source/src/console/Policies.tsx) | 18 | 4 | 15 |
+| [src/console/PolicyGate.tsx](source/src/console/PolicyGate.tsx) | 13 | 4 | 22 |
+| [src/console/PrivacyDownload.tsx](source/src/console/PrivacyDownload.tsx) | 37 | 2 | 41 |
 | [src/console/Profile.tsx](source/src/console/Profile.tsx) | 81 | 4 | 172 |
-| [src/console/Settings.tsx](source/src/console/Settings.tsx) | 54 | 7 | 192 |
+| [src/console/Settings.tsx](source/src/console/Settings.tsx) | 54 | 8 | 192 |
 | [src/console/Studio.tsx](source/src/console/Studio.tsx) | 196 | 10 | 711 |
 | [src/console/StudioAnalysis.tsx](source/src/console/StudioAnalysis.tsx) | 67 | 5 | 141 |
 | [src/console/StudioPlanner.tsx](source/src/console/StudioPlanner.tsx) | 74 | 6 | 271 |
@@ -523,9 +627,11 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/console/help-guides.ts](source/src/console/help-guides.ts) | 19 | 0 | 122 |
 | [src/console/mcp-resume.ts](source/src/console/mcp-resume.ts) | 20 | 0 | 27 |
 | [src/core/agents.ts](source/src/core/agents.ts) | 122 | 2 | 13 |
+| [src/core/analytics.ts](source/src/core/analytics.ts) | 41 | 0 | 2 |
 | [src/core/client.ts](source/src/core/client.ts) | 9 | 1 | 12 |
 | [src/core/domain.ts](source/src/core/domain.ts) | 105 | 0 | 159 |
 | [src/core/generation.ts](source/src/core/generation.ts) | 83 | 1 | 99 |
+| [src/core/policy.ts](source/src/core/policy.ts) | 2 | 0 | 0 |
 | [src/core/profile.ts](source/src/core/profile.ts) | 8 | 0 | 15 |
 | [src/core/settings.ts](source/src/core/settings.ts) | 32 | 1 | 9 |
 | [src/core/studio-analysis.ts](source/src/core/studio-analysis.ts) | 32 | 0 | 34 |
@@ -545,11 +651,13 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [tests/agent-context.test.ts](source/tests/agent-context.test.ts) | 2 | 3 | 12 |
 | [tests/agent-stream.test.ts](source/tests/agent-stream.test.ts) | 4 | 3 | 20 |
 | [tests/agents-studio.test.ts](source/tests/agents-studio.test.ts) | 13 | 8 | 41 |
-| [tests/agents-worker.test.ts](source/tests/agents-worker.test.ts) | 34 | 5 | 68 |
+| [tests/agents-worker.test.ts](source/tests/agents-worker.test.ts) | 34 | 6 | 71 |
 | [tests/agents.test.ts](source/tests/agents.test.ts) | 166 | 13 | 367 |
+| [tests/analytics-ui.test.ts](source/tests/analytics-ui.test.ts) | 26 | 6 | 76 |
+| [tests/analytics.test.ts](source/tests/analytics.test.ts) | 75 | 7 | 341 |
 | [tests/assets.test.ts](source/tests/assets.test.ts) | 22 | 3 | 86 |
 | [tests/captcha.test.ts](source/tests/captcha.test.ts) | 57 | 5 | 237 |
-| [tests/d1-hosted.test.ts](source/tests/d1-hosted.test.ts) | 44 | 7 | 143 |
+| [tests/d1-hosted.test.ts](source/tests/d1-hosted.test.ts) | 44 | 8 | 146 |
 | [tests/demo-media.test.ts](source/tests/demo-media.test.ts) | 49 | 4 | 143 |
 | [tests/editorial.test.ts](source/tests/editorial.test.ts) | 34 | 8 | 151 |
 | [tests/generation.test.ts](source/tests/generation.test.ts) | 50 | 4 | 144 |
@@ -564,9 +672,10 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [tests/mcp-tools.test.ts](source/tests/mcp-tools.test.ts) | 89 | 10 | 274 |
 | [tests/motion.test.ts](source/tests/motion.test.ts) | 31 | 4 | 122 |
 | [tests/native-auth.test.ts](source/tests/native-auth.test.ts) | 97 | 5 | 302 |
+| [tests/policy-rights.test.ts](source/tests/policy-rights.test.ts) | 66 | 8 | 208 |
 | [tests/profile-local.test.ts](source/tests/profile-local.test.ts) | 16 | 6 | 60 |
 | [tests/profile-ui.test.ts](source/tests/profile-ui.test.ts) | 60 | 5 | 241 |
-| [tests/profile.test.ts](source/tests/profile.test.ts) | 118 | 7 | 447 |
+| [tests/profile.test.ts](source/tests/profile.test.ts) | 119 | 8 | 450 |
 | [tests/scheduler.test.ts](source/tests/scheduler.test.ts) | 29 | 3 | 83 |
 | [tests/studio-analysis.test.ts](source/tests/studio-analysis.test.ts) | 20 | 10 | 113 |
 | [tests/studio-api.test.ts](source/tests/studio-api.test.ts) | 116 | 11 | 437 |
@@ -585,7 +694,7 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [tools/agent-bridge.mjs](source/tools/agent-bridge.mjs) | 107 | 8 | 272 |
 | [tools/prepare-processor.mjs](source/tools/prepare-processor.mjs) | 0 | 2 | 11 |
 | [tools/verify-assets.mjs](source/tools/verify-assets.mjs) | 4 | 3 | 19 |
-| [vite.config.ts](source/vite.config.ts) | 44 | 15 | 114 |
+| [vite.config.ts](source/vite.config.ts) | 44 | 16 | 117 |
 | [worker-configuration.d.ts](source/worker-configuration.d.ts) | 6564 | 2 | 0 |
 
 ## processor/runner.mjs
@@ -666,6 +775,25 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/agents.ts:253](source/server/agents.ts#L253) | createAgentsApi.route | FunctionDeclaration | `replayRequest(): Promise<Response \| null>` |
 | [server/agents.ts:373](source/server/agents.ts#L373) | createAgentsApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
 | [server/agents.ts:380](source/server/agents.ts#L380) | createAgentsApi | MethodDeclaration | `close(): inferred` |
+
+## server/analytics.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/analytics.ts:8](source/server/analytics.ts#L8) |  | TypeAliasDeclaration | `Principal = { userId: string; tenantId: string }` |
+| [server/analytics.ts:9](source/server/analytics.ts#L9) |  | TypeAliasDeclaration | `Options = { token?: unknown; subjectSecret: string; db?: D1Database; fetcher?: typeof fetch; now?: () => number }` |
+| [server/analytics.ts:11](source/server/analytics.ts#L11) |  | FunctionDeclaration | `sourceToken(value: unknown): inferred` |
+| [server/analytics.ts:12](source/server/analytics.ts#L12) |  | FunctionDeclaration | `centralRequest(token: string, fetcher: typeof fetch, pathname: string, data?: unknown, gpc?: inferred): inferred` |
+| [server/analytics.ts:23](source/server/analytics.ts#L23) |  | FunctionDeclaration | `deleteAnalyticsSubject(db: D1Database, rawToken: unknown, fetcher?: typeof fetch): inferred` |
+| [server/analytics.ts:36](source/server/analytics.ts#L36) |  | FunctionDeclaration | `strings(value: unknown, allowed?: readonly string[], limit?: inferred): value is string[]` |
+| [server/analytics.ts:39](source/server/analytics.ts#L39) |  | FunctionDeclaration | `exactKeys(value: Record<string, unknown>, keys: string[]): inferred` |
+| [server/analytics.ts:42](source/server/analytics.ts#L42) |  | FunctionDeclaration | `validConfiguration(value: unknown, now: number): value is AnalyticsConfiguration` |
+| [server/analytics.ts:55](source/server/analytics.ts#L55) |  | FunctionDeclaration | `subjectRef(principal: Principal, secret: string): inferred` |
+| [server/analytics.ts:64](source/server/analytics.ts#L64) |  | FunctionDeclaration | `analyticsApi(request: Request, principal: Principal, options: Options): Promise<Response>` |
+| [server/analytics.ts:70](source/server/analytics.ts#L70) | analyticsApi | FunctionDeclaration | `call(pathname: string, data?: unknown, gpc?: inferred): inferred` |
+| [server/analytics.ts:73](source/server/analytics.ts#L73) | analyticsApi | FunctionDeclaration | `configuration(): inferred` |
+| [server/analytics.ts:78](source/server/analytics.ts#L78) | analyticsApi | FunctionDeclaration | `registerSubject(subject_ref: string): inferred` |
+| [server/analytics.ts:85](source/server/analytics.ts#L85) | analyticsApi | FunctionDeclaration | `propagateGpc(subject_ref: string): inferred` |
 
 ## server/api.ts
 
@@ -887,21 +1015,22 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [server/mcp.ts:9](source/server/mcp.ts#L9) |  | TypeAliasDeclaration | `McpOptions = { db: D1Database; origin: string; ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>; assertActive(): Promise<void>; backend(request: Request): Promise<Response>; }` |
-| [server/mcp.ts:12](source/server/mcp.ts#L12) |  | MethodSignature | `ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>` |
-| [server/mcp.ts:13](source/server/mcp.ts#L13) |  | MethodSignature | `assertActive(): Promise<void>` |
-| [server/mcp.ts:14](source/server/mcp.ts#L14) |  | MethodSignature | `backend(request: Request): Promise<Response>` |
-| [server/mcp.ts:19](source/server/mcp.ts#L19) |  | FunctionDeclaration | `failure(code: string, status: number, message: string): McpToolResult` |
-| [server/mcp.ts:23](source/server/mcp.ts#L23) |  | FunctionDeclaration | `bearerChallenge(origin: string, scopes: string[], insufficient?: inferred): string` |
-| [server/mcp.ts:31](source/server/mcp.ts#L31) |  | FunctionDeclaration | `insufficientScope(origin: string, scopes: string[]): McpToolResult` |
-| [server/mcp.ts:37](source/server/mcp.ts#L37) |  | FunctionDeclaration | `canonical(value: unknown): string` |
-| [server/mcp.ts:42](source/server/mcp.ts#L42) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
-| [server/mcp.ts:50](source/server/mcp.ts#L50) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
-| [server/mcp.ts:81](source/server/mcp.ts#L81) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
-| [server/mcp.ts:84](source/server/mcp.ts#L84) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
-| [server/mcp.ts:87](source/server/mcp.ts#L87) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
-| [server/mcp.ts:100](source/server/mcp.ts#L100) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
-| [server/mcp.ts:103](source/server/mcp.ts#L103) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
+| [server/mcp.ts:10](source/server/mcp.ts#L10) |  | TypeAliasDeclaration | `McpOptions = { db: D1Database; origin: string; ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>; assertActive(): Promise<void>; policyAllowed?(identity: { userId: string; tenantId: string }): Promise<boolean>; backend(request: Request): Promise<Response>; }` |
+| [server/mcp.ts:13](source/server/mcp.ts#L13) |  | MethodSignature | `ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>` |
+| [server/mcp.ts:14](source/server/mcp.ts#L14) |  | MethodSignature | `assertActive(): Promise<void>` |
+| [server/mcp.ts:15](source/server/mcp.ts#L15) |  | MethodSignature | `policyAllowed(identity: { userId: string; tenantId: string }): Promise<boolean>` |
+| [server/mcp.ts:16](source/server/mcp.ts#L16) |  | MethodSignature | `backend(request: Request): Promise<Response>` |
+| [server/mcp.ts:21](source/server/mcp.ts#L21) |  | FunctionDeclaration | `failure(code: string, status: number, message: string): McpToolResult` |
+| [server/mcp.ts:25](source/server/mcp.ts#L25) |  | FunctionDeclaration | `bearerChallenge(origin: string, scopes: string[], insufficient?: inferred): string` |
+| [server/mcp.ts:33](source/server/mcp.ts#L33) |  | FunctionDeclaration | `insufficientScope(origin: string, scopes: string[]): McpToolResult` |
+| [server/mcp.ts:39](source/server/mcp.ts#L39) |  | FunctionDeclaration | `canonical(value: unknown): string` |
+| [server/mcp.ts:44](source/server/mcp.ts#L44) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
+| [server/mcp.ts:52](source/server/mcp.ts#L52) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
+| [server/mcp.ts:83](source/server/mcp.ts#L83) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
+| [server/mcp.ts:86](source/server/mcp.ts#L86) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
+| [server/mcp.ts:89](source/server/mcp.ts#L89) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp.ts:102](source/server/mcp.ts#L102) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
+| [server/mcp.ts:105](source/server/mcp.ts#L105) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
 
 ## server/native-auth-store.js
 
@@ -936,6 +1065,28 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [server/native-auth.js:148](source/server/native-auth.js#L148) |  | FunctionDeclaration | `handleOwnerAuth(request: inferred, env: inferred, ctx: inferred): inferred` |
 | [server/native-auth.js:249](source/server/native-auth.js#L249) |  | FunctionDeclaration | `purgeOwnerAuth(env: inferred): inferred` |
 
+## server/policy.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/policy.ts:6](source/server/policy.ts#L6) |  | TypeAliasDeclaration | `PolicyEnv = Pick<Env, 'DB' \| 'MARKER_ORIGIN' \| 'MARKER_AUTH_SECRET'>` |
+| [server/policy.ts:8](source/server/policy.ts#L8) |  | TypeAliasDeclaration | `Identity = Pick<OwnerPrincipal, 'userId' \| 'tenantId'>` |
+| [server/policy.ts:9](source/server/policy.ts#L9) |  | TypeAliasDeclaration | `Receipt = { terms_version: string; privacy_notice_version: string; cookies_notice_version: string; purpose_version: string; acknowledged_at: number }` |
+| [server/policy.ts:11](source/server/policy.ts#L11) |  | FunctionDeclaration | `policyStatus(db: D1Database, identity?: Identity): inferred` |
+| [server/policy.ts:19](source/server/policy.ts#L19) |  | FunctionDeclaration | `assertPolicyAcknowledged(db: D1Database, identity?: Identity): Promise<void>` |
+| [server/policy.ts:23](source/server/policy.ts#L23) |  | FunctionDeclaration | `requireFreshProof(principal: OwnerPrincipal): inferred` |
+| [server/policy.ts:28](source/server/policy.ts#L28) |  | FunctionDeclaration | `sessionHash(request: Request, env: PolicyEnv): inferred` |
+| [server/policy.ts:38](source/server/policy.ts#L38) |  | FunctionDeclaration | `policyApi(request: Request, env: PolicyEnv, principal: OwnerPrincipal): Promise<Response>` |
+| [server/policy.ts:62](source/server/policy.ts#L62) |  | FunctionDeclaration | `policyRequired(origin: string): Response` |
+
+## server/privacy-data.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/privacy-data.ts:6](source/server/privacy-data.ts#L6) |  | TypeAliasDeclaration | `ExportEnv = Pick<Env, 'DB' \| 'MARKER_ORIGIN' \| 'MARKER_AUTH_SECRET'>` |
+| [server/privacy-data.ts:17](source/server/privacy-data.ts#L17) |  | FunctionDeclaration | `productData(value: unknown): unknown` |
+| [server/privacy-data.ts:23](source/server/privacy-data.ts#L23) |  | FunctionDeclaration | `privacyDataApi(request: Request, env: ExportEnv, principal: OwnerPrincipal): Promise<Response>` |
+
 ## server/profile-local.ts
 
 | Source | Scope | Kind | Signature |
@@ -950,27 +1101,27 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [server/profile.ts:6](source/server/profile.ts#L6) |  | TypeAliasDeclaration | `LifecycleStatus = 'active' \| 'deleting' \| 'deleted'` |
-| [server/profile.ts:7](source/server/profile.ts#L7) |  | TypeAliasDeclaration | `Phase = 'active' \| 'processor' \| 'waiting' \| 'uploads' \| 'media' \| 'database' \| 'done'` |
-| [server/profile.ts:8](source/server/profile.ts#L8) |  | TypeAliasDeclaration | `LifecycleRow = { status: LifecycleStatus; phase: Phase; capability_hash: string \| null; lease_token: string \| null; lease_until: number; deleted_objects: number; needs_retry: number }` |
-| [server/profile.ts:9](source/server/profile.ts#L9) |  | TypeAliasDeclaration | `ProfileEnvironment = Pick<Env, 'DB' \| 'MARKER_AUTH_SECRET' \| 'MARKER_ORIGIN' \| 'MARKER_OWNER_EMAIL' \| 'MARKER_SENDER_EMAIL' \| 'EMAIL'> & Partial<Pick<Env, 'MEDIA' \| 'STUDIO_PROCESSOR'>>` |
-| [server/profile.ts:15](source/server/profile.ts#L15) |  | FunctionDeclaration | `lifecycle(env: Pick<Env, 'DB'>): Promise<LifecycleRow>` |
-| [server/profile.ts:22](source/server/profile.ts#L22) |  | FunctionDeclaration | `progress(row: LifecycleRow): inferred` |
-| [server/profile.ts:25](source/server/profile.ts#L25) |  | FunctionDeclaration | `readAccountLifecycle(env: Pick<Env, 'DB'>): inferred` |
-| [server/profile.ts:28](source/server/profile.ts#L28) |  | FunctionDeclaration | `assertAccountActive(env: Pick<Env, 'DB'>): Promise<void>` |
-| [server/profile.ts:32](source/server/profile.ts#L32) |  | FunctionDeclaration | `tokenCookie(request: Request, name: string): string \| null` |
-| [server/profile.ts:37](source/server/profile.ts#L37) |  | FunctionDeclaration | `cookie(token?: inferred, seconds?: inferred): inferred` |
-| [server/profile.ts:40](source/server/profile.ts#L40) |  | FunctionDeclaration | `hmac(env: ProfileEnvironment, value: string): Promise<string>` |
-| [server/profile.ts:47](source/server/profile.ts#L47) |  | FunctionDeclaration | `capabilityForSession(request: Request, env: ProfileEnvironment): Promise<string \| null>` |
-| [server/profile.ts:53](source/server/profile.ts#L53) |  | FunctionDeclaration | `hasCapability(request: Request, env: ProfileEnvironment, row: LifecycleRow): Promise<boolean>` |
-| [server/profile.ts:57](source/server/profile.ts#L57) |  | FunctionDeclaration | `requireMutation(request: Request, env: ProfileEnvironment): inferred` |
-| [server/profile.ts:60](source/server/profile.ts#L60) |  | FunctionDeclaration | `fresh(principal: OwnerPrincipal): inferred` |
-| [server/profile.ts:64](source/server/profile.ts#L64) |  | FunctionDeclaration | `profile(env: ProfileEnvironment, principal: OwnerPrincipal): inferred` |
-| [server/profile.ts:69](source/server/profile.ts#L69) |  | FunctionDeclaration | `field(value: unknown, max: number): inferred` |
-| [server/profile.ts:73](source/server/profile.ts#L73) |  | FunctionDeclaration | `deletionResponse(row: LifecycleRow, token?: string): inferred` |
-| [server/profile.ts:82](source/server/profile.ts#L82) |  | FunctionDeclaration | `profileApi(request: Request, env: ProfileEnvironment): Promise<Response>` |
-| [server/profile.ts:143](source/server/profile.ts#L143) |  | FunctionDeclaration | `advanceAccountDeletion(env: ProfileEnvironment): Promise<LifecycleRow>` |
-| [server/profile.ts:151](source/server/profile.ts#L151) | advanceAccountDeletion | FunctionDeclaration | `setPhase(phase: Phase, objects?: inferred): inferred` |
+| [server/profile.ts:7](source/server/profile.ts#L7) |  | TypeAliasDeclaration | `LifecycleStatus = 'active' \| 'deleting' \| 'deleted'` |
+| [server/profile.ts:8](source/server/profile.ts#L8) |  | TypeAliasDeclaration | `Phase = 'active' \| 'processor' \| 'waiting' \| 'uploads' \| 'media' \| 'database' \| 'done'` |
+| [server/profile.ts:9](source/server/profile.ts#L9) |  | TypeAliasDeclaration | `LifecycleRow = { status: LifecycleStatus; phase: Phase; capability_hash: string \| null; lease_token: string \| null; lease_until: number; deleted_objects: number; needs_retry: number }` |
+| [server/profile.ts:10](source/server/profile.ts#L10) |  | TypeAliasDeclaration | `ProfileEnvironment = Pick<Env, 'DB' \| 'MARKER_AUTH_SECRET' \| 'MARKER_ORIGIN' \| 'MARKER_OWNER_EMAIL' \| 'MARKER_SENDER_EMAIL' \| 'EMAIL'> & Partial<Pick<Env, 'MEDIA' \| 'STUDIO_PROCESSOR'>>` |
+| [server/profile.ts:16](source/server/profile.ts#L16) |  | FunctionDeclaration | `lifecycle(env: Pick<Env, 'DB'>): Promise<LifecycleRow>` |
+| [server/profile.ts:23](source/server/profile.ts#L23) |  | FunctionDeclaration | `progress(row: LifecycleRow): inferred` |
+| [server/profile.ts:26](source/server/profile.ts#L26) |  | FunctionDeclaration | `readAccountLifecycle(env: Pick<Env, 'DB'>): inferred` |
+| [server/profile.ts:29](source/server/profile.ts#L29) |  | FunctionDeclaration | `assertAccountActive(env: Pick<Env, 'DB'>): Promise<void>` |
+| [server/profile.ts:33](source/server/profile.ts#L33) |  | FunctionDeclaration | `tokenCookie(request: Request, name: string): string \| null` |
+| [server/profile.ts:38](source/server/profile.ts#L38) |  | FunctionDeclaration | `cookie(token?: inferred, seconds?: inferred): inferred` |
+| [server/profile.ts:41](source/server/profile.ts#L41) |  | FunctionDeclaration | `hmac(env: ProfileEnvironment, value: string): Promise<string>` |
+| [server/profile.ts:48](source/server/profile.ts#L48) |  | FunctionDeclaration | `capabilityForSession(request: Request, env: ProfileEnvironment): Promise<string \| null>` |
+| [server/profile.ts:54](source/server/profile.ts#L54) |  | FunctionDeclaration | `hasCapability(request: Request, env: ProfileEnvironment, row: LifecycleRow): Promise<boolean>` |
+| [server/profile.ts:58](source/server/profile.ts#L58) |  | FunctionDeclaration | `requireMutation(request: Request, env: ProfileEnvironment): inferred` |
+| [server/profile.ts:61](source/server/profile.ts#L61) |  | FunctionDeclaration | `fresh(principal: OwnerPrincipal): inferred` |
+| [server/profile.ts:65](source/server/profile.ts#L65) |  | FunctionDeclaration | `profile(env: ProfileEnvironment, principal: OwnerPrincipal): inferred` |
+| [server/profile.ts:70](source/server/profile.ts#L70) |  | FunctionDeclaration | `field(value: unknown, max: number): inferred` |
+| [server/profile.ts:74](source/server/profile.ts#L74) |  | FunctionDeclaration | `deletionResponse(row: LifecycleRow, token?: string): inferred` |
+| [server/profile.ts:83](source/server/profile.ts#L83) |  | FunctionDeclaration | `profileApi(request: Request, env: ProfileEnvironment): Promise<Response>` |
+| [server/profile.ts:144](source/server/profile.ts#L144) |  | FunctionDeclaration | `advanceAccountDeletion(env: ProfileEnvironment): Promise<LifecycleRow>` |
+| [server/profile.ts:152](source/server/profile.ts#L152) | advanceAccountDeletion | FunctionDeclaration | `setPhase(phase: Phase, objects?: inferred): inferred` |
 
 ## server/studio-analysis.ts
 
@@ -1190,15 +1341,16 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [server/worker.ts:19](source/server/worker.ts#L19) |  | FunctionVariable | `cookie(token?: inferred, seconds?: inferred): inferred` |
-| [server/worker.ts:21](source/server/worker.ts#L21) |  | FunctionDeclaration | `hostedApi(request: Request, config: SupabaseConfig): Promise<Response>` |
-| [server/worker.ts:112](source/server/worker.ts#L112) |  | MethodDeclaration | `scheduled(_event: inferred, env: inferred, ctx: inferred): inferred` |
-| [server/worker.ts:113](source/server/worker.ts#L113) |  | MethodDeclaration | `fetch(request: inferred, env: inferred, ctx: inferred): inferred` |
-| [server/worker.ts:120](source/server/worker.ts#L120) |  | FunctionDeclaration | `nativeApi(request: Request, env: Env, ctx: Pick<ExecutionContext, 'waitUntil'>): Promise<Response>` |
-| [server/worker.ts:137](source/server/worker.ts#L137) | nativeApi | MethodDeclaration | `assertActive(): inferred` |
-| [server/worker.ts:138](source/server/worker.ts#L138) | nativeApi | MethodDeclaration | `backend(internal: inferred): inferred` |
-| [server/worker.ts:174](source/server/worker.ts#L174) |  | FunctionDeclaration | `maintainAccount(env: Env): Promise<void>` |
-| [server/worker.ts:187](source/server/worker.ts#L187) |  | FunctionDeclaration | `agentApi(request: Request, env: Env): Promise<Response>` |
+| [server/worker.ts:22](source/server/worker.ts#L22) |  | FunctionVariable | `cookie(token?: inferred, seconds?: inferred): inferred` |
+| [server/worker.ts:24](source/server/worker.ts#L24) |  | FunctionDeclaration | `hostedApi(request: Request, config: SupabaseConfig): Promise<Response>` |
+| [server/worker.ts:115](source/server/worker.ts#L115) |  | MethodDeclaration | `scheduled(_event: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/worker.ts:116](source/server/worker.ts#L116) |  | MethodDeclaration | `fetch(request: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/worker.ts:123](source/server/worker.ts#L123) |  | FunctionDeclaration | `nativeApi(request: Request, env: Env, ctx: Pick<ExecutionContext, 'waitUntil'>): Promise<Response>` |
+| [server/worker.ts:142](source/server/worker.ts#L142) | nativeApi | MethodDeclaration | `policyAllowed(identity: inferred): inferred` |
+| [server/worker.ts:143](source/server/worker.ts#L143) | nativeApi | MethodDeclaration | `assertActive(): inferred` |
+| [server/worker.ts:144](source/server/worker.ts#L144) | nativeApi | MethodDeclaration | `backend(internal: inferred): inferred` |
+| [server/worker.ts:191](source/server/worker.ts#L191) |  | FunctionDeclaration | `maintainAccount(env: Env): Promise<void>` |
+| [server/worker.ts:204](source/server/worker.ts#L204) |  | FunctionDeclaration | `agentApi(request: Request, env: Env): Promise<Response>` |
 
 ## src/App.tsx
 
@@ -1207,7 +1359,8 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/App.tsx:13](source/src/App.tsx#L13) |  | FunctionDeclaration | `App(): inferred` |
 | [src/App.tsx:18](source/src/App.tsx#L18) | App | FunctionDeclaration | `openPolicy(section: PolicySection): inferred` |
 | [src/App.tsx:19](source/src/App.tsx#L19) | App | FunctionDeclaration | `closePolicy(): inferred` |
-| [src/App.tsx:48](source/src/App.tsx#L48) | App | FunctionDeclaration | `changeCache(accepted: boolean): inferred` |
+| [src/App.tsx:20](source/src/App.tsx#L20) | App | FunctionVariable | `show(event: Event): inferred` |
+| [src/App.tsx:49](source/src/App.tsx#L49) | App | FunctionDeclaration | `changeCache(accepted: boolean): inferred` |
 
 ## src/console/Agents.tsx
 
@@ -1240,61 +1393,71 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/console/Agents.tsx:202](source/src/console/Agents.tsx#L202) | Proposal | FunctionDeclaration | `saveEdits(): inferred` |
 | [src/console/Agents.tsx:203](source/src/console/Agents.tsx#L203) | Proposal | FunctionVariable | `field(label: string, name: keyof AgentCopy, max: number, multiline?: inferred): inferred` |
 
+## src/console/AnalyticsSettings.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/AnalyticsSettings.tsx:16](source/src/console/AnalyticsSettings.tsx#L16) |  | FunctionDeclaration | `AnalyticsSettings(): inferred` |
+| [src/console/AnalyticsSettings.tsx:18](source/src/console/AnalyticsSettings.tsx#L18) | AnalyticsSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/AnalyticsSettings.tsx:33](source/src/console/AnalyticsSettings.tsx#L33) | AnalyticsSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/AnalyticsSettings.tsx:52](source/src/console/AnalyticsSettings.tsx#L52) | AnalyticsSettings | FunctionDeclaration | `save(status: 'granted' \| 'denied' \| 'withdrawn'): inferred` |
+| [src/console/AnalyticsSettings.tsx:60](source/src/console/AnalyticsSettings.tsx#L60) | AnalyticsSettings | FunctionDeclaration | `recordInterest(): inferred` |
+
 ## src/console/Authentication.tsx
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
 | [src/console/Authentication.tsx:6](source/src/console/Authentication.tsx#L6) |  | TypeAliasDeclaration | `OAuthProvider = "google" \| "github"` |
 | [src/console/Authentication.tsx:7](source/src/console/Authentication.tsx#L7) |  | TypeAliasDeclaration | `OAuthMethod = { configured: boolean; bound: boolean; canLink: boolean; linkRequiresEmailVerification?: boolean }` |
-| [src/console/Authentication.tsx:8](source/src/console/Authentication.tsx#L8) |  | TypeAliasDeclaration | `AuthSession = { mode: "local" \| "hosted"; authenticated: boolean; configured?: boolean; authFlow?: "code"; auth_method?: "email" \| OAuthProvider; account?: { status: "deleting" \| "deleted" }; tenant_id?: string; user?: { id?: string; email: string; tenant_id?: string }; turnstile?: TurnstileDescriptor; methods?: { email: { configured: boolean }; google: OAuthMethod; github?: OAuthMethod }; }` |
-| [src/console/Authentication.tsx:20](source/src/console/Authentication.tsx#L20) |  | TypeAliasDeclaration | `OAuthStart = (provider: OAuthProvider, intent: "login" \| "link", captchaToken: string) => Promise<void>` |
-| [src/console/Authentication.tsx:22](source/src/console/Authentication.tsx#L22) |  | FunctionVariable | `providerName(provider: OAuthProvider): inferred` |
-| [src/console/Authentication.tsx:24](source/src/console/Authentication.tsx#L24) |  | FunctionDeclaration | `ProviderButton({ provider, intent, session, busy, onOAuth }: { provider: OAuthProvider; intent: "login" \| "link"; session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
-| [src/console/Authentication.tsx:25](source/src/console/Authentication.tsx#L25) | ProviderButton | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Authentication.tsx:30](source/src/console/Authentication.tsx#L30) | ProviderButton | FunctionDeclaration | `start(): inferred` |
-| [src/console/Authentication.tsx:44](source/src/console/Authentication.tsx#L44) |  | FunctionDeclaration | `ProviderSignIn({ session, busy, onOAuth }: { session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
-| [src/console/Authentication.tsx:45](source/src/console/Authentication.tsx#L45) | ProviderSignIn | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Authentication.tsx:54](source/src/console/Authentication.tsx#L54) |  | FunctionDeclaration | `AuthenticationSettings({ session, busy, onOAuth, onEmailProof }: { session?: AuthSession; busy: boolean; onOAuth: OAuthStart; onEmailProof: () => void }): inferred` |
-| [src/console/Authentication.tsx:55](source/src/console/Authentication.tsx#L55) | AuthenticationSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:8](source/src/console/Authentication.tsx#L8) |  | TypeAliasDeclaration | `AuthSession = { mode: "local" \| "hosted"; authenticated: boolean; policy?: { required: boolean }; configured?: boolean; authFlow?: "code"; auth_method?: "email" \| OAuthProvider; account?: { status: "deleting" \| "deleted" }; tenant_id?: string; user?: { id?: string; email: string; tenant_id?: string }; turnstile?: TurnstileDescriptor; methods?: { email: { configured: boolean }; google: OAuthMethod; github?: OAuthMethod }; }` |
+| [src/console/Authentication.tsx:21](source/src/console/Authentication.tsx#L21) |  | TypeAliasDeclaration | `OAuthStart = (provider: OAuthProvider, intent: "login" \| "link", captchaToken: string) => Promise<void>` |
+| [src/console/Authentication.tsx:23](source/src/console/Authentication.tsx#L23) |  | FunctionVariable | `providerName(provider: OAuthProvider): inferred` |
+| [src/console/Authentication.tsx:25](source/src/console/Authentication.tsx#L25) |  | FunctionDeclaration | `ProviderButton({ provider, intent, session, busy, onOAuth }: { provider: OAuthProvider; intent: "login" \| "link"; session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
+| [src/console/Authentication.tsx:26](source/src/console/Authentication.tsx#L26) | ProviderButton | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:31](source/src/console/Authentication.tsx#L31) | ProviderButton | FunctionDeclaration | `start(): inferred` |
+| [src/console/Authentication.tsx:45](source/src/console/Authentication.tsx#L45) |  | FunctionDeclaration | `ProviderSignIn({ session, busy, onOAuth }: { session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
+| [src/console/Authentication.tsx:46](source/src/console/Authentication.tsx#L46) | ProviderSignIn | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:55](source/src/console/Authentication.tsx#L55) |  | FunctionDeclaration | `AuthenticationSettings({ session, busy, onOAuth, onEmailProof }: { session?: AuthSession; busy: boolean; onOAuth: OAuthStart; onEmailProof: () => void }): inferred` |
+| [src/console/Authentication.tsx:56](source/src/console/Authentication.tsx#L56) | AuthenticationSettings | FunctionVariable | `l(es: string, en: string): inferred` |
 
 ## src/console/Console.tsx
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Console.tsx:46](source/src/console/Console.tsx#L46) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
-| [src/console/Console.tsx:48](source/src/console/Console.tsx#L48) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
-| [src/console/Console.tsx:63](source/src/console/Console.tsx#L63) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
-| [src/console/Console.tsx:76](source/src/console/Console.tsx#L76) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:84](source/src/console/Console.tsx#L84) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
-| [src/console/Console.tsx:87](source/src/console/Console.tsx#L87) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
-| [src/console/Console.tsx:95](source/src/console/Console.tsx#L95) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
-| [src/console/Console.tsx:112](source/src/console/Console.tsx#L112) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
-| [src/console/Console.tsx:116](source/src/console/Console.tsx#L116) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
-| [src/console/Console.tsx:118](source/src/console/Console.tsx#L118) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Console.tsx:119](source/src/console/Console.tsx#L119) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
-| [src/console/Console.tsx:166](source/src/console/Console.tsx#L166) | Console | FunctionVariable | `navigate(): inferred` |
-| [src/console/Console.tsx:178](source/src/console/Console.tsx#L178) | Console | FunctionDeclaration | `refresh(): inferred` |
-| [src/console/Console.tsx:202](source/src/console/Console.tsx#L202) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
-| [src/console/Console.tsx:206](source/src/console/Console.tsx#L206) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
-| [src/console/Console.tsx:212](source/src/console/Console.tsx#L212) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
-| [src/console/Console.tsx:226](source/src/console/Console.tsx#L226) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:242](source/src/console/Console.tsx#L242) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:271](source/src/console/Console.tsx#L271) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
-| [src/console/Console.tsx:292](source/src/console/Console.tsx#L292) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
-| [src/console/Console.tsx:310](source/src/console/Console.tsx#L310) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
-| [src/console/Console.tsx:318](source/src/console/Console.tsx#L318) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
-| [src/console/Console.tsx:326](source/src/console/Console.tsx#L326) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
-| [src/console/Console.tsx:329](source/src/console/Console.tsx#L329) | Console | FunctionDeclaration | `reload(): inferred` |
-| [src/console/Console.tsx:339](source/src/console/Console.tsx#L339) | Console | FunctionDeclaration | `logout(): inferred` |
-| [src/console/Console.tsx:462](source/src/console/Console.tsx#L462) | Console | FunctionVariable | `productName(id: string): inferred` |
-| [src/console/Console.tsx:464](source/src/console/Console.tsx#L464) | Console | FunctionVariable | `accountName(id: string): inferred` |
-| [src/console/Console.tsx:466](source/src/console/Console.tsx#L466) | Console | FunctionVariable | `matches(value: string): inferred` |
-| [src/console/Console.tsx:468](source/src/console/Console.tsx#L468) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
-| [src/console/Console.tsx:974](source/src/console/Console.tsx#L974) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
-| [src/console/Console.tsx:986](source/src/console/Console.tsx#L986) | EditorDialog | MethodSignature | `close(): void` |
-| [src/console/Console.tsx:987](source/src/console/Console.tsx#L987) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
-| [src/console/Console.tsx:1018](source/src/console/Console.tsx#L1018) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
-| [src/console/Console.tsx:1029](source/src/console/Console.tsx#L1029) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:47](source/src/console/Console.tsx#L47) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
+| [src/console/Console.tsx:49](source/src/console/Console.tsx#L49) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
+| [src/console/Console.tsx:64](source/src/console/Console.tsx#L64) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
+| [src/console/Console.tsx:77](source/src/console/Console.tsx#L77) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:85](source/src/console/Console.tsx#L85) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
+| [src/console/Console.tsx:88](source/src/console/Console.tsx#L88) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
+| [src/console/Console.tsx:96](source/src/console/Console.tsx#L96) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
+| [src/console/Console.tsx:113](source/src/console/Console.tsx#L113) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
+| [src/console/Console.tsx:117](source/src/console/Console.tsx#L117) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
+| [src/console/Console.tsx:119](source/src/console/Console.tsx#L119) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Console.tsx:120](source/src/console/Console.tsx#L120) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:167](source/src/console/Console.tsx#L167) | Console | FunctionVariable | `navigate(): inferred` |
+| [src/console/Console.tsx:179](source/src/console/Console.tsx#L179) | Console | FunctionDeclaration | `refresh(): inferred` |
+| [src/console/Console.tsx:203](source/src/console/Console.tsx#L203) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
+| [src/console/Console.tsx:207](source/src/console/Console.tsx#L207) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
+| [src/console/Console.tsx:213](source/src/console/Console.tsx#L213) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
+| [src/console/Console.tsx:227](source/src/console/Console.tsx#L227) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:243](source/src/console/Console.tsx#L243) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:272](source/src/console/Console.tsx#L272) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
+| [src/console/Console.tsx:293](source/src/console/Console.tsx#L293) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:311](source/src/console/Console.tsx#L311) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
+| [src/console/Console.tsx:319](source/src/console/Console.tsx#L319) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
+| [src/console/Console.tsx:327](source/src/console/Console.tsx#L327) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
+| [src/console/Console.tsx:330](source/src/console/Console.tsx#L330) | Console | FunctionDeclaration | `reload(): inferred` |
+| [src/console/Console.tsx:340](source/src/console/Console.tsx#L340) | Console | FunctionDeclaration | `logout(): inferred` |
+| [src/console/Console.tsx:464](source/src/console/Console.tsx#L464) | Console | FunctionVariable | `productName(id: string): inferred` |
+| [src/console/Console.tsx:466](source/src/console/Console.tsx#L466) | Console | FunctionVariable | `accountName(id: string): inferred` |
+| [src/console/Console.tsx:468](source/src/console/Console.tsx#L468) | Console | FunctionVariable | `matches(value: string): inferred` |
+| [src/console/Console.tsx:470](source/src/console/Console.tsx#L470) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
+| [src/console/Console.tsx:976](source/src/console/Console.tsx#L976) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
+| [src/console/Console.tsx:988](source/src/console/Console.tsx#L988) | EditorDialog | MethodSignature | `close(): void` |
+| [src/console/Console.tsx:989](source/src/console/Console.tsx#L989) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:1020](source/src/console/Console.tsx#L1020) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
+| [src/console/Console.tsx:1031](source/src/console/Console.tsx#L1031) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
 
 ## src/console/EnvironmentSettings.tsx
 
@@ -1334,9 +1497,26 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Policies.tsx:5](source/src/console/Policies.tsx#L5) |  | TypeAliasDeclaration | `PolicySection = 'terms'\|'privacy'\|'cookies'` |
-| [src/console/Policies.tsx:63](source/src/console/Policies.tsx#L63) |  | FunctionDeclaration | `Policies({section,onClose,onPreferences}: {section:PolicySection;onClose:()=>void;onPreferences:()=>void}): inferred` |
-| [src/console/Policies.tsx:77](source/src/console/Policies.tsx#L77) |  | FunctionDeclaration | `PolicyLinks({onOpen,variant}: {onOpen:(section:PolicySection)=>void;variant:'footer'\|'environment'}): inferred` |
+| [src/console/Policies.tsx:6](source/src/console/Policies.tsx#L6) |  | TypeAliasDeclaration | `PolicySection = 'terms'\|'privacy'\|'cookies'` |
+| [src/console/Policies.tsx:91](source/src/console/Policies.tsx#L91) |  | FunctionDeclaration | `Policies({section,onClose,onPreferences}: {section:PolicySection;onClose:()=>void;onPreferences:()=>void}): inferred` |
+| [src/console/Policies.tsx:106](source/src/console/Policies.tsx#L106) |  | FunctionDeclaration | `PolicyLinks({onOpen,variant}: {onOpen:(section:PolicySection)=>void;variant:'footer'\|'environment'}): inferred` |
+
+## src/console/PolicyGate.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/PolicyGate.tsx:6](source/src/console/PolicyGate.tsx#L6) |  | FunctionDeclaration | `openPolicy(section: 'terms' \| 'privacy' \| 'cookies'): inferred` |
+| [src/console/PolicyGate.tsx:9](source/src/console/PolicyGate.tsx#L9) |  | FunctionDeclaration | `PolicyGate({ onComplete, onVerify }: { onComplete: () => Promise<void>; onVerify: () => void }): inferred` |
+| [src/console/PolicyGate.tsx:13](source/src/console/PolicyGate.tsx#L13) | PolicyGate | FunctionDeclaration | `continueAccess(): inferred` |
+
+## src/console/PrivacyDownload.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/PrivacyDownload.tsx:3](source/src/console/PrivacyDownload.tsx#L3) |  | TypeAliasDeclaration | `Page = { format: string; subject: { userId: string; tenantId: string }; category: string; data: unknown; categories: string[]; next: string \| null; excluded: string[]; consistency: string }` |
+| [src/console/PrivacyDownload.tsx:4](source/src/console/PrivacyDownload.tsx#L4) |  | FunctionDeclaration | `PrivacyDownload(): inferred` |
+| [src/console/PrivacyDownload.tsx:7](source/src/console/PrivacyDownload.tsx#L7) | PrivacyDownload | FunctionDeclaration | `download(): inferred` |
+| [src/console/PrivacyDownload.tsx:13](source/src/console/PrivacyDownload.tsx#L13) | PrivacyDownload.download | FunctionDeclaration | `page(category: string, after?: inferred): Promise<Page>` |
 
 ## src/console/Profile.tsx
 
@@ -1366,23 +1546,23 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [src/console/Settings.tsx:9](source/src/console/Settings.tsx#L9) |  | TypeAliasDeclaration | `Draft = { monthly: string; processing: string; ai: string; storage: string; duration: string }` |
-| [src/console/Settings.tsx:11](source/src/console/Settings.tsx#L11) |  | FunctionVariable | `asDraft(s: StudioSettings): Draft` |
-| [src/console/Settings.tsx:12](source/src/console/Settings.tsx#L12) |  | FunctionDeclaration | `recovered(): { draft?: Draft; revision?: number }` |
-| [src/console/Settings.tsx:17](source/src/console/Settings.tsx#L17) |  | FunctionDeclaration | `Settings({ environment }: { environment?: ReactNode }): inferred` |
-| [src/console/Settings.tsx:19](source/src/console/Settings.tsx#L19) | Settings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:41](source/src/console/Settings.tsx#L41) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
-| [src/console/Settings.tsx:49](source/src/console/Settings.tsx#L49) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
-| [src/console/Settings.tsx:50](source/src/console/Settings.tsx#L50) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
-| [src/console/Settings.tsx:52](source/src/console/Settings.tsx#L52) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
-| [src/console/Settings.tsx:59](source/src/console/Settings.tsx#L59) | Settings | FunctionDeclaration | `save(): inferred` |
-| [src/console/Settings.tsx:69](source/src/console/Settings.tsx#L69) | Settings | FunctionVariable | `usd(cents: number): inferred` |
-| [src/console/Settings.tsx:70](source/src/console/Settings.tsx#L70) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
-| [src/console/Settings.tsx:101](source/src/console/Settings.tsx#L101) |  | FunctionDeclaration | `AgentSettings({ active }: { active: boolean }): inferred` |
-| [src/console/Settings.tsx:103](source/src/console/Settings.tsx#L103) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
-| [src/console/Settings.tsx:107](source/src/console/Settings.tsx#L107) | AgentSettings | FunctionDeclaration | `load(): inferred` |
-| [src/console/Settings.tsx:109](source/src/console/Settings.tsx#L109) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
-| [src/console/Settings.tsx:114](source/src/console/Settings.tsx#L114) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
+| [src/console/Settings.tsx:10](source/src/console/Settings.tsx#L10) |  | TypeAliasDeclaration | `Draft = { monthly: string; processing: string; ai: string; storage: string; duration: string }` |
+| [src/console/Settings.tsx:12](source/src/console/Settings.tsx#L12) |  | FunctionVariable | `asDraft(s: StudioSettings): Draft` |
+| [src/console/Settings.tsx:13](source/src/console/Settings.tsx#L13) |  | FunctionDeclaration | `recovered(): { draft?: Draft; revision?: number }` |
+| [src/console/Settings.tsx:18](source/src/console/Settings.tsx#L18) |  | FunctionDeclaration | `Settings({ environment }: { environment?: ReactNode }): inferred` |
+| [src/console/Settings.tsx:20](source/src/console/Settings.tsx#L20) | Settings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:42](source/src/console/Settings.tsx#L42) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
+| [src/console/Settings.tsx:50](source/src/console/Settings.tsx#L50) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
+| [src/console/Settings.tsx:51](source/src/console/Settings.tsx#L51) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
+| [src/console/Settings.tsx:53](source/src/console/Settings.tsx#L53) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
+| [src/console/Settings.tsx:60](source/src/console/Settings.tsx#L60) | Settings | FunctionDeclaration | `save(): inferred` |
+| [src/console/Settings.tsx:70](source/src/console/Settings.tsx#L70) | Settings | FunctionVariable | `usd(cents: number): inferred` |
+| [src/console/Settings.tsx:71](source/src/console/Settings.tsx#L71) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
+| [src/console/Settings.tsx:103](source/src/console/Settings.tsx#L103) |  | FunctionDeclaration | `AgentSettings({ active }: { active: boolean }): inferred` |
+| [src/console/Settings.tsx:105](source/src/console/Settings.tsx#L105) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:109](source/src/console/Settings.tsx#L109) | AgentSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/Settings.tsx:111](source/src/console/Settings.tsx#L111) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
+| [src/console/Settings.tsx:116](source/src/console/Settings.tsx#L116) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
 
 ## src/console/Studio.tsx
 
@@ -1525,6 +1705,17 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/core/agents.ts:41](source/src/core/agents.ts#L41) |  | FunctionDeclaration | `validateAgentLimits(input: unknown): AgentLimits` |
 | [src/core/agents.ts:52](source/src/core/agents.ts#L52) |  | FunctionDeclaration | `validateAgentCopy(input: unknown): AgentCopy` |
 
+## src/core/analytics.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/analytics.ts:2](source/src/core/analytics.ts#L2) |  | TypeAliasDeclaration | `AnalyticsPurpose = typeof analyticsPurposes[number]` |
+| [src/core/analytics.ts:5](source/src/core/analytics.ts#L5) |  | TypeAliasDeclaration | `AnalyticsConfiguration = { schema_version: 1; source_id: 'marker-owner-production'; product: 'marker'; environment: 'production'; version: number; issued_at: string; expires_at: string; enabled: boolean; events: string[]; fields: string[]; purposes: string[]; retention_days: number; destinations: string[]; restriction_reason: string \| null; }` |
+| [src/core/analytics.ts:11](source/src/core/analytics.ts#L11) |  | TypeAliasDeclaration | `AnalyticsOverview = { console_url: string; source_id: 'marker-owner-production'; status: 'not_configured' \| 'unavailable' \| 'paused' \| 'active' \| 'confirmation_pending'; desired_version: number \| null; applied_version: number \| null; configuration: AnalyticsConfiguration \| null; }` |
+| [src/core/analytics.ts:17](source/src/core/analytics.ts#L17) |  | TypeAliasDeclaration | `AnalyticsPreference = { purpose: AnalyticsPurpose; status: 'granted' \| 'denied' \| 'withdrawn' \| 'expired'; permission_ref: string; categories: string[]; recipients: string[]; gpc: boolean; expires_at: string \| null }` |
+| [src/core/analytics.ts:18](source/src/core/analytics.ts#L18) |  | FunctionDeclaration | `isCurrentAnalyticsGrant(preference: AnalyticsPreference \| undefined, now?: inferred): inferred` |
+| [src/core/analytics.ts:21](source/src/core/analytics.ts#L21) |  | TypeAliasDeclaration | `AnalyticsAudience = { audience_id: string; version: number; eligible_count: number; as_of: string; mode: 'demo' \| 'production' }` |
+
 ## src/core/client.ts
 
 | Source | Scope | Kind | Signature |
@@ -1578,6 +1769,12 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 | [src/core/generation.ts:127](source/src/core/generation.ts#L127) | createTextSimulation.generate | FunctionVariable | `finish(error?: Error, result?: SimulatedTextResult): inferred` |
 | [src/core/generation.ts:164](source/src/core/generation.ts#L164) | createTextSimulation | FunctionDeclaration | `prepareSave(state: Workspace, result: SimulatedTextResult, editedText: string): { revision: number; command: Command }` |
 | [src/core/generation.ts:182](source/src/core/generation.ts#L182) | createTextSimulation | FunctionDeclaration | `clear(): inferred` |
+
+## src/core/policy.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/policy.ts:8](source/src/core/policy.ts#L8) |  | FunctionVariable | `servicePolicyAcknowledgement(): inferred` |
 
 ## src/core/profile.ts
 
@@ -1858,13 +2055,13 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 
 | Source | Scope | Kind | Signature |
 | --- | --- | --- | --- |
-| [vite.config.ts:18](source/vite.config.ts#L18) |  | FunctionDeclaration | `incomingBody(req: IncomingMessage): ReadableStream<Uint8Array>` |
-| [vite.config.ts:21](source/vite.config.ts#L21) | incomingBody | MethodDeclaration | `start(controller: inferred): inferred` |
-| [vite.config.ts:27](source/vite.config.ts#L27) | incomingBody | MethodDeclaration | `pull(): inferred` |
-| [vite.config.ts:28](source/vite.config.ts#L28) | incomingBody | MethodDeclaration | `cancel(): inferred` |
-| [vite.config.ts:32](source/vite.config.ts#L32) |  | FunctionDeclaration | `localEditorial(): Plugin` |
-| [vite.config.ts:36](source/vite.config.ts#L36) | localEditorial | MethodDeclaration | `configureServer(server: inferred): inferred` |
-| [vite.config.ts:61](source/vite.config.ts#L61) | localEditorial.configureServer | MethodDeclaration | `backend(request: inferred): inferred` |
+| [vite.config.ts:19](source/vite.config.ts#L19) |  | FunctionDeclaration | `incomingBody(req: IncomingMessage): ReadableStream<Uint8Array>` |
+| [vite.config.ts:22](source/vite.config.ts#L22) | incomingBody | MethodDeclaration | `start(controller: inferred): inferred` |
+| [vite.config.ts:28](source/vite.config.ts#L28) | incomingBody | MethodDeclaration | `pull(): inferred` |
+| [vite.config.ts:29](source/vite.config.ts#L29) | incomingBody | MethodDeclaration | `cancel(): inferred` |
+| [vite.config.ts:33](source/vite.config.ts#L33) |  | FunctionDeclaration | `localEditorial(): Plugin` |
+| [vite.config.ts:37](source/vite.config.ts#L37) | localEditorial | MethodDeclaration | `configureServer(server: inferred): inferred` |
+| [vite.config.ts:62](source/vite.config.ts#L62) | localEditorial.configureServer | MethodDeclaration | `backend(request: inferred): inferred` |
 
 [Complete AST JSON](inventories/ast-index.json). Aliases, callbacks, dynamic dispatch, SQL and runtime guards need source review. No coverage percentage is inferred.
 
@@ -1874,6 +2071,8 @@ Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-sym
 Canonical chapter: [code-flow/06-agents-and-mcp.md](code-flow/06-agents-and-mcp.md)
 
 # Optional Agents and external MCP
+
+Current source: 26 October 2026, `77bbedac`. Hosted connection/read observations mentioned below are dated prior receipts; the current audit used local/synthetic services and did not repeat real host or provider work.
 
 Hosted [Agents](source/src/console/Agents.tsx) and Environment → [shared connection view](source/src/console/McpConnections.tsx) → registered private App-backed plugin → host starts OAuth → [registration/PKCE validation](source/server/mcp-auth.ts) → bounded pending-login transaction if needed → [browser capture/session resume](source/src/console/mcp-resume.ts) → authenticated consent → validated DNS/IPv4 303 callback or escaped IPv6 meta/anchor handoff → PKCE code exchange → opaque scoped token. Consent HTML keeps same-origin referrer policy for the strict form Origin check; return responses send no referrer.
 
@@ -1887,41 +2086,58 @@ Read [native consent-policy regression](source/tests/mcp-consent-policy.test.ts)
 
 The [portable metadata](source/integrations/chatgpt/marker/plugin.json), [MCP configuration](source/integrations/chatgpt/marker/mcp.json) and [campaign skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) remain developer source. They do not recreate the registered private App binding by themselves. [The connector document](source/docs/mcp-connector.md) describes that distinction and the authorized public installation CTA.
 
+Current [policy.ts](source/server/policy.ts) also gates protected product/MCP/bridge use when service declarations are missing. Agents cannot accept Terms for the owner; account/data rights retain their separate access path. [0012](source/migrations-d1/0012_policy_acknowledgements.sql) adds that declaration receipt, and [0013](source/migrations-d1/0013_analytics_subject.sql) adds the subject/central-deletion reference. Connector permissions, service declarations and optional Analytics purposes are different authorizations.
+
+The 26 October audit completed local DCR/PKCE/consent/token and 14-tool discovery, saved a product through the actual native backend, checked replay/changed arguments/scopes/revocation and read persistence from a new instance. It did not complete an actual ChatGPT/Dot campaign or invoke local model inference. C08 is PASS for the audited contract, while C09 retains UNKNOWN real-inference evidence. [Audit](12-functional-integrity-audit.md).
+
+The optional [Analytics relay](source/server/analytics.ts) has an independent fixed central destination and does not automatically collect private source/provider material. Its ACK concern F02 remains specification ambiguity and requires an authoritative contract and central sandbox readback.
+
 
 ---
 
 Canonical chapter: [PENDING-REPORT.md](PENDING-REPORT.md)
 
-# Prioritized pending work
+# Prioritized pending work — 26 October 2026
 
-The native engine remains unchanged. Actual owner OAuth, fourteen-tool discovery and two connected reads are verified. These establish the connection and the exercised read paths; the remaining work below is explicit, not a claim that existing functionality is absent.
+Current source is `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`. The [functional-integrity audit](12-functional-integrity-audit.md) is complete for its declared verifiable inventory and reports one minor product failure plus explicit external unknowns. This publication changes no product code.
 
-| Order | Pending work | Completion evidence |
+| Order | Pending result | Required evidence |
 | --- | --- | --- |
-| 1 | Exercise an authorized business write and one complete assistant-driven campaign: select material, prepare/edit, save, render, human approval of the exact result, then export. | Actual host results with revision/retry behavior and native approval preserved; distinguish successful read, write, render, approval and export. No social publication implied. |
-| 2 | Verify Dot/voice and physical-phone use. | Real supported host/device sessions, including reconnect, permissions, interruption, capture/codec and recovery. Desktop/mobile viewport fixtures are not physical-device evidence. |
-| 3 | Validate connection lifecycle and bounded protocol compatibility. | Actual host renewal, revocation/reconnection and scope upgrades; protocol compatibility and future CIMD/structured-output support; private-file attachment behavior versus a signed-in download. These are unverified paths or future design work, not demonstrated failures. |
-| 4 | Apply the exact original Torres del Paine and sun icon to the registered App when a supported owning-App control becomes available. | Readback from the actual owning App. Its current UI exposes no logo-edit control, so this change is not applied. Preserve the [original symbol](source/public/brand/marker-tab-v1.svg); do not substitute an invented icon, recreate the connection or infer success from portable plugin metadata. |
-| 5 | Measure the native product's time-saving and media quality. | Human ten-piece creative/time-saved pilot; actual correction counts; hosted analysis binaries before enablement. Transcription, subtitles and semantic selection remain separate future work. |
-| 6 | Decide later public readiness and complete operational validation. | Owner decision on public submission/distribution; platform eligibility, reviewer requirements and listing assets; security/accessibility, actual costs/limits and complete D1/R2/job/provider recovery. The registered App-backed plugin remains private; public review-source access does not publish the plugin or widen its audience. Existing bounded checks retain their original scope. |
+| 1 | Correct F01: Studio recovery messages follow EN/ES. | New snapshot; independent stale-revision and rights-failure cases in both languages; unchanged 409/validation and preserved drafts. |
+| 2 | Resolve F03/F04 test reliability. | Generated prerequisites declared/prepared; private-file fixture created synthetically; bounded streaming tests; cleanup preserves original assertion. Run relevant negative controls and then the prepared suite. |
+| 3 | Resolve F02 central Analytics ACK contract. | Authoritative response schema/semantics and a dedicated sandbox that confirms or rejects an exact version. Compare the relay state with independent central readback. Until then C11 remains UNKNOWN and false success is unconfirmed. |
+| 4 | Close the five externally incomplete capability areas. | Authorized synthetic sandboxes for real R2/container processing, email/OAuth/Turnstile, external erasure, local bridge inference and central Analytics effects. Local transport/SQL mocks establish only their exercised portion. |
+| 5 | Complete an actual assistant-driven campaign and host lifecycle. | Explicitly requested saved draft visible after reload, native planning parity, actual render, owner review/approval, exact export; real renewal, scope upgrade, revocation/reconnect and private-download behavior on each selected host. |
+| 6 | Verify Dot/voice and physical-phone behavior. | Actual supported host/device sessions; capture/codec/microphone permission, interruption, reselect/recovery, login and connection. Viewport emulation does not establish physical iPhone/Safari or Android/Chrome behavior. |
+| 7 | Measure value and operational readiness. | Ten-piece human creative/time-saved pilot; hosted analysis binary verification before enabling analysis; actual cost/limit comparison and full D1/R2/job/provider recovery rehearsal. |
 
-Sole-owner eligibility is deliberate. Generic public multi-tenant/SaaS use remains deferred; publishing a plugin listing alone would not authorize or enable additional users. Review the existing [integration design](source/docs/assistant-integration-design-2026-10-24.md) before proposing compatibility or distribution changes.
+Reconcile the stale editorial creation descriptions in [console documentation](source/docs/console.md) with the current earlier-record sections and Studio flow. The audit did not confirm that the main implementation was disconnected or that the old creation entrypoint must be restored.
 
-These priorities guide external AI review and future owner decisions. This repository refresh authorizes source/document publication only; it does not itself run business writes, inference, a new deployment, public submission or destructive data operations. Consult [current deployment evidence](DEPLOYMENT-STATUS.md), [machine state](CURRENT-STATE.json) and the [review prompt](AI_ANALYSIS_PROMPT.md).
+The original Torres del Paine and sun App icon remains a provider-owned presentation follow-up under its dated receipt; the review publication does not assert it was applied. Preserve the [original symbol](source/public/brand/marker-tab-v1.svg). Public plugin submission, a wider audience, hosted inference admission, social APIs, paid activation and multi-tenant SaaS remain separate decisions.
+
+W = 60 = 34 + 3 + 23: D = 56.67%, C = 61.67%, weighted unknown = 38.33%. The 333/333 prepared audit suite and successful build/Worker dry run do not complete these gaps. See [FINDINGS](audit/2026-10-26/FINDINGS.json), [MATRIX](audit/2026-10-26/MATRIX.json) and the [external-review prompt](AI_ANALYSIS_PROMPT.md). Future fixes require new source identity and independent cases; they do not retroactively approve the original snapshot.
 
 
 ---
 
 Canonical chapter: [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md)
 
-# Full marKER review prompt
+# Independent full marKER review prompt — 26 October 2026
 
-Review this repository as the current full-source snapshot of marKER. Begin with README, CURRENT-STATE.json and source-snapshot-manifest.json; identify the clean source commit, empty dirty inventory and historical demo provenance. Read PENDING-REPORT.md and source/docs/current-status-2026-10-24.md before proposing work. Then inspect the implementation under source/, its tests/migrations/configuration, the dossier and generated catalogs. This is a review request, not permission to modify/deploy the app, run provider inference, access private credentials/data, send messages or publish socially.
+Review the full product snapshot under `source/` at commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`. Begin with README, 00-START-HERE, CURRENT-STATE.json and source-snapshot-manifest.json. The projection has 368 tracked product files and no source dirty overlay. The dated 24 October dossier is historical. Read the current curated chapters, generated catalogs and actual code; summaries and grep results do not constitute semantic source coverage.
 
-Assess end-to-end product/workflow usefulness, frontend state/recovery/accessibility, backend/domain correctness, schema/CAS/concurrency, original-media custody and processing, native classification/planning, optional local Agents, authenticated external MCP, owner identity/Profile/deletion, security/privacy/retention/limits, operational recovery, dependencies and justified complexity. Preserve the independent native no-agent path and original brand assets. Do not propose replacing deterministic rules with prompts.
+This is a read-only review request. It does not authorize repairing the app, deployment, remote migration, provider inference, credential/owner-data access, messages, social publication or destructive operations. Use disposable synthetic local data for any separately authorized execution. Keep private agent governance outside the evaluation and the public report.
 
-Distinguish source facts, demonstrated test behavior, coordinator-reported prior evidence, inference and unknowns. Full code is available; do not claim it is missing. The current deployment, real owner OAuth return/token exchange, fourteen-tool catalog and two connected reads are recorded in DEPLOYMENT-STATUS.md. Those observations do not establish business writes, remaining unexecuted tool paths, a complete hosted campaign, Dot/voice/phone behavior, physical-device UAT, creative quality, invoice limits or restoration. Review the current login/resume, native-form referrer policy, validated callback CSP/IPv6 handoff, approved-client lifetime, scope challenges and developer-only bridge boundaries. Distinguish the registered private App-backed plugin from the portable host-package source; do not assume every host, protocol version or voice/phone surface works. The source closure commits previously deployed demo bytes and documentation; it is not a fresh runtime deployment. The requested exact original Torres del Paine and sun App icon remains unapplied because the owning App UI has no logo-edit control. The plugin remains private; public submission and generic multi-tenant/SaaS are future owner decisions, and a listing alone would not admit other users. Evaluate bounded CIMD/protocol/structured-output followups, actual renewal/revoke/reconnect/scope upgrades and host private-file attachments versus signed-in downloads without treating unverified paths as confirmed defects. Historical product-doc statements may be increment-specific; compare code and the current-state qualification.
+Inspect architecture, UI/state/recovery/accessibility, domain algorithms, backend APIs, all SQL/migrations, persistence/CAS/concurrency, jobs and real media, owner identity, Profile/deletion, policy acknowledgements and own-data export, central Analytics, optional local Agents, external MCP, dependencies/lockfile, build/configuration and tests/runners. Preserve the usable no-agent native path and original branding. Do not replace deterministic work with prompts or require expressly deferred features as present obligations.
 
-For each finding give priority, exact source path and line, concrete trigger/counterexample, impact, confidence and evidence, minimal coherent correction, affected boundaries, invariants to preserve, focused failure/concurrency checks and migration/recovery implications. Separate confirmed defects, plausible risks, usability opportunities and optional roadmap. Avoid generic best practices, invented facts/endpoints, duplicate systems and unsupported security certification.
+Read [the existing audit](audit/2026-10-26/REPORT.md), [matrix](audit/2026-10-26/MATRIX.json), [scorecard](audit/2026-10-26/SCORECARD.json) and [findings](audit/2026-10-26/FINDINGS.json) as evidence to challenge, not authority to approve. Its verdict is FAIL for F01, a minor confirmed C12 localization failure. F03/F04 are minor WEAK_TEST findings. F02 is suspected SPEC_AMBIGUITY: ACK HTTP 200 with a false/empty body produces active/applied state, but the authoritative central ACK schema is unavailable. Do not promote it to confirmed FALSE_SUCCESS without establishing the contract. F05 is documentary drift, not a proven disconnected native workflow.
 
-Deliver: (1) architecture/workflow understanding, (2) prioritized findings, (3) minimal actionable improvement sequence, (4) open questions requiring actual runtime/owner evidence, and (5) coverage ledger of files/flows read and tests actually executed. If your context/tool budget prevents full source coverage, state the exact unreviewed paths and continue in bounded passes rather than calling a partial review complete. Do not infer that a static test declaration proves a passing run or that a successful local SDK fixture proves real Dot conversation.
+The audit weights are frozen: W = 60 = 34 + 3 + 23; D = 56.67%, C = 61.67%, weighted unknown = 38.33%. UNKNOWN remains in the denominator and is not a defect. A prepared 333/333 suite, build/types/logo and local Worker dry run passed during that audit; this publication does not rerun them. Native/local/synthetic results do not prove current production, real provider confirmation, target host behavior, physical-phone UAT, creative quality, invoices or restoration. Retained dated delivery receipts have their own scope.
+
+Reconstruct each obligation from accepted product contracts. Distinguish explicit requirements, inferences, conflicts and deferred work. Trace actual entrypoint → validation/business logic → durable effect → independent readback. Examine no-op/constant/mock/fallback/special-casing signals in context. Explicit DEV simulation and inactive adapters are not faults merely because they exist. Review test discovery, generated prerequisites, assertions, error handling, skips, cleanup and negative controls. A timeout is not a successful assertion. Separate serialized effects from judgment if a runner is suspect.
+
+Challenge the existing findings and search beyond them. For each reportable issue provide severity/category, CONFIRMED/SUSPECTED/BLOCKED status, exact source path and line, requirement source, configuration, minimal input, expected and observed result, reproducible command/evidence, impact, legitimate alternatives considered, minimal correction and independent verification. Do not infer AI authorship or deceptive intent from style, a signature or a contradiction alone. Do not claim tampering absent a demonstrated mechanism.
+
+Prioritize F01 language-safe error handling; reproducible test setup and bounded failure evidence; authoritative Analytics ACK semantics and central readback; real processing/auth/erasure/inference sandboxes; then actual connected campaign and phone/host lifecycle evidence. Do not treat a public source package as public plugin submission or a multi-tenant product.
+
+Deliver: architecture/workflow understanding; prioritized findings and refutations; concrete correction/verification sequence; remaining unknowns and evidence needed; and a cumulative coverage ledger of files/flows read, tests actually executed, samples and unreviewed paths. If scope exceeds your context, continue in bounded passes and preserve a checkpoint. Never call a partial review complete or turn the existing audit's percentages into a probability of cheating.

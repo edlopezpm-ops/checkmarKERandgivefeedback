@@ -1,6 +1,6 @@
 # Test declaration index
 
-308 static declarations across 42 files. Includes subtests; this is neither execution count nor code coverage.
+332 static declarations across 45 files. Includes subtests; this is neither execution count nor code coverage.
 
 | File | Declarations |
 | --- | --- |
@@ -11,6 +11,8 @@
 | [tests/agents-studio.test.ts](../source/tests/agents-studio.test.ts) | 1 |
 | [tests/agents-worker.test.ts](../source/tests/agents-worker.test.ts) | 1 |
 | [tests/agents.test.ts](../source/tests/agents.test.ts) | 12 |
+| [tests/analytics-ui.test.ts](../source/tests/analytics-ui.test.ts) | 3 |
+| [tests/analytics.test.ts](../source/tests/analytics.test.ts) | 15 |
 | [tests/assets.test.ts](../source/tests/assets.test.ts) | 6 |
 | [tests/captcha.test.ts](../source/tests/captcha.test.ts) | 10 |
 | [tests/d1-hosted.test.ts](../source/tests/d1-hosted.test.ts) | 3 |
@@ -28,6 +30,7 @@
 | [tests/mcp-tools.test.ts](../source/tests/mcp-tools.test.ts) | 8 |
 | [tests/motion.test.ts](../source/tests/motion.test.ts) | 5 |
 | [tests/native-auth.test.ts](../source/tests/native-auth.test.ts) | 12 |
+| [tests/policy-rights.test.ts](../source/tests/policy-rights.test.ts) | 6 |
 | [tests/profile-local.test.ts](../source/tests/profile-local.test.ts) | 3 |
 | [tests/profile-ui.test.ts](../source/tests/profile-ui.test.ts) | 12 |
 | [tests/profile.test.ts](../source/tests/profile.test.ts) | 11 |
@@ -75,7 +78,7 @@
 | [tests/agent-stream.test.ts:5](../source/tests/agent-stream.test.ts#L5) | test | structured streaming shows natural message while keeping proposal JSON hidden |
 | [tests/agent-stream.test.ts:18](../source/tests/agent-stream.test.ts#L18) | test | partial escaped characters and reordered final JSON never expose schema |
 | [tests/agents-studio.test.ts:10](../source/tests/agents-studio.test.ts#L10) | test | trusted agent save retains provenance through edits, source snapshots, approval and export; HTTP fields cannot forge it |
-| [tests/agents-worker.test.ts:7](../source/tests/agents-worker.test.ts#L7) | test | Worker owner session and bridge bearer remain separate; D1 pairing is durable and revocable |
+| [tests/agents-worker.test.ts:8](../source/tests/agents-worker.test.ts#L8) | test | Worker owner session and bridge bearer remain separate; D1 pairing is durable and revocable |
 | [tests/agents.test.ts:75](../source/tests/agents.test.ts#L75) | test | agent bridge is separate, revocable and subscription-only; context is derived from exact Studio selection |
 | [tests/agents.test.ts:91](../source/tests/agents.test.ts#L91) | test | agent proposal/edit/history survives reload; completion and lost material response recover once |
 | [tests/agents.test.ts:110](../source/tests/agents.test.ts#L110) | test | source metadata changes are detected independently of unrelated Studio revision changes |
@@ -88,6 +91,24 @@
 | [tests/agents.test.ts:212](../source/tests/agents.test.ts#L212) | test | actual bridge receipt replay clears an uncommitted timed-out result without invoking inference |
 | [tests/agents.test.ts:226](../source/tests/agents.test.ts#L226) | test | selected variant recipe drift blocks old proposals; unrelated edits and own planner receipts remain valid |
 | [tests/agents.test.ts:243](../source/tests/agents.test.ts#L243) | test | variant-only context derives its Studio campaign/product and rejects a mismatched explicit product |
+| [tests/analytics-ui.test.ts:42](../source/tests/analytics-ui.test.ts#L42) | test | navigator-only GPC propagates the central exclusion automatically on load without a manual click |
+| [tests/analytics-ui.test.ts:50](../source/tests/analytics-ui.test.ts#L50) | test | expired central preference is displayed as expired and cannot enable the interest action |
+| [tests/analytics-ui.test.ts:58](../source/tests/analytics-ui.test.ts#L58) | test | navigator-only GPC with an unconfigured connection still shows its closed source state |
+| [tests/analytics.test.ts:49](../source/tests/analytics.test.ts#L49) | test | missing source credential sends no requests or identities and leaves the main API outside Analytics |
+| [tests/analytics.test.ts:57](../source/tests/analytics.test.ts#L57) | test | versioned configuration is applied and acknowledged; pause stops optional events at the producer |
+| [tests/analytics.test.ts:68](../source/tests/analytics.test.ts#L68) | test | unconfirmed, expired, wrong-source and malformed configurations never claim applied state |
+| [tests/analytics.test.ts:78](../source/tests/analytics.test.ts#L78) | test | preference subjects are derived server-side and do not cross tenants or forward private metadata |
+| [tests/analytics.test.ts:93](../source/tests/analytics.test.ts#L93) | test | analytics-only permission cannot manufacture commercial interest, conversion, sale or payment events |
+| [tests/analytics.test.ts:100](../source/tests/analytics.test.ts#L100) | test | GPC prevents covered grants and events while analytics and withdrawal remain possible |
+| [tests/analytics.test.ts:111](../source/tests/analytics.test.ts#L111) | test | observed GPC propagates centrally on reads and event rejection without a manual preference click |
+| [tests/analytics.test.ts:132](../source/tests/analytics.test.ts#L132) | test | expired preferences remain readable and never become an active grant |
+| [tests/analytics.test.ts:143](../source/tests/analytics.test.ts#L143) | test | recipient and category validation prevents Partner A choices from authorizing Partner B |
+| [tests/analytics.test.ts:152](../source/tests/analytics.test.ts#L152) | test | explicit interest is bounded and source version is revalidated before every forward |
+| [tests/analytics.test.ts:163](../source/tests/analytics.test.ts#L163) | test | fixed destination, redirect rejection, bounded responses and errors never disclose transport details |
+| [tests/analytics.test.ts:174](../source/tests/analytics.test.ts#L174) | test | campaign audience consumer exposes only approved references and counts |
+| [tests/analytics.test.ts:183](../source/tests/analytics.test.ts#L183) | test | mutations require the same-origin action header and reject oversized bodies |
+| [tests/analytics.test.ts:191](../source/tests/analytics.test.ts#L191) | test | durable rights link precedes central mutation; erasure requires evidence and retries without reporting remote deletion |
+| [tests/analytics.test.ts:206](../source/tests/analytics.test.ts#L206) | test | native router denies anonymous inventory and mutation requests before Analytics transport |
 | [tests/assets.test.ts:14](../source/tests/assets.test.ts#L14) | test | default/rejected consent loads once in memory with no persistent writes |
 | [tests/assets.test.ts:18](../source/tests/assets.test.ts#L18) | test | acceptance caches resource, cleans old versions and revocation preserves other caches |
 | [tests/assets.test.ts:23](../source/tests/assets.test.ts#L23) | test | unavailable storage and quota failure fall back to host |
@@ -104,9 +125,9 @@
 | [tests/captcha.test.ts:93](../source/tests/captcha.test.ts#L93) | test | proof store SQL failure, missing custody configuration and row capacity fail closed |
 | [tests/captcha.test.ts:101](../source/tests/captcha.test.ts#L101) | test | capacity recovers on the next day while preserving a crossing-midnight proof and current quotas |
 | [tests/captcha.test.ts:114](../source/tests/captcha.test.ts#L114) | test | proof admission transaction rolls back expired-row cleanup when insertion fails |
-| [tests/d1-hosted.test.ts:28](../source/tests/d1-hosted.test.ts#L28) | test | actual SQLite schema and hosted repository keep CAS conflict and payload limit without lost records |
-| [tests/d1-hosted.test.ts:37](../source/tests/d1-hosted.test.ts#L37) | test | hosted product deletion cannot orphan Studio material or campaign in either committed order |
-| [tests/d1-hosted.test.ts:55](../source/tests/d1-hosted.test.ts#L55) | test | native auth plus data API completes owner login/write/logout and denies non-owner requests using actual SQL |
+| [tests/d1-hosted.test.ts:29](../source/tests/d1-hosted.test.ts#L29) | test | actual SQLite schema and hosted repository keep CAS conflict and payload limit without lost records |
+| [tests/d1-hosted.test.ts:38](../source/tests/d1-hosted.test.ts#L38) | test | hosted product deletion cannot orphan Studio material or campaign in either committed order |
+| [tests/d1-hosted.test.ts:56](../source/tests/d1-hosted.test.ts#L56) | test | native auth plus data API completes owner login/write/logout and denies non-owner requests using actual SQL |
 | [tests/demo-media.test.ts:18](../source/tests/demo-media.test.ts#L18) | test | only the two immutable public movies and GET/HEAD select the media handler |
 | [tests/demo-media.test.ts:27](../source/tests/demo-media.test.ts#L27) | test | complete GET preserves the movie bytes and advertises byte ranges |
 | [tests/demo-media.test.ts:35](../source/tests/demo-media.test.ts#L35) | test | single, suffix and open-ended ranges return exact bytes and HTTP metadata |
@@ -212,6 +233,12 @@
 | [tests/native-auth.test.ts:215](../source/tests/native-auth.test.ts#L215) | test | missing configuration, unavailable database/mail and CSRF or oversized input fail closed |
 | [tests/native-auth.test.ts:234](../source/tests/native-auth.test.ts#L234) | test | a stalled JSON stream is cancelled at the three-second deadline before any auth state is written |
 | [tests/native-auth.test.ts:246](../source/tests/native-auth.test.ts#L246) | test | configured CAPTCHA refusal precedes native request, verification and access-help writes |
+| [tests/policy-rights.test.ts:30](../source/tests/policy-rights.test.ts#L30) | test | new migration and sign-in never backfill acceptance; all protected routes require a native deliberate acknowledgement |
+| [tests/policy-rights.test.ts:48](../source/tests/policy-rights.test.ts#L48) | test | acknowledgement validates exact versions, affirmative fields, origin, session, tenant and five-minute proof |
+| [tests/policy-rights.test.ts:58](../source/tests/policy-rights.test.ts#L58) | test | receipt uses database time, preserves idempotent acknowledgement time and never changes optional storage |
+| [tests/policy-rights.test.ts:72](../source/tests/policy-rights.test.ts#L72) | test | two separate synthetic owners cannot exchange proofs or export another workspace; export requires CSRF and recent proof |
+| [tests/policy-rights.test.ts:83](../source/tests/policy-rights.test.ts#L83) | test | record export pages are bounded, sanitized and explicit about media exclusions; unknown categories and oversized pages fail |
+| [tests/policy-rights.test.ts:93](../source/tests/policy-rights.test.ts#L93) | test | database failure and revoked-session race never create acknowledgements or return own data |
 | [tests/profile-local.test.ts:10](../source/tests/profile-local.test.ts#L10) | test | local profile persists optional fields and admits only one concurrent revision |
 | [tests/profile-local.test.ts:17](../source/tests/profile-local.test.ts#L17) | test | local profile cannot edit access email or delete the local workspace |
 | [tests/profile-local.test.ts:22](../source/tests/profile-local.test.ts#L22) | test | local profile omits unrelated stored properties and fails closed on corrupt storage |
@@ -227,17 +254,17 @@
 | [tests/profile-ui.test.ts:83](../source/tests/profile-ui.test.ts#L83) | test | automatic initials are displayed from the persisted server profile and never editable |
 | [tests/profile-ui.test.ts:88](../source/tests/profile-ui.test.ts#L88) | test | purged capability status404 resolves terminal deletion through public session without a mutation |
 | [tests/profile-ui.test.ts:93](../source/tests/profile-ui.test.ts#L93) | test | lost final resume response resolves the public tombstone and never repeats DELETE |
-| [tests/profile.test.ts:39](../source/tests/profile.test.ts#L39) | test | account deletion freezes and removes all delegated MCP credentials and effect receipts |
-| [tests/profile.test.ts:61](../source/tests/profile.test.ts#L61) | test | profile derives initials automatically and retains only the readonly access email on owner PATCH with revision CAS |
-| [tests/profile.test.ts:87](../source/tests/profile.test.ts#L87) | test | shared automatic initials follow current name or email without an owner-specific default |
-| [tests/profile.test.ts:91](../source/tests/profile.test.ts#L91) | test | deletion requires exact double confirmation, fresh independent email, session, origin and singleton tenant |
-| [tests/profile.test.ts:108](../source/tests/profile.test.ts#L108) | test | durable freeze, lost-start retry and same-browser cleanup purge all active D1/R2 rows without recreating owner data |
-| [tests/profile.test.ts:147](../source/tests/profile.test.ts#L147) | test | cleanup waits existing write leases and retries multipart/R2 failures without a false completion |
-| [tests/profile.test.ts:160](../source/tests/profile.test.ts#L160) | test | concurrent resumes hold one durable lease and final D1 purge rolls back atomically on failure |
-| [tests/profile.test.ts:173](../source/tests/profile.test.ts#L173) | test | final empty-bucket recheck catches late objects; scheduled recovery completes only an owner-started deletion |
-| [tests/profile.test.ts:182](../source/tests/profile.test.ts#L182) | test | missing lifecycle migration fails closed before any auth, bridge, or profile effect |
-| [tests/profile.test.ts:188](../source/tests/profile.test.ts#L188) | test | completed or previously aborted multipart uploads permit cleanup only for documented NoSuchUpload errors |
-| [tests/profile.test.ts:195](../source/tests/profile.test.ts#L195) | test | additive profile migration preserves existing Google identity, owner/session and workspace bytes; absent lifecycle also freezes D1 writes |
+| [tests/profile.test.ts:40](../source/tests/profile.test.ts#L40) | test | account deletion freezes and removes all delegated MCP credentials and effect receipts |
+| [tests/profile.test.ts:62](../source/tests/profile.test.ts#L62) | test | profile derives initials automatically and retains only the readonly access email on owner PATCH with revision CAS |
+| [tests/profile.test.ts:88](../source/tests/profile.test.ts#L88) | test | shared automatic initials follow current name or email without an owner-specific default |
+| [tests/profile.test.ts:92](../source/tests/profile.test.ts#L92) | test | deletion requires exact double confirmation, fresh independent email, session, origin and singleton tenant |
+| [tests/profile.test.ts:109](../source/tests/profile.test.ts#L109) | test | durable freeze, lost-start retry and same-browser cleanup purge all active D1/R2 rows without recreating owner data |
+| [tests/profile.test.ts:148](../source/tests/profile.test.ts#L148) | test | cleanup waits existing write leases and retries multipart/R2 failures without a false completion |
+| [tests/profile.test.ts:161](../source/tests/profile.test.ts#L161) | test | concurrent resumes hold one durable lease and final D1 purge rolls back atomically on failure |
+| [tests/profile.test.ts:174](../source/tests/profile.test.ts#L174) | test | final empty-bucket recheck catches late objects; scheduled recovery completes only an owner-started deletion |
+| [tests/profile.test.ts:183](../source/tests/profile.test.ts#L183) | test | missing lifecycle migration fails closed before any auth, bridge, or profile effect |
+| [tests/profile.test.ts:189](../source/tests/profile.test.ts#L189) | test | completed or previously aborted multipart uploads permit cleanup only for documented NoSuchUpload errors |
+| [tests/profile.test.ts:196](../source/tests/profile.test.ts#L196) | test | additive profile migration preserves existing Google identity, owner/session and workspace bytes; absent lifecycle also freezes D1 writes |
 | [tests/scheduler.test.ts:13](../source/tests/scheduler.test.ts#L13) | test | first episode waits 30–60 seconds, next wait starts after finish |
 | [tests/scheduler.test.ts:19](../source/tests/scheduler.test.ts#L19) | test | hidden wait resumes remaining time without catch-up |
 | [tests/scheduler.test.ts:24](../source/tests/scheduler.test.ts#L24) | test | hidden episode pauses completion; dispose cancels all timers |

@@ -1,0 +1,17 @@
+{
+  "oracle": "Conditional rule: if acknowledged:false means rejection in the central response contract, it cannot establish a confirmed version. This judges serialized outputs outside the product runner.",
+  "contract_status": "SPEC_AMBIGUITY",
+  "product_defect_confirmed": false,
+  "positive_control": "PASS",
+  "negative_dependency_reply": {
+    "acknowledged": false
+  },
+  "observed_status": "active",
+  "observed_applied_version": 31,
+  "conditional_violation_reproduced": true,
+  "limits": [
+    "Injected service response, not a real central failure observed",
+    "The formal central ACK response schema and false-value semantics are unavailable, so this oracle cannot confirm a product defect",
+    "Empty or version-shaped responses are not used as confirmed counterexamples because their exact response schema is undocumented"
+  ]
+}

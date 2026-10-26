@@ -11,11 +11,10 @@ export type EnvironmentPreferences = {
 };
 
 export function EnvironmentSettings({ preferences: p, idPrefix, showCache }: { preferences: EnvironmentPreferences; idPrefix: string; showCache: boolean }) {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, t } = useLanguage();
   return <>
     <p className="setting-note"><a className="environment-demo-link" href="/demo/" target="_blank" rel="noopener noreferrer">{language === "es" ? "Ver demo de marKER" : "Watch the marKER demo"}<span className="sr-only">{language === "es" ? " (se abre en otra pestaña)" : " (opens in a new tab)"}</span></a></p>
     <label className="setting" data-setting="theme"><span><strong>{t("Modo oscuro")}</strong><small>{t("Carbón suave y acentos naranja.")}</small></span><input type="checkbox" role="switch" aria-label={t("Modo oscuro")} checked={p.dark} onChange={e => p.onDark(e.target.checked)} /></label>
-    <label className="setting" data-setting="language"><span><strong>English / Español</strong><small lang={language}>{language === "en" ? "English" : "Español"}</small></span><input type="checkbox" role="switch" aria-label={language === "en" ? "Use English" : "Usar inglés"} checked={language === "en"} onChange={e => setLanguage(e.target.checked ? "en" : "es")} /></label>
     <label className="setting" data-setting="companions"><span><strong>{t("Compañeros de fondo")}</strong><small>{t("Claude y Codex animados")}</small></span><input type="checkbox" role="switch" checked={p.enabled} onChange={e => p.onEnabled(e.target.checked)} /></label>
     <label className="setting" data-setting="pause"><span><strong>{t("Pausar animación")}</strong><small>{t("Reanuda desde el mismo punto.")}</small></span><input type="checkbox" role="switch" checked={p.paused} disabled={!p.enabled} onChange={e => p.onPaused(e.target.checked)} /></label>
     {p.stateLabel && <p className="setting-note" role="status">{p.playing && p.enabled ? `${t(p.scene ?? "")} · ${t("en movimiento")}` : t(p.stateLabel)}</p>}

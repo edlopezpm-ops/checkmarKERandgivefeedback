@@ -1,0 +1,32 @@
+
+> marker@0.1.0 build
+> node tools/prepare-processor.mjs && tsc --noEmit && tsc -p tsconfig.server.json --noEmit && vite build && node tools/verify-assets.mjs
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 75 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                       0.58 kB │ gzip:   0.37 kB
+dist/assets/Profile-DDjdSyrf.css      0.68 kB │ gzip:   0.33 kB
+dist/assets/Settings-BQhWGERw.css     0.89 kB │ gzip:   0.40 kB
+dist/assets/Studio-Bw2N1-Y-.css       4.45 kB │ gzip:   1.24 kB
+dist/assets/index-bTWZCPzu.css       36.06 kB │ gzip:   8.18 kB
+dist/assets/Agents-BtHWjziE.js        4.50 kB │ gzip:   2.07 kB
+dist/assets/Background-BaRBe2my.js   10.90 kB │ gzip:   4.63 kB
+dist/assets/Profile-CmKAbRtg.js      11.70 kB │ gzip:   4.28 kB
+dist/assets/scenes-CZWUp8hJ.js       12.63 kB │ gzip:   4.94 kB
+dist/assets/Settings-DqhgXJoJ.js     17.65 kB │ gzip:   6.47 kB
+dist/assets/Studio-fMoyuwmd.js       74.60 kB │ gzip:  23.30 kB
+dist/assets/index-CFpSSjTd.js       397.48 kB │ gzip: 126.88 kB
+✓ built in 1.32s
+{
+  "logo": "PASS",
+  "file": "marker-logo-v1.png",
+  "format": "PNG",
+  "width": 1942,
+  "height": 809,
+  "bytes": 1483680,
+  "sha256": "34ee71440f595b7ffa7b0ac0f23ee6ef1164724b88e3fd0a7f1cd5a834403b1b",
+  "decorativeBytes": 8943
+}

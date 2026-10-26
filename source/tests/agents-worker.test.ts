@@ -1,3 +1,4 @@
+import { servicePolicyAcknowledgement } from '../src/core/policy.ts';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { DatabaseSync } from "node:sqlite";
@@ -6,7 +7,7 @@ import { nativeApi } from "../server/worker.ts";
 
 test("Worker owner session and bridge bearer remain separate; D1 pairing is durable and revocable", async t => {
   const sql = new DatabaseSync(":memory:");
-  for (const name of ["0001_private.sql", "0002_studio.sql", "0003_studio_hosted.sql", "0004_studio_analysis.sql", "0005_studio_settings.sql", "0006_agents.sql", "0007_single_tenant_auth.sql", "0008_github_auth.sql", "0009_profile_account.sql"])
+  for (const name of ["0001_private.sql", "0002_studio.sql", "0003_studio_hosted.sql", "0004_studio_analysis.sql", "0005_studio_settings.sql", "0006_agents.sql", "0007_single_tenant_auth.sql", "0008_github_auth.sql", "0009_profile_account.sql", "0012_policy_acknowledgements.sql"])
     sql.exec(readFileSync(new URL(`../migrations-d1/${name}`, import.meta.url), "utf8"));
   t.after(() => sql.close());
   const DB = {
@@ -32,12 +33,13 @@ test("Worker owner session and bridge bearer remain separate; D1 pairing is dura
   const cookie = (response, name) => response.headers.getSetCookie().find(value => value.startsWith(name + "="))?.split(";")[0] ?? "";
   assert.equal((await call("/api/agents")).status, 401);
   assert.equal((await call("/api/agents/connections", { name: "Unauthorized" })).status, 401);
-  assert.equal((await call("/api/agents/bridge/heartbeat", { authMode: "chatgpt" })).status, 401);
+  assert.equal((await call("/api/agents/bridge/heartbeat", { authMode: "chatgpt" })).status, 428);
   const challenge = await call("/api/auth/request", { email: env.MARKER_OWNER_EMAIL });
   const code = mails[0].text.match(/\b\d{8}\b/)[0];
   const verified = await call("/api/auth/verify", { code }, { Cookie: cookie(challenge, "__Host-marker_challenge") });
   const owner = cookie(verified, "__Host-marker_session");
   assert.ok(owner);
+  assert.equal((await call("/api/policy", servicePolicyAcknowledgement(), { Cookie: owner })).status, 200);
   const paired = await call("/api/agents/connections", { name: "Local runtime" }, { Cookie: owner });
   assert.equal(paired.status, 201);
   const { connection, token } = await paired.json();

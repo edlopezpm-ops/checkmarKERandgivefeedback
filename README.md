@@ -1,32 +1,28 @@
-> **Estado actualizado al 26/10/2026:** [snapshot público acotado](SNAPSHOT-2026-10-26.md) y [estado actual](CURRENT-STATE.json). El contenido histórico que sigue describe el corte del **24/10**; `source/` permanece en `3b219839` y no incluye los incrementos posteriores. La continuidad prevista es [Dossier privado](https://console.aekr.io/dossier). El aviso no acredita una importación ni acceso público al Dossier.
+# marKER — full source and functional-integrity review
 
----
+Current review snapshot: **26 October 2026**, source commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`, with **368 tracked product files** and no source working-tree overlay. [source/](source/) contains the current frontend, backend, tests, migrations, build configuration, product documentation and public assets. The [manifest](source-snapshot-manifest.json) binds the projected bytes.
 
-# marKER — full current-source review
+**Audit verdict: FAIL, for one confirmed minor UI defect.** Studio displays a fixed Spanish conflict message with the interface set to English. Two additional findings concern test reliability. The Analytics ACK concern remains suspected specification ambiguity; it is not a confirmed false success. No evaluator tampering or improper fixture adaptation was observed within the reviewed scope. Authorship and intent are not determined.
 
-This public repository contains the complete reviewable marKER product snapshot: **347 source/assets/configuration/test files**, plus an architectural dossier, data catalogs, source navigation and an external-review prompt. Start with [the reading contract](00-START-HERE.md) and [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md).
-
-**Snapshot:** 2026-10-24, clean source commit `3b219839086fa6e66e467c02d58df70a49f0d8f0`, with **all 347 selected files tracked and no working-tree overlay**. The twelve former demo paths are committed with the exact previously reviewed bytes. The [manifest](source-snapshot-manifest.json) identifies source and projection byte identities. The source repository remains privately maintained; this separately authorized projection is public.
-
-| Review entry | Contents |
+| Entry | Purpose |
 | --- | --- |
-| [Full implementation](source/) | Frontend, backend, native domain/planner/classifier, Agents bridge, authenticated MCP connector, reproducible host package, tests, tools, processor, migrations, config, docs and public assets. |
-| [One-file dossier](marKER-FULL-DOSSIER.md) | Current architecture, behavior, trust boundaries, operations and review questions. |
-| [Quick context](AI-QUICK-CONTEXT.md) | Concise orientation before reading the code. |
-| [Source inventory](inventories/source-paths.md) | Every included path, byte size and SHA-256. |
-| [Code flow](code-flow/README.md) | Request/auth/storage, UI/editorial, media, Agents/MCP and source-symbol navigation. |
-| [Data catalog](11-database-and-catalog-reference.md) | All included D1 migrations replayed into an empty SQLite schema; local Studio schema separately reconstructed. |
-| [Prioritized pending work](PENDING-REPORT.md) | Business workflow, devices, original App icon, private distribution and integration durability. |
-| [Evidence and limits](08-operations-quality-and-limits.md) | Fresh package checks versus root-reported product checks, deployment and actual host/device gaps. |
+| [Start here](00-START-HERE.md) | Reading order, snapshot and evidence contract. |
+| [Functional-integrity audit](12-functional-integrity-audit.md) | Verdict, score, findings, reproductions and remaining evidence. |
+| [Audit report](audit/2026-10-26/REPORT.md) | Published audit conclusions and execution limits. |
+| [Current combined dossier](marKER-FULL-DOSSIER.md) | Current curated chapters and navigation. |
+| [Quick context](AI-QUICK-CONTEXT.md) | Product and trust boundaries. |
+| [External-review prompt](AI_ANALYSIS_PROMPT.md) | Reusable instructions for a fresh review of this snapshot. |
+| [Pending work](PENDING-REPORT.md) | Corrections, unresolved contracts and real-service evidence. |
+| [Source inventory](inventories/source-paths.md) | Included paths, sizes and hashes. |
+| [Code flow](code-flow/README.md) | Entrypoints, storage, media, UI and connector navigation. |
+| [Data catalogs](11-database-and-catalog-reference.md) | Empty schema reconstruction and limitations. |
 
-marKER's native Space → classify → prepare editable campaign → render → review/approve → export flow works without an AI connection. Optional local Agents and the external MCP adapter reuse that foundation. An export is not social publication. The [hosted MCP release is now technically verified](DEPLOYMENT-STATUS.md): migrations 0010/0011 remain applied and Worker `d5f43234-74b2-4c45-a850-4f1dab75620c` serves production at 100%. Real owner OAuth returned to ChatGPT, its Connect action disappeared, and its catalog exposes fourteen tools (six Read and eight Write), with delete absent. Two actual connected reads—profile and a bounded product search—also pass. Business writes, a complete assistant-driven campaign, Dot conversation and physical-phone behavior remain unverified.
+The frozen 16-capability matrix has W=60, P=34, F=3 and U=23. Demonstrated compliance D is **56.67%**; decision coverage C is **61.67%**; weighted unknown is **38.33%**. These are capability weights, not test-pass percentages or probabilities of deception. UNKNOWN remains in the denominator. The [matrix](audit/2026-10-26/MATRIX.json) and [scorecard](audit/2026-10-26/SCORECARD.json) preserve the calculation.
 
-The current source commit closes demo Git custody and adds the [public status handoff](source/docs/current-status-2026-10-24.md). The last deployed runtime remains `f9478e66` plus those identical demo bytes; this closure requests and performs no new deployment. Single-owner eligibility remains deliberate; public plugin submission and generic multi-tenant/SaaS use are future decisions.
+The audit exercised native local preparation, real FFmpeg output, persistence after restart, local MCP writes/replay/revocation, schema and failure paths, browser language/help/cache/animation, and real demo seeking/ranges. Its prepared full suite passed **333/333, with no skips**; build/types/logo checks and a local Worker dry run passed. Those executions belong to the audit. Publishing this review package does not rerun them or verify a current deployment, real provider, target assistant, physical phone or human acceptance.
 
-Public demo: [watch](https://marker.aekr.io/demo/); both original public MP4s, poster, captions and player are included in [source/public/demo/](source/public/demo/), with [metadata/URLs/hashes](inventories/public-media.json). Original branding and font license files are preserved.
+marKER remains a private single-operator content-preparation application. Space classification and deterministic planning work without an AI connection. A human reviews and approves the exact result before export. Export does not publish to a social account. Current source includes versioned service-notice acknowledgements, bounded own-data export and the optional central Analytics relay; central production collection is recorded as paused in its dated source receipt.
 
-Private governance/evidence, runtime owner data, account stores, actual secret/environment files, dependency installations and generated outputs are excluded. Blank example configuration and public instance/site identifiers remain in the source; no live credential value, credential-store digest or private App binding is published. The served installation CTA is authorized public configuration; it does not make the plugin audience public. See [NOTICE.md](NOTICE.md).
+The [24 October dossier](marKER-FULL-DOSSIER-2026-10-24.md) is retained as historical material at its own source/evidence cut. It does not describe the current `source/` projection. Dated product release receipts also retain their own scope. Use [CURRENT-STATE.json](CURRENT-STATE.json) and [SNAPSHOT-2026-10-26.md](SNAPSHOT-2026-10-26.md) for this publication.
 
-Español: este repositorio permite revisar el código completo y sus flujos actuales. Las pruebas locales, el despliegue, la conexión real en Dot y la aceptación humana se distinguen expresamente.
-
-Integrity: [source snapshot](source-snapshot-manifest.json), [current state](CURRENT-STATE.json), [package manifest](PACKAGE-MANIFEST.json), [verification](PACKAGE-VERIFICATION.json), [SHA-256 list](SHA256SUMS.txt).
+Private agent governance, owner records, account/session stores, actual credentials/environment values and dependency installations are excluded. Published audit material is a sanitized derivative; reproduction paths may be relocated, with exclusions stated in the audit. Public source access does not make the registered assistant plugin public or admit additional users. [Integrity verification](PACKAGE-VERIFICATION.json), [package manifest](PACKAGE-MANIFEST.json) and [SHA-256 list](SHA256SUMS.txt) describe the package, not security certification.

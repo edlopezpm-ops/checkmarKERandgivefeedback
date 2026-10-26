@@ -1,0 +1,2143 @@
+# marKER — complete technical dossier
+
+Snapshot 2026-10-26; source commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1` with a clean tracked source checkout and no working-tree overlay.
+
+This reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding. The dated 24-October dossier remains historical.
+
+
+---
+
+Canonical chapter: [00-START-HERE.md](00-START-HERE.md)
+
+# Start here — 26 October 2026
+
+The current full-source projection is `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`: 368 tracked product files, clean source checkout, no dirty overlay. Read the [snapshot manifest](source-snapshot-manifest.json) and [current state](CURRENT-STATE.json). The dated [24 October dossier](marKER-FULL-DOSSIER-2026-10-24.md) remains historical; the [current combined dossier](marKER-FULL-DOSSIER.md) is assembled for this cut.
+
+Read in this order:
+
+1. [Quick context](AI-QUICK-CONTEXT.md) and [pending work](PENDING-REPORT.md).
+2. Chapters [01](01-architecture-and-stack.md)–[11](11-database-and-catalog-reference.md) for implementation navigation.
+3. [Chapter 12](12-functional-integrity-audit.md), [REPORT](audit/2026-10-26/REPORT.md), [MATRIX](audit/2026-10-26/MATRIX.json), [SCORECARD](audit/2026-10-26/SCORECARD.json) and [FINDINGS](audit/2026-10-26/FINDINGS.json).
+4. The corresponding source bodies, tests, SQL and configuration, using [source paths](inventories/source-paths.md), [symbols](code-flow/05-module-symbol-index.md), [test declarations](inventories/test-index.md) and [route occurrences](inventories/routes.md).
+5. [External-review prompt](AI_ANALYSIS_PROMPT.md) for a new independent pass.
+
+| Evidence label | Meaning |
+| --- | --- |
+| Current source | Included product bytes at the declared commit. Source facts do not prove deployed behavior. |
+| Audit execution | Local/synthetic tests, independent drivers, real native media and browser observations recorded during the 26 October audit. Prepared suite: 333/333 PASS, no skips; build and Worker dry run PASS. |
+| Package verification | Publication checks on projection identity, generated catalogs, links, exclusions and seals. It is not another product-suite run. |
+| Historical delivery | Dated provider/deployment/owner observations retained under their original receipt. They are not current live readback. |
+| UNKNOWN | Required evidence remains unavailable or insufficient. It neither earns PASS credit nor proves a defect. |
+| Human/provider evidence | Actual host consent, service confirmation, physical-device behavior, creative quality and acceptance require their own evidence. |
+
+The audit verdict is FAIL because F01 is a confirmed minor localization defect in C12. F03/F04 are two minor WEAK_TEST findings. F02 remains suspected SPEC_AMBIGUITY around the central ACK response. W=60, P=34, F=3, U=23; D=56.67%, C=61.67%, unknown=38.33%. A green suite does not replace that verdict.
+
+The normal flow is owner access → product/material management → native classification/planning → explicit saved recipe/render → actual-result review and exact-revision approval → manual export. Earlier editorial records remain a distinct workflow. Optional Agents and MCP reuse the native rules. Service-notice acknowledgements, own-data rights and Analytics preferences are separate controls.
+
+The review package contains no owner workspace, credential store, live database rows or private agent instructions. Schema catalogs are empty reconstructions. Test/Help/demo material is synthetic or public product material. Do not fetch private data or invoke providers to fill an evidence gap without separate authority. If your review is incomplete, name the unreviewed files and continue in bounded passes.
+
+
+---
+
+Canonical chapter: [01-architecture-and-stack.md](01-architecture-and-stack.md)
+
+# 01 — Architecture and stack
+
+Current source cut: 26 October 2026, `77bbedac`. [Functional-integrity results](12-functional-integrity-audit.md) qualify implementation and execution separately.
+
+The product is a React/TypeScript SPA with a shared Fetch-style backend and two runtime adapters. Vite serves loopback engineering APIs with local files/SQLite; the hosted Worker uses native authentication, D1, private R2 and a Durable Object managed-container processor. Supabase/PostgreSQL is retained as an inactive prepared editorial adapter.
+
+```mermaid
+flowchart TD
+ UI[React console: Space / Campaigns / editorial / Profile / Settings] --> API[Owner-authenticated HTTP boundary]
+ API --> E[Editorial commands + revision CAS]
+ API --> S[Studio commands + planner + revision CAS]
+ API --> A[Agents ledger]
+ UI --> MC[Connected assistants management]
+ HOST[External MCP host] --> O[OAuth PKCE + scopes + tenant grant]
+ O --> MCP[Finite MCP tools + request receipts]
+ MCP --> E
+ MCP --> S
+ E --> D[(D1 editorial aggregate)]
+ S --> SD[(D1 Studio entities/jobs)]
+ S --> R[(Private R2 originals/results)]
+ S --> P[Durable Object + native FFmpeg container]
+ A --> B[Optional loopback polling bridge]
+ B --> C[Official local Codex app-server]
+```
+
+| Boundary | Main source | Responsibility |
+| --- | --- | --- |
+| Browser | [Console](source/src/console/Console.tsx), [Studio](source/src/console/Studio.tsx) | Forms, drafts, selection, feedback, explicit human actions. |
+| Domain | [domain](source/src/core/domain.ts), [studio](source/src/core/studio.ts) | Valid states, source/rights relationships, revision/approval rules. |
+| Native preparation | [classifier](source/src/core/studio-classification.ts), [planner](source/src/core/studio-planner.ts), [analysis contract](source/src/core/studio-analysis.ts) | Rules, literal content, bounded proposals and optional technical aids. |
+| Hosted entry | [entry](source/server/entry.ts), [worker](source/server/worker.ts) | Static/demo routing, native auth, lifecycle, API dispatch. |
+| Storage | [D1](source/server/d1.ts), [hosted Studio](source/server/studio-hosted.ts), [local Studio](source/server/studio-local.ts) | Independent editorial/Studio revisions, objects, jobs and admission. |
+| Native media | [renderer](source/server/studio-render.ts), [processor](source/server/studio-processor.ts), [runner](source/processor/runner.mjs) | Bounded fixed-argument processes and streamed originals/results. |
+| Optional Agents | [API](source/server/agents.ts), [store](source/server/agents-store.ts), [bridge](source/tools/agent-bridge.mjs) | Provider run/proposal/effect custody; local managed-ChatGPT route. |
+| Host package | [manifest](source/integrations/chatgpt/marker/plugin.json), [MCP config](source/integrations/chatgpt/marker/mcp.json), [skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) | Reproducible external-host configuration and explicit campaign-action instructions; separate from installation/OAuth. |
+| External assistant | [MCP transport](source/server/mcp.ts), [authorization](source/server/mcp-auth.ts), [tools](source/server/mcp-tools.ts) | Delegated scoped access through existing product operations. |
+
+The pinned runtime packages include React 19, the official MCP SDK and a Workers-compatible non-code-generating JSON-schema provider. Vite, TypeScript and Wrangler are development/build dependencies. Exact resolved versions, transitive packages and commands are in [dependencies](inventories/dependencies.md). Installing a dependency does not create a provider, migration or deployment.
+
+The architecture is deliberately one operator/one retained tenant. It has no public signup, teams, tenant switching, billing customer model or SaaS allocation. Local development trusts the loopback OS account; it is a different security environment from hosted authentication. Native subprocess controls and agents sharing one host do not prove OS isolation.
+
+Service access also passes through [policy.ts](source/server/policy.ts): deliberate versioned Terms acceptance and Privacy/Cookies notice acknowledgements are distinct from visiting or signing in. [privacy-data.ts](source/server/privacy-data.ts) provides bounded own-data export independently of accepting new Terms. These are existing source capabilities, not approvals supplied by this review.
+
+The optional [Analytics relay](source/server/analytics.ts) uses the existing authenticated owner/tenant to consult central configuration, purpose-specific preferences, declared interests and audience counts. Central Analytics owns its ledger and suppression; marKER keeps native campaigns. Missing credentials or invalid configuration disable optional work. The [contract](source/docs/analytics-integration.md) and dated release separate code publication, paused collection and actual activation. C11 remains UNKNOWN because the audit lacks authoritative ACK semantics and real central-effect evidence.
+
+The audit verified native local behavior and build/bundle paths. Real hosted processing/authentication/erasure and optional inference retain their stated unknown portions. A diagram or declared binding is not evidence that a current service ran.
+
+
+---
+
+Canonical chapter: [02-data-model-and-transactions.md](02-data-model-and-transactions.md)
+
+# 02 — Data model and transactions
+
+Current source: 26 October 2026, `77bbedac`. Exact schema quantities come from the regenerated [catalogs](11-database-and-catalog-reference.md).
+
+The [editorial domain](source/src/core/domain.ts) holds products, social-account metadata, text sources, editorial campaigns, destination drafts/posts and recorded outcomes in one versioned Workspace document. [D1Repository](source/server/d1.ts) persists an atomic revision-checked aggregate with a 1 MiB hosted ceiling. [LocalRepository](source/server/local.ts) serializes commands and atomically replaces its local file; one process owns a data path. The [Supabase adapter](source/server/supabase.ts) and [Postgres migration](source/migrations/0001_editorial.sql) are inactive preparation.
+
+Studio uses separate [typed contracts](source/src/core/studio.ts) and normalized persistence: assets retain original-byte identity and technical facts; materials express editable text/classification/rights/review/product associations; campaigns group work; variants contain recipe revisions; jobs retain immutable input/result/provenance receipts; uploads track committed offsets and reservations. Analysis, settings, compute ledgers and history have their own records. Editorial product-reference checks prevent deletion while Studio still depends on that product.
+
+| Version/custody boundary | Why it is separate |
+| --- | --- |
+| Editorial Workspace revision | Atomic domain commands; HTTP 409 protects a newer workspace. |
+| Studio revision | Material/campaign/variant mutations and trusted planner saves. |
+| Recipe revision | Render, exact-result approval and export authorization; editing invalidates approval. |
+| Settings/Profile revisions | Preferences and profile drafts do not overwrite each other or business content. |
+| Agent request/run/effect identity | Reload/replay can reconcile a completed effect without creating another material. |
+| MCP grant + request_id + argument digest | Duplicate request admission is scoped and recoverable; domain CAS still applies. |
+
+Planner provenance retains source IDs/versions/hashes, selected ranges, consent, native planner version and fingerprints. Server recomputation prevents a client from inventing eligibility. A trusted local Agent generation receipt carries actual run/model/proposal identity into materials, variants and render receipts. An external MCP request records its client/grant/action, but does not invent the host's model or forge an Agent receipt.
+
+The persisted authentication singleton supplies immutable user/tenant IDs without remapping earlier business records. Profile stores optional display data separately. The account lifecycle freezes writes during confirmed deletion; triggers cover existing domain/auth/Agent tables and all new MCP tables. Connector grants/tokens/requests/receipts start with seven additive tables in [0010_mcp.sql](source/migrations-d1/0010_mcp.sql). [0011_mcp_connections.sql](source/migrations-d1/0011_mcp_connections.sql) adds a nullable authorized-client timestamp and an eighth table for expiring, single-use pending-login correlation. Existing grants backfill authorization time. Approved client identity survives grant expiry/revocation; a login handle itself grants no owner or data access. Account deletion freezes and purges all eight tables.
+
+Read all migration SQL in [source/migrations-d1/](source/migrations-d1) and the [generated D1 catalog](database/d1-reference.md). Catalog replay verifies empty schema structure, not live D1 rows, remote applied versions, runtime query coverage or restoration. Entity JSON fields must be read with their TypeScript contracts.
+
+[0012_policy_acknowledgements.sql](source/migrations-d1/0012_policy_acknowledgements.sql) adds the user/tenant-bound declaration receipt. [policy.ts](source/server/policy.ts) compares versions and requires deliberate declarations with recent proof; reading a notice or an agent call cannot accept the contract. Own-data export reads bounded declared categories through [privacy-data.ts](source/server/privacy-data.ts), with scope/exclusions in the resulting JSON.
+
+[0013_analytics_subject.sql](source/migrations-d1/0013_analytics_subject.sql) retains a source-scoped subject reference and optional central deletion receipt, without copying central preference/event history. The relay records the rights-routing reference before a first central mutation and refuses closed-account insertion. Local account deletion must resolve the central rights step before purging identity. Real external suppression remains unverified in this audit.
+
+The 26 October audit replayed all 13 D1 migrations in a new SQLite store and exercised CAS, new-connection persistence, bounded export and synthetic deletion retry/freeze. Empty-schema/catalog success does not establish current remote migration state, live data correctness or provider-side erasure.
+
+
+---
+
+Canonical chapter: [03-product-and-user-workflows.md](03-product-and-user-workflows.md)
+
+# 03 — Product and user workflows
+
+Current source: 26 October 2026, `77bbedac`. [Audit evidence](12-functional-integrity-audit.md) separates the verified native route from real-service and user-acceptance gaps.
+
+marKER targets a solo marketer preparing reusable content. Reducing active preparation time and Gen Z usability are product goals; measured time savings and demographic validation are not established by source or screenshots.
+
+| Workflow | Current sequence and retained boundary |
+| --- | --- |
+| Native Space | Capture original/text/idea → receive missing type/name-based labels → correct classification → explicitly set rights/readiness/speech/product facts. |
+| Native Campaign | Select materials → open a new piece → fill empty fields from literal eligible library facts → obtain bounded rule-based alternatives → explicitly save an editable recipe. |
+| Production | Request render → observe durable job → inspect actual MP4 → approve exact recipe/result → export MP4/TXT. |
+| Local Agents | Pair loopback bridge → choose context/role/model → request real copy → edit proposal → explicitly save through Studio → use ordinary planner/production. |
+| External MCP | Install authenticated endpoint in a compatible host → owner consent → scoped tool calls → inspect same marKER drafts → approve in marKER → export through existing checks. |
+| Earlier editorial records | Open existing editorial campaigns/sources/destination drafts → review/slot checks → manual export → explicitly confirm an actual external outcome. Current new-piece creation uses Studio. |
+| Profile/access and rights | View/edit display details; link optional identities through fresh email proof; deliberately acknowledge current service notices when required; request bounded own-data export or explicitly confirmed account deletion. |
+
+Account records are destination metadata, not active social-network connections. Paid proposals remain paused. An exported file, successful render and confirmed outside publication are different states. Neither Agents nor MCP exposes social publishing or advertising activation.
+
+Explicit selection from Space takes precedence over a previously open/saved/cached variant. A saved variant still opens its own source set; earlier variants and human copy remain recoverable. Native library preparation fills empty fields only: literal ready text or saved product description, product name and saved call to action. Multiple ready texts require a choice. Ideas are not silently expanded; existing typed text and consent are preserved. Preparation never saves, renders or approves by itself.
+
+Classification is a rule-based convenience, not semantic inference. It never grants rights, marks unreviewed material ready, declares speech absent, guesses the product or rewrites content. Original media and historical dependencies survive ordinary material removal.
+
+The public [55-second demo](https://marker.aekr.io/demo/) is a synthetic demonstration with player, subtitles, poster and two MP4 resolutions included in the snapshot. It is not a real-owner production session or proof of every failure path. The full illustrated Help uses synthetic UI examples and is inspectable under [public/help](source/public/help).
+
+Optional Analytics settings show central source status, separate purposes and authorized audience references/counts. The owner can explicitly declare a closed-category interest only under the applicable current permission. Terms acknowledgement does not grant an optional purpose, and campaign operations do not automatically send private materials or provider-derived content to Analytics. The dated source publication records collection paused; no real interest event or revenue was established by the audit.
+
+Current [Help](source/src/console/help-guides.ts) identifies older editorial source/campaign records as earlier work. [console.md](source/docs/console.md) still contains older creation wording; F05 records that drift without concluding the native path is disconnected.
+
+
+---
+
+Canonical chapter: [04-frontend-and-interaction.md](04-frontend-and-interaction.md)
+
+# 04 — Frontend and interaction
+
+Current source: 26 October 2026, `77bbedac`. C12 is FAIL for the minor confirmed language defect below; other checks retain their own evidence.
+
+[App](source/src/App.tsx) and [Console](source/src/console/Console.tsx) organize authentication, navigation, lazy-loaded modules and shared state. [Studio](source/src/console/Studio.tsx) stays mounted while the Agents panel or another Console section opens, preserving preparation work. Editorial state and Studio state are separate; refreshed revisions and draft recovery must not silently overwrite newer persisted data.
+
+| Surface | Inspect |
+| --- | --- |
+| Capture/material library | [Studio.tsx](source/src/console/Studio.tsx), [studio.css](source/src/console/studio.css) |
+| Rules and selection | [StudioPlanner.tsx](source/src/console/StudioPlanner.tsx), [StudioAnalysis.tsx](source/src/console/StudioAnalysis.tsx) |
+| Agents/conversation/proposals | [Agents.tsx](source/src/console/Agents.tsx), [context](source/src/console/agent-context.ts), [stream](source/src/console/agent-stream.ts) |
+| Authentication/CAPTCHA | [Authentication.tsx](source/src/console/Authentication.tsx), [Turnstile.tsx](source/src/console/Turnstile.tsx) |
+| Profile/policies/data rights | [Profile.tsx](source/src/console/Profile.tsx), [Policies.tsx](source/src/console/Policies.tsx), [PolicyGate.tsx](source/src/console/PolicyGate.tsx), [PrivacyDownload.tsx](source/src/console/PrivacyDownload.tsx) |
+| Limits/device/Analytics preferences | [Settings.tsx](source/src/console/Settings.tsx), [EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx), [AnalyticsSettings.tsx](source/src/console/AnalyticsSettings.tsx) |
+| Delegated connections/login continuation | [McpConnections.tsx](source/src/console/McpConnections.tsx), [mcp-resume.ts](source/src/console/mcp-resume.ts) |
+| Help/errors/language | [Help.tsx](source/src/console/Help.tsx), [help-guides.ts](source/src/console/help-guides.ts), [ErrorNotice.tsx](source/src/console/ErrorNotice.tsx), [i18n.tsx](source/src/i18n.tsx) |
+
+English is default; Spanish and optional dark mode are browser preferences. Language changes UI copy, not saved content. Settings persists workspace limits across devices while Environment holds device choices. Unsaved text/recipes can be recovered from browser session storage with explicit conflict handling. Microphone recording is bounded and permission-driven, but unfinished recording recovery in memory is not durable background capture.
+
+The complete approved logo is retained as its original asset; font/license and AEKR attribution assets are included. Dark-mode presentation is part of the source and should be evaluated visually, including complete logo geometry. The decorative pixel characters remain an inert right-side feature with scheduler, reduced-motion/off/pause controls and optional local cache. Asset hashes establish bytes, not temporal animation or perceptual quality.
+
+Contextual lowercase help is at the bottom left of modules. The source guide includes topic/step navigation and images for each step in both languages. Error notices, focus restoration, nested Escape handling, keyboard use, narrow-width overflow and draft preservation are review targets; prior browser checks do not imply universal assistive-technology or physical-device coverage.
+
+Agents and Environment share the ordinary connect/status/revoke view. The main CTA opens the registered private marKER App-backed plugin in ChatGPT; an expandable secondary path supplies the endpoint for another compatible assistant. Explicit loading, retry/refresh and two-step disconnect distinguish connection states. Chat happens in the external assistant; marKER retains draft review, approval and export. Local bridge controls, polling and bridge-limit settings appear only in explicit loopback development affordances.
+
+On OAuth login handoff, [mcp-resume.ts](source/src/console/mcp-resume.ts) accepts one bounded correlation handle, removes only that query parameter while preserving other URL/history values, and keeps it briefly in session storage. It consumes the handle before navigation and resumes only after `/api/session` reports authenticated=true. Invalid, repeated, expired or unavailable-storage cases do not authorize a continuation. The server validates the actual transaction and explicit owner consent; Strict owner-cookie behavior is retained.
+
+The [retained synthetic local screenshot](review-assets/README.md) documents the earlier connection-list UI, not the current connect flow. Current bilingual connection/context illustrations are included in [public Help source](source/public/help); four new images accompany the updated guide. Reported desktop/mobile viewport checks use synthetic fixtures and do not establish physical-phone or actual host OAuth behavior.
+
+The current language control is the header EN/ES button. The Terms modal follows that global language and displays exactly `Version 20261025`; internal Terms and Privacy/Cookies identifiers remain separately versioned. The service gate records deliberate declarations, while Privacy's download control remains available under the own-data contract without accepting new Terms. Optional Analytics purposes are separate choices.
+
+**F01, confirmed minor:** Studio throws the server's raw error text and ErrorNotice displays it literally. A stale campaign form in EN therefore shows “Space cambió. Recarga antes de guardar.” after the correct 409 rejection. The draft is preserved; the defect concerns localization, not failed persistence or a CAS bypass. [Finding and reproduction](audit/2026-10-26/FINDINGS.json).
+
+Audit Edge observations covered EN→ES→reload, preserved synthetic text, a 390px viewport without horizontal overflow, loaded ES Help, real animation/pause/reduced-motion and cache opt-in/revocation. All declared Help references were integrity-checked; every screenshot's contents and physical-device/assistive-technology behavior were not exhaustively verified. These runs were part of the audit, not this documentation publication.
+
+
+---
+
+Canonical chapter: [05-backend-api-and-access.md](05-backend-api-and-access.md)
+
+# 05 — Backend API and access
+
+Current source: 26 October 2026, `77bbedac`. Read the [audit](12-functional-integrity-audit.md) before interpreting source controls as live-service verification.
+
+The [Worker](source/server/worker.ts) resolves authenticated native access and lifecycle before private application dispatch. [entry.ts](source/server/entry.ts) also serves public demo byte ranges and exports the existing processor. [Vite middleware](source/vite.config.ts) has explicit loopback Host/IP/origin controls and denies private directories. [API route navigation](inventories/routes.md) links actual source occurrences; consult each dispatcher for exact method and dynamic path guards.
+
+| Route family | Implementation and contract |
+| --- | --- |
+| Native email/auth/session | [native-auth.js](source/server/native-auth.js), [store](source/server/native-auth-store.js): browser-bound single-use codes, durable limits, opaque sessions, expiry/revocation and Origin checks. |
+| Google/GitHub | [google-auth.js](source/server/google-auth.js), [github-auth.js](source/server/github-auth.js), [tenant-auth.js](source/server/tenant-auth.js): dedicated configured client, fresh native email proof for first linking, immutable provider subject binding. |
+| CAPTCHA | [captcha.js](source/server/captcha.js): server Siteverify, action/hostname validation, one-use keyed receipt, bounded storage and failure closure. |
+| Editorial | [api.ts](source/server/api.ts): GET workspace and POST command, strict bounded payload, server revision checks. |
+| Studio | [studio-hosted.ts](source/server/studio-hosted.ts), [studio-local.ts](source/server/studio-local.ts): materials/plans/commands/settings/uploads/assets/analysis/jobs/render/approve/export. |
+| Agents | [agents.ts](source/server/agents.ts): owner/pairing routes, bounded context, connections/sessions/runs/events/proposals/effect receipts. |
+| Profile/lifecycle | [profile.ts](source/server/profile.ts): independent revision, explicit deletion, durable resumable cleanup and central rights routing. |
+| Service declarations/own-data rights | [policy.ts](source/server/policy.ts), [privacy-data.ts](source/server/privacy-data.ts): deliberate versioned declarations, recent proof and bounded declared-category JSON export. |
+| Central Analytics | [analytics.ts](source/server/analytics.ts): owner-scoped fixed-origin relay, current configuration/ACK, separate purposes, declared interest and audience counts. |
+| MCP/OAuth | [mcp-auth.ts](source/server/mcp-auth.ts), [mcp.ts](source/server/mcp.ts): metadata, registration, bounded login/resume, consent/token/revocation, bearer tools and private artifacts. |
+
+The sole-owner model never authorizes by email equality with Google/GitHub or by a client-supplied tenant. First linking needs native email proof under five minutes at start and callback; later provider login uses the retained immutable identity. Email is a recovery path. OAuth credentials/tokens remain server-side; configured public client/site identifiers are not secrets. Native sessions have six-hour absolute and thirty-minute idle limits.
+
+Turnstile validates the expected action and exact configured production hostname, then consumes a durable digest so repeated provider success cannot replay one token. Partial configuration fails closed. Completely absent configuration retains the explicit baseline during setup. Local Vite development is separately trusted; it does not emulate production CAPTCHA/email authentication.
+
+Profile name/country are editable; identity/email comes from the verified principal. Deletion requires exact `DELETE`, all-data confirmation, same-origin/header checks, retained tenant and fresh native email proof. A lifecycle marker and SQL triggers freeze writes, then cleanup stops the processor, waits for leases, aborts known multipart uploads, removes private objects and purges application tables. Status/resume uses a distinct same-browser HttpOnly capability; retries retain progress. A minimal tombstone prevents automatic account recreation. GET status is readonly. No actual owner deletion is asserted by this dossier.
+
+OAuth login continuation is server-bound: a ten-minute hashed handle references a validated client/callback/PKCE/resource transaction, is consumed once, and creates consent only for the authenticated owner. Native literal IPv4/IPv6 loopback HTTP callbacks may vary only their port; remote HTTPS callback matching stays exact, and token exchange binds the concrete chosen callback. Missing permissions produce standard HTTP or MCP authentication challenges before domain effects or retry receipts.
+
+Review bearer scope/resource/client/tenant binding, stale sessions, replay, concurrent token rotation, deletion races, private artifact authorization, rate/capacity limits and error disclosure together. A synthetic SQLite suite does not by itself establish a fresh live owner login or external-provider activation.
+
+The first native-form consent correction changes HTML pages to `Referrer-Policy: same-origin`. In the observed Edge fixture, the earlier `no-referrer` HTML policy produced `Origin: null` even with the owner cookie present, so the strict same-origin check rejected Allow before any grant write. The corrected HTML policy preserves the same-origin form header while suppressing cross-origin referrers. JSON and return responses retain `no-referrer`; strict Origin validation, cookies and single-use consent remain intact. A second correction permits the validated DNS/IPv4 callback origin in the consent page's `form-action` so its 303 return can complete. Callback hostname punctuation is constrained before constructing CSP; registration/resource/PKCE matching still applies.
+
+Bracketed IPv6 cannot be represented as a CSP host source here. Its return uses a 200 HTML document with an escaped exact-callback meta refresh and a `rel=noreferrer` fallback anchor, no JavaScript, `no-store`, `no-referrer` and a self-only form policy. The consent form itself remains same-origin. See [the policy regression](source/tests/mcp-consent-policy.test.ts) and [OAuth callback tests](source/tests/mcp-auth.test.ts). The real synthetic Edge callback/exchange cases and actual host evidence have distinct scopes in [operations](08-operations-quality-and-limits.md).
+
+The current service gate protects product, MCP and bridge use when required declaration versions are missing; agents cannot accept Terms. Authentication, Profile/account rights and the own-data export have their separately defined access boundaries. The export requires a live owner/tenant session and recent proof, with declared categories, pagination and exclusions; it is not a full media archive.
+
+Analytics mutations require the existing owner identity and canonical same-origin/header boundary. The relay uses a fixed central origin, bounded responses/deadlines and a source credential, without exposing a caller-selected destination or private campaign capture. F02 remains specification ambiguity around the semantics of a200 ACK body; the audit did not demonstrate a durable permission bypass.
+
+Synthetic SQLite and signed-provider fixtures exercised access, lifecycle, errors and isolation. C06/C07 still retain UNKNOWN real-service portions: this audit did not send a real code, log into Google/GitHub/Turnstile, delete an owner account or verify external recipients' erasure.
+
+
+---
+
+Canonical chapter: [06-studio-processing-and-jobs.md](06-studio-processing-and-jobs.md)
+
+# 06 — Studio processing, planning and jobs
+
+Current source: 26 October 2026, `77bbedac`. Native/local proof and real managed-service proof remain distinct.
+
+Original capture is resumable: reserve upload/storage → append bounded chunks at the expected offset → complete/probe/hash → deduplicate original bytes → create library metadata. Reselection of the same file can resume from the committed offset. Unsupported media remains conversion-pending with the original retained; file-type assumptions are checked by native probing. Private R2 bytes stream through authenticated endpoints, including ranges; no public bucket URL is needed.
+
+The native classifier fills only missing labels. The planner consumes eligible ready/owned sources, literal copy, ranges and explicit shared/reuse/mute choices. Licensed or restricted usage requires the applicable explicit review; unknown/restricted rights cannot be silently promoted. Audio presence is separate from human-confirmed speech. Rules exclude overlapping same-hash used ranges unless reuse is explicitly permitted; no perceptual deduplication is claimed.
+
+Proposals comprise one main structure and up to two alternatives. Current planner fingerprints and source facts are recomputed server-side on save. Fixed ranges preserve order, backgrounds fill remaining integer milliseconds, and recipe/readability/overflow checks stay enforced. Changing source facts or recipe invalidates stale planning/approval. Native text stays literal; classification/preparation never substitutes an AI output.
+
+| Installed bound | Meaning |
+| --- | --- |
+| Original ≤250 MiB; chunk ≤8 MiB | Hosted nonfinal multipart chunks also meet the R2 minimum; original retained. |
+| One active upload/render; 2 GiB default maximum | Admission includes actual bytes and reservations; no automatic upgrade or purge. |
+| 1,000 entities per live collection; 8 MiB live metadata | Bounded metadata growth independent of stored file size. |
+| 1.5 MiB stored entity/receipt; 900 changed statements | Large fan-out edits fail without a partial rights mutation. |
+| 3 visual segments; 5–60 seconds | Vertical 1080×1920 H.264, optional AAC, PNG first-frame cover. |
+| 240-second native operation deadline | Includes bootstrap/transfers/processing; not a guarantee every phone file succeeds. |
+
+Rendering persists a durable job before enqueue, reserves internal credits/storage and uses the existing bounded fixed-argv FFmpeg runner. Exact successful renders can be reused. Explicit regeneration is a newly admitted attempt. Enqueue loss can resume the saved job without another reservation; uncertain running work does not silently start another paid attempt. Infrastructure watchdog behavior is bounded and can park work for explicit resume. Failed compute is not refunded; conservative reservations can remain pending reconciliation.
+
+Technical analysis is optional and limited to three originals/ranges, each ≤120 seconds. It produces low-resolution thumbnails and scene/silence/darkness/variation hints, not transcription, semantic classification or speech absence. Provenance pins original hash, coverage, profile and tested toolchain. **Hosted analysis remains disabled** while `ANALYSIS_HOSTED_TOOL_VERSION` is null. Local synthetic FFmpeg evidence cannot validate the managed hosted binary.
+
+Review [studio-render.ts](source/server/studio-render.ts), [studio-analysis.ts](source/server/studio-analysis.ts), [processor coordinator](source/server/studio-processor.ts), [runner](source/processor/runner.mjs), [hosted adapter](source/server/studio-hosted.ts) and [planner contract](source/src/core/studio-planner.ts). Job completion, owner approval and manual export are separate transitions. Original/history custody must survive recovery.
+
+The 26 October audit independently exercised a new native flow without an agent: original capture/hash, classification, proposal/fingerprint, saved recipe, actual FFmpeg render, exact-result approval and export. The exported 5-second 1080×1920 H.264 MP4 was probed and fully decoded. After a process restart, records and output SHA remained unchanged. Forged fingerprint, unapproved export, false approval and stale revisions were rejected.
+
+Hosted admission was exercised through real SQLite with synthetic R2/processor dependencies: reservations, 5-cent probe, 10-cent render, lost enqueue/resume, exact reuse and terminal failures. That evidence supports the exercised logic; C05 remains UNKNOWN for real R2/container/toolchain effects. A completed synthetic job is not represented as a completed Cloudflare render. See [audit report](audit/2026-10-26/REPORT.md).
+
+
+---
+
+Canonical chapter: [07-integrations-and-capability-status.md](07-integrations-and-capability-status.md)
+
+# 07 — Agents, MCP, Analytics and capability status
+
+Current snapshot: 26 October 2026, `77bbedac`. The optional local Agents bridge, external MCP and hosted inference are separate routes. MCP lets an external assistant call finite product tools; marKER does not need to host model inference merely to serve them. A subscription, pairing token or MCP grant does not establish hosted SIWC admission.
+
+| Route | Current implementation and audit evidence |
+| --- | --- |
+| Native no-agent preparation | Classification, literal library preparation, deterministic planning and ordinary production remain independent of optional providers. Actual native media and restart persistence passed in the audit. |
+| Local Agents bridge | [agents.ts](source/server/agents.ts), [store](source/server/agents-store.ts) and [bridge](source/tools/agent-bridge.mjs) retain context/run/proposal/effect identities. Local loopback managed-ChatGPT route only; no new inference was invoked in this audit. C09 remains UNKNOWN for the real execution portion. |
+| External MCP | [transport](source/server/mcp.ts), [OAuth](source/server/mcp-auth.ts), [tools](source/server/mcp-tools.ts) and [local adapter](source/server/mcp-local.ts) reuse native backends. Local DCR/PKCE/consent/token, 14-tool discovery, a durable product save, replay/conflict, revocation and new-instance persistence passed. |
+| Central Analytics | [relay](source/server/analytics.ts) consults the fixed central collection API for owner-scoped configuration/preferences, explicit interests and audience counts. Current-purpose/GPC/privacy-field/failure logic was exercised locally; C11 remains UNKNOWN for authoritative ACK semantics and real central effects. |
+| Hosted inference/social/paid routes | Hosted SIWC admission and effective plan grant unresolved; social APIs, automatic publication and paid activation remain deferred. Hosted analysis is disabled pending real toolchain verification. |
+
+The normal hosted Agents/Environment view opens the registered private App-backed plugin and manages authorized connections through [McpConnections](source/src/console/McpConnections.tsx). Developer bridge controls appear only in explicit loopback DEV affordances. Conversations happen in the selected external assistant; first-party human review/approval remains in marKER.
+
+MCP uses opaque scoped credentials, Authorization Code/PKCE S256, bounded owner consent and a single-use login-resume handle. Native literal-loopback callbacks may vary only their port; remote callbacks match exactly. Client/resource/user/tenant/scopes and current account lifecycle are validated server-side. Refresh reuse revokes its family, and disconnect closes access. Refer to the [connector contract](source/docs/mcp-connector.md) and [source tests](source/tests/mcp-auth.test.ts) for exact limits and errors.
+
+| Scope | Finite tools |
+| --- | --- |
+| `marker:read` | `marker_get_profile`, `marker_search`, `marker_get_campaign`, `marker_get_material`, `marker_prepare_plan`, `marker_get_job` |
+| `marker:write` | `marker_save_product`, `marker_save_campaign`, `marker_save_material`, `marker_classify_materials`, `marker_save_plan`, `marker_edit_variant` |
+| `marker:produce` | `marker_render`, `marker_export` |
+| `marker:delete` | `marker_delete`, only after its separate explicit grant |
+
+The ordinary catalog describes 14 non-delete actions; listing an action does not grant execution. Writes require applicable revisions and a stable request ID bound to grant/tool/arguments. Identical completed requests replay the result; changed arguments conflict. Pending or uncertain effects require reconciliation rather than a new ID. At-most-once admission is not a distributed transaction between the domain write and the receipt.
+
+Tools cannot approve the result, delete the account, publish socially or execute arbitrary shell/SQL/HTTP. TXT is literal approved text; MP4 uses a private revision-bound download checked against native export rules. Original media enters through the ordinary UI. The portable [plugin package](source/integrations/chatgpt/marker) is reproducible developer source and does not recreate an account-specific registered App binding.
+
+Versioned [policy declarations](source/server/policy.ts) are deliberate first-party actions. They do not grant optional Analytics purposes or let an assistant accept agreements. [Own-data export](source/server/privacy-data.ts) and [account deletion](source/server/profile.ts) retain separate rights/access rules. Analytics does not maintain a competing consent/commercial master or automatically capture Space, campaigns or provider-derived content. Its dated [publication receipt](source/docs/ANALYTICS_RELEASE_2026-10-25.md) records collection paused; no live status refresh or commercial event occurred in the audit.
+
+Earlier hosted OAuth/catalog and two connected-read observations are retained under their dated [deployment receipt](DEPLOYMENT-STATUS.md) and product documents. They are historical evidence, not fresh results from this publication or a complete actual-host campaign. The local audit's real tool write does not substitute for that missing target-host flow. Dot/voice/physical-phone use, real refresh/reconnect/scope upgrades, private attachment behavior, CIMD/protocol migration and public submission remain separately bounded work.
+
+F02 is **suspected SPEC_AMBIGUITY**, not confirmed FALSE_SUCCESS: the relay treats ACK HTTP 200 as confirmed despite a synthetic false/empty JSON body, but the authoritative ACK schema is unavailable. Obtain the contract and a real sandbox readback before deciding correctness. Source/fixture conventions alone cannot define it.
+
+
+---
+
+Canonical chapter: [08-operations-quality-and-limits.md](08-operations-quality-and-limits.md)
+
+# 08 — Operations, quality and limits
+
+Current source projection: 26 October 2026, `77bbedac`, clean, 368 tracked product files. The public package combines the source with sanitized [audit evidence](audit/2026-10-26/REPORT.md). Package checks regenerate source navigation/catalogs and verify publication boundaries; they do not rerun product behavior or perform a deployment.
+
+| Evidence from the 26 October audit | Result and boundary |
+| --- | --- |
+| Prepared complete suite | 333 discovered/executed/PASS, 0 skipped. Build-generated processor modules, declared media tools, a synthetic private-file sentinel and Windows polling preparation were required. Initial failures remain recorded. |
+| Build and Worker bundle | Frontend/server types, Vite/assets/logo and local Worker dry run PASS. No deploy or hosted readback follows. |
+| Native media/persistence | New no-agent flow, real 5-second 1080×1920 H.264 MP4, complete decode, independent original/output hashes and persistence after restart. |
+| MCP | Local OAuth/SDK/backend save, 14 descriptors, replay/argument conflict/scopes/revocation and new-instance readback. Actual target-host campaign still missing. |
+| Data/access/failures | New SQLite schemas, retained identity, policy/own-data export, CAS and write failure; synthetic lifecycle/erasure and external-service failures. Real provider effects remain UNKNOWN. |
+| Browser/demo | EN/ES and draft preservation,390px Help, cache and temporal animation controls; actual 55-second demo seek/frame and real-file range comparisons. No physical-phone or current CDN proof. |
+| Negative controls | Directed no-write/range/constant-classification mutations, external judgment and exact baseline restoration. Timeouts were not credited as successful assertions. |
+
+The verdict remains **FAIL for minor F01**, despite the prepared green suite. F03 records non-autonomous test prerequisites/private-file assumptions. F04 records unbounded streaming behavior under mutation and cleanup masking an assertion. Neither weakness establishes evaluator manipulation. The independent checks recovered trustworthy evidence for the exercised behavior. [Finding details](audit/2026-10-26/FINDINGS.json).
+
+The frozen capability score is W = 60 = 34 + 3 + 23: D = 56.67%, C = 61.67%, weighted unknown = 38.33%. C05/C06/C07/C09/C11 retain real-service or contract gaps. These figures are neither code coverage nor percentages of all possible defects. No broad dependency-vulnerability audit, universal security certification or OS containment proof is claimed.
+
+| Operational control | Bound and limitation |
+| --- | --- |
+| Settings | US$20 internal planning maximum; initially US$10 processing, US$0 future API AI allocation, 2 GiB storage and 20-second new-piece duration. Saved values and CAS govern admission. |
+| Compute credits | Probe 5 internal cents; render 10; enabled analysis 5. These are admission credits, not measured Cloudflare charges or an invoice hard cap. |
+| Hosted analysis | Refuses admission while its tested hosted tool version is absent. Local FFmpeg evidence does not enable the remote binary. |
+| Connector/Agents | Bounded contexts, grants, requests, histories, leases and deadlines; no automatic inference/provider/billing fallback. Native and host limits are distinct. |
+| Retention and deletion | Originals/history survive ordinary entry removal. Confirmed account deletion freezes access, resumes cleanup and routes central rights. External copies, logs/backups and orphan multipart parts retain disclosed boundaries. |
+| Recovery and costs | No complete D1/R2/job/provider restoration or current invoice comparison was performed. Dated operational receipts retain their own narrower scope. |
+
+Current source adds deliberate service declarations and bounded own-data export, plus the owner-scoped central Analytics relay. The dated [policy/rights release](source/docs/POLICY_RIGHTS_RELEASE_2026-10-25.md) and [Analytics release](source/docs/ANALYTICS_RELEASE_2026-10-25.md) identify their prior deployment/migration evidence. The audit/publication did not rerun those remote operations or activate collection. F02's ACK uncertainty is explicit.
+
+The [24 October dossier](marKER-FULL-DOSSIER-2026-10-24.md) and [deployment status](DEPLOYMENT-STATUS.md) preserve earlier source/host observations. They are not descriptions of the latest live Worker verified today. Remaining priorities are [here](PENDING-REPORT.md): minimal fixes and independent verification, real dedicated sandboxes, actual assistant campaign/lifecycle, physical devices, creative/time-saved pilot and complete operational recovery.
+
+
+---
+
+Canonical chapter: [09-review-guide-and-open-decisions.md](09-review-guide-and-open-decisions.md)
+
+# 09 — Review guide and open decisions
+
+Read the full current `77bbedac` source, [chapter 12](12-functional-integrity-audit.md) and the [audit findings](audit/2026-10-26/FINDINGS.json). Preserve the no-agent native workflow, one retained owner/tenant, explicit source facts/rights/readiness/speech, original bytes, provenance, CAS, exact-result human approval and manual export. Preserve original logo/font/license assets.
+
+| Area | Concrete review question |
+| --- | --- |
+| Confirmed F01 | Can error codes be localized in EN/ES while preserving current 409 rejection, raw saved content and unsaved drafts? |
+| Test reliability F03/F04 | Do tests declare/prepare generated modules and synthetic private fixtures? Can an ignored Range/no-write defect fail promptly with its original assertion preserved? |
+| Analytics F02 | What is the authoritative ACK response schema? Does a real central rejection leave the relay unconfirmed and disabled under the actual contract? |
+| Native planning | Can explicit selection, recovered drafts, rights/history changes or forged/stale fingerprints substitute sources or bypass server recomputation? |
+| Media/effects | Are offsets, quotas/reservations, enqueue loss, exact render reuse, leases and object finalization correct under interruption? |
+| Identity/lifecycle | Can stale callbacks, sessions, bridge/MCP work or late writes escape account freeze, relink identity or recreate deleted records? |
+| Service declarations/rights | Are versioned declarations deliberate and actor-bound? Can own-data rights be exercised without accepting new Terms or optional purposes, with honest export exclusions? |
+| Analytics privacy | Are current config/purpose/GPC/destination checks server-side? Are private Space/campaign/provider contents excluded, and rights receipts distinguished from recipient erasure? |
+| MCP | Are scope/resource/client/user/tenant checks, login-resume, callbacks, refresh reuse, replay, uncertain effects and private exports preserved? |
+| Optional Agents | Do source drift, lease/deadline/cancellation and completion replay retain truthful provenance without repeating inference or effects? |
+| UI/value | Are state/recovery/keyboard/narrow-width behavior understandable, and what measured change reduces active preparation time? |
+| Operations | What real-service, cost and restoration evidence remains unavailable? Which minimal change closes a concrete gap? |
+
+The audit confirmed one minor product failure, two minor test weaknesses and no evaluator manipulation within its reviewed scope. Challenge those conclusions with reproducible evidence; consensus is not reproduction. F02 must remain suspected until its external contract is established. F05's stale editorial wording does not prove a disconnected main implementation.
+
+Open evidence includes real hosted processing/authentication/erasure, real bridge inference, central Analytics effects, an actual connected-assistant campaign and lifecycle, Dot/voice/physical-phone use, hosted analysis binary verification, a human creative/time-saved pilot, current invoices and complete recovery. Public source access does not imply public plugin availability, a wider authorized user base, hosted inference eligibility, social publication or paid activation.
+
+For every issue provide severity/category, CONFIRMED/SUSPECTED/BLOCKED state, exact path/line, requirement, minimal trigger, expected/observed result, configuration, reproduction/evidence, impact, legitimate alternatives, smallest correction and independent verification. Distinguish source facts, actual local/synthetic runs, dated hosted receipts, inference and unknowns. Do not infer AI authorship, deceptive intent, exploitation or legal/security certification from style or a missing test.
+
+End with file/flow coverage, tests actually executed, excluded/sampled areas, unresolved evidence and a correction sequence. Use the [review prompt](AI_ANALYSIS_PROMPT.md) and [pending priorities](PENDING-REPORT.md). Review recommendations do not authorize implementation, deployment, providers, credentials, external messages or destructive operations.
+
+
+---
+
+Canonical chapter: [10-source-map-tests-and-dependencies.md](10-source-map-tests-and-dependencies.md)
+
+# 10 — Source map, tests and dependencies
+
+The current projection contains the 368 tracked product files at clean source commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`. It includes complete selected source, tests, migrations, build/configuration, portable assistant package, maintained product docs, original brand/fonts, Help and public demo assets. The dated 24 October dossier retains its historical 347-file cut; it is not the current source inventory.
+
+| Generated reference | Use |
+| --- | --- |
+| [Source paths](inventories/source-paths.md) | Exact current included paths, sizes and hashes. |
+| [Snapshot manifest](source-snapshot-manifest.json) | Captured source identity and projection treatment. |
+| [Module/symbol/import navigation](code-flow/05-module-symbol-index.md) | Navigable source structure. |
+| [AST metadata](inventories/ast-index.json) | Parsed module/symbol/import/call metadata and current counts. |
+| [Route occurrences](inventories/routes.md) | Source occurrences; read dispatchers for effective guards. |
+| [Test index](inventories/test-index.md) | Static declarations and locations, not proof of execution. |
+| [Dependencies/commands](inventories/dependencies.md) | Lockfile resolutions and scripts. |
+| [Public media](inventories/public-media.json) | Included demo URLs, metadata and hashes. |
+
+Use the generated catalogs for AST/test/file/byte quantities; no stale narrative count is substituted for their current output. Generated Worker runtime declarations and vendor dependencies receive different treatment from first-party executable code. Parse success, declaration counts and package hashes do not prove reachability or a passing suite.
+
+During the 26 October audit, the prepared complete suite passed 333/333 without skips; build/types/assets and local Worker dry run passed. F03/F04 preserve prerequisite and verifier-failure weaknesses. The package publication does not repeat those runs. See [audit operations](08-operations-quality-and-limits.md) and [REPORT](audit/2026-10-26/REPORT.md).
+
+A fresh reviewer should use a disposable copy and the exact lockfile, prepare generated processor modules through the documented build, provide declared FFmpeg/font tools and a synthetic private-file fixture when reproducing affected tests. The Windows audit needed source polling. Do not copy private governance or owner data as fixtures. These prerequisites and their limits are evidence, not an instruction to execute providers or expose a development server.
+
+Actual credentials/environment values, private inputs/governance, owner runtime stores, dependency installations and generated build outputs are excluded from the source projection. Blank example configuration and public product configuration remain reviewable. Published audit outputs are separately sanitized; their provenance/exclusions belong to the audit package.
+
+
+---
+
+Canonical chapter: [11-database-and-catalog-reference.md](11-database-and-catalog-reference.md)
+
+# 11 — Database and catalog reference
+
+Current source at `77bbedac` includes the D1 migration sequence through [0013_analytics_subject.sql](source/migrations-d1/0013_analytics_subject.sql). The latest two additions are [0012_policy_acknowledgements.sql](source/migrations-d1/0012_policy_acknowledgements.sql), for deliberate versioned service declarations, and 0013 for central rights-routing identity/receipt. No owner rows or runtime database files are published.
+
+| Reference | Contents |
+| --- | --- |
+| [D1 catalog](database/d1-reference.md) | Current tables, columns, keys, indexes, trigger names and migration provenance. |
+| [D1 schema](database/d1-schema.sql) | Empty schema DDL, without owner records. |
+| [D1 JSON](database/d1-catalog.json) | Structured schema metadata and exact input provenance. |
+| [Local Studio catalog](database/local-studio-reference.md) | Local constructor SQL reconstructed separately. |
+| [Supabase reference](database/supabase-reference.md) | Inactive PostgreSQL editorial adapter, separately qualified. |
+
+Exact table/column/index/trigger totals come from these regenerated catalogs. The old 24 October 36-table narrative is historical and does not override current generated metadata. Local auth, Agents and MCP use separate stores; local Studio totals are not the hosted schema totals.
+
+Catalog generation replays SQL into empty temporary SQLite databases and checks schema/FK integrity. Migration seeds create only fresh synthetic identities in that reconstruction; exported schema contains no rows. The audit also exercised migrations and selected real SQL transactions, CAS, policy/own-data rights and synthetic deletion failure/retry. Those are separate execution evidence.
+
+Schema structure does not prove remote migration state, actor authorization, provider-side erasure, data validity, performance or restoration. JSON document fields require their application types/validators. Read [policy](source/server/policy.ts), [privacy export](source/server/privacy-data.ts), [profile/lifecycle](source/server/profile.ts), [Analytics](source/server/analytics.ts), [Studio persistence](source/server/studio-hosted.ts) and [MCP store](source/server/mcp-auth-store.ts) with the SQL and [audit limits](12-functional-integrity-audit.md).
+
+
+---
+
+Canonical chapter: [12-functional-integrity-audit.md](12-functional-integrity-audit.md)
+
+# 12 — Functional-integrity audit, 26 October 2026
+
+Snapshot `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`, clean source, full declared product inventory. **Verdict: FAIL because F01 is a minor confirmed interface-language failure.** No evaluator tampering, improper test special-casing or production simulation presented as real execution was observed within the reviewed scope. Authorship and intent are undetermined.
+
+This chapter introduces the published, sanitized audit derivative. The [REPORT](audit/2026-10-26/REPORT.md) is the detailed verdict; [MATRIX](audit/2026-10-26/MATRIX.json) records contracts, weights and decisions; [SCORECARD](audit/2026-10-26/SCORECARD.json) records exact arithmetic; [FINDINGS](audit/2026-10-26/FINDINGS.json) records triggers, evidence, alternatives and follow-up. Reproductions and sanitized outputs are under [repro/](audit/2026-10-26/repro) and [evidence/](audit/2026-10-26/evidence). Publication excludes private governance, owner data, credential stores and secret-bearing metadata; it does not assert byte identity to every private operational artifact.
+
+| Metric | Exact weights | Display |
+| --- | --- | --- |
+| Demonstrated compliance D | P/W =34/60 | 56.67% |
+| Decision coverage C | (P+F)/W =37/60 | 61.67% |
+| Confirmed weighted failure | F/W =3/60 | 5.00% |
+| Weighted unknown | U/W =23/60 | 38.33% |
+
+W=P+F+U=60=34+3+23. Ten capabilities PASS, one FAIL and five UNKNOWN. These policy weights are not scientific scores, defect prevalence or a probability of deception. Unknowns remain in the denominator. Weights were proposed before result review; the physical freeze was saved after a subsequently refuted static legacy-route observation and before executed checks or confirmed frontend findings. No result-driven weight change occurred.
+
+| Finding | Evidence state | Meaning |
+| --- | --- | --- |
+| F01 · CONTRACT_FAILURE · minor | CONFIRMED; C12 FAIL | English Studio displays “Space cambió. Recarga antes de guardar.” after a correct stale-revision rejection. The draft and CAS protection remain intact. |
+| F02 · SPEC_AMBIGUITY | SUSPECTED; C11 UNKNOWN | ACK HTTP 200 with false/empty JSON leaves active/applied state. Without the authoritative central ACK schema, that field cannot be treated as a proved contractual rejection. No confirmed false success or authorization bypass. |
+| F03 · WEAK_TEST · minor | CONFIRMED | Tests need generated processor modules and a synthetic private-file sentinel; the suite does not prepare both autonomously. |
+| F04 · WEAK_TEST · minor | CONFIRMED | A streaming mutation can hang a test, and cleanup can obscure a persistence assertion. External bounded oracles detected the directed defects. |
+| F05 · documentary drift | Observation | Earlier editorial creation wording conflicts with current earlier-record guidance. The legacy API and native Studio path work; a disconnected main implementation was not demonstrated. |
+
+F01 follows [Studio API error handling](source/src/console/Studio.tsx) through [ErrorNotice](source/src/console/ErrorNotice.tsx); the [hosted adapter](source/server/studio-hosted.ts) has the corresponding fixed server message. Reproduce with two fresh local connections: load a campaign form, mutate Studio independently, then submit the stale form in EN. Correct a future version through stable error codes and verify new EN/ES failure cases without weakening validation.
+
+The audit's prepared full suite passed **333/333, no skips**. Frontend/server types, production build, immutable-logo checks and local Worker dry run also passed. Independent checks exercised real native FFmpeg export and full decode; original/hash preservation and restart persistence; local MCP save/replay/revocation; SQL, own-data export and synthetic erasure failure/retry; hosted admission with SQLite and synthetic services; browser language/help/cache/animation; and real demo seeking/ranges. Three selective negative controls and baseline restoration tested verifier sensitivity. This publication does not run the product again.
+
+The remaining 23 unknown weight belongs to C05 hosted processing/admission, C06 real authentication services, C07 external erasure, C09 real bridge inference and C11 central Analytics contract/effects. Synthetic transport and local SQL tests cannot establish the corresponding service's real effect. No production writes, provider inference, deployment, fresh hosted readback, physical-device UAT or human acceptance occurred in this audit.
+
+Review current [policy/profile/data contracts](source/docs/profile-and-data.md), [deliberate notices and own-data release](source/docs/POLICY_RIGHTS_RELEASE_2026-10-25.md), [policy API](source/server/policy.ts), [own-data export](source/server/privacy-data.ts), [Analytics contract](source/docs/analytics-integration.md), [relay](source/server/analytics.ts) and [dated Analytics publication](source/docs/ANALYTICS_RELEASE_2026-10-25.md). Viewing Terms is separate from deliberate acknowledgement; optional preferences and data rights are separate. The dated publication records central collection paused; the audit did not recheck that live state.
+
+Next work is defined in [PENDING-REPORT](PENDING-REPORT.md). A fix requires a new snapshot and independent examples; fixing a later version cannot make the original snapshot correct. The current source projection and audit seals preserve what was actually evaluated.
+
+
+---
+
+Canonical chapter: [database/README.md](database/README.md)
+
+# Database references
+
+[D1](database/d1-reference.md) describes all included application migrations; [local Studio](database/local-studio-reference.md) describes its constructor SQL. Both are empty SQLite reconstructions, with replay/integrity checks. [Supabase](database/supabase-reference.md) is an inactive prepared alternative. Actual local Agents/MCP/auth stores are separate, with included implementation contracts. No runtime rows, provider metadata, owner identity, auth digest or secret-store hash was exported.
+
+
+---
+
+Canonical chapter: [code-flow/README.md](code-flow/README.md)
+
+# Code-flow navigation
+
+These traces connect real source boundaries; they are not a dynamically resolved call graph. Read [request/auth/storage](code-flow/01-request-auth-and-storage.md), [browser/editorial](code-flow/02-browser-and-editorial.md), [media/planning/export](code-flow/03-media-planning-render-export.md), [animation/help](code-flow/04-animation-and-help.md), [module/symbol index](code-flow/05-module-symbol-index.md) and [Agents/MCP](code-flow/06-agents-and-mcp.md). Full bodies are included in [source](source).
+
+
+---
+
+Canonical chapter: [code-flow/01-request-auth-and-storage.md](code-flow/01-request-auth-and-storage.md)
+
+# Request, authentication and persistence
+
+Current source: 26 October 2026, `77bbedac`. Hosted [entry](source/server/entry.ts) → [worker](source/server/worker.ts) → native auth/retained tenant/account lifecycle → current [service-declaration gate](source/server/policy.ts) where applicable → family dispatcher → domain validation → revision-checked D1 commit → bounded response. Public static/demo/OAuth discovery and separately defined authentication/data-rights routes have explicit dispatch rules.
+
+Local [Vite](source/vite.config.ts) loopback guard → local session/API adapters → [file repository](source/server/local.ts) or [Studio SQLite](source/server/studio-local.ts). Local access trusts the OS account and uses disposable, separate data for tests.
+
+Email challenge → same-browser proof → opaque session → retained operator. First Google/GitHub linking also requires recent native email proof. [Profile deletion](source/server/profile.ts) freezes writes before stopping compute and purging stores; current [Analytics](source/server/analytics.ts) subject/rights routing precedes final identity removal. Read [0009](source/migrations-d1/0009_profile_account.sql), [0010](source/migrations-d1/0010_mcp.sql), [0011](source/migrations-d1/0011_mcp_connections.sql), [0012](source/migrations-d1/0012_policy_acknowledgements.sql) and [0013](source/migrations-d1/0013_analytics_subject.sql) with those handlers.
+
+[Own-data export](source/server/privacy-data.ts) requires a live owner/tenant session and recent proof, independently of new Terms or optional purposes. Bounded pages → browser aggregation → JSON with scope/exclusions. It is not a media archive.
+
+The [audit](12-functional-integrity-audit.md) exercised local SQL/access/export/failures and synthetic deletion. Real authentication and external-erasure portions remain UNKNOWN; these arrows do not assert provider execution.
+
+
+---
+
+Canonical chapter: [code-flow/02-browser-and-editorial.md](code-flow/02-browser-and-editorial.md)
+
+# Browser and editorial flow
+
+Current source: 26 October 2026, `77bbedac`. [Console](source/src/console/Console.tsx) → [client](source/src/core/client.ts) → [shared API](source/server/api.ts) → [domain](source/src/core/domain.ts) → repository CAS → fresh snapshot. The server owns relationships, slot conflicts, deletion guards and explicit outcomes. A browser message does not override a rejected command.
+
+An OAuth handoff supplies a short-lived correlation handle. [mcp-resume](source/src/console/mcp-resume.ts) removes that parameter while preserving other URL/history state and consumes it before authenticated server resume. The server still validates the transaction and consent.
+
+Studio has separate material/campaign/recipe state and [planner](source/src/console/StudioPlanner.tsx). Current new-piece creation is Studio; earlier editorial source/campaign/post records remain inspectable. Profile and Settings use independent revisions. The old creation wording is F05 documentary drift, not a confirmed disconnected main route.
+
+Missing service declarations → [PolicyGate](source/src/console/PolicyGate.tsx) → deliberate versioned submit → [policy backend](source/server/policy.ts) → receipt → refreshed access. Opening a notice cannot record acceptance. Privacy → [PrivacyDownload](source/src/console/PrivacyDownload.tsx) → bounded own-data pages → declared-category JSON, under its separate rights contract.
+
+Settings → [AnalyticsSettings](source/src/console/AnalyticsSettings.tsx) → owner-scoped [relay](source/server/analytics.ts). Optional purposes and declared interests are independent of service declarations and native campaign work.
+
+The header EN/ES control changes interface text without translating saved material. **F01:** Studio's raw server-error path → [ErrorNotice](source/src/console/ErrorNotice.tsx) leaves a Spanish conflict alert in EN. CAS and the unsaved form remain correct. [Evidence and reproduction](audit/2026-10-26/FINDINGS.json); the publication does not rerun the browser.
+
+
+---
+
+Canonical chapter: [code-flow/03-media-planning-render-export.md](code-flow/03-media-planning-render-export.md)
+
+# Media, planning, rendering and export
+
+Current source: 26 October 2026, `77bbedac`.
+
+[Studio UI](source/src/console/Studio.tsx) → resumable upload adapter → native probe/hash → original asset and material → [classifier](source/src/core/studio-classification.ts). Labels never establish rights/readiness/speech.
+
+Selection → [prepareStudioPlan/native planner](source/src/core/studio-planner.ts) → permissions/history/ranges/copy/readability checks → editable alternatives → server recomputation/fingerprint → [Studio domain](source/src/core/studio.ts) save with CAS.
+
+Saved variant → durable job/admission → [processor](source/server/studio-processor.ts) → [renderer](source/server/studio-render.ts) → private MP4/cover and immutable receipt → actual owner review → exact recipe/job approval → native export. Recipe/permission drift invalidates earlier approval. No stage publishes to a social API. [Native flow tests](source/tests/studio-native-flow.test.ts) and [MCP integration tests](source/tests/mcp-integration.test.ts) cover separate entry routes to this same backend.
+
+Audit execution followed this native path without an agent and decoded the exported 5-second 1080×1920 H.264 MP4. Independent hashes and a process restart checked source/output custody and persistence. Stale revision/fingerprint, unapproved export and changed-recipe approval were rejected. [Audit report](audit/2026-10-26/REPORT.md).
+
+Hosted admission was exercised with SQLite and synthetic R2/processor services. C05 remains UNKNOWN for real managed processing/storage effects; this trace does not certify a current hosted render, phone codec or creative acceptance.
+
+
+---
+
+Canonical chapter: [code-flow/04-animation-and-help.md](code-flow/04-animation-and-help.md)
+
+# Animation, branding and Help
+
+Current source: 26 October 2026, `77bbedac`.
+
+[Background](source/src/decoration/Background.tsx) coordinates [scheduler](source/src/decoration/scheduler.ts), [scenes](source/src/decoration/scenes.ts), [renderer](source/src/decoration/renderer.ts), [registry](source/src/decoration/registry.ts) and [asset lifecycle](source/src/decoration/assets.ts). Off/reduced motion/pause/cache choices remain distinct. Animation code inspection and byte hashes do not prove temporal quality.
+
+[Help](source/src/console/Help.tsx) renders [guide definitions](source/src/console/help-guides.ts) with public synthetic screenshots. Authentication help uses a separately guarded mail request, not these authenticated guides. Original [logo](source/public/brand/marker-logo-v1.png), [brand manifest](source/public/brand/manifest.json), [fonts/license](source/public/fonts) and [AEKR attribution](source/assets) remain included.
+
+In the audit's real local Edge context, playing changed canvas pixels; pause preserved them; reduced-motion produced a static composition and disabled Play. CacheStorage began empty, opt-in wrote the decoration namespace only and revocation removed it. Language persisted through reload without changing synthetic saved text. Help's 15 guides/79 steps/158 bilingual image references were integrity-checked; an ES mobile guide was opened and its image inspected. This does not claim semantic visual inspection of every capture or physical-device acceptance.
+
+The global language control is now the header EN/ES button. Some guide text still points to older Environment language/policy placement; that documentary drift is distinguished from the confirmed Studio error-language defect. [Current audit](12-functional-integrity-audit.md).
+
+
+---
+
+Canonical chapter: [code-flow/05-module-symbol-index.md](code-flow/05-module-symbol-index.md)
+
+# Module and symbol index
+
+127 parsed modules; 14418 declarations/fields, 611 imports/re-exports, 18969 syntactic call sites. Generated Worker declarations dominate raw counts. Full bodies are in source/; this index is navigation, not runtime reachability or type inference.
+
+| Module | Symbols | Imports | Calls |
+| --- | --- | --- | --- |
+| [processor/runner.mjs](source/processor/runner.mjs) | 40 | 6 | 75 |
+| [server/agents-local.ts](source/server/agents-local.ts) | 8 | 4 | 22 |
+| [server/agents-store.ts](source/server/agents-store.ts) | 13 | 0 | 13 |
+| [server/agents.ts](source/server/agents.ts) | 259 | 6 | 484 |
+| [server/analytics.ts](source/server/analytics.ts) | 64 | 3 | 169 |
+| [server/api.ts](source/server/api.ts) | 20 | 1 | 39 |
+| [server/captcha.d.ts](source/server/captcha.d.ts) | 12 | 0 | 0 |
+| [server/captcha.js](source/server/captcha.js) | 29 | 0 | 62 |
+| [server/d1.ts](source/server/d1.ts) | 11 | 2 | 22 |
+| [server/demo-media.ts](source/server/demo-media.ts) | 26 | 0 | 60 |
+| [server/entry.ts](source/server/entry.ts) | 2 | 3 | 4 |
+| [server/github-auth.js](source/server/github-auth.js) | 82 | 2 | 201 |
+| [server/google-auth.js](source/server/google-auth.js) | 96 | 2 | 240 |
+| [server/local.ts](source/server/local.ts) | 11 | 4 | 18 |
+| [server/mcp-auth-store.ts](source/server/mcp-auth-store.ts) | 12 | 0 | 18 |
+| [server/mcp-auth.ts](source/server/mcp-auth.ts) | 202 | 1 | 354 |
+| [server/mcp-local.ts](source/server/mcp-local.ts) | 38 | 5 | 57 |
+| [server/mcp-tools.ts](source/server/mcp-tools.ts) | 128 | 3 | 252 |
+| [server/mcp.ts](source/server/mcp.ts) | 63 | 8 | 128 |
+| [server/native-auth-store.js](source/server/native-auth-store.js) | 21 | 0 | 67 |
+| [server/native-auth.d.ts](source/server/native-auth.d.ts) | 32 | 0 | 0 |
+| [server/native-auth.js](source/server/native-auth.js) | 89 | 5 | 236 |
+| [server/policy.ts](source/server/policy.ts) | 29 | 4 | 59 |
+| [server/privacy-data.ts](source/server/privacy-data.ts) | 30 | 4 | 61 |
+| [server/profile-local.ts](source/server/profile-local.ts) | 18 | 5 | 39 |
+| [server/profile.ts](source/server/profile.ts) | 95 | 5 | 207 |
+| [server/studio-analysis.ts](source/server/studio-analysis.ts) | 52 | 6 | 84 |
+| [server/studio-hosted.ts](source/server/studio-hosted.ts) | 399 | 7 | 699 |
+| [server/studio-local.ts](source/server/studio-local.ts) | 323 | 14 | 620 |
+| [server/studio-processor.ts](source/server/studio-processor.ts) | 129 | 9 | 235 |
+| [server/studio-render.ts](source/server/studio-render.ts) | 159 | 3 | 205 |
+| [server/supabase.ts](source/server/supabase.ts) | 21 | 3 | 18 |
+| [server/tenant-auth.js](source/server/tenant-auth.js) | 16 | 0 | 32 |
+| [server/worker.ts](source/server/worker.ts) | 39 | 14 | 123 |
+| [src/App.tsx](source/src/App.tsx) | 35 | 8 | 60 |
+| [src/console/Agents.tsx](source/src/console/Agents.tsx) | 146 | 14 | 421 |
+| [src/console/AnalyticsSettings.tsx](source/src/console/AnalyticsSettings.tsx) | 32 | 5 | 122 |
+| [src/console/Authentication.tsx](source/src/console/Authentication.tsx) | 63 | 4 | 32 |
+| [src/console/Console.tsx](source/src/console/Console.tsx) | 176 | 14 | 564 |
+| [src/console/EnvironmentSettings.tsx](source/src/console/EnvironmentSettings.tsx) | 22 | 3 | 23 |
+| [src/console/ErrorNotice.tsx](source/src/console/ErrorNotice.tsx) | 7 | 3 | 5 |
+| [src/console/Help.tsx](source/src/console/Help.tsx) | 25 | 6 | 32 |
+| [src/console/McpConnections.tsx](source/src/console/McpConnections.tsx) | 24 | 3 | 52 |
+| [src/console/Policies.tsx](source/src/console/Policies.tsx) | 18 | 4 | 15 |
+| [src/console/PolicyGate.tsx](source/src/console/PolicyGate.tsx) | 13 | 4 | 22 |
+| [src/console/PrivacyDownload.tsx](source/src/console/PrivacyDownload.tsx) | 37 | 2 | 41 |
+| [src/console/Profile.tsx](source/src/console/Profile.tsx) | 81 | 4 | 172 |
+| [src/console/Settings.tsx](source/src/console/Settings.tsx) | 54 | 8 | 192 |
+| [src/console/Studio.tsx](source/src/console/Studio.tsx) | 196 | 10 | 711 |
+| [src/console/StudioAnalysis.tsx](source/src/console/StudioAnalysis.tsx) | 67 | 5 | 141 |
+| [src/console/StudioPlanner.tsx](source/src/console/StudioPlanner.tsx) | 74 | 6 | 271 |
+| [src/console/TextSimulation.tsx](source/src/console/TextSimulation.tsx) | 30 | 6 | 105 |
+| [src/console/Turnstile.tsx](source/src/console/Turnstile.tsx) | 47 | 4 | 59 |
+| [src/console/agent-context.ts](source/src/console/agent-context.ts) | 29 | 1 | 1 |
+| [src/console/agent-stream.ts](source/src/console/agent-stream.ts) | 4 | 0 | 5 |
+| [src/console/help-guides.ts](source/src/console/help-guides.ts) | 19 | 0 | 122 |
+| [src/console/mcp-resume.ts](source/src/console/mcp-resume.ts) | 20 | 0 | 27 |
+| [src/core/agents.ts](source/src/core/agents.ts) | 122 | 2 | 13 |
+| [src/core/analytics.ts](source/src/core/analytics.ts) | 41 | 0 | 2 |
+| [src/core/client.ts](source/src/core/client.ts) | 9 | 1 | 12 |
+| [src/core/domain.ts](source/src/core/domain.ts) | 105 | 0 | 159 |
+| [src/core/generation.ts](source/src/core/generation.ts) | 83 | 1 | 99 |
+| [src/core/policy.ts](source/src/core/policy.ts) | 2 | 0 | 0 |
+| [src/core/profile.ts](source/src/core/profile.ts) | 8 | 0 | 15 |
+| [src/core/settings.ts](source/src/core/settings.ts) | 32 | 1 | 9 |
+| [src/core/studio-analysis.ts](source/src/core/studio-analysis.ts) | 32 | 0 | 34 |
+| [src/core/studio-classification.ts](source/src/core/studio-classification.ts) | 5 | 1 | 15 |
+| [src/core/studio-planner.ts](source/src/core/studio-planner.ts) | 180 | 3 | 278 |
+| [src/core/studio.ts](source/src/core/studio.ts) | 249 | 5 | 251 |
+| [src/decoration/Background.tsx](source/src/decoration/Background.tsx) | 46 | 5 | 69 |
+| [src/decoration/assets.ts](source/src/decoration/assets.ts) | 29 | 0 | 37 |
+| [src/decoration/registry.ts](source/src/decoration/registry.ts) | 12 | 3 | 3 |
+| [src/decoration/renderer.ts](source/src/decoration/renderer.ts) | 95 | 0 | 156 |
+| [src/decoration/scenes.ts](source/src/decoration/scenes.ts) | 117 | 1 | 360 |
+| [src/decoration/scheduler.ts](source/src/decoration/scheduler.ts) | 33 | 0 | 27 |
+| [src/i18n.tsx](source/src/i18n.tsx) | 18 | 1 | 13 |
+| [src/main.tsx](source/src/main.tsx) | 0 | 7 | 3 |
+| [tests/access-help.test.ts](source/tests/access-help.test.ts) | 40 | 5 | 171 |
+| [tests/agent-bridge.test.ts](source/tests/agent-bridge.test.ts) | 53 | 8 | 159 |
+| [tests/agent-context.test.ts](source/tests/agent-context.test.ts) | 2 | 3 | 12 |
+| [tests/agent-stream.test.ts](source/tests/agent-stream.test.ts) | 4 | 3 | 20 |
+| [tests/agents-studio.test.ts](source/tests/agents-studio.test.ts) | 13 | 8 | 41 |
+| [tests/agents-worker.test.ts](source/tests/agents-worker.test.ts) | 34 | 6 | 71 |
+| [tests/agents.test.ts](source/tests/agents.test.ts) | 166 | 13 | 367 |
+| [tests/analytics-ui.test.ts](source/tests/analytics-ui.test.ts) | 26 | 6 | 76 |
+| [tests/analytics.test.ts](source/tests/analytics.test.ts) | 75 | 7 | 341 |
+| [tests/assets.test.ts](source/tests/assets.test.ts) | 22 | 3 | 86 |
+| [tests/captcha.test.ts](source/tests/captcha.test.ts) | 57 | 5 | 237 |
+| [tests/d1-hosted.test.ts](source/tests/d1-hosted.test.ts) | 44 | 8 | 146 |
+| [tests/demo-media.test.ts](source/tests/demo-media.test.ts) | 49 | 4 | 143 |
+| [tests/editorial.test.ts](source/tests/editorial.test.ts) | 34 | 8 | 151 |
+| [tests/generation.test.ts](source/tests/generation.test.ts) | 50 | 4 | 144 |
+| [tests/github-auth.test.ts](source/tests/github-auth.test.ts) | 81 | 5 | 299 |
+| [tests/google-auth.test.ts](source/tests/google-auth.test.ts) | 128 | 5 | 416 |
+| [tests/hosted.test.ts](source/tests/hosted.test.ts) | 8 | 3 | 46 |
+| [tests/mcp-auth.test.ts](source/tests/mcp-auth.test.ts) | 156 | 6 | 522 |
+| [tests/mcp-consent-policy.test.ts](source/tests/mcp-consent-policy.test.ts) | 25 | 7 | 97 |
+| [tests/mcp-integration.test.ts](source/tests/mcp-integration.test.ts) | 89 | 13 | 217 |
+| [tests/mcp-local-migration.test.ts](source/tests/mcp-local-migration.test.ts) | 8 | 7 | 42 |
+| [tests/mcp-resume.test.ts](source/tests/mcp-resume.test.ts) | 30 | 3 | 112 |
+| [tests/mcp-tools.test.ts](source/tests/mcp-tools.test.ts) | 89 | 10 | 274 |
+| [tests/motion.test.ts](source/tests/motion.test.ts) | 31 | 4 | 122 |
+| [tests/native-auth.test.ts](source/tests/native-auth.test.ts) | 97 | 5 | 302 |
+| [tests/policy-rights.test.ts](source/tests/policy-rights.test.ts) | 66 | 8 | 208 |
+| [tests/profile-local.test.ts](source/tests/profile-local.test.ts) | 16 | 6 | 60 |
+| [tests/profile-ui.test.ts](source/tests/profile-ui.test.ts) | 60 | 5 | 241 |
+| [tests/profile.test.ts](source/tests/profile.test.ts) | 119 | 8 | 450 |
+| [tests/scheduler.test.ts](source/tests/scheduler.test.ts) | 29 | 3 | 83 |
+| [tests/studio-analysis.test.ts](source/tests/studio-analysis.test.ts) | 20 | 10 | 113 |
+| [tests/studio-api.test.ts](source/tests/studio-api.test.ts) | 116 | 11 | 437 |
+| [tests/studio-classification.test.ts](source/tests/studio-classification.test.ts) | 27 | 5 | 67 |
+| [tests/studio-hosted.test.ts](source/tests/studio-hosted.test.ts) | 249 | 12 | 793 |
+| [tests/studio-native-flow.test.ts](source/tests/studio-native-flow.test.ts) | 50 | 11 | 121 |
+| [tests/studio-native-ui.test.ts](source/tests/studio-native-ui.test.ts) | 85 | 9 | 229 |
+| [tests/studio-planner.test.ts](source/tests/studio-planner.test.ts) | 80 | 7 | 256 |
+| [tests/studio-processor.test.ts](source/tests/studio-processor.test.ts) | 140 | 11 | 383 |
+| [tests/studio-render.test.ts](source/tests/studio-render.test.ts) | 34 | 9 | 194 |
+| [tests/studio-vite.test.ts](source/tests/studio-vite.test.ts) | 61 | 10 | 177 |
+| [tests/studio-watch.test.ts](source/tests/studio-watch.test.ts) | 11 | 6 | 73 |
+| [tests/studio.test.ts](source/tests/studio.test.ts) | 40 | 5 | 232 |
+| [tests/turnstile-ui.test.ts](source/tests/turnstile-ui.test.ts) | 62 | 5 | 90 |
+| [tests/ui-help.test.ts](source/tests/ui-help.test.ts) | 18 | 6 | 76 |
+| [tools/agent-bridge.mjs](source/tools/agent-bridge.mjs) | 107 | 8 | 272 |
+| [tools/prepare-processor.mjs](source/tools/prepare-processor.mjs) | 0 | 2 | 11 |
+| [tools/verify-assets.mjs](source/tools/verify-assets.mjs) | 4 | 3 | 19 |
+| [vite.config.ts](source/vite.config.ts) | 44 | 16 | 117 |
+| [worker-configuration.d.ts](source/worker-configuration.d.ts) | 6564 | 2 | 0 |
+
+## processor/runner.mjs
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [processor/runner.mjs:11](source/processor/runner.mjs#L11) |  | FunctionDeclaration | `fail(code: inferred): inferred` |
+| [processor/runner.mjs:12](source/processor/runner.mjs#L12) |  | FunctionDeclaration | `inputPath(root: inferred, index: inferred): inferred` |
+| [processor/runner.mjs:16](source/processor/runner.mjs#L16) |  | FunctionDeclaration | `fileInfo(path: inferred, maximum: inferred): inferred` |
+| [processor/runner.mjs:23](source/processor/runner.mjs#L23) |  | FunctionDeclaration | `runAction(action: inferred, payload: inferred, options?: inferred): inferred` |
+| [processor/runner.mjs:65](source/processor/runner.mjs#L65) |  | FunctionDeclaration | `main(): inferred` |
+
+## server/agents-local.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/agents-local.ts:7](source/server/agents-local.ts#L7) |  | FunctionDeclaration | `createLocalAgentStore(directory: string): AgentStore` |
+| [server/agents-local.ts:13](source/server/agents-local.ts#L13) | createLocalAgentStore | MethodDeclaration | `all<T>(sql: string, args?: AgentSqlValue[]): inferred` |
+| [server/agents-local.ts:14](source/server/agents-local.ts#L14) | createLocalAgentStore | MethodDeclaration | `run(sql: inferred, args?: inferred): inferred` |
+| [server/agents-local.ts:15](source/server/agents-local.ts#L15) | createLocalAgentStore | MethodDeclaration | `batch(statements: inferred): inferred` |
+| [server/agents-local.ts:20](source/server/agents-local.ts#L20) | createLocalAgentStore | MethodDeclaration | `close(): inferred` |
+
+## server/agents-store.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/agents-store.ts:1](source/server/agents-store.ts#L1) |  | TypeAliasDeclaration | `AgentSqlValue = string \| number \| null` |
+| [server/agents-store.ts:2](source/server/agents-store.ts#L2) |  | TypeAliasDeclaration | `AgentSql = { sql: string; args?: AgentSqlValue[] }` |
+| [server/agents-store.ts:3](source/server/agents-store.ts#L3) |  | InterfaceDeclaration | `AgentStore` |
+| [server/agents-store.ts:4](source/server/agents-store.ts#L4) | AgentStore | MethodSignature | `all<T>(sql: string, args?: AgentSqlValue[]): Promise<T[]>` |
+| [server/agents-store.ts:5](source/server/agents-store.ts#L5) | AgentStore | MethodSignature | `run(sql: string, args?: AgentSqlValue[]): Promise<number>` |
+| [server/agents-store.ts:6](source/server/agents-store.ts#L6) | AgentStore | MethodSignature | `batch(statements: AgentSql[]): Promise<number[]>` |
+| [server/agents-store.ts:7](source/server/agents-store.ts#L7) | AgentStore | MethodSignature | `close(): void` |
+| [server/agents-store.ts:9](source/server/agents-store.ts#L9) |  | FunctionDeclaration | `createD1AgentStore(db: D1Database): AgentStore` |
+| [server/agents-store.ts:11](source/server/agents-store.ts#L11) | createD1AgentStore | MethodDeclaration | `all<T>(sql: string, args?: AgentSqlValue[]): inferred` |
+| [server/agents-store.ts:12](source/server/agents-store.ts#L12) | createD1AgentStore | MethodDeclaration | `run(sql: inferred, args?: inferred): inferred` |
+| [server/agents-store.ts:13](source/server/agents-store.ts#L13) | createD1AgentStore | MethodDeclaration | `batch(statements: inferred): inferred` |
+
+## server/agents.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/agents.ts:9](source/server/agents.ts#L9) |  | TypeAliasDeclaration | `AgentStudio = (request: Request, trusted?: { newId?: string; generation?: StudioGenerationOrigin }) => Promise<Response \| null>` |
+| [server/agents.ts:10](source/server/agents.ts#L10) |  | TypeAliasDeclaration | `AgentsApiOptions = { store: AgentStore; readWorkspace: () => Promise<Workspace>; studioRequest: AgentStudio; now?: () => number }` |
+| [server/agents.ts:11](source/server/agents.ts#L11) |  | TypeAliasDeclaration | `Connection = AgentConnection & { tokenHash: string }` |
+| [server/agents.ts:12](source/server/agents.ts#L12) |  | TypeAliasDeclaration | `Run = AgentRun & { leaseToken?: string; leaseUntil?: number; outputHash?: string; requestId?: string; requestFingerprint?: string; recoveryReason?: "lease_expired" \| "deadline_expired" }` |
+| [server/agents.ts:13](source/server/agents.ts#L13) |  | TypeAliasDeclaration | `Proposal = AgentProposal & { plan?: { request: StudioPlanInput; fingerprint: string }; planApplied?: { fingerprint: string; alternative: number; variantId: string; recipeRevision: number }; applying?: { token: string; until: number; kind: "material" \| "variant" } }` |
+| [server/agents.ts:14](source/server/agents.ts#L14) |  | TypeAliasDeclaration | `Stored<T> = { revision: number; document: string; value: T }` |
+| [server/agents.ts:16](source/server/agents.ts#L16) |  | FunctionVariable | `terminal(status: string): inferred` |
+| [server/agents.ts:17](source/server/agents.ts#L17) |  | ClassDeclaration | `AgentError` |
+| [server/agents.ts:17](source/server/agents.ts#L17) | AgentError | Constructor | `constructor(message: string, status?: inferred, code?: inferred): inferred` |
+| [server/agents.ts:18](source/server/agents.ts#L18) |  | FunctionDeclaration | `validId(value: unknown): string` |
+| [server/agents.ts:19](source/server/agents.ts#L19) |  | FunctionDeclaration | `textField(value: unknown, maximum: number, required?: inferred, trim?: inferred): string` |
+| [server/agents.ts:23](source/server/agents.ts#L23) |  | FunctionDeclaration | `document(value: unknown): string` |
+| [server/agents.ts:26](source/server/agents.ts#L26) |  | FunctionDeclaration | `digest(value: string): Promise<string>` |
+| [server/agents.ts:27](source/server/agents.ts#L27) |  | FunctionVariable | `secret(): inferred` |
+| [server/agents.ts:28](source/server/agents.ts#L28) |  | FunctionDeclaration | `publicRun(run: Run): AgentRun` |
+| [server/agents.ts:29](source/server/agents.ts#L29) |  | FunctionDeclaration | `canonical(value: unknown): string` |
+| [server/agents.ts:34](source/server/agents.ts#L34) |  | FunctionDeclaration | `publicProposal(value: Proposal): AgentProposal` |
+| [server/agents.ts:38](source/server/agents.ts#L38) |  | FunctionDeclaration | `createAgentsApi(options: AgentsApiOptions): inferred` |
+| [server/agents.ts:39](source/server/agents.ts#L39) | createAgentsApi | FunctionVariable | `iso(): inferred` |
+| [server/agents.ts:40](source/server/agents.ts#L40) | createAgentsApi | FunctionDeclaration | `get<T>(table: string, id: string): Promise<Stored<T>>` |
+| [server/agents.ts:45](source/server/agents.ts#L45) | createAgentsApi | FunctionDeclaration | `list<T>(table: string, where?: inferred, args?: Array<string \| number \| null>, limit?: inferred): Promise<T[]>` |
+| [server/agents.ts:48](source/server/agents.ts#L48) | createAgentsApi | FunctionDeclaration | `insert(table: string, value: { id: string; updatedAt: string; status?: string }): AgentSql` |
+| [server/agents.ts:51](source/server/agents.ts#L51) | createAgentsApi | FunctionDeclaration | `save<T extends { id: string; updatedAt: string; status?: string }>(table: string, value: T, revision: number): Promise<void>` |
+| [server/agents.ts:55](source/server/agents.ts#L55) | createAgentsApi | FunctionDeclaration | `limits(): Promise<AgentLimits>` |
+| [server/agents.ts:59](source/server/agents.ts#L59) | createAgentsApi | FunctionDeclaration | `connectionPublic(connection: Connection): AgentConnection` |
+| [server/agents.ts:64](source/server/agents.ts#L64) | createAgentsApi | FunctionDeclaration | `studio(request: Request, path?: inferred, body?: unknown, trusted?: Parameters<AgentStudio>[1]): inferred` |
+| [server/agents.ts:71](source/server/agents.ts#L71) | createAgentsApi | FunctionDeclaration | `capture(request: Request, supplied: unknown): Promise<AgentContext>` |
+| [server/agents.ts:89](source/server/agents.ts#L89) | createAgentsApi | FunctionDeclaration | `event(run: Run, type: AgentEvent["type"], text: string): AgentSql` |
+| [server/agents.ts:93](source/server/agents.ts#L93) | createAgentsApi | FunctionDeclaration | `recover(): Promise<void>` |
+| [server/agents.ts:102](source/server/agents.ts#L102) | createAgentsApi | FunctionDeclaration | `usage(): inferred` |
+| [server/agents.ts:106](source/server/agents.ts#L106) | createAgentsApi | FunctionDeclaration | `retention(): Promise<void>` |
+| [server/agents.ts:117](source/server/agents.ts#L117) | createAgentsApi | FunctionDeclaration | `staleSources(request: Request, proposal: Proposal): inferred` |
+| [server/agents.ts:129](source/server/agents.ts#L129) | createAgentsApi | FunctionDeclaration | `bridgeConnection(request: Request): Promise<Stored<Connection>>` |
+| [server/agents.ts:138](source/server/agents.ts#L138) | createAgentsApi | FunctionDeclaration | `bridge(request: Request, path: string): Promise<Response>` |
+| [server/agents.ts:219](source/server/agents.ts#L219) | createAgentsApi | FunctionDeclaration | `route(request: Request): Promise<Response \| null>` |
+| [server/agents.ts:253](source/server/agents.ts#L253) | createAgentsApi.route | FunctionDeclaration | `replayRequest(): Promise<Response \| null>` |
+| [server/agents.ts:373](source/server/agents.ts#L373) | createAgentsApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/agents.ts:380](source/server/agents.ts#L380) | createAgentsApi | MethodDeclaration | `close(): inferred` |
+
+## server/analytics.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/analytics.ts:8](source/server/analytics.ts#L8) |  | TypeAliasDeclaration | `Principal = { userId: string; tenantId: string }` |
+| [server/analytics.ts:9](source/server/analytics.ts#L9) |  | TypeAliasDeclaration | `Options = { token?: unknown; subjectSecret: string; db?: D1Database; fetcher?: typeof fetch; now?: () => number }` |
+| [server/analytics.ts:11](source/server/analytics.ts#L11) |  | FunctionDeclaration | `sourceToken(value: unknown): inferred` |
+| [server/analytics.ts:12](source/server/analytics.ts#L12) |  | FunctionDeclaration | `centralRequest(token: string, fetcher: typeof fetch, pathname: string, data?: unknown, gpc?: inferred): inferred` |
+| [server/analytics.ts:23](source/server/analytics.ts#L23) |  | FunctionDeclaration | `deleteAnalyticsSubject(db: D1Database, rawToken: unknown, fetcher?: typeof fetch): inferred` |
+| [server/analytics.ts:36](source/server/analytics.ts#L36) |  | FunctionDeclaration | `strings(value: unknown, allowed?: readonly string[], limit?: inferred): value is string[]` |
+| [server/analytics.ts:39](source/server/analytics.ts#L39) |  | FunctionDeclaration | `exactKeys(value: Record<string, unknown>, keys: string[]): inferred` |
+| [server/analytics.ts:42](source/server/analytics.ts#L42) |  | FunctionDeclaration | `validConfiguration(value: unknown, now: number): value is AnalyticsConfiguration` |
+| [server/analytics.ts:55](source/server/analytics.ts#L55) |  | FunctionDeclaration | `subjectRef(principal: Principal, secret: string): inferred` |
+| [server/analytics.ts:64](source/server/analytics.ts#L64) |  | FunctionDeclaration | `analyticsApi(request: Request, principal: Principal, options: Options): Promise<Response>` |
+| [server/analytics.ts:70](source/server/analytics.ts#L70) | analyticsApi | FunctionDeclaration | `call(pathname: string, data?: unknown, gpc?: inferred): inferred` |
+| [server/analytics.ts:73](source/server/analytics.ts#L73) | analyticsApi | FunctionDeclaration | `configuration(): inferred` |
+| [server/analytics.ts:78](source/server/analytics.ts#L78) | analyticsApi | FunctionDeclaration | `registerSubject(subject_ref: string): inferred` |
+| [server/analytics.ts:85](source/server/analytics.ts#L85) | analyticsApi | FunctionDeclaration | `propagateGpc(subject_ref: string): inferred` |
+
+## server/api.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/api.ts:7](source/server/api.ts#L7) |  | InterfaceDeclaration | `Repository` |
+| [server/api.ts:8](source/server/api.ts#L8) | Repository | MethodSignature | `read(): Promise<Workspace>` |
+| [server/api.ts:9](source/server/api.ts#L9) | Repository | MethodSignature | `save(state: Workspace, expectedRevision: number): Promise<void>` |
+| [server/api.ts:16](source/server/api.ts#L16) |  | FunctionDeclaration | `json(value: unknown, status?: inferred): Response` |
+| [server/api.ts:19](source/server/api.ts#L19) |  | FunctionDeclaration | `readJson(request: Request, limit?: inferred): Promise<unknown>` |
+| [server/api.ts:56](source/server/api.ts#L56) |  | FunctionDeclaration | `editorialApi(request: Request, repository: Repository): Promise<Response>` |
+
+## server/captcha.js
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/captcha.js:9](source/server/captcha.js#L9) |  | FunctionDeclaration | `authCaptchaConfiguration(env: inferred): inferred` |
+| [server/captcha.js:15](source/server/captcha.js#L15) |  | FunctionDeclaration | `boundedJSON(response: inferred): inferred` |
+| [server/captcha.js:25](source/server/captcha.js#L25) |  | FunctionDeclaration | `consumeCaptchaProof(env: inferred, token: inferred): inferred` |
+| [server/captcha.js:29](source/server/captcha.js#L29) | consumeCaptchaProof | FunctionVariable | `digest(purpose: inferred): inferred` |
+| [server/captcha.js:41](source/server/captcha.js#L41) |  | FunctionDeclaration | `verifyAuthCaptcha(request: inferred, env: inferred, token: inferred): inferred` |
+
+## server/d1.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/d1.ts:3](source/server/d1.ts#L3) |  | ClassDeclaration | `D1Repository` |
+| [server/d1.ts:6](source/server/d1.ts#L6) | D1Repository | Constructor | `constructor(db: D1Database, studio?: inferred): inferred` |
+| [server/d1.ts:7](source/server/d1.ts#L7) | D1Repository | MethodDeclaration | `read(): Promise<Workspace>` |
+| [server/d1.ts:11](source/server/d1.ts#L11) | D1Repository | MethodDeclaration | `save(state: Workspace, expectedRevision: number): Promise<void>` |
+
+## server/demo-media.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/demo-media.ts:7](source/server/demo-media.ts#L7) |  | FunctionDeclaration | `isDemoMediaRequest(request: Request): boolean` |
+| [server/demo-media.ts:12](source/server/demo-media.ts#L12) |  | FunctionDeclaration | `rangeBody(body: ReadableStream<Uint8Array>, start: number, end: number): ReadableStream<Uint8Array>` |
+| [server/demo-media.ts:16](source/server/demo-media.ts#L16) | rangeBody | MethodDeclaration | `pull(controller: inferred): inferred` |
+| [server/demo-media.ts:31](source/server/demo-media.ts#L31) | rangeBody | MethodDeclaration | `cancel(reason: inferred): inferred` |
+| [server/demo-media.ts:35](source/server/demo-media.ts#L35) |  | FunctionDeclaration | `serveDemoMedia(request: Request, assets: Pick<Fetcher, "fetch">): Promise<Response>` |
+| [server/demo-media.ts:55](source/server/demo-media.ts#L55) | serveDemoMedia | FunctionVariable | `full(): inferred` |
+
+## server/entry.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/entry.ts:5](source/server/entry.ts#L5) |  | MethodDeclaration | `scheduled(controller: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/entry.ts:6](source/server/entry.ts#L6) |  | MethodDeclaration | `fetch(request: inferred, env: inferred, ctx: inferred): inferred` |
+
+## server/github-auth.js
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/github-auth.js:7](source/server/github-auth.js#L7) |  | FunctionDeclaration | `githubConfiguration(env: inferred): inferred` |
+| [server/github-auth.js:8](source/server/github-auth.js#L8) |  | FunctionVariable | `b64(value: inferred): inferred` |
+| [server/github-auth.js:9](source/server/github-auth.js#L9) |  | FunctionVariable | `random(): inferred` |
+| [server/github-auth.js:10](source/server/github-auth.js#L10) |  | FunctionDeclaration | `bytes(value: inferred): inferred` |
+| [server/github-auth.js:11](source/server/github-auth.js#L11) |  | FunctionDeclaration | `cookieValue(request: inferred, name: inferred): inferred` |
+| [server/github-auth.js:12](source/server/github-auth.js#L12) |  | FunctionVariable | `browserCookie(value?: inferred, seconds?: inferred): inferred` |
+| [server/github-auth.js:13](source/server/github-auth.js#L13) |  | FunctionDeclaration | `response(value: inferred, status?: inferred, cookies?: inferred): inferred` |
+| [server/github-auth.js:14](source/server/github-auth.js#L14) |  | FunctionDeclaration | `redirect(origin: inferred, outcome: inferred, cookies?: inferred): inferred` |
+| [server/github-auth.js:15](source/server/github-auth.js#L15) |  | FunctionDeclaration | `readJSON(response: inferred, maximum: inferred): inferred` |
+| [server/github-auth.js:16](source/server/github-auth.js#L16) |  | FunctionDeclaration | `key(config: inferred): inferred` |
+| [server/github-auth.js:17](source/server/github-auth.js#L17) |  | FunctionDeclaration | `seal(config: inferred, value: inferred): inferred` |
+| [server/github-auth.js:18](source/server/github-auth.js#L18) |  | FunctionDeclaration | `unseal(config: inferred, value: inferred): inferred` |
+| [server/github-auth.js:19](source/server/github-auth.js#L19) |  | FunctionDeclaration | `revokeGithubFlow(request: inferred, config: inferred): inferred` |
+| [server/github-auth.js:23](source/server/github-auth.js#L23) |  | FunctionDeclaration | `handleGithubAuth(request: inferred, env: inferred, config: inferred, readBody: inferred): inferred` |
+
+## server/google-auth.js
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/google-auth.js:8](source/server/google-auth.js#L8) |  | FunctionDeclaration | `revokeGoogleFlow(request: inferred, config: inferred): inferred` |
+| [server/google-auth.js:9](source/server/google-auth.js#L9) |  | FunctionDeclaration | `googleConfiguration(env: inferred): inferred` |
+| [server/google-auth.js:14](source/server/google-auth.js#L14) |  | FunctionDeclaration | `b64(bytes: inferred): inferred` |
+| [server/google-auth.js:15](source/server/google-auth.js#L15) |  | FunctionDeclaration | `bytes(value: inferred): inferred` |
+| [server/google-auth.js:16](source/server/google-auth.js#L16) |  | FunctionVariable | `random(): inferred` |
+| [server/google-auth.js:17](source/server/google-auth.js#L17) |  | FunctionDeclaration | `readCookie(request: inferred, name: inferred): inferred` |
+| [server/google-auth.js:18](source/server/google-auth.js#L18) |  | FunctionDeclaration | `flowCookie(value?: inferred, seconds?: inferred): inferred` |
+| [server/google-auth.js:19](source/server/google-auth.js#L19) |  | FunctionDeclaration | `response(value: inferred, status?: inferred, cookies?: inferred): inferred` |
+| [server/google-auth.js:20](source/server/google-auth.js#L20) |  | FunctionDeclaration | `redirect(origin: inferred, result: inferred, cookies?: inferred): inferred` |
+| [server/google-auth.js:21](source/server/google-auth.js#L21) |  | FunctionDeclaration | `readBoundedJSON(response: inferred, maximum: inferred, requireOK?: inferred): inferred` |
+| [server/google-auth.js:22](source/server/google-auth.js#L22) |  | FunctionDeclaration | `verifierKey(config: inferred): inferred` |
+| [server/google-auth.js:23](source/server/google-auth.js#L23) |  | FunctionDeclaration | `seal(config: inferred, value: inferred): inferred` |
+| [server/google-auth.js:24](source/server/google-auth.js#L24) |  | FunctionDeclaration | `unseal(config: inferred, value: inferred): inferred` |
+| [server/google-auth.js:28](source/server/google-auth.js#L28) |  | FunctionDeclaration | `verifyGoogleToken(idToken: inferred, clientId: inferred, nonceHash: inferred, hash: inferred, now: inferred): inferred` |
+| [server/google-auth.js:49](source/server/google-auth.js#L49) |  | FunctionDeclaration | `handleGoogleAuth(request: inferred, env: inferred, config: inferred, readBody: inferred): inferred` |
+
+## server/local.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/local.ts:11](source/server/local.ts#L11) |  | ClassDeclaration | `LocalRepository` |
+| [server/local.ts:14](source/server/local.ts#L14) | LocalRepository | Constructor | `constructor(path: string): inferred` |
+| [server/local.ts:17](source/server/local.ts#L17) | LocalRepository | MethodDeclaration | `read(): Promise<Workspace>` |
+| [server/local.ts:35](source/server/local.ts#L35) | LocalRepository | MethodDeclaration | `save(state: Workspace, expectedRevision: number): Promise<void>` |
+| [server/local.ts:36](source/server/local.ts#L36) | LocalRepository.save | FunctionVariable | `write(): inferred` |
+
+## server/mcp-auth-store.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/mcp-auth-store.ts:2](source/server/mcp-auth-store.ts#L2) |  | ClassDeclaration | `McpAuthStore` |
+| [server/mcp-auth-store.ts:4](source/server/mcp-auth-store.ts#L4) | McpAuthStore | Constructor | `constructor(db: D1Database): inferred` |
+| [server/mcp-auth-store.ts:5](source/server/mcp-auth-store.ts#L5) | McpAuthStore | MethodDeclaration | `statement(sql: string, ...values: unknown[]): inferred` |
+| [server/mcp-auth-store.ts:6](source/server/mcp-auth-store.ts#L6) | McpAuthStore | MethodDeclaration | `first<T>(sql: string, ...values: unknown[]): inferred` |
+| [server/mcp-auth-store.ts:7](source/server/mcp-auth-store.ts#L7) | McpAuthStore | MethodDeclaration | `all<T>(sql: string, ...values: unknown[]): inferred` |
+| [server/mcp-auth-store.ts:8](source/server/mcp-auth-store.ts#L8) | McpAuthStore | MethodDeclaration | `run(sql: string, ...values: unknown[]): inferred` |
+| [server/mcp-auth-store.ts:9](source/server/mcp-auth-store.ts#L9) | McpAuthStore | MethodDeclaration | `batch(statements: D1PreparedStatement[]): inferred` |
+| [server/mcp-auth-store.ts:10](source/server/mcp-auth-store.ts#L10) | McpAuthStore | MethodDeclaration | `rate(key: string, now: number, limit: number, window: number): inferred` |
+| [server/mcp-auth-store.ts:16](source/server/mcp-auth-store.ts#L16) | McpAuthStore | MethodDeclaration | `cleanup(now: number): inferred` |
+
+## server/mcp-auth.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/mcp-auth.ts:4](source/server/mcp-auth.ts#L4) |  | TypeAliasDeclaration | `McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] }` |
+| [server/mcp-auth.ts:5](source/server/mcp-auth.ts#L5) |  | TypeAliasDeclaration | `Owner = { userId: string; tenantId: string; email: string }` |
+| [server/mcp-auth.ts:6](source/server/mcp-auth.ts#L6) |  | TypeAliasDeclaration | `Client = { client_id: string; name: string; redirect_uris: string; expires_at: number; authorized_at: number \| null }` |
+| [server/mcp-auth.ts:7](source/server/mcp-auth.ts#L7) |  | TypeAliasDeclaration | `Grant = { grant_id: string; client_id: string; user_id: string; tenant_id: string; scopes: string; resource: string; expires_at: number; revoked_at: number \| null }` |
+| [server/mcp-auth.ts:8](source/server/mcp-auth.ts#L8) |  | TypeAliasDeclaration | `Consent = { clientId: string; redirectUri: string; challenge: string; scope: string; state: string; resource: string; language: 'es' \| 'en' }` |
+| [server/mcp-auth.ts:9](source/server/mcp-auth.ts#L9) |  | TypeAliasDeclaration | `ConsentRow = { document: string; user_id: string; tenant_id: string; expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:10](source/server/mcp-auth.ts#L10) |  | TypeAliasDeclaration | `LoginRow = { document: string; client_id: string; expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:11](source/server/mcp-auth.ts#L11) |  | TypeAliasDeclaration | `CodeRow = Grant & { redirect_uri: string; challenge: string; code_expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:12](source/server/mcp-auth.ts#L12) |  | TypeAliasDeclaration | `TokenRow = Grant & { refresh_expires_at: number; consumed_by: string \| null }` |
+| [server/mcp-auth.ts:15](source/server/mcp-auth.ts#L15) |  | ClassDeclaration | `OAuthError` |
+| [server/mcp-auth.ts:18](source/server/mcp-auth.ts#L18) | OAuthError | Constructor | `constructor(error: string, status?: inferred, description?: string): inferred` |
+| [server/mcp-auth.ts:20](source/server/mcp-auth.ts#L20) |  | FunctionDeclaration | `opaque(): inferred` |
+| [server/mcp-auth.ts:21](source/server/mcp-auth.ts#L21) |  | FunctionDeclaration | `digest(value: string): inferred` |
+| [server/mcp-auth.ts:22](source/server/mcp-auth.ts#L22) |  | FunctionDeclaration | `hash(value: string): inferred` |
+| [server/mcp-auth.ts:23](source/server/mcp-auth.ts#L23) |  | FunctionDeclaration | `challenge(value: string): inferred` |
+| [server/mcp-auth.ts:24](source/server/mcp-auth.ts#L24) |  | FunctionVariable | `esc(value: string): inferred` |
+| [server/mcp-auth.ts:25](source/server/mcp-auth.ts#L25) |  | FunctionDeclaration | `response(value: unknown, status?: inferred): inferred` |
+| [server/mcp-auth.ts:29](source/server/mcp-auth.ts#L29) |  | FunctionDeclaration | `scopes(value: string): inferred` |
+| [server/mcp-auth.ts:34](source/server/mcp-auth.ts#L34) |  | FunctionDeclaration | `params(value: URLSearchParams): inferred` |
+| [server/mcp-auth.ts:39](source/server/mcp-auth.ts#L39) |  | FunctionDeclaration | `body(request: Request, json?: inferred): Promise<Record<string, unknown>>` |
+| [server/mcp-auth.ts:58](source/server/mcp-auth.ts#L58) |  | FunctionDeclaration | `text(value: unknown, max?: inferred): inferred` |
+| [server/mcp-auth.ts:59](source/server/mcp-auth.ts#L59) |  | FunctionDeclaration | `loopback(url: URL): inferred` |
+| [server/mcp-auth.ts:60](source/server/mcp-auth.ts#L60) |  | FunctionDeclaration | `nativeCallback(url: URL): inferred` |
+| [server/mcp-auth.ts:61](source/server/mcp-auth.ts#L61) |  | FunctionDeclaration | `allowedRedirect(value: unknown, origin: URL): inferred` |
+| [server/mcp-auth.ts:69](source/server/mcp-auth.ts#L69) |  | FunctionDeclaration | `matchesRedirect(registered: string, candidate: string): inferred` |
+| [server/mcp-auth.ts:76](source/server/mcp-auth.ts#L76) |  | FunctionDeclaration | `page(language: 'es' \| 'en', content: string, status?: inferred, callbackOrigin?: string): inferred` |
+| [server/mcp-auth.ts:86](source/server/mcp-auth.ts#L86) |  | FunctionDeclaration | `createMcpAuthorization(options: { db: D1Database; origin: string; ownerSession: (request: Request) => Promise<Owner \| null>; assertActive?: () => Promise<void> }): inferred` |
+| [server/mcp-auth.ts:90](source/server/mcp-auth.ts#L90) | createMcpAuthorization | FunctionVariable | `now(): inferred` |
+| [server/mcp-auth.ts:91](source/server/mcp-auth.ts#L91) | createMcpAuthorization | FunctionDeclaration | `active(): inferred` |
+| [server/mcp-auth.ts:95](source/server/mcp-auth.ts#L95) | createMcpAuthorization | FunctionDeclaration | `owner(request: Request): inferred` |
+| [server/mcp-auth.ts:96](source/server/mcp-auth.ts#L96) | createMcpAuthorization | FunctionDeclaration | `sameOrigin(request: Request): inferred` |
+| [server/mcp-auth.ts:97](source/server/mcp-auth.ts#L97) | createMcpAuthorization | FunctionDeclaration | `client(id: unknown): inferred` |
+| [server/mcp-auth.ts:102](source/server/mcp-auth.ts#L102) | createMcpAuthorization | FunctionDeclaration | `redirect(consent: Consent, values: Record<string, string>): inferred` |
+| [server/mcp-auth.ts:117](source/server/mcp-auth.ts#L117) | createMcpAuthorization | FunctionDeclaration | `register(request: Request): inferred` |
+| [server/mcp-auth.ts:136](source/server/mcp-auth.ts#L136) | createMcpAuthorization | FunctionDeclaration | `openConsent(consent: Consent, app: Client, principal: Owner, loginHash?: string): inferred` |
+| [server/mcp-auth.ts:157](source/server/mcp-auth.ts#L157) | createMcpAuthorization | FunctionDeclaration | `startLogin(request: Request, consent: Consent): inferred` |
+| [server/mcp-auth.ts:167](source/server/mcp-auth.ts#L167) | createMcpAuthorization | FunctionDeclaration | `resume(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:179](source/server/mcp-auth.ts#L179) | createMcpAuthorization | FunctionDeclaration | `authorize(request: Request, url: URL): inferred` |
+| [server/mcp-auth.ts:214](source/server/mcp-auth.ts#L214) | createMcpAuthorization | FunctionDeclaration | `tokens(request: Request): inferred` |
+| [server/mcp-auth.ts:249](source/server/mcp-auth.ts#L249) | createMcpAuthorization | FunctionDeclaration | `revoke(request: Request): inferred` |
+| [server/mcp-auth.ts:258](source/server/mcp-auth.ts#L258) | createMcpAuthorization | FunctionDeclaration | `connections(request: Request): inferred` |
+| [server/mcp-auth.ts:270](source/server/mcp-auth.ts#L270) | createMcpAuthorization | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp-auth.ts:301](source/server/mcp-auth.ts#L301) | createMcpAuthorization | MethodDeclaration | `authenticate(request: Request): Promise<McpPrincipal \| null>` |
+
+## server/mcp-local.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/mcp-local.ts:9](source/server/mcp-local.ts#L9) |  | FunctionDeclaration | `createLocalMcpApi(options: { directory: string; backend(request: Request): Promise<Response> }): inferred` |
+| [server/mcp-local.ts:9](source/server/mcp-local.ts#L9) | createLocalMcpApi | MethodSignature | `backend(request: Request): Promise<Response>` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | TypeAliasDeclaration | `LocalStatement = { execute(): { success: boolean; results: unknown[]; meta: { changes: number } }; bind(...values: unknown[]): LocalStatement; first<T>(): Promise<T \| null>; all(): Promise<unknown>; run(): Promise<unknown> }` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `execute(): { success: boolean; results: unknown[]; meta: { changes: number } }` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `bind(...values: unknown[]): LocalStatement` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `first<T>(): Promise<T \| null>` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `all(): Promise<unknown>` |
+| [server/mcp-local.ts:29](source/server/mcp-local.ts#L29) | createLocalMcpApi | MethodSignature | `run(): Promise<unknown>` |
+| [server/mcp-local.ts:31](source/server/mcp-local.ts#L31) | createLocalMcpApi | MethodDeclaration | `prepare(text: string): LocalStatement` |
+| [server/mcp-local.ts:34](source/server/mcp-local.ts#L34) | createLocalMcpApi.prepare | MethodDeclaration | `bind(...values: inferred): inferred` |
+| [server/mcp-local.ts:35](source/server/mcp-local.ts#L35) | createLocalMcpApi.prepare | MethodDeclaration | `execute(): inferred` |
+| [server/mcp-local.ts:36](source/server/mcp-local.ts#L36) | createLocalMcpApi.prepare | MethodDeclaration | `first<T>(): inferred` |
+| [server/mcp-local.ts:37](source/server/mcp-local.ts#L37) | createLocalMcpApi.prepare | MethodDeclaration | `all(): inferred` |
+| [server/mcp-local.ts:38](source/server/mcp-local.ts#L38) | createLocalMcpApi.prepare | MethodDeclaration | `run(): inferred` |
+| [server/mcp-local.ts:42](source/server/mcp-local.ts#L42) | createLocalMcpApi | MethodDeclaration | `batch(statements: LocalStatement[]): inferred` |
+| [server/mcp-local.ts:51](source/server/mcp-local.ts#L51) | createLocalMcpApi | MethodDeclaration | `close(): inferred` |
+| [server/mcp-local.ts:52](source/server/mcp-local.ts#L52) | createLocalMcpApi | MethodDeclaration | `handle(request: Request): inferred` |
+| [server/mcp-local.ts:58](source/server/mcp-local.ts#L58) | createLocalMcpApi.handle | MethodDeclaration | `assertActive(): inferred` |
+
+## server/mcp-tools.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/mcp-tools.ts:7](source/server/mcp-tools.ts#L7) |  | TypeAliasDeclaration | `Schema = { type: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; enum?: readonly unknown[]; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number; minItems?: number; maxItems?: number; uniqueItems?: boolean }` |
+| [server/mcp-tools.ts:8](source/server/mcp-tools.ts#L8) |  | TypeAliasDeclaration | `Args = Record<string, unknown>` |
+| [server/mcp-tools.ts:9](source/server/mcp-tools.ts#L9) |  | TypeAliasDeclaration | `McpPrincipal = { userId: string; tenantId: string; clientId: string; grantId: string; scopes: string[] }` |
+| [server/mcp-tools.ts:10](source/server/mcp-tools.ts#L10) |  | TypeAliasDeclaration | `McpToolResult = { content: Array<{ type: "text"; text: string }>; structuredContent: Record<string, unknown>; isError?: boolean; _meta?: Record<string, unknown> }` |
+| [server/mcp-tools.ts:11](source/server/mcp-tools.ts#L11) |  | TypeAliasDeclaration | `McpToolDescriptor = { name: string; description: string; inputSchema: Schema; annotations: { readOnlyHint: boolean; destructiveHint: boolean; idempotentHint: boolean; openWorldHint: boolean }; scopes: string[] }` |
+| [server/mcp-tools.ts:13](source/server/mcp-tools.ts#L13) |  | FunctionVariable | `string(maxLength: number): Schema` |
+| [server/mcp-tools.ts:14](source/server/mcp-tools.ts#L14) |  | FunctionVariable | `choice(...values: string[]): Schema` |
+| [server/mcp-tools.ts:15](source/server/mcp-tools.ts#L15) |  | FunctionVariable | `number(minimum: number, maximum: number, integer?: inferred): Schema` |
+| [server/mcp-tools.ts:18](source/server/mcp-tools.ts#L18) |  | FunctionVariable | `array(items: Schema, maxItems: number): Schema` |
+| [server/mcp-tools.ts:19](source/server/mcp-tools.ts#L19) |  | FunctionVariable | `object(properties: Record<string, Schema>, required?: string[]): Schema` |
+| [server/mcp-tools.ts:33](source/server/mcp-tools.ts#L33) |  | FunctionDeclaration | `tool(name: string, description: string, inputSchema: Schema, scope: string, destructive?: inferred): McpToolDescriptor` |
+| [server/mcp-tools.ts:58](source/server/mcp-tools.ts#L58) |  | FunctionDeclaration | `validate(value: unknown, schema: Schema, path?: inferred): void` |
+| [server/mcp-tools.ts:78](source/server/mcp-tools.ts#L78) |  | FunctionDeclaration | `result(value: Record<string, unknown>, isError?: inferred): McpToolResult` |
+| [server/mcp-tools.ts:81](source/server/mcp-tools.ts#L81) |  | FunctionDeclaration | `get<T extends { id: string }>(items: T[], id: unknown): T` |
+| [server/mcp-tools.ts:86](source/server/mcp-tools.ts#L86) |  | FunctionDeclaration | `fields(args: Args, names: string[], mappings?: Record<string, string>): Args` |
+| [server/mcp-tools.ts:89](source/server/mcp-tools.ts#L89) |  | FunctionDeclaration | `planInput(value: unknown): StudioPlanInput` |
+| [server/mcp-tools.ts:92](source/server/mcp-tools.ts#L92) |  | FunctionDeclaration | `sourceRefs(sources: Args[]): Args[]` |
+| [server/mcp-tools.ts:95](source/server/mcp-tools.ts#L95) |  | FunctionDeclaration | `plannerRef(planner: Args): Args` |
+| [server/mcp-tools.ts:98](source/server/mcp-tools.ts#L98) |  | FunctionDeclaration | `variantView(variant: StudioVariant): Args` |
+| [server/mcp-tools.ts:103](source/server/mcp-tools.ts#L103) |  | FunctionDeclaration | `createMcpTools(options: { origin: string; backend: (request: Request) => Promise<Response>; principal: McpPrincipal }): inferred` |
+| [server/mcp-tools.ts:105](source/server/mcp-tools.ts#L105) | createMcpTools | FunctionDeclaration | `request(path: string, data?: Args): Promise<Response>` |
+| [server/mcp-tools.ts:108](source/server/mcp-tools.ts#L108) | createMcpTools | FunctionDeclaration | `readResponse(response: Response): Promise<Args>` |
+| [server/mcp-tools.ts:113](source/server/mcp-tools.ts#L113) | createMcpTools | FunctionVariable | `read(path: string): inferred` |
+| [server/mcp-tools.ts:114](source/server/mcp-tools.ts#L114) | createMcpTools | FunctionVariable | `workspace(): inferred` |
+| [server/mcp-tools.ts:115](source/server/mcp-tools.ts#L115) | createMcpTools | FunctionVariable | `studio(): inferred` |
+| [server/mcp-tools.ts:116](source/server/mcp-tools.ts#L116) | createMcpTools | FunctionDeclaration | `revision(current: number, expected: unknown): inferred` |
+| [server/mcp-tools.ts:117](source/server/mcp-tools.ts#L117) | createMcpTools | FunctionDeclaration | `command(args: Args, type: string, data: Args, editorial?: inferred): Promise<Args>` |
+| [server/mcp-tools.ts:128](source/server/mcp-tools.ts#L128) | createMcpTools | FunctionDeclaration | `execute(name: string, args: Args): Promise<Args>` |
+| [server/mcp-tools.ts:201](source/server/mcp-tools.ts#L201) | createMcpTools | MethodDeclaration | `call(name: string, supplied: unknown): Promise<McpToolResult>` |
+
+## server/mcp.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/mcp.ts:10](source/server/mcp.ts#L10) |  | TypeAliasDeclaration | `McpOptions = { db: D1Database; origin: string; ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>; assertActive(): Promise<void>; policyAllowed?(identity: { userId: string; tenantId: string }): Promise<boolean>; backend(request: Request): Promise<Response>; }` |
+| [server/mcp.ts:13](source/server/mcp.ts#L13) |  | MethodSignature | `ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } \| null>` |
+| [server/mcp.ts:14](source/server/mcp.ts#L14) |  | MethodSignature | `assertActive(): Promise<void>` |
+| [server/mcp.ts:15](source/server/mcp.ts#L15) |  | MethodSignature | `policyAllowed(identity: { userId: string; tenantId: string }): Promise<boolean>` |
+| [server/mcp.ts:16](source/server/mcp.ts#L16) |  | MethodSignature | `backend(request: Request): Promise<Response>` |
+| [server/mcp.ts:21](source/server/mcp.ts#L21) |  | FunctionDeclaration | `failure(code: string, status: number, message: string): McpToolResult` |
+| [server/mcp.ts:25](source/server/mcp.ts#L25) |  | FunctionDeclaration | `bearerChallenge(origin: string, scopes: string[], insufficient?: inferred): string` |
+| [server/mcp.ts:33](source/server/mcp.ts#L33) |  | FunctionDeclaration | `insufficientScope(origin: string, scopes: string[]): McpToolResult` |
+| [server/mcp.ts:39](source/server/mcp.ts#L39) |  | FunctionDeclaration | `canonical(value: unknown): string` |
+| [server/mcp.ts:44](source/server/mcp.ts#L44) |  | FunctionDeclaration | `digest(value: unknown): inferred` |
+| [server/mcp.ts:52](source/server/mcp.ts#L52) |  | FunctionDeclaration | `executeMcpTool(options: Pick<McpOptions, 'db' \| 'origin' \| 'backend'>, principal: McpPrincipal, name: string, args: Record<string, unknown>): Promise<McpToolResult>` |
+| [server/mcp.ts:83](source/server/mcp.ts#L83) |  | FunctionDeclaration | `isMcpRequest(path: string): boolean` |
+| [server/mcp.ts:86](source/server/mcp.ts#L86) |  | FunctionDeclaration | `createMcpApi(options: McpOptions): inferred` |
+| [server/mcp.ts:89](source/server/mcp.ts#L89) | createMcpApi | MethodDeclaration | `handle(request: Request): Promise<Response \| null>` |
+| [server/mcp.ts:102](source/server/mcp.ts#L102) | createMcpApi.handle | FunctionDeclaration | `exportArtifact(): inferred` |
+| [server/mcp.ts:105](source/server/mcp.ts#L105) | createMcpApi.handle.exportArtifact | FunctionVariable | `current(): inferred` |
+
+## server/native-auth-store.js
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/native-auth-store.js:3](source/server/native-auth-store.js#L3) |  | FunctionDeclaration | `batch(db: inferred, statements: inferred): inferred` |
+| [server/native-auth-store.js:8](source/server/native-auth-store.js#L8) |  | FunctionDeclaration | `cleanup(db: inferred, now: inferred): inferred` |
+| [server/native-auth-store.js:16](source/server/native-auth-store.js#L16) |  | FunctionDeclaration | `reserveChallenge(db: inferred, { challengeHash, ownerHash, codeHash, now, globalKey, dayKey, ipKey, ownerKey, known }: inferred): inferred` |
+| [server/native-auth-store.js:68](source/server/native-auth-store.js#L68) |  | FunctionDeclaration | `reserveHelp(db: inferred, { ticket, now, globalKey, dayKey, ipKey, ownerKey, known }: inferred): inferred` |
+| [server/native-auth-store.js:107](source/server/native-auth-store.js#L107) |  | FunctionDeclaration | `challengeOwner(db: inferred, hash: inferred): inferred` |
+| [server/native-auth-store.js:112](source/server/native-auth-store.js#L112) |  | FunctionDeclaration | `consumeChallenge(db: inferred, { challengeHash, codeHash, sessionHash, ownerHashes, now }: inferred): inferred` |
+| [server/native-auth-store.js:130](source/server/native-auth-store.js#L130) |  | FunctionDeclaration | `touchSession(db: inferred, hash: inferred, ownerHashes: inferred, now: inferred): inferred` |
+| [server/native-auth-store.js:137](source/server/native-auth-store.js#L137) |  | FunctionDeclaration | `revokeAuth(db: inferred, session: inferred, challenge: inferred): inferred` |
+| [server/native-auth-store.js:144](source/server/native-auth-store.js#L144) |  | FunctionDeclaration | `purgeAuth(db: inferred, now: inferred): inferred` |
+
+## server/native-auth.js
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/native-auth.js:22](source/server/native-auth.js#L22) |  | FunctionDeclaration | `accessInstructions(language: inferred, origin: inferred): inferred` |
+| [server/native-auth.js:46](source/server/native-auth.js#L46) |  | FunctionDeclaration | `response(value: inferred, status?: inferred, cookies?: inferred): inferred` |
+| [server/native-auth.js:53](source/server/native-auth.js#L53) |  | FunctionDeclaration | `cookie(name: inferred, value: inferred, seconds: inferred): inferred` |
+| [server/native-auth.js:56](source/server/native-auth.js#L56) |  | FunctionDeclaration | `tokenCookie(request: inferred, name: inferred): inferred` |
+| [server/native-auth.js:63](source/server/native-auth.js#L63) |  | FunctionDeclaration | `randomToken(): inferred` |
+| [server/native-auth.js:67](source/server/native-auth.js#L67) |  | FunctionDeclaration | `randomCode(): inferred` |
+| [server/native-auth.js:73](source/server/native-auth.js#L73) |  | FunctionDeclaration | `configuration(env: inferred): inferred` |
+| [server/native-auth.js:84](source/server/native-auth.js#L84) | configuration | FunctionVariable | `hash(value: inferred): inferred` |
+| [server/native-auth.js:90](source/server/native-auth.js#L90) |  | FunctionDeclaration | `body(request: inferred): inferred` |
+| [server/native-auth.js:122](source/server/native-auth.js#L122) |  | FunctionDeclaration | `authorizedOwner(request: inferred, env: inferred): inferred` |
+| [server/native-auth.js:126](source/server/native-auth.js#L126) |  | FunctionDeclaration | `ownerSession(request: inferred, env: inferred): inferred` |
+| [server/native-auth.js:137](source/server/native-auth.js#L137) |  | FunctionDeclaration | `describeOwnerAuth(request: inferred, env: inferred): inferred` |
+| [server/native-auth.js:148](source/server/native-auth.js#L148) |  | FunctionDeclaration | `handleOwnerAuth(request: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/native-auth.js:249](source/server/native-auth.js#L249) |  | FunctionDeclaration | `purgeOwnerAuth(env: inferred): inferred` |
+
+## server/policy.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/policy.ts:6](source/server/policy.ts#L6) |  | TypeAliasDeclaration | `PolicyEnv = Pick<Env, 'DB' \| 'MARKER_ORIGIN' \| 'MARKER_AUTH_SECRET'>` |
+| [server/policy.ts:8](source/server/policy.ts#L8) |  | TypeAliasDeclaration | `Identity = Pick<OwnerPrincipal, 'userId' \| 'tenantId'>` |
+| [server/policy.ts:9](source/server/policy.ts#L9) |  | TypeAliasDeclaration | `Receipt = { terms_version: string; privacy_notice_version: string; cookies_notice_version: string; purpose_version: string; acknowledged_at: number }` |
+| [server/policy.ts:11](source/server/policy.ts#L11) |  | FunctionDeclaration | `policyStatus(db: D1Database, identity?: Identity): inferred` |
+| [server/policy.ts:19](source/server/policy.ts#L19) |  | FunctionDeclaration | `assertPolicyAcknowledged(db: D1Database, identity?: Identity): Promise<void>` |
+| [server/policy.ts:23](source/server/policy.ts#L23) |  | FunctionDeclaration | `requireFreshProof(principal: OwnerPrincipal): inferred` |
+| [server/policy.ts:28](source/server/policy.ts#L28) |  | FunctionDeclaration | `sessionHash(request: Request, env: PolicyEnv): inferred` |
+| [server/policy.ts:38](source/server/policy.ts#L38) |  | FunctionDeclaration | `policyApi(request: Request, env: PolicyEnv, principal: OwnerPrincipal): Promise<Response>` |
+| [server/policy.ts:62](source/server/policy.ts#L62) |  | FunctionDeclaration | `policyRequired(origin: string): Response` |
+
+## server/privacy-data.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/privacy-data.ts:6](source/server/privacy-data.ts#L6) |  | TypeAliasDeclaration | `ExportEnv = Pick<Env, 'DB' \| 'MARKER_ORIGIN' \| 'MARKER_AUTH_SECRET'>` |
+| [server/privacy-data.ts:17](source/server/privacy-data.ts#L17) |  | FunctionDeclaration | `productData(value: unknown): unknown` |
+| [server/privacy-data.ts:23](source/server/privacy-data.ts#L23) |  | FunctionDeclaration | `privacyDataApi(request: Request, env: ExportEnv, principal: OwnerPrincipal): Promise<Response>` |
+
+## server/profile-local.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/profile-local.ts:7](source/server/profile-local.ts#L7) |  | TypeAliasDeclaration | `LocalProfile = {name:string;country:string;email:string;revision:number}` |
+| [server/profile-local.ts:8](source/server/profile-local.ts#L8) |  | FunctionVariable | `empty(): LocalProfile` |
+| [server/profile-local.ts:9](source/server/profile-local.ts#L9) |  | FunctionDeclaration | `createLocalProfileApi(path: string): inferred` |
+| [server/profile-local.ts:11](source/server/profile-local.ts#L11) | createLocalProfileApi | FunctionDeclaration | `load(): Promise<LocalProfile>` |
+| [server/profile-local.ts:12](source/server/profile-local.ts#L12) | createLocalProfileApi | MethodDeclaration | `handle(request: Request): Promise<Response\|null>` |
+
+## server/profile.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/profile.ts:7](source/server/profile.ts#L7) |  | TypeAliasDeclaration | `LifecycleStatus = 'active' \| 'deleting' \| 'deleted'` |
+| [server/profile.ts:8](source/server/profile.ts#L8) |  | TypeAliasDeclaration | `Phase = 'active' \| 'processor' \| 'waiting' \| 'uploads' \| 'media' \| 'database' \| 'done'` |
+| [server/profile.ts:9](source/server/profile.ts#L9) |  | TypeAliasDeclaration | `LifecycleRow = { status: LifecycleStatus; phase: Phase; capability_hash: string \| null; lease_token: string \| null; lease_until: number; deleted_objects: number; needs_retry: number }` |
+| [server/profile.ts:10](source/server/profile.ts#L10) |  | TypeAliasDeclaration | `ProfileEnvironment = Pick<Env, 'DB' \| 'MARKER_AUTH_SECRET' \| 'MARKER_ORIGIN' \| 'MARKER_OWNER_EMAIL' \| 'MARKER_SENDER_EMAIL' \| 'EMAIL'> & Partial<Pick<Env, 'MEDIA' \| 'STUDIO_PROCESSOR'>>` |
+| [server/profile.ts:16](source/server/profile.ts#L16) |  | FunctionDeclaration | `lifecycle(env: Pick<Env, 'DB'>): Promise<LifecycleRow>` |
+| [server/profile.ts:23](source/server/profile.ts#L23) |  | FunctionDeclaration | `progress(row: LifecycleRow): inferred` |
+| [server/profile.ts:26](source/server/profile.ts#L26) |  | FunctionDeclaration | `readAccountLifecycle(env: Pick<Env, 'DB'>): inferred` |
+| [server/profile.ts:29](source/server/profile.ts#L29) |  | FunctionDeclaration | `assertAccountActive(env: Pick<Env, 'DB'>): Promise<void>` |
+| [server/profile.ts:33](source/server/profile.ts#L33) |  | FunctionDeclaration | `tokenCookie(request: Request, name: string): string \| null` |
+| [server/profile.ts:38](source/server/profile.ts#L38) |  | FunctionDeclaration | `cookie(token?: inferred, seconds?: inferred): inferred` |
+| [server/profile.ts:41](source/server/profile.ts#L41) |  | FunctionDeclaration | `hmac(env: ProfileEnvironment, value: string): Promise<string>` |
+| [server/profile.ts:48](source/server/profile.ts#L48) |  | FunctionDeclaration | `capabilityForSession(request: Request, env: ProfileEnvironment): Promise<string \| null>` |
+| [server/profile.ts:54](source/server/profile.ts#L54) |  | FunctionDeclaration | `hasCapability(request: Request, env: ProfileEnvironment, row: LifecycleRow): Promise<boolean>` |
+| [server/profile.ts:58](source/server/profile.ts#L58) |  | FunctionDeclaration | `requireMutation(request: Request, env: ProfileEnvironment): inferred` |
+| [server/profile.ts:61](source/server/profile.ts#L61) |  | FunctionDeclaration | `fresh(principal: OwnerPrincipal): inferred` |
+| [server/profile.ts:65](source/server/profile.ts#L65) |  | FunctionDeclaration | `profile(env: ProfileEnvironment, principal: OwnerPrincipal): inferred` |
+| [server/profile.ts:70](source/server/profile.ts#L70) |  | FunctionDeclaration | `field(value: unknown, max: number): inferred` |
+| [server/profile.ts:74](source/server/profile.ts#L74) |  | FunctionDeclaration | `deletionResponse(row: LifecycleRow, token?: string): inferred` |
+| [server/profile.ts:83](source/server/profile.ts#L83) |  | FunctionDeclaration | `profileApi(request: Request, env: ProfileEnvironment): Promise<Response>` |
+| [server/profile.ts:144](source/server/profile.ts#L144) |  | FunctionDeclaration | `advanceAccountDeletion(env: ProfileEnvironment): Promise<LifecycleRow>` |
+| [server/profile.ts:152](source/server/profile.ts#L152) | advanceAccountDeletion | FunctionDeclaration | `setPhase(phase: Phase, objects?: inferred): inferred` |
+
+## server/studio-analysis.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/studio-analysis.ts:11](source/server/studio-analysis.ts#L11) |  | TypeAliasDeclaration | `AnalyzedMedia = { analysis: StudioAnalysisResult; thumbnails: Array<{ name: string; path: string; size: number; mime: "image/jpeg" }>; }` |
+| [server/studio-analysis.ts:17](source/server/studio-analysis.ts#L17) |  | FunctionDeclaration | `parseTechnicalSignals(text: string, range: StudioAnalysisRange): { intervals: StudioAnalysisInterval[]; truncated: boolean }` |
+| [server/studio-analysis.ts:19](source/server/studio-analysis.ts#L19) | parseTechnicalSignals | FunctionVariable | `point(relative: number): inferred` |
+| [server/studio-analysis.ts:21](source/server/studio-analysis.ts#L21) | parseTechnicalSignals | FunctionVariable | `add(kind: StudioAnalysisInterval["kind"], start: number, end: number): inferred` |
+| [server/studio-analysis.ts:43](source/server/studio-analysis.ts#L43) |  | FunctionDeclaration | `analyzeMedia(path: string, suppliedRange: StudioAnalysisRange, outputDir: string, tools: MediaTools, options?: { expectedToolVersion?: string }): Promise<AnalyzedMedia>` |
+| [server/studio-analysis.ts:46](source/server/studio-analysis.ts#L46) | analyzeMedia | FunctionVariable | `remaining(maximum: number): inferred` |
+| [server/studio-analysis.ts:58](source/server/studio-analysis.ts#L58) | analyzeMedia | FunctionVariable | `unavailable(message: string): AnalyzedMedia` |
+| [server/studio-analysis.ts:75](source/server/studio-analysis.ts#L75) | analyzeMedia | FunctionVariable | `addSignals(output: string): inferred` |
+
+## server/studio-hosted.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/studio-hosted.ts:15](source/server/studio-hosted.ts#L15) |  | TypeAliasDeclaration | `HostedStudioEnv = Pick<Env, "DB" \| "MEDIA" \| "MARKER_ORIGIN" \| "STUDIO_PROCESSOR">` |
+| [server/studio-hosted.ts:16](source/server/studio-hosted.ts#L16) |  | TypeAliasDeclaration | `HostedMediaMetadata = { kind: "video" \| "image" \| "audio"; mime: string; duration: number \| null; width: number \| null; height: number \| null; audioTrack: "present" \| "absent" \| "unknown"; processing: "ready" \| "unsupported"; sha256: string; }` |
+| [server/studio-hosted.ts:21](source/server/studio-hosted.ts#L21) |  | InterfaceDeclaration | `StudioProcessor` |
+| [server/studio-hosted.ts:22](source/server/studio-hosted.ts#L22) | StudioProcessor | MethodSignature | `probe(key: string, mimeHint?: string): Promise<HostedMediaMetadata>` |
+| [server/studio-hosted.ts:23](source/server/studio-hosted.ts#L23) | StudioProcessor | MethodSignature | `enqueue(jobId: string): Promise<void>` |
+| [server/studio-hosted.ts:24](source/server/studio-hosted.ts#L24) | StudioProcessor | MethodSignature | `render(jobId: string, spec: StudioRenderSpec, inputs: Array<{ assetId: string; key: string }>, outputs: { videoKey: string; coverKey: string }): Promise<{ duration: number; width: number; height: number }>` |
+| [server/studio-hosted.ts:26](source/server/studio-hosted.ts#L26) | StudioProcessor | MethodSignature | `analyze(analysisId: string, key: string, range: StudioAnalysisRange, expectedToolVersion: string): Promise<{ analysis: StudioAnalysisResult; thumbnails: Array<{ name: string; size: number }> }>` |
+| [server/studio-hosted.ts:33](source/server/studio-hosted.ts#L33) |  | TypeAliasDeclaration | `HostedAnalysis = { id: string; assetId: string; sha256: string; range: StudioAnalysisRange; profile: typeof ANALYSIS_PROFILE; toolVersion: string; status: "queued" \| "running" \| "completed" \| "failed"; createdAt: string; updatedAt: string; result?: StudioAnalysisResult; thumbnails?: Array<{ name: string; size: number }>; error?: string; }` |
+| [server/studio-hosted.ts:39](source/server/studio-hosted.ts#L39) |  | TypeAliasDeclaration | `Upload = { id: string; name: string; mime: string; size: number; offset: number; status: "uploading" \| "completed" \| "cancelled"; createdAt: string; assetId?: string; duplicateOf?: string; phase?: "uploading" \| "uploaded" \| "probing" \| "probe-failed"; multipartId: string; key: string; parts: R2UploadedPart[]; probe?: HostedMediaMetadata; }` |
+| [server/studio-hosted.ts:46](source/server/studio-hosted.ts#L46) |  | TypeAliasDeclaration | `PublicJob = { id: string; variantId: string; recipeRevision: number; kind: "render" \| "text-approval"; status: "queued" \| "running" \| "completed" \| "failed"; createdAt: string; updatedAt: string; error?: string; errorCode?: string; width?: number; height?: number; duration?: number; }` |
+| [server/studio-hosted.ts:51](source/server/studio-hosted.ts#L51) |  | TypeAliasDeclaration | `TextRecipe = { variantId: string; recipeRevision: number; template: "text"; platform: string; campaignId: string; hook: string; body: string; cta: string }` |
+| [server/studio-hosted.ts:52](source/server/studio-hosted.ts#L52) |  | TypeAliasDeclaration | `JobReceipt = { recipe: StudioRenderSpec \| TextRecipe; sourceSnapshots: StudioSourceSnapshot[]; planner?: StudioState["variants"][number]["planner"] }` |
+| [server/studio-hosted.ts:53](source/server/studio-hosted.ts#L53) |  | TypeAliasDeclaration | `Job = PublicJob & { videoKey?: string; coverKey?: string; bytes?: number; receipt: JobReceipt; inputs?: Array<{ assetId: string; key: string }> }` |
+| [server/studio-hosted.ts:54](source/server/studio-hosted.ts#L54) |  | TypeAliasDeclaration | `Limits = { stored_bytes: number; reserved_bytes: number; compute_token: string \| null; compute_until: number }` |
+| [server/studio-hosted.ts:55](source/server/studio-hosted.ts#L55) |  | ClassDeclaration | `ApiError` |
+| [server/studio-hosted.ts:57](source/server/studio-hosted.ts#L57) | ApiError | Constructor | `constructor(message: string, status?: inferred, code?: inferred): inferred` |
+| [server/studio-hosted.ts:59](source/server/studio-hosted.ts#L59) |  | FunctionDeclaration | `id(value: string): string` |
+| [server/studio-hosted.ts:60](source/server/studio-hosted.ts#L60) |  | FunctionDeclaration | `integer(value: unknown, label: string): number` |
+| [server/studio-hosted.ts:63](source/server/studio-hosted.ts#L63) |  | FunctionDeclaration | `fail(error: unknown): Response` |
+| [server/studio-hosted.ts:68](source/server/studio-hosted.ts#L68) |  | FunctionDeclaration | `uploadPublic(value: Upload): inferred` |
+| [server/studio-hosted.ts:71](source/server/studio-hosted.ts#L71) |  | FunctionDeclaration | `jobPublic(value: Job): inferred` |
+| [server/studio-hosted.ts:75](source/server/studio-hosted.ts#L75) |  | FunctionDeclaration | `first<T>(env: HostedStudioEnv, sql: string, ...args: (string \| number \| null)[]): Promise<T \| null>` |
+| [server/studio-hosted.ts:78](source/server/studio-hosted.ts#L78) |  | FunctionDeclaration | `all<T>(env: HostedStudioEnv, sql: string, ...args: (string \| number \| null)[]): Promise<T[]>` |
+| [server/studio-hosted.ts:81](source/server/studio-hosted.ts#L81) |  | FunctionDeclaration | `readUpload(env: HostedStudioEnv, value: string): Promise<Upload>` |
+| [server/studio-hosted.ts:85](source/server/studio-hosted.ts#L85) |  | FunctionDeclaration | `readJob(env: HostedStudioEnv, value: string): Promise<Job>` |
+| [server/studio-hosted.ts:89](source/server/studio-hosted.ts#L89) |  | FunctionDeclaration | `readHostedStudio(env: HostedStudioEnv): Promise<StudioState>` |
+| [server/studio-hosted.ts:100](source/server/studio-hosted.ts#L100) |  | FunctionDeclaration | `saveState(env: HostedStudioEnv, next: StudioState, previous: StudioState, workspaceRevision?: number, extra?: Array<(token: string) => D1PreparedStatement>): Promise<void>` |
+| [server/studio-hosted.ts:118](source/server/studio-hosted.ts#L118) | saveState | FunctionVariable | `changed<T extends { id: string }>(current: T[], before: T[]): T[]` |
+| [server/studio-hosted.ts:134](source/server/studio-hosted.ts#L134) |  | FunctionDeclaration | `assertProductUnused(env: HostedStudioEnv, productId: string): Promise<void>` |
+| [server/studio-hosted.ts:139](source/server/studio-hosted.ts#L139) |  | FunctionDeclaration | `usage(env: HostedStudioEnv): inferred` |
+| [server/studio-hosted.ts:148](source/server/studio-hosted.ts#L148) |  | FunctionDeclaration | `plannerHistory(env: HostedStudioEnv, state: StudioState): Promise<StudioPlannerUse[]>` |
+| [server/studio-hosted.ts:163](source/server/studio-hosted.ts#L163) |  | FunctionDeclaration | `validateAnalysisReferences(env: HostedStudioEnv, state: StudioState, input: {analysisIds?:string[];candidateIds:string[];lockedSelections:Array<{materialId:string;start:number;end:number}>}): Promise<void>` |
+| [server/studio-hosted.ts:174](source/server/studio-hosted.ts#L174) |  | FunctionDeclaration | `jobSummaries(env: HostedStudioEnv): inferred` |
+| [server/studio-hosted.ts:183](source/server/studio-hosted.ts#L183) |  | FunctionDeclaration | `capabilities(env: HostedStudioEnv): inferred` |
+| [server/studio-hosted.ts:192](source/server/studio-hosted.ts#L192) |  | FunctionDeclaration | `readSettings(env: HostedStudioEnv): Promise<StudioSettings>` |
+| [server/studio-hosted.ts:199](source/server/studio-hosted.ts#L199) |  | FunctionDeclaration | `settingsResponse(env: HostedStudioEnv): Promise<StudioSettingsResponse>` |
+| [server/studio-hosted.ts:204](source/server/studio-hosted.ts#L204) |  | FunctionDeclaration | `saveSettings(request: Request, env: HostedStudioEnv): Promise<Response>` |
+| [server/studio-hosted.ts:220](source/server/studio-hosted.ts#L220) |  | FunctionDeclaration | `claimCompute(env: HostedStudioEnv, token: string, cents: number, reserve?: inferred, admission?: { revision: number; job?: Job; analysis?: HostedAnalysis; stateBytes?: number }): Promise<void>` |
+| [server/studio-hosted.ts:255](source/server/studio-hosted.ts#L255) |  | FunctionDeclaration | `releaseCompute(env: HostedStudioEnv, token: string, reserved?: inferred, stored?: inferred): inferred` |
+| [server/studio-hosted.ts:259](source/server/studio-hosted.ts#L259) |  | FunctionDeclaration | `releaseJobResources(env: HostedStudioEnv, jobId: string, stored?: inferred, analysis?: inferred): inferred` |
+| [server/studio-hosted.ts:270](source/server/studio-hosted.ts#L270) |  | FunctionDeclaration | `publicAnalysis(value: HostedAnalysis): inferred` |
+| [server/studio-hosted.ts:273](source/server/studio-hosted.ts#L273) |  | FunctionDeclaration | `analysisBytes(env: HostedStudioEnv, analysisId: string): Promise<number>` |
+| [server/studio-hosted.ts:277](source/server/studio-hosted.ts#L277) |  | FunctionDeclaration | `queueAnalysis(request: Request, env: HostedStudioEnv): Promise<Response>` |
+| [server/studio-hosted.ts:296](source/server/studio-hosted.ts#L296) |  | FunctionDeclaration | `executeHostedAnalysis(env: HostedStudioEnv, original: HostedAnalysis, processor: StudioProcessor): Promise<void>` |
+| [server/studio-hosted.ts:329](source/server/studio-hosted.ts#L329) |  | FunctionDeclaration | `checkRevision(body: Record<string, unknown>, state: StudioState): inferred` |
+| [server/studio-hosted.ts:332](source/server/studio-hosted.ts#L332) |  | FunctionDeclaration | `createUpload(request: Request, env: HostedStudioEnv): Promise<Response>` |
+| [server/studio-hosted.ts:354](source/server/studio-hosted.ts#L354) |  | FunctionDeclaration | `lockUpload(env: HostedStudioEnv, value: Upload): Promise<string>` |
+| [server/studio-hosted.ts:361](source/server/studio-hosted.ts#L361) |  | FunctionDeclaration | `saveUpload(env: HostedStudioEnv, value: Upload, token: string): Promise<void>` |
+| [server/studio-hosted.ts:366](source/server/studio-hosted.ts#L366) |  | FunctionDeclaration | `requireUploadAccount(env: HostedStudioEnv, value: Upload): Promise<void>` |
+| [server/studio-hosted.ts:373](source/server/studio-hosted.ts#L373) |  | FunctionDeclaration | `appendChunk(request: Request, env: HostedStudioEnv, value: Upload): Promise<Response>` |
+| [server/studio-hosted.ts:405](source/server/studio-hosted.ts#L405) |  | FunctionDeclaration | `completeUpload(env: HostedStudioEnv, value: Upload): Promise<Response>` |
+| [server/studio-hosted.ts:461](source/server/studio-hosted.ts#L461) |  | FunctionDeclaration | `mediaResponse(request: Request, env: HostedStudioEnv, key: string, mime: string, download?: string): Promise<Response>` |
+| [server/studio-hosted.ts:478](source/server/studio-hosted.ts#L478) |  | FunctionDeclaration | `queueRender(env: HostedStudioEnv, state: StudioState, variantId: string, request: Request, workspace: Workspace): Promise<Response>` |
+| [server/studio-hosted.ts:507](source/server/studio-hosted.ts#L507) |  | FunctionDeclaration | `executeHostedRender(env: HostedStudioEnv, jobId: string, processor: StudioProcessor): Promise<void>` |
+| [server/studio-hosted.ts:558](source/server/studio-hosted.ts#L558) |  | FunctionDeclaration | `route(request: Request, env: HostedStudioEnv, workspace: Workspace, trusted?: TrustedStudioInvocation): Promise<Response \| null>` |
+| [server/studio-hosted.ts:695](source/server/studio-hosted.ts#L695) |  | FunctionDeclaration | `hostedStudioApi(request: Request, env: HostedStudioEnv, workspace: Workspace, trusted?: TrustedStudioInvocation): Promise<Response \| null>` |
+
+## server/studio-local.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/studio-local.ts:27](source/server/studio-local.ts#L27) |  | TypeAliasDeclaration | `LocalAnalysis = { id: string; assetId: string; sha256: string; range: StudioAnalysisRange; profile: typeof ANALYSIS_PROFILE; toolVersion: string; status: "queued" \| "running" \| "completed" \| "failed"; createdAt: string; updatedAt: string; result?: StudioAnalysisResult; thumbnails?: Array<{name:string;size:number}>; error?: string; }` |
+| [server/studio-local.ts:32](source/server/studio-local.ts#L32) |  | TypeAliasDeclaration | `Upload = { id: string; name: string; mime: string; size: number; offset: number; status: "uploading" \| "completed" \| "cancelled"; createdAt: string; assetId?: string; duplicateOf?: string; }` |
+| [server/studio-local.ts:37](source/server/studio-local.ts#L37) |  | TypeAliasDeclaration | `StudioJob = { id: string; variantId: string; recipeRevision: number; status: "queued" \| "running" \| "completed" \| "failed"; createdAt: string; updatedAt: string; error?: string; errorCode?: string; width?: number; height?: number; duration?: number; kind?: "render" \| "text-approval"; provenance?: "recorded" \| "unknown"; sourceRefs?: Array<{ materialId: string; contentVersion: number; assetId?: string; kind: StudioSourceSnapshot["kind"] }>; }` |
+| [server/studio-local.ts:46](source/server/studio-local.ts#L46) |  | TypeAliasDeclaration | `TextRecipe = { variantId: string; recipeRevision: number; template: "text"; platform: string; campaignId: string; hook: string; body: string; cta: string }` |
+| [server/studio-local.ts:47](source/server/studio-local.ts#L47) |  | TypeAliasDeclaration | `JobReceipt = { recipe: ReturnType<typeof buildRenderSpec> \| TextRecipe; sourceSnapshots: StudioSourceSnapshot[]; planner?: StudioState["variants"][number]["planner"] }` |
+| [server/studio-local.ts:48](source/server/studio-local.ts#L48) |  | TypeAliasDeclaration | `StoredJob = StudioJob & { videoKey?: string; coverKey?: string; receipt?: JobReceipt }` |
+| [server/studio-local.ts:49](source/server/studio-local.ts#L49) |  | TypeAliasDeclaration | `StudioApiOptions = { directory: string; tools: MediaTools }` |
+| [server/studio-local.ts:51](source/server/studio-local.ts#L51) |  | ClassDeclaration | `ApiError` |
+| [server/studio-local.ts:54](source/server/studio-local.ts#L54) | ApiError | Constructor | `constructor(message: string, status?: inferred, code?: inferred): inferred` |
+| [server/studio-local.ts:58](source/server/studio-local.ts#L58) |  | FunctionDeclaration | `requiredId(value: string): string` |
+| [server/studio-local.ts:62](source/server/studio-local.ts#L62) |  | FunctionDeclaration | `integer(value: unknown, label: string): number` |
+| [server/studio-local.ts:67](source/server/studio-local.ts#L67) |  | FunctionDeclaration | `safeName(value: unknown): string` |
+| [server/studio-local.ts:72](source/server/studio-local.ts#L72) |  | FunctionDeclaration | `mediaMime(value: unknown, name: string): string` |
+| [server/studio-local.ts:87](source/server/studio-local.ts#L87) |  | FunctionDeclaration | `publicJob(job: StoredJob): StudioJob` |
+| [server/studio-local.ts:91](source/server/studio-local.ts#L91) |  | FunctionDeclaration | `failure(error: unknown): Response` |
+| [server/studio-local.ts:99](source/server/studio-local.ts#L99) |  | FunctionDeclaration | `createStudioApi(options: StudioApiOptions): inferred` |
+| [server/studio-local.ts:127](source/server/studio-local.ts#L127) | createStudioApi | FunctionDeclaration | `serialize<T>(operation: () => Promise<T> \| T): Promise<T>` |
+| [server/studio-local.ts:135](source/server/studio-local.ts#L135) | createStudioApi | FunctionDeclaration | `readState(): StudioState` |
+| [server/studio-local.ts:144](source/server/studio-local.ts#L144) | createStudioApi | FunctionDeclaration | `saveState(state: StudioState, expectedRevision: number, assetFile?: { id: string; key: string }, completedUpload?: Upload, usageReceipt?: StoredJob): void` |
+| [server/studio-local.ts:172](source/server/studio-local.ts#L172) | createStudioApi | FunctionDeclaration | `uploads(): Upload[]` |
+| [server/studio-local.ts:175](source/server/studio-local.ts#L175) | createStudioApi | FunctionDeclaration | `upload(id: string): Upload` |
+| [server/studio-local.ts:180](source/server/studio-local.ts#L180) | createStudioApi | FunctionDeclaration | `saveUpload(value: Upload): void` |
+| [server/studio-local.ts:183](source/server/studio-local.ts#L183) | createStudioApi | FunctionDeclaration | `jobs(): StoredJob[]` |
+| [server/studio-local.ts:186](source/server/studio-local.ts#L186) | createStudioApi | FunctionDeclaration | `jobSummaries(): StudioJob[]` |
+| [server/studio-local.ts:204](source/server/studio-local.ts#L204) | createStudioApi | FunctionDeclaration | `materialUsage(state: StudioState): Record<string, number>` |
+| [server/studio-local.ts:206](source/server/studio-local.ts#L206) | createStudioApi.materialUsage | FunctionVariable | `add(materialId: string, variantId: string): inferred` |
+| [server/studio-local.ts:217](source/server/studio-local.ts#L217) | createStudioApi | FunctionDeclaration | `plannerHistory(state: StudioState): StudioPlannerUse[]` |
+| [server/studio-local.ts:232](source/server/studio-local.ts#L232) | createStudioApi | FunctionDeclaration | `analysisMetadata(): number` |
+| [server/studio-local.ts:235](source/server/studio-local.ts#L235) | createStudioApi | FunctionDeclaration | `validateAnalysisReferences(state: StudioState, input: {analysisIds?:string[];candidateIds:string[];lockedSelections:Array<{materialId:string;start:number;end:number}>}): void` |
+| [server/studio-local.ts:246](source/server/studio-local.ts#L246) | createStudioApi | FunctionDeclaration | `analysisJobs(): LocalAnalysis[]` |
+| [server/studio-local.ts:249](source/server/studio-local.ts#L249) | createStudioApi | FunctionDeclaration | `publicAnalysis(value: LocalAnalysis): inferred` |
+| [server/studio-local.ts:252](source/server/studio-local.ts#L252) | createStudioApi | FunctionDeclaration | `storageUsage(state: StudioState): Promise<{storageBytes:number;reservedBytes:number}>` |
+| [server/studio-local.ts:261](source/server/studio-local.ts#L261) | createStudioApi | FunctionDeclaration | `readSettings(): StudioSettings` |
+| [server/studio-local.ts:264](source/server/studio-local.ts#L264) | createStudioApi | FunctionDeclaration | `settingsResponse(): Promise<StudioSettingsResponse>` |
+| [server/studio-local.ts:267](source/server/studio-local.ts#L267) | createStudioApi | FunctionDeclaration | `saveSettings(request: Request): Promise<Response>` |
+| [server/studio-local.ts:278](source/server/studio-local.ts#L278) | createStudioApi | FunctionDeclaration | `saveAnalysis(value: LocalAnalysis, finished?: inferred): void` |
+| [server/studio-local.ts:281](source/server/studio-local.ts#L281) | createStudioApi | FunctionDeclaration | `executeAnalysis(entry: LocalAnalysis): Promise<void>` |
+| [server/studio-local.ts:294](source/server/studio-local.ts#L294) | createStudioApi | FunctionDeclaration | `queueAnalysis(request: Request): Promise<Response>` |
+| [server/studio-local.ts:313](source/server/studio-local.ts#L313) | createStudioApi | FunctionDeclaration | `job(id: string): StoredJob` |
+| [server/studio-local.ts:318](source/server/studio-local.ts#L318) | createStudioApi | FunctionDeclaration | `saveJob(value: StoredJob): void` |
+| [server/studio-local.ts:330](source/server/studio-local.ts#L330) | createStudioApi | FunctionDeclaration | `assetPath(id: string): string` |
+| [server/studio-local.ts:336](source/server/studio-local.ts#L336) | createStudioApi | FunctionDeclaration | `checkRevision(body: Record<string, unknown>, state: StudioState): void` |
+| [server/studio-local.ts:340](source/server/studio-local.ts#L340) | createStudioApi | FunctionDeclaration | `completeUpload(id: string): Promise<Response>` |
+| [server/studio-local.ts:380](source/server/studio-local.ts#L380) | createStudioApi | FunctionDeclaration | `appendChunk(request: Request, id: string): Promise<Response>` |
+| [server/studio-local.ts:428](source/server/studio-local.ts#L428) | createStudioApi | FunctionDeclaration | `mediaResponse(request: Request, path: string, mime: string, name?: string): Promise<Response>` |
+| [server/studio-local.ts:451](source/server/studio-local.ts#L451) | createStudioApi | FunctionDeclaration | `executeRender(entry: StoredJob, spec: ReturnType<typeof buildRenderSpec>, paths: Record<string, string>): Promise<void>` |
+| [server/studio-local.ts:466](source/server/studio-local.ts#L466) | createStudioApi | FunctionDeclaration | `jobPath(key: string): string` |
+| [server/studio-local.ts:472](source/server/studio-local.ts#L472) | createStudioApi | FunctionDeclaration | `route(request: Request, workspace: Workspace, trusted?: TrustedStudioInvocation): Promise<Response \| null>` |
+| [server/studio-local.ts:627](source/server/studio-local.ts#L627) | createStudioApi | MethodDeclaration | `handle(request: Request, workspace: Workspace, trusted?: TrustedStudioInvocation): Promise<Response \| null>` |
+| [server/studio-local.ts:631](source/server/studio-local.ts#L631) | createStudioApi | MethodDeclaration | `close(): Promise<void>` |
+
+## server/studio-processor.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/studio-processor.ts:17](source/server/studio-processor.ts#L17) |  | TypeAliasDeclaration | `Operation = { container: Container; deadline: number; stage: string; exitCode?: number; diagnostic?: string; live(): void }` |
+| [server/studio-processor.ts:17](source/server/studio-processor.ts#L17) |  | MethodSignature | `live(): void` |
+| [server/studio-processor.ts:18](source/server/studio-processor.ts#L18) |  | TypeAliasDeclaration | `RenderResult = { duration: number; width: number; height: number; videoSize: number; coverSize: number }` |
+| [server/studio-processor.ts:20](source/server/studio-processor.ts#L20) |  | FunctionDeclaration | `failure(code: string): Error` |
+| [server/studio-processor.ts:21](source/server/studio-processor.ts#L21) |  | FunctionDeclaration | `key(value: string): void` |
+| [server/studio-processor.ts:24](source/server/studio-processor.ts#L24) |  | FunctionDeclaration | `job(value: string): void` |
+| [server/studio-processor.ts:25](source/server/studio-processor.ts#L25) |  | FunctionDeclaration | `stream(text: string): ReadableStream` |
+| [server/studio-processor.ts:28](source/server/studio-processor.ts#L28) |  | ClassDeclaration | `StudioProcessor` |
+| [server/studio-processor.ts:34](source/server/studio-processor.ts#L34) | StudioProcessor | MethodDeclaration | `assertAvailable(): Promise<void>` |
+| [server/studio-processor.ts:39](source/server/studio-processor.ts#L39) | StudioProcessor | MethodDeclaration | `stopForAccountDeletion(): Promise<void>` |
+| [server/studio-processor.ts:52](source/server/studio-processor.ts#L52) | StudioProcessor | MethodDeclaration | `enqueue(jobId: string): Promise<void>` |
+| [server/studio-processor.ts:70](source/server/studio-processor.ts#L70) | StudioProcessor | MethodDeclaration | `alarm(): Promise<void>` |
+| [server/studio-processor.ts:100](source/server/studio-processor.ts#L100) | StudioProcessor | MethodDeclaration | `probe(objectKey: string, mimeHint?: string): Promise<MediaMetadata & { sha256: string }>` |
+| [server/studio-processor.ts:109](source/server/studio-processor.ts#L109) | StudioProcessor | MethodDeclaration | `render(jobId: string, spec: RenderSpec, inputs: Array<{ assetId: string; key: string }>, outputs: { videoKey: string; coverKey: string }): Promise<{ duration: number; width: number; height: number }>` |
+| [server/studio-processor.ts:124](source/server/studio-processor.ts#L124) | StudioProcessor | MethodDeclaration | `analyze(analysisId: string, objectKey: string, range: StudioAnalysisRange, expectedToolVersion: string): Promise<{analysis:StudioAnalysisResult;thumbnails:Array<{name:string;size:number}>}>` |
+| [server/studio-processor.ts:143](source/server/studio-processor.ts#L143) | StudioProcessor | MethodDeclaration | `exclusive<T>(phase: "probe" \| "render" \| "analysis", work: (operation: Operation) => Promise<T>): Promise<T>` |
+| [server/studio-processor.ts:150](source/server/studio-processor.ts#L150) | StudioProcessor.exclusive | FunctionVariable | `isStopping(): inferred` |
+| [server/studio-processor.ts:151](source/server/studio-processor.ts#L151) | StudioProcessor.exclusive | MethodDeclaration | `live(): inferred` |
+| [server/studio-processor.ts:192](source/server/studio-processor.ts#L192) | StudioProcessor | MethodDeclaration | `command(operation: Operation, argv: string[], stdin?: ReadableStream, capture?: inferred): Promise<string>` |
+| [server/studio-processor.ts:203](source/server/studio-processor.ts#L203) | StudioProcessor | MethodDeclaration | `diagnosticOutput(source: ReadableStream): Promise<string \| undefined>` |
+| [server/studio-processor.ts:224](source/server/studio-processor.ts#L224) | StudioProcessor | MethodDeclaration | `smallOutput(source: ReadableStream, maximum?: inferred): Promise<string>` |
+| [server/studio-processor.ts:239](source/server/studio-processor.ts#L239) | StudioProcessor | MethodDeclaration | `write(operation: Operation, name: string, body: ReadableStream): Promise<void>` |
+| [server/studio-processor.ts:244](source/server/studio-processor.ts#L244) | StudioProcessor | MethodDeclaration | `bootstrap(operation: Operation): Promise<void>` |
+| [server/studio-processor.ts:260](source/server/studio-processor.ts#L260) | StudioProcessor | MethodDeclaration | `fontBytes(response: Response): Promise<Uint8Array<ArrayBuffer>>` |
+| [server/studio-processor.ts:281](source/server/studio-processor.ts#L281) | StudioProcessor | MethodDeclaration | `input(operation: Operation, objectKey: string, index: number): Promise<void>` |
+| [server/studio-processor.ts:289](source/server/studio-processor.ts#L289) | StudioProcessor | MethodDeclaration | `action(operation: Operation, action: "probe" \| "render" \| "analysis", payload: unknown): Promise<unknown>` |
+| [server/studio-processor.ts:297](source/server/studio-processor.ts#L297) | StudioProcessor | MethodDeclaration | `output(operation: Operation, name: string, objectKey: string, size: number, mime: string): Promise<void>` |
+
+## server/studio-render.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/studio-render.ts:5](source/server/studio-render.ts#L5) |  | InterfaceDeclaration | `MediaTools` |
+| [server/studio-render.ts:6](source/server/studio-render.ts#L6) |  | InterfaceDeclaration | `RenderSpec` |
+| [server/studio-render.ts:21](source/server/studio-render.ts#L21) |  | InterfaceDeclaration | `MediaMetadata` |
+| [server/studio-render.ts:30](source/server/studio-render.ts#L30) |  | ClassDeclaration | `StudioMediaError` |
+| [server/studio-render.ts:33](source/server/studio-render.ts#L33) | StudioMediaError | Constructor | `constructor(code: string, message: string, diagnostics?: string): inferred` |
+| [server/studio-render.ts:43](source/server/studio-render.ts#L43) |  | TypeAliasDeclaration | `TemplatePreset = { x: number; y: number; width: number; height: number; fonts: [number, number, number]; hookEnd: number; ctaStart: number }` |
+| [server/studio-render.ts:52](source/server/studio-render.ts#L52) |  | InterfaceDeclaration | `ProbeStream` |
+| [server/studio-render.ts:58](source/server/studio-render.ts#L58) |  | InterfaceDeclaration | `ProbeResult` |
+| [server/studio-render.ts:60](source/server/studio-render.ts#L60) |  | FunctionDeclaration | `fail(code: string, message: string): never` |
+| [server/studio-render.ts:61](source/server/studio-render.ts#L61) |  | FunctionDeclaration | `finite(value: unknown): value is number` |
+| [server/studio-render.ts:62](source/server/studio-render.ts#L62) |  | FunctionDeclaration | `number(value: unknown): number \| null` |
+| [server/studio-render.ts:66](source/server/studio-render.ts#L66) |  | FunctionDeclaration | `localFile(path: string, maximum?: inferred): Promise<void>` |
+| [server/studio-render.ts:74](source/server/studio-render.ts#L74) |  | FunctionDeclaration | `runTool(executable: string, args: string[], cwd: string \| undefined, timeout: number, captureLimit?: inferred): Promise<string>` |
+| [server/studio-render.ts:80](source/server/studio-render.ts#L80) | runTool | FunctionVariable | `stop(error: StudioMediaError): inferred` |
+| [server/studio-render.ts:101](source/server/studio-render.ts#L101) |  | FunctionDeclaration | `rawProbe(path: string, tools: MediaTools): Promise<ProbeResult>` |
+| [server/studio-render.ts:107](source/server/studio-render.ts#L107) |  | FunctionDeclaration | `metadata(probe: ProbeResult, webm: boolean): MediaMetadata` |
+| [server/studio-render.ts:136](source/server/studio-render.ts#L136) |  | FunctionDeclaration | `probeMedia(path: string, tools: MediaTools): Promise<MediaMetadata>` |
+| [server/studio-render.ts:150](source/server/studio-render.ts#L150) |  | FunctionDeclaration | `validateSpec(spec: RenderSpec): void` |
+| [server/studio-render.ts:164](source/server/studio-render.ts#L164) |  | FunctionDeclaration | `wrapText(text: string, columns: number): string[]` |
+| [server/studio-render.ts:183](source/server/studio-render.ts#L183) |  | FunctionDeclaration | `textFilter(text: string, name: string, start: number, end: number, stage: string, preferredSize: number, preset: TemplatePreset): Promise<string>` |
+| [server/studio-render.ts:195](source/server/studio-render.ts#L195) |  | FunctionDeclaration | `visualFilter(spec: RenderSpec): string` |
+| [server/studio-render.ts:202](source/server/studio-render.ts#L202) |  | FunctionDeclaration | `fontFile(tools: MediaTools): Promise<string>` |
+| [server/studio-render.ts:209](source/server/studio-render.ts#L209) |  | FunctionDeclaration | `renderMedia(spec: RenderSpec, assetPaths: Record<string, string>, outputDir: string, tools: MediaTools): Promise<{ videoPath: string; coverPath: string; width: number; height: number; duration: number }>` |
+
+## server/supabase.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/supabase.ts:9](source/server/supabase.ts#L9) |  | TypeAliasDeclaration | `SupabaseConfig = { url: string; key: string; ownerId: string }` |
+| [server/supabase.ts:10](source/server/supabase.ts#L10) |  | FunctionDeclaration | `upstream(config: SupabaseConfig, path: string, token: string, body?: unknown): Promise<Response>` |
+| [server/supabase.ts:27](source/server/supabase.ts#L27) |  | FunctionDeclaration | `ownerIdentity(config: SupabaseConfig, token: string): Promise<boolean>` |
+| [server/supabase.ts:40](source/server/supabase.ts#L40) |  | FunctionDeclaration | `responseToRequest(response: Response): Request` |
+| [server/supabase.ts:53](source/server/supabase.ts#L53) |  | ClassDeclaration | `SupabaseRepository` |
+| [server/supabase.ts:56](source/server/supabase.ts#L56) | SupabaseRepository | Constructor | `constructor(config: SupabaseConfig, token: string): inferred` |
+| [server/supabase.ts:60](source/server/supabase.ts#L60) | SupabaseRepository | MethodDeclaration | `read(): Promise<Workspace>` |
+| [server/supabase.ts:75](source/server/supabase.ts#L75) | SupabaseRepository | MethodDeclaration | `save(state: Workspace, expectedRevision: number): Promise<void>` |
+
+## server/tenant-auth.js
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/tenant-auth.js:2](source/server/tenant-auth.js#L2) |  | FunctionDeclaration | `authRows(db: inferred, sql: inferred, ...args: inferred): inferred` |
+| [server/tenant-auth.js:7](source/server/tenant-auth.js#L7) |  | FunctionDeclaration | `authBatch(db: inferred, statements: inferred): inferred` |
+| [server/tenant-auth.js:12](source/server/tenant-auth.js#L12) |  | FunctionDeclaration | `retainedOperator(db: inferred, ownerHash: inferred, bind?: inferred): inferred` |
+| [server/tenant-auth.js:18](source/server/tenant-auth.js#L18) |  | FunctionDeclaration | `sessionPrincipal(config: inferred, sessionHash: inferred, now: inferred, touch?: inferred): inferred` |
+| [server/tenant-auth.js:34](source/server/tenant-auth.js#L34) |  | FunctionDeclaration | `boundGoogle(config: inferred): inferred` |
+| [server/tenant-auth.js:37](source/server/tenant-auth.js#L37) |  | FunctionDeclaration | `boundProvider(config: inferred, issuer: inferred): inferred` |
+| [server/tenant-auth.js:43](source/server/tenant-auth.js#L43) |  | FunctionDeclaration | `purgeTenantAuth(db: inferred, now: inferred): inferred` |
+
+## server/worker.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [server/worker.ts:22](source/server/worker.ts#L22) |  | FunctionVariable | `cookie(token?: inferred, seconds?: inferred): inferred` |
+| [server/worker.ts:24](source/server/worker.ts#L24) |  | FunctionDeclaration | `hostedApi(request: Request, config: SupabaseConfig): Promise<Response>` |
+| [server/worker.ts:115](source/server/worker.ts#L115) |  | MethodDeclaration | `scheduled(_event: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/worker.ts:116](source/server/worker.ts#L116) |  | MethodDeclaration | `fetch(request: inferred, env: inferred, ctx: inferred): inferred` |
+| [server/worker.ts:123](source/server/worker.ts#L123) |  | FunctionDeclaration | `nativeApi(request: Request, env: Env, ctx: Pick<ExecutionContext, 'waitUntil'>): Promise<Response>` |
+| [server/worker.ts:142](source/server/worker.ts#L142) | nativeApi | MethodDeclaration | `policyAllowed(identity: inferred): inferred` |
+| [server/worker.ts:143](source/server/worker.ts#L143) | nativeApi | MethodDeclaration | `assertActive(): inferred` |
+| [server/worker.ts:144](source/server/worker.ts#L144) | nativeApi | MethodDeclaration | `backend(internal: inferred): inferred` |
+| [server/worker.ts:191](source/server/worker.ts#L191) |  | FunctionDeclaration | `maintainAccount(env: Env): Promise<void>` |
+| [server/worker.ts:204](source/server/worker.ts#L204) |  | FunctionDeclaration | `agentApi(request: Request, env: Env): Promise<Response>` |
+
+## src/App.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/App.tsx:13](source/src/App.tsx#L13) |  | FunctionDeclaration | `App(): inferred` |
+| [src/App.tsx:18](source/src/App.tsx#L18) | App | FunctionDeclaration | `openPolicy(section: PolicySection): inferred` |
+| [src/App.tsx:19](source/src/App.tsx#L19) | App | FunctionDeclaration | `closePolicy(): inferred` |
+| [src/App.tsx:20](source/src/App.tsx#L20) | App | FunctionVariable | `show(event: Event): inferred` |
+| [src/App.tsx:49](source/src/App.tsx#L49) | App | FunctionDeclaration | `changeCache(accepted: boolean): inferred` |
+
+## src/console/Agents.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Agents.tsx:16](source/src/console/Agents.tsx#L16) |  | FunctionDeclaration | `agentApi<T>(path?: inferred, data?: unknown, method?: inferred): Promise<T>` |
+| [src/console/Agents.tsx:23](source/src/console/Agents.tsx#L23) |  | FunctionVariable | `selection(context: StudioAgentContext): AgentContextSelection` |
+| [src/console/Agents.tsx:24](source/src/console/Agents.tsx#L24) |  | FunctionVariable | `selectionKey(context: AgentContextSelection): inferred` |
+| [src/console/Agents.tsx:25](source/src/console/Agents.tsx#L25) |  | FunctionVariable | `readStored(key: string): inferred` |
+| [src/console/Agents.tsx:26](source/src/console/Agents.tsx#L26) |  | FunctionVariable | `store(key: string, value: string): inferred` |
+| [src/console/Agents.tsx:27](source/src/console/Agents.tsx#L27) |  | TypeAliasDeclaration | `Props = { open: boolean; context: StudioAgentContext; workspace: Workspace; onClose: () => void; onStudioChange: (update: Omit<AgentStudioUpdate, "nonce">) => void; onOpenStudio: () => void }` |
+| [src/console/Agents.tsx:29](source/src/console/Agents.tsx#L29) |  | FunctionDeclaration | `Agents({ open, context, workspace, onClose, onStudioChange, onOpenStudio }: Props): inferred` |
+| [src/console/Agents.tsx:31](source/src/console/Agents.tsx#L31) | Agents | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Agents.tsx:51](source/src/console/Agents.tsx#L51) | Agents | FunctionVariable | `update(): inferred` |
+| [src/console/Agents.tsx:55](source/src/console/Agents.tsx#L55) | Agents | FunctionDeclaration | `loadOverview(): inferred` |
+| [src/console/Agents.tsx:60](source/src/console/Agents.tsx#L60) | Agents | FunctionDeclaration | `loadDetail(id?: inferred): inferred` |
+| [src/console/Agents.tsx:68](source/src/console/Agents.tsx#L68) | Agents | FunctionVariable | `refresh(): inferred` |
+| [src/console/Agents.tsx:78](source/src/console/Agents.tsx#L78) | Agents | FunctionDeclaration | `action(operation: () => Promise<void>): inferred` |
+| [src/console/Agents.tsx:82](source/src/console/Agents.tsx#L82) | Agents | FunctionDeclaration | `createSession(): Promise<AgentSession>` |
+| [src/console/Agents.tsx:86](source/src/console/Agents.tsx#L86) | Agents | FunctionDeclaration | `submit(event?: FormEvent, customPrompt?: string): inferred` |
+| [src/console/Agents.tsx:105](source/src/console/Agents.tsx#L105) | Agents | FunctionVariable | `psQuote(value: string): inferred` |
+| [src/console/Agents.tsx:107](source/src/console/Agents.tsx#L107) | Agents | FunctionVariable | `status(value: string): inferred` |
+| [src/console/Agents.tsx:108](source/src/console/Agents.tsx#L108) | Agents | FunctionDeclaration | `keyboard(event: React.KeyboardEvent): inferred` |
+| [src/console/Agents.tsx:166](source/src/console/Agents.tsx#L166) |  | FunctionDeclaration | `Proposal({ active, capturedVariant, proposal, context, workspace, onReload, onStudioChange, onOpenStudio }: { active: boolean; capturedVariant?: StudioVariant; proposal: AgentProposal; context: StudioAgentContext; workspace: Workspace; onReload: () => Promise<void>; onStudioChange: Props["onStudioChange"]; onOpenStudio: () => void }): inferred` |
+| [src/console/Agents.tsx:168](source/src/console/Agents.tsx#L168) | Proposal | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Agents.tsx:170](source/src/console/Agents.tsx#L170) | Proposal | FunctionVariable | `copy({ title, hook, body, cta }: AgentCopy): AgentCopy` |
+| [src/console/Agents.tsx:175](source/src/console/Agents.tsx#L175) | Proposal | TypeAliasDeclaration | `Production = { variant: StudioVariant; jobs: Array<{ id: string; variantId: string; recipeRevision: number; status: string; error?: string }> }` |
+| [src/console/Agents.tsx:183](source/src/console/Agents.tsx#L183) | Proposal | FunctionDeclaration | `refreshProduction(): inferred` |
+| [src/console/Agents.tsx:201](source/src/console/Agents.tsx#L201) | Proposal | FunctionDeclaration | `perform(operation: () => Promise<void>): inferred` |
+| [src/console/Agents.tsx:202](source/src/console/Agents.tsx#L202) | Proposal | FunctionDeclaration | `saveEdits(): inferred` |
+| [src/console/Agents.tsx:203](source/src/console/Agents.tsx#L203) | Proposal | FunctionVariable | `field(label: string, name: keyof AgentCopy, max: number, multiline?: inferred): inferred` |
+
+## src/console/AnalyticsSettings.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/AnalyticsSettings.tsx:16](source/src/console/AnalyticsSettings.tsx#L16) |  | FunctionDeclaration | `AnalyticsSettings(): inferred` |
+| [src/console/AnalyticsSettings.tsx:18](source/src/console/AnalyticsSettings.tsx#L18) | AnalyticsSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/AnalyticsSettings.tsx:33](source/src/console/AnalyticsSettings.tsx#L33) | AnalyticsSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/AnalyticsSettings.tsx:52](source/src/console/AnalyticsSettings.tsx#L52) | AnalyticsSettings | FunctionDeclaration | `save(status: 'granted' \| 'denied' \| 'withdrawn'): inferred` |
+| [src/console/AnalyticsSettings.tsx:60](source/src/console/AnalyticsSettings.tsx#L60) | AnalyticsSettings | FunctionDeclaration | `recordInterest(): inferred` |
+
+## src/console/Authentication.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Authentication.tsx:6](source/src/console/Authentication.tsx#L6) |  | TypeAliasDeclaration | `OAuthProvider = "google" \| "github"` |
+| [src/console/Authentication.tsx:7](source/src/console/Authentication.tsx#L7) |  | TypeAliasDeclaration | `OAuthMethod = { configured: boolean; bound: boolean; canLink: boolean; linkRequiresEmailVerification?: boolean }` |
+| [src/console/Authentication.tsx:8](source/src/console/Authentication.tsx#L8) |  | TypeAliasDeclaration | `AuthSession = { mode: "local" \| "hosted"; authenticated: boolean; policy?: { required: boolean }; configured?: boolean; authFlow?: "code"; auth_method?: "email" \| OAuthProvider; account?: { status: "deleting" \| "deleted" }; tenant_id?: string; user?: { id?: string; email: string; tenant_id?: string }; turnstile?: TurnstileDescriptor; methods?: { email: { configured: boolean }; google: OAuthMethod; github?: OAuthMethod }; }` |
+| [src/console/Authentication.tsx:21](source/src/console/Authentication.tsx#L21) |  | TypeAliasDeclaration | `OAuthStart = (provider: OAuthProvider, intent: "login" \| "link", captchaToken: string) => Promise<void>` |
+| [src/console/Authentication.tsx:23](source/src/console/Authentication.tsx#L23) |  | FunctionVariable | `providerName(provider: OAuthProvider): inferred` |
+| [src/console/Authentication.tsx:25](source/src/console/Authentication.tsx#L25) |  | FunctionDeclaration | `ProviderButton({ provider, intent, session, busy, onOAuth }: { provider: OAuthProvider; intent: "login" \| "link"; session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
+| [src/console/Authentication.tsx:26](source/src/console/Authentication.tsx#L26) | ProviderButton | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:31](source/src/console/Authentication.tsx#L31) | ProviderButton | FunctionDeclaration | `start(): inferred` |
+| [src/console/Authentication.tsx:45](source/src/console/Authentication.tsx#L45) |  | FunctionDeclaration | `ProviderSignIn({ session, busy, onOAuth }: { session: AuthSession; busy: boolean; onOAuth: OAuthStart }): inferred` |
+| [src/console/Authentication.tsx:46](source/src/console/Authentication.tsx#L46) | ProviderSignIn | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Authentication.tsx:55](source/src/console/Authentication.tsx#L55) |  | FunctionDeclaration | `AuthenticationSettings({ session, busy, onOAuth, onEmailProof }: { session?: AuthSession; busy: boolean; onOAuth: OAuthStart; onEmailProof: () => void }): inferred` |
+| [src/console/Authentication.tsx:56](source/src/console/Authentication.tsx#L56) | AuthenticationSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+
+## src/console/Console.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Console.tsx:47](source/src/console/Console.tsx#L47) |  | TypeAliasDeclaration | `Tab = "overview" \| "products" \| "accounts" \| "space" \| "campaigns" \| "queue" \| "settings" \| "profile"` |
+| [src/console/Console.tsx:49](source/src/console/Console.tsx#L49) |  | TypeAliasDeclaration | `Editor = \| { kind: "product"; item?: Product } \| { kind: "account"; item?: Account } \| { kind: "source"; item?: Source } \| { kind: "campaign" } \| { kind: "post"; item: Post }` |
+| [src/console/Console.tsx:64](source/src/console/Console.tsx#L64) |  | FunctionDeclaration | `sectionFromHash(): Tab` |
+| [src/console/Console.tsx:77](source/src/console/Console.tsx#L77) |  | FunctionVariable | `formatDate(value: string, language: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:85](source/src/console/Console.tsx#L85) |  | FunctionDeclaration | `Empty({ children }: { children: ReactNode }): inferred` |
+| [src/console/Console.tsx:88](source/src/console/Console.tsx#L88) |  | FunctionDeclaration | `Badge({ value }: { value: string }): inferred` |
+| [src/console/Console.tsx:96](source/src/console/Console.tsx#L96) |  | FunctionDeclaration | `Field({ label, children, wide , }: { label: string; children: ReactNode; wide?: boolean; }): inferred` |
+| [src/console/Console.tsx:113](source/src/console/Console.tsx#L113) |  | FunctionDeclaration | `values(form: HTMLFormElement): Record<string, unknown>` |
+| [src/console/Console.tsx:117](source/src/console/Console.tsx#L117) |  | FunctionDeclaration | `Console({ onAccessChange, environment }: { onAccessChange?: (authenticated: boolean) => void; environment?: ReactNode }): inferred` |
+| [src/console/Console.tsx:119](source/src/console/Console.tsx#L119) | Console | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Console.tsx:120](source/src/console/Console.tsx#L120) | Console | FunctionVariable | `date(value: string, timezone?: string): inferred` |
+| [src/console/Console.tsx:167](source/src/console/Console.tsx#L167) | Console | FunctionVariable | `navigate(): inferred` |
+| [src/console/Console.tsx:179](source/src/console/Console.tsx#L179) | Console | FunctionDeclaration | `refresh(): inferred` |
+| [src/console/Console.tsx:203](source/src/console/Console.tsx#L203) | Console | FunctionDeclaration | `reloadProfile(): inferred` |
+| [src/console/Console.tsx:207](source/src/console/Console.tsx#L207) | Console | FunctionDeclaration | `accountDeleted(): inferred` |
+| [src/console/Console.tsx:213](source/src/console/Console.tsx#L213) | Console | FunctionDeclaration | `accountDeleting(): inferred` |
+| [src/console/Console.tsx:227](source/src/console/Console.tsx#L227) | Console | FunctionDeclaration | `command(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:243](source/src/console/Console.tsx#L243) | Console | FunctionDeclaration | `login(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:272](source/src/console/Console.tsx#L272) | Console | FunctionDeclaration | `oauthAuth(provider: OAuthProvider, intent: "login" \| "link", captchaToken: string): inferred` |
+| [src/console/Console.tsx:293](source/src/console/Console.tsx#L293) | Console | FunctionDeclaration | `sendAccessHelp(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Console.tsx:311](source/src/console/Console.tsx#L311) | Console | FunctionDeclaration | `remove(type: string, id: string, description: string): inferred` |
+| [src/console/Console.tsx:319](source/src/console/Console.tsx#L319) | Console | FunctionDeclaration | `copy(post: Post): inferred` |
+| [src/console/Console.tsx:327](source/src/console/Console.tsx#L327) | Console | FunctionDeclaration | `closeAccountMenu(): inferred` |
+| [src/console/Console.tsx:330](source/src/console/Console.tsx#L330) | Console | FunctionDeclaration | `reload(): inferred` |
+| [src/console/Console.tsx:340](source/src/console/Console.tsx#L340) | Console | FunctionDeclaration | `logout(): inferred` |
+| [src/console/Console.tsx:464](source/src/console/Console.tsx#L464) | Console | FunctionVariable | `productName(id: string): inferred` |
+| [src/console/Console.tsx:466](source/src/console/Console.tsx#L466) | Console | FunctionVariable | `accountName(id: string): inferred` |
+| [src/console/Console.tsx:468](source/src/console/Console.tsx#L468) | Console | FunctionVariable | `matches(value: string): inferred` |
+| [src/console/Console.tsx:470](source/src/console/Console.tsx#L470) | Console | FunctionVariable | `activeProduct(id: string): inferred` |
+| [src/console/Console.tsx:976](source/src/console/Console.tsx#L976) |  | FunctionDeclaration | `EditorDialog({ editor, state, busy, error, close, save, }: { editor: Editor; state: Workspace; busy: boolean; error: string; close(): void; save(command: Command): Promise<boolean>; }): inferred` |
+| [src/console/Console.tsx:988](source/src/console/Console.tsx#L988) | EditorDialog | MethodSignature | `close(): void` |
+| [src/console/Console.tsx:989](source/src/console/Console.tsx#L989) | EditorDialog | MethodSignature | `save(command: Command): Promise<boolean>` |
+| [src/console/Console.tsx:1020](source/src/console/Console.tsx#L1020) | EditorDialog | FunctionVariable | `listener(e: Event): inferred` |
+| [src/console/Console.tsx:1031](source/src/console/Console.tsx#L1031) | EditorDialog | FunctionDeclaration | `submit(event: FormEvent<HTMLFormElement>): inferred` |
+
+## src/console/EnvironmentSettings.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/EnvironmentSettings.tsx:5](source/src/console/EnvironmentSettings.tsx#L5) |  | TypeAliasDeclaration | `EnvironmentPreferences = { dark: boolean; onDark: (dark: boolean) => void; enabled: boolean; paused: boolean; cache: boolean; cacheMessage: string; stateLabel: string; playing: boolean; scene?: string; reduced: boolean; selection: string; onEnabled: (enabled: boolean) => void; onPaused: (paused: boolean) => void; onCache: (accepted: boolean) => void; onSelection: (selection: string) => void; onPreview: () => void; }` |
+| [src/console/EnvironmentSettings.tsx:13](source/src/console/EnvironmentSettings.tsx#L13) |  | FunctionDeclaration | `EnvironmentSettings({ preferences: p, idPrefix, showCache }: { preferences: EnvironmentPreferences; idPrefix: string; showCache: boolean }): inferred` |
+
+## src/console/ErrorNotice.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/ErrorNotice.tsx:6](source/src/console/ErrorNotice.tsx#L6) |  | FunctionDeclaration | `ErrorNotice({ message, children, className }: { message: string; children?: ReactNode; className?: string }): inferred` |
+
+## src/console/Help.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Help.tsx:8](source/src/console/Help.tsx#L8) |  | TypeAliasDeclaration | `HelpTopic = keyof typeof helpGuides \| 'all'` |
+| [src/console/Help.tsx:9](source/src/console/Help.tsx#L9) |  | TypeAliasDeclaration | `GuideKey = Exclude<HelpTopic, 'all'>` |
+| [src/console/Help.tsx:11](source/src/console/Help.tsx#L11) |  | FunctionDeclaration | `Help({ topic, className , label }: { topic: HelpTopic; className?: string; label?: string }): inferred` |
+| [src/console/Help.tsx:22](source/src/console/Help.tsx#L22) |  | FunctionDeclaration | `HelpDialog({ topic, close }: { topic: HelpTopic; close(): void }): inferred` |
+| [src/console/Help.tsx:22](source/src/console/Help.tsx#L22) | HelpDialog | MethodSignature | `close(): void` |
+| [src/console/Help.tsx:34](source/src/console/Help.tsx#L34) | HelpDialog | FunctionVariable | `chooseGuide(key: GuideKey): inferred` |
+
+## src/console/McpConnections.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/McpConnections.tsx:7](source/src/console/McpConnections.tsx#L7) |  | TypeAliasDeclaration | `Connection = { id: string; clientName: string; scopes: string[] }` |
+| [src/console/McpConnections.tsx:8](source/src/console/McpConnections.tsx#L8) |  | FunctionDeclaration | `McpConnections({ active }: { active?: boolean }): inferred` |
+| [src/console/McpConnections.tsx:22](source/src/console/McpConnections.tsx#L22) | McpConnections | FunctionVariable | `onFocus(): inferred` |
+| [src/console/McpConnections.tsx:33](source/src/console/McpConnections.tsx#L33) | McpConnections | FunctionDeclaration | `revoke(id: string): inferred` |
+| [src/console/McpConnections.tsx:42](source/src/console/McpConnections.tsx#L42) | McpConnections | FunctionVariable | `permission(scope: string): inferred` |
+
+## src/console/Policies.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Policies.tsx:6](source/src/console/Policies.tsx#L6) |  | TypeAliasDeclaration | `PolicySection = 'terms'\|'privacy'\|'cookies'` |
+| [src/console/Policies.tsx:91](source/src/console/Policies.tsx#L91) |  | FunctionDeclaration | `Policies({section,onClose,onPreferences}: {section:PolicySection;onClose:()=>void;onPreferences:()=>void}): inferred` |
+| [src/console/Policies.tsx:106](source/src/console/Policies.tsx#L106) |  | FunctionDeclaration | `PolicyLinks({onOpen,variant}: {onOpen:(section:PolicySection)=>void;variant:'footer'\|'environment'}): inferred` |
+
+## src/console/PolicyGate.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/PolicyGate.tsx:6](source/src/console/PolicyGate.tsx#L6) |  | FunctionDeclaration | `openPolicy(section: 'terms' \| 'privacy' \| 'cookies'): inferred` |
+| [src/console/PolicyGate.tsx:9](source/src/console/PolicyGate.tsx#L9) |  | FunctionDeclaration | `PolicyGate({ onComplete, onVerify }: { onComplete: () => Promise<void>; onVerify: () => void }): inferred` |
+| [src/console/PolicyGate.tsx:13](source/src/console/PolicyGate.tsx#L13) | PolicyGate | FunctionDeclaration | `continueAccess(): inferred` |
+
+## src/console/PrivacyDownload.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/PrivacyDownload.tsx:3](source/src/console/PrivacyDownload.tsx#L3) |  | TypeAliasDeclaration | `Page = { format: string; subject: { userId: string; tenantId: string }; category: string; data: unknown; categories: string[]; next: string \| null; excluded: string[]; consistency: string }` |
+| [src/console/PrivacyDownload.tsx:4](source/src/console/PrivacyDownload.tsx#L4) |  | FunctionDeclaration | `PrivacyDownload(): inferred` |
+| [src/console/PrivacyDownload.tsx:7](source/src/console/PrivacyDownload.tsx#L7) | PrivacyDownload | FunctionDeclaration | `download(): inferred` |
+| [src/console/PrivacyDownload.tsx:13](source/src/console/PrivacyDownload.tsx#L13) | PrivacyDownload.download | FunctionDeclaration | `page(category: string, after?: inferred): Promise<Page>` |
+
+## src/console/Profile.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Profile.tsx:6](source/src/console/Profile.tsx#L6) |  | TypeAliasDeclaration | `ProfileResponse = { profile: { name: string; country: string; email: string \| null; initials: string; revision?: number }; canDeleteAccount: boolean; requiresFreshProof: boolean; }` |
+| [src/console/Profile.tsx:11](source/src/console/Profile.tsx#L11) |  | TypeAliasDeclaration | `Draft = Pick<ProfileResponse["profile"], "name" \| "country">` |
+| [src/console/Profile.tsx:12](source/src/console/Profile.tsx#L12) |  | TypeAliasDeclaration | `Deletion = { status: "deleting" \| "deleted"; phase: "processor" \| "waiting" \| "uploads" \| "media" \| "database" \| "done"; deletedObjects?: number; needsRetry?: boolean }` |
+| [src/console/Profile.tsx:13](source/src/console/Profile.tsx#L13) |  | TypeAliasDeclaration | `DeletionResponse = { deletion: Deletion; resumeAfterMs?: number }` |
+| [src/console/Profile.tsx:14](source/src/console/Profile.tsx#L14) |  | FunctionVariable | `asDraft(value: ProfileResponse): Draft` |
+| [src/console/Profile.tsx:16](source/src/console/Profile.tsx#L16) |  | FunctionDeclaration | `mutate<T>(method: "PATCH" \| "DELETE" \| "POST", body: unknown, url?: inferred): Promise<T>` |
+| [src/console/Profile.tsx:23](source/src/console/Profile.tsx#L23) |  | FunctionDeclaration | `completedDeletion(): Promise<DeletionResponse \| null>` |
+| [src/console/Profile.tsx:32](source/src/console/Profile.tsx#L32) |  | FunctionDeclaration | `readDeletion(): Promise<DeletionResponse \| null>` |
+| [src/console/Profile.tsx:47](source/src/console/Profile.tsx#L47) |  | FunctionDeclaration | `DeletionProgress({ initial, onDeleted }: { initial?: Deletion; onDeleted: () => void }): inferred` |
+| [src/console/Profile.tsx:48](source/src/console/Profile.tsx#L48) | DeletionProgress | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Profile.tsx:53](source/src/console/Profile.tsx#L53) | DeletionProgress | FunctionDeclaration | `advance(resume: boolean): inferred` |
+| [src/console/Profile.tsx:82](source/src/console/Profile.tsx#L82) |  | FunctionDeclaration | `Profile({ value, loadError, local, onReload, onChange, onEmailProof, onDeleting, onDeleted }: { value?: ProfileResponse; loadError: string; local: boolean; onReload: () => Promise<ProfileResponse>; onChange: (value: ProfileResponse) => void; onEmailProof: () => void; onDeleting: () => void; onDeleted: () => void; }): inferred` |
+| [src/console/Profile.tsx:85](source/src/console/Profile.tsx#L85) | Profile | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Profile.tsx:93](source/src/console/Profile.tsx#L93) | Profile | FunctionVariable | `message(code: string): inferred` |
+| [src/console/Profile.tsx:104](source/src/console/Profile.tsx#L104) | Profile | FunctionDeclaration | `reportError(code: string): inferred` |
+| [src/console/Profile.tsx:110](source/src/console/Profile.tsx#L110) | Profile | FunctionDeclaration | `reload(): inferred` |
+| [src/console/Profile.tsx:115](source/src/console/Profile.tsx#L115) | Profile | FunctionDeclaration | `save(event: FormEvent): inferred` |
+| [src/console/Profile.tsx:124](source/src/console/Profile.tsx#L124) | Profile | FunctionDeclaration | `removeAccount(event: FormEvent): inferred` |
+| [src/console/Profile.tsx:135](source/src/console/Profile.tsx#L135) | Profile | FunctionVariable | `change(key: keyof Draft, next: string): inferred` |
+
+## src/console/Settings.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Settings.tsx:10](source/src/console/Settings.tsx#L10) |  | TypeAliasDeclaration | `Draft = { monthly: string; processing: string; ai: string; storage: string; duration: string }` |
+| [src/console/Settings.tsx:12](source/src/console/Settings.tsx#L12) |  | FunctionVariable | `asDraft(s: StudioSettings): Draft` |
+| [src/console/Settings.tsx:13](source/src/console/Settings.tsx#L13) |  | FunctionDeclaration | `recovered(): { draft?: Draft; revision?: number }` |
+| [src/console/Settings.tsx:18](source/src/console/Settings.tsx#L18) |  | FunctionDeclaration | `Settings({ environment }: { environment?: ReactNode }): inferred` |
+| [src/console/Settings.tsx:20](source/src/console/Settings.tsx#L20) | Settings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:42](source/src/console/Settings.tsx#L42) | Settings | FunctionDeclaration | `refresh(discard?: inferred): inferred` |
+| [src/console/Settings.tsx:50](source/src/console/Settings.tsx#L50) | Settings | FunctionDeclaration | `change(key: keyof Draft, value: string): inferred` |
+| [src/console/Settings.tsx:51](source/src/console/Settings.tsx#L51) | Settings | FunctionDeclaration | `values(): StudioSettingsValues` |
+| [src/console/Settings.tsx:53](source/src/console/Settings.tsx#L53) | Settings.values | FunctionVariable | `cents(text: string): inferred` |
+| [src/console/Settings.tsx:60](source/src/console/Settings.tsx#L60) | Settings | FunctionDeclaration | `save(): inferred` |
+| [src/console/Settings.tsx:70](source/src/console/Settings.tsx#L70) | Settings | FunctionVariable | `usd(cents: number): inferred` |
+| [src/console/Settings.tsx:71](source/src/console/Settings.tsx#L71) | Settings | FunctionVariable | `field(label: string, key: keyof Draft, min: string, max: string, step: string): inferred` |
+| [src/console/Settings.tsx:103](source/src/console/Settings.tsx#L103) |  | FunctionDeclaration | `AgentSettings({ active }: { active: boolean }): inferred` |
+| [src/console/Settings.tsx:105](source/src/console/Settings.tsx#L105) | AgentSettings | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Settings.tsx:109](source/src/console/Settings.tsx#L109) | AgentSettings | FunctionDeclaration | `load(): inferred` |
+| [src/console/Settings.tsx:111](source/src/console/Settings.tsx#L111) | AgentSettings | FunctionDeclaration | `save(event: React.FormEvent): inferred` |
+| [src/console/Settings.tsx:116](source/src/console/Settings.tsx#L116) | AgentSettings | FunctionVariable | `field(label: string, key: keyof AgentLimits, min: number, max: number): inferred` |
+
+## src/console/Studio.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Studio.tsx:12](source/src/console/Studio.tsx#L12) |  | TypeAliasDeclaration | `Job = { id: string; variantId: string; recipeRevision: number; status: string; error?: string; sourceRefs?: Array<{ materialId: string; contentVersion: number; assetId?: string }> }` |
+| [src/console/Studio.tsx:13](source/src/console/Studio.tsx#L13) |  | TypeAliasDeclaration | `Result = { state: StudioState; jobs: Job[]; usage?: Record<string, number>; uploads: Array<Upload & { name: string; size: number }>; capabilities: { local: boolean; render: boolean; analysis?: boolean; analysisCents?: number; defaultDurationSeconds?: number; maxFileBytes: number; maxChunkBytes: number; monthlyBudgetCents?: number; monthlyUsedCents?: number; storageBytes?: number; maxStorageBytes?: number } }` |
+| [src/console/Studio.tsx:14](source/src/console/Studio.tsx#L14) |  | TypeAliasDeclaration | `Upload = { id: string; offset: number; status: string }` |
+| [src/console/Studio.tsx:17](source/src/console/Studio.tsx#L17) |  | FunctionVariable | `comma(value: unknown): inferred` |
+| [src/console/Studio.tsx:18](source/src/console/Studio.tsx#L18) |  | FunctionVariable | `assetUrl(id: string): inferred` |
+| [src/console/Studio.tsx:19](source/src/console/Studio.tsx#L19) |  | FunctionDeclaration | `DraftForm({ draftKey, baseRevision, onDirty, onSubmit, className, children }: { draftKey: string; baseRevision?: number; onDirty?: (dirty: boolean) => void; onSubmit: (event: FormEvent<HTMLFormElement>) => void; className: string; children: ReactNode }): inferred` |
+| [src/console/Studio.tsx:51](source/src/console/Studio.tsx#L51) |  | FunctionDeclaration | `api<T>(path?: inferred, body?: unknown, method?: inferred): Promise<T>` |
+| [src/console/Studio.tsx:59](source/src/console/Studio.tsx#L59) |  | FunctionDeclaration | `Studio({ view, workspace, onRecordingChange, onOpenCampaigns, onContext, agentUpdate }: { view: "space" \| "campaigns"; workspace: Workspace; onRecordingChange: (active: boolean) => void; onOpenCampaigns?: () => void; onContext?: (context: StudioAgentContext) => void; agentUpdate?: AgentStudioUpdate }): inferred` |
+| [src/console/Studio.tsx:61](source/src/console/Studio.tsx#L61) | Studio | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Studio.tsx:97](source/src/console/Studio.tsx#L97) | Studio | FunctionVariable | `warn(event: BeforeUnloadEvent): inferred` |
+| [src/console/Studio.tsx:107](source/src/console/Studio.tsx#L107) | Studio | FunctionDeclaration | `refresh(): inferred` |
+| [src/console/Studio.tsx:142](source/src/console/Studio.tsx#L142) | Studio | FunctionDeclaration | `run(action: () => Promise<void>): inferred` |
+| [src/console/Studio.tsx:148](source/src/console/Studio.tsx#L148) | Studio | FunctionDeclaration | `command(type: string, data: unknown): inferred` |
+| [src/console/Studio.tsx:154](source/src/console/Studio.tsx#L154) | Studio | FunctionVariable | `field(label: string, children: ReactNode, wide?: inferred): inferred` |
+| [src/console/Studio.tsx:155](source/src/console/Studio.tsx#L155) | Studio | FunctionDeclaration | `upload(file: File): inferred` |
+| [src/console/Studio.tsx:183](source/src/console/Studio.tsx#L183) | Studio | FunctionDeclaration | `record(): inferred` |
+| [src/console/Studio.tsx:203](source/src/console/Studio.tsx#L203) | Studio | FunctionDeclaration | `saveMaterial(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Studio.tsx:221](source/src/console/Studio.tsx#L221) | Studio | FunctionVariable | `useCount(id: string): inferred` |
+| [src/console/Studio.tsx:223](source/src/console/Studio.tsx#L223) | Studio | FunctionVariable | `rangeField(kind: "start" \| "end", id: string, index: number): inferred` |
+| [src/console/Studio.tsx:224](source/src/console/Studio.tsx#L224) | Studio | FunctionDeclaration | `variantForm(event: FormEvent<HTMLFormElement>): inferred` |
+| [src/console/Studio.tsx:239](source/src/console/Studio.tsx#L239) | Studio | FunctionDeclaration | `applyPlan(request: StudioPlanInput, fingerprint: string, alternative: number, revision: number): inferred` |
+
+## src/console/StudioAnalysis.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/StudioAnalysis.tsx:7](source/src/console/StudioAnalysis.tsx#L7) |  | TypeAliasDeclaration | `Analysis = { id: string; assetId: string; range: StudioAnalysisRange; profile: string; toolVersion: string; status: "queued" \| "running" \| "completed" \| "failed"; error?: string; result?: StudioAnalysisResult; thumbnails?: Array<{ name: string; time: number; url: string }>; }` |
+| [src/console/StudioAnalysis.tsx:12](source/src/console/StudioAnalysis.tsx#L12) |  | TypeAliasDeclaration | `Scan = StudioAnalysisRange & { assetId: string }` |
+| [src/console/StudioAnalysis.tsx:13](source/src/console/StudioAnalysis.tsx#L13) |  | TypeAliasDeclaration | `Props = { state: StudioState; available: boolean; local: boolean; busy: boolean; cents: number; onRequest: (range: Scan) => Promise<{ analysis: Analysis; cached: boolean; chargedCents: number }>; onRead: (id: string) => Promise<{ analysis: Analysis }>; onList: (assetId: string) => Promise<{ analyses: Analysis[] }>; onUsageRefresh: () => Promise<unknown>; onActiveChange: (active: boolean) => void; onUseRange: (choice: { analysisId: string; assetId: string; start: number; end: number }) => void; }` |
+| [src/console/StudioAnalysis.tsx:23](source/src/console/StudioAnalysis.tsx#L23) |  | FunctionDeclaration | `StudioAnalysis({ state, available, local, busy, cents, onRequest, onRead, onList, onUsageRefresh, onActiveChange, onUseRange }: Props): inferred` |
+| [src/console/StudioAnalysis.tsx:25](source/src/console/StudioAnalysis.tsx#L25) | StudioAnalysis | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/StudioAnalysis.tsx:39](source/src/console/StudioAnalysis.tsx#L39) | StudioAnalysis | FunctionVariable | `field(label: string, child: ReactNode): inferred` |
+| [src/console/StudioAnalysis.tsx:40](source/src/console/StudioAnalysis.tsx#L40) | StudioAnalysis | FunctionVariable | `name(id: string): inferred` |
+| [src/console/StudioAnalysis.tsx:41](source/src/console/StudioAnalysis.tsx#L41) | StudioAnalysis | FunctionVariable | `signal(kind: string): inferred` |
+| [src/console/StudioAnalysis.tsx:42](source/src/console/StudioAnalysis.tsx#L42) | StudioAnalysis | FunctionDeclaration | `remember(analysis: Analysis): inferred` |
+| [src/console/StudioAnalysis.tsx:43](source/src/console/StudioAnalysis.tsx#L43) | StudioAnalysis | FunctionDeclaration | `load(): inferred` |
+| [src/console/StudioAnalysis.tsx:48](source/src/console/StudioAnalysis.tsx#L48) | StudioAnalysis | FunctionDeclaration | `execute(): inferred` |
+
+## src/console/StudioPlanner.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/StudioPlanner.tsx:8](source/src/console/StudioPlanner.tsx#L8) |  | TypeAliasDeclaration | `Props = { state: StudioState; workspace: Workspace; campaign: StudioCampaign; variant?: StudioVariant; initialCandidateIds: string[]; recipeDirty: boolean; busy: boolean; analysisChoice?: { analysisId: string; assetId: string; start: number; end: number }; onAnalysisChoiceUsed: () => void; defaultDurationSeconds?: number; initialRequest?: Partial<StudioPlanInput>; selectionIntent?: string[]; onSelectionIntentUsed?: () => void; draftNamespace?: string; onSelectionChange?: (ids: string[]) => void; onPropose: (request: StudioPlanInput) => Promise<StudioPlanResult>; onApply: (request: StudioPlanInput, fingerprint: string, alternative: number, revision: number) => Promise<void>; }` |
+| [src/console/StudioPlanner.tsx:22](source/src/console/StudioPlanner.tsx#L22) |  | TypeAliasDeclaration | `Proposal = { result: StudioPlanResult; request: StudioPlanInput; revision: number }` |
+| [src/console/StudioPlanner.tsx:26](source/src/console/StudioPlanner.tsx#L26) |  | FunctionDeclaration | `StudioPlanner({ state, workspace, campaign, variant, initialCandidateIds, recipeDirty, busy, defaultDurationSeconds, initialRequest, selectionIntent, onSelectionIntentUsed, draftNamespace, onSelectionChange, analysisChoice, onAnalysisChoiceUsed, onPropose, onApply }: Props): inferred` |
+| [src/console/StudioPlanner.tsx:28](source/src/console/StudioPlanner.tsx#L28) | StudioPlanner | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/StudioPlanner.tsx:41](source/src/console/StudioPlanner.tsx#L41) | StudioPlanner | FunctionVariable | `withSelection(request: StudioPlanInput): StudioPlanInput` |
+| [src/console/StudioPlanner.tsx:74](source/src/console/StudioPlanner.tsx#L74) | StudioPlanner | FunctionDeclaration | `update(values: Partial<StudioPlanInput>): inferred` |
+| [src/console/StudioPlanner.tsx:80](source/src/console/StudioPlanner.tsx#L80) | StudioPlanner | FunctionVariable | `field(label: string, child: ReactNode, wide?: inferred): inferred` |
+| [src/console/StudioPlanner.tsx:81](source/src/console/StudioPlanner.tsx#L81) | StudioPlanner | FunctionVariable | `title(id: string): inferred` |
+| [src/console/StudioPlanner.tsx:82](source/src/console/StudioPlanner.tsx#L82) | StudioPlanner | FunctionDeclaration | `toggle(id: string, checked: boolean): inferred` |
+| [src/console/StudioPlanner.tsx:86](source/src/console/StudioPlanner.tsx#L86) | StudioPlanner | FunctionDeclaration | `chooseSource(id: string, kind: "text" \| "narration"): inferred` |
+| [src/console/StudioPlanner.tsx:92](source/src/console/StudioPlanner.tsx#L92) | StudioPlanner | FunctionDeclaration | `propose(fromLibrary?: inferred): inferred` |
+| [src/console/StudioPlanner.tsx:104](source/src/console/StudioPlanner.tsx#L104) | StudioPlanner | FunctionDeclaration | `apply(): inferred` |
+
+## src/console/TextSimulation.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/TextSimulation.tsx:9](source/src/console/TextSimulation.tsx#L9) |  | FunctionDeclaration | `TextSimulation({ workspace, disabled, onSaved }: { workspace: Workspace; disabled: boolean; onSaved: (workspace: Workspace) => void; }): inferred` |
+| [src/console/TextSimulation.tsx:42](source/src/console/TextSimulation.tsx#L42) | TextSimulation | FunctionDeclaration | `resetResult(): inferred` |
+| [src/console/TextSimulation.tsx:48](source/src/console/TextSimulation.tsx#L48) | TextSimulation | FunctionDeclaration | `generate(): inferred` |
+| [src/console/TextSimulation.tsx:68](source/src/console/TextSimulation.tsx#L68) | TextSimulation | FunctionDeclaration | `save(): inferred` |
+
+## src/console/Turnstile.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/Turnstile.tsx:6](source/src/console/Turnstile.tsx#L6) |  | TypeAliasDeclaration | `TurnstileDescriptor = { sitekey: string \| null; required: boolean }` |
+| [src/console/Turnstile.tsx:7](source/src/console/Turnstile.tsx#L7) |  | TypeAliasDeclaration | `TurnstileAction = "auth_email_request" \| "auth_email_verify" \| "auth_help" \| "auth_google" \| "auth_github"` |
+| [src/console/Turnstile.tsx:8](source/src/console/Turnstile.tsx#L8) |  | TypeAliasDeclaration | `TurnstileApi = { render(container: HTMLElement, options: { sitekey: string; action: TurnstileAction; theme: "light" \| "dark"; language: string; size: "flexible"; "response-field": boolean; callback: (token: string) => void; "expired-callback": () => void; "error-callback": () => void; "timeout-callback": () => void }): string; reset(widgetId: string): void; remove(widgetId: string): void; }` |
+| [src/console/Turnstile.tsx:9](source/src/console/Turnstile.tsx#L9) |  | MethodSignature | `render(container: HTMLElement, options: { sitekey: string; action: TurnstileAction; theme: "light" \| "dark"; language: string; size: "flexible"; "response-field": boolean; callback: (token: string) => void; "expired-callback": () => void; "error-callback": () => void; "timeout-callback": () => void }): string` |
+| [src/console/Turnstile.tsx:10](source/src/console/Turnstile.tsx#L10) |  | MethodSignature | `reset(widgetId: string): void` |
+| [src/console/Turnstile.tsx:11](source/src/console/Turnstile.tsx#L11) |  | MethodSignature | `remove(widgetId: string): void` |
+| [src/console/Turnstile.tsx:13](source/src/console/Turnstile.tsx#L13) |  | InterfaceDeclaration | `Window` |
+| [src/console/Turnstile.tsx:17](source/src/console/Turnstile.tsx#L17) |  | FunctionDeclaration | `loadTurnstile(): Promise<TurnstileApi>` |
+| [src/console/Turnstile.tsx:24](source/src/console/Turnstile.tsx#L24) | loadTurnstile | FunctionDeclaration | `finish(loaded: boolean): inferred` |
+| [src/console/Turnstile.tsx:37](source/src/console/Turnstile.tsx#L37) |  | FunctionDeclaration | `Turnstile({ descriptor, action, reset, onToken }: { descriptor?: TurnstileDescriptor; action: TurnstileAction; reset: number; onToken: (token: string) => void }): inferred` |
+| [src/console/Turnstile.tsx:39](source/src/console/Turnstile.tsx#L39) | Turnstile | FunctionVariable | `l(es: string, en: string): inferred` |
+| [src/console/Turnstile.tsx:57](source/src/console/Turnstile.tsx#L57) | Turnstile | FunctionVariable | `invalidate(next: "expired" \| "failed"): inferred` |
+
+## src/console/agent-context.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/agent-context.ts:4](source/src/console/agent-context.ts#L4) |  | TypeAliasDeclaration | `StudioAgentContext = { productId?: string; campaignId?: string; variantId?: string; materialIds: string[]; studioRevision?: number; productName?: string; campaignName?: string; materials: Array<{ id: string; title: string; contentVersion: number }>; state?: StudioState; recipeDirty?: boolean; busy?: boolean; job?: { id: string; status: string; error?: string }; }` |
+| [src/console/agent-context.ts:14](source/src/console/agent-context.ts#L14) |  | TypeAliasDeclaration | `AgentStudioUpdate = { nonce: number; materialId?: string; campaignId?: string; variantId?: string }` |
+| [src/console/agent-context.ts:17](source/src/console/agent-context.ts#L17) |  | FunctionDeclaration | `agentVariantDrift(captured: Pick<StudioVariant, "id" \| "recipeRevision"> \| undefined, currentVariants: ReadonlyArray<Pick<StudioVariant, "id" \| "recipeRevision">> \| undefined): { id: string; capturedRevision: number; currentRevision?: number } \| undefined` |
+
+## src/console/agent-stream.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/agent-stream.ts:3](source/src/console/agent-stream.ts#L3) |  | FunctionDeclaration | `progressiveAgentMessage(stream: string): string` |
+
+## src/console/help-guides.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/help-guides.ts:1](source/src/console/help-guides.ts#L1) |  | TypeAliasDeclaration | `Copy = { en: string; es: string }` |
+| [src/console/help-guides.ts:2](source/src/console/help-guides.ts#L2) |  | TypeAliasDeclaration | `HelpStep = { title: Copy; text: Copy; image: string; alt: Copy; captureSelector?: string; }` |
+| [src/console/help-guides.ts:9](source/src/console/help-guides.ts#L9) |  | TypeAliasDeclaration | `HelpGuide = { title: Copy; steps: HelpStep[]; note?: Copy }` |
+| [src/console/help-guides.ts:11](source/src/console/help-guides.ts#L11) |  | TypeAliasDeclaration | `View = Pick<HelpStep, "image" \| "alt" \| "captureSelector">` |
+| [src/console/help-guides.ts:12](source/src/console/help-guides.ts#L12) |  | FunctionVariable | `picture(image: string, captureSelector: string, en: string, es: string): View` |
+| [src/console/help-guides.ts:13](source/src/console/help-guides.ts#L13) |  | FunctionVariable | `view(name: string, selector: string, en: string, es: string): inferred` |
+| [src/console/help-guides.ts:14](source/src/console/help-guides.ts#L14) |  | FunctionVariable | `step(image: View, enTitle: string, esTitle: string, enText: string, esText: string): HelpStep` |
+
+## src/console/mcp-resume.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/console/mcp-resume.ts:5](source/src/console/mcp-resume.ts#L5) |  | FunctionVariable | `isHandle(value: unknown): value is string` |
+| [src/console/mcp-resume.ts:7](source/src/console/mcp-resume.ts#L7) |  | TypeAliasDeclaration | `ResumeBrowser = { readonly location: { readonly href: string; replace(url: string): void }; readonly history: { readonly state: unknown; replaceState(data: unknown, unused: string, url: string \| URL): void }; readonly sessionStorage: Pick<Storage, "getItem" \| "setItem" \| "removeItem">; }` |
+| [src/console/mcp-resume.ts:8](source/src/console/mcp-resume.ts#L8) |  | MethodSignature | `replace(url: string): void` |
+| [src/console/mcp-resume.ts:9](source/src/console/mcp-resume.ts#L9) |  | MethodSignature | `replaceState(data: unknown, unused: string, url: string \| URL): void` |
+| [src/console/mcp-resume.ts:15](source/src/console/mcp-resume.ts#L15) |  | FunctionDeclaration | `captureMcpResume(browser: ResumeBrowser, now?: inferred): void` |
+| [src/console/mcp-resume.ts:33](source/src/console/mcp-resume.ts#L33) |  | FunctionDeclaration | `resumeMcpLogin(browser: ResumeBrowser, authenticated: unknown, now?: inferred): boolean` |
+
+## src/core/agents.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/agents.ts:6](source/src/core/agents.ts#L6) |  | TypeAliasDeclaration | `AgentContextSelection = { productId?: string; campaignId?: string; materialIds: string[]; variantId?: string; studioRevision?: number }` |
+| [src/core/agents.ts:7](source/src/core/agents.ts#L7) |  | TypeAliasDeclaration | `AgentContext = { selection: AgentContextSelection; studioRevision: number; capturedAt: string; product?: Product; campaign?: StudioCampaign; materials: StudioMaterial[]; assets: StudioAsset[]; variant?: StudioVariant; sourceRefs: Array<{ materialId: string; contentVersion: number }>; }` |
+| [src/core/agents.ts:12](source/src/core/agents.ts#L12) |  | TypeAliasDeclaration | `AgentConnection = { id: string; name: string; provider: "openai-codex"; runtime: "local-bridge"; status: "pairing" \| "connected" \| "offline" \| "revoked"; available: boolean; accountLabel?: string; authMode?: "chatgpt"; billingMode?: "chatgpt_subscription"; model?: string; capabilities: string[]; createdAt: string; updatedAt: string; lastSeenAt?: string; }` |
+| [src/core/agents.ts:18](source/src/core/agents.ts#L18) |  | TypeAliasDeclaration | `AgentSession = { id: string; title: string; context: AgentContextSelection; createdAt: string; updatedAt: string }` |
+| [src/core/agents.ts:19](source/src/core/agents.ts#L19) |  | TypeAliasDeclaration | `AgentRunStatus = "queued" \| "running" \| "completed" \| "failed" \| "cancelled"` |
+| [src/core/agents.ts:20](source/src/core/agents.ts#L20) |  | TypeAliasDeclaration | `AgentRun = { id: string; sessionId: string; connectionId: string; task: "copy" \| "assembly" \| "review"; prompt: string; context: AgentContext; status: AgentRunStatus; cancelRequested: boolean; model?: string; message?: string; error?: string; createdAt: string; updatedAt: string; deadlineAt: string; resultRecoveredAt?: string; }` |
+| [src/core/agents.ts:26](source/src/core/agents.ts#L26) |  | TypeAliasDeclaration | `AgentEvent = { id: string; runId: string; sessionId: string; type: "queued" \| "activity" \| "delta" \| "completed" \| "failed" \| "cancelled" \| "tool"; text: string; createdAt: string }` |
+| [src/core/agents.ts:27](source/src/core/agents.ts#L27) |  | TypeAliasDeclaration | `AgentCopy = { title: string; hook: string; body: string; cta: string }` |
+| [src/core/agents.ts:28](source/src/core/agents.ts#L28) |  | TypeAliasDeclaration | `AgentProposal = AgentCopy & { id: string; sessionId: string; runId: string; connectionId: string; kind: "copy"; status: "proposed" \| "edited" \| "saved"; revision: number; model: string; sourceRefs: Array<{ materialId: string; contentVersion: number }>; productId?: string; campaignId?: string; studioRevision: number; createdAt: string; updatedAt: string; materialId?: string; variantId?: string; appliedRevision?: number; renderJobId?: string; exportedAt?: string; exportedRecipeRevision?: number; }` |
+| [src/core/agents.ts:36](source/src/core/agents.ts#L36) |  | TypeAliasDeclaration | `AgentLimits = { dailyRuns: number; maxRunSeconds: number; maxConcurrentRuns: number; retentionDays: number }` |
+| [src/core/agents.ts:38](source/src/core/agents.ts#L38) |  | TypeAliasDeclaration | `AgentOverview = { connections: AgentConnection[]; sessions: AgentSession[]; limits: AgentLimits; usage: { todayRuns: number; activeRuns: number } }` |
+| [src/core/agents.ts:39](source/src/core/agents.ts#L39) |  | TypeAliasDeclaration | `AgentSessionDetail = { session: AgentSession; runs: AgentRun[]; events: AgentEvent[]; proposals: AgentProposal[] }` |
+| [src/core/agents.ts:41](source/src/core/agents.ts#L41) |  | FunctionDeclaration | `validateAgentLimits(input: unknown): AgentLimits` |
+| [src/core/agents.ts:52](source/src/core/agents.ts#L52) |  | FunctionDeclaration | `validateAgentCopy(input: unknown): AgentCopy` |
+
+## src/core/analytics.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/analytics.ts:2](source/src/core/analytics.ts#L2) |  | TypeAliasDeclaration | `AnalyticsPurpose = typeof analyticsPurposes[number]` |
+| [src/core/analytics.ts:5](source/src/core/analytics.ts#L5) |  | TypeAliasDeclaration | `AnalyticsConfiguration = { schema_version: 1; source_id: 'marker-owner-production'; product: 'marker'; environment: 'production'; version: number; issued_at: string; expires_at: string; enabled: boolean; events: string[]; fields: string[]; purposes: string[]; retention_days: number; destinations: string[]; restriction_reason: string \| null; }` |
+| [src/core/analytics.ts:11](source/src/core/analytics.ts#L11) |  | TypeAliasDeclaration | `AnalyticsOverview = { console_url: string; source_id: 'marker-owner-production'; status: 'not_configured' \| 'unavailable' \| 'paused' \| 'active' \| 'confirmation_pending'; desired_version: number \| null; applied_version: number \| null; configuration: AnalyticsConfiguration \| null; }` |
+| [src/core/analytics.ts:17](source/src/core/analytics.ts#L17) |  | TypeAliasDeclaration | `AnalyticsPreference = { purpose: AnalyticsPurpose; status: 'granted' \| 'denied' \| 'withdrawn' \| 'expired'; permission_ref: string; categories: string[]; recipients: string[]; gpc: boolean; expires_at: string \| null }` |
+| [src/core/analytics.ts:18](source/src/core/analytics.ts#L18) |  | FunctionDeclaration | `isCurrentAnalyticsGrant(preference: AnalyticsPreference \| undefined, now?: inferred): inferred` |
+| [src/core/analytics.ts:21](source/src/core/analytics.ts#L21) |  | TypeAliasDeclaration | `AnalyticsAudience = { audience_id: string; version: number; eligible_count: number; as_of: string; mode: 'demo' \| 'production' }` |
+
+## src/core/client.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/client.ts:2](source/src/core/client.ts#L2) |  | FunctionDeclaration | `request<T>(url: string, data?: unknown): Promise<T>` |
+| [src/core/client.ts:21](source/src/core/client.ts#L21) |  | FunctionVariable | `loadWorkspace(): inferred` |
+| [src/core/client.ts:22](source/src/core/client.ts#L22) |  | FunctionVariable | `sendCommand(revision: number, command: Command): inferred` |
+| [src/core/client.ts:24](source/src/core/client.ts#L24) |  | FunctionDeclaration | `exportText(filename: string, content: string): inferred` |
+
+## src/core/domain.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/domain.ts:8](source/src/core/domain.ts#L8) |  | TypeAliasDeclaration | `Platform = (typeof platforms)[number]` |
+| [src/core/domain.ts:9](source/src/core/domain.ts#L9) |  | TypeAliasDeclaration | `Product = { id: string; name: string; description: string; audience: string; language: string; tone: string; cta: string; url: string; status: "preparation" \| "available" \| "paused"; }` |
+| [src/core/domain.ts:20](source/src/core/domain.ts#L20) |  | TypeAliasDeclaration | `Account = { id: string; name: string; platform: Platform; url: string; productIds: string[]; timezone: string; language: string; }` |
+| [src/core/domain.ts:29](source/src/core/domain.ts#L29) |  | TypeAliasDeclaration | `Source = { id: string; productId: string; title: string; text: string; declaredDate: string; createdAt: string; }` |
+| [src/core/domain.ts:37](source/src/core/domain.ts#L37) |  | TypeAliasDeclaration | `Campaign = { id: string; productId: string; title: string; objective: string; audience: string; sourceIds: string[]; kind: "organic" \| "paid"; currency: string; budget: string; status: "draft" \| "paused"; createdAt: string; }` |
+| [src/core/domain.ts:50](source/src/core/domain.ts#L50) |  | TypeAliasDeclaration | `Post = { id: string; campaignId: string; accountId: string; text: string; scheduledAt: string; status: "draft" \| "ready" \| "scheduled" \| "published"; formatConfirmed: boolean; externalUrl: string; }` |
+| [src/core/domain.ts:60](source/src/core/domain.ts#L60) |  | TypeAliasDeclaration | `Workspace = { version: 1; revision: number; products: Product[]; accounts: Account[]; sources: Source[]; campaigns: Campaign[]; posts: Post[]; }` |
+| [src/core/domain.ts:69](source/src/core/domain.ts#L69) |  | TypeAliasDeclaration | `Command = { type: string; data: Record<string, unknown> }` |
+| [src/core/domain.ts:70](source/src/core/domain.ts#L70) |  | ClassDeclaration | `DomainError` |
+| [src/core/domain.ts:72](source/src/core/domain.ts#L72) | DomainError | Constructor | `constructor(message: string, status?: inferred): inferred` |
+| [src/core/domain.ts:77](source/src/core/domain.ts#L77) |  | FunctionDeclaration | `emptyWorkspace(): Workspace` |
+| [src/core/domain.ts:88](source/src/core/domain.ts#L88) |  | FunctionDeclaration | `object(value: unknown): Record<string, unknown>` |
+| [src/core/domain.ts:93](source/src/core/domain.ts#L93) |  | FunctionDeclaration | `text(data: Record<string, unknown>, key: string, max?: inferred, required?: inferred, trim?: inferred): string` |
+| [src/core/domain.ts:111](source/src/core/domain.ts#L111) |  | FunctionDeclaration | `ids(data: Record<string, unknown>, key: string): string[]` |
+| [src/core/domain.ts:121](source/src/core/domain.ts#L121) |  | FunctionDeclaration | `choice<T extends string>(data: Record<string, unknown>, key: string, values: readonly T[]): T` |
+| [src/core/domain.ts:131](source/src/core/domain.ts#L131) |  | FunctionDeclaration | `safeUrl(value: string): string` |
+| [src/core/domain.ts:143](source/src/core/domain.ts#L143) |  | FunctionDeclaration | `find<T extends { id: string }>(items: T[], id: string): T` |
+| [src/core/domain.ts:149](source/src/core/domain.ts#L149) |  | FunctionDeclaration | `upsert<T extends { id: string }>(items: T[], item: T, editing: boolean): inferred` |
+| [src/core/domain.ts:161](source/src/core/domain.ts#L161) |  | FunctionDeclaration | `sourceInUse(state: Workspace, id: string): boolean` |
+| [src/core/domain.ts:164](source/src/core/domain.ts#L164) |  | FunctionDeclaration | `applyCommand(previous: Workspace, command: Command, now?: inferred, newId?: inferred): Workspace` |
+
+## src/core/generation.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/generation.ts:13](source/src/core/generation.ts#L13) |  | TypeAliasDeclaration | `TextSimulationRequest = { requestId: string; revision: number; campaignId: string; postId: string; sourceIds: string[]; }` |
+| [src/core/generation.ts:20](source/src/core/generation.ts#L20) |  | TypeAliasDeclaration | `SimulatedTextResult = { readonly simulated: true; readonly request: Readonly<Omit<TextSimulationRequest, "sourceIds"> & { sourceIds: readonly string[] }>; readonly productId: string; readonly accountId: string; readonly sourceIds: readonly string[]; readonly text: string; readonly createdAt: number; readonly expiresAt: number; }` |
+| [src/core/generation.ts:30](source/src/core/generation.ts#L30) |  | TypeAliasDeclaration | `SimulationMode = "success" \| "error" \| "timeout" \| "malformed-text" \| "malformed-destination"` |
+| [src/core/generation.ts:31](source/src/core/generation.ts#L31) |  | TypeAliasDeclaration | `Entry = { fingerprint: string; snapshot: string; expiresAt: number; promise: Promise<SimulatedTextResult>; result?: SimulatedTextResult; savePrepared?: boolean; cancel: () => void; expiryTimer: ReturnType<typeof setTimeout>; }` |
+| [src/core/generation.ts:42](source/src/core/generation.ts#L42) |  | FunctionDeclaration | `snapshot(state: Workspace): string` |
+| [src/core/generation.ts:48](source/src/core/generation.ts#L48) |  | FunctionDeclaration | `selection(state: Workspace, request: Readonly<Omit<TextSimulationRequest, "sourceIds"> & { sourceIds: readonly string[] }>): inferred` |
+| [src/core/generation.ts:72](source/src/core/generation.ts#L72) |  | FunctionDeclaration | `validText(value: unknown): value is string` |
+| [src/core/generation.ts:77](source/src/core/generation.ts#L77) |  | FunctionDeclaration | `createTextSimulation(options?: { latencyMs?: number; timeoutMs?: number; now?: () => number }): inferred` |
+| [src/core/generation.ts:86](source/src/core/generation.ts#L86) | createTextSimulation | FunctionDeclaration | `discard(requestId: string, entry: Entry): inferred` |
+| [src/core/generation.ts:94](source/src/core/generation.ts#L94) | createTextSimulation | FunctionDeclaration | `prune(): inferred` |
+| [src/core/generation.ts:97](source/src/core/generation.ts#L97) | createTextSimulation | FunctionDeclaration | `generate(state: Workspace, input: TextSimulationRequest, run?: { mode?: SimulationMode; signal?: AbortSignal }): Promise<SimulatedTextResult>` |
+| [src/core/generation.ts:122](source/src/core/generation.ts#L122) | createTextSimulation.generate | FunctionVariable | `cancel(): inferred` |
+| [src/core/generation.ts:127](source/src/core/generation.ts#L127) | createTextSimulation.generate | FunctionVariable | `finish(error?: Error, result?: SimulatedTextResult): inferred` |
+| [src/core/generation.ts:164](source/src/core/generation.ts#L164) | createTextSimulation | FunctionDeclaration | `prepareSave(state: Workspace, result: SimulatedTextResult, editedText: string): { revision: number; command: Command }` |
+| [src/core/generation.ts:182](source/src/core/generation.ts#L182) | createTextSimulation | FunctionDeclaration | `clear(): inferred` |
+
+## src/core/policy.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/policy.ts:8](source/src/core/policy.ts#L8) |  | FunctionVariable | `servicePolicyAcknowledgement(): inferred` |
+
+## src/core/profile.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/profile.ts:2](source/src/core/profile.ts#L2) |  | FunctionDeclaration | `deriveProfileInitials(name: string, email: string \| null \| undefined): string` |
+| [src/core/profile.ts:3](source/src/core/profile.ts#L3) | deriveProfileInitials | FunctionVariable | `letters(value: string): inferred` |
+
+## src/core/settings.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/settings.ts:5](source/src/core/settings.ts#L5) |  | TypeAliasDeclaration | `StudioSettingsValues = { monthlyBudgetCents: number; processingBudgetCents: number; aiBudgetCents: number; storageLimitBytes: number; defaultDurationSeconds: number; }` |
+| [src/core/settings.ts:9](source/src/core/settings.ts#L9) |  | TypeAliasDeclaration | `StudioSettings = StudioSettingsValues & { revision: number }` |
+| [src/core/settings.ts:10](source/src/core/settings.ts#L10) |  | TypeAliasDeclaration | `StudioSettingsResponse = { settings: StudioSettings; usage: { month: string; processingUsedCents: number; aiUsedCents: 0; storageBytes: number; reservedBytes: number }; limits: { maxBudgetCents: number; maxStorageBytes: number }; ai: { connected: false }; }` |
+| [src/core/settings.ts:16](source/src/core/settings.ts#L16) |  | FunctionDeclaration | `defaultStudioSettings(): StudioSettings` |
+| [src/core/settings.ts:22](source/src/core/settings.ts#L22) |  | FunctionDeclaration | `validateStudioSettings(value: unknown): StudioSettingsValues` |
+
+## src/core/studio-analysis.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/studio-analysis.ts:12](source/src/core/studio-analysis.ts#L12) |  | TypeAliasDeclaration | `StudioAnalysisRange = { start: number; end: number }` |
+| [src/core/studio-analysis.ts:13](source/src/core/studio-analysis.ts#L13) |  | TypeAliasDeclaration | `StudioAnalysisInterval = { kind: "scene" \| "silence" \| "black" \| "freeze"; start: number; end: number; }` |
+| [src/core/studio-analysis.ts:17](source/src/core/studio-analysis.ts#L17) |  | TypeAliasDeclaration | `StudioAnalysisResult = { profile: typeof ANALYSIS_PROFILE; toolVersion: string; range: StudioAnalysisRange; status: "complete" \| "partial" \| "unavailable"; intervals: StudioAnalysisInterval[]; thumbnails: Array<{ name: string; time: number }>; warnings: string[]; }` |
+| [src/core/studio-analysis.ts:28](source/src/core/studio-analysis.ts#L28) |  | FunctionDeclaration | `validateAnalysisRange(supplied: unknown): StudioAnalysisRange` |
+| [src/core/studio-analysis.ts:42](source/src/core/studio-analysis.ts#L42) |  | FunctionDeclaration | `validateAnalysisResult(supplied: unknown, expectedRange?: StudioAnalysisRange): StudioAnalysisResult` |
+
+## src/core/studio-classification.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/studio-classification.ts:4](source/src/core/studio-classification.ts#L4) |  | FunctionDeclaration | `classifyStudioMaterial(material: StudioMaterial, asset?: StudioAsset): Pick<StudioMaterial, 'categories' \| 'roles'>` |
+| [src/core/studio-classification.ts:6](source/src/core/studio-classification.ts#L6) | classifyStudioMaterial | FunctionVariable | `hint(pattern: string): inferred` |
+
+## src/core/studio-planner.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/studio-planner.ts:6](source/src/core/studio-planner.ts#L6) |  | TypeAliasDeclaration | `StudioPlannerUse = { sha256: string; start: number; end: number; variantId?: string; jobId?: string }` |
+| [src/core/studio-planner.ts:7](source/src/core/studio-planner.ts#L7) |  | InterfaceDeclaration | `StudioPlanInput` |
+| [src/core/studio-planner.ts:15](source/src/core/studio-planner.ts#L15) |  | TypeAliasDeclaration | `StudioPlanRecipe = Pick<StudioVariant, "campaignId" \| "platform" \| "template" \| "hook" \| "body" \| "cta" \| "duration" \| "fit" \| "focusX" \| "focusY" \| "audio" \| "sourceIds" \| "selections" \| "narrationId">` |
+| [src/core/studio-planner.ts:16](source/src/core/studio-planner.ts#L16) |  | InterfaceDeclaration | `StudioPlanProvenance` |
+| [src/core/studio-planner.ts:23](source/src/core/studio-planner.ts#L23) |  | InterfaceDeclaration | `StudioPlanProposal` |
+| [src/core/studio-planner.ts:24](source/src/core/studio-planner.ts#L24) |  | InterfaceDeclaration | `StudioPlanResult` |
+| [src/core/studio-planner.ts:26](source/src/core/studio-planner.ts#L26) |  | FunctionDeclaration | `fail(message: string, status?: inferred): never` |
+| [src/core/studio-planner.ts:27](source/src/core/studio-planner.ts#L27) |  | FunctionDeclaration | `canonical(value: unknown): string` |
+| [src/core/studio-planner.ts:32](source/src/core/studio-planner.ts#L32) |  | FunctionDeclaration | `milliseconds(value: number): number` |
+| [src/core/studio-planner.ts:33](source/src/core/studio-planner.ts#L33) |  | FunctionDeclaration | `materialFacts(state: StudioState, material: StudioMaterial): string` |
+| [src/core/studio-planner.ts:37](source/src/core/studio-planner.ts#L37) |  | FunctionDeclaration | `campaignFacts(state: StudioState, campaignId: string): string` |
+| [src/core/studio-planner.ts:42](source/src/core/studio-planner.ts#L42) |  | FunctionDeclaration | `inputCheck(input: StudioPlanInput): inferred` |
+| [src/core/studio-planner.ts:61](source/src/core/studio-planner.ts#L61) |  | FunctionDeclaration | `preflightStudioPlanCopy(template: StudioTemplate, hook: string, body: string, cta: string, duration: number): void` |
+| [src/core/studio-planner.ts:76](source/src/core/studio-planner.ts#L76) |  | FunctionDeclaration | `eligible(state: StudioState, material: StudioMaterial, productId: string, input: Pick<StudioPlanInput, "includeShared" \| "reviewedMaterialIds">): string \| undefined` |
+| [src/core/studio-planner.ts:89](source/src/core/studio-planner.ts#L89) |  | FunctionDeclaration | `prepareStudioPlan(state: StudioState, workspace: Workspace, supplied: StudioPlanInput): StudioPlanInput` |
+| [src/core/studio-planner.ts:95](source/src/core/studio-planner.ts#L95) | prepareStudioPlan | FunctionVariable | `allowed(id: string): inferred` |
+| [src/core/studio-planner.ts:132](source/src/core/studio-planner.ts#L132) |  | FunctionDeclaration | `liveUses(state: StudioState): StudioPlannerUse[]` |
+| [src/core/studio-planner.ts:139](source/src/core/studio-planner.ts#L139) |  | FunctionDeclaration | `validateHistory(history: StudioPlannerUse[]): inferred` |
+| [src/core/studio-planner.ts:143](source/src/core/studio-planner.ts#L143) |  | FunctionDeclaration | `overlaps(sha: string, start: number, end: number, uses: StudioPlannerUse[], variantId?: string): boolean` |
+| [src/core/studio-planner.ts:146](source/src/core/studio-planner.ts#L146) |  | TypeAliasDeclaration | `Candidate = { material: StudioMaterial; sha: string; start: number; capacity: number; rank: number[]; warnings: string[] }` |
+| [src/core/studio-planner.ts:147](source/src/core/studio-planner.ts#L147) |  | FunctionDeclaration | `rank(a: Candidate, b: Candidate): number` |
+| [src/core/studio-planner.ts:151](source/src/core/studio-planner.ts#L151) |  | FunctionDeclaration | `unusedIntervals(start: number, end: number, sha: string, uses: StudioPlannerUse[], variantId?: string): Array<[number, number]>` |
+| [src/core/studio-planner.ts:163](source/src/core/studio-planner.ts#L163) |  | FunctionDeclaration | `combinations<T>(items: T[], count: number, offset?: inferred, prefix?: T[]): Generator<T[]>` |
+| [src/core/studio-planner.ts:168](source/src/core/studio-planner.ts#L168) |  | FunctionDeclaration | `planStudio(state: StudioState, workspace: Workspace, supplied: StudioPlanInput, history?: StudioPlannerUse[]): Promise<StudioPlanResult>` |
+| [src/core/studio-planner.ts:259](source/src/core/studio-planner.ts#L259) |  | FunctionDeclaration | `validatePlannedVariant(state: StudioState, variant: StudioVariant, history?: StudioPlannerUse[], workspace?: Workspace): void` |
+
+## src/core/studio.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/core/studio.ts:13](source/src/core/studio.ts#L13) |  | TypeAliasDeclaration | `MaterialKind = "video" \| "image" \| "audio" \| "text" \| "idea"` |
+| [src/core/studio.ts:14](source/src/core/studio.ts#L14) |  | TypeAliasDeclaration | `MaterialCategory = (typeof materialCategories)[number]` |
+| [src/core/studio.ts:15](source/src/core/studio.ts#L15) |  | TypeAliasDeclaration | `MaterialRole = (typeof materialRoles)[number]` |
+| [src/core/studio.ts:16](source/src/core/studio.ts#L16) |  | TypeAliasDeclaration | `StudioTemplate = (typeof studioTemplates)[number]` |
+| [src/core/studio.ts:17](source/src/core/studio.ts#L17) |  | TypeAliasDeclaration | `StudioAsset = { id: string; name: string; mime: string; size: number; sha256: string; kind: "video" \| "image" \| "audio"; duration?: number; width?: number; height?: number; audioTrack: "present" \| "absent" \| "unknown"; processing: "ready" \| "unsupported"; createdAt: string; }` |
+| [src/core/studio.ts:25](source/src/core/studio.ts#L25) |  | TypeAliasDeclaration | `StudioMaterialOrigin = { kind: "legacy-source"; sourceId: string; productId: string; title: string; text: string; declaredDate: string; createdAt: string; }` |
+| [src/core/studio.ts:30](source/src/core/studio.ts#L30) |  | TypeAliasDeclaration | `StudioGenerationOrigin = { kind: "agent"; runId: string; proposalId: string; connectionId: string; provider: "openai-codex"; model: string; createdAt: string; sourceRefs: Array<{ materialId: string; contentVersion: number }>; }` |
+| [src/core/studio.ts:35](source/src/core/studio.ts#L35) |  | TypeAliasDeclaration | `StudioMaterial = { id: string; title: string; kind: MaterialKind; productIds: string[]; categories: MaterialCategory[]; topics: string[]; roles: MaterialRole[]; review: "unreviewed" \| "classified" \| "ready"; text: string; description: string; speech: "unknown" \| "present" \| "absent"; rights: "unknown" \| "owned" \| "licensed" \| "restricted"; restrictions: string; usefulStart?: number; usefulEnd?: number; assetId?: string; origin?: StudioMaterialOrigin; generation?: StudioGenerationOrigin; contentVersion: number; createdAt: string; updatedAt: string; }` |
+| [src/core/studio.ts:46](source/src/core/studio.ts#L46) |  | TypeAliasDeclaration | `StudioCampaign = { id: string; productId: string; title: string; objective: string; audience: string; kind: "organic" \| "paid"; status: "draft" \| "paused"; createdAt: string; updatedAt: string; }` |
+| [src/core/studio.ts:51](source/src/core/studio.ts#L51) |  | TypeAliasDeclaration | `StudioSelection = { materialId: string; start: number; end: number }` |
+| [src/core/studio.ts:52](source/src/core/studio.ts#L52) |  | TypeAliasDeclaration | `StudioSourceSnapshot = { materialId: string; contentVersion: number; assetId?: string; kind: MaterialKind; title: string; text: string; speech: StudioMaterial["speech"]; rights: StudioMaterial["rights"]; restrictions: string; origin?: StudioMaterialOrigin; generation?: StudioGenerationOrigin; }` |
+| [src/core/studio.ts:59](source/src/core/studio.ts#L59) |  | TypeAliasDeclaration | `StudioVariant = { id: string; campaignId: string; platform: Platform; template: StudioTemplate; templateVersion: 1; hook: string; body: string; cta: string; duration: number; fit: "contain" \| "cover"; focusX: number; focusY: number; audio: "mute" \| "keep"; sourceIds: string[]; selections: StudioSelection[]; narrationId?: string; sourceSnapshots: StudioSourceSnapshot[]; recipeRevision: number; planner?: StudioPlanProvenance; status: "draft" \| "approved"; approvedRecipeRevision?: number; approvedJobId?: string; createdAt: string; updatedAt: string; }` |
+| [src/core/studio.ts:70](source/src/core/studio.ts#L70) |  | TypeAliasDeclaration | `StudioState = { version: 1; revision: number; assets: StudioAsset[]; materials: StudioMaterial[]; campaigns: StudioCampaign[]; variants: StudioVariant[]; }` |
+| [src/core/studio.ts:74](source/src/core/studio.ts#L74) |  | TypeAliasDeclaration | `TrustedStudioRender = { variantId: string; recipeRevision: number; jobId: string }` |
+| [src/core/studio.ts:75](source/src/core/studio.ts#L75) |  | TypeAliasDeclaration | `StudioCommandContext = { now?: string; newId?: () => string; trustedRender?: TrustedStudioRender; trustedPlan?: StudioPlanProposal; generation?: StudioGenerationOrigin }` |
+| [src/core/studio.ts:77](source/src/core/studio.ts#L77) |  | TypeAliasDeclaration | `TrustedStudioInvocation = { newId?: string; generation?: StudioGenerationOrigin }` |
+| [src/core/studio.ts:78](source/src/core/studio.ts#L78) |  | TypeAliasDeclaration | `StudioRenderSpec = { variantId: string; recipeRevision: number; template: StudioTemplate; templateVersion: 1; duration: number; hook: string; body: string; cta: string; fit: "contain" \| "cover"; focusX: number; focusY: number; audio: "mute" \| "keep"; clips: Array<{ assetId: string; kind: "video" \| "image" \| "audio"; start: number; end: number }>; narrationAssetId?: string; }` |
+| [src/core/studio.ts:87](source/src/core/studio.ts#L87) |  | FunctionDeclaration | `emptyStudio(): StudioState` |
+| [src/core/studio.ts:90](source/src/core/studio.ts#L90) |  | FunctionDeclaration | `str(data: Record<string, unknown>, key: string, max?: inferred, required?: inferred, trim?: inferred): string` |
+| [src/core/studio.ts:96](source/src/core/studio.ts#L96) |  | FunctionDeclaration | `num(data: Record<string, unknown>, key: string, min: number, max: number): number` |
+| [src/core/studio.ts:102](source/src/core/studio.ts#L102) |  | FunctionDeclaration | `pick<T extends string>(data: Record<string, unknown>, key: string, values: readonly T[]): T` |
+| [src/core/studio.ts:106](source/src/core/studio.ts#L106) |  | FunctionDeclaration | `list(data: Record<string, unknown>, key: string, max?: inferred): string[]` |
+| [src/core/studio.ts:112](source/src/core/studio.ts#L112) |  | FunctionDeclaration | `options<T extends string>(data: Record<string, unknown>, key: string, values: readonly T[]): T[]` |
+| [src/core/studio.ts:117](source/src/core/studio.ts#L117) |  | FunctionDeclaration | `find<T extends { id: string }>(items: readonly T[], id: string): T` |
+| [src/core/studio.ts:122](source/src/core/studio.ts#L122) |  | FunctionDeclaration | `store<T extends { id: string }>(items: T[], item: T, previous?: T): inferred` |
+| [src/core/studio.ts:130](source/src/core/studio.ts#L130) |  | FunctionDeclaration | `verifiedState(state: StudioState): inferred` |
+| [src/core/studio.ts:134](source/src/core/studio.ts#L134) |  | FunctionDeclaration | `changedState(state: StudioState): StudioState` |
+| [src/core/studio.ts:140](source/src/core/studio.ts#L140) |  | FunctionDeclaration | `unapprove(variant: StudioVariant): inferred` |
+| [src/core/studio.ts:145](source/src/core/studio.ts#L145) |  | FunctionDeclaration | `confirm(data: Record<string, unknown>): inferred` |
+| [src/core/studio.ts:148](source/src/core/studio.ts#L148) |  | FunctionDeclaration | `snapshot(material: StudioMaterial): StudioSourceSnapshot` |
+| [src/core/studio.ts:155](source/src/core/studio.ts#L155) |  | FunctionDeclaration | `materialUses(state: StudioState, materialId: string): StudioVariant[]` |
+| [src/core/studio.ts:161](source/src/core/studio.ts#L161) |  | FunctionDeclaration | `registerStudioAsset(previous: StudioState, supplied: StudioAsset): StudioState` |
+| [src/core/studio.ts:184](source/src/core/studio.ts#L184) |  | FunctionDeclaration | `saveMaterial(state: StudioState, workspace: Workspace, data: Record<string, unknown>, id: string, old: StudioMaterial \| undefined, now: string): inferred` |
+| [src/core/studio.ts:235](source/src/core/studio.ts#L235) |  | FunctionDeclaration | `selections(data: Record<string, unknown>, sourceIds: string[], sourceSnapshots: StudioSourceSnapshot[]): StudioSelection[]` |
+| [src/core/studio.ts:251](source/src/core/studio.ts#L251) |  | FunctionDeclaration | `saveVariant(state: StudioState, data: Record<string, unknown>, id: string, old: StudioVariant \| undefined, now: string): inferred` |
+| [src/core/studio.ts:281](source/src/core/studio.ts#L281) | saveVariant | FunctionVariable | `recipe(item: StudioVariant): inferred` |
+| [src/core/studio.ts:294](source/src/core/studio.ts#L294) |  | FunctionDeclaration | `assertRights(state: StudioState, variant: StudioVariant): inferred` |
+| [src/core/studio.ts:306](source/src/core/studio.ts#L306) |  | FunctionDeclaration | `assertCopy(variant: StudioVariant): inferred` |
+| [src/core/studio.ts:312](source/src/core/studio.ts#L312) |  | FunctionDeclaration | `buildRenderSpec(state: StudioState, variantId: string): StudioRenderSpec` |
+| [src/core/studio.ts:349](source/src/core/studio.ts#L349) |  | FunctionDeclaration | `assertStudioExportable(state: StudioState, variantId: string, jobId?: string): StudioVariant` |
+| [src/core/studio.ts:361](source/src/core/studio.ts#L361) |  | FunctionDeclaration | `applyStudioCommand(previous: StudioState, workspace: Workspace, command: Command, context?: StudioCommandContext): StudioState` |
+
+## src/decoration/Background.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/decoration/Background.tsx:7](source/src/decoration/Background.tsx#L7) |  | TypeAliasDeclaration | `PlaybackState = { phase: 'rest' \| 'playing' \| 'paused' \| 'reduced'; scene?: string }` |
+| [src/decoration/Background.tsx:9](source/src/decoration/Background.tsx#L9) |  | FunctionDeclaration | `Background({ assets, preview, paused , width , margin , openingScene, onState }: { assets: DecorativeAssets; preview?: { id: string; nonce: number }; paused?: boolean; width?: number; margin?: number; openingScene?: string; onState?: (state: PlaybackState) => void; }): inferred` |
+| [src/decoration/Background.tsx:14](source/src/decoration/Background.tsx#L14) | Background | MethodSignature | `play(id: string): void` |
+| [src/decoration/Background.tsx:14](source/src/decoration/Background.tsx#L14) | Background | MethodSignature | `visibility(): void` |
+| [src/decoration/Background.tsx:29](source/src/decoration/Background.tsx#L29) | Background | FunctionVariable | `isPaused(): inferred` |
+| [src/decoration/Background.tsx:30](source/src/decoration/Background.tsx#L30) | Background | FunctionVariable | `report(): inferred` |
+| [src/decoration/Background.tsx:36](source/src/decoration/Background.tsx#L36) | Background | FunctionVariable | `stopFrames(): inferred` |
+| [src/decoration/Background.tsx:37](source/src/decoration/Background.tsx#L37) | Background | FunctionVariable | `resumeFrames(): inferred` |
+| [src/decoration/Background.tsx:38](source/src/decoration/Background.tsx#L38) | Background | FunctionDeclaration | `tick(now: number): inferred` |
+| [src/decoration/Background.tsx:47](source/src/decoration/Background.tsx#L47) | Background | FunctionDeclaration | `finish(): inferred` |
+| [src/decoration/Background.tsx:72](source/src/decoration/Background.tsx#L72) | Background | FunctionDeclaration | `visibility(): inferred` |
+| [src/decoration/Background.tsx:84](source/src/decoration/Background.tsx#L84) | Background | FunctionDeclaration | `motion(): inferred` |
+| [src/decoration/Background.tsx:90](source/src/decoration/Background.tsx#L90) | Background | FunctionVariable | `play(id: string): inferred` |
+
+## src/decoration/assets.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/decoration/assets.ts:6](source/src/decoration/assets.ts#L6) |  | FunctionDeclaration | `boundedBlob(response: Response, maximum?: inferred): Promise<Blob>` |
+| [src/decoration/assets.ts:22](source/src/decoration/assets.ts#L22) |  | ClassDeclaration | `DecorativeAssets` |
+| [src/decoration/assets.ts:29](source/src/decoration/assets.ts#L29) | DecorativeAssets | Constructor | `constructor(storage?: () => CacheStorage \| undefined, fetcher?: typeof fetch): inferred` |
+| [src/decoration/assets.ts:32](source/src/decoration/assets.ts#L32) | DecorativeAssets | MethodDeclaration | `serialize<T>(operation: () => Promise<T>): Promise<T>` |
+| [src/decoration/assets.ts:35](source/src/decoration/assets.ts#L35) | DecorativeAssets | MethodDeclaration | `purge(storage: CacheStorage, keep?: string): inferred` |
+| [src/decoration/assets.ts:38](source/src/decoration/assets.ts#L38) | DecorativeAssets | MethodDeclaration | `setConsent(accepted: boolean): Promise<string>` |
+| [src/decoration/assets.ts:57](source/src/decoration/assets.ts#L57) | DecorativeAssets | MethodDeclaration | `load(): Promise<Blob>` |
+| [src/decoration/assets.ts:61](source/src/decoration/assets.ts#L61) | DecorativeAssets | MethodDeclaration | `fetchBlob(): Promise<Blob>` |
+
+## src/decoration/registry.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/decoration/registry.ts:4](source/src/decoration/registry.ts#L4) |  | TypeAliasDeclaration | `Scene = Episode & { label: string; version: number; resources: readonly string[]; winner?: 'codex'; load(): Promise<{ start(stage: Stage): void; frame(stage: Stage, progress: number): void; finish(stage: Stage): void }>; }` |
+| [src/decoration/registry.ts:6](source/src/decoration/registry.ts#L6) |  | MethodSignature | `load(): Promise<{ start(stage: Stage): void; frame(stage: Stage, progress: number): void; finish(stage: Stage): void }>` |
+| [src/decoration/registry.ts:6](source/src/decoration/registry.ts#L6) | load | MethodSignature | `start(stage: Stage): void` |
+| [src/decoration/registry.ts:6](source/src/decoration/registry.ts#L6) | load | MethodSignature | `frame(stage: Stage, progress: number): void` |
+| [src/decoration/registry.ts:6](source/src/decoration/registry.ts#L6) | load | MethodSignature | `finish(stage: Stage): void` |
+
+## src/decoration/renderer.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/decoration/renderer.ts:1](source/src/decoration/renderer.ts#L1) |  | TypeAliasDeclaration | `Character = 'claude' \| 'codex'` |
+| [src/decoration/renderer.ts:2](source/src/decoration/renderer.ts#L2) |  | TypeAliasDeclaration | `View = 'front' \| 'threeQuarter' \| 'side' \| 'back'` |
+| [src/decoration/renderer.ts:3](source/src/decoration/renderer.ts#L3) |  | TypeAliasDeclaration | `Pose = 'idle' \| 'run' \| 'guard' \| 'punch' \| 'kick' \| 'airkick' \| 'flip' \| 'duck' \| 'bow' \| 'victory' \| 'dance' \| 'throw' \| 'cueca' \| 'zapateo'` |
+| [src/decoration/renderer.ts:4](source/src/decoration/renderer.ts#L4) |  | TypeAliasDeclaration | `Expression = 'smile' \| 'surprise' \| 'happy'` |
+| [src/decoration/renderer.ts:5](source/src/decoration/renderer.ts#L5) |  | TypeAliasDeclaration | `ActorPose = { x: number; y: number; facing: 1 \| -1; rotation: number; view: View; pose: Pose; stride: number; expression: Expression; shadowY: number; scale: number; costume?: 'huaso'; }` |
+| [src/decoration/renderer.ts:10](source/src/decoration/renderer.ts#L10) |  | TypeAliasDeclaration | `Pixel = [number, number, number, number, string]` |
+| [src/decoration/renderer.ts:19](source/src/decoration/renderer.ts#L19) |  | FunctionDeclaration | `torsoPixels(who: Character, view: View): Pixel[]` |
+| [src/decoration/renderer.ts:21](source/src/decoration/renderer.ts#L21) | torsoPixels | FunctionVariable | `r(x: number, y: number, w: number, h: number, color: string): inferred` |
+| [src/decoration/renderer.ts:66](source/src/decoration/renderer.ts#L66) |  | TypeAliasDeclaration | `Point = [number, number]` |
+| [src/decoration/renderer.ts:67](source/src/decoration/renderer.ts#L67) |  | TypeAliasDeclaration | `Limbs = { rearArm: Point[]; arm: Point[]; rearLeg: Point[]; leg: Point[] }` |
+| [src/decoration/renderer.ts:68](source/src/decoration/renderer.ts#L68) |  | FunctionDeclaration | `limbs(p: ActorPose, who: Character): Limbs` |
+| [src/decoration/renderer.ts:124](source/src/decoration/renderer.ts#L124) |  | ClassDeclaration | `Stage` |
+| [src/decoration/renderer.ts:127](source/src/decoration/renderer.ts#L127) | Stage | Constructor | `constructor(canvas: HTMLCanvasElement): inferred` |
+| [src/decoration/renderer.ts:128](source/src/decoration/renderer.ts#L128) | Stage | MethodDeclaration | `clear(): inferred` |
+| [src/decoration/renderer.ts:129](source/src/decoration/renderer.ts#L129) | Stage | MethodDeclaration | `rect(x: number, y: number, w: number, h: number, color: string): inferred` |
+| [src/decoration/renderer.ts:130](source/src/decoration/renderer.ts#L130) | Stage | MethodDeclaration | `line(points: number[][], color: string, width?: inferred): inferred` |
+| [src/decoration/renderer.ts:137](source/src/decoration/renderer.ts#L137) | Stage | MethodDeclaration | `actor(who: Character, pose: ActorPose): inferred` |
+| [src/decoration/renderer.ts:144](source/src/decoration/renderer.ts#L144) | Stage.actor | FunctionVariable | `limb(points: Point[], front: boolean, foot?: inferred): inferred` |
+| [src/decoration/renderer.ts:166](source/src/decoration/renderer.ts#L166) | Stage | MethodDeclaration | `poncho(who: Character, pose: ActorPose): inferred` |
+| [src/decoration/renderer.ts:176](source/src/decoration/renderer.ts#L176) | Stage | MethodDeclaration | `hat(who: Character, view: View): inferred` |
+| [src/decoration/renderer.ts:182](source/src/decoration/renderer.ts#L182) | Stage | MethodDeclaration | `handkerchief(hand: Point, stride: number): inferred` |
+| [src/decoration/renderer.ts:190](source/src/decoration/renderer.ts#L190) | Stage | MethodDeclaration | `face(who: Character, view: View, expression: Expression): inferred` |
+| [src/decoration/renderer.ts:204](source/src/decoration/renderer.ts#L204) | Stage | MethodDeclaration | `character(who: Character, x: number, y?: inferred, jump?: inferred, tilt?: inferred, face?: Expression): inferred` |
+| [src/decoration/renderer.ts:207](source/src/decoration/renderer.ts#L207) | Stage | MethodDeclaration | `idle(): inferred` |
+| [src/decoration/renderer.ts:208](source/src/decoration/renderer.ts#L208) | Stage | MethodDeclaration | `sparkle(x: number, y: number, color?: inferred): inferred` |
+| [src/decoration/renderer.ts:209](source/src/decoration/renderer.ts#L209) | Stage | MethodDeclaration | `label(text: string, x: number, y: number, color?: inferred): inferred` |
+
+## src/decoration/scenes.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/decoration/scenes.ts:3](source/src/decoration/scenes.ts#L3) |  | TypeAliasDeclaration | `SceneId = 'kungfu' \| 'swords' \| 'lasers' \| 'stones' \| 'tennis' \| 'grill' \| 'dance' \| 'cueca'` |
+| [src/decoration/scenes.ts:4](source/src/decoration/scenes.ts#L4) |  | TypeAliasDeclaration | `SceneSample = { claude: ActorPose; codex: ActorPose; phase: 'intro' \| 'action' \| 'payoff' \| 'return'; variant: number }` |
+| [src/decoration/scenes.ts:5](source/src/decoration/scenes.ts#L5) |  | TypeAliasDeclaration | `Key = { t: number; x: number; y: number; pose: Pose; view: View; rotation: number; ground: number }` |
+| [src/decoration/scenes.ts:6](source/src/decoration/scenes.ts#L6) |  | FunctionVariable | `clamp(n: number, low?: inferred, high?: inferred): inferred` |
+| [src/decoration/scenes.ts:7](source/src/decoration/scenes.ts#L7) |  | FunctionVariable | `ease(n: number): inferred` |
+| [src/decoration/scenes.ts:8](source/src/decoration/scenes.ts#L8) |  | FunctionVariable | `mix(a: number, b: number, t: number): inferred` |
+| [src/decoration/scenes.ts:9](source/src/decoration/scenes.ts#L9) |  | FunctionVariable | `key(t: number, x: number, y?: inferred, pose?: Pose, view?: View, rotation?: inferred, ground?: inferred): Key` |
+| [src/decoration/scenes.ts:10](source/src/decoration/scenes.ts#L10) |  | FunctionVariable | `home(who: Character, t: number): inferred` |
+| [src/decoration/scenes.ts:19](source/src/decoration/scenes.ts#L19) |  | FunctionDeclaration | `standardTrack(id: SceneId, who: Character): Key[]` |
+| [src/decoration/scenes.ts:20](source/src/decoration/scenes.ts#L20) | standardTrack | FunctionVariable | `x(v: number): inferred` |
+| [src/decoration/scenes.ts:32](source/src/decoration/scenes.ts#L32) |  | FunctionDeclaration | `sampleTrack(keys: readonly Key[], p: number, who: Character): ActorPose` |
+| [src/decoration/scenes.ts:50](source/src/decoration/scenes.ts#L50) |  | FunctionDeclaration | `varyPosition(actor: ActorPose, id: SceneId, who: Character, p: number, v: number): inferred` |
+| [src/decoration/scenes.ts:74](source/src/decoration/scenes.ts#L74) |  | FunctionDeclaration | `varyChoreography(actor: ActorPose, id: SceneId, who: Character, p: number, v: number): inferred` |
+| [src/decoration/scenes.ts:91](source/src/decoration/scenes.ts#L91) |  | FunctionDeclaration | `sampleCueca(p: number, variant: number): SceneSample` |
+| [src/decoration/scenes.ts:93](source/src/decoration/scenes.ts#L93) | sampleCueca | FunctionVariable | `orbit(who: Character, turn: number): inferred` |
+| [src/decoration/scenes.ts:104](source/src/decoration/scenes.ts#L104) | sampleCueca | FunctionVariable | `between(from: ReturnType<typeof orbit>, to: ReturnType<typeof orbit>, q: number): inferred` |
+| [src/decoration/scenes.ts:134](source/src/decoration/scenes.ts#L134) |  | FunctionDeclaration | `sampleScene(id: SceneId, progress: number, variant?: inferred): SceneSample` |
+| [src/decoration/scenes.ts:157](source/src/decoration/scenes.ts#L157) |  | FunctionDeclaration | `propAt(s: Stage, a: ActorPose, draw: ()=>void): inferred` |
+| [src/decoration/scenes.ts:158](source/src/decoration/scenes.ts#L158) |  | FunctionDeclaration | `sword(s: Stage, a: ActorPose, cyan: boolean, p: number): inferred` |
+| [src/decoration/scenes.ts:159](source/src/decoration/scenes.ts#L159) |  | FunctionDeclaration | `racket(s: Stage, a: ActorPose): inferred` |
+| [src/decoration/scenes.ts:160](source/src/decoration/scenes.ts#L160) |  | FunctionDeclaration | `puff(s: Stage, x: number, y: number, amount: number, color?: inferred): inferred` |
+| [src/decoration/scenes.ts:163](source/src/decoration/scenes.ts#L163) |  | FunctionDeclaration | `createScene(id: SceneId, competitive: boolean, seed?: number): inferred` |
+| [src/decoration/scenes.ts:166](source/src/decoration/scenes.ts#L166) | createScene | MethodDeclaration | `start(s: Stage): inferred` |
+| [src/decoration/scenes.ts:167](source/src/decoration/scenes.ts#L167) | createScene | MethodDeclaration | `finish(s: Stage): inferred` |
+| [src/decoration/scenes.ts:168](source/src/decoration/scenes.ts#L168) | createScene | MethodDeclaration | `frame(s: Stage, progress: number): inferred` |
+
+## src/decoration/scheduler.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/decoration/scheduler.ts:1](source/src/decoration/scheduler.ts#L1) |  | TypeAliasDeclaration | `Episode = { id: string; duration: number; weight: number }` |
+| [src/decoration/scheduler.ts:2](source/src/decoration/scheduler.ts#L2) |  | TypeAliasDeclaration | `Clock = { now(): number; set(callback: () => void, delay: number): unknown; clear(handle: unknown): void; }` |
+| [src/decoration/scheduler.ts:3](source/src/decoration/scheduler.ts#L3) |  | MethodSignature | `now(): number` |
+| [src/decoration/scheduler.ts:4](source/src/decoration/scheduler.ts#L4) |  | MethodSignature | `set(callback: () => void, delay: number): unknown` |
+| [src/decoration/scheduler.ts:5](source/src/decoration/scheduler.ts#L5) |  | MethodSignature | `clear(handle: unknown): void` |
+| [src/decoration/scheduler.ts:13](source/src/decoration/scheduler.ts#L13) |  | FunctionDeclaration | `chooseScene<T extends Episode>(items: readonly T[], previous: string \| undefined, random?: inferred): T` |
+| [src/decoration/scheduler.ts:21](source/src/decoration/scheduler.ts#L21) |  | ClassDeclaration | `EpisodeScheduler<T extends Episode>` |
+| [src/decoration/scheduler.ts:36](source/src/decoration/scheduler.ts#L36) | EpisodeScheduler | Constructor | `constructor(items: readonly T[], onStart: (scene: T) => void, onEnd: () => void, clock?: inferred, random?: inferred): inferred` |
+| [src/decoration/scheduler.ts:39](source/src/decoration/scheduler.ts#L39) | EpisodeScheduler | MethodDeclaration | `start(paused?: inferred): inferred` |
+| [src/decoration/scheduler.ts:40](source/src/decoration/scheduler.ts#L40) | EpisodeScheduler | MethodDeclaration | `schedule(delay: number, callback: () => void): inferred` |
+| [src/decoration/scheduler.ts:47](source/src/decoration/scheduler.ts#L47) | EpisodeScheduler | MethodDeclaration | `wait(): inferred` |
+| [src/decoration/scheduler.ts:48](source/src/decoration/scheduler.ts#L48) | EpisodeScheduler | MethodDeclaration | `play(scene: T): inferred` |
+| [src/decoration/scheduler.ts:54](source/src/decoration/scheduler.ts#L54) | EpisodeScheduler | MethodDeclaration | `setPaused(paused: boolean): inferred` |
+| [src/decoration/scheduler.ts:60](source/src/decoration/scheduler.ts#L60) | EpisodeScheduler | MethodDeclaration | `dispose(): inferred` |
+
+## src/i18n.tsx
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [src/i18n.tsx:3](source/src/i18n.tsx#L3) |  | TypeAliasDeclaration | `Language = "en" \| "es"` |
+| [src/i18n.tsx:318](source/src/i18n.tsx#L318) |  | TypeAliasDeclaration | `LanguageContextValue = { language: Language; setLanguage(language: Language): void; t(text: string): string; }` |
+| [src/i18n.tsx:320](source/src/i18n.tsx#L320) |  | MethodSignature | `setLanguage(language: Language): void` |
+| [src/i18n.tsx:321](source/src/i18n.tsx#L321) |  | MethodSignature | `t(text: string): string` |
+| [src/i18n.tsx:325](source/src/i18n.tsx#L325) |  | FunctionDeclaration | `translate(text: string, language: Language): string` |
+| [src/i18n.tsx:340](source/src/i18n.tsx#L340) |  | FunctionDeclaration | `LanguageProvider({ children }: { children: ReactNode }): inferred` |
+| [src/i18n.tsx:352](source/src/i18n.tsx#L352) |  | FunctionDeclaration | `useLanguage(): LanguageContextValue` |
+
+## tools/agent-bridge.mjs
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [tools/agent-bridge.mjs:28](source/tools/agent-bridge.mjs#L28) |  | FunctionDeclaration | `validateOrigin(value: inferred): inferred` |
+| [tools/agent-bridge.mjs:37](source/tools/agent-bridge.mjs#L37) |  | FunctionDeclaration | `childEnvironment(source?: inferred): inferred` |
+| [tools/agent-bridge.mjs:43](source/tools/agent-bridge.mjs#L43) |  | FunctionDeclaration | `resolveCodexCommand(env?: inferred): inferred` |
+| [tools/agent-bridge.mjs:57](source/tools/agent-bridge.mjs#L57) |  | FunctionDeclaration | `codexArguments(cwd: inferred): inferred` |
+| [tools/agent-bridge.mjs:76](source/tools/agent-bridge.mjs#L76) |  | FunctionDeclaration | `requireChatgptAccount(account: inferred): inferred` |
+| [tools/agent-bridge.mjs:86](source/tools/agent-bridge.mjs#L86) |  | FunctionDeclaration | `validateResult(value: inferred): inferred` |
+| [tools/agent-bridge.mjs:101](source/tools/agent-bridge.mjs#L101) |  | FunctionDeclaration | `buildPrompt(run: inferred): inferred` |
+| [tools/agent-bridge.mjs:112](source/tools/agent-bridge.mjs#L112) |  | ClassDeclaration | `CodexRpc` |
+| [tools/agent-bridge.mjs:113](source/tools/agent-bridge.mjs#L113) | CodexRpc | Constructor | `constructor({ spawnProcess , command , environment , cwd, disabledMcp ] }?: inferred): inferred` |
+| [tools/agent-bridge.mjs:136](source/tools/agent-bridge.mjs#L136) | CodexRpc | MethodDeclaration | `receive(message: inferred): inferred` |
+| [tools/agent-bridge.mjs:154](source/tools/agent-bridge.mjs#L154) | CodexRpc | MethodDeclaration | `request(method: inferred, params?: inferred, timeoutMs?: inferred): inferred` |
+| [tools/agent-bridge.mjs:164](source/tools/agent-bridge.mjs#L164) | CodexRpc | MethodDeclaration | `fail(error: inferred): inferred` |
+| [tools/agent-bridge.mjs:171](source/tools/agent-bridge.mjs#L171) | CodexRpc | MethodDeclaration | `initialize(): inferred` |
+| [tools/agent-bridge.mjs:196](source/tools/agent-bridge.mjs#L196) | CodexRpc | MethodDeclaration | `run(run: inferred, { onEvent }, signal, timeoutMs }?: inferred): inferred` |
+| [tools/agent-bridge.mjs:227](source/tools/agent-bridge.mjs#L227) | CodexRpc.run | FunctionVariable | `interrupt(): inferred` |
+| [tools/agent-bridge.mjs:231](source/tools/agent-bridge.mjs#L231) | CodexRpc.run | FunctionVariable | `listener(message: inferred): inferred` |
+| [tools/agent-bridge.mjs:275](source/tools/agent-bridge.mjs#L275) | CodexRpc | MethodDeclaration | `close(): inferred` |
+| [tools/agent-bridge.mjs:288](source/tools/agent-bridge.mjs#L288) |  | ClassDeclaration | `BridgeClient` |
+| [tools/agent-bridge.mjs:289](source/tools/agent-bridge.mjs#L289) | BridgeClient | Constructor | `constructor({ origin, token, fetchImpl }: inferred): inferred` |
+| [tools/agent-bridge.mjs:295](source/tools/agent-bridge.mjs#L295) | BridgeClient | MethodDeclaration | `request(path: inferred, body: inferred, method?: inferred): inferred` |
+| [tools/agent-bridge.mjs:306](source/tools/agent-bridge.mjs#L306) |  | FunctionDeclaration | `saveReceipt(path: inferred, value: inferred): inferred` |
+| [tools/agent-bridge.mjs:312](source/tools/agent-bridge.mjs#L312) |  | FunctionDeclaration | `replayReceipt(client: inferred, receiptPath: inferred): inferred` |
+| [tools/agent-bridge.mjs:320](source/tools/agent-bridge.mjs#L320) |  | FunctionDeclaration | `runBridge({ client, runtime, receiptPath, signal, once , log }: inferred): inferred` |
+| [tools/agent-bridge.mjs:324](source/tools/agent-bridge.mjs#L324) | runBridge | FunctionVariable | `heartbeat(extra?: inferred): inferred` |
+| [tools/agent-bridge.mjs:342](source/tools/agent-bridge.mjs#L342) | runBridge | FunctionVariable | `stop(): inferred` |
+| [tools/agent-bridge.mjs:347](source/tools/agent-bridge.mjs#L347) | runBridge | FunctionVariable | `flushEvents(): inferred` |
+| [tools/agent-bridge.mjs:398](source/tools/agent-bridge.mjs#L398) |  | FunctionDeclaration | `main(): inferred` |
+
+## vite.config.ts
+
+| Source | Scope | Kind | Signature |
+| --- | --- | --- | --- |
+| [vite.config.ts:19](source/vite.config.ts#L19) |  | FunctionDeclaration | `incomingBody(req: IncomingMessage): ReadableStream<Uint8Array>` |
+| [vite.config.ts:22](source/vite.config.ts#L22) | incomingBody | MethodDeclaration | `start(controller: inferred): inferred` |
+| [vite.config.ts:28](source/vite.config.ts#L28) | incomingBody | MethodDeclaration | `pull(): inferred` |
+| [vite.config.ts:29](source/vite.config.ts#L29) | incomingBody | MethodDeclaration | `cancel(): inferred` |
+| [vite.config.ts:33](source/vite.config.ts#L33) |  | FunctionDeclaration | `localEditorial(): Plugin` |
+| [vite.config.ts:37](source/vite.config.ts#L37) | localEditorial | MethodDeclaration | `configureServer(server: inferred): inferred` |
+| [vite.config.ts:62](source/vite.config.ts#L62) | localEditorial.configureServer | MethodDeclaration | `backend(request: inferred): inferred` |
+
+[Complete AST JSON](inventories/ast-index.json). Aliases, callbacks, dynamic dispatch, SQL and runtime guards need source review. No coverage percentage is inferred.
+
+
+---
+
+Canonical chapter: [code-flow/06-agents-and-mcp.md](code-flow/06-agents-and-mcp.md)
+
+# Optional Agents and external MCP
+
+Current source: 26 October 2026, `77bbedac`. Hosted connection/read observations mentioned below are dated prior receipts; the current audit used local/synthetic services and did not repeat real host or provider work.
+
+Hosted [Agents](source/src/console/Agents.tsx) and Environment → [shared connection view](source/src/console/McpConnections.tsx) → registered private App-backed plugin → host starts OAuth → [registration/PKCE validation](source/server/mcp-auth.ts) → bounded pending-login transaction if needed → [browser capture/session resume](source/src/console/mcp-resume.ts) → authenticated consent → validated DNS/IPv4 303 callback or escaped IPv6 meta/anchor handoff → PKCE code exchange → opaque scoped token. Consent HTML keeps same-origin referrer policy for the strict form Origin check; return responses send no referrer.
+
+Authorized external host → [SDK transport](source/server/mcp.ts) → fourteen normal descriptors (plus delete only with its explicit grant) → permission challenge or [finite native tool](source/server/mcp-tools.ts) → existing editorial/Studio backend. Permission failures occur before effects/request receipts. Stable request identity and domain CAS remain independent safeguards. Human review/approval stays in marKER before private revision-bound export.
+
+[Migration 0011](source/migrations-d1/0011_mcp_connections.sql) preserves approved client identity and adds single-use pending-login state. The [local adapter](source/server/mcp-local.ts) upgrades its own database transactionally without copying hosted identity or credentials. Revocation, expiry and account deletion close delegated access; the latter purges all eight MCP tables.
+
+Local developer path only: explicit loopback development panel → [context/run ledger](source/server/agents.ts) → [bridge](source/tools/agent-bridge.mjs) → official app-server → validated proposal → explicit Studio save → native planner. Ordinary hosted UI does not poll this path or require bridge commands.
+
+Read [native consent-policy regression](source/tests/mcp-consent-policy.test.ts), [OAuth tests](source/tests/mcp-auth.test.ts), [resume tests](source/tests/mcp-resume.test.ts), [local migration tests](source/tests/mcp-local-migration.test.ts), [tool tests](source/tests/mcp-tools.test.ts), [SDK tests](source/tests/mcp-integration.test.ts) and [Profile deletion tests](source/tests/profile.test.ts). Synthetic fixtures and mobile viewports are separate from actual ChatGPT OAuth/catalog verification and two real connected reads (profile and bounded product search). Business writes, remaining tool paths, a complete campaign, Dot conversation and physical-phone validation remain unverified.
+
+The [portable metadata](source/integrations/chatgpt/marker/plugin.json), [MCP configuration](source/integrations/chatgpt/marker/mcp.json) and [campaign skill](source/integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md) remain developer source. They do not recreate the registered private App binding by themselves. [The connector document](source/docs/mcp-connector.md) describes that distinction and the authorized public installation CTA.
+
+Current [policy.ts](source/server/policy.ts) also gates protected product/MCP/bridge use when service declarations are missing. Agents cannot accept Terms for the owner; account/data rights retain their separate access path. [0012](source/migrations-d1/0012_policy_acknowledgements.sql) adds that declaration receipt, and [0013](source/migrations-d1/0013_analytics_subject.sql) adds the subject/central-deletion reference. Connector permissions, service declarations and optional Analytics purposes are different authorizations.
+
+The 26 October audit completed local DCR/PKCE/consent/token and 14-tool discovery, saved a product through the actual native backend, checked replay/changed arguments/scopes/revocation and read persistence from a new instance. It did not complete an actual ChatGPT/Dot campaign or invoke local model inference. C08 is PASS for the audited contract, while C09 retains UNKNOWN real-inference evidence. [Audit](12-functional-integrity-audit.md).
+
+The optional [Analytics relay](source/server/analytics.ts) has an independent fixed central destination and does not automatically collect private source/provider material. Its ACK concern F02 remains specification ambiguity and requires an authoritative contract and central sandbox readback.
+
+
+---
+
+Canonical chapter: [PENDING-REPORT.md](PENDING-REPORT.md)
+
+# Prioritized pending work — 26 October 2026
+
+Current source is `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`. The [functional-integrity audit](12-functional-integrity-audit.md) is complete for its declared verifiable inventory and reports one minor product failure plus explicit external unknowns. This publication changes no product code.
+
+| Order | Pending result | Required evidence |
+| --- | --- | --- |
+| 1 | Correct F01: Studio recovery messages follow EN/ES. | New snapshot; independent stale-revision and rights-failure cases in both languages; unchanged 409/validation and preserved drafts. |
+| 2 | Resolve F03/F04 test reliability. | Generated prerequisites declared/prepared; private-file fixture created synthetically; bounded streaming tests; cleanup preserves original assertion. Run relevant negative controls and then the prepared suite. |
+| 3 | Resolve F02 central Analytics ACK contract. | Authoritative response schema/semantics and a dedicated sandbox that confirms or rejects an exact version. Compare the relay state with independent central readback. Until then C11 remains UNKNOWN and false success is unconfirmed. |
+| 4 | Close the five externally incomplete capability areas. | Authorized synthetic sandboxes for real R2/container processing, email/OAuth/Turnstile, external erasure, local bridge inference and central Analytics effects. Local transport/SQL mocks establish only their exercised portion. |
+| 5 | Complete an actual assistant-driven campaign and host lifecycle. | Explicitly requested saved draft visible after reload, native planning parity, actual render, owner review/approval, exact export; real renewal, scope upgrade, revocation/reconnect and private-download behavior on each selected host. |
+| 6 | Verify Dot/voice and physical-phone behavior. | Actual supported host/device sessions; capture/codec/microphone permission, interruption, reselect/recovery, login and connection. Viewport emulation does not establish physical iPhone/Safari or Android/Chrome behavior. |
+| 7 | Measure value and operational readiness. | Ten-piece human creative/time-saved pilot; hosted analysis binary verification before enabling analysis; actual cost/limit comparison and full D1/R2/job/provider recovery rehearsal. |
+
+Reconcile the stale editorial creation descriptions in [console documentation](source/docs/console.md) with the current earlier-record sections and Studio flow. The audit did not confirm that the main implementation was disconnected or that the old creation entrypoint must be restored.
+
+The original Torres del Paine and sun App icon remains a provider-owned presentation follow-up under its dated receipt; the review publication does not assert it was applied. Preserve the [original symbol](source/public/brand/marker-tab-v1.svg). Public plugin submission, a wider audience, hosted inference admission, social APIs, paid activation and multi-tenant SaaS remain separate decisions.
+
+W = 60 = 34 + 3 + 23: D = 56.67%, C = 61.67%, weighted unknown = 38.33%. The 333/333 prepared audit suite and successful build/Worker dry run do not complete these gaps. See [FINDINGS](audit/2026-10-26/FINDINGS.json), [MATRIX](audit/2026-10-26/MATRIX.json) and the [external-review prompt](AI_ANALYSIS_PROMPT.md). Future fixes require new source identity and independent cases; they do not retroactively approve the original snapshot.
+
+
+---
+
+Canonical chapter: [AI_ANALYSIS_PROMPT.md](AI_ANALYSIS_PROMPT.md)
+
+# Independent full marKER review prompt — 26 October 2026
+
+Review the full product snapshot under `source/` at commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`. Begin with README, 00-START-HERE, CURRENT-STATE.json and source-snapshot-manifest.json. The projection has 368 tracked product files and no source dirty overlay. The dated 24 October dossier is historical. Read the current curated chapters, generated catalogs and actual code; summaries and grep results do not constitute semantic source coverage.
+
+This is a read-only review request. It does not authorize repairing the app, deployment, remote migration, provider inference, credential/owner-data access, messages, social publication or destructive operations. Use disposable synthetic local data for any separately authorized execution. Keep private agent governance outside the evaluation and the public report.
+
+Inspect architecture, UI/state/recovery/accessibility, domain algorithms, backend APIs, all SQL/migrations, persistence/CAS/concurrency, jobs and real media, owner identity, Profile/deletion, policy acknowledgements and own-data export, central Analytics, optional local Agents, external MCP, dependencies/lockfile, build/configuration and tests/runners. Preserve the usable no-agent native path and original branding. Do not replace deterministic work with prompts or require expressly deferred features as present obligations.
+
+Read [the existing audit](audit/2026-10-26/REPORT.md), [matrix](audit/2026-10-26/MATRIX.json), [scorecard](audit/2026-10-26/SCORECARD.json) and [findings](audit/2026-10-26/FINDINGS.json) as evidence to challenge, not authority to approve. Its verdict is FAIL for F01, a minor confirmed C12 localization failure. F03/F04 are minor WEAK_TEST findings. F02 is suspected SPEC_AMBIGUITY: ACK HTTP 200 with a false/empty body produces active/applied state, but the authoritative central ACK schema is unavailable. Do not promote it to confirmed FALSE_SUCCESS without establishing the contract. F05 is documentary drift, not a proven disconnected native workflow.
+
+The audit weights are frozen: W = 60 = 34 + 3 + 23; D = 56.67%, C = 61.67%, weighted unknown = 38.33%. UNKNOWN remains in the denominator and is not a defect. A prepared 333/333 suite, build/types/logo and local Worker dry run passed during that audit; this publication does not rerun them. Native/local/synthetic results do not prove current production, real provider confirmation, target host behavior, physical-phone UAT, creative quality, invoices or restoration. Retained dated delivery receipts have their own scope.
+
+Reconstruct each obligation from accepted product contracts. Distinguish explicit requirements, inferences, conflicts and deferred work. Trace actual entrypoint → validation/business logic → durable effect → independent readback. Examine no-op/constant/mock/fallback/special-casing signals in context. Explicit DEV simulation and inactive adapters are not faults merely because they exist. Review test discovery, generated prerequisites, assertions, error handling, skips, cleanup and negative controls. A timeout is not a successful assertion. Separate serialized effects from judgment if a runner is suspect.
+
+Challenge the existing findings and search beyond them. For each reportable issue provide severity/category, CONFIRMED/SUSPECTED/BLOCKED status, exact source path and line, requirement source, configuration, minimal input, expected and observed result, reproducible command/evidence, impact, legitimate alternatives considered, minimal correction and independent verification. Do not infer AI authorship or deceptive intent from style, a signature or a contradiction alone. Do not claim tampering absent a demonstrated mechanism.
+
+Prioritize F01 language-safe error handling; reproducible test setup and bounded failure evidence; authoritative Analytics ACK semantics and central readback; real processing/auth/erasure/inference sandboxes; then actual connected campaign and phone/host lifecycle evidence. Do not treat a public source package as public plugin submission or a multi-tenant product.
+
+Deliver: architecture/workflow understanding; prioritized findings and refutations; concrete correction/verification sequence; remaining unknowns and evidence needed; and a cumulative coverage ledger of files/flows read, tests actually executed, samples and unreviewed paths. If scope exceeds your context, continue in bounded passes and preserve a checkpoint. Never call a partial review complete or turn the existing audit's percentages into a probability of cheating.

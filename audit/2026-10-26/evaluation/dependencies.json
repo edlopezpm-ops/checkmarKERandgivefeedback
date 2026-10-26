@@ -1,0 +1,98 @@
+{
+  "package_count": 232,
+  "direct": [
+    {
+      "name": "@cfworker/json-schema",
+      "group": "dependencies",
+      "requested": "4.1.1",
+      "lock_version": "4.1.1",
+      "installed_version": "4.1.1",
+      "matches_lock": true
+    },
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "group": "dependencies",
+      "requested": "1.32.2",
+      "lock_version": "1.32.2",
+      "installed_version": "1.32.2",
+      "matches_lock": true
+    },
+    {
+      "name": "react",
+      "group": "dependencies",
+      "requested": "^19.2.0",
+      "lock_version": "19.3.1",
+      "installed_version": "19.3.1",
+      "matches_lock": true
+    },
+    {
+      "name": "react-dom",
+      "group": "dependencies",
+      "requested": "^19.2.0",
+      "lock_version": "19.3.1",
+      "installed_version": "19.3.1",
+      "matches_lock": true
+    },
+    {
+      "name": "@types/node",
+      "group": "devDependencies",
+      "requested": "^26.6.5",
+      "lock_version": "26.6.5",
+      "installed_version": "26.6.5",
+      "matches_lock": true
+    },
+    {
+      "name": "@types/react",
+      "group": "devDependencies",
+      "requested": "^19.2.0",
+      "lock_version": "19.3.0",
+      "installed_version": "19.3.0",
+      "matches_lock": true
+    },
+    {
+      "name": "@types/react-dom",
+      "group": "devDependencies",
+      "requested": "^19.2.0",
+      "lock_version": "19.3.0",
+      "installed_version": "19.3.0",
+      "matches_lock": true
+    },
+    {
+      "name": "typescript",
+      "group": "devDependencies",
+      "requested": "^5.9.3",
+      "lock_version": "5.9.3",
+      "installed_version": "5.9.3",
+      "matches_lock": true
+    },
+    {
+      "name": "vite",
+      "group": "devDependencies",
+      "requested": "^7.1.12",
+      "lock_version": "7.3.7",
+      "installed_version": "7.3.7",
+      "matches_lock": true
+    },
+    {
+      "name": "wrangler",
+      "group": "devDependencies",
+      "requested": "^4.152.0",
+      "lock_version": "4.152.0",
+      "installed_version": "4.152.0",
+      "matches_lock": true
+    }
+  ],
+  "registry_hosts": [
+    "registry.npmjs.org"
+  ],
+  "non_https_resolved": [],
+  "missing_integrity": [],
+  "install_script_packages": [
+    "node_modules/esbuild",
+    "node_modules/fsevents",
+    "node_modules/workerd"
+  ],
+  "lock_package_dependency_roots_match": true,
+  "vendor_scope": "Metadata/integrity declarations and direct installed versions reviewed; vendor source and binaries not semantically audited; no install, updates or fixes performed",
+  "vulnerability_audit": "Not run; no claim of absence of dependency vulnerabilities"
+}

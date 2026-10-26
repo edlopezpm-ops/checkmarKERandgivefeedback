@@ -1,0 +1,552 @@
+{
+  "schema": "aekr.functional-integrity-matrix/1",
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "frozenAt": "2026-10-26T19:06:03.371Z",
+  "frozenBeforeResults": true,
+  "weightPolicy": {
+    "critica": 5,
+    "importante": 3,
+    "ordinaria": 1
+  },
+  "totalWeight": 60,
+  "scopeExclusions": [
+    "Gobernanza de agentes y archivos privados históricos",
+    "Social API publication, hosted subscription inference, native Android y hosted analysis explícitamente diferidos",
+    "No atribución de intención o autoría desde estilo"
+  ],
+  "capabilities": [
+    {
+      "id": "C01",
+      "description": "Consola editorial manual, CAS y entrega confirmada",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/console.md",
+        "startLine": 13,
+        "endLine": 40,
+        "anchor": "The console starts empty."
+      },
+      "route": "/api/workspace; /api/commands; Console",
+      "inputs": "Productos, cuentas, fuentes y campañas; revisión; horario absoluto y confirmación humana",
+      "mandatory": "Registros durables con revisión; exportar/copiar no publica ni borra; referencias protegen fuentes",
+      "outputs": "Registros durables con revisión; exportar/copiar no publica ni borra; referencias protegen fuentes",
+      "acceptanceCriterion": "Registros durables con revisión; exportar/copiar no publica ni borra; referencias protegen fuentes",
+      "independentOracle": "Operaciones inéditas y conflictos en repositorio nuevo; comparar estado desde sesión nueva",
+      "evidenceRequired": "Operaciones inéditas y conflictos en repositorio nuevo; comparar estado desde sesión nueva",
+      "status": "PASS",
+      "reason": "API editorial real; CAS/referencias/exportación sin publicar, persistencia tras nuevo proceso. Creación UI legacy sustituida explícitamente por Studio; discrepancia documental separada.",
+      "evidence": [
+        "evidence/backend-native/result.json",
+        "tests/editorial.test.ts",
+        "backend/result.json"
+      ],
+      "findings": [
+        "F05"
+      ],
+      "pendingChecks": []
+    },
+    {
+      "id": "C02",
+      "description": "Space: originales, clasificación y derechos",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/studio-planner.md",
+        "startLine": 25,
+        "endLine": 56,
+        "anchor": "## Native classification in Space"
+      },
+      "route": "/api/studio; Studio Space",
+      "inputs": "Originales, etiquetas y permisos declarados",
+      "mandatory": "Preservar originales; clasificar sin inventar derechos/speech/producto; no-op conserva revisión",
+      "outputs": "Preservar originales; clasificar sin inventar derechos/speech/producto; no-op conserva revisión",
+      "acceptanceCriterion": "Preservar originales; clasificar sin inventar derechos/speech/producto; no-op conserva revisión",
+      "independentOracle": "SHA independiente; revisión antes/después; clasificar entradas nuevas y negativas",
+      "evidenceRequired": "SHA independiente; revisión antes/después; clasificar entradas nuevas y negativas",
+      "status": "PASS",
+      "reason": "Original inédito SHA independiente y bytes descargados exactos; clasificación idempotente sin elevar derechos/revisión.",
+      "evidence": [
+        "evidence/backend-native/result.json",
+        "tests/studio-classification.test.ts",
+        "tests/studio.test.ts"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    },
+    {
+      "id": "C03",
+      "description": "Planificador nativo y procedencia",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/studio-planner.md",
+        "startLine": 7,
+        "endLine": 56,
+        "anchor": "## Prepare an editable assembly"
+      },
+      "route": "/api/studio/plan; /api/studio/commands; StudioPlanner",
+      "inputs": "Pool explícito, copia, duraciones y consentimientos",
+      "mandatory": "Funciona sin agente; respeta selección, límites, derechos, milisegundos y CAS; propuesta editable",
+      "outputs": "Funciona sin agente; respeta selección, límites, derechos, milisegundos y CAS; propuesta editable",
+      "acceptanceCriterion": "Funciona sin agente; respeta selección, límites, derechos, milisegundos y CAS; propuesta editable",
+      "independentOracle": "Calcular duración y permisos desde contrato; entradas inéditas; fingerprint cambiado rechaza aplicación",
+      "evidenceRequired": "Calcular duración y permisos desde contrato; entradas inéditas; fingerprint cambiado rechaza aplicación",
+      "status": "PASS",
+      "reason": "Planificador nativo sin agente: selección/duración/copia literal; fingerprint forjado409; pruebas de límites y derechos.",
+      "evidence": [
+        "evidence/backend-native/result.json",
+        "tests/studio-planner.test.ts"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    },
+    {
+      "id": "C04",
+      "description": "Preview real, aprobación exacta y exportación",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/hosted-studio.md",
+        "startLine": 1,
+        "endLine": 44,
+        "anchor": "documento completo; localizar ancla en detalle"
+      },
+      "route": "Studio render/job/approve/export; native FFmpeg",
+      "inputs": "Receta guardada; job; confirmación explícita de revisión",
+      "mandatory": "MP4 real y TXT válidos de revisión exacta aprobada; no publicación social",
+      "outputs": "MP4 real y TXT válidos de revisión exacta aprobada; no publicación social",
+      "acceptanceCriterion": "MP4 real y TXT válidos de revisión exacta aprobada; no publicación social",
+      "independentOracle": "ffprobe/decodificar MP4 independiente; approval stale niega; nuevo proceso descarga bytes",
+      "evidenceRequired": "ffprobe/decodificar MP4 independiente; approval stale niega; nuevo proceso descarga bytes",
+      "status": "PASS",
+      "reason": "Render local real H2641080x1920/5s, decodificación completa, aprobación exacta y exportación; edición invalida y proceso nuevo conserva MP4 SHA. Capacidad real local; ruta Cloudflare queda en C05.",
+      "evidence": [
+        "evidence/backend-native/result.json",
+        "tests/studio-render.test.ts",
+        "evidence/backend-native/exported.mp4"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    },
+    {
+      "id": "C05",
+      "description": "Admisión hospedada, cuotas y recibos",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/settings.md",
+        "startLine": 21,
+        "endLine": 34,
+        "anchor": "## Cost and service boundaries"
+      },
+      "route": "/api/studio hosted D1/R2/processor",
+      "inputs": "Carga/probe/render/analysis y límites persistidos",
+      "mandatory": "Contabilidad UTC, cuotas incluyendo reservas; reusar exacto sin doble cargo; fallos no silencian",
+      "outputs": "Contabilidad UTC, cuotas incluyendo reservas; reusar exacto sin doble cargo; fallos no silencian",
+      "acceptanceCriterion": "Contabilidad UTC, cuotas incluyendo reservas; reusar exacto sin doble cargo; fallos no silencian",
+      "independentOracle": "SQLite/R2 sandbox y fallos controlados; ledger/objetos leídos fuera del handler",
+      "evidenceRequired": "SQLite/R2 sandbox y fallos controlados; ledger/objetos leídos fuera del handler",
+      "status": "UNKNOWN",
+      "reason": "BLOCKED_REAL_INTEGRATION: cuotas/ledger/reservas y fallos pasan con SQLite real/R2-processor sintéticos; no hay prueba del toolchain ni efectos de Cloudflare real.",
+      "evidence": [
+        "evidence/backend-hosted/result.json",
+        "tests/studio-hosted.test.ts",
+        "tests/studio-processor.test.ts"
+      ],
+      "findings": [
+        "L01"
+      ],
+      "pendingChecks": [
+        "BLOCKED_REAL_INTEGRATION: cuotas/ledger/reservas y fallos pasan con SQLite real/R2-processor sintéticos; no hay prueba del toolchain ni efectos de Cloudflare real."
+      ]
+    },
+    {
+      "id": "C06",
+      "description": "Acceso único, sesiones y tenant retenido",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/authentication.md",
+        "startLine": 18,
+        "endLine": 174,
+        "anchor": "## Retained identity"
+      },
+      "route": "/api/session; /api/auth/*; worker gate",
+      "inputs": "Correo/Google/GitHub/CAPTCHA y sesión navegador",
+      "mandatory": "Un operador/tenant; prueba fresca, expiración, replay/origin/identidad inmutable; sin fallback",
+      "outputs": "Un operador/tenant; prueba fresca, expiración, replay/origin/identidad inmutable; sin fallback",
+      "acceptanceCriterion": "Un operador/tenant; prueba fresca, expiración, replay/origin/identidad inmutable; sin fallback",
+      "independentOracle": "SQLite nuevo con identidades firmadas sintéticas; negativas navegador/origen/expiración",
+      "evidenceRequired": "SQLite nuevo con identidades firmadas sintéticas; negativas navegador/origen/expiración",
+      "status": "UNKNOWN",
+      "reason": "BLOCKED_REAL_INTEGRATION: acceso y tenant/sesión/negativas reales en SQLite y JWTs firmados sintéticos verificados; email/Google/GitHub/CAPTCHA externos no ejecutados en sandbox.",
+      "evidence": [
+        "evidence/root-contracts.json",
+        "tests/native-auth.test.ts",
+        "tests/google-auth.test.ts",
+        "tests/github-auth.test.ts",
+        "tests/captcha.test.ts"
+      ],
+      "findings": [
+        "L01"
+      ],
+      "pendingChecks": [
+        "BLOCKED_REAL_INTEGRATION: acceso y tenant/sesión/negativas reales en SQLite y JWTs firmados sintéticos verificados; email/Google/GitHub/CAPTCHA externos no ejecutados en sandbox."
+      ]
+    },
+    {
+      "id": "C07",
+      "description": "Perfil, políticas y borrado reanudable",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/profile-and-data.md",
+        "startLine": 25,
+        "endLine": 69,
+        "anchor": "## Explicit deletion"
+      },
+      "route": "/api/profile; /api/policy; /api/privacy/data; deletion lifecycle",
+      "inputs": "Perfil, aceptación explícita y DELETE con prueba email fresca",
+      "mandatory": "CAS; no deriva consentimiento al ver aviso; borrado bloquea escrituras y reporta incompleto ante error",
+      "outputs": "CAS; no deriva consentimiento al ver aviso; borrado bloquea escrituras y reporta incompleto ante error",
+      "acceptanceCriterion": "CAS; no deriva consentimiento al ver aviso; borrado bloquea escrituras y reporta incompleto ante error",
+      "independentOracle": "Lectura SQLite/R2 tras nueva sesión/restart; falla dependencia conserva progreso",
+      "evidenceRequired": "Lectura SQLite/R2 tras nueva sesión/restart; falla dependencia conserva progreso",
+      "status": "UNKNOWN",
+      "reason": "BLOCKED_REAL_EFFECT: perfil/CAS/consentimiento/export propio/freeze y37tablas purgadas pasan; R2/processor y derechos externos sintéticos no demuestran erasure real ni recuperación de proveedor.",
+      "evidence": [
+        "evidence/root-contracts.json",
+        "tests/profile.test.ts",
+        "tests/policy-rights.test.ts"
+      ],
+      "findings": [
+        "L01"
+      ],
+      "pendingChecks": [
+        "BLOCKED_REAL_EFFECT: perfil/CAS/consentimiento/export propio/freeze y37tablas purgadas pasan; R2/processor y derechos externos sintéticos no demuestran erasure real ni recuperación de proveedor."
+      ]
+    },
+    {
+      "id": "C08",
+      "description": "MCP OAuth, herramientas acotadas y revocación",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/mcp-connector.md",
+        "startLine": 13,
+        "endLine": 152,
+        "anchor": "OAuth"
+      },
+      "route": "/api/mcp; /api/mcp/oauth/*; McpConnections",
+      "inputs": "Cliente autorizado, scopes, comandos y operation IDs",
+      "mandatory": "Autorización mínima; backend nativo; recibos/idempotencia; sin DELETE ni aprobación por asistente",
+      "outputs": "Autorización mínima; backend nativo; recibos/idempotencia; sin DELETE ni aprobación por asistente",
+      "acceptanceCriterion": "Autorización mínima; backend nativo; recibos/idempotencia; sin DELETE ni aprobación por asistente",
+      "independentOracle": "Cliente SDK local independiente, scopes/replay/revocation y readback durable; real host aparte",
+      "evidenceRequired": "Cliente SDK local independiente, scopes/replay/revocation y readback durable; real host aparte",
+      "status": "PASS",
+      "reason": "OAuthDCR/PKCE/consentimiento y14tools locales reales; herramienta llega a producto durable; replay/conflicto/scopes/reinicio/revocación verificados. PASS del contrato local del conector; instalación y campaña de un host externo permanecen fuera de esta evidencia.",
+      "evidence": [
+        "evidence/backend-mcp.json",
+        "tests/mcp-integration.test.ts",
+        "tests/mcp-auth.test.ts"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    },
+    {
+      "id": "C09",
+      "description": "Agents y bridge local opcional",
+      "weight": 3,
+      "criticality": "importante",
+      "criticalityReason": "Afecta uso y verificación operativa",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/agents.md",
+        "startLine": 7,
+        "endLine": 39,
+        "anchor": "local"
+      },
+      "route": "/api/agents; loopback bridge; Agents panel",
+      "inputs": "Conexión elegida, contexto y ejecución explícita",
+      "mandatory": "No reemplaza algoritmo; no fallback de facturación; estados accepted/running/completed diferenciados",
+      "outputs": "No reemplaza algoritmo; no fallback de facturación; estados accepted/running/completed diferenciados",
+      "acceptanceCriterion": "No reemplaza algoritmo; no fallback de facturación; estados accepted/running/completed diferenciados",
+      "independentOracle": "Bridge simulado verifica solo transporte; resultado aplicado se lee en Studio; inference real UNKNOWN sin grant",
+      "evidenceRequired": "Bridge simulado verifica solo transporte; resultado aplicado se lee en Studio; inference real UNKNOWN sin grant",
+      "status": "UNKNOWN",
+      "reason": "BLOCKED_REAL_PROVIDER: ledger/transport/herramientas/gates revisados y pruebas sintéticas pasan; no se ejecutó inferencia ni puente con una cuenta real en esta auditoría.",
+      "evidence": [
+        "tests/agents.test.ts",
+        "tests/agent-bridge.test.ts",
+        "tests/agents-studio.test.ts",
+        "backend/result.json"
+      ],
+      "findings": [
+        "L01"
+      ],
+      "pendingChecks": [
+        "BLOCKED_REAL_PROVIDER: ledger/transport/herramientas/gates revisados y pruebas sintéticas pasan; no se ejecutó inferencia ni puente con una cuenta real en esta auditoría."
+      ]
+    },
+    {
+      "id": "C10",
+      "description": "Ajustes guardados y CAS",
+      "weight": 3,
+      "criticality": "importante",
+      "criticalityReason": "Afecta uso y verificación operativa",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/settings.md",
+        "startLine": 5,
+        "endLine": 34,
+        "anchor": "## Saved workspace controls"
+      },
+      "route": "/api/studio/settings; Settings",
+      "inputs": "Importes enteros, almacenamiento, duración, expectedRevision",
+      "mandatory": "Límites instalados; guardar explícito; conflicto preserva cambios; reducir no borra; límites server-side",
+      "outputs": "Límites instalados; guardar explícito; conflicto preserva cambios; reducir no borra; límites server-side",
+      "acceptanceCriterion": "Límites instalados; guardar explícito; conflicto preserva cambios; reducir no borra; límites server-side",
+      "independentOracle": "Tabla de valores límite calculados independientemente; sesión nueva confirma revisión",
+      "evidenceRequired": "Tabla de valores límite calculados independientemente; sesión nueva confirma revisión",
+      "status": "PASS",
+      "reason": "Ajustes enteros/bounds/CAS guardados y leídos por HTTP; presupuesto no se presenta como factura de proveedor.",
+      "evidence": [
+        "evidence/backend-native/result.json",
+        "tests/studio.test.ts",
+        "docs/settings.md"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    },
+    {
+      "id": "C11",
+      "description": "Analytics central, propósitos separados y derechos",
+      "weight": 5,
+      "criticality": "critica",
+      "criticalityReason": "Afecta integridad, custodia, acceso o efecto principal del producto",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/analytics-integration.md",
+        "startLine": 43,
+        "endLine": 144,
+        "anchor": "## Wire contract and trust"
+      },
+      "route": "/api/analytics/*; AnalyticsSettings",
+      "inputs": "Preferencias explícitas e interés categoría cerrada",
+      "mandatory": "Fail-closed config/token/ack; GPC; no contenido privado ni destino caller-selected; derechos antes purga",
+      "outputs": "Fail-closed config/token/ack; GPC; no contenido privado ni destino caller-selected; derechos antes purga",
+      "acceptanceCriterion": "Fail-closed config/token/ack; GPC; no contenido privado ni destino caller-selected; derechos antes purga",
+      "independentOracle": "Central sintético solo contrato transporte; ausencia credencial cero requests; efecto real UNKNOWN sin sandbox central",
+      "evidenceRequired": "Central sintético solo contrato transporte; ausencia credencial cero requests; efecto real UNKNOWN sin sandbox central",
+      "status": "UNKNOWN",
+      "reason": "SPEC_UNCLEAR yBLOCKED_REAL_INTEGRATION: HMAC independiente, campos/purpose/GPC/fallos/expiry verificados localmente; falta esquema ACK y efecto de central real. F02 sospechado no recibe pesoFAIL.",
+      "evidence": [
+        "evidence/root-contracts.json",
+        "evidence/root-analytics-ack.json",
+        "refutation.json",
+        "tests/analytics.test.ts"
+      ],
+      "findings": [
+        "F02",
+        "L01"
+      ],
+      "pendingChecks": [
+        "SPEC_UNCLEAR yBLOCKED_REAL_INTEGRATION: HMAC independiente, campos/purpose/GPC/fallos/expiry verificados localmente; falta esquema ACK y efecto de central real. F02 sospechado no recibe pesoFAIL."
+      ]
+    },
+    {
+      "id": "C12",
+      "description": "Interfaz bilingüe, Ambiente y ayuda",
+      "weight": 3,
+      "criticality": "importante",
+      "criticalityReason": "Afecta uso y verificación operativa",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/console.md",
+        "startLine": 3,
+        "endLine": 40,
+        "anchor": "The interface starts in English."
+      },
+      "route": "App; Console; Environment; Help",
+      "inputs": "Idioma, tema, módulos, guías y preferencias browser",
+      "mandatory": "UI cambia idioma sin traducir datos; idioma persiste; help inferior por módulo con imágenes y pasos",
+      "outputs": "UI cambia idioma sin traducir datos; idioma persiste; help inferior por módulo con imágenes y pasos",
+      "acceptanceCriterion": "UI cambia idioma sin traducir datos; idioma persiste; help inferior por módulo con imágenes y pasos",
+      "independentOracle": "Render DOM EN/ES con datos sintéticos; cambiar/restaurar sesión; validar referencias imágenes",
+      "evidenceRequired": "Render DOM EN/ES con datos sintéticos; cambiar/restaurar sesión; validar referencias imágenes",
+      "status": "FAIL",
+      "reason": "F01 confirmado: conflicto Studio aparece en castellano en UI EN. EN/ES persistencia, contenido intacto, ayuda con imagen y móvil pasan; el incumplimiento obligatorio conservaFAIL.",
+      "evidence": [
+        "evidence/frontend-english-studio-conflict.png",
+        "evidence/frontend-english-studio-conflict.yml",
+        "contracts/result.json",
+        "refutation.json"
+      ],
+      "findings": [
+        "F01"
+      ],
+      "pendingChecks": [
+        "Verificar futura corrección de errores en ambos idiomas sobre snapshot nuevo; esta versión no se reparó."
+      ]
+    },
+    {
+      "id": "C13",
+      "description": "Decoración, identidad y caché opcional",
+      "weight": 1,
+      "criticality": "ordinaria",
+      "criticalityReason": "Capacidad auxiliar visible",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/decoration.md",
+        "startLine": 28,
+        "endLine": 35,
+        "anchor": "Claude"
+      },
+      "route": "Background; renderer; DecorativeAssets",
+      "inputs": "Escena, pausa, reduced motion, consentimiento caché",
+      "mandatory": "Escenas reales/direccionales; pausa; caché solo opt-in, off default y limpia al salir",
+      "outputs": "Escenas reales/direccionales; pausa; caché solo opt-in, off default y limpia al salir",
+      "acceptanceCriterion": "Escenas reales/direccionales; pausa; caché solo opt-in, off default y limpia al salir",
+      "independentOracle": "Reloj/control visual separado; lifecycle de cache y máscaras fuente original; muestreo visual declarado",
+      "evidenceRequired": "Reloj/control visual separado; lifecycle de cache y máscaras fuente original; muestreo visual declarado",
+      "status": "PASS",
+      "reason": "Escenas/direcciones/scheduler/cache revisados; pruebas de motion y lifecycle pasan, browser local complementa pausa/cache. Identidad inmutable conserva hash; muestreo visual declarado.",
+      "evidence": [
+        "tests/motion.test.ts",
+        "tests/scheduler.test.ts",
+        "tests/assets.test.ts",
+        "contracts/result.json"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    },
+    {
+      "id": "C14",
+      "description": "Demo pública, rangos y subtítulos",
+      "weight": 1,
+      "criticality": "ordinaria",
+      "criticalityReason": "Capacidad auxiliar visible",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/console.md",
+        "startLine": 7,
+        "endLine": 40,
+        "anchor": "Published movie paths are immutable"
+      },
+      "route": "/demo/; /demo/*.mp4; demo-media",
+      "inputs": "GET/HEAD/Range/If-Range y captions",
+      "mandatory": "Media real; rangos correctos; enlace Ambiente/Settings nueva pestaña; ficción/rights declarados",
+      "outputs": "Media real; rangos correctos; enlace Ambiente/Settings nueva pestaña; ficción/rights declarados",
+      "acceptanceCriterion": "Media real; rangos correctos; enlace Ambiente/Settings nueva pestaña; ficción/rights declarados",
+      "independentOracle": "Abrir MP4 con ffprobe/seek y comparar bytes a offsets; validar VTT y links",
+      "evidenceRequired": "Abrir MP4 con ffprobe/seek y comparar bytes a offsets; validar VTT y links",
+      "status": "PASS",
+      "reason": "Ambos MP4 reales55s H264/AAC validados con ffprobe; rangos206/416/HEAD/If-Range comparados contra bytes originales; browser local busca20s y presenta frame20.033s con pista de subtítulos.",
+      "evidence": [
+        "evidence/root-demo-real-files.json",
+        "evidence/frontend-demo-seek.log",
+        "tests/demo-media.test.ts"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    },
+    {
+      "id": "C15",
+      "description": "Build, tipos, assets y runtime",
+      "weight": 3,
+      "criticality": "importante",
+      "criticalityReason": "Afecta uso y verificación operativa",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "package.json",
+        "startLine": 9,
+        "endLine": 30,
+        "anchor": "\"build\""
+      },
+      "route": "npm run build; npm test; Worker entry",
+      "inputs": "Snapshot, lockfile y configuración efectiva",
+      "mandatory": "Build reproducible con tipos/asset logo; inventario comandos/deps/CI/rutas y límites declarados",
+      "outputs": "Build reproducible con tipos/asset logo; inventario comandos/deps/CI/rutas y límites declarados",
+      "acceptanceCriterion": "Build reproducible con tipos/asset logo; inventario comandos/deps/CI/rutas y límites declarados",
+      "independentOracle": "Compilador/runners externos exit/report; hashes snapshot y asset; comparación fuentes vs artefacto",
+      "evidenceRequired": "Compilador/runners externos exit/report; hashes snapshot y asset; comparación fuentes vs artefacto",
+      "status": "PASS",
+      "reason": "Build/tipos/assetlogo ybundleWorker reproducidos;333/333 suite preparada, sin omisiones. Dos WEAK_TEST se retienen y se recuperó evidencia con verificadores externos; no cambia el mandatory congelado build/types/assets.",
+      "evidence": [
+        "evaluation/runs.json",
+        "evaluation/result.json",
+        "evaluation/mutations.json",
+        "evidence/evaluation-portable-full-suite.log"
+      ],
+      "findings": [
+        "F03",
+        "F04"
+      ],
+      "pendingChecks": []
+    },
+    {
+      "id": "C16",
+      "description": "Simulación explícita e integraciones inactivas",
+      "weight": 1,
+      "criticality": "ordinaria",
+      "criticalityReason": "Capacidad auxiliar visible",
+      "acceptedVersion": "snapshot 77bbedac + documentos vigentes; afirmaciones históricas se distinguen",
+      "source": {
+        "file": "docs/text-simulation.md",
+        "startLine": 1,
+        "endLine": 14,
+        "anchor": "simulation"
+      },
+      "route": "TextSimulation DEV; Supabase inactive",
+      "inputs": "Selección fuente y resultado simulado de desarrollo",
+      "mandatory": "Simulación rotulada y ausente producción; Supabase no representa runtime activo; no inference inventada",
+      "outputs": "Simulación rotulada y ausente producción; Supabase no representa runtime activo; no inference inventada",
+      "acceptanceCriterion": "Simulación rotulada y ausente producción; Supabase no representa runtime activo; no inference inventada",
+      "independentOracle": "Build inspeccionado y rutas productivas frente config DEV; errores integración no se convierten éxito",
+      "evidenceRequired": "Build inspeccionado y rutas productivas frente config DEV; errores integración no se convierten éxito",
+      "status": "PASS",
+      "reason": "Simulación explícita DEV; integraciónSupabase inactiva y distinta de WorkerD1; no se usó un mock como prueba de inferencia real.",
+      "evidence": [
+        "docs/text-simulation.md",
+        "tests/generation.test.ts",
+        "tests/hosted.test.ts",
+        "evaluation/result.json",
+        "contracts/result.json"
+      ],
+      "findings": [],
+      "pendingChecks": []
+    }
+  ],
+  "changelog": [
+    {
+      "at": "2026-10-26T19:06:03.371Z",
+      "event": "Matriz y pesos congelados antes de resultados; detalle puede ampliarse sin alterar peso"
+    },
+    {
+      "at": "2026-10-26T19:25:30.752595+00:00",
+      "event": "Resultados integrados sin cambiar16unidades ni pesos. ACK rebajado aSPEC_AMBIGUITY tras refutación fresca. Datos propios se verifican dentroC07, sin sumar peso. Se precisan localizadores de ruta C03/C07 sin cambiar comportamiento ni peso. C05/C06/C07/C09/C11UNKNOWN conservadores por efectos reales/oráculos faltantes."
+    }
+  ],
+  "generated_utc": "2026-10-26T19:25:30.752595+00:00",
+  "inventoryClosed": true,
+  "frozen_sha256": "e3c2d049d6fd7c65009c66fb9d95ce457991da06a2ebdd53c58455146d181176",
+  "freezeChronology": "Weights proposed before frontend result review; physical freeze file saved after a suspected legacy-route observation that was subsequently refuted, but before executed checks and any confirmed frontend finding. No result-driven weight change occurred. The frozenBeforeResults flag refers to executed/confirmed results, not to absence of all earlier static reading.",
+  "snapshotScope": "Código actual y configuración de proyecto; ejecución local/autorizada. PASS no acredita despliegue, integración externa no ejercitada ni UAT."
+}

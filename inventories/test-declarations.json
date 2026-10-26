@@ -1,7 +1,7 @@
 {
   "format": "marker-static-tests/v1",
   "coverage": "Syntactic node:test/test/it/describe and t.test declarations; no tests executed.",
-  "count": 308,
+  "count": 332,
   "files": [
     "tests/access-help.test.ts",
     "tests/agent-bridge.test.ts",
@@ -10,6 +10,8 @@
     "tests/agents-studio.test.ts",
     "tests/agents-worker.test.ts",
     "tests/agents.test.ts",
+    "tests/analytics-ui.test.ts",
+    "tests/analytics.test.ts",
     "tests/assets.test.ts",
     "tests/captcha.test.ts",
     "tests/d1-hosted.test.ts",
@@ -27,6 +29,7 @@
     "tests/mcp-tools.test.ts",
     "tests/motion.test.ts",
     "tests/native-auth.test.ts",
+    "tests/policy-rights.test.ts",
     "tests/profile-local.test.ts",
     "tests/profile-ui.test.ts",
     "tests/profile.test.ts",
@@ -217,8 +220,8 @@
     },
     {
       "path": "tests/agents-worker.test.ts",
-      "line": 7,
-      "end_line": 56,
+      "line": 8,
+      "end_line": 58,
       "kind": "test",
       "name": "Worker owner session and bridge bearer remain separate; D1 pairing is durable and revocable"
     },
@@ -305,6 +308,132 @@
       "end_line": 248,
       "kind": "test",
       "name": "variant-only context derives its Studio campaign/product and rejects a mismatched explicit product"
+    },
+    {
+      "path": "tests/analytics-ui.test.ts",
+      "line": 42,
+      "end_line": 48,
+      "kind": "test",
+      "name": "navigator-only GPC propagates the central exclusion automatically on load without a manual click"
+    },
+    {
+      "path": "tests/analytics-ui.test.ts",
+      "line": 50,
+      "end_line": 56,
+      "kind": "test",
+      "name": "expired central preference is displayed as expired and cannot enable the interest action"
+    },
+    {
+      "path": "tests/analytics-ui.test.ts",
+      "line": 58,
+      "end_line": 63,
+      "kind": "test",
+      "name": "navigator-only GPC with an unconfigured connection still shows its closed source state"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 49,
+      "end_line": 55,
+      "kind": "test",
+      "name": "missing source credential sends no requests or identities and leaves the main API outside Analytics"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 57,
+      "end_line": 66,
+      "kind": "test",
+      "name": "versioned configuration is applied and acknowledged; pause stops optional events at the producer"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 68,
+      "end_line": 76,
+      "kind": "test",
+      "name": "unconfirmed, expired, wrong-source and malformed configurations never claim applied state"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 78,
+      "end_line": 91,
+      "kind": "test",
+      "name": "preference subjects are derived server-side and do not cross tenants or forward private metadata"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 93,
+      "end_line": 98,
+      "kind": "test",
+      "name": "analytics-only permission cannot manufacture commercial interest, conversion, sale or payment events"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 100,
+      "end_line": 109,
+      "kind": "test",
+      "name": "GPC prevents covered grants and events while analytics and withdrawal remain possible"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 111,
+      "end_line": 130,
+      "kind": "test",
+      "name": "observed GPC propagates centrally on reads and event rejection without a manual preference click"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 132,
+      "end_line": 141,
+      "kind": "test",
+      "name": "expired preferences remain readable and never become an active grant"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 143,
+      "end_line": 150,
+      "kind": "test",
+      "name": "recipient and category validation prevents Partner A choices from authorizing Partner B"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 152,
+      "end_line": 161,
+      "kind": "test",
+      "name": "explicit interest is bounded and source version is revalidated before every forward"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 163,
+      "end_line": 172,
+      "kind": "test",
+      "name": "fixed destination, redirect rejection, bounded responses and errors never disclose transport details"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 174,
+      "end_line": 181,
+      "kind": "test",
+      "name": "campaign audience consumer exposes only approved references and counts"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 183,
+      "end_line": 189,
+      "kind": "test",
+      "name": "mutations require the same-origin action header and reject oversized bodies"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 191,
+      "end_line": 204,
+      "kind": "test",
+      "name": "durable rights link precedes central mutation; erasure requires evidence and retries without reporting remote deletion"
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "line": 206,
+      "end_line": 214,
+      "kind": "test",
+      "name": "native router denies anonymous inventory and mutation requests before Analytics transport"
     },
     {
       "path": "tests/assets.test.ts",
@@ -420,22 +549,22 @@
     },
     {
       "path": "tests/d1-hosted.test.ts",
-      "line": 28,
-      "end_line": 35,
+      "line": 29,
+      "end_line": 36,
       "kind": "test",
       "name": "actual SQLite schema and hosted repository keep CAS conflict and payload limit without lost records"
     },
     {
       "path": "tests/d1-hosted.test.ts",
-      "line": 37,
-      "end_line": 54,
+      "line": 38,
+      "end_line": 55,
       "kind": "test",
       "name": "hosted product deletion cannot orphan Studio material or campaign in either committed order"
     },
     {
       "path": "tests/d1-hosted.test.ts",
-      "line": 55,
-      "end_line": 94,
+      "line": 56,
+      "end_line": 96,
       "kind": "test",
       "name": "native auth plus data API completes owner login/write/logout and denies non-owner requests using actual SQL"
     },
@@ -1175,6 +1304,48 @@
       "name": "configured CAPTCHA refusal precedes native request, verification and access-help writes"
     },
     {
+      "path": "tests/policy-rights.test.ts",
+      "line": 30,
+      "end_line": 46,
+      "kind": "test",
+      "name": "new migration and sign-in never backfill acceptance; all protected routes require a native deliberate acknowledgement"
+    },
+    {
+      "path": "tests/policy-rights.test.ts",
+      "line": 48,
+      "end_line": 56,
+      "kind": "test",
+      "name": "acknowledgement validates exact versions, affirmative fields, origin, session, tenant and five-minute proof"
+    },
+    {
+      "path": "tests/policy-rights.test.ts",
+      "line": 58,
+      "end_line": 70,
+      "kind": "test",
+      "name": "receipt uses database time, preserves idempotent acknowledgement time and never changes optional storage"
+    },
+    {
+      "path": "tests/policy-rights.test.ts",
+      "line": 72,
+      "end_line": 81,
+      "kind": "test",
+      "name": "two separate synthetic owners cannot exchange proofs or export another workspace; export requires CSRF and recent proof"
+    },
+    {
+      "path": "tests/policy-rights.test.ts",
+      "line": 83,
+      "end_line": 91,
+      "kind": "test",
+      "name": "record export pages are bounded, sanitized and explicit about media exclusions; unknown categories and oversized pages fail"
+    },
+    {
+      "path": "tests/policy-rights.test.ts",
+      "line": 93,
+      "end_line": 106,
+      "kind": "test",
+      "name": "database failure and revoked-session race never create acknowledgements or return own data"
+    },
+    {
       "path": "tests/profile-local.test.ts",
       "line": 10,
       "end_line": 15,
@@ -1281,78 +1452,78 @@
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 39,
-      "end_line": 59,
+      "line": 40,
+      "end_line": 60,
       "kind": "test",
       "name": "account deletion freezes and removes all delegated MCP credentials and effect receipts"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 61,
-      "end_line": 85,
+      "line": 62,
+      "end_line": 86,
       "kind": "test",
       "name": "profile derives initials automatically and retains only the readonly access email on owner PATCH with revision CAS"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 87,
-      "end_line": 89,
+      "line": 88,
+      "end_line": 90,
       "kind": "test",
       "name": "shared automatic initials follow current name or email without an owner-specific default"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 91,
-      "end_line": 106,
+      "line": 92,
+      "end_line": 107,
       "kind": "test",
       "name": "deletion requires exact double confirmation, fresh independent email, session, origin and singleton tenant"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 108,
-      "end_line": 145,
+      "line": 109,
+      "end_line": 146,
       "kind": "test",
       "name": "durable freeze, lost-start retry and same-browser cleanup purge all active D1/R2 rows without recreating owner data"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 147,
-      "end_line": 158,
+      "line": 148,
+      "end_line": 159,
       "kind": "test",
       "name": "cleanup waits existing write leases and retries multipart/R2 failures without a false completion"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 160,
-      "end_line": 171,
+      "line": 161,
+      "end_line": 172,
       "kind": "test",
       "name": "concurrent resumes hold one durable lease and final D1 purge rolls back atomically on failure"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 173,
-      "end_line": 180,
+      "line": 174,
+      "end_line": 181,
       "kind": "test",
       "name": "final empty-bucket recheck catches late objects; scheduled recovery completes only an owner-started deletion"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 182,
-      "end_line": 186,
+      "line": 183,
+      "end_line": 187,
       "kind": "test",
       "name": "missing lifecycle migration fails closed before any auth, bridge, or profile effect"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 188,
-      "end_line": 193,
+      "line": 189,
+      "end_line": 194,
       "kind": "test",
       "name": "completed or previously aborted multipart uploads permit cleanup only for documented NoSuchUpload errors"
     },
     {
       "path": "tests/profile.test.ts",
-      "line": 195,
-      "end_line": 211,
+      "line": 196,
+      "end_line": 212,
       "kind": "test",
       "name": "additive profile migration preserves existing Google identity, owner/session and workspace bytes; absent lifecycle also freezes D1 writes"
     },

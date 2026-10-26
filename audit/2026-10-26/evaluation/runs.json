@@ -1,0 +1,140 @@
+[
+  {
+    "id": "npm-test",
+    "argv": [
+      "[runtime-executable]",
+      "[runtime-executable]",
+      "test"
+    ],
+    "cwd": "audit/2026-10-26\\snapshot",
+    "exit_code": 1,
+    "duration_seconds": 15.331056833267212,
+    "counts": {
+      "tests": 323,
+      "suites": 0,
+      "pass": 321,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "log": "evidence\\evaluation-npm-test.log",
+    "log_sha256": "1921a1fef539ad10c67ccd8566e73d8c70b634cf84a90f3876f21a61a98a591e",
+    "environment": "allowlist of OS path/temp variables; no application/provider credentials forwarded",
+    "original_log_sha256": "f5794c3d6ae6a9c450ca2cbaacc6ebe9b5266fbd791e322522adb23c00a37d00"
+  },
+  {
+    "id": "npm-build",
+    "argv": [
+      "[runtime-executable]",
+      "[runtime-executable]",
+      "run",
+      "build"
+    ],
+    "cwd": "audit/2026-10-26\\snapshot",
+    "exit_code": 0,
+    "duration_seconds": 6.949582576751709,
+    "counts": {},
+    "log": "evidence\\evaluation-npm-build.log",
+    "log_sha256": "d97ce20f9b9d90ead3c0e0a4720a9f128c1343ad3087eea73659bb58f9a84d0b",
+    "environment": "allowlist of OS path/temp variables; no application/provider credentials forwarded",
+    "original_log_sha256": "d97ce20f9b9d90ead3c0e0a4720a9f128c1343ad3087eea73659bb58f9a84d0b"
+  },
+  {
+    "id": "npm-test-prepared-outside-aekr",
+    "argv": [
+      "[runtime-executable]",
+      "[runtime-executable]",
+      "test"
+    ],
+    "cwd": "[local-execution-path]",
+    "exit_code": 1,
+    "duration_seconds": 14.390355825424194,
+    "counts": {
+      "tests": 333,
+      "suites": 0,
+      "pass": 330,
+      "fail": 3,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "log": "evidence\\evaluation-npm-test-prepared.log",
+    "log_sha256": "c794493a1028ee653653153b3237b5d7c13d7cfe994786c0852de85e6991fc40",
+    "environment": "OS allowlist only, source files unchanged; processor generated modules prepared by baseline npm run build; normal source watcher root outside excluded .aekr path",
+    "original_log_sha256": "f251d9fd54a61df80fb564c2cc0f47a5268d75401bdd9ef399f4f90dfec24793"
+  },
+  {
+    "id": "worker-dry-run",
+    "argv": [
+      "[runtime-executable]",
+      "audit/2026-10-26\\snapshot\\node_modules\\wrangler\\bin\\wrangler.js",
+      "deploy",
+      "--dry-run",
+      "--containers-rollout",
+      "none",
+      "--outdir",
+      "audit/2026-10-26\\evaluation\\worker-bundle",
+      "--metafile",
+      "audit/2026-10-26\\evaluation\\worker-metafile.json"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 1.1622376441955566,
+    "cwd": "audit/2026-10-26\\snapshot",
+    "log": "evidence\\evaluation-worker-dry-run.log",
+    "log_sha256": "3f37459f9c65a388883fd659709f7323302854b19bbc96069c4229974506fbf3",
+    "boundary": "dry-run and containers-rollout none; no secrets env; fresh empty CLI profile; metrics disabled",
+    "documentation": "https://developers.cloudflare.com/workers/wrangler/commands/",
+    "original_log_sha256": "9995d4214ef33e6425364bbb3775480ab7083fff8124cb448d9a222a7e06de48"
+  },
+  {
+    "id": "portable-vite-checks",
+    "argv": [
+      "[runtime-executable]",
+      "--experimental-strip-types",
+      "--test",
+      "tests/studio-watch.test.ts",
+      "tests/studio-vite.test.ts"
+    ],
+    "cwd": "[local-execution-path]",
+    "exit_code": 0,
+    "duration_seconds": 2.526865243911743,
+    "counts": {
+      "tests": 5,
+      "suites": 0,
+      "pass": 5,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "log": "evidence\\evaluation-portable-vite-checks.log",
+    "log_sha256": "182382aeff8d9171c2349d2503ef6a98fe56db795a14224c0d6f4b533bcc54b3",
+    "environment": "OS allowlist + CHOKIDAR_USEPOLLING=1; synthetic private-file sentinel added in disposable copy; no product source changed",
+    "original_log_sha256": "182382aeff8d9171c2349d2503ef6a98fe56db795a14224c0d6f4b533bcc54b3"
+  },
+  {
+    "id": "portable-full-suite",
+    "argv": [
+      "[runtime-executable]",
+      "[runtime-executable]",
+      "test"
+    ],
+    "cwd": "[local-execution-path]",
+    "exit_code": 0,
+    "duration_seconds": 13.669005393981934,
+    "counts": {
+      "tests": 333,
+      "suites": 0,
+      "pass": 333,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "log": "evidence\\evaluation-portable-full-suite.log",
+    "log_sha256": "7d027d38ffd94df99114752786a5a8995f56f7a05e7fce873abf1be73aaa9ae8",
+    "environment": "OS allowlist + CHOKIDAR_USEPOLLING=1; synthetic private-file sentinel added in disposable copy; no product source changed",
+    "original_log_sha256": "7d027d38ffd94df99114752786a5a8995f56f7a05e7fce873abf1be73aaa9ae8"
+  }
+]

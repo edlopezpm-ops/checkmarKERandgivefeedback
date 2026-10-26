@@ -1,0 +1,91 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - group [ref=e24]:
+        - generic "Account menu (LS)" [ref=e25] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e26]: LS
+      - button "Switch to Spanish" [ref=e6] [cursor=pointer]: EN
+      - group [ref=e7]:
+        - generic "Environment, about and help" [ref=e8] [cursor=pointer]: Environment
+        - option "Kung fu" [selected]
+        - option "Toy swords"
+        - option "Toy laser"
+        - option "Pebbles"
+        - option "Tennis"
+        - option "Barbecue"
+        - option "Dance"
+        - option "Cueca"
+    - main "marKER":
+      - img "marKER — AI community manager"
+  - region "marKER workspace" [ref=e12]:
+    - generic [ref=e29]:
+      - generic [ref=e30]: Local workspace · saved on this device
+      - paragraph [ref=e31]: YOUR WORKSPACE
+    - navigation "Modules" [ref=e32]:
+      - button "Overview" [ref=e33] [cursor=pointer]
+      - button "Products" [ref=e34] [cursor=pointer]
+      - button "Accounts" [ref=e35] [cursor=pointer]
+      - button "Space" [ref=e36] [cursor=pointer]
+      - button "Campaigns" [ref=e37] [cursor=pointer]
+      - button "Drafting" [ref=e38] [cursor=pointer]
+      - button "Settings" [ref=e39] [cursor=pointer]
+    - button "Agents" [ref=e41] [cursor=pointer]: Agents ↗
+    - generic [ref=e43]:
+      - paragraph [aria-hidden] [ref=e44]: –––
+      - heading "Campaigns" [level=1] [ref=e140]
+    - status [ref=e130]: Saved.
+    - generic [ref=e142]:
+      - paragraph [ref=e143]: Local studio · files on this computer · manual publishing
+      - alert [ref=e166]:
+        - generic [ref=e167]:
+          - text: Space cambió. Recarga antes de guardar.
+          - button "Refresh state" [ref=e168] [cursor=pointer]
+        - button "Dismiss error message" [ref=e169] [cursor=pointer]: ×
+      - generic [ref=e144]:
+        - heading "Build a campaign from what you already have" [level=2] [ref=e145]
+        - paragraph [ref=e146]: Product → objective and platform → materials → template and text → draft → approval → export
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]: Product
+            - combobox "Product" [ref=e150] [cursor=pointer]:
+              - option "Choose product"
+              - option "AUDIT 20261026 FRONTEND SYNTHETIC" [selected]
+          - generic [ref=e151]:
+            - generic [ref=e152]: Campaign
+            - textbox "Campaign" [ref=e153] [cursor=pointer]:
+              - /placeholder: Organize clients
+              - text: AUDIT CAMPAIGN UI STALE
+          - generic [ref=e154]:
+            - generic [ref=e155]: Objective
+            - textbox "Objective" [ref=e156] [cursor=pointer]:
+              - /placeholder: A useful idea for a solo builder
+          - generic [ref=e157]:
+            - generic [ref=e158]: Mode
+            - combobox "Mode" [ref=e159] [cursor=pointer]:
+              - option "Organic" [selected]
+              - option "Paid (remains paused)"
+          - button "Create campaign" [ref=e160] [cursor=pointer]
+      - generic [ref=e161]:
+        - generic [ref=e162]: Open campaign
+        - combobox "Open campaign" [ref=e163] [cursor=pointer]:
+          - option "Select" [selected]
+      - group [ref=e164]:
+        - generic "Technical aids for originals (optional)" [ref=e165] [cursor=pointer]
+        - option "Compatible video or audio" [selected]
+    - button "help" [ref=e86] [cursor=pointer]
+  - generic [ref=e15]:
+    - link "Built with AEKR, opens in a new tab" [ref=e16] [cursor=pointer]:
+      - /url: https://aekr.io
+      - generic [ref=e17]:
+        - text: Built with
+        - strong [ref=e18]: AEKR
+    - navigation "Service policies" [ref=e19]:
+      - link "Terms of Service" [ref=e20] [cursor=pointer]:
+        - /url: "?policy=terms"
+        - text: ToS
+      - link "Privacy Policy" [ref=e21] [cursor=pointer]:
+        - /url: "?policy=privacy"
+        - text: Privacy
+      - link "Cookies and storage" [ref=e22] [cursor=pointer]:
+        - /url: "?policy=cookies"
+        - text: Cookies

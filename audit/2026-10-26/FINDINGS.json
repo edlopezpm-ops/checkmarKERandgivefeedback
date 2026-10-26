@@ -1,0 +1,302 @@
+{
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "generated_utc": "2026-10-26T19:25:30.752595+00:00",
+  "verdict": "FAIL",
+  "confirmed_product_defects": 1,
+  "confirmed_test_weaknesses": 2,
+  "suspected_contract_issues": 1,
+  "findings": [
+    {
+      "id": "F01",
+      "category": "CONTRACT_FAILURE",
+      "status": "CONFIRMED",
+      "severity": "MINOR",
+      "kind": "product_defect",
+      "capabilities": [
+        "C12"
+      ],
+      "contributesToCapabilityFAIL": true,
+      "title": "Studio muestra el conflicto en español con la interfaz en inglés",
+      "requirement": {
+        "file": "docs/console.md",
+        "lines": [
+          3
+        ],
+        "text": "English default and interface language changes without translating stored content"
+      },
+      "locations": [
+        {
+          "file": "src/console/Studio.tsx",
+          "lines": [
+            51,
+            56,
+            146,
+            253
+          ]
+        },
+        {
+          "file": "src/console/ErrorNotice.tsx",
+          "lines": [
+            12,
+            13
+          ]
+        },
+        {
+          "file": "server/studio-hosted.ts",
+          "lines": [
+            330
+          ]
+        }
+      ],
+      "configuration": "Snapshot77bbedac; Vite local real; Edge/Playwright; idioma en; datos sintéticos; no producción",
+      "trajectory": "Create campaign -> stale expectedRevision -> Studio API409 -> raw Error.message -> ErrorNotice",
+      "minimalInput": "Formulario Campaigns cargado en revisión0; otra sesión agrega un material y eleva revisión1; Create campaign conserva revisión0.",
+      "expected": "El409 debe conservar el borrador y presentar el error fijo de interfaz en inglés.",
+      "observed": "La validación/CAS rechaza correctamente. Alert muestra Space cambió. Recarga antes de guardar. junto a Create campaign y Refresh state. El borrador permanece.",
+      "reproduction": [
+        "Usar copia desechable, iniciar Vite con stores vacíos y abrir Campaigns en inglés.",
+        "Elegir un producto sintético y escribir título sin enviar.",
+        "En segunda sesión ejecutar una mutación de Studio con expectedRevision actual.",
+        "Enviar el primer formulario y observar409 más alerta en castellano."
+      ],
+      "evidence": [
+        "evidence/frontend-english-studio-conflict.png",
+        "evidence/frontend-english-studio-conflict.yml",
+        "contracts/result.json",
+        "refutation.json"
+      ],
+      "alternativesConsidered": [
+        "El texto no es contenido del usuario; lo genera el backend como mensaje fijo.",
+        "El conflicto en sí es una protección correcta y no pérdida ni éxito falso."
+      ],
+      "impact": "Localización y recuperación de error incoherentes; no pérdida de datos demostrada.",
+      "correction": "Traducir códigos estables de error en la frontera compartida del cliente sin alterar contenido guardado ni validación.",
+      "verificationAfterFutureFix": "Snapshot nuevo: provocar conflictos y fallos de derechos distintos en EN/ES, comprobar mismo rechazo y borrador conservado con mensaje del idioma elegido."
+    },
+    {
+      "id": "F02",
+      "category": "SPEC_AMBIGUITY",
+      "conditionalCategory": "FALSE_SUCCESS",
+      "status": "SUSPECTED",
+      "severity": "MEDIUM_IF_CONTRACT_CONFIRMS",
+      "kind": "unresolved_contract",
+      "capabilities": [
+        "C11"
+      ],
+      "contributesToCapabilityFAIL": false,
+      "title": "Respuesta ACK ignorada; falso estado confirmado condicionado al contrato central",
+      "requirement": {
+        "file": "docs/analytics-integration.md",
+        "lines": [
+          36,
+          37,
+          68
+        ],
+        "text": "Desired and confirmed configuration versions; POST ack confirms locally applied version"
+      },
+      "locations": [
+        {
+          "file": "server/analytics.ts",
+          "lines": [
+            95,
+            98,
+            99
+          ]
+        },
+        {
+          "file": "src/console/AnalyticsSettings.tsx",
+          "lines": [
+            28,
+            92,
+            93
+          ]
+        }
+      ],
+      "configuration": "Dependencia central sustituida por fetcher sintético explícito; fetch global bloqueado por revisor fresco;0 solicitudes externas",
+      "trajectory": "GET Analytics -> valid config31 -> POST ack -> any200 JSON object -> active/applied_version31",
+      "minimalInput": "Configuración válida habilitada versión31; ACK200 {acknowledged:false}.",
+      "expected": "Si acknowledged:false representa rechazo contractual, applied_version debe permanecer null y status confirmation_pending. No existe esquema formal disponible para cerrar ese si.",
+      "observed": "200true,200false y200{} producen active/applied31.503/throw producen confirmation_pending/null.",
+      "reproduction": [
+        "node --experimental-strip-types audit/2026-10-26/repro/analytics-ack.mjs",
+        "python audit/2026-10-26/repro/judge_analytics_ack.py"
+      ],
+      "evidence": [
+        "evidence/root-analytics-ack.json",
+        "evidence/root-analytics-ack-judgment.json",
+        "refutation.json"
+      ],
+      "alternativesConsidered": [
+        "HTTP200 puede ser el acuse contractual y el campo extra carecer de significado.",
+        "El fixture de prueba acknowledged:true no constituye especificación independiente.",
+        "No se observó ninguna respuesta negativa del servicio central real."
+      ],
+      "impact": "Posible estado visual incorrecto y habilitación de controles; no credencial ni autorización durable. El servidor vuelve a leer configuración y el central mantiene permisos/versiones.",
+      "correction": "Obtener y versionar el esquema ACK central, su semántica y casos de rechazo; validar exactamente ese recibo, luego añadir pruebas independientes.",
+      "evidenceNeeded": "Contrato autoritativo del POST ack y respuesta de un sandbox central que niegue o confirme la versión exacta."
+    },
+    {
+      "id": "F03",
+      "category": "WEAK_TEST",
+      "status": "CONFIRMED",
+      "severity": "MINOR",
+      "title": "Las pruebas no son autónomas en una proyección limpia del producto",
+      "capability": "C15",
+      "score_effect": "None: frozen C15 mandatory build/types/assets succeeds; test preparation limitations disclosed separately",
+      "locations": [
+        {
+          "file": "package.json",
+          "lines": [
+            12
+          ]
+        },
+        {
+          "file": "server/studio-processor.ts",
+          "lines": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "file": "tests/studio-vite.test.ts",
+          "lines": [
+            151,
+            153
+          ]
+        }
+      ],
+      "requirement_source": "Prompt audit section 3: test discovery/execution reproducible; README.md npm test quality claim",
+      "expected": "Discover complete suite with declared prerequisites and synthetic private-file fixtures",
+      "observed": "Before npm run build, generated processor .txt absent prevented 10 DO tests from executing; after build all 333 discovered. The private-file HTTP assertion assumes an untracked .aekr/AGENTS.md exists: no file causes legitimate SPA fallback200, synthetic sentinel causes403. Both limitations recovered without editing source.",
+      "evidence": [
+        "evidence/evaluation-npm-test.log",
+        "evidence/evaluation-npm-test-prepared.log",
+        "evidence/evaluation-portable-vite-checks.log",
+        "evidence/evaluation-portable-full-suite.log"
+      ],
+      "alternatives_considered": "Generated modules are legitimate build outputs; fs deny works when actual private file exists. Neither observation proves false business success or evaluator tampering.",
+      "correction": "Declare/prep generated modules for npm test and create a synthetic private-file sentinel in the test itself; document media tool prerequisites.",
+      "kind": "test_quality",
+      "contributesToCapabilityFAIL": false,
+      "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1"
+    },
+    {
+      "id": "F04",
+      "category": "WEAK_TEST",
+      "status": "CONFIRMED",
+      "severity": "MINOR",
+      "title": "Control de streaming puede bloquear el runner y cleanup oculta causas",
+      "capability": "C15",
+      "score_effect": "None: independent verifier recovered reliable behavioral evidence; no confirmed product fault",
+      "locations": [
+        {
+          "file": "tests/demo-media.test.ts",
+          "lines": [
+            103,
+            105,
+            107
+          ]
+        },
+        {
+          "file": "tests/editorial.test.ts",
+          "lines": [
+            348,
+            350
+          ]
+        }
+      ],
+      "requirement_source": "Prompt audit section6: negative controls must detect actual defects; timeout cannot equal correct assertion",
+      "expected": "Range/no-write mutation rejected with bounded, attributable evidence",
+      "observed": "Native Range test consumed an intentionally infinite stream after audit mutation ignored Range; the owned process tree required termination and no test summary was available. No timeout is credited as assertion detection. No-write native test exited1 but rmdir ENOTEMPTY masked the original assertion. Independent external oracle rejected both mutations directly and passed again after exact restore.",
+      "evidence": [
+        "evaluation/mutations.json",
+        "evidence/evaluation-M01-native-suite.log",
+        "evidence/evaluation-M02-native-suite.log",
+        "evidence/evaluation-M01-mutant.log",
+        "evidence/evaluation-M02-mutant.log"
+      ],
+      "alternatives_considered": "The infinite source is legitimate to test early cancellation, but unbounded arrayBuffer and no deadline weaken failure behavior. Production baseline range implementation passes.",
+      "correction": "Bound test duration/bytes and cancel streams in finally; make cleanup preserve original assertion errors.",
+      "kind": "test_quality",
+      "contributesToCapabilityFAIL": false,
+      "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1"
+    },
+    {
+      "id": "F05",
+      "category": "CONTRACT_FAILURE",
+      "status": "SUSPECTED",
+      "severity": "OBSERVATION",
+      "kind": "documentation_drift",
+      "capabilities": [
+        "C01"
+      ],
+      "contributesToCapabilityFAIL": false,
+      "title": "Documentación antigua describe creación editorial desde una UI sustituida",
+      "requirement": {
+        "file": "docs/console.md",
+        "lines": [
+          15,
+          17,
+          19
+        ]
+      },
+      "locations": [
+        {
+          "file": "docs/hosted-studio.md",
+          "lines": [
+            13
+          ]
+        },
+        {
+          "file": "src/console/help-guides.ts",
+          "lines": [
+            265,
+            283
+          ]
+        }
+      ],
+      "expected": "La documentación debe distinguir la creación Studio actual y la consulta/edición de registros editoriales anteriores.",
+      "observed": "console.md aún describe creación por cuentas/importaciónTXT; ayuda y hosted-studio identifican Earlier records. API legacy crea fuentes/campañas/posts reales; la ruta principal nueva funciona.",
+      "evidence": [
+        "contracts/result.json",
+        "backend/result.json",
+        "evidence/backend-native/result.json"
+      ],
+      "alternativesConsidered": [
+        "La sustitución de la entrada nueva es compatible con el diseño Studio actual. No hay prueba inequívoca de obligación actual de conservar la antigua creación en UI."
+      ],
+      "impact": "Instrucciones de onboarding potencialmente confusas; no implementación principal desconectada demostrada.",
+      "correction": "Rotular la documentación histórica y enlazar el flujo actual sin reinstalar funciones no requeridas."
+    },
+    {
+      "id": "L01",
+      "category": "ENVIRONMENT_BLOCKER",
+      "status": "BLOCKED",
+      "severity": "EVIDENCE_LIMIT",
+      "kind": "verification_gap",
+      "capabilities": [
+        "C05",
+        "C06",
+        "C07",
+        "C09",
+        "C11"
+      ],
+      "contributesToCapabilityFAIL": false,
+      "title": "No hay credenciales/sandbox de integraciones reales bajo el alcance sin escrituras en producción",
+      "expected": "Comprobar confirmación externa, almacenamiento real y efectos finales mediante entornos de prueba autorizados.",
+      "observed": "Se verificaron localmente SQL, firmas, transporte, límites y fallos con dependencias sintéticas declaradas. No se invocaron email real, Google/GitHub/CAPTCHA reales, R2/Container real, inferencia Codex ni central Analytics real.",
+      "evidence": [
+        "backend/result.json",
+        "evaluation/result.json",
+        "evidence/root-contracts.json"
+      ],
+      "impact": "UNKNOWN conserva denominador; no representa un defecto probado.",
+      "evidenceNeeded": "Sandbox dedicado de los servicios con identidades/datos sintéticos y credenciales de prueba; para C11, esquema ACK y efecto central leído independientemente."
+    }
+  ],
+  "evaluator_tampering": "NOT_OBSERVED",
+  "test_special_casing": "NOT_OBSERVED",
+  "production_mock_leakage": "NOT_OBSERVED_WITHIN_REVIEWED_SCOPE",
+  "agent_authorship_and_intent": "NOT_DETERMINED"
+}

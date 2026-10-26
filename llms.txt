@@ -1,20 +1,18 @@
-# Current status 2026-10-26
+# marKER full-source review — 26 October 2026
 
-Current public summary: SNAPSHOT-2026-10-26.md and CURRENT-STATE.json.
-Frozen source and full dossiers: 2026-10-24 at 3b219839; later product code is not projected.
-Safe continuity summary: DOSSIER-HANDOFF-2026-10-26.json.
-Future owner-only continuity: https://console.aekr.io/dossier; import not verified here.
-The original navigation below describes the historical source package.
-
----
-
-# marKER full-source review
-
-Start: README.md, 00-START-HERE.md, CURRENT-STATE.json, source-snapshot-manifest.json.
-Full implementation: source/ (all selected public product source and assets).
-Reading copy: marKER-FULL-DOSSIER.md.
-Review request: AI_ANALYSIS_PROMPT.md.
-Navigation: inventories/source-paths.md, code-flow/README.md, inventories/test-index.md, inventories/routes.md.
-Schema: database/d1-reference.md, database/local-studio-reference.md.
-Evidence: 08-operations-quality-and-limits.md, PACKAGE-VERIFICATION.json.
-Private governance/runtime owner data/actual credentials are excluded. Respect source-commit/dirty and local/hosted/human evidence qualifications.
+Current source: 77bbedaccc6bc410364cef16fba1ed88b1eaf5e1; clean; 368 tracked product files under source/.
+Read first: README.md, 00-START-HERE.md, CURRENT-STATE.json, source-snapshot-manifest.json.
+Current curated dossier: marKER-FULL-DOSSIER.md.
+Historical cut: marKER-FULL-DOSSIER-2026-10-24.md; do not label it current.
+Audit: 12-functional-integrity-audit.md and audit/2026-10-26/REPORT.md.
+Audit data: audit/2026-10-26/MATRIX.json, SCORECARD.json and FINDINGS.json.
+Verdict: FAIL for one minor confirmed C12 localization defect F01; two minor WEAK_TEST findings F03/F04.
+Analytics F02: suspected SPEC_AMBIGUITY; no confirmed false success without authoritative ACK contract.
+Weights: W = 60 = 34 + 3 + 23; D = 56.67%; C = 61.67%; unknown = 38.33%. UNKNOWN is not proof of a defect.
+Execution during audit: prepared 333/333 suite, build/types/assets and local Worker dry run PASS; not rerun by publication.
+Review request: AI_ANALYSIS_PROMPT.md. Pending work: PENDING-REPORT.md.
+Source navigation: inventories/source-paths.md, code-flow/README.md, code-flow/05-module-symbol-index.md, inventories/test-index.md, inventories/routes.md.
+Schemas/dependencies: 11-database-and-catalog-reference.md, database/d1-reference.md, database/local-studio-reference.md, inventories/dependencies.md.
+Current source policy/data/Analytics contracts: source/docs/profile-and-data.md, source/docs/POLICY_RIGHTS_RELEASE_2026-10-25.md, source/docs/analytics-integration.md.
+No evaluator tampering or improper fixture adaptation observed within reviewed scope; authorship/intent not determined.
+Private governance, owner data, stores and actual credentials are excluded. No current hosted/provider/physical-device/UAT/acceptance claim follows from source, local execution or package seals.

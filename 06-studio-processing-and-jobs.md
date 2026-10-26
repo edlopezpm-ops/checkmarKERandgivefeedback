@@ -1,5 +1,7 @@
 # 06 — Studio processing, planning and jobs
 
+Current source: 26 October 2026, `77bbedac`. Native/local proof and real managed-service proof remain distinct.
+
 Original capture is resumable: reserve upload/storage → append bounded chunks at the expected offset → complete/probe/hash → deduplicate original bytes → create library metadata. Reselection of the same file can resume from the committed offset. Unsupported media remains conversion-pending with the original retained; file-type assumptions are checked by native probing. Private R2 bytes stream through authenticated endpoints, including ranges; no public bucket URL is needed.
 
 The native classifier fills only missing labels. The planner consumes eligible ready/owned sources, literal copy, ranges and explicit shared/reuse/mute choices. Licensed or restricted usage requires the applicable explicit review; unknown/restricted rights cannot be silently promoted. Audio presence is separate from human-confirmed speech. Rules exclude overlapping same-hash used ranges unless reuse is explicitly permitted; no perceptual deduplication is claimed.
@@ -20,3 +22,7 @@ Rendering persists a durable job before enqueue, reserves internal credits/stora
 Technical analysis is optional and limited to three originals/ranges, each ≤120 seconds. It produces low-resolution thumbnails and scene/silence/darkness/variation hints, not transcription, semantic classification or speech absence. Provenance pins original hash, coverage, profile and tested toolchain. **Hosted analysis remains disabled** while `ANALYSIS_HOSTED_TOOL_VERSION` is null. Local synthetic FFmpeg evidence cannot validate the managed hosted binary.
 
 Review [studio-render.ts](source/server/studio-render.ts), [studio-analysis.ts](source/server/studio-analysis.ts), [processor coordinator](source/server/studio-processor.ts), [runner](source/processor/runner.mjs), [hosted adapter](source/server/studio-hosted.ts) and [planner contract](source/src/core/studio-planner.ts). Job completion, owner approval and manual export are separate transitions. Original/history custody must survive recovery.
+
+The 26 October audit independently exercised a new native flow without an agent: original capture/hash, classification, proposal/fingerprint, saved recipe, actual FFmpeg render, exact-result approval and export. The exported 5-second 1080×1920 H.264 MP4 was probed and fully decoded. After a process restart, records and output SHA remained unchanged. Forged fingerprint, unapproved export, false approval and stale revisions were rejected.
+
+Hosted admission was exercised through real SQLite with synthetic R2/processor dependencies: reservations, 5-cent probe, 10-cent render, lost enqueue/resume, exact reuse and terminal failures. That evidence supports the exercised logic; C05 remains UNKNOWN for real R2/container/toolchain effects. A completed synthetic job is not represented as a completed Cloudflare render. See [audit report](audit/2026-10-26/REPORT.md).

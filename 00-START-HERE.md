@@ -1,22 +1,26 @@
-> **Estado actualizado al 26/10/2026:** [snapshot público acotado](SNAPSHOT-2026-10-26.md) y [estado actual](CURRENT-STATE.json). El contenido histórico que sigue describe el corte del **24/10**; `source/` permanece en `3b219839` y no incluye los incrementos posteriores. La continuidad prevista es [Dossier privado](https://console.aekr.io/dossier). El aviso no acredita una importación ni acceso público al Dossier.
+# Start here — 26 October 2026
 
----
+The current full-source projection is `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`: 368 tracked product files, clean source checkout, no dirty overlay. Read the [snapshot manifest](source-snapshot-manifest.json) and [current state](CURRENT-STATE.json). The dated [24 October dossier](marKER-FULL-DOSSIER-2026-10-24.md) remains historical; the [current combined dossier](marKER-FULL-DOSSIER.md) is assembled for this cut.
 
-# Start here
+Read in this order:
 
-This refresh supersedes the earlier dossier-only snapshot at `1f9415e`. It includes full source bodies and public assets, not just structural metadata. Source commit is `3b219839086fa6e66e467c02d58df70a49f0d8f0` on `main`; the checkout is clean, all 347 projected files are tracked and no dirty overlay remains. The [snapshot manifest](source-snapshot-manifest.json) preserves the former demo-path provenance. Read the exact projected files when narrative and code differ.
+1. [Quick context](AI-QUICK-CONTEXT.md) and [pending work](PENDING-REPORT.md).
+2. Chapters [01](01-architecture-and-stack.md)–[11](11-database-and-catalog-reference.md) for implementation navigation.
+3. [Chapter 12](12-functional-integrity-audit.md), [REPORT](audit/2026-10-26/REPORT.md), [MATRIX](audit/2026-10-26/MATRIX.json), [SCORECARD](audit/2026-10-26/SCORECARD.json) and [FINDINGS](audit/2026-10-26/FINDINGS.json).
+4. The corresponding source bodies, tests, SQL and configuration, using [source paths](inventories/source-paths.md), [symbols](code-flow/05-module-symbol-index.md), [test declarations](inventories/test-index.md) and [route occurrences](inventories/routes.md).
+5. [External-review prompt](AI_ANALYSIS_PROMPT.md) for a new independent pass.
 
-Read [prioritized pending work](PENDING-REPORT.md), [quick context](AI-QUICK-CONTEXT.md), chapters 01–11, then the [review prompt](AI_ANALYSIS_PROMPT.md). Use the [complete source inventory](inventories/source-paths.md), [symbol index](code-flow/05-module-symbol-index.md), [test index](inventories/test-index.md) and [route occurrences](inventories/routes.md) to close coverage gaps. A complete review requires inspecting implementation, tests and negative paths; a chapter summary alone does not establish that coverage.
-
-| Evidence label | Exact meaning |
+| Evidence label | Meaning |
 | --- | --- |
-| Snapshot source | Included implementation/configuration at the manifest's byte identity. |
-| Package verification | The current 347-file snapshot closes unchanged demo bytes into Git and adds a public pending handoff/navigation. Complete paths, bytes and clean status are verified; AST/schema/dependency artifacts retain their prior execution evidence by unchanged hashes. Prior publications remain in Git; product-test execution is separately reported. |
-| Root-reported verification | The implementation coordinator reports concrete tests/browser/SDK/native-media runs; this documentation worker did not rerun them. |
-| Prior delivery | Existing release/documentary evidence retained; not a fresh deployment/readback by this refresh. |
-| Current hosted readback | The [deployment status](DEPLOYMENT-STATUS.md) records current Worker identity, real OAuth/token exchange, fourteen-tool discovery and two connected reads, separately from five fresh anonymous checks and 185 exact assets supplied by the implementation coordinator. |
-| Not established | Business writes/complete campaign flow, remaining tool paths, Dot conversation, physical-device/creative pilot or human acceptance where expressly outstanding. |
+| Current source | Included product bytes at the declared commit. Source facts do not prove deployed behavior. |
+| Audit execution | Local/synthetic tests, independent drivers, real native media and browser observations recorded during the 26 October audit. Prepared suite: 333/333 PASS, no skips; build and Worker dry run PASS. |
+| Package verification | Publication checks on projection identity, generated catalogs, links, exclusions and seals. It is not another product-suite run. |
+| Historical delivery | Dated provider/deployment/owner observations retained under their original receipt. They are not current live readback. |
+| UNKNOWN | Required evidence remains unavailable or insufficient. It neither earns PASS credit nor proves a defect. |
+| Human/provider evidence | Actual host consent, service confirmation, physical-device behavior, creative quality and acceptance require their own evidence. |
 
-The review contains no private governance, owner workspace, sessions, provider accounts or runtime database rows. Schema catalogs are empty reconstructions. Test fixtures and Help/demo assets are synthetic/public product material. Package integrity is not security certification or product acceptance.
+The audit verdict is FAIL because F01 is a confirmed minor localization defect in C12. F03/F04 are two minor WEAK_TEST findings. F02 remains suspected SPEC_AMBIGUITY around the central ACK response. W=60, P=34, F=3, U=23; D=56.67%, C=61.67%, unknown=38.33%. A green suite does not replace that verdict.
 
-The stable product sequence is: sole-owner access; product/material management; deterministic missing-label classification; literal library preparation and rule-based proposal; explicit save/render; actual-result review and exact-revision approval; manual export. Editorial drafts/outcome confirmation remain a distinct earlier workflow. Agents and MCP complement those rules; neither can bypass approval or turn a generated sentence into an external publication.
+The normal flow is owner access → product/material management → native classification/planning → explicit saved recipe/render → actual-result review and exact-revision approval → manual export. Earlier editorial records remain a distinct workflow. Optional Agents and MCP reuse the native rules. Service-notice acknowledgements, own-data rights and Analytics preferences are separate controls.
+
+The review package contains no owner workspace, credential store, live database rows or private agent instructions. Schema catalogs are empty reconstructions. Test/Help/demo material is synthetic or public product material. Do not fetch private data or invoke providers to fill an evidence gap without separate authority. If your review is incomplete, name the unreviewed files and continue in bounded passes.

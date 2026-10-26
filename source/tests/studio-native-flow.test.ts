@@ -20,7 +20,7 @@ async function fixture(t,mode) {
     return {async handle(request){return api.handle(request,workspace);},processorCalls:()=>0};
   }
   const sql=new DatabaseSync(':memory:');sql.exec('PRAGMA foreign_keys=ON');
-  for(const name of ['0001_private.sql','0002_studio.sql','0003_studio_hosted.sql','0004_studio_analysis.sql','0005_studio_settings.sql','0006_agents.sql','0007_single_tenant_auth.sql','0008_github_auth.sql','0009_profile_account.sql'])sql.exec(readFileSync(new URL('../migrations-d1/'+name,import.meta.url),'utf8'));
+  for(const name of ['0001_private.sql','0002_studio.sql','0003_studio_hosted.sql','0004_studio_analysis.sql','0005_studio_settings.sql','0006_agents.sql','0007_single_tenant_auth.sql','0008_github_auth.sql','0009_profile_account.sql','0012_policy_acknowledgements.sql'])sql.exec(readFileSync(new URL('../migrations-d1/'+name,import.meta.url),'utf8'));
   sql.prepare('INSERT INTO marker_workspace VALUES(1,1,?)').run(JSON.stringify(workspace)); t.after(()=>sql.close());
   const DB={prepare(text){let args=[];const statement={bind(...values){args=values;return statement;},execute(){const query=sql.prepare(text);return query.columns().length?{success:true,results:query.all(...args),meta:{changes:0}}:{success:true,results:[],meta:{changes:Number(query.run(...args).changes)}};},async run(){return statement.execute();},async all(){return statement.execute();},async first(){return statement.execute().results[0]??null;}};return statement;},async batch(statements){sql.exec('BEGIN IMMEDIATE');try{const result=statements.map(statement=>statement.execute());sql.exec('COMMIT');return result;}catch(error){sql.exec('ROLLBACK');throw error;}}};
   let processorCalls=0;

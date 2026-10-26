@@ -1,0 +1,11 @@
+npm notice run marker@0.1.0 npx
+npm notice run playwright-cli -s=marker-audit-frontend eval async () => {const names=await caches.keys();if(names.some(x=>x.startsWith("marker-decoration-")))throw Error("CACHE_REMAINS");return {names};}
+### Result
+{
+  "names": []
+}
+### Ran Playwright code
+```js
+await page.evaluate('async () => {const names=await caches.keys();if(names.some(x=>x.startsWith("marker-decoration-")))throw Error("CACHE_REMAINS");return {names};}');
+```
+

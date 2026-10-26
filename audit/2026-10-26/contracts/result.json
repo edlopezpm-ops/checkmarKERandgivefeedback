@@ -1,0 +1,837 @@
+{
+  "schema": "aekr.functional-integrity-subpass/1",
+  "role": "contracts_frontend",
+  "time": "2026-10-26T19:22:03.306Z",
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "client": "Codex native subagent",
+  "model": "inherited; not independently observed",
+  "isolation": "Instructions bound writes; OS sandbox containment not asserted; source disposable copy for all Vite/UI writes",
+  "frozenMatrix": {
+    "file": "contracts/frozen-capabilities.json",
+    "sha256": "e3c2d049d6fd7c65009c66fb9d95ce457991da06a2ebdd53c58455146d181176",
+    "capabilities": 16,
+    "totalWeight": 60,
+    "frozenAt": "2026-10-26T19:06:03.371Z",
+    "chronology": "Weights proposed before frontend result review; physical freeze file saved after a suspected legacy-route observation that was subsequently refuted, but before executed checks and any confirmed frontend finding. No result-driven weight change occurred. The frozenBeforeResults flag refers to executed/confirmed results, not to absence of all earlier static reading."
+  },
+  "findings": [
+    {
+      "id": "F-UI-01",
+      "capability": "C12",
+      "category": "CONTRACT_FAILURE",
+      "severity": "MINOR",
+      "evidenceStatus": "CONFIRMED",
+      "title": "Studio muestra el conflicto en castellano con interfaz inglesa",
+      "requirement": {
+        "source": "docs/console.md:3",
+        "contract": "English/Spanish interface selection changes UI text without changing saved content"
+      },
+      "locations": [
+        {
+          "file": "src/console/Studio.tsx",
+          "line": 57
+        },
+        {
+          "file": "src/console/Studio.tsx",
+          "line": 146
+        },
+        {
+          "file": "src/console/ErrorNotice.tsx",
+          "line": 13
+        },
+        {
+          "file": "server/studio-local.ts",
+          "line": 338
+        },
+        {
+          "file": "server/studio-hosted.ts",
+          "line": 330
+        }
+      ],
+      "configuration": "actual Vite local adapter, fresh data, selected EN, Edge real; hosted handler corroborated statically only",
+      "entry": "Campaigns/Create campaign at stale Studio revision0 after independent material mutation torevision1",
+      "expected": "HTTP409 preserved, recovery notice in English, existing work retained",
+      "observed": "HTTP409 revision_conflict; Spanish alert Space cambió. Recarga antes de guardar. between English controls; draft retained",
+      "trajectory": "backend structured conflict -> Studio api throws raw data.error -> run stores raw message -> ErrorNotice prints literal",
+      "reproduction": "repro/frontend-reproduction.md",
+      "evidence": [
+        "evidence/frontend-english-studio-conflict.png",
+        "evidence/frontend-english-studio-conflict.yml"
+      ],
+      "impact": "La instrucción de recuperación no sigue el idioma elegido; no hay pérdida observada, bypass de CAS ni falsa escritura exitosa",
+      "alternativesConsidered": [
+        "Es rechazo legítimo de CAS: se conserva como comportamiento correcto",
+        "Texto de usuario no debe traducirse: este mensaje es UI del servidor, no contenido guardado",
+        "No es restricción del entorno: también hay mensaje castellano estático en adapter hosted"
+      ],
+      "correction": "Traducir por códigos de error estables en la frontera UI, preservando estado y rechazo409; cubrir EN/ES ante conflicto y derechos",
+      "independentVerification": "Reproducir con dos conexiones nuevas y datos inéditos; comprobar status409, idioma del mensaje y estado desde una tercera lectura; ninguna reparación realizada"
+    }
+  ],
+  "observations": [
+    {
+      "id": "O-DOC-01",
+      "status": "OBSERVATION",
+      "topic": "Legacy editorial create versus earlier-record preservation",
+      "resolution": "Not confirmed as disconnected: current help and hosted-studio explicitly describe earlier records; native Studio creates current text/media pieces. Reconcile stale docs/console descriptions.",
+      "sources": [
+        "docs/console.md:15",
+        "docs/hosted-studio.md:13",
+        "src/console/help-guides.ts:265",
+        "src/console/help-guides.ts:283"
+      ]
+    },
+    {
+      "id": "O-DOC-02",
+      "status": "OBSERVATION",
+      "topic": "Help Environment references moved language/policy controls",
+      "resolution": "Current EN/ES button is in header and policies are persistent footer; guide still points into Environment. Functional controls remain reachable.",
+      "sources": [
+        "src/console/help-guides.ts:321",
+        "src/console/help-guides.ts:337",
+        "src/App.tsx:74",
+        "src/App.tsx:111"
+      ]
+    },
+    {
+      "id": "O-ENV-01",
+      "status": "ENVIRONMENT_LIMIT",
+      "topic": "Local demo folder route differs from Static Assets",
+      "resolution": "Vite /demo/ resolved SPA; direct /demo/index.html loaded same public player and actual MP4. Do not infer hosted routing failure."
+    }
+  ],
+  "proposedCapabilityStates": [
+    {
+      "id": "C12",
+      "status": "FAIL",
+      "reason": "F-UI-01; other UI checks passed, weight remains3"
+    },
+    {
+      "id": "C13",
+      "status": "PASS",
+      "scope": "Static source, real scene pixel change, pause, reduced-motion, default no-cache, opt-in and revocation; hosted logout not exercised"
+    },
+    {
+      "id": "C14",
+      "status": "PASS_PENDING_COORDINATOR_RANGE_EVIDENCE",
+      "scope": "Actual local browser metadata/seek/frame and captions; coordinator owns Worker range byte verification"
+    },
+    {
+      "id": "C16",
+      "status": "PASS",
+      "scope": "Disclosed local simulator and inactive integration boundaries; production UI gating reviewed plus rebuilt JS marker probe"
+    }
+  ],
+  "executions": [
+    {
+      "id": "F-P01",
+      "status": "PASS",
+      "result": "15 guides,79 steps,158 bilingual image references,74 unique PNGs valid/nonempty",
+      "evidence": "evidence/frontend-independent.json"
+    },
+    {
+      "id": "F-P02",
+      "status": "PASS_WITH_LIMIT",
+      "result": "Executable simulation markers absent across7 production JS files; unused dictionary labels correctly excluded as oracle",
+      "evidence": "evidence/frontend-independent.json"
+    },
+    {
+      "id": "F-P03",
+      "status": "PASS",
+      "result": "8 ordered VTT cues spanning0–55s",
+      "evidence": "evidence/frontend-independent.json"
+    },
+    {
+      "id": "F-P04",
+      "status": "PASS",
+      "result": "EN initial, ES persisted after reload, synthetic product/draft text intact,390px no horizontal overflow, ES help image loaded",
+      "evidence": "evidence/frontend-mobile-language-help.log"
+    },
+    {
+      "id": "F-P05",
+      "status": "PASS",
+      "result": "Demo duration55/currentTime20.004168/frame20.033333/1920x1080/readyState4/errornull/caption1",
+      "evidence": "evidence/frontend-demo-seek.log"
+    },
+    {
+      "id": "F-P06",
+      "status": "PASS",
+      "result": "Playing changes pixels; paused preserves pixels over500ms; reduced-motion static and Play disabled",
+      "evidence": [
+        "evidence/frontend-playing.log",
+        "evidence/frontend-paused.log",
+        "evidence/frontend-reduced-motion.log"
+      ]
+    },
+    {
+      "id": "F-P07",
+      "status": "PASS",
+      "result": "Cache default empty; opt-in only marker-decoration-v2 one sprite; revoke empty",
+      "evidence": [
+        "evidence/frontend-mobile-language-help.log",
+        "evidence/frontend-cache-optin.log",
+        "evidence/frontend-cache-revoked.log"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "path": "PROJECT_MAP.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 50,
+      "sha256": "76e64d06139f91073b4fb65af03f84e5feaac9591919c0499f424cc2381b9a6e"
+    },
+    {
+      "path": "README.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 54,
+      "sha256": "ee9a6a09ad55b70eebb8a5fa63a67e2a56d86674e50fd6931a8e4b518f3aad3e"
+    },
+    {
+      "path": "assets/AEKR-BANNER-LICENSE.txt",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 29,
+      "sha256": "b249deb3a468f304b956702f1b850666a08d5b883eb53b536cf15adae3af5703"
+    },
+    {
+      "path": "docs/AGENT_BRIDGE.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 78,
+      "sha256": "9add1de4dd2d975c0a15a33b24a33f5240a0784fade099447a61363f94ee06f1",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/ANALYTICS_RELEASE_2026-10-25.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 62,
+      "sha256": "9e47cc1c3f51e112bd55a040da6821980da4cc59c856ee9491bc28091e0e8b97",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/POLICY_RIGHTS_RELEASE_2026-10-25.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 14,
+      "sha256": "d7d1b42d1b8a8958356e3c651fa6c1c08bd280277cde5983583b4c76ee0020ca",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/TERMS_DISPLAY_VERSION_ADDENDUM_2026-10-25.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 12,
+      "sha256": "4997a7000bb5a04134f1856dbae125ae11bb663cb46a16f14d1319e6025b195d",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/TERMS_RELEASE_2026-10-25.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 115,
+      "sha256": "551927a5c3f2959ba2dc7e35ee4458af3f50bdebc030dfafb6b97d3a9786ac19",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/TERMS_UI_CORRECTION_2026-10-25.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 26,
+      "sha256": "5323eec6d8e8d2158d6d967f74e16c535511c8b68fdb9c3f6313404c1dd355dd",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/agents.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 39,
+      "sha256": "9717cf39c5a6ce31688aca4d5820a32305a202234ef4c47ebf84a84b2fab94d9",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/ai-connection-decision.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 72,
+      "sha256": "8299435f36b2b9e30e6f7db6191b031b5274236b7f669cdcfb5280b757115b0f",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/analytics-commercial-research-20261025.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 66,
+      "sha256": "745564b3088fdae0a8ff25c7fd7e5524f9ea744ee7b065bfc23b1f4de21bdc14",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/analytics-integration.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 144,
+      "sha256": "ee46a7b1443276180e2694f2024802ba6b921774ad6a2d713f6e882ebbaca830",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/architecture.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 32,
+      "sha256": "cd171adccc3af2656155313d96bfc7379e4c604ed745a731c53bf097fa32eab2",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/assistant-integration-design-2026-10-24.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 488,
+      "sha256": "5705eee129dfd67d26aa4beca3af5ae708ec04f31dfc11658c3e8f6867db51a8",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/authentication.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 174,
+      "sha256": "b29745ee2efd622fd41614864ee4b35b7dd6ae471ee99c1ea1f74767c415d334",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/console.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 40,
+      "sha256": "646c8dc414f6a96a593ab8ff3f32eeb194cfb207074f29b11218144443131c5e",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/current-status-2026-10-24.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 71,
+      "sha256": "b88070c49fb5c860ba9d9e9fe14fb162188e1007ebabef80047b43a0b00c8ee7",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/decoration.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 35,
+      "sha256": "c87bf08589554bdc5a465d2f44e7d5e31a0b3f3136a3a6626a947c75337409fb",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/discovery/CONTENT_SAFETY_DISCOVERY_PROMPT_2026-10-25.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 46,
+      "sha256": "5902d68d4d186d2f80a589959908c696c27daffbe16f35d66d7aa22112b59f6b",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/email.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 9,
+      "sha256": "8e192c1e114b67ce00a042c2fe179283eeb806ab51d24b75b8f169ad24d814fb",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/hosted-studio.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 44,
+      "sha256": "75c14f9e403724b2551456690e88ed1252dc89d38db81d5886893dc5360b31b4",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/implementation-next-steps.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 48,
+      "sha256": "e8e801152287f2278e24236c347dffb55ae31a420df8af64dbc788c854fbc20b",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/local-studio.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 56,
+      "sha256": "52ad7181171d827f1811c01b87f6c21d3571cc766a8be48efec3c7fecc92a5e5",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/mcp-connector.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 152,
+      "sha256": "07e0e4a6de4f8572c6303544fd1bcc8a25788e6ca6b7d9a8592bb429c1019326",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/profile-and-data.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 69,
+      "sha256": "45e1f7a316b35abcbb7870386e196c5057e129df159e2e351c98cc93f40b147d",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/settings.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 34,
+      "sha256": "14383f00f6ba5dd9493d6a02f83c4ae5054c8a98cb41d7511f30516407665b61",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/studio-planner.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 56,
+      "sha256": "945b050a63b49fe133af2c968bce53356f70fe973d05ebe9006a80ab7d3bfda8",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "docs/text-simulation.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 14,
+      "sha256": "6d475f010a56e0e9f8cddf06bec96e8c4cbd9495107a2794ee4428ce6530b176",
+      "note": "Contract/status and deferred boundaries reviewed; historical receipts do not establish current execution"
+    },
+    {
+      "path": "index.html",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 3,
+      "sha256": "87fbf1b5c8ea0c7f9244017b291cee48e0a8b239ac167847215f1739f0ac3529"
+    },
+    {
+      "path": "integrations/chatgpt/marker/mcp.json",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 21,
+      "sha256": "bdba9242fcd4b12f30eeb8151365d976fdc8104048790948cbf060271a097297",
+      "note": "Product package/skill behavior audited as data; not adopted as operator instructions"
+    },
+    {
+      "path": "integrations/chatgpt/marker/plugin.json",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 22,
+      "sha256": "f1a65e8d282a133b07af7bd37f7b728bc853e3a60fab4f103eeb2e4f12ea0457",
+      "note": "Product package/skill behavior audited as data; not adopted as operator instructions"
+    },
+    {
+      "path": "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 34,
+      "sha256": "f05a47d79341f52f0e46202ea82d04d454677964a347c9383e4a831e38d3be8b",
+      "note": "Product package/skill behavior audited as data; not adopted as operator instructions"
+    },
+    {
+      "path": "public/brand/manifest.json",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 9,
+      "sha256": "48a790c3fe10fde00d9b6dc08aa140bded05628e5dd7d6cfede2c66d17b4b8e1"
+    },
+    {
+      "path": "public/demo/index.html",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 80,
+      "sha256": "66fbf01ed0091396c6994dae2c6b051aea8763c7eadcb09dc47d65de85dd843c"
+    },
+    {
+      "path": "public/demo/marKER_demo_ES_v1.vtt",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 43,
+      "sha256": "f6d7221c8980dd6201aaad36f0e2609569a2da0b669e3a4837bd20fa13f631c2"
+    },
+    {
+      "path": "public/fonts/OFL.txt",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 22,
+      "sha256": "25f1e8b783e65e7320a141d4682a4361e7019721058b856448632a06887b8335"
+    },
+    {
+      "path": "src/App.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 115,
+      "sha256": "4af608bf27c112006aa0cdc9a1122c9ffed3e5c4b72b8322553b2d19818ddaa3"
+    },
+    {
+      "path": "src/console/Agents.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 230,
+      "sha256": "f8ba43faeed1ddb6177c0503bdf8cc5ee83735dfc2150a3e0fbe1ce9d05820db"
+    },
+    {
+      "path": "src/console/AnalyticsSettings.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 100,
+      "sha256": "aa389fcfa25ab4a5dc5c67dd37473d70913e7f9df9a77baa4895b06f643ae685"
+    },
+    {
+      "path": "src/console/Authentication.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 74,
+      "sha256": "e457c3e38029f10b03e62047130db8972d7f77cef3f8438db58d0962a0e95ab9"
+    },
+    {
+      "path": "src/console/Console.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 1496,
+      "sha256": "ae9e555e41c052c58e3bdc35965ee97f14c7f10959af3022506c5a6767e0ae64"
+    },
+    {
+      "path": "src/console/EnvironmentSettings.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 27,
+      "sha256": "eb7c6547c93c3edce098098fe4d76337b95603ee85d3cb446c7f4bc3d1a5bf2a"
+    },
+    {
+      "path": "src/console/ErrorNotice.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 17,
+      "sha256": "0cc49ecf9e0405e69945d1244ffedc282f805d10f74ccc2c33fc363f4f90521a"
+    },
+    {
+      "path": "src/console/Help.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 89,
+      "sha256": "113939eabe0608907f2965e8cbd486f0c2d885b0adb61b84b14ef6ae48b9bb44"
+    },
+    {
+      "path": "src/console/McpConnections.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 69,
+      "sha256": "2e4450b050ac7ac0b25569724f249565d9a91b937e3e960ce3922d481f8482e5"
+    },
+    {
+      "path": "src/console/Policies.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 107,
+      "sha256": "e15ab3d6b5935f3bdd10e1edd5d2e8003f7bf26d258887b4c2228d935874fcf7"
+    },
+    {
+      "path": "src/console/PolicyGate.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 32,
+      "sha256": "0784ea97afb32f0b9554f0c316f966ca4d8dc324064f702562e05e0b0634c8e8"
+    },
+    {
+      "path": "src/console/PrivacyDownload.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 45,
+      "sha256": "9f08aa7cc5d62b0081ace7641640ad7ec67c85d1abfd1127cea492ad23f0b113"
+    },
+    {
+      "path": "src/console/Profile.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 168,
+      "sha256": "fb36886d3de2b573b8f8704b1bf84907ae169c88fd562a48187cdf33b5be6620"
+    },
+    {
+      "path": "src/console/Settings.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 123,
+      "sha256": "73d77d38031fcc41f241aa734a0de34c8010ad74fc21de556ae1ab62be34f31b"
+    },
+    {
+      "path": "src/console/Studio.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 379,
+      "sha256": "938c4535a690d878cd5267000615897f050a5e0206405bcb9c18c4e78ab1af76"
+    },
+    {
+      "path": "src/console/StudioAnalysis.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 111,
+      "sha256": "32ed01e8b7b428b12cb593cf91c82e64d4771b92996da1c1494d86ce10bcfd17"
+    },
+    {
+      "path": "src/console/StudioPlanner.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 177,
+      "sha256": "36e15dab8f8161631cd775c3274d40fdc0813c886533c440b083c09c36389d92"
+    },
+    {
+      "path": "src/console/TextSimulation.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 120,
+      "sha256": "04c21e81e576e31dc15241d7973282fa4b3f19822d98455c7d7682f7a9c75fec"
+    },
+    {
+      "path": "src/console/Turnstile.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 80,
+      "sha256": "052652c1f29636466187cbcae3c0e6e57f30ddbe5a45f1cac5f2e54660876ed6"
+    },
+    {
+      "path": "src/console/agent-context.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 22,
+      "sha256": "10fc62b19112926cd92349018da49e7ba4c0b05c283c0e400b460db76fa3cdfc"
+    },
+    {
+      "path": "src/console/agent-stream.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 17,
+      "sha256": "a3e1fb70dda8792671a1481cb56d20534dc52b906ee9697bc1b5dedd866d1315"
+    },
+    {
+      "path": "src/console/agents.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 62,
+      "sha256": "7f6deb6e010116a25c058f250b98d64bdb490cb1d20b4e3f0c61f403cafa3920"
+    },
+    {
+      "path": "src/console/authentication.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 10,
+      "sha256": "728e24948a1ed7bb5309df70b2f3c195f085e8ea6b355105b2b4d1b8e0bdfba9"
+    },
+    {
+      "path": "src/console/console.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 468,
+      "sha256": "220cd5a372a4cf4f7f51409254673bf2e76f45a2e97c84c92c629881997388fb"
+    },
+    {
+      "path": "src/console/error-notice.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 22,
+      "sha256": "59958477c90c576c2fd46d13c3bd55138e38cbc09b03a25d5079a1f2c7b6212d"
+    },
+    {
+      "path": "src/console/help-guides.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 375,
+      "sha256": "e5d0656fd823cf9702dcba64d76de10292710bca54d2429b862f084eed6f3108"
+    },
+    {
+      "path": "src/console/help.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 86,
+      "sha256": "a710a9c9dc4e7ff3b79d4ecbea8587e30018f6a2c31ba57a09e23c2c1c491e19"
+    },
+    {
+      "path": "src/console/mcp-resume.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 51,
+      "sha256": "f3efee3ee356e6936c7ecaee8fbe53f2c0e32eb122ddbd19b960745be988065f"
+    },
+    {
+      "path": "src/console/policies.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 23,
+      "sha256": "5ae8fa59b54cbb0e5d9fe0f98355ec864d1449c4154ac7d1f960e9480f9ffd5d"
+    },
+    {
+      "path": "src/console/profile.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 12,
+      "sha256": "82c4a8f494f1650997272f5c1c1f54e89e4824c3c2ae94913dde599201305297"
+    },
+    {
+      "path": "src/console/release.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 246,
+      "sha256": "4267e266aa18ec33cffd25d79bf340005ea35085758f64760f1212e11cf54e6b"
+    },
+    {
+      "path": "src/console/settings.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 11,
+      "sha256": "f3b311282026751781aa00ae0fdd89c170e8c8a7965a446c2c6c5fafc190859b"
+    },
+    {
+      "path": "src/console/studio.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 56,
+      "sha256": "4f5641cf15ae3a5e744262fe6ff7ad633e392eaba27f8a2aec6b1006c71d3764"
+    },
+    {
+      "path": "src/console/turnstile.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 6,
+      "sha256": "b3d73cbcf47d1b968f514275da021901ab3059c88c4836bc85087f278b926733"
+    },
+    {
+      "path": "src/core/analytics.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 22,
+      "sha256": "15afbd9dd643c6338727e4b41c6fc17d2d3f6918e07baddb296d048f122d2fb4"
+    },
+    {
+      "path": "src/core/client.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 34,
+      "sha256": "564a48be1619da01ce3c21cab885eb8c3f7334d004afb9749e7cf2f3869304fc"
+    },
+    {
+      "path": "src/core/domain.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 457,
+      "sha256": "e5cef108e366180f34ff83d0e243b6952af556771df1859c173a689c048c7cb5"
+    },
+    {
+      "path": "src/core/generation.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 185,
+      "sha256": "54db730580d3b018311aaa804e62a858f753dd25ebb914886d971029b7579202"
+    },
+    {
+      "path": "src/core/policy.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 14,
+      "sha256": "06bef2dbaf55990f367c6c236d2cad52f346444e7a0a0f53d07aab3b5353a89f"
+    },
+    {
+      "path": "src/core/profile.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 12,
+      "sha256": "05b410a133fafbd98be8dda132b8d8b46774d7c358957a2e21665ccefacfc4b1"
+    },
+    {
+      "path": "src/core/settings.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 40,
+      "sha256": "dda4eb9cfbde3fa81e55b192fa3766547b4a8d70f5f1b673e47c4b463fa7a01d"
+    },
+    {
+      "path": "src/decoration/Background.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 126,
+      "sha256": "85e4686f7d52f4c1fbfc29d358c56d292f0f3d587346ec245cd8ecfd6e155025"
+    },
+    {
+      "path": "src/decoration/assets.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 69,
+      "sha256": "926790e8465cff388429d300f36612e37648a4ec5fbb3c193b794a3896ffa569"
+    },
+    {
+      "path": "src/decoration/registry.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 19,
+      "sha256": "7599f2119ba0d986394bf687bbe63dfa62233b0d0d27a266d1e685f2a157928d"
+    },
+    {
+      "path": "src/decoration/renderer.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 211,
+      "sha256": "285e775b8061d2178da99cd5fa44bec05b2d6198aed45136ab747e726c1460e2"
+    },
+    {
+      "path": "src/decoration/scenes.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 219,
+      "sha256": "11b57b7ddf3cd981a53d0874b45b921d0027fbcf2bd92826460c1de7a901eebe"
+    },
+    {
+      "path": "src/decoration/scheduler.ts",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 62,
+      "sha256": "dfdf7880f3cea46df77cde914f5b8a367cb1053c91fb72aefbeb00bd00b8782a"
+    },
+    {
+      "path": "src/i18n.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 357,
+      "sha256": "97630975c25fad0a40fc47892cf4a9b144ea685022059de61ea5c4a025dc708d"
+    },
+    {
+      "path": "src/main.tsx",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 10,
+      "sha256": "80fd028803d596f5f668d448405a08b33cbbe02a80253812b5ebb1ea52327b1c"
+    },
+    {
+      "path": "src/style.css",
+      "classification": "REVIEWED_STATIC",
+      "readCoverage": "full current file; any initially truncated sections were completed with bounded reads",
+      "lines": 76,
+      "sha256": "f6c3127a189b095bc5b9e4cab9d522bc63dbe1ee6d31ab0a9a3ca173f65efe99"
+    }
+  ],
+  "assetTreatment": {
+    "help": "Every reference integrity-checked; actual Campaign ES screenshot opened and visually inspected; not all screenshot contents semantically certified",
+    "demo": "Index/VTT statically reviewed; MP4 played and sought in Edge; 4K decoded by coordinator if available",
+    "brand": "Manifest inspected; complete logo visually sampled on UI/player; original asset unchanged",
+    "fonts": "OFL and banner notices read; binaries not reverse-engineered; no legal certification",
+    "decoration": "All renderer/scenes/scheduler/assets sources reviewed; browser pixel/pause/cache/reduced-motion observed; atlas graphics sampled through real scene"
+  },
+  "limitations": [
+    "No hosted mutation, owner login, actual OAuth provider transport, mailbox, external assistant full campaign or physical phones exercised",
+    "Actual inference/provider entitlement not inferred; no bridge smoke requested",
+    "Inherited-context role separation is reduced assurance, not fresh independent author identity proof",
+    "No evaluator-manipulation verdict from this pass; evaluation-integrity specialist owns that conclusion",
+    "OS/Node/browser tooling are trusted components; no process containment proof"
+  ],
+  "productEdits": [],
+  "sourceGitStatus": "",
+  "outcome": "DONE_WITH_CONCERNS",
+  "deliveryState": "CONTRACT_MATRIX_FROZEN_AND_FRONTEND_EVIDENCE_SAVED",
+  "productState": "MINOR_CONFIRMED_UI_FAILURE_WITH_LOCAL_UI_MEDIA_VERIFICATION",
+  "gateAuthorityState": "AUDIT_ONLY_NO_REPAIR_NO_DEPLOY_NO_PROD_WRITE_NO_ACCEPTANCE"
+}

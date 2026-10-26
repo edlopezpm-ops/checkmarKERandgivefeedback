@@ -1,0 +1,55 @@
+{
+  "cwd": "[local-execution-path]",
+  "configRoot": "[local-execution-path]",
+  "watchIgnored": [
+    "**/.local/**",
+    "**/.aekr/**",
+    "**/.git/**"
+  ],
+  "control": "[local-execution-path]",
+  "rootWatched": [
+    ".dev.vars.example",
+    ".gitattributes",
+    ".gitignore",
+    "Font",
+    "PROJECT_MAP.md",
+    "README.md",
+    "assets",
+    "docs",
+    "index.html",
+    "integrations",
+    "migrations",
+    "migrations-d1",
+    "package-lock.json",
+    "package.json",
+    "processor",
+    "public",
+    "server",
+    "src",
+    "tests",
+    "tools",
+    "tsconfig.json",
+    "tsconfig.server.json",
+    "vite.config.ts",
+    "worker-configuration.d.ts",
+    "wrangler.jsonc"
+  ],
+  "controlMatches": [],
+  "watchedCount": 37,
+  "watchedSample": [
+    "[local-execution-path]",
+    "[local-execution-path]",
+    "[local-execution-path]",
+    "[local-execution-path]",
+    "[local-execution-path]",
+    "[local-execution-path]",
+    "[local-execution-path]",
+    "[local-execution-path]"
+  ],
+  "events": [
+    {
+      "event": "add",
+      "path": "[local-execution-path]"
+    }
+  ]
+}

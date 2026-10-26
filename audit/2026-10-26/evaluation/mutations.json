@@ -1,0 +1,208 @@
+{
+  "tool": "Python 3.13.4 directed mutations + external Node independent oracle; no general mutation framework",
+  "cases": [
+    {
+      "id": "M01",
+      "scenario": "persistence",
+      "file": "server/local.ts",
+      "old": "await rename(temp, this.path);",
+      "new": "void temp; // audit mutation: report success but omit durable replacement",
+      "operator": "targeted source replacement",
+      "baseline_sha256": "68daf1ad3dea0cadb08f093617117f7b6561040e2d7c9a55be3d21ad32fcee47",
+      "mutated_sha256": "a3a240a68eebd11e0e5d224383b0c08b959e547db3196749f597a05450558a52",
+      "baseline_restored": true,
+      "status": "DETECTED",
+      "checks": [
+        {
+          "stage": "baseline",
+          "exit_code": 0,
+          "duration_seconds": 0.08112168312072754,
+          "log": "evidence\\evaluation-M01-baseline.log",
+          "sha256": "db9063bfce84cd6caff28ceb425c6978c8af0091c2ff4ab14036cedf0a402b9b",
+          "original_sha256": "db9063bfce84cd6caff28ceb425c6978c8af0091c2ff4ab14036cedf0a402b9b"
+        },
+        {
+          "stage": "mutant",
+          "exit_code": 1,
+          "duration_seconds": 0.0754401683807373,
+          "log": "evidence\\evaluation-M01-mutant.log",
+          "sha256": "1aed31610c7973629ab4ff51e82d66d144a022612bc47091ed4b52f75e4144ce",
+          "original_sha256": "af3c677f5bb58ed08a3e957abe4ed952c9cf3b4bdee01036c085cc90ad38d01f"
+        },
+        {
+          "stage": "restored",
+          "exit_code": 0,
+          "duration_seconds": 0.08982276916503906,
+          "log": "evidence\\evaluation-M01-restored.log",
+          "sha256": "db9063bfce84cd6caff28ceb425c6978c8af0091c2ff4ab14036cedf0a402b9b",
+          "original_sha256": "db9063bfce84cd6caff28ceb425c6978c8af0091c2ff4ab14036cedf0a402b9b"
+        }
+      ],
+      "argv": [
+        "[runtime-executable]",
+        "--experimental-strip-types",
+        "audit/2026-10-26\\evaluation\\independent-oracle.mjs",
+        "[local-execution-path]",
+        "persistence"
+      ],
+      "native_suite": {
+        "status": "REJECTED_WITH_CLEANUP_ERROR",
+        "exit_code": 1,
+        "counts": {
+          "tests": 8,
+          "pass": 7,
+          "fail": 1,
+          "skipped": 0,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "log": "evidence\\evaluation-M01-native-suite.log",
+        "sha256": "368b8459cfb4046b1b79821413fbdea57b4c5e4f67b42a11b1f8d70abf3d9a17",
+        "baseline_restored": true,
+        "duration_seconds": null,
+        "duration_note": "Original process completed, exact duration not retained after subsequent supervised abort; Node reporter 142.948ms",
+        "interpretation": "Suite returned nonzero, but finally rmdir ENOTEMPTY obscured the original failing assertion. Independent oracle detects absent persisted file directly.",
+        "original_sha256": "7f7ee9c37f838ed8831d3be3a05019dd98cffee82eaa25ddc20d304a7f88344d"
+      }
+    },
+    {
+      "id": "M02",
+      "scenario": "range",
+      "file": "server/demo-media.ts",
+      "old": "const range = request.headers.get(\"Range\");",
+      "new": "const range = null; // audit mutation: ignore requested byte range",
+      "operator": "targeted source replacement",
+      "baseline_sha256": "5bb110f4463bcb38190c5fa088cc99482e9b06b93a0ac2d2d05139931e51ddd7",
+      "mutated_sha256": "5282696efb21abc51a43d8726242414b3c088a82b3efc62d69dde5ab21aaf8ce",
+      "baseline_restored": true,
+      "status": "DETECTED",
+      "checks": [
+        {
+          "stage": "baseline",
+          "exit_code": 0,
+          "duration_seconds": 0.08954358100891113,
+          "log": "evidence\\evaluation-M02-baseline.log",
+          "sha256": "11d888184fca292cfbe8fce80dba92f3324b88ecc7751794e89e3df0c6e50d6e",
+          "original_sha256": "11d888184fca292cfbe8fce80dba92f3324b88ecc7751794e89e3df0c6e50d6e"
+        },
+        {
+          "stage": "mutant",
+          "exit_code": 1,
+          "duration_seconds": 0.0913398265838623,
+          "log": "evidence\\evaluation-M02-mutant.log",
+          "sha256": "1fc25e40ce077662fd89f68d40659c9a30397314539f276f3d84517316c1dd6a",
+          "original_sha256": "228bcef33b5ba9fba5ecde5b7196bb4d311931e3ce7f35aa2df40d96561756ad"
+        },
+        {
+          "stage": "restored",
+          "exit_code": 0,
+          "duration_seconds": 0.10234379768371582,
+          "log": "evidence\\evaluation-M02-restored.log",
+          "sha256": "11d888184fca292cfbe8fce80dba92f3324b88ecc7751794e89e3df0c6e50d6e",
+          "original_sha256": "11d888184fca292cfbe8fce80dba92f3324b88ecc7751794e89e3df0c6e50d6e"
+        }
+      ],
+      "argv": [
+        "[runtime-executable]",
+        "--experimental-strip-types",
+        "audit/2026-10-26\\evaluation\\independent-oracle.mjs",
+        "[local-execution-path]",
+        "range"
+      ],
+      "native_suite": {
+        "status": "TIMEOUT_MANUALLY_TERMINATED",
+        "exit_code": null,
+        "counts": null,
+        "log": "evidence\\evaluation-M02-native-suite.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "baseline_restored": true,
+        "duration_seconds": null,
+        "duration_lower_bound_seconds": 10,
+        "termination": {
+          "parent_pid": 41164,
+          "test_child_pid": 4848,
+          "method": "taskkill /PID 41164 /T /F; exact owned test subprocess selected by parent Python and expected argv",
+          "process_tree_terminated": true
+        },
+        "interpretation": "Range bypass makes infinite test stream flow to Response.arrayBuffer; suite has no local timeout and did not report completion. Timeout is not counted as assertion detection. Independent oracle detects HTTP 200 versus required 206.",
+        "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "M03",
+      "scenario": "approval",
+      "file": "src/core/studio.ts",
+      "old": "if (variant.status !== \"approved\" || variant.approvedRecipeRevision !== variant.recipeRevision)\n    throw new DomainError(\"Aprueba la revisión actual antes de exportar.\", 409);",
+      "new": "// audit mutation: bypass explicit owner approval check",
+      "operator": "targeted source replacement",
+      "baseline_sha256": "10373026774513836223c3fba32c2b3b2854cabfa8993c6bb8c7ee5badbcd313",
+      "mutated_sha256": "c995c8bc26ad149531be2ea9235ff84c65ef184bd7a581569d9bf9e408118f8c",
+      "baseline_restored": true,
+      "status": "DETECTED",
+      "checks": [
+        {
+          "stage": "baseline",
+          "exit_code": 0,
+          "duration_seconds": 0.08794021606445312,
+          "log": "evidence\\evaluation-M03-baseline.log",
+          "sha256": "e633d102d551f219e90839dba6272f1a36f669ebd76abf191ed7ed164f1c870e",
+          "original_sha256": "e633d102d551f219e90839dba6272f1a36f669ebd76abf191ed7ed164f1c870e"
+        },
+        {
+          "stage": "mutant",
+          "exit_code": 1,
+          "duration_seconds": 0.09463262557983398,
+          "log": "evidence\\evaluation-M03-mutant.log",
+          "sha256": "e56cc6ebe128337790f400ee5d3cf97b88d7c21577617f5b2591749078c3e06c",
+          "original_sha256": "35964644cb1bf95c55f90a98b0317536807e6af72a842990efe27917777c2fd7"
+        },
+        {
+          "stage": "restored",
+          "exit_code": 0,
+          "duration_seconds": 0.1020498275756836,
+          "log": "evidence\\evaluation-M03-restored.log",
+          "sha256": "e633d102d551f219e90839dba6272f1a36f669ebd76abf191ed7ed164f1c870e",
+          "original_sha256": "e633d102d551f219e90839dba6272f1a36f669ebd76abf191ed7ed164f1c870e"
+        }
+      ],
+      "argv": [
+        "[runtime-executable]",
+        "--experimental-strip-types",
+        "audit/2026-10-26\\evaluation\\independent-oracle.mjs",
+        "[local-execution-path]",
+        "approval"
+      ],
+      "native_suite": {
+        "argv": [
+          "[runtime-executable]",
+          "--experimental-strip-types",
+          "--test",
+          "tests/studio.test.ts"
+        ],
+        "exit_code": 1,
+        "duration_seconds": 0.19108963012695312,
+        "counts": {
+          "tests": 15,
+          "pass": 14,
+          "fail": 1,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "log": "evidence\\evaluation-M03-native-suite.log",
+        "sha256": "b22649598cd5aaee049d8555adbaf486220f5dee62d83ba07f862612801cb122",
+        "status": "DETECTED",
+        "baseline_restored": true,
+        "original_sha256": "405b79a6a6d42684aaf5bff187a21bc8356e06c33e2e6e129dd3772517310d4b"
+      }
+    }
+  ],
+  "summary": {
+    "detected": 3,
+    "survived": 0,
+    "invalid": 0,
+    "timeout": 0,
+    "equivalent": 0,
+    "not_covered": 0
+  }
+}

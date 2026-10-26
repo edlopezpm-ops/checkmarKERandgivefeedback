@@ -10,7 +10,7 @@ CHAPTERS = [
     "04-frontend-and-interaction.md", "05-backend-api-and-access.md",
     "06-studio-processing-and-jobs.md", "07-integrations-and-capability-status.md",
     "08-operations-quality-and-limits.md", "09-review-guide-and-open-decisions.md",
-    "10-source-map-tests-and-dependencies.md", "11-database-and-catalog-reference.md",
+    "10-source-map-tests-and-dependencies.md", "11-database-and-catalog-reference.md", "12-functional-integrity-audit.md",
     "database/README.md", "code-flow/README.md",
     "code-flow/01-request-auth-and-storage.md", "code-flow/02-browser-and-editorial.md",
     "code-flow/03-media-planning-render-export.md", "code-flow/04-animation-and-help.md",
@@ -31,12 +31,13 @@ def linked(text, origin):
 def main():
     snapshot = json.loads((ROOT/'source-snapshot-manifest.json').read_text(encoding='utf-8'))
     qualification = "plus the explicitly inventoried working-tree delta" if snapshot['source_dirty'] else "with a clean tracked source checkout and no working-tree overlay"
-    pieces = [f"# marKER — complete technical dossier\n\nSnapshot 2026-10-24; source commit `{snapshot['source_revision']}` {qualification}.\n\nThis reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding.\n"]
+    date = snapshot.get('snapshot_date', snapshot['captured_at_utc'][:10])
+    pieces = [f"# marKER — complete technical dossier\n\nSnapshot {date}; source commit `{snapshot['source_revision']}` {qualification}.\n\nThis reading copy repeats the canonical chapters. Full application implementation and public assets are in [source/](source/); exact provenance and exclusions are in the [snapshot manifest](source-snapshot-manifest.json). Evidence qualifications remain binding. The dated 24-October dossier remains historical.\n"]
     for name in CHAPTERS:
         path = ROOT / name
         pieces.append(f"\n---\n\nCanonical chapter: [{name}]({name})\n\n" + linked(path.read_text(encoding="utf-8"), path))
     combined = "\n".join(pieces).rstrip() + "\n"
-    for name in ("marKER-FULL-DOSSIER.md", "marKER-FULL-DOSSIER-2026-10-24.md"):
+    for name in ("marKER-FULL-DOSSIER.md", f"marKER-FULL-DOSSIER-{date}.md"):
         (ROOT / name).write_text(combined, encoding="utf-8", newline="\n")
     print(f"Assembled {len(CHAPTERS)} chapters into two identical reading copies.")
 

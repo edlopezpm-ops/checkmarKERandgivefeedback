@@ -14,7 +14,7 @@ import { nativeApi } from "../server/worker.ts";
 const ORIGIN = "https://marker.aekr.io";
 function fixture(t, api = hostedStudioApi) {
   const sql = new DatabaseSync(":memory:");
-  for (const file of ["0001_private.sql", "0002_studio.sql", "0003_studio_hosted.sql", "0004_studio_analysis.sql", "0005_studio_settings.sql", "0006_agents.sql", "0007_single_tenant_auth.sql", "0008_github_auth.sql", "0009_profile_account.sql"])
+  for (const file of ["0001_private.sql", "0002_studio.sql", "0003_studio_hosted.sql", "0004_studio_analysis.sql", "0005_studio_settings.sql", "0006_agents.sql", "0007_single_tenant_auth.sql", "0008_github_auth.sql", "0009_profile_account.sql", "0012_policy_acknowledgements.sql"])
     sql.exec(readFileSync(new URL(`../migrations-d1/${file}`, import.meta.url), "utf8"));
   t.after(() => sql.close());
   let failBatch = -1, failPrefix = "UPDATE marker_studio_meta";

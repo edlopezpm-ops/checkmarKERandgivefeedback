@@ -1,20 +1,22 @@
 # 10 — Source map, tests and dependencies
 
-The source projection contains **347 files** totaling **35,805,384 bytes**, including full source, tests, migrations, build/configuration, the reproducible ChatGPT plugin package, maintained docs, original brand/font assets, illustrated Help and the five public demo files. All public demo files are below the GitHub 100 MiB per-file limit; no product code or demo binary is omitted.
+The current projection contains the 368 tracked product files at clean source commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`. It includes complete selected source, tests, migrations, build/configuration, portable assistant package, maintained product docs, original brand/fonts, Help and public demo assets. The dated 24 October dossier retains its historical 347-file cut; it is not the current source inventory.
 
-- [Every source path and hash](inventories/source-paths.md).
-- [Machine snapshot, clean source commit and historical demo provenance](source-snapshot-manifest.json).
-- [Module/symbol/import/call navigation](code-flow/05-module-symbol-index.md).
-- [Full AST metadata](inventories/ast-index.json).
-- [Server route occurrences](inventories/routes.md).
-- [All static test declarations](inventories/test-index.md).
-- [Locked dependencies and commands](inventories/dependencies.md).
-- [Public demo hashes/URLs](inventories/public-media.json).
+| Generated reference | Use |
+| --- | --- |
+| [Source paths](inventories/source-paths.md) | Exact current included paths, sizes and hashes. |
+| [Snapshot manifest](source-snapshot-manifest.json) | Captured source identity and projection treatment. |
+| [Module/symbol/import navigation](code-flow/05-module-symbol-index.md) | Navigable source structure. |
+| [AST metadata](inventories/ast-index.json) | Parsed module/symbol/import/call metadata and current counts. |
+| [Route occurrences](inventories/routes.md) | Source occurrences; read dispatchers for effective guards. |
+| [Test index](inventories/test-index.md) | Static declarations and locations, not proof of execution. |
+| [Dependencies/commands](inventories/dependencies.md) | Lockfile resolutions and scripts. |
+| [Public media](inventories/public-media.json) | Included demo URLs, metadata and hashes. |
 
-The TypeScript parser indexed **116 modules**. The static test index contains **308 declarations across 42 files**, including subtests. These numbers are source navigation metrics, not pass counts, statement coverage or runtime reachability. Generated Worker declarations dominate symbols. Parse success does not replace typechecking, tests or security review.
+Use the generated catalogs for AST/test/file/byte quantities; no stale narrative count is substituted for their current output. Generated Worker runtime declarations and vendor dependencies receive different treatment from first-party executable code. Parse success, declaration counts and package hashes do not prove reachability or a passing suite.
 
-Source files were copied byte-for-byte from the frozen clean checkout; all are tracked and no working-tree overlay remains. The previous 346-file projection is retained in Git, with only two navigation docs changed and one public status handoff added. Local Git publication uses `source/** -text` in this checkout's private Git attributes to preserve those bytes in Git objects while leaving the projected original `.gitattributes` intact. A later clone can translate text endings according to those original attributes; the verifier permits only a line-ending-equivalent checkout whose committed source blob still matches the captured raw hash. Binary assets must match exactly.
+During the 26 October audit, the prepared complete suite passed 333/333 without skips; build/types/assets and local Worker dry run passed. F03/F04 preserve prerequisite and verifier-failure weaknesses. The package publication does not repeat those runs. See [audit operations](08-operations-quality-and-limits.md) and [REPORT](audit/2026-10-26/REPORT.md).
 
-For local review, enter `source/`, install the exact lockfile with `npm ci`, then use the documented type/build/test commands with synthetic local data. Native media tests require the declared local FFmpeg toolchain. These setup steps are optional reviewer actions; this documentary refresh did not repeat the root product suite. The product does not need private governance files to build.
+A fresh reviewer should use a disposable copy and the exact lockfile, prepare generated processor modules through the documented build, provide declared FFmpeg/font tools and a synthetic private-file fixture when reproducing affected tests. The Windows audit needed source polling. Do not copy private governance or owner data as fixtures. These prerequisites and their limits are evidence, not an instruction to execute providers or expose a development server.
 
-Excluded paths are explicitly listed in the manifest. Dependency installations, build/generated output, private inputs/governance/evidence, actual environment/secret files, account/credential stores and runtime owner data are not missing implementation. The safe blank `.dev.vars.example` and public Wrangler/site identifiers remain available for configuration review.
+Actual credentials/environment values, private inputs/governance, owner runtime stores, dependency installations and generated build outputs are excluded from the source projection. Blank example configuration and public product configuration remain reviewable. Published audit outputs are separately sanitized; their provenance/exclusions belong to the audit package.

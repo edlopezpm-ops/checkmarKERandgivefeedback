@@ -1,34 +1,18 @@
-> **Estado actualizado al 26/10/2026:** [snapshot público acotado](SNAPSHOT-2026-10-26.md) y [estado actual](CURRENT-STATE.json). El contenido histórico que sigue describe el corte del **24/10**; `source/` permanece en `3b219839` y no incluye los incrementos posteriores. La continuidad prevista es [Dossier privado](https://console.aekr.io/dossier). El aviso no acredita una importación ni acceso público al Dossier.
+# Deployment evidence boundary — 26 October 2026
 
----
+The current public **source** projection is clean commit `77bbedaccc6bc410364cef16fba1ed88b1eaf5e1`, all 368 selected product files. This source/audit publication performs **no deployment, remote migration, credential provisioning or production write**. It does not identify a freshly verified active Worker version.
 
-# Hosted assistant connection status
+The current source includes the dated [Analytics operational release](source/docs/ANALYTICS_RELEASE_2026-10-25.md) and the [Terms](source/docs/TERMS_DISPLAY_VERSION_ADDENDUM_2026-10-25.md) and [policy/rights receipts](source/docs/POLICY_RIGHTS_RELEASE_2026-10-25.md). Those receipts retain their own dates, deployed versions, configuration boundaries and qualifications. A code release recorded before later credential provisioning is historical, not proof of the current final secret-bearing Worker version. Central collection remains paused according to that source receipt; no fresh producer ACK or commercial activation is fabricated here.
 
-Current source: clean commit `3b219839086fa6e66e467c02d58df70a49f0d8f0`; all 347 projected files are tracked. The twelve former demo paths are committed with the same previously reviewed/deployed bytes; two source navigation documents change and one public status handoff is added. **The last deployed runtime remains `f9478e66f4c5798b417f7b25b462d8dd0d673295` plus those identical demo bytes**, on the Worker below. This Git/document closure performs no new deployment.
-
-The coordinator reports a fresh closure build including frontend/server types and original-logo checks PASS. Existing native engine, OAuth runtime, schema and assets are unchanged. Prior runtime test/host receipts keep their original source and execution scope.
-
-| Item | Current evidence boundary |
+| Evidence | What is established |
 | --- | --- |
-| Active Worker | `d5f43234-74b2-4c45-a850-4f1dab75620c`, 100% allocation. |
-| Release validation | Coordinator reports 28 focused OAuth/SDK/policy tests, server TypeScript, Worker dry run and independent final review PASS. |
-| Actual browser fixtures | Synthetic Edge IPv4 and IPv6 cases each reach one callback, one grant, HTTP 200 code exchange and one token; no CSP errors or external referrer. |
-| Actual owner OAuth | Returned to ChatGPT; its Connect action disappeared. |
-| Actual host discovery | Fourteen tools: six Read and eight Write. Native prepare/classify visible; `marker_delete` absent. |
-| Sanitized server aggregates | One approved client, one exchanged code, one token row, two grant rows; one grant is retained from the earlier failed return. |
-| Actual connected reads | `marker_get_profile` and `marker_search` (products, limit 1), both `isError=false`; identity present and revision/items structure valid. No owner payload published. |
-| Business writes | Not invoked. Remaining tool paths and a complete campaign remain untested. |
-| Fresh public readback | Five anonymous checks and 185 exact asset SHA matches at `2026-10-25T02:34:09Z`; generic error HTML same-origin policy and self-only CSP. This anonymous receipt does not assess owner authentication. |
-| Broader experience | Complete assistant-driven campaign, Dot/voice conversation, phone behavior and human UAT remain unverified. |
+| Current source projection | Exact current checkout bytes and complete declared product path set; manifest and staged-blob checks. |
+| Preceding 26-October audit | Prepared 333/333 local tests; frontend/server types and build; original logo; Worker dry-run; native FFmpeg/export/restart; local OAuth/MCP and explicitly synthetic dependency checks. |
+| Publication verification | Refreshed static AST/routes/tests/dependency catalogs, empty schema reconstruction, links, publication boundaries and content manifests. Product tests are not rerun for publication. |
+| External/hosted effects | UNKNOWN unless the individual dated receipt expressly proves that effect for its own version. No new live provider or current CDN readback. |
+| Historical real assistant evidence | The 24-October source handoff records ChatGPT OAuth/tool discovery and two bounded reads. Those do not establish current business writes or a complete assistant campaign. |
+| Acceptance | No new human UAT, product acceptance, security certification, legal approval or deployment authority is inferred. |
 
-The first correction made consent HTML use `Referrer-Policy: same-origin`, preserving native form Origin checks. The second permits only the validated DNS/IPv4 callback origin in consent CSP for its 303 return. Bracketed IPv6 uses an escaped meta-refresh/fallback-anchor document, with no JavaScript, `no-store`, `no-referrer` and self-only CSP. Unsafe hostname punctuation is rejected. Strict Origin validation, owner cookies, client/resource/PKCE matching and single-use consent remain enforced. JSON and return responses retain `no-referrer`.
+The [audit](audit/2026-10-26/REPORT.md) has one minor functional FAIL and five UNKNOWN capabilities; its local success is not hosted equivalence. The [pending report](PENDING-REPORT.md) preserves follow-up evidence requirements.
 
-The implementation coordinator supplied these final deployment/browser/host facts. This documentary worker did not open private account UI screenshots, chat payloads, tokens, codes, App bindings, backups or owner records; it did not invoke product tools, query production, deploy or rerun product tests. The source and review-package identities are independently checked here.
-
-Migrations 0010/0011 remain applied from the preceding release. No new migration or asset change accompanies this correction. The coordinator freshly reran five anonymous checks and the 185-asset SHA readback on the final Worker at the timestamp above. Those public checks are separate from actual owner OAuth and the two connected read operations. Prior D1 restoration/0011 rehearsal and earlier local native-media evidence retain their stated scopes.
-
-See [prioritized pending work](PENDING-REPORT.md) for actual writes/campaign, Dot/voice/phone, the unapplied original App icon and integration durability. Deliberate sole-owner eligibility remains; a future public listing would not enable generic users.
-
-The App-backed private plugin remains version 1.0.1, with read/write/produce defaults and delete unchecked. Its served CTA and historical raw-plugin identifier are authorized public noncredential configuration; private binding files remain excluded and the audience remains private. The portable 0.1.0 package is a separate developer artifact.
-
-The unsuccessful connection state is preserved in [the preceding public status](https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/e4553fa5f7f2ce960b4f65566e6a77b8fb17f66b/DEPLOYMENT-STATUS.md). Current OAuth/token/catalog and two actual read operations supersede that failure checkpoint. They do not establish universal host compatibility, successful business writes or a complete campaign. Public endpoint: [marKER MCP](https://marker.aekr.io/api/mcp).
+The former public deployment account is recoverable [at the preceding review commit](https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/b27e83c6bc7000738a3ab37fa4c3699bfa752365/DEPLOYMENT-STATUS.md). The current publication does not promote that old Worker ID to current evidence. Public availability of this code does not change the single-owner/private-plugin audience or enable social publishing.

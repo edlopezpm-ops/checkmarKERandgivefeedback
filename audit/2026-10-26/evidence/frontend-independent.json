@@ -1,0 +1,1022 @@
+{
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "time": "2026-10-26T19:18:42.303Z",
+  "baseline": "audit/2026-10-26\\snapshot",
+  "results": [
+    {
+      "id": "F-P01",
+      "property": "Every declared help step has bilingual text and valid nonempty PNG references",
+      "passed": true,
+      "guides": 15,
+      "steps": 79,
+      "imageReferences": 158,
+      "uniqueImages": 74
+    },
+    {
+      "id": "F-P02",
+      "property": "Disclosed local text simulator markers absent from rebuilt production JavaScript",
+      "passed": true,
+      "javascriptFiles": 7
+    },
+    {
+      "id": "F-P03",
+      "property": "Spanish caption file has eight ordered nonoverlapping cues spanning promised 55 seconds",
+      "passed": true,
+      "cues": [
+        {
+          "start": 0,
+          "end": 5
+        },
+        {
+          "start": 5,
+          "end": 11
+        },
+        {
+          "start": 11,
+          "end": 19
+        },
+        {
+          "start": 19,
+          "end": 28
+        },
+        {
+          "start": 28,
+          "end": 37
+        },
+        {
+          "start": 37,
+          "end": 44
+        },
+        {
+          "start": 44,
+          "end": 49
+        },
+        {
+          "start": 49,
+          "end": 55
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "path": "public/help/en/help-v2-overview-summary.png",
+      "width": 1265,
+      "height": 805,
+      "sha256": "34a327b5c3ee6cb680d222380dbfc2b5ccef224f67ab8b6b6e22465f6ad9323c"
+    },
+    {
+      "path": "public/help/es/help-v2-overview-summary.png",
+      "width": 1265,
+      "height": 827,
+      "sha256": "3960db2aa90995ea817701913a0186621e0762affc574882078efb5deb7f655f"
+    },
+    {
+      "path": "public/help/en/help-v2-overview-summary.png",
+      "width": 1265,
+      "height": 805,
+      "sha256": "34a327b5c3ee6cb680d222380dbfc2b5ccef224f67ab8b6b6e22465f6ad9323c"
+    },
+    {
+      "path": "public/help/es/help-v2-overview-summary.png",
+      "width": 1265,
+      "height": 827,
+      "sha256": "3960db2aa90995ea817701913a0186621e0762affc574882078efb5deb7f655f"
+    },
+    {
+      "path": "public/help/en/help-v2-overview-summary.png",
+      "width": 1265,
+      "height": 805,
+      "sha256": "34a327b5c3ee6cb680d222380dbfc2b5ccef224f67ab8b6b6e22465f6ad9323c"
+    },
+    {
+      "path": "public/help/es/help-v2-overview-summary.png",
+      "width": 1265,
+      "height": 827,
+      "sha256": "3960db2aa90995ea817701913a0186621e0762affc574882078efb5deb7f655f"
+    },
+    {
+      "path": "public/help/en/help-v2-overview-account.png",
+      "width": 348,
+      "height": 237,
+      "sha256": "ceb03d3194152b76c781539552709f4503bc10e21740bddd2b36490d703c1cdf"
+    },
+    {
+      "path": "public/help/es/help-v2-overview-account.png",
+      "width": 379,
+      "height": 238,
+      "sha256": "d4ca24b901b0484b2501ce20679729a89859b2403ebc382c88ba8a37a42ea6e6"
+    },
+    {
+      "path": "public/help/en/help-v2-overview-account.png",
+      "width": 348,
+      "height": 237,
+      "sha256": "ceb03d3194152b76c781539552709f4503bc10e21740bddd2b36490d703c1cdf"
+    },
+    {
+      "path": "public/help/es/help-v2-overview-account.png",
+      "width": 379,
+      "height": 238,
+      "sha256": "d4ca24b901b0484b2501ce20679729a89859b2403ebc382c88ba8a37a42ea6e6"
+    },
+    {
+      "path": "public/help/en/help-v2-products-list.png",
+      "width": 1265,
+      "height": 476,
+      "sha256": "56ff324856b4d6d0d30e6b323f5ee393e29a77da82260aa9182066e07c3de1b2"
+    },
+    {
+      "path": "public/help/es/help-v2-products-list.png",
+      "width": 1265,
+      "height": 476,
+      "sha256": "0e336684139136af12e31c7ccdea8e33e3f31a16477a12f38b8998864812a208"
+    },
+    {
+      "path": "public/help/en/help-v2-products-list.png",
+      "width": 1265,
+      "height": 476,
+      "sha256": "56ff324856b4d6d0d30e6b323f5ee393e29a77da82260aa9182066e07c3de1b2"
+    },
+    {
+      "path": "public/help/es/help-v2-products-list.png",
+      "width": 1265,
+      "height": 476,
+      "sha256": "0e336684139136af12e31c7ccdea8e33e3f31a16477a12f38b8998864812a208"
+    },
+    {
+      "path": "public/help/en/help-v2-products-list.png",
+      "width": 1265,
+      "height": 476,
+      "sha256": "56ff324856b4d6d0d30e6b323f5ee393e29a77da82260aa9182066e07c3de1b2"
+    },
+    {
+      "path": "public/help/es/help-v2-products-list.png",
+      "width": 1265,
+      "height": 476,
+      "sha256": "0e336684139136af12e31c7ccdea8e33e3f31a16477a12f38b8998864812a208"
+    },
+    {
+      "path": "public/help/en/help-v2-accounts-list.png",
+      "width": 1265,
+      "height": 452,
+      "sha256": "2ee91a859164fea91c12ac57d6f879be1f1c20baa17619415b1777f605789d90"
+    },
+    {
+      "path": "public/help/es/help-v2-accounts-list.png",
+      "width": 1265,
+      "height": 452,
+      "sha256": "b1ea14639dedd98f4a3ba28fdaae912ed68acbb9f432a137170c38141dee8f40"
+    },
+    {
+      "path": "public/help/en/help-v2-accounts-list.png",
+      "width": 1265,
+      "height": 452,
+      "sha256": "2ee91a859164fea91c12ac57d6f879be1f1c20baa17619415b1777f605789d90"
+    },
+    {
+      "path": "public/help/es/help-v2-accounts-list.png",
+      "width": 1265,
+      "height": 452,
+      "sha256": "b1ea14639dedd98f4a3ba28fdaae912ed68acbb9f432a137170c38141dee8f40"
+    },
+    {
+      "path": "public/help/en/help-v2-accounts-list.png",
+      "width": 1265,
+      "height": 452,
+      "sha256": "2ee91a859164fea91c12ac57d6f879be1f1c20baa17619415b1777f605789d90"
+    },
+    {
+      "path": "public/help/es/help-v2-accounts-list.png",
+      "width": 1265,
+      "height": 452,
+      "sha256": "b1ea14639dedd98f4a3ba28fdaae912ed68acbb9f432a137170c38141dee8f40"
+    },
+    {
+      "path": "public/help/en/help-v2-space-capture.png",
+      "width": 1265,
+      "height": 286,
+      "sha256": "95c97fbdfe3986644fa0d6aa7a1b6e55aa573da2ba62f560c7dfc8e1805f5eff"
+    },
+    {
+      "path": "public/help/es/help-v2-space-capture.png",
+      "width": 1265,
+      "height": 286,
+      "sha256": "8ec8af9127edc656590debcfc3d7af4cbb0c76ab84d2bf0a081ab0a5a5fe1f24"
+    },
+    {
+      "path": "public/help/en/help-v2-space-write.png",
+      "width": 1265,
+      "height": 1231,
+      "sha256": "1b8c6963913af26d81cb5e7c0aeee2f8c9ddd679fb1b7b05cdb1883789334f78"
+    },
+    {
+      "path": "public/help/es/help-v2-space-write.png",
+      "width": 1265,
+      "height": 1231,
+      "sha256": "6dc4737a7798f167b4acb84cb7ea24b53a4cdabe0c48e6077a151261b49c005d"
+    },
+    {
+      "path": "public/help/en/help-v2-space-capture.png",
+      "width": 1265,
+      "height": 286,
+      "sha256": "95c97fbdfe3986644fa0d6aa7a1b6e55aa573da2ba62f560c7dfc8e1805f5eff"
+    },
+    {
+      "path": "public/help/es/help-v2-space-capture.png",
+      "width": 1265,
+      "height": 286,
+      "sha256": "8ec8af9127edc656590debcfc3d7af4cbb0c76ab84d2bf0a081ab0a5a5fe1f24"
+    },
+    {
+      "path": "public/help/en/help-v2-space-library.png",
+      "width": 1265,
+      "height": 915,
+      "sha256": "046a1f630a214336e08c5eca588b0b86a917a797476ec6498b6fa2821ed43eb2"
+    },
+    {
+      "path": "public/help/es/help-v2-space-library.png",
+      "width": 1265,
+      "height": 915,
+      "sha256": "20fc966670b6f854b23d42c3ce0bae61f4ceea4fcd0196836366f45e7bbd049c"
+    },
+    {
+      "path": "public/help/en/help-v2-space-edit.png",
+      "width": 1265,
+      "height": 1312,
+      "sha256": "0f7b0e688c41023a0e63677666035dd311b704e79132288c84baa55b73b1f495"
+    },
+    {
+      "path": "public/help/es/help-v2-space-edit.png",
+      "width": 1265,
+      "height": 1312,
+      "sha256": "faf7e549f3e25c039bc98eb8d4a5fc3982c2cc1fd44f8db0ab726f5b5e3749fc"
+    },
+    {
+      "path": "public/help/en/help-v2-space-edit.png",
+      "width": 1265,
+      "height": 1312,
+      "sha256": "0f7b0e688c41023a0e63677666035dd311b704e79132288c84baa55b73b1f495"
+    },
+    {
+      "path": "public/help/es/help-v2-space-edit.png",
+      "width": 1265,
+      "height": 1312,
+      "sha256": "faf7e549f3e25c039bc98eb8d4a5fc3982c2cc1fd44f8db0ab726f5b5e3749fc"
+    },
+    {
+      "path": "public/help/en/help-v2-space-library.png",
+      "width": 1265,
+      "height": 915,
+      "sha256": "046a1f630a214336e08c5eca588b0b86a917a797476ec6498b6fa2821ed43eb2"
+    },
+    {
+      "path": "public/help/es/help-v2-space-library.png",
+      "width": 1265,
+      "height": 915,
+      "sha256": "20fc966670b6f854b23d42c3ce0bae61f4ceea4fcd0196836366f45e7bbd049c"
+    },
+    {
+      "path": "public/help/en/help-v2-space-library.png",
+      "width": 1265,
+      "height": 915,
+      "sha256": "046a1f630a214336e08c5eca588b0b86a917a797476ec6498b6fa2821ed43eb2"
+    },
+    {
+      "path": "public/help/es/help-v2-space-library.png",
+      "width": 1265,
+      "height": 915,
+      "sha256": "20fc966670b6f854b23d42c3ce0bae61f4ceea4fcd0196836366f45e7bbd049c"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-create.png",
+      "width": 1265,
+      "height": 439,
+      "sha256": "d158ee32cae4b3e10d76f91ab473cedd1598a7e9ba305680bed37b1cefcbc792"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-create.png",
+      "width": 1265,
+      "height": 439,
+      "sha256": "0867d6d0ccd5d7c31390783a89ae7e12a733d008cec04409bd52930b1d006183"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-create.png",
+      "width": 1265,
+      "height": 439,
+      "sha256": "d158ee32cae4b3e10d76f91ab473cedd1598a7e9ba305680bed37b1cefcbc792"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-create.png",
+      "width": 1265,
+      "height": 439,
+      "sha256": "0867d6d0ccd5d7c31390783a89ae7e12a733d008cec04409bd52930b1d006183"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "0e72a4032ccfdd3693981d4791b5ee5ba9dd91511f79d99615a6b2c555c6bacf"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "7e25a8349d1d873426c3362d48d1b3843df1fe7e51feab3f0d2a5c6afeccda3b"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "0e72a4032ccfdd3693981d4791b5ee5ba9dd91511f79d99615a6b2c555c6bacf"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "7e25a8349d1d873426c3362d48d1b3843df1fe7e51feab3f0d2a5c6afeccda3b"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "0e72a4032ccfdd3693981d4791b5ee5ba9dd91511f79d99615a6b2c555c6bacf"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "7e25a8349d1d873426c3362d48d1b3843df1fe7e51feab3f0d2a5c6afeccda3b"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-message.png",
+      "width": 1265,
+      "height": 765,
+      "sha256": "7bb0b48deb768657f6231e326f66d318b957a65954c602566cb9655e0734a55d"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-message.png",
+      "width": 1265,
+      "height": 765,
+      "sha256": "c5e962b045deb1852239aa3b4b73d8e74b5194eccf9db660f10a13fc9fb39c48"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-message.png",
+      "width": 1265,
+      "height": 765,
+      "sha256": "7bb0b48deb768657f6231e326f66d318b957a65954c602566cb9655e0734a55d"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-message.png",
+      "width": 1265,
+      "height": 765,
+      "sha256": "c5e962b045deb1852239aa3b4b73d8e74b5194eccf9db660f10a13fc9fb39c48"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-message.png",
+      "width": 1265,
+      "height": 765,
+      "sha256": "7bb0b48deb768657f6231e326f66d318b957a65954c602566cb9655e0734a55d"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-message.png",
+      "width": 1265,
+      "height": 765,
+      "sha256": "c5e962b045deb1852239aa3b4b73d8e74b5194eccf9db660f10a13fc9fb39c48"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-results.png",
+      "width": 1265,
+      "height": 740,
+      "sha256": "13ace27955556b361789b480342139ed7889b3a9e8c00ea1c3bdd86b408c3a69"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-results.png",
+      "width": 1265,
+      "height": 822,
+      "sha256": "f04d2e51aca3563f67fd1375c43e2cd1d9dd07718f6727e15ad8e8a91dcd1e7f"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-results.png",
+      "width": 1265,
+      "height": 740,
+      "sha256": "13ace27955556b361789b480342139ed7889b3a9e8c00ea1c3bdd86b408c3a69"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-results.png",
+      "width": 1265,
+      "height": 822,
+      "sha256": "f04d2e51aca3563f67fd1375c43e2cd1d9dd07718f6727e15ad8e8a91dcd1e7f"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-recipe-materials.png",
+      "width": 1265,
+      "height": 755,
+      "sha256": "08c41d99f17e1512bdaea0809a371ce4d0330bdcdaad8f42b8de110597653a56"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-recipe-materials.png",
+      "width": 1265,
+      "height": 755,
+      "sha256": "566f5175712b80e26b79a31f81bc6d8d9e672ceec36b214aaf3d496a089d15d9"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-recipe-message.png",
+      "width": 1265,
+      "height": 860,
+      "sha256": "4cd1db3995de3fe3b023fbc1fa4ba227e75136cd392dd66fff1c2f6698cbcff7"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-recipe-message.png",
+      "width": 1265,
+      "height": 884,
+      "sha256": "f43e5dda15cda9f05ea6178c3eeff06ce8af45056a2d97b8259df08ea2500289"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-recipe-message.png",
+      "width": 1265,
+      "height": 860,
+      "sha256": "4cd1db3995de3fe3b023fbc1fa4ba227e75136cd392dd66fff1c2f6698cbcff7"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-recipe-message.png",
+      "width": 1265,
+      "height": 884,
+      "sha256": "f43e5dda15cda9f05ea6178c3eeff06ce8af45056a2d97b8259df08ea2500289"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "ffb5fe07b90559e62a141581be9212c4c4d3a7ada692133c32d75e0d21134c3e"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "3e27bef677c60217071f283a5bc2d7bb153c53bfc27211b09ce9ae28c91f67d6"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "ffb5fe07b90559e62a141581be9212c4c4d3a7ada692133c32d75e0d21134c3e"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "3e27bef677c60217071f283a5bc2d7bb153c53bfc27211b09ce9ae28c91f67d6"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "ffb5fe07b90559e62a141581be9212c4c4d3a7ada692133c32d75e0d21134c3e"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "3e27bef677c60217071f283a5bc2d7bb153c53bfc27211b09ce9ae28c91f67d6"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "ffb5fe07b90559e62a141581be9212c4c4d3a7ada692133c32d75e0d21134c3e"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "3e27bef677c60217071f283a5bc2d7bb153c53bfc27211b09ce9ae28c91f67d6"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "0e72a4032ccfdd3693981d4791b5ee5ba9dd91511f79d99615a6b2c555c6bacf"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-plan-materials.png",
+      "width": 1265,
+      "height": 1253,
+      "sha256": "7e25a8349d1d873426c3362d48d1b3843df1fe7e51feab3f0d2a5c6afeccda3b"
+    },
+    {
+      "path": "public/help/en/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "e83eafb2c03bc8601c6c3883cb1ad66c6675abedde3492a10082226455475e56"
+    },
+    {
+      "path": "public/help/es/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "a561431165b4c95a85ee8e9fc01d50affa740846036fc7da9a3ca6e0a6866b44"
+    },
+    {
+      "path": "public/help/en/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "e83eafb2c03bc8601c6c3883cb1ad66c6675abedde3492a10082226455475e56"
+    },
+    {
+      "path": "public/help/es/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "a561431165b4c95a85ee8e9fc01d50affa740846036fc7da9a3ca6e0a6866b44"
+    },
+    {
+      "path": "public/help/en/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "e83eafb2c03bc8601c6c3883cb1ad66c6675abedde3492a10082226455475e56"
+    },
+    {
+      "path": "public/help/es/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "a561431165b4c95a85ee8e9fc01d50affa740846036fc7da9a3ca6e0a6866b44"
+    },
+    {
+      "path": "public/help/en/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "e83eafb2c03bc8601c6c3883cb1ad66c6675abedde3492a10082226455475e56"
+    },
+    {
+      "path": "public/help/es/help-v2-queue-list.png",
+      "width": 1265,
+      "height": 321,
+      "sha256": "a561431165b4c95a85ee8e9fc01d50affa740846036fc7da9a3ca6e0a6866b44"
+    },
+    {
+      "path": "public/help/en/help-v2-settings-access.png",
+      "width": 1265,
+      "height": 486,
+      "sha256": "751abcaa9043db94a1df7facbea388c75bf7572ccbc4cf8c1918fda4f758687d"
+    },
+    {
+      "path": "public/help/es/help-v2-settings-access.png",
+      "width": 1265,
+      "height": 486,
+      "sha256": "15174a1a58d7e830df23fc0fd3da99bf9bc34f7c6e9a5c5d2aa675f403429200"
+    },
+    {
+      "path": "public/help/en/help-v2-settings-access.png",
+      "width": 1265,
+      "height": 486,
+      "sha256": "751abcaa9043db94a1df7facbea388c75bf7572ccbc4cf8c1918fda4f758687d"
+    },
+    {
+      "path": "public/help/es/help-v2-settings-access.png",
+      "width": 1265,
+      "height": 486,
+      "sha256": "15174a1a58d7e830df23fc0fd3da99bf9bc34f7c6e9a5c5d2aa675f403429200"
+    },
+    {
+      "path": "public/help/en/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 628,
+      "sha256": "2d684233bd61881fa3d574130b8f291cc54802b2cafbd52227580828cda81757"
+    },
+    {
+      "path": "public/help/es/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 649,
+      "sha256": "d62c327e63c719c33dbce2139284d91e77b7032c8bb26461dad18b4a5142edc9"
+    },
+    {
+      "path": "public/help/en/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 628,
+      "sha256": "2d684233bd61881fa3d574130b8f291cc54802b2cafbd52227580828cda81757"
+    },
+    {
+      "path": "public/help/es/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 649,
+      "sha256": "d62c327e63c719c33dbce2139284d91e77b7032c8bb26461dad18b4a5142edc9"
+    },
+    {
+      "path": "public/help/en/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 628,
+      "sha256": "2d684233bd61881fa3d574130b8f291cc54802b2cafbd52227580828cda81757"
+    },
+    {
+      "path": "public/help/es/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 649,
+      "sha256": "d62c327e63c719c33dbce2139284d91e77b7032c8bb26461dad18b4a5142edc9"
+    },
+    {
+      "path": "public/help/en/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 628,
+      "sha256": "2d684233bd61881fa3d574130b8f291cc54802b2cafbd52227580828cda81757"
+    },
+    {
+      "path": "public/help/es/help-v2-settings-limits.png",
+      "width": 1265,
+      "height": 649,
+      "sha256": "d62c327e63c719c33dbce2139284d91e77b7032c8bb26461dad18b4a5142edc9"
+    },
+    {
+      "path": "public/help/en/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "db465fc6ace1501369549d29503a890b19ec8e57d1caa317f4e84fa6142a9884"
+    },
+    {
+      "path": "public/help/es/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "6855d6a3b07c0386a1a6fbd8128cd96d135bf2f553efcae9378840298c0ae6de"
+    },
+    {
+      "path": "public/help/en/product-1.png",
+      "width": 675,
+      "height": 233,
+      "sha256": "6ef2d62cceed9d92153764b74991bdc89e2ffc963822ffb5728d1c55f2739793"
+    },
+    {
+      "path": "public/help/es/product-1.png",
+      "width": 675,
+      "height": 233,
+      "sha256": "97a342fc3163b0c8ae77a349d300689bab3d415ba7070c11f256471dd2242192"
+    },
+    {
+      "path": "public/help/en/product-2.png",
+      "width": 675,
+      "height": 241,
+      "sha256": "ad60a8a6e5daf5f49b103efee2b095eb38c3ab66cab755e3fdd5677d740a2577"
+    },
+    {
+      "path": "public/help/es/product-2.png",
+      "width": 675,
+      "height": 241,
+      "sha256": "38b80b771f943a4547c59c92831a2a83f81771d2027ebecdf7cc1cb5122a2112"
+    },
+    {
+      "path": "public/help/en/product-3.png",
+      "width": 675,
+      "height": 72,
+      "sha256": "3eb956993b4f0f7a771de71937c0a05c02630dd55b378d00784534df554a1ef3"
+    },
+    {
+      "path": "public/help/es/product-3.png",
+      "width": 675,
+      "height": 72,
+      "sha256": "976dd3595cee42ea8424d62e23cf92e52c34d96f5bb30e4201bf56a6ca183a6d"
+    },
+    {
+      "path": "public/help/en/account-1.png",
+      "width": 675,
+      "height": 159,
+      "sha256": "17794e8562bd43369113c912a7b1053feb9ffbaa0837ef14ee1958869f4372bf"
+    },
+    {
+      "path": "public/help/es/account-1.png",
+      "width": 675,
+      "height": 159,
+      "sha256": "ad67cadc25c11551c902a2042ce9f7fc738e2bf72bef1d4368563acf8e33fe51"
+    },
+    {
+      "path": "public/help/en/account-2.png",
+      "width": 675,
+      "height": 182,
+      "sha256": "4c4b8c241e4955c95f602d3e10964514266ceb8c98a93b2591ef6dad5c36b6a8"
+    },
+    {
+      "path": "public/help/es/account-2.png",
+      "width": 675,
+      "height": 182,
+      "sha256": "f3a8f60a0b3511326ca4723811d0cfd79eb9fed54623a80b39bba1297d8a2914"
+    },
+    {
+      "path": "public/help/en/account-3.png",
+      "width": 675,
+      "height": 72,
+      "sha256": "7f12ccb0c134eef7abc5c0203b52991f5994a28bfd4eba27f0dd66f8b2e586e4"
+    },
+    {
+      "path": "public/help/es/account-3.png",
+      "width": 675,
+      "height": 72,
+      "sha256": "50a17762c4605e31df118267faf5d109113eff998004f102c0e629c11c55fbcb"
+    },
+    {
+      "path": "public/help/en/source-1.png",
+      "width": 675,
+      "height": 164,
+      "sha256": "02b25dffadfd242990c1e1d9d63cb0c8449a704429362f91f6f9bec2fd5fac47"
+    },
+    {
+      "path": "public/help/es/source-1.png",
+      "width": 675,
+      "height": 164,
+      "sha256": "3b7ff96e5c6043337f524e8d3d4628ef8d79606dcd43e4b1d9418457c556d743"
+    },
+    {
+      "path": "public/help/en/source-2.png",
+      "width": 675,
+      "height": 263,
+      "sha256": "a5ab465c60ab52fd2a8a624d438fb9e4398351327eb3b1526f38717e87a28bbd"
+    },
+    {
+      "path": "public/help/es/source-2.png",
+      "width": 675,
+      "height": 263,
+      "sha256": "8fc089e8ed223b5b9d35aa5a33d137e9e5c9811a104507824046bde9d8af05d2"
+    },
+    {
+      "path": "public/help/en/source-3.png",
+      "width": 675,
+      "height": 72,
+      "sha256": "eee3be046886f2d9cb47ce61883300ef7d4c44acf740dd89c79fdd9848771ae7"
+    },
+    {
+      "path": "public/help/es/source-3.png",
+      "width": 675,
+      "height": 72,
+      "sha256": "d0f2de18ca297369aa0cb3173e94cb104806484084de922e1d709f23dfbe881d"
+    },
+    {
+      "path": "public/help/en/help-v2-campaign-previous.png",
+      "width": 1265,
+      "height": 331,
+      "sha256": "7f063ae8ebaca71c3c09394c20a274bdeffe841bc31bbf35a95c52249c6e6ce3"
+    },
+    {
+      "path": "public/help/es/help-v2-campaign-previous.png",
+      "width": 1265,
+      "height": 331,
+      "sha256": "5a34262d58000923469d167e8d3fe54a583c7310ce7d51626c76f8405480d84a"
+    },
+    {
+      "path": "public/help/en/help-v2-campaign-previous.png",
+      "width": 1265,
+      "height": 331,
+      "sha256": "7f063ae8ebaca71c3c09394c20a274bdeffe841bc31bbf35a95c52249c6e6ce3"
+    },
+    {
+      "path": "public/help/es/help-v2-campaign-previous.png",
+      "width": 1265,
+      "height": 331,
+      "sha256": "5a34262d58000923469d167e8d3fe54a583c7310ce7d51626c76f8405480d84a"
+    },
+    {
+      "path": "public/help/en/help-v2-campaign-previous.png",
+      "width": 1265,
+      "height": 331,
+      "sha256": "7f063ae8ebaca71c3c09394c20a274bdeffe841bc31bbf35a95c52249c6e6ce3"
+    },
+    {
+      "path": "public/help/es/help-v2-campaign-previous.png",
+      "width": 1265,
+      "height": 331,
+      "sha256": "5a34262d58000923469d167e8d3fe54a583c7310ce7d51626c76f8405480d84a"
+    },
+    {
+      "path": "public/help/en/post-1.png",
+      "width": 675,
+      "height": 396,
+      "sha256": "eab27f2c8af7647f507bf55f3bd69fd7aa585fe0ffafef2ddeb31c33c927c189"
+    },
+    {
+      "path": "public/help/es/post-1.png",
+      "width": 675,
+      "height": 395,
+      "sha256": "1b28fc6ce0153310ade60bb41fe07cc1db3b4eab9d4b4dcf8abf570307fa1a82"
+    },
+    {
+      "path": "public/help/en/post-2.png",
+      "width": 334,
+      "height": 77,
+      "sha256": "f69fea717c60a7b1d30df8882f4c1793b9c464b14a869343da9d93b85636d977"
+    },
+    {
+      "path": "public/help/es/post-2.png",
+      "width": 334,
+      "height": 78,
+      "sha256": "3118c82d66e377aaf4846c464abc931fc85d6bfc985cd982fab9df7e718d4b16"
+    },
+    {
+      "path": "public/help/en/post-3.png",
+      "width": 675,
+      "height": 195,
+      "sha256": "f5fbd982ac3d8499e25888006b81529b6fb1588b2e0e632cdef37b8bbc26f4eb"
+    },
+    {
+      "path": "public/help/es/post-3.png",
+      "width": 675,
+      "height": 218,
+      "sha256": "efe6c82d522bef113a43f206748db3d551d1f69e6a171b9b76732295d6c8c243"
+    },
+    {
+      "path": "public/help/en/post-4.png",
+      "width": 675,
+      "height": 299,
+      "sha256": "76dcd0350cc869a642b954dd90f3129e2f9c92a306b09f67202a2094ad4f9b2c"
+    },
+    {
+      "path": "public/help/es/post-4.png",
+      "width": 675,
+      "height": 277,
+      "sha256": "e0a6952ea9dfd0ee4efb20ba6e76fcaeda05e066896ec829c08690bd8be75278"
+    },
+    {
+      "path": "public/help/en/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 627,
+      "sha256": "65ef93c8589c991010518f8e1cbb0640751896f13dbf45049786fb2794bffc78"
+    },
+    {
+      "path": "public/help/es/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 628,
+      "sha256": "f426080cf740846896e32f146a7e9a46daed607d22a218dfe2b8bd0190c1258c"
+    },
+    {
+      "path": "public/help/en/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 627,
+      "sha256": "65ef93c8589c991010518f8e1cbb0640751896f13dbf45049786fb2794bffc78"
+    },
+    {
+      "path": "public/help/es/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 628,
+      "sha256": "f426080cf740846896e32f146a7e9a46daed607d22a218dfe2b8bd0190c1258c"
+    },
+    {
+      "path": "public/help/en/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 627,
+      "sha256": "65ef93c8589c991010518f8e1cbb0640751896f13dbf45049786fb2794bffc78"
+    },
+    {
+      "path": "public/help/es/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 628,
+      "sha256": "f426080cf740846896e32f146a7e9a46daed607d22a218dfe2b8bd0190c1258c"
+    },
+    {
+      "path": "public/help/en/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 627,
+      "sha256": "65ef93c8589c991010518f8e1cbb0640751896f13dbf45049786fb2794bffc78"
+    },
+    {
+      "path": "public/help/es/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 628,
+      "sha256": "f426080cf740846896e32f146a7e9a46daed607d22a218dfe2b8bd0190c1258c"
+    },
+    {
+      "path": "public/help/en/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 627,
+      "sha256": "65ef93c8589c991010518f8e1cbb0640751896f13dbf45049786fb2794bffc78"
+    },
+    {
+      "path": "public/help/es/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 628,
+      "sha256": "f426080cf740846896e32f146a7e9a46daed607d22a218dfe2b8bd0190c1258c"
+    },
+    {
+      "path": "public/help/en/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 627,
+      "sha256": "65ef93c8589c991010518f8e1cbb0640751896f13dbf45049786fb2794bffc78"
+    },
+    {
+      "path": "public/help/es/help-v2-ambiente-controls.png",
+      "width": 367,
+      "height": 628,
+      "sha256": "f426080cf740846896e32f146a7e9a46daed607d22a218dfe2b8bd0190c1258c"
+    },
+    {
+      "path": "public/help/en/help-v2-agents-context.png",
+      "width": 426,
+      "height": 313,
+      "sha256": "3fa8e5f315c33d0a8d20530e7dcde412209f6e15d7bf9adfe085961c9dae51d0"
+    },
+    {
+      "path": "public/help/es/help-v2-agents-context.png",
+      "width": 426,
+      "height": 313,
+      "sha256": "d0faafb1b8dccab15bf65e8cae533313eba1620ae0cffbe9cdf751803508b984"
+    },
+    {
+      "path": "public/help/en/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "db465fc6ace1501369549d29503a890b19ec8e57d1caa317f4e84fa6142a9884"
+    },
+    {
+      "path": "public/help/es/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "6855d6a3b07c0386a1a6fbd8128cd96d135bf2f553efcae9378840298c0ae6de"
+    },
+    {
+      "path": "public/help/en/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "db465fc6ace1501369549d29503a890b19ec8e57d1caa317f4e84fa6142a9884"
+    },
+    {
+      "path": "public/help/es/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "6855d6a3b07c0386a1a6fbd8128cd96d135bf2f553efcae9378840298c0ae6de"
+    },
+    {
+      "path": "public/help/en/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "ffb5fe07b90559e62a141581be9212c4c4d3a7ada692133c32d75e0d21134c3e"
+    },
+    {
+      "path": "public/help/es/help-v2-campaigns-output.png",
+      "width": 1265,
+      "height": 1431,
+      "sha256": "3e27bef677c60217071f283a5bc2d7bb153c53bfc27211b09ce9ae28c91f67d6"
+    },
+    {
+      "path": "public/help/en/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "db465fc6ace1501369549d29503a890b19ec8e57d1caa317f4e84fa6142a9884"
+    },
+    {
+      "path": "public/help/es/help-v2-agents-connect.png",
+      "width": 427,
+      "height": 698,
+      "sha256": "6855d6a3b07c0386a1a6fbd8128cd96d135bf2f553efcae9378840298c0ae6de"
+    },
+    {
+      "path": "public/help/en/help-v2-profile-details.png",
+      "width": 1265,
+      "height": 310,
+      "sha256": "9b31ef88cdbf126d0bd154732605d513a27c8b06a737ddfb0dc0eccb4b2c0d98"
+    },
+    {
+      "path": "public/help/es/help-v2-profile-details.png",
+      "width": 1265,
+      "height": 310,
+      "sha256": "61fe5cbe8a011ecd996d4e7e1f187e8493520380645e85431b41c81d553af9be"
+    },
+    {
+      "path": "public/help/en/help-v2-profile-details.png",
+      "width": 1265,
+      "height": 310,
+      "sha256": "9b31ef88cdbf126d0bd154732605d513a27c8b06a737ddfb0dc0eccb4b2c0d98"
+    },
+    {
+      "path": "public/help/es/help-v2-profile-details.png",
+      "width": 1265,
+      "height": 310,
+      "sha256": "61fe5cbe8a011ecd996d4e7e1f187e8493520380645e85431b41c81d553af9be"
+    },
+    {
+      "path": "public/help/en/help-v2-profile-delete.png",
+      "width": 1265,
+      "height": 469,
+      "sha256": "039be3916d21efad2da9b237b7edff5ab6a0df94baa3da6b754936727949196a"
+    },
+    {
+      "path": "public/help/es/help-v2-profile-delete.png",
+      "width": 1265,
+      "height": 517,
+      "sha256": "073a215573a6d68f3009a4f5879b408143842a8bb566aaa9c31725495d329e4f"
+    },
+    {
+      "path": "public/help/en/help-v2-profile-delete.png",
+      "width": 1265,
+      "height": 469,
+      "sha256": "039be3916d21efad2da9b237b7edff5ab6a0df94baa3da6b754936727949196a"
+    },
+    {
+      "path": "public/help/es/help-v2-profile-delete.png",
+      "width": 1265,
+      "height": 517,
+      "sha256": "073a215573a6d68f3009a4f5879b408143842a8bb566aaa9c31725495d329e4f"
+    }
+  ],
+  "oracleCorrections": [
+    {
+      "discarded": "Literal UI button label absence as implementation-isolation oracle",
+      "reason": "Retained bilingual dictionary includes unused simulator labels; this is not an active simulation route. Replaced with executable-specific assembly/malformed-output markers plus source DEV gating. No product defect attributed."
+    }
+  ],
+  "limits": [
+    "PNG signatures/dimensions are integrity checks; semantic screenshot inspection sampled separately",
+    "Executable marker absence is auxiliary; production DEV gating was also statically reviewed",
+    "Caption file does not certify audio alignment beyond the declared intervals"
+  ]
+}

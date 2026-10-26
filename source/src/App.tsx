@@ -11,12 +11,13 @@ const Background = lazy(() => import('./decoration/Background'));
 const reviewAutoplay = import.meta.env.DEV && new URLSearchParams(location.search).get('autoplay') !== '0';
 
 export function App() {
-  const { language, t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const [authenticated, setAuthenticated] = useState(false);
   const [policy,setPolicy]=useState<PolicySection|undefined>(()=>{const value=new URLSearchParams(location.search).get('policy');return value==='terms'||value==='privacy'||value==='cookies'?value:undefined;});
   const preferencesMenu=useRef<HTMLDetailsElement>(null);
   function openPolicy(section:PolicySection){setPolicy(section);const url=new URL(location.href);url.searchParams.set('policy',section);history.replaceState(null,'',url);}
   function closePolicy(){setPolicy(undefined);const url=new URL(location.href);url.searchParams.delete('policy');history.replaceState(null,'',url);}
+  useEffect(()=>{const show=(event:Event)=>{const section=(event as CustomEvent).detail;if(section==='terms'||section==='privacy'||section==='cookies')openPolicy(section);};window.addEventListener('marker:open-policy',show);return()=>window.removeEventListener('marker:open-policy',show);},[]);
   const [dark, setDark] = useState(() => { try { return localStorage.getItem('marker-theme') === 'dark'; } catch { return false; } });
   useLayoutEffect(() => {
     const theme = dark ? 'dark' : 'light';
@@ -70,6 +71,7 @@ export function App() {
     <div className="site-header">
     <header className="app-content toolbar">
       <div id="account-controls" />
+      <button type="button" className="header-language" title={language === 'en' ? 'Switch to Spanish' : 'Cambiar a inglés'} aria-label={language === 'en' ? 'Switch to Spanish' : 'Cambiar a inglés'} onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}>{language === 'en' ? 'EN' : 'ES'}</button>
       <details className="preferences" name="toolbar-menu" ref={preferencesMenu}>
         <summary aria-label={t('Ambiente, acerca de y ayuda')}><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2v12M8 2v12M13 2v12M1 5h4M6 10h4M11 6h4" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg><span>{t('Ambiente')}</span></summary>
         <div className="preferences-panel">
@@ -78,7 +80,6 @@ export function App() {
           <h3>{t('Ambiente')}</h3>
           <EnvironmentSettings preferences={preferences} idPrefix="quick-environment" showCache={authenticated} />
           {authenticated && <Help topic="all" label={language === 'en' ? 'help section' : 'sección de ayuda'} />}
-          {authenticated && <PolicyLinks onOpen={openPolicy} variant="environment" />}
         </div>
       </details>
     </header>
@@ -108,6 +109,6 @@ export function App() {
     </div>
     <Console onAccessChange={changeAccess} environment={<EnvironmentSettings preferences={preferences} idPrefix="settings-environment" showCache={authenticated} />} />
     {policy&&<Policies section={policy} onClose={closePolicy} onPreferences={()=>{if(preferencesMenu.current)preferencesMenu.current.open=true;}} />}
-    <div className="brand-footer"><a className="aekr-signature" href="https://aekr.io" target="_blank" rel="noopener noreferrer" aria-label={t('Built with AEKR, abre en una pestaña nueva')}><img src="/brand/aekr-mark.svg" alt="" /><span>Built with <strong>AEKR</strong></span></a>{!authenticated&&<PolicyLinks onOpen={openPolicy} variant="footer" />}</div>
+    <div className="brand-footer"><a className="aekr-signature" href="https://aekr.io" target="_blank" rel="noopener noreferrer" aria-label={t('Built with AEKR, abre en una pestaña nueva')}><img src="/brand/aekr-mark.svg" alt="" /><span>Built with <strong>AEKR</strong></span></a><PolicyLinks onOpen={openPolicy} variant="footer" /></div>
   </div>;
 }

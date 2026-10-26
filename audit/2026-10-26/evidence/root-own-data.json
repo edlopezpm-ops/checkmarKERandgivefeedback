@@ -1,0 +1,75 @@
+{
+  "format": "marker-own-data-v1",
+  "subject": {
+    "userId": "8d5b69328efbf8f92e03771cb100c306",
+    "tenantId": "3dcbb5279afd6f6deabc032f267f7488"
+  },
+  "category": "core",
+  "data": {
+    "account": {
+      "userId": "8d5b69328efbf8f92e03771cb100c306",
+      "tenantId": "3dcbb5279afd6f6deabc032f267f7488",
+      "email": "audit.owner@example.invalid"
+    },
+    "profile": {
+      "name": "Nora Águila Rivera",
+      "country": "Chile",
+      "revision": 1
+    },
+    "workspace": {
+      "version": 1,
+      "revision": 1,
+      "products": [
+        {
+          "id": "1afbb50b-9d85-42ba-a735-c1efcaca2cce",
+          "name": "Nueve ñandúes 東京 4827",
+          "description": "",
+          "audience": "",
+          "language": "",
+          "tone": "",
+          "cta": "",
+          "url": "",
+          "status": "preparation"
+        }
+      ],
+      "accounts": [],
+      "sources": [],
+      "campaigns": [],
+      "posts": []
+    },
+    "policyAcknowledgement": {
+      "terms_version": "2026-10-25.1",
+      "privacy_notice_version": "2026-10-24.1",
+      "purpose_version": "marker-service-access-v1",
+      "acknowledged_at": 1793041715
+    }
+  },
+  "next": null,
+  "completeCategory": true,
+  "categories": [
+    "core",
+    "assets",
+    "materials",
+    "campaigns",
+    "variants",
+    "renders",
+    "analyses",
+    "conversations",
+    "runs",
+    "proposals",
+    "events"
+  ],
+  "excluded": [
+    "Original media and rendered/analysis binary files",
+    "Operational settings, quotas and connection descriptors",
+    "Incomplete upload parts",
+    "Authentication, cookies, tokens, credentials and security infrastructure records",
+    "Provider logs and recovery copies",
+    "Independent local workspaces and downloaded copies"
+  ],
+  "limits": {
+    "rowsPerPage": 25,
+    "bytesPerPage": 2097152
+  },
+  "consistency": "Each page is a live database snapshot; pages do not form a frozen archive. Retry after edits or contact the operator for a coordinated export."
+}

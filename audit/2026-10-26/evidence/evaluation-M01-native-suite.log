@@ -1,0 +1,31 @@
+✔ manual editorial cycle preserves original whitespace, source references and explicit result evidence (16.8269ms)
+✔ shared account prevents equal absolute schedules across products and sources outlive one campaign (1.0049ms)
+✔ relationships reject foreign sources, incompatible accounts and destructive dependency changes (0.7542ms)
+✔ paid plans always start paused, require explicit budget/currency and cannot activate spending (0.4651ms)
+✔ readiness cannot be forged for empty/unreviewed or multimedia-only destinations (0.618ms)
+✔ invalid input never mutates the prior state or invents records (0.9474ms)
+✔ bounded API rejects non-JSON, oversized streaming payloads and cross-origin writes (16.9816ms)
+✖ concurrent local writes reject stale revisions, persist across instances and never overwrite corrupt state (7.5488ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 142.948
+
+✖ failing tests:
+
+test at tests\editorial.test.ts:314:1
+✖ concurrent local writes reject stale revisions, persist across instances and never overwrite corrupt state (7.5488ms)
+  Error: ENOTEMPTY: directory not empty, rmdir '[local-execution-path]'
+      at async rmdir (node:internal/fs/promises:825:10)
+      at async TestContext.<anonymous> (file:///[local-execution-path])
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    errno: -4051,
+    code: 'ENOTEMPTY',
+    syscall: 'rmdir',
+    path: '[local-execution-path]'
+  }

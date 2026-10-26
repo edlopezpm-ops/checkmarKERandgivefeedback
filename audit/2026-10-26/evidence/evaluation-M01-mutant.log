@@ -1,0 +1,15 @@
+node:internal/fs/promises:640
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '[local-execution-path]'
+    at async open (node:internal/fs/promises:640:25)
+    at async readFile (node:internal/fs/promises:1290:14)
+    at async file:///[local-execution-path] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '[local-execution-path]'
+}
+
+Node.js v24.18.0

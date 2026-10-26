@@ -1,0 +1,457 @@
+{
+  "source_coverage": [
+    {
+      "path": "server/worker.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          219
+        ]
+      ]
+    },
+    {
+      "path": "server/native-auth.js",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          254
+        ]
+      ]
+    },
+    {
+      "path": "server/native-auth-store.js",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          144
+        ]
+      ]
+    },
+    {
+      "path": "server/native-auth.d.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          8
+        ]
+      ]
+    },
+    {
+      "path": "server/google-auth.js",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          131
+        ]
+      ]
+    },
+    {
+      "path": "server/github-auth.js",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          91
+        ]
+      ]
+    },
+    {
+      "path": "server/tenant-auth.js",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          49
+        ]
+      ]
+    },
+    {
+      "path": "server/captcha.js",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          61
+        ]
+      ]
+    },
+    {
+      "path": "server/captcha.d.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "path": "server/profile.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          215
+        ]
+      ]
+    },
+    {
+      "path": "server/profile-local.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          30
+        ]
+      ]
+    },
+    {
+      "path": "server/privacy-data.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          67
+        ]
+      ]
+    },
+    {
+      "path": "server/policy.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          64
+        ]
+      ]
+    },
+    {
+      "path": "server/analytics.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          158
+        ]
+      ]
+    },
+    {
+      "path": "server/d1.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          24
+        ]
+      ]
+    },
+    {
+      "path": "server/demo-media.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          79
+        ]
+      ]
+    },
+    {
+      "path": "server/entry.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          11
+        ]
+      ]
+    },
+    {
+      "path": "src/core/analytics.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          21
+        ]
+      ]
+    },
+    {
+      "path": "src/core/profile.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          11
+        ]
+      ]
+    },
+    {
+      "path": "src/core/policy.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          13
+        ]
+      ]
+    },
+    {
+      "path": ".gitattributes",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          8
+        ]
+      ]
+    },
+    {
+      "path": ".gitignore",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          31
+        ]
+      ]
+    },
+    {
+      "path": ".dev.vars.example",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          23
+        ]
+      ]
+    },
+    {
+      "path": "README.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          53
+        ]
+      ]
+    },
+    {
+      "path": "PROJECT_MAP.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          49
+        ]
+      ]
+    },
+    {
+      "path": "index.html",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "path": "package.json",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          29
+        ]
+      ]
+    },
+    {
+      "path": "tsconfig.json",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          8
+        ]
+      ]
+    },
+    {
+      "path": "tsconfig.server.json",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          171
+        ]
+      ]
+    },
+    {
+      "path": "wrangler.jsonc",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          21
+        ]
+      ]
+    },
+    {
+      "path": "migrations-d1/0001_private.sql",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          26
+        ]
+      ]
+    },
+    {
+      "path": "migrations-d1/0007_single_tenant_auth.sql",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          39
+        ]
+      ]
+    },
+    {
+      "path": "migrations-d1/0008_github_auth.sql",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          24
+        ]
+      ]
+    },
+    {
+      "path": "migrations-d1/0009_profile_account.sql",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          187
+        ]
+      ]
+    },
+    {
+      "path": "migrations-d1/0011_mcp_connections.sql",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          15
+        ]
+      ]
+    },
+    {
+      "path": "migrations-d1/0012_policy_acknowledgements.sql",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          12
+        ]
+      ]
+    },
+    {
+      "path": "migrations-d1/0013_analytics_subject.sql",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          9
+        ]
+      ]
+    },
+    {
+      "path": "docs/authentication.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          173
+        ]
+      ]
+    },
+    {
+      "path": "docs/profile-and-data.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          68
+        ]
+      ]
+    },
+    {
+      "path": "docs/analytics-integration.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          143
+        ]
+      ]
+    },
+    {
+      "path": "docs/current-status-2026-10-24.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          70
+        ]
+      ]
+    },
+    {
+      "path": "docs/console.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          39
+        ]
+      ]
+    },
+    {
+      "path": "docs/hosted-studio.md",
+      "mode": "full_semantic_review",
+      "ranges": [
+        [
+          1,
+          43
+        ]
+      ]
+    }
+  ],
+  "partial": [
+    {
+      "path": "worker-configuration.d.ts",
+      "ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "reason": "Generated platform bindings inspected; vendor runtime declarations not semantically reviewed."
+    }
+  ],
+  "operations": "Root read full listed authored files; other source assigned to agents; source grep is not credited full."
+}

@@ -1,6 +1,6 @@
 # D1 application schema
 
-36 tables; 201 columns; 14 explicit indexes; 71 triggers. Applied to an empty in-memory SQLite database and replayed from schema-only DDL. No runtime database or owner records were read. This does not establish remote migration state.
+38 tables; 211 columns; 14 explicit indexes; 72 triggers. Applied to an empty in-memory SQLite database and replayed from schema-only DDL. No runtime database or owner records were read. This does not establish remote migration state.
 
 [SQL](d1-schema.sql) · [Catalog](d1-catalog.json)
 
@@ -13,6 +13,7 @@
 | marker_agent_proposals | 5 | 0 | 2 |
 | marker_agent_runs | 5 | 0 | 3 |
 | marker_agent_sessions | 5 | 0 | 1 |
+| marker_analytics_subject | 3 | 0 | 0 |
 | marker_auth_challenges | 7 | 0 | 1 |
 | marker_auth_identities | 5 | 2 | 2 |
 | marker_auth_limits | 5 | 0 | 1 |
@@ -29,6 +30,7 @@
 | marker_mcp_login_requests | 5 | 1 | 1 |
 | marker_mcp_requests | 7 | 3 | 1 |
 | marker_mcp_tokens | 7 | 2 | 3 |
+| marker_policy_acknowledgements | 7 | 2 | 1 |
 | marker_profile | 5 | 0 | 0 |
 | marker_studio_analysis | 13 | 1 | 4 |
 | marker_studio_assets | 6 | 0 | 3 |
@@ -56,6 +58,8 @@
 - [migrations-d1/0009_profile_account.sql](../source/migrations-d1/0009_profile_account.sql)
 - [migrations-d1/0010_mcp.sql](../source/migrations-d1/0010_mcp.sql)
 - [migrations-d1/0011_mcp_connections.sql](../source/migrations-d1/0011_mcp_connections.sql)
+- [migrations-d1/0012_policy_acknowledgements.sql](../source/migrations-d1/0012_policy_acknowledgements.sql)
+- [migrations-d1/0013_analytics_subject.sql](../source/migrations-d1/0013_analytics_subject.sql)
 
 ## marker_account_lifecycle
 
@@ -163,6 +167,22 @@ CREATE TABLE marker_agent_runs(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DE
 
 ```sql
 CREATE TABLE marker_agent_sessions(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'open', updated_at TEXT NOT NULL, document TEXT NOT NULL CHECK(json_valid(document)));
+```
+
+## marker_analytics_subject
+
+| Column | Type | Not null | Default | PK |
+| --- | --- | --- | --- | --- |
+| id | INTEGER | False | None | 1 |
+| subject_ref | TEXT | True | None | 0 |
+| delete_receipt_id | TEXT | False | None | 0 |
+
+```sql
+CREATE TABLE marker_analytics_subject (
+  id INTEGER PRIMARY KEY CHECK(id=1),
+  subject_ref TEXT NOT NULL CHECK(length(subject_ref)=64),
+  delete_receipt_id TEXT CHECK(delete_receipt_id IS NULL OR length(delete_receipt_id)<=96)
+);
 ```
 
 ## marker_auth_challenges
@@ -539,6 +559,36 @@ CREATE TABLE marker_mcp_tokens (
 | client_id | marker_mcp_clients | client_id | CASCADE |
 | grant_id | marker_mcp_grants | grant_id | CASCADE |
 
+## marker_policy_acknowledgements
+
+| Column | Type | Not null | Default | PK |
+| --- | --- | --- | --- | --- |
+| user_id | TEXT | True | None | 1 |
+| tenant_id | TEXT | True | None | 2 |
+| terms_version | TEXT | True | None | 0 |
+| privacy_notice_version | TEXT | True | None | 0 |
+| cookies_notice_version | TEXT | True | None | 0 |
+| purpose_version | TEXT | True | None | 0 |
+| acknowledged_at | INTEGER | True | None | 0 |
+
+```sql
+CREATE TABLE marker_policy_acknowledgements (
+  user_id TEXT NOT NULL REFERENCES marker_auth_operator(user_id) ON DELETE CASCADE,
+  tenant_id TEXT NOT NULL REFERENCES marker_auth_operator(tenant_id) ON DELETE CASCADE,
+  terms_version TEXT NOT NULL,
+  privacy_notice_version TEXT NOT NULL,
+  cookies_notice_version TEXT NOT NULL,
+  purpose_version TEXT NOT NULL,
+  acknowledged_at INTEGER NOT NULL,
+  PRIMARY KEY(user_id,tenant_id)
+) WITHOUT ROWID;
+```
+
+| From | Table | To | On delete |
+| --- | --- | --- | --- |
+| tenant_id | marker_auth_operator | tenant_id | CASCADE |
+| user_id | marker_auth_operator | user_id | CASCADE |
+
 ## marker_profile
 
 | Column | Type | Not null | Default | PK |
@@ -833,6 +883,7 @@ CREATE TABLE marker_workspace (id INTEGER PRIMARY KEY CHECK(id = 1), revision IN
 | marker_agent_runs_account_update | marker_agent_runs |
 | marker_agent_sessions_account_insert | marker_agent_sessions |
 | marker_agent_sessions_account_update | marker_agent_sessions |
+| marker_analytics_subject_account_insert | marker_analytics_subject |
 | marker_auth_challenges_account_insert | marker_auth_challenges |
 | marker_auth_challenges_account_update | marker_auth_challenges |
 | marker_auth_identities_account_insert | marker_auth_identities |

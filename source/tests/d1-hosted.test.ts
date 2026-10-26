@@ -1,3 +1,4 @@
+import { servicePolicyAcknowledgement } from '../src/core/policy.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
@@ -8,7 +9,7 @@ import { applyCommand, emptyWorkspace } from '../src/core/domain.ts';
 
 function database(t, studio = false) {
   const sql = new DatabaseSync(':memory:');
-  for (const name of ['0001_private.sql','0002_studio.sql','0003_studio_hosted.sql','0004_studio_analysis.sql','0005_studio_settings.sql','0006_agents.sql','0007_single_tenant_auth.sql','0008_github_auth.sql','0009_profile_account.sql']) sql.exec(readFileSync(new URL('../migrations-d1/' + name, import.meta.url), 'utf8'));
+  for (const name of ['0001_private.sql','0002_studio.sql','0003_studio_hosted.sql','0004_studio_analysis.sql','0005_studio_settings.sql','0006_agents.sql','0007_single_tenant_auth.sql','0008_github_auth.sql','0009_profile_account.sql','0012_policy_acknowledgements.sql']) sql.exec(readFileSync(new URL('../migrations-d1/' + name, import.meta.url), 'utf8'));
   t.after(() => sql.close());
   const db = {
     prepare(text) {
@@ -74,6 +75,7 @@ test('native auth plus data API completes owner login/write/logout and denies no
   assert.equal(owner.user.tenant_id,owner.tenant_id);
   assert.deepEqual((await (await call('/api/session',undefined,session)).json()).user,owner.user);
   assert.equal(owner.methods.email.configured,true); assert.equal(owner.methods.google.configured,false);
+  assert.equal((await call('/api/policy',servicePolicyAcknowledgement(),session)).status,200);
   const write=await call('/api/commands',{revision:0,type:'product.save',data:{name:'Owner fixture',status:'preparation'}},session);
   assert.equal(write.status,200);assert.equal((await write.json()).products.length,1);
   assert.equal((await call('/api/workspace',undefined,session,{'X-Tenant-ID':'foreign-tenant'})).status,403);

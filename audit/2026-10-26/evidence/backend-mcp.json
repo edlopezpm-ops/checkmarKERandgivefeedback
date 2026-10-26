@@ -1,0 +1,25 @@
+{
+  "scope": "Local protocol/SQLite/native product tools, synthetic owner and OAuth credentials. No real assistant host, hosted OAuth or inference claimed.",
+  "checks": [
+    {
+      "name": "C08 real local OAuth DCR+PKCE+explicit consent+token exchange exposes 14 non-delete tools",
+      "status": "PASS"
+    },
+    {
+      "name": "C08 tool traverses native backend to durable product; replay preserves one effect; changed arguments reject same operation ID",
+      "status": "PASS"
+    },
+    {
+      "name": "C08 missing delete scope returns explicit auth challenge and leaves durable product unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "C08 new MCP/Studio instances preserve identity, grant and effect receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "C08 revoked access token loses authorization while product remains in ordinary custody",
+      "status": "PASS"
+    }
+  ]
+}

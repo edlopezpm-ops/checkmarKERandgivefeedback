@@ -8,6 +8,7 @@ export type OAuthMethod = { configured: boolean; bound: boolean; canLink: boolea
 export type AuthSession = {
   mode: "local" | "hosted";
   authenticated: boolean;
+  policy?: { required: boolean };
   configured?: boolean;
   authFlow?: "code";
   auth_method?: "email" | OAuthProvider;

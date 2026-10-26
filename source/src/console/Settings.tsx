@@ -5,6 +5,7 @@ import type { StudioSettings, StudioSettingsResponse, StudioSettingsValues } fro
 import { useLanguage } from "../i18n";
 import "./settings.css";
 import type { AgentLimits, AgentOverview } from "../core/agents";
+import AnalyticsSettings from './AnalyticsSettings';
 
 type Draft = { monthly: string; processing: string; ai: string; storage: string; duration: string };
 const draftKey = "marker-settings-draft";
@@ -93,6 +94,7 @@ export default function Settings({ environment }: { environment?: ReactNode }) {
       {!result && <button type="button" disabled={busy} onClick={() => void refresh()}>{l("Reintentar carga", "Retry loading")}</button>}
     </section>
     {import.meta.env.DEV && ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname) && <details className="surface" onToggle={event => setDeveloperOpen(event.currentTarget.open)}><summary>{l("Desarrollo · límites del bridge local", "Development · local bridge limits")}</summary><AgentSettings active={developerOpen} /></details>}
+    <AnalyticsSettings />
     {environment && <section className="surface"><h2>{l("Ambiente de este navegador", "Environment in this browser")}</h2>{environment}</section>}
   </div>;
 }

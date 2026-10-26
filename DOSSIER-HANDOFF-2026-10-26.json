@@ -1,32 +1,29 @@
 {
-  "schema": "aekr-dossier-safe-handoff/v1",
+  "schema": "aekr-dossier-safe-handoff/v2",
   "product": "marKER",
   "as_of": "2026-10-26",
-  "classification": "MINIMAL_PUBLIC_SUMMARY",
+  "classification": "EXPLICITLY_REQUESTED_FULL_PUBLIC_PRODUCT_AND_SANITIZED_AUDIT",
   "canonical_source_revision": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
-  "delivery": {
-    "date": "2026-10-25",
-    "status": "BOUNDED_TECHNICAL_DELIVERY",
-    "new_deployment_by_this_update": false,
-    "product_checks_rerun_by_this_update": false
-  },
-  "public_observation": {
-    "date": "2026-10-26",
-    "reported_by": "Coordinator",
-    "scope": "Public landing,brand,single-owner workspace presentation,access options and policy links",
-    "authenticated_session_exercised": false
-  },
-  "historical_source_date": "2026-10-24",
   "public_snapshot": "https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/main/SNAPSHOT-2026-10-26.md",
-  "limits": [
-    "Public observation does not establish private workflow behavior",
-    "No human UAT,product acceptance,legal approval,security certification or100-percent readiness claimed"
-  ],
+  "public_review_state": "CURRENT-STATE.json",
+  "public_audit_report": "audit/2026-10-26/REPORT.md",
+  "full_product_source": "source/",
+  "private_strategy_or_governance_included": false,
+  "credentials_or_owner_stores_included": false,
+  "deployment_or_product_acceptance_implied": false,
   "continuity": {
     "url": "https://console.aekr.io/dossier",
     "visibility": "PRIVATE_OWNER",
-    "purpose": "Detailed readiness,evidence,strategy and future work",
-    "import_verified_by_this_update": false
+    "import_verified_by_this_update": false,
+    "scope": "Private strategy and operational follow-up remain separate from this explicitly requested public source/audit projection"
   },
-  "detailed_internal_evidence_included": false
+  "audit_verdict": "FAIL",
+  "failing_capability": "C12_MINOR_LANGUAGE_CONFLICT",
+  "unknown_capabilities": [
+    "C05",
+    "C06",
+    "C07",
+    "C09",
+    "C11"
+  ]
 }

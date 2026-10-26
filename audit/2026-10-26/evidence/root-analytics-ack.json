@@ -1,0 +1,186 @@
+{
+  "scope": "dependency fault injection, explicit synthetic transport, no central service accessed",
+  "contract": "docs/analytics-integration.md lines43+ POST ack confirms locally applied version; failed acknowledgement must stay unconfirmed",
+  "result": "CANDIDATE_REQUIRES_CONTRACT_REFUTATION",
+  "responses": [
+    {
+      "ack_response": {
+        "acknowledged": true
+      },
+      "status": 200,
+      "observed": {
+        "console_url": "https://aekr.io/analytics",
+        "source_id": "marker-owner-production",
+        "status": "active",
+        "desired_version": 31,
+        "applied_version": 31,
+        "configuration": {
+          "schema_version": 1,
+          "source_id": "marker-owner-production",
+          "product": "marker",
+          "environment": "production",
+          "version": 31,
+          "issued_at": "2026-10-26T19:10:04.156Z",
+          "expires_at": "2026-10-26T19:14:04.156Z",
+          "enabled": true,
+          "events": [
+            "commercial_interest_selected"
+          ],
+          "fields": [
+            "category"
+          ],
+          "purposes": [
+            "onsite_personalized_ads"
+          ],
+          "retention_days": 7,
+          "destinations": [],
+          "restriction_reason": null
+        }
+      },
+      "calls": [
+        {
+          "path": "/api/collection/config",
+          "method": "GET"
+        },
+        {
+          "path": "/api/collection/ack",
+          "method": "POST"
+        }
+      ]
+    },
+    {
+      "ack_response": {
+        "acknowledged": false
+      },
+      "status": 200,
+      "observed": {
+        "console_url": "https://aekr.io/analytics",
+        "source_id": "marker-owner-production",
+        "status": "active",
+        "desired_version": 31,
+        "applied_version": 31,
+        "configuration": {
+          "schema_version": 1,
+          "source_id": "marker-owner-production",
+          "product": "marker",
+          "environment": "production",
+          "version": 31,
+          "issued_at": "2026-10-26T19:10:04.156Z",
+          "expires_at": "2026-10-26T19:14:04.156Z",
+          "enabled": true,
+          "events": [
+            "commercial_interest_selected"
+          ],
+          "fields": [
+            "category"
+          ],
+          "purposes": [
+            "onsite_personalized_ads"
+          ],
+          "retention_days": 7,
+          "destinations": [],
+          "restriction_reason": null
+        }
+      },
+      "calls": [
+        {
+          "path": "/api/collection/config",
+          "method": "GET"
+        },
+        {
+          "path": "/api/collection/ack",
+          "method": "POST"
+        }
+      ]
+    },
+    {
+      "ack_response": {
+        "acknowledged": true,
+        "source_configuration_version": 30
+      },
+      "status": 200,
+      "observed": {
+        "console_url": "https://aekr.io/analytics",
+        "source_id": "marker-owner-production",
+        "status": "active",
+        "desired_version": 31,
+        "applied_version": 31,
+        "configuration": {
+          "schema_version": 1,
+          "source_id": "marker-owner-production",
+          "product": "marker",
+          "environment": "production",
+          "version": 31,
+          "issued_at": "2026-10-26T19:10:04.156Z",
+          "expires_at": "2026-10-26T19:14:04.156Z",
+          "enabled": true,
+          "events": [
+            "commercial_interest_selected"
+          ],
+          "fields": [
+            "category"
+          ],
+          "purposes": [
+            "onsite_personalized_ads"
+          ],
+          "retention_days": 7,
+          "destinations": [],
+          "restriction_reason": null
+        }
+      },
+      "calls": [
+        {
+          "path": "/api/collection/config",
+          "method": "GET"
+        },
+        {
+          "path": "/api/collection/ack",
+          "method": "POST"
+        }
+      ]
+    },
+    {
+      "ack_response": {},
+      "status": 200,
+      "observed": {
+        "console_url": "https://aekr.io/analytics",
+        "source_id": "marker-owner-production",
+        "status": "active",
+        "desired_version": 31,
+        "applied_version": 31,
+        "configuration": {
+          "schema_version": 1,
+          "source_id": "marker-owner-production",
+          "product": "marker",
+          "environment": "production",
+          "version": 31,
+          "issued_at": "2026-10-26T19:10:04.156Z",
+          "expires_at": "2026-10-26T19:14:04.156Z",
+          "enabled": true,
+          "events": [
+            "commercial_interest_selected"
+          ],
+          "fields": [
+            "category"
+          ],
+          "purposes": [
+            "onsite_personalized_ads"
+          ],
+          "retention_days": 7,
+          "destinations": [],
+          "restriction_reason": null
+        }
+      },
+      "calls": [
+        {
+          "path": "/api/collection/config",
+          "method": "GET"
+        },
+        {
+          "path": "/api/collection/ack",
+          "method": "POST"
+        }
+      ]
+    }
+  ]
+}

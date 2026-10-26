@@ -1,0 +1,19 @@
+npm notice run marker@0.1.0 npx
+npm notice run playwright-cli -s=marker-audit-frontend eval async () => { const actual = {lang: document.documentElement.lang, width: innerWidth, scrollWidth: document.documentElement.scrollWidth, product: document.querySelector("select[name=productId]")?.selectedOptions[0]?.textContent, draft: document.querySelector("input[name=title]")?.value, caches: await caches.keys(), guide: document.querySelector(".help-dialog h3")?.textContent, image: document.querySelector(".help-screenshot img")?.getAttribute("src"), imageLoaded: !!document.querySelector(".help-screenshot img")?.naturalWidth }; if (actual.lang !== "es" || actual.width !== 390 || actual.scrollWidth > actual.width || actual.caches.length || !actual.imageLoaded || actual.draft !== "AUDIT CAMPAIGN UI STALE") throw Error(JSON.stringify(actual)); return actual; }
+### Result
+{
+  "lang": "es",
+  "width": 390,
+  "scrollWidth": 375,
+  "product": "AUDIT 20261026 FRONTEND SYNTHETIC",
+  "draft": "AUDIT CAMPAIGN UI STALE",
+  "caches": [],
+  "guide": "Crea una campaña de montaje",
+  "image": "/help/es/help-v2-campaigns-create.png",
+  "imageLoaded": true
+}
+### Ran Playwright code
+```js
+await page.evaluate('async () => { const actual = {lang: document.documentElement.lang, width: innerWidth, scrollWidth: document.documentElement.scrollWidth, product: document.querySelector("select[name=productId]")?.selectedOptions[0]?.textContent, draft: document.querySelector("input[name=title]")?.value, caches: await caches.keys(), guide: document.querySelector(".help-dialog h3")?.textContent, image: document.querySelector(".help-screenshot img")?.getAttribute("src"), imageLoaded: !!document.querySelector(".help-screenshot img")?.naturalWidth }; if (actual.lang !== "es" || actual.width !== 390 || actual.scrollWidth > actual.width || actual.caches.length || !actual.imageLoaded || actual.draft !== "AUDIT CAMPAIGN UI STALE") throw Error(JSON.stringify(actual)); return actual; }');
+```
+

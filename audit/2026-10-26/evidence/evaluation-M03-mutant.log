@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Missing expected exception: A saved unapproved draft must remain ineligible for export
+    at file:///[local-execution-path] {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: [Function (anonymous)],
+  operator: 'throws',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

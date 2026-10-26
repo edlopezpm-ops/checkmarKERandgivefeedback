@@ -20,6 +20,12 @@ def main():
     a=argparse.ArgumentParser();a.add_argument('--source',type=Path);a.add_argument('--seal',action='store_true');a.add_argument('--index',action='store_true');args=a.parse_args()
     errors=[];snapshot=json.loads((ROOT/'source-snapshot-manifest.json').read_text(encoding='utf-8'));expected={r['path']:r for r in snapshot['paths']}
     source_paths=list((ROOT/'source').rglob('*'))
+    # Do not let PRIVATE filtering hide an accidentally copied audit store.
+    for audit in (ROOT/'audit',):
+        if audit.exists():
+            for p in audit.rglob('*'):
+                rel=p.relative_to(ROOT)
+                if any(x in PRIVATE for x in rel.parts) or p.name in {'.env','.dev.vars','.app.json','credentials.json','secrets.json','auth.json'} or p.suffix.lower() in {'.pem','.key','.pfx','.sqlite','.db'}:errors.append('forbidden audit payload: '+rel.as_posix())
     for p in source_paths:
         if any(x in PRIVATE for x in p.relative_to(ROOT/'source').parts):errors.append('private/generated projection path: '+p.relative_to(ROOT).as_posix())
     actual={p.relative_to(ROOT/'source').as_posix() for p in source_paths if p.is_file() and not any(x in PRIVATE for x in p.relative_to(ROOT/'source').parts)}
@@ -59,6 +65,7 @@ def main():
         if '\0' in s:continue
         scanned+=1
         if sensitive.search(s):errors.append('credential-shaped text requires review: '+name)
+        if name.startswith('audit/') and re.search(r'[A-Za-z]:[\\/]+Users[\\/]+',s):errors.append('local user path in public audit: '+name)
         if '\ufffd' in s and not name.startswith('source/'):errors.append('replacement character: '+name)
         if p.suffix=='.md' and not name.startswith('source/'):
             for target in re.findall(r'\[[^\]\n]*\]\(([^)\s]+)\)',s):
@@ -70,7 +77,13 @@ def main():
                     match=re.fullmatch(r'L(\d+)(?:-L?(\d+))?',fragment)
                     row=expected.get(resolved.relative_to(ROOT/'source').as_posix())
                     if not match or not row or row['text_lines'] is None or not 1<=int(match[1])<=int(match[2] or match[1])<=row['text_lines']:errors.append('invalid source line link: '+name+': '+target)
-    if (ROOT/'marKER-FULL-DOSSIER.md').read_bytes()!=(ROOT/'marKER-FULL-DOSSIER-2026-10-24.md').read_bytes():errors.append('combined dossier copies differ')
+    date=snapshot.get('snapshot_date',snapshot['captured_at_utc'][:10])
+    dated=ROOT/f'marKER-FULL-DOSSIER-{date}.md'
+    if not dated.is_file() or (ROOT/'marKER-FULL-DOSSIER.md').read_bytes()!=dated.read_bytes():errors.append('current combined dossier copies differ')
+    staged=git(ROOT,'ls-files','-z').decode().split('\0')
+    for name in filter(None,staged):
+        parts=Path(name).parts
+        if any(x in PRIVATE for x in parts) or Path(name).name in {'.env','.dev.vars','.app.json','credentials.json','secrets.json','auth.json'} or Path(name).suffix.lower() in {'.pem','.key','.pfx','.sqlite','.db'}:errors.append('forbidden tracked payload: '+name)
     entries=[]
     for p in paths:
         if p.name in EXCLUDED and p.parent==ROOT:continue

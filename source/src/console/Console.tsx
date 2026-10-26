@@ -35,6 +35,7 @@ import { AuthenticationSettings, ProviderSignIn, type AuthSession, type OAuthPro
 import { Turnstile } from "./Turnstile";
 import type { ProfileResponse } from "./Profile";
 import { captureMcpResume, resumeMcpLogin } from "./mcp-resume";
+import { PolicyGate } from './PolicyGate';
 
 const TextSimulation = import.meta.env.DEV ? lazy(() => import("./TextSimulation")) : null;
 const Studio = lazy(() => import("./Studio"));
@@ -179,9 +180,9 @@ export function Console({ onAccessChange, environment }: { onAccessChange?: (aut
     setError("");
     try {
       const result = await request<NonNullable<typeof session>>("/api/session");
-      if (resumeMcpLogin(window, result.authenticated)) return;
+      if (!result.policy?.required && resumeMcpLogin(window, result.authenticated)) return;
       setSession(result);
-      if (result.authenticated) setState(await loadWorkspace());
+      if (result.authenticated && !result.policy?.required) setState(await loadWorkspace());
       else setState(undefined);
     } catch (e) {
       setError((e as Error).message);
@@ -215,7 +216,7 @@ export function Console({ onAccessChange, environment }: { onAccessChange?: (aut
     setMessage(""); setError("");
   }
   useEffect(() => {
-    if (tab !== "overview" || !session?.authenticated) return;
+    if (tab !== "overview" || !session?.authenticated || session.policy?.required) return;
     let current = true;
     setStudioSummary(undefined);
     void request<{ state: { materials: unknown[]; campaigns: unknown[]; variants: Array<{ status: string }> }; capabilities: { render: boolean } }>("/api/studio")
@@ -386,6 +387,7 @@ export function Console({ onAccessChange, environment }: { onAccessChange?: (aut
       {session.mode === "hosted" && <button type="button" className="account-signout" onClick={() => void logout()} disabled={busy}>{t("Cerrar sesión")}</button>}
     </>, accountTarget,
   ) : null;
+  if (session?.authenticated && session.policy?.required) return <>{accountMenu}{tab === 'profile' ? <section className="console app-content"><button type="button" onClick={()=>setTab('overview')}>{l('Volver a los avisos', 'Back to notices')}</button><Suspense fallback={<p>{t('Cargando…')}</p>}><Profile value={accountProfile} loadError={profileError} local={false} onReload={reloadProfile} onChange={setAccountProfile} onEmailProof={() => void logout()} onDeleting={accountDeleting} onDeleted={accountDeleted} /></Suspense></section> : <PolicyGate onComplete={refresh} onVerify={() => { setState(undefined); setCodeRequested(false); setSession(current => current && { ...current, authenticated: false }); }} />}</>;
   if (!state)
     return (
       <section className={`console app-content${agentsOpen ? " with-agents" : ""}`} aria-label={t("Consola de marKER")}>

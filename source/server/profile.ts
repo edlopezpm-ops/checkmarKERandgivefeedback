@@ -2,6 +2,7 @@ import { json, readJson } from './api.ts';
 import { DomainError, object } from '../src/core/domain.ts';
 import { ownerSession, type OwnerPrincipal } from './native-auth.js';
 import { deriveProfileInitials } from '../src/core/profile.ts';
+import { deleteAnalyticsSubject } from './analytics.ts';
 
 type LifecycleStatus = 'active' | 'deleting' | 'deleted';
 type Phase = 'active' | 'processor' | 'waiting' | 'uploads' | 'media' | 'database' | 'done';
@@ -10,7 +11,7 @@ type ProfileEnvironment = Pick<Env, 'DB' | 'MARKER_AUTH_SECRET' | 'MARKER_ORIGIN
 const CAPABILITY_COOKIE = '__Host-marker_deletion';
 const TOKEN = /^[A-Za-z0-9_-]{43}$/;
 const encoder = new TextEncoder();
-const PURGE_TABLES = ['marker_agent_events', 'marker_agent_proposals', 'marker_agent_runs', 'marker_agent_sessions', 'marker_agent_connections', 'marker_agent_meta', 'marker_studio_jobs', 'marker_studio_variants', 'marker_studio_campaigns', 'marker_studio_analysis', 'marker_studio_materials', 'marker_studio_assets', 'marker_studio_uploads', 'marker_studio_compute', 'marker_studio_settings', 'marker_studio_limits', 'marker_studio_meta', 'marker_workspace', 'marker_profile', 'marker_auth_oauth_flows', 'marker_auth_identities', 'marker_auth_principals', 'marker_auth_sessions', 'marker_auth_challenges', 'marker_auth_oauth_limits', 'marker_auth_limits', 'marker_auth_operator'] as const;
+const PURGE_TABLES = ['marker_policy_acknowledgements', 'marker_agent_events', 'marker_agent_proposals', 'marker_agent_runs', 'marker_agent_sessions', 'marker_agent_connections', 'marker_agent_meta', 'marker_studio_jobs', 'marker_studio_variants', 'marker_studio_campaigns', 'marker_studio_analysis', 'marker_studio_materials', 'marker_studio_assets', 'marker_studio_uploads', 'marker_studio_compute', 'marker_studio_settings', 'marker_studio_limits', 'marker_studio_meta', 'marker_workspace', 'marker_profile', 'marker_auth_oauth_flows', 'marker_auth_identities', 'marker_auth_principals', 'marker_auth_sessions', 'marker_auth_challenges', 'marker_auth_oauth_limits', 'marker_auth_limits', 'marker_auth_operator'] as const;
 
 async function lifecycle(env: Pick<Env, 'DB'>): Promise<LifecycleRow> {
   try {
@@ -155,6 +156,7 @@ export async function advanceAccountDeletion(env: ProfileEnvironment): Promise<L
   try {
     const current = await lifecycle(env);
     if (current.phase === 'processor') {
+      await deleteAnalyticsSubject(env.DB, Reflect.get(env, 'MARKER_ANALYTICS_TOKEN'));
       await env.STUDIO_PROCESSOR.getByName('owner').stopForAccountDeletion();
       await setPhase('waiting');
     } else if (current.phase === 'waiting') {
@@ -195,7 +197,8 @@ export async function advanceAccountDeletion(env: ProfileEnvironment): Promise<L
         const mcpOrder = ['marker_mcp_effects', 'marker_mcp_tokens', 'marker_mcp_codes', 'marker_mcp_requests', 'marker_mcp_grants', 'marker_mcp_clients', 'marker_mcp_limits'];
         const present = await env.DB.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'marker_mcp_%'").all<{ name: string }>();
         if (!present.success) throw new Error('storage unavailable');
-        const tables = [...mcpOrder.filter(table => present.results.some(row => row.name === table)), ...PURGE_TABLES];
+        const analyticsTable = await env.DB.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='marker_analytics_subject'").first();
+        const tables = [...(analyticsTable ? ['marker_analytics_subject'] : []), ...mcpOrder.filter(table => present.results.some(row => row.name === table)), ...PURGE_TABLES];
         const statements = tables.map(table => env.DB.prepare(`DELETE FROM ${table} WHERE EXISTS(SELECT 1 FROM marker_account_lifecycle WHERE id=1 AND lease_token=? AND status='deleting' AND phase='database')`).bind(lease));
         statements.push(env.DB.prepare("UPDATE marker_account_lifecycle SET status='deleted',phase='done',capability_hash=NULL,lease_token=NULL,lease_until=0,needs_retry=0 WHERE id=1 AND lease_token=? AND status='deleting' AND phase='database'").bind(lease));
         const results = await env.DB.batch(statements);

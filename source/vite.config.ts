@@ -13,6 +13,7 @@ import { createLocalAgentStore } from "./server/agents-local.ts";
 import { createLocalProfileApi } from "./server/profile-local.ts";
 import { createLocalMcpApi } from "./server/mcp-local.ts";
 import { isMcpRequest } from "./server/mcp.ts";
+import { analyticsApi } from './server/analytics.ts';
 
 // Rejecting a bounded body must leave the HTTP socket usable for its error response.
 function incomingBody(req: IncomingMessage): ReadableStream<Uint8Array> {
@@ -128,6 +129,7 @@ function localEditorial(): Plugin {
           const response =
             req.url === "/api/session"
               ? json({ mode: "local", authenticated: true })
+              : new URL(request.url).pathname.startsWith('/api/analytics') ? await analyticsApi(request, { userId: 'local-owner', tenantId: 'local-owner' }, { subjectSecret: '' })
               : (isMcpRequest(new URL(request.url).pathname) ? await mcp.handle(request) : null) ?? await profile.handle(request) ?? await agents.handle(request) ?? await studio.handle(request, await repository.read()) ?? await editorialApi(request, repository);
           res.writeHead(response.status, Object.fromEntries(response.headers));
           if (response.body) Readable.fromWeb(response.body as import("node:stream/web").ReadableStream).pipe(res);

@@ -1,0 +1,23 @@
+{
+  "operator": "Replace atomic publish rename with success no-op in disposable copy",
+  "file": "server/local.ts",
+  "verifier": "Fresh repository read compared against independently constructed expected state",
+  "scope": "Only audit copy changed; evaluated snapshot unchanged",
+  "results": [
+    {
+      "phase": "baseline",
+      "outcome": "PASS"
+    },
+    {
+      "phase": "omit-write",
+      "outcome": "DETECTED",
+      "errorCode": "ERR_ASSERTION",
+      "message": "New repository state differs from the independently supplied product/revision."
+    },
+    {
+      "phase": "restoration",
+      "outcome": "PASS",
+      "sha256": "68daf1ad3dea0cadb08f093617117f7b6561040e2d7c9a55be3d21ad32fcee47"
+    }
+  ]
+}

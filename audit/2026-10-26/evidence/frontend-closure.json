@@ -1,0 +1,13 @@
+{
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "sourceGitStatus": "clean",
+  "frozenMatrixSha256": "e3c2d049d6fd7c65009c66fb9d95ce457991da06a2ebdd53c58455146d181176",
+  "browserSession": "marker-audit-frontend",
+  "browserClosed": true,
+  "viteSession": 27710,
+  "viteStopped": true,
+  "port5199ListeningAfterStop": false,
+  "sandboxRetained": "[local-execution-path]",
+  "sandboxContents": "disposable source copy plus synthetic test records; no owner data or credentials",
+  "productEdits": []
+}

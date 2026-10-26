@@ -1,0 +1,266 @@
+{
+  "role": "backend_behavior",
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "outcome": "DONE_WITH_CONCERNS",
+  "deliveryState": "STATIC_REVIEW_AND_INDEPENDENT_LOCAL_PROBES_COMPLETE",
+  "productState": "NATIVE_HTTP_MEDIA_AND_LOCAL_MCP_VERIFIED_WITHIN_EXPLICIT_CASES; HOSTED_DEPENDENCIES_SIMULATED",
+  "gateAuthorityState": "AUDIT_ONLY; NO_PRODUCT_REPAIR; NO_DEPLOYMENT; NO_EXTERNAL_WRITE; NO_HUMAN_ACCEPTANCE",
+  "context": {
+    "client": "Codex desktop native subagent",
+    "model": "inherited; no override",
+    "independence": "Inherited context and same workspace; separate behavioral work and adversarial review, not OS containment or blind independent model consensus",
+    "scope": "Backend/domain Studio, Agents, MCP, local/editorial/Supabase, related migrations and portable integration package"
+  },
+  "coverage": {
+    "fullSemanticRead": [
+      "src/core/domain.ts",
+      "src/core/settings.ts",
+      "src/core/client.ts",
+      "src/core/studio.ts",
+      "src/core/studio-planner.ts",
+      "src/core/studio-classification.ts",
+      "src/core/studio-analysis.ts",
+      "src/core/agents.ts",
+      "src/core/generation.ts",
+      "server/api.ts",
+      "server/local.ts",
+      "server/supabase.ts",
+      "server/studio-local.ts",
+      "server/studio-hosted.ts",
+      "server/studio-render.ts",
+      "server/studio-analysis.ts",
+      "server/studio-processor.ts",
+      "processor/runner.mjs",
+      "server/agents.ts",
+      "server/agents-local.ts",
+      "server/agents-store.ts",
+      "server/mcp.ts",
+      "server/mcp-auth.ts",
+      "server/mcp-auth-store.ts",
+      "server/mcp-local.ts",
+      "server/mcp-tools.ts",
+      "migrations-d1/0002_studio.sql",
+      "migrations-d1/0003_studio_hosted.sql",
+      "migrations-d1/0004_studio_analysis.sql",
+      "migrations-d1/0005_studio_settings.sql",
+      "migrations-d1/0006_agents.sql",
+      "migrations-d1/0010_mcp.sql",
+      "migrations-d1/0011_mcp_connections.sql",
+      "migrations/0001_editorial.sql",
+      "integrations/chatgpt/marker/mcp.json",
+      "integrations/chatgpt/marker/plugin.json",
+      "integrations/chatgpt/marker/skills/prepare-campaign/SKILL.md",
+      "docs/console.md",
+      "docs/studio-planner.md",
+      "docs/hosted-studio.md",
+      "docs/agents.md",
+      "docs/mcp-connector.md",
+      "docs/settings.md",
+      "docs/text-simulation.md",
+      "src/core/analytics.ts"
+    ],
+    "partialSupplementalRead": [
+      {
+        "path": "tests/studio-hosted.test.ts",
+        "lines": "1-115",
+        "purpose": "Understand sandbox versus native-media boundary; suite integrity owned by evaluation agent"
+      },
+      {
+        "path": "tests/studio-native-flow.test.ts",
+        "lines": "1-90",
+        "purpose": "Existing native contract fixture; independent probe written separately"
+      },
+      {
+        "path": "tests/agents-studio.test.ts",
+        "lines": "1-65",
+        "purpose": "Trusted generation/provenance fixture"
+      },
+      {
+        "path": "server/analytics.ts",
+        "lines": "1-155",
+        "purpose": "Adversarial review of coordinator ACK candidate"
+      },
+      {
+        "path": "docs/analytics-integration.md",
+        "lines": "35-94",
+        "purpose": "ACK and expiry contract review"
+      },
+      {
+        "path": "src/console/Console.tsx",
+        "lines": "rg-selected call sites only",
+        "purpose": "Legacy UI candidate refutation; not credited as semantic frontend review"
+      }
+    ],
+    "execution": [
+      "C01 local Vite editorial API and restart",
+      "C02 local upload/classify and SHA readback",
+      "C03 local native planner and forged fingerprint rejection",
+      "C04 actual FFmpeg render/full decode/export/restart/approval invalidation",
+      "C05 real SQLite/native hosted SQL with simulated R2/processor and dependency failures",
+      "C08 actual local MCP transport/OAuth/native product writes/durable receipts/revocation",
+      "C10 local settings bounds and CAS"
+    ],
+    "notExecuted": [
+      "Real Cloudflare managed container and native hosted toolchain",
+      "Live MCP assistant host installation or consent",
+      "Real local Codex inference or hosted SIWC",
+      "Real Supabase/PostgreSQL adapter",
+      "Physical phone codecs/microphone paths",
+      "All possible source range combinations or concurrency schedules"
+    ]
+  },
+  "executions": [
+    {
+      "command": "node audit/2026-10-26/repro/backend-native.mjs",
+      "durationSeconds": 3.6499021,
+      "exitCode": 0,
+      "checksPassed": 8,
+      "requests": 36,
+      "evidence": "evidence/backend-native/result.json"
+    },
+    {
+      "command": "node --experimental-strip-types audit/2026-10-26/repro/backend-hosted.mts",
+      "durationSeconds": 0.7308352,
+      "exitCode": 0,
+      "checksPassed": 4,
+      "handlerRequests": 17,
+      "evidence": "evidence/backend-hosted/result.json"
+    },
+    {
+      "command": "node --experimental-strip-types audit/2026-10-26/repro/backend-mcp.mjs",
+      "durationSeconds": 2.1186049,
+      "exitCode": 0,
+      "checksPassed": 5,
+      "evidence": "evidence/backend-mcp.json"
+    },
+    {
+      "command": "node --experimental-strip-types audit/2026-10-26/repro/backend-negative.mjs",
+      "durationSeconds": 0.2976702,
+      "exitCode": 0,
+      "mutationOperators": 1,
+      "detected": 1,
+      "evidence": "evidence/backend-negative.json"
+    },
+    {
+      "command": "BACKEND_AUDIT_RUN=-recheck01; node repro/backend-native.mjs",
+      "durationSeconds": 3.6282282,
+      "exitCode": 0,
+      "checksPassed": 8,
+      "evidence": "evidence/backend-native-recheck01/result.json"
+    },
+    {
+      "command": "BACKEND_AUDIT_RUN=-recheck01; node --experimental-strip-types repro/backend-hosted.mts",
+      "durationSeconds": 0.7046854,
+      "exitCode": 0,
+      "checksPassed": 4,
+      "evidence": "evidence/backend-hosted-recheck01/result.json"
+    },
+    {
+      "command": "BACKEND_AUDIT_RUN=-recheck01; node --experimental-strip-types repro/backend-mcp.mjs",
+      "durationSeconds": 0.6836103,
+      "exitCode": 0,
+      "checksPassed": 5,
+      "evidence": "evidence/backend-mcp-recheck01.json"
+    },
+    {
+      "command": "BACKEND_AUDIT_RUN=-recheck01; node --experimental-strip-types repro/backend-negative.mjs",
+      "durationSeconds": 0.3243987,
+      "exitCode": 0,
+      "mutationOperators": 1,
+      "detected": 1,
+      "evidence": "evidence/backend-negative-recheck01.json"
+    }
+  ],
+  "independentEvidence": {
+    "nativeMedia": {
+      "path": "evidence/backend-native/exported.mp4",
+      "bytes": 18647,
+      "sha256": "00deda22c9ff048ba0ef3af44f4ff71ecf6a190d78d9e0bbba8de6d8fad230dd",
+      "codec": "h264",
+      "width": 1080,
+      "height": 1920,
+      "durationSeconds": 5,
+      "verification": "Independent ffprobe plus complete ffmpeg decode to null; fresh Vite process returns identical exported SHA"
+    },
+    "originalMedia": {
+      "path": "evidence/backend-native/synthetic-broll-blue.mp4",
+      "bytes": 8263,
+      "sha256": "8e6c43e3468b111a1ec8c73d6f3c933291f7a8a4e4c95db68836ec8e55206a20",
+      "verification": "Node crypto over generated bytes, compared to server metadata and independently downloaded original"
+    },
+    "hostedLedger": {
+      "path": "evidence/backend-hosted/sandbox.sqlite",
+      "credits": 25,
+      "probeCalls": 1,
+      "renderCalls": 2,
+      "scope": "5-cent probe + admitted 10-cent completed render + admitted 10-cent failed render; failed work not refunded; reservations released; fresh SQL connection verifies durable outcomes"
+    },
+    "negativeControl": {
+      "operator": "Omit atomic state publication rename but return success in a disposable copy of server/local.ts",
+      "baseline": "PASS",
+      "mutation": "DETECTED by a fresh repository read compared against independently constructed expected state",
+      "restoredSha256": "68daf1ad3dea0cadb08f093617117f7b6561040e2d7c9a55be3d21ad32fcee47",
+      "scope": "One selected operator, not a whole-program mutation score"
+    }
+  },
+  "findings": [],
+  "reviewedCandidates": [
+    {
+      "id": "BACKEND-CANDIDATE-01",
+      "description": "Concurrent upload and render admission is asymmetric",
+      "disposition": "NOT_CONFIRMED",
+      "reason": "Local and hosted both restrict to one upload and one active render; wording 'one upload/render at a time' does not unequivocally require a shared singleton across both types. Storage reservations still account for both. No invented concurrency contract."
+    },
+    {
+      "id": "CROSS-REVIEW-LEGACY-UI",
+      "description": "New legacy editorial campaign/source forms are unreachable from current Studio navigation",
+      "disposition": "DOCUMENTATION_CONTRADICTION_OR_UI_SCOPE_QUESTION",
+      "evidence": [
+        "docs/console.md:15 still describes new per-account legacy draft creation",
+        "docs/hosted-studio.md:13 explicitly identifies earlier-record sections",
+        "backend-native probe creates real legacy source/campaign/post through /api/commands"
+      ],
+      "reason": "The native Studio route can legitimately supersede new legacy creation while retaining existing legacy records. Backend is real and reachable via its API; no source demonstrates that new legacy UI creation remains mandatory. Coordinator should distinguish stale docs from removal of the principal native workflow."
+    },
+    {
+      "id": "CROSS-REVIEW-ACK",
+      "description": "200 response with acknowledged:false still displays current applied version",
+      "disposition": "CONDITIONAL_FALSE_SUCCESS_SUPPORTED",
+      "evidence": [
+        "docs/analytics-integration.md:36-37 promises desired and confirmed configuration versions",
+        "docs/analytics-integration.md:68 defines POST ack as confirmation",
+        "server/analytics.ts:98 ignores ACK result",
+        "tests/analytics.test.ts:38 normal fixture uses acknowledged:true"
+      ],
+      "reason": "An explicitly negative ACK contradicts the displayed confirmed status in the synthetic dependency case. No proof central service currently emits such a response. Empty or differently shaped payloads alone lack a documented exact response schema and should remain specification uncertainty."
+    },
+    {
+      "id": "CROSS-REVIEW-GRANT-EXPIRY",
+      "description": "isCurrentAnalyticsGrant accepts malformed/expired dates",
+      "disposition": "REFUTED",
+      "reason": "Invalid/null/empty dates and status expired return false; NaN comparison is false. Future status granted returns true as intended. GPC is a separate caller/server contract, not an implied expiry-helper responsibility."
+    }
+  ],
+  "evaluationIntegrity": {
+    "observedTampering": "No evaluator manipulation observed in assigned source. Explicit local text simulation and test-only unref for expiry timers do not alter a product-result oracle.",
+    "intentAttribution": "Not determined"
+  },
+  "limitations": [
+    "A local HTTP/native renderer pass does not establish Cloudflare deployment or actual managed native container behavior.",
+    "The hosted ledger harness uses real SQLite and native product SQL with controlled synthetic R2/processor dependencies; its synthetic cover bytes and reused local MP4 do not prove a hosted render.",
+    "Local MCP uses a synthetic local owner; its protocol, access and durable-effect checks do not prove installation in ChatGPT/Dot or a real external conversation.",
+    "Agent application and bridge source were reviewed; no provider inference was invoked in this audit.",
+    "Seventeen distinct behavioral checks passed twice after adding fresh-run suffix support. The repeats do not increase distinct contract coverage.",
+    "No confirmed backend-origin defect found within these explicit cases; this is not a guarantee of all possible behavior."
+  ],
+  "reproduction": {
+    "preconditions": "Use existing read-only snapshot and bundled tools/dependencies prepared by coordinator. Choose a new simple BACKEND_AUDIT_RUN suffix for each replay; stores are deliberately not deleted or overwritten.",
+    "powershell": [
+      "$env:BACKEND_AUDIT_RUN='-newrun02'",
+      "node audit/2026-10-26/repro/backend-native.mjs",
+      "node --experimental-strip-types audit/2026-10-26/repro/backend-hosted.mts",
+      "node --experimental-strip-types audit/2026-10-26/repro/backend-mcp.mjs",
+      "node --experimental-strip-types audit/2026-10-26/repro/backend-negative.mjs"
+    ]
+  }
+}

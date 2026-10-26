@@ -1,0 +1,124 @@
+{
+  "generated_utc": "2026-10-26T19:08:35.571Z",
+  "runner": "independent audit driver, node standard assert and SQLite, no product test hooks",
+  "duration_ms": 690.2099000000001,
+  "checks": [
+    {
+      "id": "R01-all-13-migrations-foreign-key-integrity",
+      "status": "PASS",
+      "duration_ms": 1.0550999999999249,
+      "result": {
+        "migrations": [
+          "0001_private.sql",
+          "0002_studio.sql",
+          "0003_studio_hosted.sql",
+          "0004_studio_analysis.sql",
+          "0005_studio_settings.sql",
+          "0006_agents.sql",
+          "0007_single_tenant_auth.sql",
+          "0008_github_auth.sql",
+          "0009_profile_account.sql",
+          "0010_mcp.sql",
+          "0011_mcp_connections.sql",
+          "0012_policy_acknowledgements.sql",
+          "0013_analytics_subject.sql"
+        ],
+        "foreign_key_violations": 0
+      }
+    },
+    {
+      "id": "R02-email-browser-bound-real-sqlite",
+      "status": "PASS",
+      "duration_ms": 57.90470000000005,
+      "result": {
+        "same_browser": true,
+        "replay_denied": true,
+        "identity_resolved_server_side": true
+      }
+    },
+    {
+      "id": "R03-policy-gate-and-analytics-independent",
+      "status": "PASS",
+      "duration_ms": 14.268199999999979,
+      "result": {
+        "terms_gate": true,
+        "optional_preferences_separate": true
+      }
+    },
+    {
+      "id": "R04-hosted-product-save-cas-persist-new-connection",
+      "status": "PASS",
+      "duration_ms": 18.562400000000025,
+      "result": {
+        "new_connection": true,
+        "revision": 1,
+        "unicode_preserved": true,
+        "stale_rejected": true
+      }
+    },
+    {
+      "id": "R05-profile-persistence-failure-never-success",
+      "status": "PASS",
+      "duration_ms": 18.335199999999986,
+      "result": {
+        "failure_status": 503,
+        "prior_data_preserved": true
+      }
+    },
+    {
+      "id": "R06-tenant-and-anonymous-denial",
+      "status": "PASS",
+      "duration_ms": 16.244500000000016,
+      "result": {
+        "paths": 6,
+        "anonymous_denials": 6,
+        "cross_tenant_denials": 6
+      }
+    },
+    {
+      "id": "R07-own-data-export-open-validate-records",
+      "status": "PASS",
+      "duration_ms": 8.470000000000027,
+      "result": {
+        "export_parsed": true,
+        "source_record_matched": true,
+        "no_credential_values": true
+      }
+    },
+    {
+      "id": "R08-analytics-closed-protocol-and-independent-HMAC",
+      "status": "PASS",
+      "duration_ms": 11.435200000000009,
+      "result": {
+        "transport": "synthetic only",
+        "subject_matches_independent_crypto": true,
+        "unknown_fields_denied": true,
+        "outage_explicit": true,
+        "requests": 4
+      }
+    },
+    {
+      "id": "R09-deletion-resumable-failure-freeze-and-all-table-purge",
+      "status": "PASS",
+      "duration_ms": 104.21439999999996,
+      "result": {
+        "lifecycle": {
+          "status": "deleted",
+          "phase": "done"
+        },
+        "all_product_tables_empty": 37,
+        "media_objects_remaining": 0,
+        "stopCount": 1,
+        "failure_retained_retry": true
+      }
+    }
+  ],
+  "external_attempts": 0,
+  "passed": 9,
+  "failed": 0,
+  "limits": [
+    "R2 and processor are explicit synthetic dependency transports; no real R2/Container deletion established",
+    "email is synthetic local capture; no external delivery established",
+    "Analytics central transport is synthetic; no real central execution established"
+  ]
+}

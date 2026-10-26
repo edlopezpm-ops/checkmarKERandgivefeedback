@@ -1,28 +1,26 @@
 # 09 — Review guide and open decisions
 
-Review the full source projection, not only this narrative. Preserve the independent no-agent native workflow, one retained owner/tenant, explicit rights/readiness/speech facts, original media, immutable generation/job provenance, revision conflicts, human approval of exact output and manual export. Preserve the original logo/font/license assets. Avoid rebuilding delivered functionality or adding a provider call to deterministic work.
+Read the full current `77bbedac` source, [chapter 12](12-functional-integrity-audit.md) and the [audit findings](audit/2026-10-26/FINDINGS.json). Preserve the no-agent native workflow, one retained owner/tenant, explicit source facts/rights/readiness/speech, original bytes, provenance, CAS, exact-result human approval and manual export. Preserve original logo/font/license assets.
 
 | Area | Concrete review question |
 | --- | --- |
-| Native flow | Can Space selection, recovered drafts or cached variants substitute an earlier source set or overwrite human copy? |
-| Classification | Can missing-label rules accidentally imply rights, readiness, semantic quality or speech absence? |
-| Planner | Can changed permissions, ranges/history, explicit consent or stale fingerprints bypass server recomputation? |
-| UI | Are selection, stale revisions, interrupted uploads, optional Agents and errors understandable on narrow screens and keyboard navigation? |
-| Auth/lifecycle | Can concurrent callback/session/bridge/MCP work survive account freeze, relink identity incorrectly or recreate deleted data? |
-| MCP authorization | Are PKCE/resource/client/tenant/scope checks, single-use login/resume, literal-loopback callback port matching, approved-client lifetime, refresh reuse, consent CSRF, scope-upgrade challenges, private downloads and revocation correct at every boundary? |
-| MCP effects | Can ambiguous network failure cause a duplicated mutation, stuck receipt or unsafe retry? Is reconciliation actionable? |
-| Agents | Can context drift, lease expiry, cancellation or completion replay fabricate provenance or repeat inference/effects? |
-| Processor/custody | Are deadlines, parser/protocol bounds, reservations, enqueue recovery and object finalization safe under interruption? |
-| Retention | Are applied evidence, grants, multipart leftovers and deletion exclusions truthful and operationally maintainable? |
-| Complexity | Which abstraction or duplicated boundary can be removed while preserving the mandatory behavior? |
-| Value | Which minimal workflow improvement would measurably reduce active preparation time? |
+| Confirmed F01 | Can error codes be localized in EN/ES while preserving current 409 rejection, raw saved content and unsaved drafts? |
+| Test reliability F03/F04 | Do tests declare/prepare generated modules and synthetic private fixtures? Can an ignored Range/no-write defect fail promptly with its original assertion preserved? |
+| Analytics F02 | What is the authoritative ACK response schema? Does a real central rejection leave the relay unconfirmed and disabled under the actual contract? |
+| Native planning | Can explicit selection, recovered drafts, rights/history changes or forged/stale fingerprints substitute sources or bypass server recomputation? |
+| Media/effects | Are offsets, quotas/reservations, enqueue loss, exact render reuse, leases and object finalization correct under interruption? |
+| Identity/lifecycle | Can stale callbacks, sessions, bridge/MCP work or late writes escape account freeze, relink identity or recreate deleted records? |
+| Service declarations/rights | Are versioned declarations deliberate and actor-bound? Can own-data rights be exercised without accepting new Terms or optional purposes, with honest export exclusions? |
+| Analytics privacy | Are current config/purpose/GPC/destination checks server-side? Are private Space/campaign/provider contents excluded, and rights receipts distinguished from recipient erasure? |
+| MCP | Are scope/resource/client/user/tenant checks, login-resume, callbacks, refresh reuse, replay, uncertain effects and private exports preserved? |
+| Optional Agents | Do source drift, lease/deadline/cancellation and completion replay retain truthful provenance without repeating inference or effects? |
+| UI/value | Are state/recovery/keyboard/narrow-width behavior understandable, and what measured change reduces active preparation time? |
+| Operations | What real-service, cost and restoration evidence remains unavailable? Which minimal change closes a concrete gap? |
 
-Real owner OAuth and fourteen-tool discovery are now verified after native-form referrer and callback-CSP corrections. Review browser policy, exact callback-origin construction, IPv6 return handling and retry/replay cases together; a successful SDK fixture alone did not cover the original browser failures. Two actual connected reads (profile and bounded product search) now pass. Business writes, remaining tool paths and a full assistant-driven campaign remain untested.
+The audit confirmed one minor product failure, two minor test weaknesses and no evaluator manipulation within its reviewed scope. Challenge those conclusions with reproducible evidence; consensus is not reproduction. F02 must remain suspected until its external contract is established. F05's stale editorial wording does not prove a disconnected main implementation.
 
-Follow the [prioritized pending report](PENDING-REPORT.md), including the exact original Torres del Paine and sun icon (not applied: owning App UI has no logo-edit control), private-plugin/public-submission distinction, deliberate sole-owner eligibility and bounded integration-durability followups. These are explicit gaps or future choices, not demonstrated failures.
+Open evidence includes real hosted processing/authentication/erasure, real bridge inference, central Analytics effects, an actual connected-assistant campaign and lifecycle, Dot/voice/physical-phone use, hosted analysis binary verification, a human creative/time-saved pilot, current invoices and complete recovery. Public source access does not imply public plugin availability, a wider authorized user base, hosted inference eligibility, social publication or paid activation.
 
-Open decisions include actual hosted SIWC admission; actual registered-App business writes, unexecuted tool paths and complete campaign flow and Dot/voice/phone capabilities; enabling technical analysis only after hosted binary verification; physical-device pilot; granular media retention/restore policy; and any later social publication scope. A source-level concern is not evidence that an exploit occurred; an absent test is a coverage gap rather than a demonstrated bug.
+For every issue provide severity/category, CONFIRMED/SUSPECTED/BLOCKED state, exact path/line, requirement, minimal trigger, expected/observed result, configuration, reproduction/evidence, impact, legitimate alternatives, smallest correction and independent verification. Distinguish source facts, actual local/synthetic runs, dated hosted receipts, inference and unknowns. Do not infer AI authorship, deceptive intent, exploitation or legal/security certification from style or a missing test.
 
-For every finding provide priority, exact source path/line, observed behavior, trigger or counterexample, confidence/evidence class, user impact, smallest coherent change, affected frontend/backend/schema/effect boundaries, preserved invariants, focused success/failure/concurrency tests, migration/recovery needs and any unresolved owner decision. Separate demonstrated defects, plausible risks, usability improvements and optional roadmap work. Do not claim runtime performance, provider eligibility, actual invoices, UAT or deployed behavior from static source.
-
-End with a coverage ledger: files/flows actually read, tests actually run, evidence unavailable, and findings ordered by impact. Recommendations can propose changes, but this review request itself does not authorize deployment, paid/provider calls, credential access, messages, social publication or destructive owner-data operations.
+End with file/flow coverage, tests actually executed, excluded/sampled areas, unresolved evidence and a correction sequence. Use the [review prompt](AI_ANALYSIS_PROMPT.md) and [pending priorities](PENDING-REPORT.md). Review recommendations do not authorize implementation, deployment, providers, credentials, external messages or destructive operations.

@@ -5,15 +5,18 @@ import {
   SupabaseRepository,
   type SupabaseConfig,
 } from "./supabase.ts";
-import { object } from "../src/core/domain.ts";
+import { object, DomainError } from "../src/core/domain.ts";
 import { ownerSession, describeOwnerAuth, handleOwnerAuth, purgeOwnerAuth } from './native-auth.js';
 import { authCaptchaConfiguration } from './captcha.js';
+import { policyApi, policyStatus, policyRequired } from './policy.ts';
+import { privacyDataApi } from './privacy-data.ts';
 import { D1Repository } from './d1.ts';
 import { hostedStudioApi } from './studio-hosted.ts';
 import { createAgentsApi } from './agents.ts';
 import { createD1AgentStore } from './agents-store.ts';
 import { readAccountLifecycle, profileApi, advanceAccountDeletion } from './profile.ts';
 import { createMcpApi, isMcpRequest } from './mcp.ts';
+import { analyticsApi } from './analytics.ts';
 
 const cookieName = "__Host-marker";
 const cookie = (token = "", seconds = 0) =>
@@ -123,7 +126,9 @@ export async function nativeApi(request: Request, env: Env, ctx: Pick<ExecutionC
     // The durable account tombstone precedes every owner, provider and bridge
     // route. Only same-browser cleanup recovery remains available after freeze.
     const account = await readAccountLifecycle(env);
-    if (path === '/api/profile' || path.startsWith('/api/profile/')) return profileApi(request, env);
+    if (path === '/api/profile' || path.startsWith('/api/profile/')) {
+      return profileApi(request, env);
+    }
     if (account.status !== 'active') {
       if (path === '/api/session' && request.method === 'GET') return json({ mode: 'hosted', configured: true, authenticated: false, account: { status: account.status } });
       return json({ error: account.status === 'deleted' ? 'ACCOUNT_DELETED' : 'ACCOUNT_DELETING' }, account.status === 'deleted' ? 410 : 423);
@@ -134,9 +139,11 @@ export async function nativeApi(request: Request, env: Env, ctx: Pick<ExecutionC
     return await createMcpApi({
       db: env.DB, origin: env.MARKER_ORIGIN,
       ownerSession: request => ownerSession(request, env),
+      async policyAllowed(identity) { return !(await policyStatus(env.DB, identity)).required; },
       async assertActive() { if ((await readAccountLifecycle(env)).status !== 'active') throw new Error('Account closed'); },
       async backend(internal) {
         if ((await readAccountLifecycle(env)).status !== 'active') return json({ error: 'ACCOUNT_CLOSED' }, 423);
+        if ((await policyStatus(env.DB)).required) return policyRequired(env.MARKER_ORIGIN);
         if (new URL(internal.url).pathname.startsWith('/api/studio')) {
           if (!(env.MEDIA && env.STUDIO_PROCESSOR)) return json({ error: 'STUDIO_UNAVAILABLE' }, 503);
           return await hostedStudioApi(internal, env, await repository.read()) ?? json({ error: 'NOT_FOUND' }, 404);
@@ -148,19 +155,29 @@ export async function nativeApi(request: Request, env: Env, ctx: Pick<ExecutionC
   if (path.startsWith('/api/auth/')) return handleOwnerAuth(request, env, ctx);
   // A bridge has its own revocable, narrowly scoped bearer. It never receives an
   // owner session and can only claim work and report events for its connection.
-  if (path.startsWith('/api/agents/bridge/')) return agentApi(request, env);
+  if (path.startsWith('/api/agents/bridge/')) {
+    try { if ((await policyStatus(env.DB)).required) return policyRequired(env.MARKER_ORIGIN); }
+    catch { return json({ error: 'POLICY_UNAVAILABLE' }, 503); }
+    return agentApi(request, env);
+  }
   const principal = await ownerSession(request, env);
   if (path === '/api/session' && request.method === 'GET') {
     try {
       const descriptor = await describeOwnerAuth(request, env);
-      return json({ mode: 'hosted', configured: descriptor.methods.email.configured, authenticated: !!principal, authFlow: descriptor.authFlow, methods: descriptor.methods, turnstile: authCaptchaConfiguration(env), ...(principal ? { auth_method: principal.method, tenant_id: principal.tenantId, user: { id: principal.userId, email: principal.email, tenant_id: principal.tenantId } } : {}) });
+      return json({ mode: 'hosted', configured: descriptor.methods.email.configured, authenticated: !!principal, authFlow: descriptor.authFlow, methods: descriptor.methods, turnstile: authCaptchaConfiguration(env), ...(principal ? { policy: await policyStatus(env.DB, principal), auth_method: principal.method, tenant_id: principal.tenantId, user: { id: principal.userId, email: principal.email, tenant_id: principal.tenantId } } : {}) });
     } catch { return json({ error: 'El acceso no está disponible en este momento.' }, 503); }
   }
-  if (!principal) return json({ error: 'Acceso exclusivo del propietario. Solicita un código para entrar.' }, 401);
+  if (!principal) return json({ error: path === '/api/privacy/data' || path === '/api/policy' ? 'AUTH_REQUIRED' : 'Acceso exclusivo del propietario. Solicita un código para entrar.' }, 401);
   // This deployment owns one persisted tenant. Caller input never selects its
   // workspace, media keys, processor, budgets or agent ledger.
   const requestedTenant = request.headers.get('X-Tenant-ID') ?? new URL(request.url).searchParams.get('tenant_id');
   if (requestedTenant !== null && requestedTenant !== principal.tenantId) return json({ error: 'Acceso no permitido.' }, 403);
+  try {
+    if (path === '/api/policy') return await policyApi(request, env, principal);
+    if (path === '/api/privacy/data') return await privacyDataApi(request, env, principal);
+    if (path === '/api/analytics' || path.startsWith('/api/analytics/')) return analyticsApi(request, principal, { token: Reflect.get(env, 'MARKER_ANALYTICS_TOKEN'), subjectSecret: env.MARKER_AUTH_SECRET, db: env.DB });
+    if ((await policyStatus(env.DB, principal)).required) return policyRequired(env.MARKER_ORIGIN);
+  } catch (error) { return json({ error: error instanceof DomainError ? error.message : 'POLICY_UNAVAILABLE' }, error instanceof DomainError ? error.status : 503); }
   const studioEnabled = !!(env.MEDIA && env.STUDIO_PROCESSOR);
   const repository = new D1Repository(env.DB, studioEnabled);
   if (path === '/api/agents' || path.startsWith('/api/agents/')) return agentApi(request, env);

@@ -24,6 +24,12 @@ CREATE TABLE marker_agent_runs(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DE
 
 CREATE TABLE marker_agent_sessions(id TEXT PRIMARY KEY, revision INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'open', updated_at TEXT NOT NULL, document TEXT NOT NULL CHECK(json_valid(document)));
 
+CREATE TABLE marker_analytics_subject (
+  id INTEGER PRIMARY KEY CHECK(id=1),
+  subject_ref TEXT NOT NULL CHECK(length(subject_ref)=64),
+  delete_receipt_id TEXT CHECK(delete_receipt_id IS NULL OR length(delete_receipt_id)<=96)
+);
+
 CREATE TABLE marker_auth_challenges (
   challenge_hash TEXT PRIMARY KEY CHECK (length(challenge_hash) = 64),
   owner_hash TEXT NOT NULL CHECK (length(owner_hash) = 64),
@@ -144,6 +150,17 @@ CREATE TABLE marker_mcp_tokens (
   grant_id TEXT NOT NULL REFERENCES marker_mcp_grants(grant_id) ON DELETE CASCADE,
   client_id TEXT NOT NULL REFERENCES marker_mcp_clients(client_id) ON DELETE CASCADE,
   access_expires_at INTEGER NOT NULL, refresh_expires_at INTEGER NOT NULL, consumed_by TEXT
+) WITHOUT ROWID;
+
+CREATE TABLE marker_policy_acknowledgements (
+  user_id TEXT NOT NULL REFERENCES marker_auth_operator(user_id) ON DELETE CASCADE,
+  tenant_id TEXT NOT NULL REFERENCES marker_auth_operator(tenant_id) ON DELETE CASCADE,
+  terms_version TEXT NOT NULL,
+  privacy_notice_version TEXT NOT NULL,
+  cookies_notice_version TEXT NOT NULL,
+  purpose_version TEXT NOT NULL,
+  acknowledged_at INTEGER NOT NULL,
+  PRIMARY KEY(user_id,tenant_id)
 ) WITHOUT ROWID;
 
 CREATE TABLE marker_profile (
@@ -323,6 +340,10 @@ WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed')
 BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
 
 CREATE TRIGGER marker_agent_sessions_account_update BEFORE UPDATE ON marker_agent_sessions
+WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'
+BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
+
+CREATE TRIGGER marker_analytics_subject_account_insert BEFORE INSERT ON marker_analytics_subject
 WHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'
 BEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END;
 

@@ -1,0 +1,79 @@
+{
+  "snapshot": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "generated_utc": "2026-10-26T19:25:30.752595+00:00",
+  "audit_execution": "COMPLETED_VERIFIABLE_SCOPE",
+  "outcome": "DONE_WITH_CONCERNS",
+  "areas": [
+    {
+      "id": "snapshot_inventory",
+      "state": "COMPLETE"
+    },
+    {
+      "id": "frozen_contract_matrix",
+      "state": "COMPLETE"
+    },
+    {
+      "id": "authored_source_review",
+      "state": "COMPLETE"
+    },
+    {
+      "id": "build_types_assets",
+      "state": "COMPLETE"
+    },
+    {
+      "id": "suite_and_integrity",
+      "state": "COMPLETE_WITH_WEAKNESSES"
+    },
+    {
+      "id": "native_http_media_restart",
+      "state": "COMPLETE"
+    },
+    {
+      "id": "auth_profile_privacy_sqlite",
+      "state": "COMPLETE_LOCAL_REAL_PROVIDERS_BLOCKED"
+    },
+    {
+      "id": "hosted_admission_failure",
+      "state": "COMPLETE_SYNTHETIC_DEPENDENCIES_REAL_SERVICE_BLOCKED"
+    },
+    {
+      "id": "mcp_local_oauth_effects",
+      "state": "COMPLETE_HOST_EXTERNAL_PENDING"
+    },
+    {
+      "id": "browser_language_help_decoration",
+      "state": "COMPLETE_WITH_F01"
+    },
+    {
+      "id": "demo_bytes_ffprobe_seek",
+      "state": "COMPLETE_LOCAL"
+    },
+    {
+      "id": "directed_negative_controls",
+      "state": "COMPLETE_NATIVE_TIMEOUT_RETAINED"
+    },
+    {
+      "id": "fresh_adversarial_refutation",
+      "state": "COMPLETE"
+    },
+    {
+      "id": "score_preservation_handoff",
+      "state": "COMPLETE"
+    }
+  ],
+  "planned_checklist_items": 14,
+  "completed_verifiable_items": 14,
+  "inventory_closed": true,
+  "unresolved_capabilities": [
+    "C05",
+    "C06",
+    "C07",
+    "C09",
+    "C11"
+  ],
+  "next_action": "No modificar este snapshot. CorregirF01 en un cambio separado; formalizar ACK y preparar sandboxes externos para los23pesosUNKNOWN, luego auditar snapshot nuevo.",
+  "no_product_repairs": true,
+  "no_deployment": true,
+  "no_production_writes": true,
+  "no_shared_history": true
+}

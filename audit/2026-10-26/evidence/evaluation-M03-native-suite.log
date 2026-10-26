@@ -1,0 +1,56 @@
+✔ capture accepts an unassigned incomplete idea and separates audio from speech (2.4794ms)
+✔ campaign preparation needs a real product but no social account, sources or complete objective (0.3894ms)
+✔ recipes preserve exact source versions and labels remain editable after reuse (0.752ms)
+✔ changing source content versions does not rewrite an existing recipe (0.2519ms)
+✖ video approval requires a trusted exact-revision render and invalidates on editing (1.3426ms)
+✔ unknown rights, undeveloped ideas and absent manual copy cannot be approved (0.5351ms)
+✔ render specs preserve explicit ranges and do not treat silence as semantic classification (0.2463ms)
+✔ invalid ranges, excessive clips, unsupported originals and injected enums fail closed (0.7906ms)
+✔ old recipes retain their original file even if the material is replaced by a different type (0.5055ms)
+✔ rights revocation removes approval and export access without changing saved source bytes (0.4353ms)
+✔ narrated demo requires confirmed voice or a sufficiently long uploaded narration (0.6715ms)
+✔ asset registration is immutable, malformed requests do not mutate previous state (0.3164ms)
+✔ legacy import captures trusted immutable source provenance, including original spacing (3.1207ms)
+✔ replacement rights cannot authorize a restricted historical original (0.6972ms)
+✔ an owned historical original remains intentional while current revocation still prevents export (0.3769ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 127.6255
+
+✖ failing tests:
+
+test at tests\studio.test.ts:75:1
+✖ video approval requires a trusted exact-revision render and invalidates on editing (1.3426ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Aprueba/. Input:
+  
+  'Error: La exportación necesita el render aprobado de esta revisión.'
+  
+      at TestContext.<anonymous> (file:///[local-execution-path])
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: La exportación necesita el render aprobado de esta revisión.
+        at assertStudioExportable (file:///[local-execution-path])
+        at file:///[local-execution-path]
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///[local-execution-path])
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1325:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+        at Test.postRun (node:internal/test_runner/test:1465:19)
+        at Test.run (node:internal/test_runner/test:1390:12),
+    expected: /Aprueba/,
+    operator: 'throws',
+    diff: 'simple'
+  }

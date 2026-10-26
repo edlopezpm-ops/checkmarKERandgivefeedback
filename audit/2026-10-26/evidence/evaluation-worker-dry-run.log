@@ -1,0 +1,22 @@
+
+ ⛅️ wrangler 4.152.0 (update available 4.153.0)
+───────────────────────────────────────────────
+✨ Read 193 files from the assets directory audit/2026-10-26\snapshot\dist
+Total Upload: 1112.53 KiB / gzip: 235.05 KiB
+Your Worker has access to the following bindings:
+Binding                                                                 Resource                  
+env.STUDIO_PROCESSOR (StudioProcessor)                                  Durable Object            
+env.EMAIL (elopez@aekr.io - senders: marker@aekr.io)                    Send Email                
+env.DB (marker-private)                                                 D1 Database               
+env.MEDIA (marker-private-media)                                        R2 Bucket                 
+env.ASSETS                                                              Assets                    
+env.MARKER_ORIGIN ("https://marker.aekr.io")                            Environment Variable      
+env.MARKER_OWNER_EMAIL ("elopez@aekr.io")                               Environment Variable      
+env.MARKER_SENDER_EMAIL ("marker@aekr.io")                              Environment Variable      
+env.TURNSTILE_SITE_KEY ("0x4AAAAAAFkEMTXQKxrm1af6")                     Environment Variable      
+env.TURNSTILE_HOSTNAMES ("marker.aekr.io")                              Environment Variable      
+
+The following containers are available:
+- StudioProcessor (durable_object)
+
+--dry-run: exiting now.

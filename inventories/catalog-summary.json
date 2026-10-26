@@ -1,14 +1,14 @@
 {
-  "tracked_paths": 347,
-  "projected_paths": 347,
-  "source_checkout_bytes": 35805384,
-  "source_text_paths": 181,
-  "text_lines": 41412,
+  "tracked_paths": 368,
+  "projected_paths": 368,
+  "source_checkout_bytes": 35957965,
+  "source_text_paths": 202,
+  "text_lines": 42870,
   "lock_packages": 232,
-  "d1_tables": 36,
-  "d1_columns": 201,
+  "d1_tables": 38,
+  "d1_columns": 211,
   "d1_explicit_indexes": 14,
-  "d1_triggers": 71,
+  "d1_triggers": 72,
   "local_studio_tables": 10,
   "local_studio_columns": 33
 }

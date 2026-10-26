@@ -1,0 +1,11 @@
+{
+  "checked_utc": "2026-10-26T19:26:19.528427+00:00",
+  "original_tracked_hashed": 368,
+  "original_ignored_hashed": 298,
+  "changed_paths": [],
+  "head_same": true,
+  "git_status": "",
+  "git_status_same": true,
+  "product_snapshot_preserved": true,
+  "note": "Audit artifacts under excluded .aekr/work; original product bytes, ignored initial builds/tools/config and HEAD compared to recorded snapshot. No claim about unseen external state."
+}

@@ -1,0 +1,21 @@
+npm notice run marker@0.1.0 npx
+npm notice run playwright-cli -s=marker-audit-frontend eval async () => { const names=await caches.keys(); const entries=[];for(const name of names)entries.push({name,keys:(await(await caches.open(name)).keys()).map(r=>new URL(r.url).pathname)});if(!names.includes("marker-decoration-v2"))throw Error("CACHE_NOT_CREATED");return {names,entries}; }
+### Result
+{
+  "names": [
+    "marker-decoration-v2"
+  ],
+  "entries": [
+    {
+      "name": "marker-decoration-v2",
+      "keys": [
+        "/decoration/characters-v2.svg"
+      ]
+    }
+  ]
+}
+### Ran Playwright code
+```js
+await page.evaluate('async () => { const names=await caches.keys(); const entries=[];for(const name of names)entries.push({name,keys:(await(await caches.open(name)).keys()).map(r=>new URL(r.url).pathname)});if(!names.includes("marker-decoration-v2"))throw Error("CACHE_NOT_CREATED");return {names,entries}; }');
+```
+

@@ -1,0 +1,28 @@
+{
+  "schema": "marker-functional-audit-public-projection/v1",
+  "date": "2026-10-26",
+  "source_revision": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "full_product_file_count": 368,
+  "audit_original_report_sha256": "69ca6ceb0d758ee33569b54cb181678fb095062661e7952c29310b9eed579524",
+  "scores_preserved": {
+    "W": 60,
+    "P": 34,
+    "F": 3,
+    "U": 23
+  },
+  "verdict": "FAIL",
+  "confirmed_product_defects": 1,
+  "test_weaknesses": 2,
+  "suspected_ack_status": "SPEC_AMBIGUITY",
+  "publication_reruns_product_tests": false,
+  "deployment_performed": false,
+  "normalization": "Only local paths/private authority and credential inventory metadata removed; public drivers adapted to source/ and external media tools. No result changes.",
+  "omitted": [
+    "Private authority/bootstrap read receipts and agent operational auth metadata",
+    "Ignored-file metadata including every real credential-file hash",
+    "Runtime SQLite/JSON stores and generated credentials, even when synthetic",
+    "Dependency installations, CLI profiles, Worker bundles and copied code",
+    "Instrumentation/packaging scripts specific to private audit custody"
+  ],
+  "original_audit_preserved_locally": true
+}

@@ -5,12 +5,14 @@ import { CfWorkerJsonSchemaValidator } from '@modelcontextprotocol/sdk/validatio
 import { json } from './api.ts';
 import { createMcpAuthorization } from './mcp-auth.ts';
 import { MCP_TOOLS, createMcpTools, type McpPrincipal, type McpToolResult } from './mcp-tools.ts';
+import { policyRequired } from './policy.ts';
 
 export type McpOptions = {
   db: D1Database;
   origin: string;
   ownerSession(request: Request): Promise<{ userId: string; tenantId: string; email: string } | null>;
   assertActive(): Promise<void>;
+  policyAllowed?(identity: { userId: string; tenantId: string }): Promise<boolean>;
   backend(request: Request): Promise<Response>;
 };
 const instructions = 'Use marKER tools to find exact products, materials and campaigns before writing. Ask when matches or rights are unclear. Preserve user text and native planning. Read fresh revisions, use a unique request_id per intended write, and reuse that ID only for the identical request. Never retry an uncertain write automatically. Plans are proposals; saved drafts are editable. A queued render is not a completed file. Human review and approval happen in marKER before export. Export never publishes to social media.';
@@ -113,8 +115,12 @@ export function createMcpApi(options: McpOptions) {
         }
         // The normal signed-in browser can download its own already-approved
         // export. Assistant transport always requires its delegated bearer.
-        if (artifact && request.method === 'GET' && !principal && !request.headers.has('Authorization') && await options.ownerSession(request)) {
-          return exportArtifact();
+        if (artifact && request.method === 'GET' && !principal && !request.headers.has('Authorization')) {
+          const owner = await options.ownerSession(request);
+          if (owner) {
+            if (options.policyAllowed && !await options.policyAllowed(owner)) return policyRequired(options.origin);
+            return exportArtifact();
+          }
         }
         if (!principal) {
           const response = json({ error: 'AUTHORIZATION_REQUIRED' }, 401);
@@ -123,6 +129,7 @@ export function createMcpApi(options: McpOptions) {
         }
         const tenant = request.headers.get('X-Tenant-ID') ?? url.searchParams.get('tenant_id');
         if (tenant !== null && tenant !== principal.tenantId) return json({ error: 'ACCESS_DENIED' }, 403);
+        if (options.policyAllowed && !await options.policyAllowed(principal)) return policyRequired(options.origin);
         if (artifact) {
           if (request.method !== 'GET') return json({ error: 'METHOD_NOT_ALLOWED' }, 405);
           if (!principal.scopes.includes('marker:produce')) {

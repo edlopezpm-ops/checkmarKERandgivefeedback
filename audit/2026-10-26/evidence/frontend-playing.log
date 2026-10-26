@@ -1,0 +1,12 @@
+npm notice run marker@0.1.0 npx
+npm notice run playwright-cli -s=marker-audit-frontend eval async () => {const c=document.querySelector("canvas");const a=c.toDataURL();await new Promise(r=>setTimeout(r,500));const b=c.toDataURL();const result={phase:c.dataset.phase,differentPixels:a!==b};if(result.phase!=="playing"||!result.differentPixels)throw Error(JSON.stringify(result));return result;}
+### Result
+{
+  "phase": "playing",
+  "differentPixels": true
+}
+### Ran Playwright code
+```js
+await page.evaluate('async () => {const c=document.querySelector("canvas");const a=c.toDataURL();await new Promise(r=>setTimeout(r,500));const b=c.toDataURL();const result={phase:c.dataset.phase,differentPixels:a!==b};if(result.phase!=="playing"||!result.differentPixels)throw Error(JSON.stringify(result));return result;}');
+```
+

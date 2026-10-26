@@ -1,0 +1,129 @@
+{
+  "runner": "independent byte oracle from actual immutable files; actual ffprobe",
+  "status": "PASS",
+  "checks": [
+    {
+      "file": "marKER_demo_55s_ES_v1_1080p.mp4",
+      "range": "bytes=0-1023",
+      "status": 206,
+      "bytes": 1024,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_1080p.mp4",
+      "range": "bytes=39147-40170",
+      "status": 206,
+      "bytes": 1024,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_1080p.mp4",
+      "range": "bytes=-1024",
+      "status": 206,
+      "bytes": 1024,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_1080p.mp4",
+      "range": "bytes=6137380-",
+      "status": 416,
+      "bytes": 0,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_1080p.mp4",
+      "range": "bytes=-0",
+      "status": 416,
+      "bytes": 0,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_1080p.mp4",
+      "head_bytes": 6137380,
+      "if_range_mismatch_full_read": true,
+      "sha256": "b822ee2fb443e16ed0e685daba2d743ed0946e515b034ef82d17b9ddcee60a71",
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "55.000000"
+        }
+      }
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_4K.mp4",
+      "range": "bytes=0-1023",
+      "status": 206,
+      "bytes": 1024,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_4K.mp4",
+      "range": "bytes=39147-40170",
+      "status": 206,
+      "bytes": 1024,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_4K.mp4",
+      "range": "bytes=-1024",
+      "status": 206,
+      "bytes": 1024,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_4K.mp4",
+      "range": "bytes=14495058-",
+      "status": 416,
+      "bytes": 0,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_4K.mp4",
+      "range": "bytes=-0",
+      "status": 416,
+      "bytes": 0,
+      "independent_byte_comparison": true
+    },
+    {
+      "file": "marKER_demo_55s_ES_v1_4K.mp4",
+      "head_bytes": 14495058,
+      "if_range_mismatch_full_read": true,
+      "sha256": "fdb82854cc3f19107c846ac56cf3fb1f84d3aef3a407c5327ea5679c0dea85df",
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 3840,
+            "height": 2160
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "55.000000"
+        }
+      }
+    }
+  ],
+  "limits": [
+    "ASSETS transport streamed from local disk, no deployed Worker or CDN exercised"
+  ]
+}

@@ -58,12 +58,22 @@
       "path": "migrations-d1/0011_mcp_connections.sql",
       "sha256": "0e158a26bd903e1835e0f905acd2269939ef61c3b2fc09b0409556e0cb49f1ae",
       "text_lines": 15
+    },
+    {
+      "path": "migrations-d1/0012_policy_acknowledgements.sql",
+      "sha256": "62ba00b2e970c47a21714bc9ee67a30b07827ca55fd155d3d0818c739aca235c",
+      "text_lines": 12
+    },
+    {
+      "path": "migrations-d1/0013_analytics_subject.sql",
+      "sha256": "079326fdf7527e9979fa1164c5e3db4d7adf2a2a32add67753190a3609b03db9",
+      "text_lines": 9
     }
   ],
-  "table_count": 36,
-  "column_count": 201,
+  "table_count": 38,
+  "column_count": 211,
   "explicit_index_count": 14,
-  "trigger_count": 71,
+  "trigger_count": 72,
   "tables": [
     {
       "name": "marker_account_lifecycle",
@@ -690,6 +700,41 @@
           "ddl": null
         }
       ]
+    },
+    {
+      "name": "marker_analytics_subject",
+      "ddl": "CREATE TABLE marker_analytics_subject (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  subject_ref TEXT NOT NULL CHECK(length(subject_ref)=64),\n  delete_receipt_id TEXT CHECK(delete_receipt_id IS NULL OR length(delete_receipt_id)<=96)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "subject_ref",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "delete_receipt_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": []
     },
     {
       "name": "marker_auth_challenges",
@@ -2942,6 +2987,164 @@
       ]
     },
     {
+      "name": "marker_policy_acknowledgements",
+      "ddl": "CREATE TABLE marker_policy_acknowledgements (\n  user_id TEXT NOT NULL REFERENCES marker_auth_operator(user_id) ON DELETE CASCADE,\n  tenant_id TEXT NOT NULL REFERENCES marker_auth_operator(tenant_id) ON DELETE CASCADE,\n  terms_version TEXT NOT NULL,\n  privacy_notice_version TEXT NOT NULL,\n  cookies_notice_version TEXT NOT NULL,\n  purpose_version TEXT NOT NULL,\n  acknowledged_at INTEGER NOT NULL,\n  PRIMARY KEY(user_id,tenant_id)\n) WITHOUT ROWID",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "user_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 1,
+          "hidden": 0
+        },
+        {
+          "cid": 1,
+          "name": "tenant_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 2,
+          "hidden": 0
+        },
+        {
+          "cid": 2,
+          "name": "terms_version",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 3,
+          "name": "privacy_notice_version",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 4,
+          "name": "cookies_notice_version",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 5,
+          "name": "purpose_version",
+          "type": "TEXT",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        },
+        {
+          "cid": 6,
+          "name": "acknowledged_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "default": null,
+          "pk": 0,
+          "hidden": 0
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "tenant_id",
+          "to": "tenant_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "marker_auth_operator",
+          "from": "user_id",
+          "to": "user_id",
+          "on_update": "NO ACTION",
+          "on_delete": "CASCADE",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_marker_policy_acknowledgements_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "seqno": 0,
+              "cid": 0,
+              "name": "user_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 1,
+              "cid": 1,
+              "name": "tenant_id",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 1
+            },
+            {
+              "seqno": 2,
+              "cid": 2,
+              "name": "terms_version",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 3,
+              "cid": 3,
+              "name": "privacy_notice_version",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 4,
+              "cid": 4,
+              "name": "cookies_notice_version",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 5,
+              "cid": 5,
+              "name": "purpose_version",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            },
+            {
+              "seqno": 6,
+              "cid": 6,
+              "name": "acknowledged_at",
+              "desc": 0,
+              "coll": "BINARY",
+              "key": 0
+            }
+          ],
+          "ddl": null
+        }
+      ]
+    },
+    {
       "name": "marker_profile",
       "ddl": "CREATE TABLE marker_profile (\n  id INTEGER PRIMARY KEY CHECK(id=1),\n  revision INTEGER NOT NULL DEFAULT 0 CHECK(revision>=0),\n  name TEXT NOT NULL DEFAULT '' CHECK(length(name)<=120),\n  country TEXT NOT NULL DEFAULT '' CHECK(length(country)<=80),\n  email TEXT NOT NULL DEFAULT '' CHECK(length(email)<=254)\n)",
       "columns": [
@@ -4258,6 +4461,11 @@
       "name": "marker_agent_sessions_account_update",
       "table": "marker_agent_sessions",
       "ddl": "CREATE TRIGGER marker_agent_sessions_account_update BEFORE UPDATE ON marker_agent_sessions\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
+    },
+    {
+      "name": "marker_analytics_subject_account_insert",
+      "table": "marker_analytics_subject",
+      "ddl": "CREATE TRIGGER marker_analytics_subject_account_insert BEFORE INSERT ON marker_analytics_subject\nWHEN COALESCE((SELECT status FROM marker_account_lifecycle WHERE id=1),'closed') != 'active'\nBEGIN SELECT RAISE(ABORT,'ACCOUNT_CLOSED'); END"
     },
     {
       "name": "marker_auth_challenges_account_insert",

@@ -1,24 +1,24 @@
 {
   "format": "marker-source-snapshot/v2",
-  "captured_at_utc": "2026-10-25T02:53:04.580404+00:00",
-  "source_revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
-  "source_tree_sha1": "645e4f45db2d36d618c8b0e6553b2f9012bf4d91",
-  "source_branch": "main",
+  "captured_at_utc": "2026-10-26T19:46:53.649906+00:00",
+  "source_revision": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "source_tree_sha1": "58b96f3d51b46073594db25d8424b6564537ccc4",
+  "source_branch": "codex/analytics-source-20261025",
   "source_dirty": [],
-  "tracked_path_count": 347,
-  "projected_path_count": 347,
-  "projected_bytes": 35805384,
-  "hash_semantics": "SHA-256 describes exact clean source checkout bytes copied to source/. Every selected path is tracked at source_revision; source_dirty is empty. Git text normalization may give the source commit blob different line-ending bytes; each index blob identity is recorded. Review Git stores original captured bytes. Binary bytes match exactly. No private payload was inventoried or hashed.",
+  "tracked_path_count": 368,
+  "projected_path_count": 368,
+  "projected_bytes": 35957965,
+  "hash_semantics": "SHA-256 describes exact source checkout bytes copied to source/. Source HEAD is the base; source_dirty explicitly qualifies any uncommitted bytes. No private payload was inventoried or hashed. Git may normalize text line endings; verification accepts only exact bytes or the documented LF text equivalent. Binary bytes must match exactly.",
   "paths": [
     {
       "path": ".dev.vars.example",
       "projection": "source/.dev.vars.example",
       "tracked": true,
-      "git_index_blob_sha1": "130f754cb79f8e9a1414069a1de4f529fb7a439b",
-      "bytes": 846,
-      "sha256": "33b4ac87871a338e9aa66f21dcb3cb02c8fe86e189a08080f48c6d97f30defd7",
-      "checkout_sha256": "33b4ac87871a338e9aa66f21dcb3cb02c8fe86e189a08080f48c6d97f30defd7",
-      "text_lines": 19
+      "git_index_blob_sha1": "f7f8b6f0d9643de260d50cac744ddebf8de669b7",
+      "bytes": 1026,
+      "sha256": "2670b38ab518956a4f82a3a6a5a88f5240a5714278c9ae2b87e520624b4fb706",
+      "checkout_sha256": "2670b38ab518956a4f82a3a6a5a88f5240a5714278c9ae2b87e520624b4fb706",
+      "text_lines": 23
     },
     {
       "path": ".gitattributes",
@@ -54,11 +54,11 @@
       "path": "README.md",
       "projection": "source/README.md",
       "tracked": true,
-      "git_index_blob_sha1": "b18eb9bf52e62dbe70acb5b5da8fd71688834d6e",
-      "bytes": 7368,
-      "sha256": "82b1e743793817d7cd14284b37778af63f1e84f03402ca71d25b0a4010219d1d",
-      "checkout_sha256": "82b1e743793817d7cd14284b37778af63f1e84f03402ca71d25b0a4010219d1d",
-      "text_lines": 48
+      "git_index_blob_sha1": "35cb7027b441e0d459d305d7b1ccaba900836777",
+      "bytes": 7687,
+      "sha256": "ee9a6a09ad55b70eebb8a5fa63a67e2a56d86674e50fd6931a8e4b518f3aad3e",
+      "checkout_sha256": "ee9a6a09ad55b70eebb8a5fa63a67e2a56d86674e50fd6931a8e4b518f3aad3e",
+      "text_lines": 53
     },
     {
       "path": "assets/AEKR-BANNER-LICENSE.txt",
@@ -91,6 +91,56 @@
       "text_lines": 77
     },
     {
+      "path": "docs/ANALYTICS_RELEASE_2026-10-25.md",
+      "projection": "source/docs/ANALYTICS_RELEASE_2026-10-25.md",
+      "tracked": true,
+      "git_index_blob_sha1": "ff6f5fef058f9887842c5b875fae6a3f87752c52",
+      "bytes": 3522,
+      "sha256": "9e47cc1c3f51e112bd55a040da6821980da4cc59c856ee9491bc28091e0e8b97",
+      "checkout_sha256": "9e47cc1c3f51e112bd55a040da6821980da4cc59c856ee9491bc28091e0e8b97",
+      "text_lines": 61
+    },
+    {
+      "path": "docs/POLICY_RIGHTS_RELEASE_2026-10-25.md",
+      "projection": "source/docs/POLICY_RIGHTS_RELEASE_2026-10-25.md",
+      "tracked": true,
+      "git_index_blob_sha1": "295ebbee49c20cb4a915ea7e6b32fa1f0df8898f",
+      "bytes": 3719,
+      "sha256": "d7d1b42d1b8a8958356e3c651fa6c1c08bd280277cde5983583b4c76ee0020ca",
+      "checkout_sha256": "d7d1b42d1b8a8958356e3c651fa6c1c08bd280277cde5983583b4c76ee0020ca",
+      "text_lines": 13
+    },
+    {
+      "path": "docs/TERMS_DISPLAY_VERSION_ADDENDUM_2026-10-25.md",
+      "projection": "source/docs/TERMS_DISPLAY_VERSION_ADDENDUM_2026-10-25.md",
+      "tracked": true,
+      "git_index_blob_sha1": "a49168b9a06e01909b777cb061149da2c3a08d50",
+      "bytes": 1732,
+      "sha256": "4997a7000bb5a04134f1856dbae125ae11bb663cb46a16f14d1319e6025b195d",
+      "checkout_sha256": "4997a7000bb5a04134f1856dbae125ae11bb663cb46a16f14d1319e6025b195d",
+      "text_lines": 11
+    },
+    {
+      "path": "docs/TERMS_RELEASE_2026-10-25.md",
+      "projection": "source/docs/TERMS_RELEASE_2026-10-25.md",
+      "tracked": true,
+      "git_index_blob_sha1": "132a2f5682a7b5c508ea3ff580e041aeab25b615",
+      "bytes": 7319,
+      "sha256": "551927a5c3f2959ba2dc7e35ee4458af3f50bdebc030dfafb6b97d3a9786ac19",
+      "checkout_sha256": "551927a5c3f2959ba2dc7e35ee4458af3f50bdebc030dfafb6b97d3a9786ac19",
+      "text_lines": 114
+    },
+    {
+      "path": "docs/TERMS_UI_CORRECTION_2026-10-25.md",
+      "projection": "source/docs/TERMS_UI_CORRECTION_2026-10-25.md",
+      "tracked": true,
+      "git_index_blob_sha1": "3a2eb0392aac1c9eb9915b9154e57b61ff7cb0ea",
+      "bytes": 3150,
+      "sha256": "5323eec6d8e8d2158d6d967f74e16c535511c8b68fdb9c3f6313404c1dd355dd",
+      "checkout_sha256": "5323eec6d8e8d2158d6d967f74e16c535511c8b68fdb9c3f6313404c1dd355dd",
+      "text_lines": 25
+    },
+    {
       "path": "docs/agents.md",
       "projection": "source/docs/agents.md",
       "tracked": true,
@@ -109,6 +159,26 @@
       "sha256": "8299435f36b2b9e30e6f7db6191b031b5274236b7f669cdcfb5280b757115b0f",
       "checkout_sha256": "8299435f36b2b9e30e6f7db6191b031b5274236b7f669cdcfb5280b757115b0f",
       "text_lines": 71
+    },
+    {
+      "path": "docs/analytics-commercial-research-20261025.md",
+      "projection": "source/docs/analytics-commercial-research-20261025.md",
+      "tracked": true,
+      "git_index_blob_sha1": "2844c05cc50070bd132f1bf056e379f0d13d49f9",
+      "bytes": 6581,
+      "sha256": "745564b3088fdae0a8ff25c7fd7e5524f9ea744ee7b065bfc23b1f4de21bdc14",
+      "checkout_sha256": "745564b3088fdae0a8ff25c7fd7e5524f9ea744ee7b065bfc23b1f4de21bdc14",
+      "text_lines": 65
+    },
+    {
+      "path": "docs/analytics-integration.md",
+      "projection": "source/docs/analytics-integration.md",
+      "tracked": true,
+      "git_index_blob_sha1": "8facbe9ebca51c12f95ddd59755fc360780ed98a",
+      "bytes": 8649,
+      "sha256": "ee46a7b1443276180e2694f2024802ba6b921774ad6a2d713f6e882ebbaca830",
+      "checkout_sha256": "ee46a7b1443276180e2694f2024802ba6b921774ad6a2d713f6e882ebbaca830",
+      "text_lines": 143
     },
     {
       "path": "docs/architecture.md",
@@ -169,6 +239,16 @@
       "sha256": "c87bf08589554bdc5a465d2f44e7d5e31a0b3f3136a3a6626a947c75337409fb",
       "checkout_sha256": "c87bf08589554bdc5a465d2f44e7d5e31a0b3f3136a3a6626a947c75337409fb",
       "text_lines": 34
+    },
+    {
+      "path": "docs/discovery/CONTENT_SAFETY_DISCOVERY_PROMPT_2026-10-25.md",
+      "projection": "source/docs/discovery/CONTENT_SAFETY_DISCOVERY_PROMPT_2026-10-25.md",
+      "tracked": true,
+      "git_index_blob_sha1": "295b7de353f4eb57f452c51c79c55f5bad89158d",
+      "bytes": 7340,
+      "sha256": "5902d68d4d186d2f80a589959908c696c27daffbe16f35d66d7aa22112b59f6b",
+      "checkout_sha256": "5902d68d4d186d2f80a589959908c696c27daffbe16f35d66d7aa22112b59f6b",
+      "text_lines": 45
     },
     {
       "path": "docs/email.md",
@@ -409,6 +489,26 @@
       "sha256": "0e158a26bd903e1835e0f905acd2269939ef61c3b2fc09b0409556e0cb49f1ae",
       "checkout_sha256": "0e158a26bd903e1835e0f905acd2269939ef61c3b2fc09b0409556e0cb49f1ae",
       "text_lines": 15
+    },
+    {
+      "path": "migrations-d1/0012_policy_acknowledgements.sql",
+      "projection": "source/migrations-d1/0012_policy_acknowledgements.sql",
+      "tracked": true,
+      "git_index_blob_sha1": "1cb0c88f990839bd0390976a0d8efa8b37f2c454",
+      "bytes": 598,
+      "sha256": "62ba00b2e970c47a21714bc9ee67a30b07827ca55fd155d3d0818c739aca235c",
+      "checkout_sha256": "62ba00b2e970c47a21714bc9ee67a30b07827ca55fd155d3d0818c739aca235c",
+      "text_lines": 12
+    },
+    {
+      "path": "migrations-d1/0013_analytics_subject.sql",
+      "projection": "source/migrations-d1/0013_analytics_subject.sql",
+      "tracked": true,
+      "git_index_blob_sha1": "395a98cf4dd7ab2ba9d983aacc27779084b135a5",
+      "bytes": 551,
+      "sha256": "079326fdf7527e9979fa1164c5e3db4d7adf2a2a32add67753190a3609b03db9",
+      "checkout_sha256": "079326fdf7527e9979fa1164c5e3db4d7adf2a2a32add67753190a3609b03db9",
+      "text_lines": 9
     },
     {
       "path": "migrations/0001_editorial.sql",
@@ -2211,6 +2311,16 @@
       "text_lines": 382
     },
     {
+      "path": "server/analytics.ts",
+      "projection": "source/server/analytics.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "bf8f93104eaf040acd50a23c45e9a12810f8732f",
+      "bytes": 13756,
+      "sha256": "3ea8ed0a9b908517ffc697f3fc34152ef4360388e104eafc92dcb33359dffa3f",
+      "checkout_sha256": "3ea8ed0a9b908517ffc697f3fc34152ef4360388e104eafc92dcb33359dffa3f",
+      "text_lines": 158
+    },
+    {
       "path": "server/api.ts",
       "projection": "source/server/api.ts",
       "tracked": true,
@@ -2344,11 +2454,11 @@
       "path": "server/mcp.ts",
       "projection": "source/server/mcp.ts",
       "tracked": true,
-      "git_index_blob_sha1": "35106aa9b8ffb4bded2f6742c6209fb609be45e0",
-      "bytes": 11681,
-      "sha256": "c2346e0128fea0d41c1b06a9d293770726169391a343f57d3ffb2ae70984b7c0",
-      "checkout_sha256": "c2346e0128fea0d41c1b06a9d293770726169391a343f57d3ffb2ae70984b7c0",
-      "text_lines": 152
+      "git_index_blob_sha1": "c2c58650eb98531592b4ad46d83fea6d89565f52",
+      "bytes": 12104,
+      "sha256": "54b340f4fe85e2f037cdc192bc4473e27ff6bec0b9b8e7e8ae915af72b8755aa",
+      "checkout_sha256": "54b340f4fe85e2f037cdc192bc4473e27ff6bec0b9b8e7e8ae915af72b8755aa",
+      "text_lines": 159
     },
     {
       "path": "server/native-auth-store.js",
@@ -2381,6 +2491,26 @@
       "text_lines": 254
     },
     {
+      "path": "server/policy.ts",
+      "projection": "source/server/policy.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "f5273d017f2f64723052f3aa82b725343c188d99",
+      "bytes": 6102,
+      "sha256": "7d7c33ff62290529ffeb41116fa0efab86a9f68fdef25d1b37506660a6b960eb",
+      "checkout_sha256": "7d7c33ff62290529ffeb41116fa0efab86a9f68fdef25d1b37506660a6b960eb",
+      "text_lines": 64
+    },
+    {
+      "path": "server/privacy-data.ts",
+      "projection": "source/server/privacy-data.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "0536bf02f03fe5a484ef8d47213e1bf6927d1652",
+      "bytes": 6659,
+      "sha256": "70f5fa37259a4b52e2a520d5d53e248c08d8259c1ee83da87eb9624e2aeb5d3d",
+      "checkout_sha256": "70f5fa37259a4b52e2a520d5d53e248c08d8259c1ee83da87eb9624e2aeb5d3d",
+      "text_lines": 67
+    },
+    {
       "path": "server/profile-local.ts",
       "projection": "source/server/profile-local.ts",
       "tracked": true,
@@ -2394,11 +2524,11 @@
       "path": "server/profile.ts",
       "projection": "source/server/profile.ts",
       "tracked": true,
-      "git_index_blob_sha1": "f8f0a4fa5c2849ed737f5588d66a2ab67e043f4e",
-      "bytes": 17069,
-      "sha256": "2c11761d81d9e324760ba05365c16addc1961efca34d484821c7bf0ef52fd4ed",
-      "checkout_sha256": "2c11761d81d9e324760ba05365c16addc1961efca34d484821c7bf0ef52fd4ed",
-      "text_lines": 212
+      "git_index_blob_sha1": "b630a1c6d02ded0e0034eed204e88059ad8d6baf",
+      "bytes": 17670,
+      "sha256": "1a61b83169b78ff97359fac7b96000197faf62ce747b28e9fcd3b0b0d7b99e7d",
+      "checkout_sha256": "1a61b83169b78ff97359fac7b96000197faf62ce747b28e9fcd3b0b0d7b99e7d",
+      "text_lines": 215
     },
     {
       "path": "server/studio-analysis.ts",
@@ -2474,21 +2604,21 @@
       "path": "server/worker.ts",
       "projection": "source/server/worker.ts",
       "tracked": true,
-      "git_index_blob_sha1": "541b6c535867ce5d825423f3efe52ba2d3131946",
-      "bytes": 10055,
-      "sha256": "cad27d59766cf7d3f43269558564f6ccce3b8b093a85c54bdd2bce796be95a84",
-      "checkout_sha256": "cad27d59766cf7d3f43269558564f6ccce3b8b093a85c54bdd2bce796be95a84",
-      "text_lines": 202
+      "git_index_blob_sha1": "3d942b61bf565123a6f55c54e31c078bcb050152",
+      "bytes": 11421,
+      "sha256": "1325dd8d617d9f47e97535aba34962dc822edd6a56b03112922b94aacc781198",
+      "checkout_sha256": "1325dd8d617d9f47e97535aba34962dc822edd6a56b03112922b94aacc781198",
+      "text_lines": 219
     },
     {
       "path": "src/App.tsx",
       "projection": "source/src/App.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "ed8dd1c68bb0b967530dbbb62aeb2214fd31cbec",
-      "bytes": 7919,
-      "sha256": "215be4b94e11ad18f7d71b6f36e0bbe202dc72b2fe4d7b1feb95e94d3a6f615c",
-      "checkout_sha256": "215be4b94e11ad18f7d71b6f36e0bbe202dc72b2fe4d7b1feb95e94d3a6f615c",
-      "text_lines": 113
+      "git_index_blob_sha1": "a965bbc90a2f3e4b01defc4744dafb975e7ae9b1",
+      "bytes": 8428,
+      "sha256": "4af608bf27c112006aa0cdc9a1122c9ffed3e5c4b72b8322553b2d19818ddaa3",
+      "checkout_sha256": "4af608bf27c112006aa0cdc9a1122c9ffed3e5c4b72b8322553b2d19818ddaa3",
+      "text_lines": 114
     },
     {
       "path": "src/console/Agents.tsx",
@@ -2501,34 +2631,44 @@
       "text_lines": 229
     },
     {
+      "path": "src/console/AnalyticsSettings.tsx",
+      "projection": "source/src/console/AnalyticsSettings.tsx",
+      "tracked": true,
+      "git_index_blob_sha1": "f35f6aa30a3f18dfbc3bcee7fed308461db5ff78",
+      "bytes": 11744,
+      "sha256": "aa389fcfa25ab4a5dc5c67dd37473d70913e7f9df9a77baa4895b06f643ae685",
+      "checkout_sha256": "aa389fcfa25ab4a5dc5c67dd37473d70913e7f9df9a77baa4895b06f643ae685",
+      "text_lines": 99
+    },
+    {
       "path": "src/console/Authentication.tsx",
       "projection": "source/src/console/Authentication.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "ce224b765c98eb035cf6db0b719f275b672d5a30",
-      "bytes": 6247,
-      "sha256": "0a7d41722a49eaacd95738e10a0168d78ab1a06fe5e7cbb6cb5cb4afdebca16c",
-      "checkout_sha256": "0a7d41722a49eaacd95738e10a0168d78ab1a06fe5e7cbb6cb5cb4afdebca16c",
-      "text_lines": 72
+      "git_index_blob_sha1": "90c3a48aa3bfa822cf91797a519ed5cc640d3171",
+      "bytes": 6282,
+      "sha256": "e457c3e38029f10b03e62047130db8972d7f77cef3f8438db58d0962a0e95ab9",
+      "checkout_sha256": "e457c3e38029f10b03e62047130db8972d7f77cef3f8438db58d0962a0e95ab9",
+      "text_lines": 73
     },
     {
       "path": "src/console/Console.tsx",
       "projection": "source/src/console/Console.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "20cce2927f317f7fa0ffa9c05d0c3217f6b846b7",
-      "bytes": 66600,
-      "sha256": "88f48a94a301b41fd00b3f56eab920e7bcf03d01bfe18061937ee55de23549ab",
-      "checkout_sha256": "88f48a94a301b41fd00b3f56eab920e7bcf03d01bfe18061937ee55de23549ab",
-      "text_lines": 1493
+      "git_index_blob_sha1": "e6d32df7815c4e37d1d51418ec5b11c98bdd38c0",
+      "bytes": 67449,
+      "sha256": "ae9e555e41c052c58e3bdc35965ee97f14c7f10959af3022506c5a6767e0ae64",
+      "checkout_sha256": "ae9e555e41c052c58e3bdc35965ee97f14c7f10959af3022506c5a6767e0ae64",
+      "text_lines": 1495
     },
     {
       "path": "src/console/EnvironmentSettings.tsx",
       "projection": "source/src/console/EnvironmentSettings.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "836ca4a6c9c63cdaad03236cd0cde71fcb1c85e6",
-      "bytes": 3752,
-      "sha256": "914f78f3ff89f4d070f221833527604c701dab9ccc738de8306f8b3bc54843c3",
-      "checkout_sha256": "914f78f3ff89f4d070f221833527604c701dab9ccc738de8306f8b3bc54843c3",
-      "text_lines": 27
+      "git_index_blob_sha1": "34c57853d2187125c26236320f56e5f4b07ac7f5",
+      "bytes": 3360,
+      "sha256": "eb7c6547c93c3edce098098fe4d76337b95603ee85d3cb446c7f4bc3d1a5bf2a",
+      "checkout_sha256": "eb7c6547c93c3edce098098fe4d76337b95603ee85d3cb446c7f4bc3d1a5bf2a",
+      "text_lines": 26
     },
     {
       "path": "src/console/ErrorNotice.tsx",
@@ -2564,11 +2704,31 @@
       "path": "src/console/Policies.tsx",
       "projection": "source/src/console/Policies.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "bacf5b57e2cb5a97db8392b05cbad135b8d590c8",
-      "bytes": 18217,
-      "sha256": "81e7a4e19f56f9cb39efd88cdfc8f46f315de6b6219d0ec9db350612cccd4d1e",
-      "checkout_sha256": "81e7a4e19f56f9cb39efd88cdfc8f46f315de6b6219d0ec9db350612cccd4d1e",
-      "text_lines": 77
+      "git_index_blob_sha1": "e302f4520603cad7b9dca5c1cf0699664d29c741",
+      "bytes": 39941,
+      "sha256": "e15ab3d6b5935f3bdd10e1edd5d2e8003f7bf26d258887b4c2228d935874fcf7",
+      "checkout_sha256": "e15ab3d6b5935f3bdd10e1edd5d2e8003f7bf26d258887b4c2228d935874fcf7",
+      "text_lines": 106
+    },
+    {
+      "path": "src/console/PolicyGate.tsx",
+      "projection": "source/src/console/PolicyGate.tsx",
+      "tracked": true,
+      "git_index_blob_sha1": "fee2aef073127fa527a57741767beeea179846ae",
+      "bytes": 3431,
+      "sha256": "0784ea97afb32f0b9554f0c316f966ca4d8dc324064f702562e05e0b0634c8e8",
+      "checkout_sha256": "0784ea97afb32f0b9554f0c316f966ca4d8dc324064f702562e05e0b0634c8e8",
+      "text_lines": 31
+    },
+    {
+      "path": "src/console/PrivacyDownload.tsx",
+      "projection": "source/src/console/PrivacyDownload.tsx",
+      "tracked": true,
+      "git_index_blob_sha1": "fa7bc27267befe2069105ea0c0ee0e51a6575898",
+      "bytes": 4410,
+      "sha256": "9f08aa7cc5d62b0081ace7641640ad7ec67c85d1abfd1127cea492ad23f0b113",
+      "checkout_sha256": "9f08aa7cc5d62b0081ace7641640ad7ec67c85d1abfd1127cea492ad23f0b113",
+      "text_lines": 44
     },
     {
       "path": "src/console/Profile.tsx",
@@ -2584,11 +2744,11 @@
       "path": "src/console/Settings.tsx",
       "projection": "source/src/console/Settings.tsx",
       "tracked": true,
-      "git_index_blob_sha1": "726a6d472671e27214e381dcab4459900f62f754",
-      "bytes": 15583,
-      "sha256": "7a97b625cca0a1a8069417eb375c7588986d81d2128ab5649a336f752e289b13",
-      "checkout_sha256": "7a97b625cca0a1a8069417eb375c7588986d81d2128ab5649a336f752e289b13",
-      "text_lines": 120
+      "git_index_blob_sha1": "d18cffc5ef0e4d57e01cc73f655bf65d02f46e20",
+      "bytes": 15664,
+      "sha256": "73d77d38031fcc41f241aa734a0de34c8010ad74fc21de556ae1ab62be34f31b",
+      "checkout_sha256": "73d77d38031fcc41f241aa734a0de34c8010ad74fc21de556ae1ab62be34f31b",
+      "text_lines": 122
     },
     {
       "path": "src/console/Studio.tsx",
@@ -2734,11 +2894,11 @@
       "path": "src/console/policies.css",
       "projection": "source/src/console/policies.css",
       "tracked": true,
-      "git_index_blob_sha1": "c603322ee937144350a63b222793efae06017bf3",
-      "bytes": 1939,
-      "sha256": "80d26f28b1056fa446a1bdf04356a692b684c423c3f9e62588a1c373f97ded70",
-      "checkout_sha256": "80d26f28b1056fa446a1bdf04356a692b684c423c3f9e62588a1c373f97ded70",
-      "text_lines": 19
+      "git_index_blob_sha1": "b32c88af151e7ee1522936242f37e88458921558",
+      "bytes": 2467,
+      "sha256": "5ae8fa59b54cbb0e5d9fe0f98355ec864d1449c4154ac7d1f960e9480f9ffd5d",
+      "checkout_sha256": "5ae8fa59b54cbb0e5d9fe0f98355ec864d1449c4154ac7d1f960e9480f9ffd5d",
+      "text_lines": 22
     },
     {
       "path": "src/console/profile.css",
@@ -2801,6 +2961,16 @@
       "text_lines": 60
     },
     {
+      "path": "src/core/analytics.ts",
+      "projection": "source/src/core/analytics.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "07f86a64f6f10800eb2352aa84c354877cafe04b",
+      "bytes": 1827,
+      "sha256": "15afbd9dd643c6338727e4b41c6fc17d2d3f6918e07baddb296d048f122d2fb4",
+      "checkout_sha256": "15afbd9dd643c6338727e4b41c6fc17d2d3f6918e07baddb296d048f122d2fb4",
+      "text_lines": 21
+    },
+    {
       "path": "src/core/client.ts",
       "projection": "source/src/core/client.ts",
       "tracked": true,
@@ -2829,6 +2999,16 @@
       "sha256": "54db730580d3b018311aaa804e62a858f753dd25ebb914886d971029b7579202",
       "checkout_sha256": "54db730580d3b018311aaa804e62a858f753dd25ebb914886d971029b7579202",
       "text_lines": 184
+    },
+    {
+      "path": "src/core/policy.ts",
+      "projection": "source/src/core/policy.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "0c7e7192adf986a29966b4cfbb9635a70583f3f1",
+      "bytes": 374,
+      "sha256": "06bef2dbaf55990f367c6c236d2cad52f346444e7a0a0f53d07aab3b5353a89f",
+      "checkout_sha256": "06bef2dbaf55990f367c6c236d2cad52f346444e7a0a0f53d07aab3b5353a89f",
+      "text_lines": 13
     },
     {
       "path": "src/core/profile.ts",
@@ -3034,11 +3214,11 @@
       "path": "tests/agents-worker.test.ts",
       "projection": "source/tests/agents-worker.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "e6bee0e8487b8cb451d3c022e6ae68c53a54df05",
-      "bytes": 4605,
-      "sha256": "bdf308dce3530a7021776181d246d1cdee96197ca82453db5669c31f7888bc1f",
-      "checkout_sha256": "bdf308dce3530a7021776181d246d1cdee96197ca82453db5669c31f7888bc1f",
-      "text_lines": 56
+      "git_index_blob_sha1": "eb71d2686d0ae067767f5ddabe14702ed501e4db",
+      "bytes": 4877,
+      "sha256": "dd8544be3935abb07738e90ce98d4584eaacd31d40a00c18e40f5bd8ba1a1501",
+      "checkout_sha256": "dd8544be3935abb07738e90ce98d4584eaacd31d40a00c18e40f5bd8ba1a1501",
+      "text_lines": 58
     },
     {
       "path": "tests/agents.test.ts",
@@ -3049,6 +3229,26 @@
       "sha256": "3da3ddb2bab9f6e5cabc24efe774faf7cf2f367ab6a06618f3385a2f413ad99c",
       "checkout_sha256": "3da3ddb2bab9f6e5cabc24efe774faf7cf2f367ab6a06618f3385a2f413ad99c",
       "text_lines": 248
+    },
+    {
+      "path": "tests/analytics-ui.test.ts",
+      "projection": "source/tests/analytics-ui.test.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "5086a838f8d6a316e75f36cff3fc2bdba53c9c18",
+      "bytes": 5399,
+      "sha256": "1e68ca2a94e841d336be4b012f5e4df5a25a1ef4f1694429471e200845126b94",
+      "checkout_sha256": "1e68ca2a94e841d336be4b012f5e4df5a25a1ef4f1694429471e200845126b94",
+      "text_lines": 63
+    },
+    {
+      "path": "tests/analytics.test.ts",
+      "projection": "source/tests/analytics.test.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "23b7de52437fd5bc70f50bc50c33430c7c6b04c2",
+      "bytes": 17306,
+      "sha256": "9b5590b5480ded8844dd5ffeaa9488cd5bac297d062dd84026d4eb55500145b8",
+      "checkout_sha256": "9b5590b5480ded8844dd5ffeaa9488cd5bac297d062dd84026d4eb55500145b8",
+      "text_lines": 214
     },
     {
       "path": "tests/assets.test.ts",
@@ -3074,11 +3274,11 @@
       "path": "tests/d1-hosted.test.ts",
       "projection": "source/tests/d1-hosted.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "5d068f9b080f6d1d2d763bf65a97a75bfe278bb1",
-      "bytes": 7852,
-      "sha256": "b1685eaa25ef2e01ab7682b770a7efc7072517585c0f4f4b5d688a9c00056bde",
-      "checkout_sha256": "b1685eaa25ef2e01ab7682b770a7efc7072517585c0f4f4b5d688a9c00056bde",
-      "text_lines": 94
+      "git_index_blob_sha1": "8f7821e9dc7ce3d0d8b56eceeb129b8294c5c4cb",
+      "bytes": 8054,
+      "sha256": "11b1b123762b4ce365aee54d4e6a268badc8ce752a2de7b1d9ef57a2acc15697",
+      "checkout_sha256": "11b1b123762b4ce365aee54d4e6a268badc8ce752a2de7b1d9ef57a2acc15697",
+      "text_lines": 96
     },
     {
       "path": "tests/demo-media.test.ts",
@@ -3221,6 +3421,16 @@
       "text_lines": 254
     },
     {
+      "path": "tests/policy-rights.test.ts",
+      "projection": "source/tests/policy-rights.test.ts",
+      "tracked": true,
+      "git_index_blob_sha1": "5ba413da02ecd4dfa900f119a73c8406db7c5b7a",
+      "bytes": 10911,
+      "sha256": "1867d827e7dea12b0eb6de8a893ea0dd82f3ccf488a329cfb3cd45ffb15fb66b",
+      "checkout_sha256": "1867d827e7dea12b0eb6de8a893ea0dd82f3ccf488a329cfb3cd45ffb15fb66b",
+      "text_lines": 106
+    },
+    {
       "path": "tests/profile-local.test.ts",
       "projection": "source/tests/profile-local.test.ts",
       "tracked": true,
@@ -3244,11 +3454,11 @@
       "path": "tests/profile.test.ts",
       "projection": "source/tests/profile.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "a0692e1d6018d41fa6995dc8ae7809fb3863de25",
-      "bytes": 23399,
-      "sha256": "a47a97851aa09f5f2f8076c7db8f5d915268b097de300326080848029189c49a",
-      "checkout_sha256": "a47a97851aa09f5f2f8076c7db8f5d915268b097de300326080848029189c49a",
-      "text_lines": 211
+      "git_index_blob_sha1": "542f846e5915ba6e69eaa5ef93b0d4d40d4c8c02",
+      "bytes": 23831,
+      "sha256": "c20fe8964148f66406b28e5f88011dd23f549dcd4ae5cb11a90e2fe20bbc89af",
+      "checkout_sha256": "c20fe8964148f66406b28e5f88011dd23f549dcd4ae5cb11a90e2fe20bbc89af",
+      "text_lines": 212
     },
     {
       "path": "tests/scheduler.test.ts",
@@ -3294,20 +3504,20 @@
       "path": "tests/studio-hosted.test.ts",
       "projection": "source/tests/studio-hosted.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "1461b4a09b77268948818755c8c0985d09a66c88",
-      "bytes": 43248,
-      "sha256": "1d1c2caa67c5a9625ec8ce09444e3f284832bfc3d8b5a17f17909a18563ec6e9",
-      "checkout_sha256": "1d1c2caa67c5a9625ec8ce09444e3f284832bfc3d8b5a17f17909a18563ec6e9",
+      "git_index_blob_sha1": "c4e2ae8c77e946fcf7be0034a52286bac4d9bd87",
+      "bytes": 43284,
+      "sha256": "70bef2cf4536f168a33658f57ab3f382c67d2f014037c3cc7d75e476f055262a",
+      "checkout_sha256": "70bef2cf4536f168a33658f57ab3f382c67d2f014037c3cc7d75e476f055262a",
       "text_lines": 406
     },
     {
       "path": "tests/studio-native-flow.test.ts",
       "projection": "source/tests/studio-native-flow.test.ts",
       "tracked": true,
-      "git_index_blob_sha1": "93b739beb07c5088bca681f62ed57bdcd6582bf0",
-      "bytes": 7413,
-      "sha256": "f205b0acb6fb732080e797f4817ba2987a136c151350f5c386862976cd487abd",
-      "checkout_sha256": "f205b0acb6fb732080e797f4817ba2987a136c151350f5c386862976cd487abd",
+      "git_index_blob_sha1": "d76ec5ca46fa8cfaeaae2fd1a28da1e589818dde",
+      "bytes": 7513,
+      "sha256": "c431116b708d782efbfd536077d4a600bdf762f1d93f49747cc0cdde25ebda57",
+      "checkout_sha256": "c431116b708d782efbfd536077d4a600bdf762f1d93f49747cc0cdde25ebda57",
       "text_lines": 65
     },
     {
@@ -3454,11 +3664,11 @@
       "path": "vite.config.ts",
       "projection": "source/vite.config.ts",
       "tracked": true,
-      "git_index_blob_sha1": "5acc53c4de9fdb6605952fa92b776fda41e03624",
-      "bytes": 8903,
-      "sha256": "ab78b5d34cec0a949782701efbc76966755ac7ed4e762fa901ebdedae60277ff",
-      "checkout_sha256": "ab78b5d34cec0a949782701efbc76966755ac7ed4e762fa901ebdedae60277ff",
-      "text_lines": 169
+      "git_index_blob_sha1": "4632d178a180b3db3299e566a3409ff7a9ab99ac",
+      "bytes": 9139,
+      "sha256": "3fd2bfd9069c3d27795402551112e946f094f8fc69e37117d2e2597fc982840a",
+      "checkout_sha256": "3fd2bfd9069c3d27795402551112e946f094f8fc69e37117d2e2597fc982840a",
+      "text_lines": 171
     },
     {
       "path": "worker-configuration.d.ts",
@@ -3488,53 +3698,7 @@
     "real .env/.dev.vars, credentials, secrets and key files",
     "node_modules, build/output/generated processor staging, .git, caches",
     "owner attachments, local Font directory and private inputs",
-    "provider credentials and raw auth/session/token hashes from runtime stores",
-    "private registered-App binding files (.app.json); published installation CTA is public configuration"
+    "provider credentials and raw auth/session/token hashes from runtime stores"
   ],
-  "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template. The user-facing registered-plugin installation URL/identifier is explicitly authorized public configuration already served in the browser bundle; it grants no account access. Private App bindings are excluded. The historical raw-plugin identifier in the design document is also explicitly authorized public noncredential configuration; this does not widen either private audience.",
-  "previous_publication": {
-    "review_commit": "d20f76a6c53acda02bbdfec397e049a49ee26ddb",
-    "source_revision": "f9478e66f4c5798b417f7b25b462d8dd0d673295",
-    "source_manifest_sha256": "40879fcc517c3c5ccb266ee8e3591a5e7f8c8bf18299f558ea8831308aebe025",
-    "changed_existing_projection_paths": [
-      "PROJECT_MAP.md",
-      "README.md"
-    ],
-    "new_projection_paths": [
-      "docs/current-status-2026-10-24.md"
-    ],
-    "unchanged_projection_files": 344,
-    "formerly_dirty_demo_paths_committed_byte_identical": [
-      "docs/console.md",
-      "server/entry.ts",
-      "src/console/EnvironmentSettings.tsx",
-      "src/console/release.css",
-      "wrangler.jsonc",
-      "public/demo/index.html",
-      "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
-      "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
-      "public/demo/marKER_demo_ES_v1.vtt",
-      "public/demo/marKER_demo_ES_v1_poster.png",
-      "server/demo-media.ts",
-      "tests/demo-media.test.ts"
-    ],
-    "source_commit_changed_paths": [
-      "PROJECT_MAP.md",
-      "README.md",
-      "docs/console.md",
-      "docs/current-status-2026-10-24.md",
-      "public/demo/index.html",
-      "public/demo/marKER_demo_55s_ES_v1_1080p.mp4",
-      "public/demo/marKER_demo_55s_ES_v1_4K.mp4",
-      "public/demo/marKER_demo_ES_v1.vtt",
-      "public/demo/marKER_demo_ES_v1_poster.png",
-      "server/demo-media.ts",
-      "server/entry.ts",
-      "src/console/EnvironmentSettings.tsx",
-      "src/console/release.css",
-      "tests/demo-media.test.ts",
-      "wrangler.jsonc"
-    ],
-    "method": "Complete eligible path/hash comparison. Two source navigation documents changed and one public handoff was added; all 344 other preceding projected files and the 12 formerly dirty demo paths retain exact bytes. The source checkout is now clean; no dirty overlay remains. AST/schema/dependency/product execution was not repeated."
-  }
+  "included_configuration": "Tracked Wrangler instance/site/client identifiers and contact addresses are configuration, not bearer credentials. Blank .dev.vars.example is a safe template."
 }

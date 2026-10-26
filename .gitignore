@@ -11,3 +11,11 @@ source/.dev.vars
 source/.env
 source/.env.*
 !source/.env.example
+audit/**/native-data*/
+audit/**/mcp-sandbox*/
+audit/**/negative-control*/
+audit/**/root-case-*/
+audit/**/*.sqlite
+audit/**/*.db
+audit/**/.dev.vars
+audit/**/.env

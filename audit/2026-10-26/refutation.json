@@ -1,0 +1,434 @@
+{
+  "schema": "marker.functional-audit-refutation/1",
+  "task": "refute_findings",
+  "date": "2026-10-26",
+  "base": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "role": {
+    "client": "Codex native subagent",
+    "role": "Auditor",
+    "model": "exact selected model unknown",
+    "context": "bounded subagent task; no authorship of reviewed implementation",
+    "containment": "read-only task instruction; OS isolation not established; only this report written",
+    "supervision": "root coordinator; no artificial deadline; two equivalent failures stop; no blind retry"
+  },
+  "scope": {
+    "candidates": [
+      "ACK overview false-success",
+      "C12 EN Studio conflict localization"
+    ],
+    "allowed_effect": "audit/2026-10-26/refutation.json only",
+    "exclusions": [
+      "product or snapshot modification",
+      "implementation",
+      "another scan",
+      "deployment",
+      "production interaction",
+      "central service or another repository reads",
+      "owner data",
+      "credentials",
+      "archive payload",
+      "external requests"
+    ]
+  },
+  "Outcome": "DONE_WITH_CONCERNS",
+  "Delivery state": "BOUNDED_ADVERSARIAL_REVIEW_COMPLETE / REFUTATION_JSON_WRITTEN / NO_IMPLEMENTATION",
+  "Product state": "C12_MINOR_FAILURE_CONFIRMED / ACK_CONTRACT_AMBIGUOUS / CENTRAL_REAL_BEHAVIOR_UNKNOWN",
+  "Gate/authority state": "ROOT_ASSIGNED_READ_ONLY_REVIEW / NO_RELEASE_OR_ACCEPTANCE_AUTHORITY / HOC_FINAL_AUTHORITY",
+  "decisions": [
+    {
+      "candidate": "ACK overview false-success",
+      "capability": "C11",
+      "decision": "SPEC_AMBIGUITY",
+      "capability_status_recommendation": "UNKNOWN",
+      "confirmed_product_defect": false,
+      "weighted_failure": false,
+      "conditional_class": "FALSE_SUCCESS only if the authoritative ACK response contract defines acknowledged:false in a 2xx response as unsuccessful confirmation",
+      "severity": "OBSERVATION pending wire contract; no confirmed security severity",
+      "confidence": {
+        "implementation_behavior": "HIGH",
+        "normative_failure_claim": "UNRESOLVED"
+      },
+      "observation": "server/analytics.ts ignores the successful ACK response body. HTTP200 objects {acknowledged:true}, {acknowledged:false} and {} each produce overview status active and applied_version31 after the same valid enabled configuration. Non-2xx or thrown transport failures produce confirmation_pending and applied_version null.",
+      "refutation": [
+        "docs/analytics-integration.md36-38 promises desired and confirmed versions; line68 names POST ack as confirming the locally applied version. Neither defines the ACK response schema or an application-level negative represented by HTTP200.",
+        "tests/analytics.test.ts38 provides acknowledged:true as a positive test fixture. This is evidence of an assumed response, not a complete normative wire schema or proof that acknowledged:false is a valid central response.",
+        "tests/analytics.test.ts68-75 exercises transport ACK failure via a thrown exception. The source handles that declared failure and the independently injected HTTP503 correctly.",
+        "A central contract in which HTTP2xx plus a valid object is the complete ACK success signal is consistent with the inspected documentation. Under that alternative, injected false or absent properties are not a demonstrated contractual rejection.",
+        "The injected source_configuration_version30 echo in the supplied evidence is likewise inconclusive: no inspected contract requires an echoed version or defines that response property.",
+        "Do not attribute a defect, intent, rejection, persistence failure or particular response format to the actual central service. It was not read or called."
+      ],
+      "impact": {
+        "representation": "AnalyticsSettings73 and82 display current configuration confirmed and Confirmed31 from the overview result.",
+        "client_action_admission": "The active flag at AnalyticsSettings28 controls the grant and declared-interest buttons at92-93. This can enable optional UI actions under the conditional negative-ACK scenario.",
+        "authorization_boundary": "No owner/tenant bypass is established. server/worker163-178 resolves owner and tenant before Analytics. server/analytics121-128 and137-141 refetch and validate current source policy for grants/events and relay them centrally. The overview/applied_version is not persisted or accepted as an authorization credential.",
+        "limits": "A negative-ACK contract could additionally require blocking producer operations, but that rule is not specified by the inspected sources. Central permission/version enforcement is required by docs57 and remains unverified here. No unauthorized collection, grant, audience, data exposure, central write or production effect was demonstrated."
+      },
+      "closeout_evidence_required": [
+        "Obtain an authoritative versioned ACK wire contract from the central contract owner within separately authorized scope. It must define the success predicate, response body requirements, allowed negative states and HTTP status semantics. Clarify whether 2xx alone confirms acceptance or whether application fields carry success/failure.",
+        "Clarify whether a returned version is required, what it means, and how to handle a mismatch. Do not require a version echo or a particular property name without that contract.",
+        "Bind marKER expected behavior to that contract: whether overview confirmation is informational only and whether any ACK condition gates optional producer operations.",
+        "Using the agreed contract, run synthetic success, declared negative, malformed response, timeout/throw and non-2xx cases. If false plus200 is a declared rejection, require confirmation_pending and null applied_version for that case and confirm UI action behavior. If 2xx is authoritative regardless of body, reject this conditional defect and document that oracle.",
+        "A claim about actual central behavior additionally requires separately authorized non-production integration evidence with synthetic identities, exact service revision and declared contract. Do not use owner production data or infer real central behavior from this harness."
+      ],
+      "sources": [
+        {
+          "path": "docs/analytics-integration.md",
+          "ranges": [
+            [
+              36,
+              41
+            ],
+            [
+              43,
+              78
+            ],
+            [
+              98,
+              106
+            ],
+            [
+              135,
+              143
+            ]
+          ]
+        },
+        {
+          "path": "server/analytics.ts",
+          "ranges": [
+            [
+              11,
+              20
+            ],
+            [
+              42,
+              54
+            ],
+            [
+              63,
+              157
+            ]
+          ]
+        },
+        {
+          "path": "tests/analytics.test.ts",
+          "ranges": [
+            [
+              18,
+              46
+            ],
+            [
+              57,
+              76
+            ]
+          ]
+        },
+        {
+          "path": "src/core/analytics.ts",
+          "ranges": [
+            [
+              5,
+              19
+            ]
+          ]
+        },
+        {
+          "path": "src/console/AnalyticsSettings.tsx",
+          "ranges": [
+            [
+              16,
+              99
+            ]
+          ]
+        },
+        {
+          "path": "server/worker.ts",
+          "ranges": [
+            [
+              163,
+              180
+            ]
+          ]
+        },
+        {
+          "path": "audit/2026-10-26/evidence/root-analytics-ack.json",
+          "ranges": [
+            [
+              1,
+              186
+            ]
+          ]
+        },
+        {
+          "path": "audit/2026-10-26/repro/analytics-ack.mjs",
+          "ranges": [
+            [
+              1,
+              12
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "C12 EN Studio conflict localization",
+      "capability": "C12",
+      "decision": "CONFIRMED",
+      "capability_status_recommendation": "FAIL",
+      "confirmed_product_defect": true,
+      "weighted_failure": true,
+      "class": "LOCALIZATION_FAILURE",
+      "severity": "MINOR",
+      "confidence": "HIGH",
+      "observation": "The supplied screenshot and accessibility snapshot show an EN interface and English Refresh state control with the Spanish alert Space cambió. Recarga antes de guardar.",
+      "refutation_attempts": [
+        {
+          "alternative": "The language selection does not promise translation of all interface copy.",
+          "disposition": "Rejected for this message. docs/console3 explicitly describes changing interface text; README30 establishes EN/ES selection; docs/settings31 distinguishes interface copy from stored material."
+        },
+        {
+          "alternative": "The Spanish text is preserved user material, exempt from translation.",
+          "disposition": "Rejected. It is a fixed system error generated by revision guards at server/studio-local149/338 and studio-hosted330; no stored content is involved."
+        },
+        {
+          "alternative": "ErrorNotice or another wrapper translates the message automatically.",
+          "disposition": "Rejected for this path. Studio51-57 extracts data.error;146 stores its message;253 passes the raw string; ErrorNotice13 renders it raw. ErrorNotice only localizes its dismiss label. Existing Console error sites explicitly call t(error), while this Studio path does not."
+        },
+        {
+          "alternative": "The alert reflects a failed concurrency guard or lost data.",
+          "disposition": "Not established. The revision guard rejects stale changes. The finding is inability to read the recovery message in the selected language; data loss and guard failure are not inferred."
+        }
+      ],
+      "expected": "With English selected, this fixed Studio conflict/recovery message is shown in English while user-saved content retains its original text.",
+      "actual": "The fixed recovery alert remains Spanish in the English Studio.",
+      "impact": "An English-only operator may not understand why saving was rejected or what recovery action is required. The Refresh state control is English and the stale-write guard remains in place.",
+      "limits": "Local synthetic browser evidence is observed. Hosted code shares the same fixed message and frontend path, but no hosted authenticated browser reproduction was performed by this reviewer. No authorization bypass, data loss, release failure or universal translation failure is claimed.",
+      "closeout_evidence_required": [
+        "In an isolated synthetic workspace, cause the same stale Studio revision in EN and verify the complete error and recovery action are English.",
+        "Repeat in ES, confirm saved user content is unchanged, and confirm the stale write still rejects without overwriting the newer state."
+      ],
+      "sources": [
+        {
+          "path": "docs/console.md",
+          "ranges": [
+            [
+              1,
+              3
+            ],
+            [
+              23,
+              25
+            ]
+          ]
+        },
+        {
+          "path": "docs/settings.md",
+          "ranges": [
+            [
+              29,
+              33
+            ]
+          ]
+        },
+        {
+          "path": "README.md",
+          "ranges": [
+            [
+              28,
+              34
+            ]
+          ]
+        },
+        {
+          "path": "server/studio-local.ts",
+          "ranges": [
+            [
+              144,
+              155
+            ],
+            [
+              336,
+              339
+            ]
+          ]
+        },
+        {
+          "path": "server/studio-hosted.ts",
+          "ranges": [
+            [
+              329,
+              331
+            ]
+          ]
+        },
+        {
+          "path": "src/console/Studio.tsx",
+          "ranges": [
+            [
+              51,
+              65
+            ],
+            [
+              142,
+              152
+            ],
+            [
+              250,
+              255
+            ]
+          ]
+        },
+        {
+          "path": "src/console/ErrorNotice.tsx",
+          "ranges": [
+            [
+              1,
+              16
+            ]
+          ]
+        },
+        {
+          "path": "src/i18n.tsx",
+          "ranges": [
+            [
+              3,
+              6
+            ],
+            [
+              325,
+              350
+            ]
+          ]
+        },
+        {
+          "path": "src/console/Console.tsx",
+          "ranges": [
+            [
+              397,
+              397
+            ],
+            [
+              546,
+              550
+            ],
+            [
+              1478,
+              1478
+            ]
+          ],
+          "coverage": "search hits only"
+        },
+        {
+          "path": "audit/2026-10-26/contracts/frozen-capabilities.json",
+          "ranges": [
+            [
+              283,
+              304
+            ]
+          ]
+        },
+        {
+          "path": "audit/2026-10-26/evidence/frontend-english-studio-conflict.yml",
+          "ranges": [
+            [
+              1,
+              91
+            ]
+          ]
+        },
+        {
+          "path": "audit/2026-10-26/evidence/frontend-english-studio-conflict.png",
+          "coverage": "visually inspected complete image"
+        }
+      ]
+    }
+  ],
+  "independent_execution": {
+    "target": "audit/2026-10-26/snapshot/server/analytics.ts",
+    "target_sha256": "3ea8ed0a9b908517ffc697f3fc34152ef4360388e104eafc92dcb33359dffa3f",
+    "target_matches_current_source": true,
+    "command": "PowerShell literal here-string piped to node --experimental-strip-types --input-type=module",
+    "persistence": "inline reproduction; no new repro file; supplied root evidence not overwritten",
+    "transport": "globalThis.fetch replaced by throwing function; every central request served by explicitly injected synthetic fetcher; unexpected paths throw",
+    "synthetic_only": true,
+    "external_requests": 0,
+    "results": [
+      {
+        "ack": {
+          "status": 200,
+          "body": {
+            "acknowledged": true
+          }
+        },
+        "overview": {
+          "status": "active",
+          "applied_version": 31
+        }
+      },
+      {
+        "ack": {
+          "status": 200,
+          "body": {
+            "acknowledged": false
+          }
+        },
+        "overview": {
+          "status": "active",
+          "applied_version": 31
+        }
+      },
+      {
+        "ack": {
+          "status": 200,
+          "body": {}
+        },
+        "overview": {
+          "status": "active",
+          "applied_version": 31
+        }
+      },
+      {
+        "ack": {
+          "status": 503,
+          "body": {
+            "acknowledged": false
+          }
+        },
+        "overview": {
+          "status": "confirmation_pending",
+          "applied_version": null
+        }
+      },
+      {
+        "ack": {
+          "throws": "Synthetic failure"
+        },
+        "overview": {
+          "status": "confirmation_pending",
+          "applied_version": null
+        }
+      }
+    ],
+    "all_case_paths": [
+      {
+        "path": "/api/collection/config",
+        "method": "GET"
+      },
+      {
+        "path": "/api/collection/ack",
+        "method": "POST"
+      }
+    ],
+    "limitations": "Local dependency fault injection confirms implementation behavior, not actual central service schema or behavior. No preference/event mutation was attempted."
+  },
+  "custody": {
+    "observed_head_before": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+    "observed_git_status_before": "clean",
+    "requested_write_inventory": [
+      "audit/2026-10-26/refutation.json"
+    ],
+    "no_other_file_write_by_this_reviewer": true,
+    "snapshot_changes_by_this_reviewer": false,
+    "independent_context_assurance": "bounded fresh review task; no technical OS containment proof",
+    "acceptance": "recommendations for root integration; final acceptance remains separate"
+  }
+}

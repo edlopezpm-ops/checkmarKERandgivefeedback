@@ -1,5 +1,7 @@
 # 05 — Backend API and access
 
+Current source: 26 October 2026, `77bbedac`. Read the [audit](12-functional-integrity-audit.md) before interpreting source controls as live-service verification.
+
 The [Worker](source/server/worker.ts) resolves authenticated native access and lifecycle before private application dispatch. [entry.ts](source/server/entry.ts) also serves public demo byte ranges and exports the existing processor. [Vite middleware](source/vite.config.ts) has explicit loopback Host/IP/origin controls and denies private directories. [API route navigation](inventories/routes.md) links actual source occurrences; consult each dispatcher for exact method and dynamic path guards.
 
 | Route family | Implementation and contract |
@@ -10,7 +12,9 @@ The [Worker](source/server/worker.ts) resolves authenticated native access and l
 | Editorial | [api.ts](source/server/api.ts): GET workspace and POST command, strict bounded payload, server revision checks. |
 | Studio | [studio-hosted.ts](source/server/studio-hosted.ts), [studio-local.ts](source/server/studio-local.ts): materials/plans/commands/settings/uploads/assets/analysis/jobs/render/approve/export. |
 | Agents | [agents.ts](source/server/agents.ts): owner/pairing routes, bounded context, connections/sessions/runs/events/proposals/effect receipts. |
-| Profile/lifecycle | [profile.ts](source/server/profile.ts): independent revision, explicit deletion, durable resumable cleanup. |
+| Profile/lifecycle | [profile.ts](source/server/profile.ts): independent revision, explicit deletion, durable resumable cleanup and central rights routing. |
+| Service declarations/own-data rights | [policy.ts](source/server/policy.ts), [privacy-data.ts](source/server/privacy-data.ts): deliberate versioned declarations, recent proof and bounded declared-category JSON export. |
+| Central Analytics | [analytics.ts](source/server/analytics.ts): owner-scoped fixed-origin relay, current configuration/ACK, separate purposes, declared interest and audience counts. |
 | MCP/OAuth | [mcp-auth.ts](source/server/mcp-auth.ts), [mcp.ts](source/server/mcp.ts): metadata, registration, bounded login/resume, consent/token/revocation, bearer tools and private artifacts. |
 
 The sole-owner model never authorizes by email equality with Google/GitHub or by a client-supplied tenant. First linking needs native email proof under five minutes at start and callback; later provider login uses the retained immutable identity. Email is a recovery path. OAuth credentials/tokens remain server-side; configured public client/site identifiers are not secrets. Native sessions have six-hour absolute and thirty-minute idle limits.
@@ -26,3 +30,9 @@ Review bearer scope/resource/client/tenant binding, stale sessions, replay, conc
 The first native-form consent correction changes HTML pages to `Referrer-Policy: same-origin`. In the observed Edge fixture, the earlier `no-referrer` HTML policy produced `Origin: null` even with the owner cookie present, so the strict same-origin check rejected Allow before any grant write. The corrected HTML policy preserves the same-origin form header while suppressing cross-origin referrers. JSON and return responses retain `no-referrer`; strict Origin validation, cookies and single-use consent remain intact. A second correction permits the validated DNS/IPv4 callback origin in the consent page's `form-action` so its 303 return can complete. Callback hostname punctuation is constrained before constructing CSP; registration/resource/PKCE matching still applies.
 
 Bracketed IPv6 cannot be represented as a CSP host source here. Its return uses a 200 HTML document with an escaped exact-callback meta refresh and a `rel=noreferrer` fallback anchor, no JavaScript, `no-store`, `no-referrer` and a self-only form policy. The consent form itself remains same-origin. See [the policy regression](source/tests/mcp-consent-policy.test.ts) and [OAuth callback tests](source/tests/mcp-auth.test.ts). The real synthetic Edge callback/exchange cases and actual host evidence have distinct scopes in [operations](08-operations-quality-and-limits.md).
+
+The current service gate protects product, MCP and bridge use when required declaration versions are missing; agents cannot accept Terms. Authentication, Profile/account rights and the own-data export have their separately defined access boundaries. The export requires a live owner/tenant session and recent proof, with declared categories, pagination and exclusions; it is not a full media archive.
+
+Analytics mutations require the existing owner identity and canonical same-origin/header boundary. The relay uses a fixed central origin, bounded responses/deadlines and a source credential, without exposing a caller-selected destination or private campaign capture. F02 remains specification ambiguity around the semantics of a200 ACK body; the audit did not demonstrate a durable permission bypass.
+
+Synthetic SQLite and signed-provider fixtures exercised access, lifecycle, errors and isolation. C06/C07 still retain UNKNOWN real-service portions: this audit did not send a real code, log into Google/GitHub/Turnstile, delete an owner account or verify external recipients' erasure.

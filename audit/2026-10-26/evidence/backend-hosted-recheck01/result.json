@@ -1,0 +1,102 @@
+{
+  "scope": "Real SQLite/native SQL with synthetic R2/processor for admission/failure semantics only; not Cloudflare or native hosted toolchain verification",
+  "checks": [
+    {
+      "name": "C05 uploaded original converts reservation once and completion replay does not reprobe/recharge",
+      "status": "PASS"
+    },
+    {
+      "name": "C05 enqueue failure leaves a durable queued receipt; explicit resume retains job ID and 10-cent charge; exact complete job reuses without new effect",
+      "status": "PASS"
+    },
+    {
+      "name": "C05 rendering dependency failure is terminal failed, preserves original, releases storage reservation once, retains charged credit and denies export",
+      "status": "PASS"
+    },
+    {
+      "name": "C05 ledger and job outcomes persist through a new SQLite connection",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/uploads",
+      "status": 201
+    },
+    {
+      "path": "/uploads/7ff1ec0e-d872-49d7-9ba4-fb44482fca02/complete",
+      "status": 200
+    },
+    {
+      "path": "/uploads/7ff1ec0e-d872-49d7-9ba4-fb44482fca02/complete",
+      "status": 200
+    },
+    {
+      "path": "",
+      "status": 200
+    },
+    {
+      "path": "/commands",
+      "status": 200
+    },
+    {
+      "path": "",
+      "status": 200
+    },
+    {
+      "path": "/commands",
+      "status": 200
+    },
+    {
+      "path": "",
+      "status": 200
+    },
+    {
+      "path": "/commands",
+      "status": 200
+    },
+    {
+      "path": "/variants/e5f2faed-d59d-47d7-8615-4467fdeca0b5/render",
+      "status": 503
+    },
+    {
+      "path": "/variants/e5f2faed-d59d-47d7-8615-4467fdeca0b5/render",
+      "status": 200
+    },
+    {
+      "path": "/variants/e5f2faed-d59d-47d7-8615-4467fdeca0b5/render",
+      "status": 200
+    },
+    {
+      "path": "",
+      "status": 200
+    },
+    {
+      "path": "/commands",
+      "status": 200
+    },
+    {
+      "path": "",
+      "status": 200
+    },
+    {
+      "path": "/variants/e5f2faed-d59d-47d7-8615-4467fdeca0b5/render",
+      "status": 202
+    },
+    {
+      "path": "/variants/e5f2faed-d59d-47d7-8615-4467fdeca0b5/export",
+      "status": 409
+    }
+  ],
+  "ledger": {
+    "id": 1,
+    "stored_bytes": 26914,
+    "reserved_bytes": 0,
+    "upload_token": null,
+    "compute_token": null,
+    "compute_until": 0
+  },
+  "credits": 25,
+  "renderCalls": 2,
+  "probeCalls": 1
+}

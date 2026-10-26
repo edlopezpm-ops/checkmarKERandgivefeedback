@@ -1,5 +1,7 @@
 # 01 — Architecture and stack
 
+Current source cut: 26 October 2026, `77bbedac`. [Functional-integrity results](12-functional-integrity-audit.md) qualify implementation and execution separately.
+
 The product is a React/TypeScript SPA with a shared Fetch-style backend and two runtime adapters. Vite serves loopback engineering APIs with local files/SQLite; the hosted Worker uses native authentication, D1, private R2 and a Durable Object managed-container processor. Supabase/PostgreSQL is retained as an inactive prepared editorial adapter.
 
 ```mermaid
@@ -36,3 +38,9 @@ flowchart TD
 The pinned runtime packages include React 19, the official MCP SDK and a Workers-compatible non-code-generating JSON-schema provider. Vite, TypeScript and Wrangler are development/build dependencies. Exact resolved versions, transitive packages and commands are in [dependencies](inventories/dependencies.md). Installing a dependency does not create a provider, migration or deployment.
 
 The architecture is deliberately one operator/one retained tenant. It has no public signup, teams, tenant switching, billing customer model or SaaS allocation. Local development trusts the loopback OS account; it is a different security environment from hosted authentication. Native subprocess controls and agents sharing one host do not prove OS isolation.
+
+Service access also passes through [policy.ts](source/server/policy.ts): deliberate versioned Terms acceptance and Privacy/Cookies notice acknowledgements are distinct from visiting or signing in. [privacy-data.ts](source/server/privacy-data.ts) provides bounded own-data export independently of accepting new Terms. These are existing source capabilities, not approvals supplied by this review.
+
+The optional [Analytics relay](source/server/analytics.ts) uses the existing authenticated owner/tenant to consult central configuration, purpose-specific preferences, declared interests and audience counts. Central Analytics owns its ledger and suppression; marKER keeps native campaigns. Missing credentials or invalid configuration disable optional work. The [contract](source/docs/analytics-integration.md) and dated release separate code publication, paused collection and actual activation. C11 remains UNKNOWN because the audit lacks authoritative ACK semantics and real central-effect evidence.
+
+The audit verified native local behavior and build/bundle paths. Real hosted processing/authentication/erasure and optional inference retain their stated unknown portions. A diagram or declared binding is not evidence that a current service ran.

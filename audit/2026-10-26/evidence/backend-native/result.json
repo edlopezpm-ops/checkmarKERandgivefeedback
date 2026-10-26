@@ -1,0 +1,274 @@
+{
+  "source": "audit/2026-10-26\\snapshot",
+  "checks": [
+    {
+      "name": "C01 API editorial creates real source/campaign/post and rejects stale CAS",
+      "status": "PASS",
+      "workspaceRevision": 4,
+      "posts": 1
+    },
+    {
+      "name": "C02 original upload hashes and fresh HTTP bytes match independent SHA256",
+      "status": "PASS",
+      "sha256": "8e6c43e3468b111a1ec8c73d6f3c933291f7a8a4e4c95db68836ec8e55206a20",
+      "size": 8263
+    },
+    {
+      "name": "C02 classification is idempotent and preserves rights/revision",
+      "status": "PASS"
+    },
+    {
+      "name": "C03 planner selects exact duration/literal copy and rejects forged fingerprint",
+      "status": "PASS",
+      "variantId": "56633d29-70fe-46f9-990f-3a990a29ebf2",
+      "recipeRevision": 1
+    },
+    {
+      "name": "C04 native MP4 renders, decodes fully, and exact human-approved revision exports",
+      "status": "PASS",
+      "sha256": "00deda22c9ff048ba0ef3af44f4ff71ecf6a190d78d9e0bbba8de6d8fad230dd",
+      "size": 18647,
+      "width": 1080,
+      "height": 1920,
+      "duration": 5
+    },
+    {
+      "name": "C01/C02/C03/C04 new process reads same durable records and MP4 bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "C04 recipe edit invalidates approval and export",
+      "status": "PASS"
+    },
+    {
+      "name": "C10 settings enforce installed bounds and independent CAS",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/workspace",
+      "status": 200,
+      "bytes": 93
+    },
+    {
+      "method": "POST",
+      "path": "/api/commands",
+      "status": 200,
+      "bytes": 295
+    },
+    {
+      "method": "POST",
+      "path": "/api/commands",
+      "status": 409,
+      "error": "El espacio cambió en otra pestaña. Recarga antes de guardar.",
+      "bytes": 74
+    },
+    {
+      "method": "POST",
+      "path": "/api/commands",
+      "status": 200,
+      "bytes": 528
+    },
+    {
+      "method": "POST",
+      "path": "/api/commands",
+      "status": 200,
+      "bytes": 758
+    },
+    {
+      "method": "POST",
+      "path": "/api/commands",
+      "status": 200,
+      "bytes": 1314
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio",
+      "status": 200,
+      "bytes": 311
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/uploads",
+      "status": 201,
+      "bytes": 188
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/uploads/2e465ab7-d76f-466d-bfb0-75cf738611c1/complete",
+      "status": 200,
+      "bytes": 992
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/assets/2e465ab7-d76f-466d-bfb0-75cf738611c1",
+      "status": 200,
+      "bytes": 8263
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/commands",
+      "status": 200,
+      "bytes": 846
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/commands",
+      "status": 200,
+      "bytes": 846
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/commands",
+      "status": 200,
+      "bytes": 1115
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/plan",
+      "status": 200,
+      "bytes": 2427
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/commands",
+      "status": 409,
+      "error": "La propuesta cambió. Vuelve a proponer conservando tu edición.",
+      "bytes": 99
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/commands",
+      "status": 200,
+      "bytes": 3540
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/export",
+      "status": 409,
+      "error": "Aprueba la revisión actual antes de exportar.",
+      "bytes": 85
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/render",
+      "status": 202,
+      "bytes": 411
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/7e6e2eef-2bde-4e6e-aed4-64cde5c6aada",
+      "status": 200,
+      "bytes": 2650
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/7e6e2eef-2bde-4e6e-aed4-64cde5c6aada",
+      "status": 200,
+      "bytes": 2650
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/7e6e2eef-2bde-4e6e-aed4-64cde5c6aada",
+      "status": 200,
+      "bytes": 2650
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/7e6e2eef-2bde-4e6e-aed4-64cde5c6aada",
+      "status": 200,
+      "bytes": 2650
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/jobs/7e6e2eef-2bde-4e6e-aed4-64cde5c6aada",
+      "status": 200,
+      "bytes": 2692
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/approve",
+      "status": 400,
+      "error": "Confirma la revisión o el borrado explícitamente.",
+      "bytes": 88
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/approve",
+      "status": 409,
+      "error": "La receta cambió. Vuelve a previsualizar.",
+      "bytes": 79
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/approve",
+      "status": 200,
+      "bytes": 3625
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/export",
+      "status": 200,
+      "bytes": 18647
+    },
+    {
+      "method": "GET",
+      "path": "/api/workspace",
+      "status": 200,
+      "bytes": 1314
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio",
+      "status": 200,
+      "bytes": 4330
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/export",
+      "status": 200,
+      "bytes": 18647
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/commands",
+      "status": 200,
+      "bytes": 3541
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/variants/56633d29-70fe-46f9-990f-3a990a29ebf2/export",
+      "status": 409,
+      "error": "Aprueba la revisión actual antes de exportar.",
+      "bytes": 85
+    },
+    {
+      "method": "GET",
+      "path": "/api/studio/settings",
+      "status": 200,
+      "bytes": 353
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/settings",
+      "status": 200,
+      "bytes": 353
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/settings",
+      "status": 409,
+      "error": "La configuración cambió. Compara los valores antes de guardar.",
+      "bytes": 103
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/settings",
+      "status": 400,
+      "error": "Revisa processingBudgetCents: entero entre 0 y 2000.",
+      "bytes": 89
+    }
+  ]
+}

@@ -1,39 +1,115 @@
 {
-  "format": "marker-public-review-state/v3",
+  "format": "marker-public-review-state/v4",
   "product": "marKER",
   "snapshot_date": "2026-10-26",
-  "scope": "MINIMAL_PUBLIC_STATUS_WITH_HISTORICAL_SOURCE",
+  "scope": "FULL_CURRENT_PRODUCT_SOURCE_AND_SANITIZED_FUNCTIONAL_AUDIT",
   "canonical_source_revision": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
-  "dated_delivery_receipt": {
-    "date": "2026-10-25",
-    "status": "BOUNDED_TECHNICAL_DELIVERY",
-    "new_deployment_by_this_update": false,
-    "product_checks_rerun_by_this_update": false
-  },
-  "public_browser_observation": {
-    "date": "2026-10-26",
-    "reported_by": "Coordinator",
-    "scope": "Public landing,brand,single-owner workspace presentation,access options and policy links",
-    "authenticated_session_exercised": false
-  },
-  "historical_source": {
-    "date": "2026-10-24",
-    "revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+  "source_revision": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "source_branch": "codex/analytics-source-20261025",
+  "source_dirty": [],
+  "source_tree_sha1": "58b96f3d51b46073594db25d8424b6564537ccc4",
+  "source_projection": {
+    "directory": "source/",
     "manifest": "source-snapshot-manifest.json",
-    "state": "CURRENT-STATE-2026-10-24.json",
-    "preserved": true,
-    "contains_later_changes": false
+    "files": 368,
+    "bytes": 35957965,
+    "all_selected_files_tracked": true,
+    "omitted_public_media": 0,
+    "exact_checkout_bytes": true
   },
-  "limits": [
-    "Public observation does not establish private workflow behavior",
-    "No human UAT,product acceptance,legal approval,security certification or100-percent readiness claimed"
-  ],
+  "catalogs": {
+    "refreshed_for_this_source": true,
+    "tracked_paths": 368,
+    "projected_paths": 368,
+    "source_checkout_bytes": 35957965,
+    "source_text_paths": 202,
+    "text_lines": 42870,
+    "lock_packages": 232,
+    "d1_tables": 38,
+    "d1_columns": 211,
+    "d1_explicit_indexes": 14,
+    "d1_triggers": 72,
+    "local_studio_tables": 10,
+    "local_studio_columns": 33,
+    "static_test_declarations": 332,
+    "parsed_modules": 127,
+    "server_route_occurrences": 120
+  },
+  "functional_audit": {
+    "report": "audit/2026-10-26/REPORT.md",
+    "matrix": "audit/2026-10-26/MATRIX.json",
+    "scorecard": "audit/2026-10-26/SCORECARD.json",
+    "findings": "audit/2026-10-26/FINDINGS.json",
+    "verdict": "FAIL",
+    "confirmed_product_defects": 1,
+    "confirmed_product_severity": "MINOR",
+    "confirmed_test_weaknesses": 2,
+    "suspected_ack": "SPEC_AMBIGUITY_NOT_CONFIRMED_FALSE_SUCCESS",
+    "W": 60,
+    "P": 34,
+    "F": 3,
+    "U": 23,
+    "D": 56.666666666666664,
+    "C": 61.666666666666664,
+    "UNKNOWN": 38.333333333333336,
+    "evaluator_tampering": "NOT_OBSERVED",
+    "agent_authorship_and_intent": "NOT_DETERMINED",
+    "weights_chronology": "Weights proposed before results; physical freeze followed a later-refuted static observation, before executions/confirmed finding; no result-driven changes."
+  },
+  "product_execution_evidence": {
+    "performed_in_preceding_audit": true,
+    "product_tests_rerun_during_publication": false,
+    "prepared_suite": {
+      "tests": 333,
+      "pass": 333,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "duration_seconds": 13.669005393981934
+    },
+    "build_and_types_and_logo": "PASS_IN_AUDIT",
+    "worker_dry_run": "PASS_IN_AUDIT_NOT_DEPLOYMENT",
+    "independent_directed_mutations": {
+      "detected": 3,
+      "survived": 0,
+      "invalid": 0,
+      "timeout": 0,
+      "restored": 3
+    },
+    "native_mutation_timeout": "RETAINED_NOT_CREDITED_AS_ASSERTION",
+    "real_native_media": "LOCAL_FFMPEG_FULL_DECODE_EXPORT_RESTART_VERIFIED",
+    "external_integration_effects": "UNKNOWN_UNLESS_EXPLICITLY_LOCAL_PROVEN"
+  },
+  "publication_checks": {
+    "full_source_identity_and_completeness": "VERIFIED_BY_PACKAGE_VERIFICATION_AND_STAGED_SOURCE_BLOBS",
+    "schema_catalog_reconstruction": "PERFORMED_EMPTY_SQLITE",
+    "AST_and_test_route_navigation": "REGENERATED_STATICALLY",
+    "audit_path_normalization": "DERIVED_PUBLIC_OUTPUTS_ONLY",
+    "deploy_performed": false,
+    "production_writes": false,
+    "canonical_product_modified": false,
+    "portable_driver_validation": "SYNTAX_ONLY; behavioral execution remains original audit evidence"
+  },
+  "previous_public_cut": {
+    "review_commit": "b27e83c6bc7000738a3ab37fa4c3699bfa752365",
+    "source_revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+    "dated_dossier_preserved": "marKER-FULL-DOSSIER-2026-10-24.md",
+    "history_url": "https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/tree/b27e83c6bc7000738a3ab37fa4c3699bfa752365",
+    "current_source_replaces_historical_projection": true
+  },
   "continuity": {
     "url": "https://console.aekr.io/dossier",
     "visibility": "PRIVATE_OWNER",
-    "purpose": "Detailed readiness,evidence,strategy and future work",
-    "import_verified_by_this_update": false
+    "import_verified_by_this_update": false,
+    "scope": "Private strategy and operational follow-up remain separate from this explicitly requested public source/audit projection"
   },
+  "limits": [
+    "No hosted deployment equality or current provider readback is implied by source equality",
+    "No human UAT,product acceptance,legal approval,security certification or100-percent readiness claimed",
+    "UNKNOWN stays in the score denominator and is not a confirmed defect",
+    "No private governance,owner stores,credentials or credential-file digests are published"
+  ],
   "public_snapshot": "SNAPSHOT-2026-10-26.md",
   "public_pages_url": null
 }
