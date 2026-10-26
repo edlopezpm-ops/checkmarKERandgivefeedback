@@ -1,96 +1,39 @@
 {
   "format": "marker-public-review-state/v3",
+  "product": "marKER",
   "snapshot_date": "2026-10-26",
-  "snapshot_kind": "DOCUMENTARY_OVERLAY_WITH_FROZEN_SOURCE",
-  "public_entry": "https://github.com/edlopezpm-ops/checkmarKERandgivefeedback/blob/main/SNAPSHOT-2026-10-26.md",
-  "public_pages": {
-    "configured": false,
-    "url": null,
-    "verification": "GitHub repository API has_pages=false and Pages endpoint HTTP404 on 2026-10-26; no Pages site created"
+  "scope": "MINIMAL_PUBLIC_STATUS_WITH_HISTORICAL_SOURCE",
+  "canonical_source_revision": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
+  "dated_delivery_receipt": {
+    "date": "2026-10-25",
+    "status": "BOUNDED_TECHNICAL_DELIVERY",
+    "new_deployment_by_this_update": false,
+    "product_checks_rerun_by_this_update": false
   },
-  "publication": {
-    "repository": "edlopezpm-ops/checkmarKERandgivefeedback",
-    "visibility": "PUBLIC",
-    "scope": "Selected status and pending-work summary only; previously published source retained",
-    "product_modified": false,
-    "deployment_performed": false,
-    "history_preserved": true
-  },
-  "frozen_public_source": {
-    "snapshot_date": "2026-10-24",
-    "commit": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
-    "projection_files": 347,
-    "manifest": "source-snapshot-manifest.json",
-    "historical_state": "CURRENT-STATE-2026-10-24.json",
-    "refresh_action": "PRESERVED_BYTE_IDENTICAL",
-    "includes_later_product_changes": false
-  },
-  "canonical_product_observed": {
-    "repository": "edlopezpm-ops/marKER",
-    "checkout_branch": "codex/analytics-source-20261025",
-    "head": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
-    "remote_main": "77bbedaccc6bc410364cef16fba1ed88b1eaf5e1",
-    "dirty_paths": [],
-    "receipt_runtime_source": "b82b407523d6bd2c1ee35768ab4c9423893382fe",
-    "scope": "Git/source/receipts inspected; current authenticated runtime not exercised"
-  },
-  "delivery_state": "TECHNICAL_DELIVERY_WITH_OPERATIONAL_DEPENDENCIES",
-  "reported_2026_10_25": {
-    "policy": "20 EN/ES Terms clauses; visible Version20261025; later deliberate declarations and native protected-action gate",
-    "rights": "Bounded own-data export; not complete media/provider/auth/config archive",
-    "analytics": "Canonical consumer deployed and 0013 applied; later source credential provisioned; source remains paused",
-    "tests": "315 acknowledgement/rights baseline;24 language;47 Analytics directed; scopes overlap and were not rerun here",
-    "hosted": "Dated Analytics receipt:13 exact assets,8 anonymous401,2 media206; not a new 26-Oct result",
-    "central_receipt": "aekr-collectandsecurity/evidence/analytics-delivery-20261025.json"
-  },
-  "fresh_readback": {
-    "checked_at_utc": "2026-10-26T16:33:47.600045+00:00",
-    "state": "INCONCLUSIVE_UNIFORM_HTTP403",
-    "anonymous_requests": 10,
-    "all_returned_status": 403,
-    "owner_session_used": false,
-    "response_bodies_retained": false,
-    "cause": "NOT_ESTABLISHED",
-    "product_regression_established": false,
-    "fresh_hosted_pass": false
-  },
-  "continuity": {
-    "target": "https://console.aekr.io/dossier",
-    "visibility": "PRIVATE_OWNER",
-    "public_history_retained": true,
-    "summary": "DOSSIER-HANDOFF-2026-10-26.json",
-    "import_verified_by_this_refresh": false
-  },
-  "not_established": [
-    "Complete real assistant campaign and remaining business writes",
-    "Dot/voice and physical-phone behavior",
-    "OAuth refresh/revoke/reconnect/scope-upgrade durability",
-    "Owner review/acknowledgement/export and Analytics producer confirmation",
-    "Ten-piece time/quality pilot and hosted analysis toolchain",
-    "Complete security/accessibility/cost/recovery review",
-    "New product acceptance,human UAT,legal approval or security certification",
-    "Public listing,multi-tenant service,paid activation or real commercial income"
-  ],
-  "model_provenance": {
-    "implementation_requested": "gpt-6.1-sol / ultra",
-    "historical_bounded_review_requested": "gpt-6-astra / ultra",
-    "new_independent_review_claimed": false,
-    "independent_runtime_telemetry_verified": false
-  },
-  "coordinator_browser_readback": {
-    "state": "COORDINATOR_REPORTED_PUBLIC_BROWSER_LOAD",
+  "public_browser_observation": {
     "date": "2026-10-26",
-    "browser": "Brave connected normal browser",
-    "observed": [
-      "Public overview and original logo visible",
-      "English workspace heading and single-account scope",
-      "Google available;GitHub disabled",
-      "Email entry requires normal security verification",
-      "Policy footer links visible"
-    ],
-    "owner_login": false,
-    "security_bypass": false,
-    "authenticated_workflow_verified": false,
-    "scope": "Coordinator-reported public browser observation;does not explain separate tooling403 or validate campaign"
-  }
+    "reported_by": "Coordinator",
+    "scope": "Public landing,brand,single-owner workspace presentation,access options and policy links",
+    "authenticated_session_exercised": false
+  },
+  "historical_source": {
+    "date": "2026-10-24",
+    "revision": "3b219839086fa6e66e467c02d58df70a49f0d8f0",
+    "manifest": "source-snapshot-manifest.json",
+    "state": "CURRENT-STATE-2026-10-24.json",
+    "preserved": true,
+    "contains_later_changes": false
+  },
+  "limits": [
+    "Public observation does not establish private workflow behavior",
+    "No human UAT,product acceptance,legal approval,security certification or100-percent readiness claimed"
+  ],
+  "continuity": {
+    "url": "https://console.aekr.io/dossier",
+    "visibility": "PRIVATE_OWNER",
+    "purpose": "Detailed readiness,evidence,strategy and future work",
+    "import_verified_by_this_update": false
+  },
+  "public_snapshot": "SNAPSHOT-2026-10-26.md",
+  "public_pages_url": null
 }
